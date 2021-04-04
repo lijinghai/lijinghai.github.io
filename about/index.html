@@ -293,7 +293,40 @@
   
   <div id="content" class="site-content">
     <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
-      
+      <figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- https://www.bootcdn.cn/botui/ --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://cdn.bootcss.com/botui/0.3.9/botui-theme-default.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"https://cdn.bootcss.com/botui/0.3.9/botui.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<!-- 因为vue和botui更新导至bug,现将对话移至js下的botui中配置 -->
+<div class="entry-content">
+  <div class="moe-cungudafa" style="text-align:center; font-size: 50px; margin-bottom: 20px;">我的聊天室</div>
+  <div id="hello-cungudafa" class="popcontainer" style="min-height: 300px; padding: 2px 6px 4px; background-color: rgb(36, 200, 255); border-radius: 10px;">
+    <center>
+    <p>
+    </p>
+    <h4>
+    与&nbsp;<ruby>
+    李京海&nbsp;<rp>
+    （</rp>
+    <rt>
+    真（ま）白（しろ）</rt>
+    <rp>
+    ）</rp>
+    </ruby>
+    对话中...</h4>
+    <p>
+    </p>
+    </center>
+    <bot-ui>
+  </bot-ui></div>
+</div>
+<script src="/js/botui.js"></script>
+<script>
+ bot_ui_ini()
+</script>
+
+
+
+
       <!-- .entry-content -->
       
 <div id="vcomments"></div>
