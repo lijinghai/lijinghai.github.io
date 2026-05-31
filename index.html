@@ -3,20 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RabbitRobot | 李京海的机器人项目</title>
-  <meta name="description" content="RabbitRobot 是一个围绕 ROS2、AMR、自主导航、SLAM、端到端局部规划和具身智能实验持续演进的机器人项目群。">
+  <title>李京海 | RabbitRobot 全系列机器人项目</title>
+  <meta name="description" content="李京海的 RabbitRobot 全系列机器人项目主页，覆盖 AMR 移动机器人、手持 LiDAR 建图仪、SCFH 场景机器人、机械臂、陪伴机器人和展示网站。">
   <style>
     :root {
-      --bg: #f7f8f5;
-      --panel: #ffffff;
-      --ink: #18201c;
-      --muted: #5c675f;
-      --line: #dfe5dc;
-      --green: #2f6f4e;
-      --green-dark: #1f4d36;
-      --amber: #d18a1f;
-      --blue: #2e5d87;
-      --shadow: 0 18px 50px rgba(24, 32, 28, .12);
+      --paper: #f3f0e8;
+      --paper-deep: #e5ded0;
+      --ink: #111714;
+      --muted: #62675f;
+      --line: rgba(23, 29, 25, .16);
+      --panel: #fffdf7;
+      --forest: #123d30;
+      --moss: #4d6e45;
+      --copper: #b46f2d;
+      --blue: #315f7d;
+      --shadow: 0 22px 70px rgba(17, 23, 20, .15);
     }
 
     * { box-sizing: border-box; }
@@ -24,288 +25,357 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: var(--bg);
+      background: var(--paper);
       font-family: Inter, "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
       line-height: 1.65;
       overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    h1, h2, h3, p, span, a { overflow-wrap: anywhere; }
+    img { display: block; max-width: 100%; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.08; letter-spacing: 0; }
+    p { color: var(--muted); }
+    h1, h2, h3, p, span, a { overflow-wrap: break-word; word-break: break-word; }
 
-    .site-nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 30;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding: 14px clamp(18px, 4vw, 56px);
-      background: rgba(247, 248, 245, .88);
-      border-bottom: 1px solid rgba(223, 229, 220, .9);
+      gap: 18px;
+      padding: 16px clamp(20px, 4vw, 64px);
+      color: #f8f3e8;
+      background: rgba(12, 18, 15, .52);
+      border-bottom: 1px solid rgba(255, 255, 255, .14);
       backdrop-filter: blur(18px);
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 10px;
       min-width: 0;
       font-weight: 800;
-      letter-spacing: 0;
     }
 
     .brand img {
-      width: 34px;
-      height: 34px;
+      width: 36px;
+      height: 36px;
       border-radius: 8px;
       object-fit: cover;
     }
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 18px;
-      color: var(--muted);
+      gap: 20px;
       font-size: 14px;
+      color: rgba(248, 243, 232, .78);
       white-space: nowrap;
     }
 
-    .nav-links a:hover { color: var(--green-dark); }
+    .nav-links a:hover { color: #fff; }
 
     .hero {
-      min-height: calc(100vh - 64px);
+      position: relative;
+      min-height: 94vh;
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
-      align-items: center;
-      gap: clamp(26px, 5vw, 72px);
-      padding: clamp(44px, 7vw, 96px) clamp(18px, 5vw, 72px) 34px;
+      align-items: end;
+      padding: 118px clamp(22px, 5vw, 76px) clamp(34px, 6vw, 72px);
+      color: #fffdf7;
+      background: #151b17 url("images/rabbitrobot/robot_photo.jpg") center right / cover no-repeat;
     }
 
-    .hero > div { min-width: 0; }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(9, 13, 11, .56);
+    }
 
-    .eyebrow {
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+      gap: clamp(26px, 5vw, 70px);
+      align-items: end;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .hero-content > * { min-width: 0; }
+
+    .kicker {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      margin: 0 0 18px;
-      color: var(--green-dark);
+      gap: 12px;
+      margin-bottom: 18px;
+      color: #f0c992;
       font-size: 14px;
-      font-weight: 700;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 34px;
-      height: 2px;
-      background: var(--amber);
-    }
-
-    h1, h2, h3, p { margin-top: 0; }
-    h1 {
-      max-width: 780px;
-      margin-bottom: 20px;
-      font-size: clamp(44px, 7vw, 92px);
-      line-height: 1;
+      font-weight: 800;
       letter-spacing: 0;
     }
 
-    .lead {
-      max-width: 760px;
-      margin-bottom: 30px;
-      color: #435046;
-      font-size: clamp(17px, 2vw, 22px);
+    .kicker::before {
+      content: "";
+      width: 42px;
+      height: 2px;
+      background: currentColor;
     }
+
+    h1 {
+      max-width: 980px;
+      margin-bottom: 22px;
+      font-size: clamp(46px, 8.2vw, 118px);
+    }
+
+    h1 span { display: block; }
+
+    .hero-copy {
+      max-width: 760px;
+      margin-bottom: 28px;
+      color: rgba(255, 253, 247, .84);
+      font-size: clamp(17px, 2vw, 23px);
+    }
+
+    .hero-note {
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 8px;
+      background: rgba(10, 15, 13, .48);
+      box-shadow: 0 20px 70px rgba(0,0,0,.2);
+    }
+
+    .hero-note p { margin: 0; color: rgba(255,255,255,.8); }
+    .hero-note strong { display: block; margin-bottom: 8px; color: #fff; font-size: 18px; }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 34px;
     }
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 44px;
+      min-height: 46px;
       padding: 11px 18px;
-      border: 1px solid var(--green-dark);
+      border: 1px solid currentColor;
       border-radius: 8px;
-      font-weight: 700;
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
-    }
-
-    .button.primary {
-      color: #fff;
-      background: var(--green-dark);
-      box-shadow: 0 12px 28px rgba(31, 77, 54, .2);
+      font-weight: 800;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
     }
 
     .button:hover { transform: translateY(-1px); }
-    .button.secondary { color: var(--green-dark); background: transparent; }
-
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      max-width: 720px;
-    }
-
-    .stat {
-      min-height: 96px;
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .66);
-    }
-
-    .stat strong {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--green-dark);
-      font-size: 24px;
-      line-height: 1.1;
-    }
-
-    .stat span { color: var(--muted); font-size: 13px; }
-
-    .hero-media {
-      position: relative;
-      min-height: 520px;
-    }
-
-    .media-main {
-      position: absolute;
-      inset: 0 0 74px 48px;
-      overflow: hidden;
-      border-radius: 8px;
-      background: #dfe7db;
-      box-shadow: var(--shadow);
-    }
-
-    .media-main img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .media-float {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: min(66%, 420px);
-      overflow: hidden;
-      border: 8px solid var(--bg);
-      border-radius: 8px;
-      background: #fff;
-      box-shadow: 0 16px 38px rgba(24, 32, 28, .18);
-    }
+    .button.light { color: var(--forest); background: #fffdf7; border-color: #fffdf7; }
+    .button.ghost { color: #fffdf7; }
+    .button.dark { color: #fffdf7; background: var(--forest); border-color: var(--forest); }
+    .button.outline { color: var(--forest); background: transparent; }
 
     .section {
-      padding: clamp(56px, 8vw, 104px) clamp(18px, 5vw, 72px);
+      padding: clamp(58px, 8vw, 108px) clamp(22px, 5vw, 76px);
       border-top: 1px solid var(--line);
     }
 
-    .section.alt { background: #eef3ed; }
+    .section.deep {
+      color: #fffdf7;
+      background: #10241d;
+    }
+
+    .section.deep p { color: rgba(255, 253, 247, .72); }
+    .section.alt { background: var(--paper-deep); }
+
     .section-head {
       display: grid;
       grid-template-columns: minmax(260px, .72fr) minmax(280px, 1fr);
-      gap: clamp(20px, 5vw, 64px);
+      gap: clamp(22px, 5vw, 72px);
       align-items: end;
       margin-bottom: 34px;
     }
 
     h2 {
       margin-bottom: 0;
-      font-size: clamp(30px, 4vw, 54px);
-      line-height: 1.12;
-      letter-spacing: 0;
+      font-size: clamp(32px, 5vw, 64px);
     }
 
-    .section-head p { margin-bottom: 0; color: var(--muted); font-size: 17px; }
+    .section-head p {
+      margin-bottom: 0;
+      font-size: 17px;
+    }
 
-    .grid {
+    .identity {
+      display: grid;
+      grid-template-columns: minmax(300px, .85fr) minmax(320px, 1fr);
+      gap: clamp(24px, 5vw, 72px);
+      align-items: center;
+    }
+
+    .identity-photo {
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      background: #111714;
+    }
+
+    .identity-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .quote {
+      margin: 0 0 24px;
+      color: var(--forest);
+      font-size: clamp(24px, 3vw, 40px);
+      font-weight: 900;
+      line-height: 1.18;
+    }
+
+    .identity-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 12px;
+      margin-top: 24px;
     }
 
-    .card {
-      min-height: 220px;
-      padding: 22px;
+    .identity-item {
+      min-height: 126px;
+      padding: 16px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--panel);
-      box-shadow: 0 12px 34px rgba(24, 32, 28, .07);
     }
 
-    .card h3 { margin-bottom: 10px; font-size: 21px; }
-    .card p { color: var(--muted); }
+    .identity-item b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--forest);
+      font-size: 19px;
+    }
 
-    .tag-row {
+    .identity-item span { color: var(--muted); font-size: 14px; }
+
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .series-card {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 16px;
+      flex-direction: column;
+      min-height: 310px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 8px;
+      background: rgba(255, 253, 247, .06);
     }
 
-    .tag {
-      padding: 5px 9px;
-      border-radius: 8px;
-      color: var(--green-dark);
-      background: #e7efe6;
-      font-size: 12px;
-      font-weight: 700;
+    .series-card:nth-child(2n) { background: rgba(180, 111, 45, .11); }
+    .series-card:nth-child(3n) { background: rgba(49, 95, 125, .14); }
+    .series-card small {
+      display: block;
+      margin-bottom: 18px;
+      color: #f0c992;
+      font-weight: 900;
     }
+
+    .series-card h3 { margin-bottom: 12px; font-size: 22px; }
+    .series-card p { margin-bottom: 20px; }
+    .series-card ul {
+      margin: auto 0 0;
+      padding: 0;
+      list-style: none;
+      color: rgba(255, 253, 247, .72);
+      font-size: 14px;
+    }
+
+    .series-card li + li { margin-top: 6px; }
 
     .architecture {
       display: grid;
-      grid-template-columns: minmax(320px, .9fr) minmax(300px, 1fr);
-      gap: clamp(22px, 5vw, 64px);
+      grid-template-columns: minmax(320px, .95fr) minmax(320px, 1fr);
+      gap: clamp(24px, 5vw, 74px);
       align-items: center;
     }
 
     .architecture img {
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: #fff;
+      background: var(--panel);
       box-shadow: var(--shadow);
     }
 
-    .steps {
+    .flow {
       display: grid;
-      gap: 14px;
-      margin: 0;
+      gap: 12px;
+      margin: 26px 0 0;
       padding: 0;
       list-style: none;
     }
 
-    .steps li {
+    .flow li {
       display: grid;
-      grid-template-columns: 44px 1fr;
+      grid-template-columns: 52px 1fr;
       gap: 14px;
-      align-items: start;
       padding: 16px;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: rgba(255, 255, 255, .72);
+      background: rgba(255, 253, 247, .62);
     }
 
-    .steps b {
+    .flow b {
       display: grid;
       place-items: center;
-      width: 44px;
-      height: 44px;
+      width: 52px;
+      height: 52px;
       border-radius: 8px;
-      color: #fff;
+      color: #fffdf7;
       background: var(--blue);
     }
 
-    .steps strong { display: block; margin-bottom: 4px; }
-    .steps span { color: var(--muted); }
+    .flow strong { display: block; margin-bottom: 4px; }
+    .flow span { color: var(--muted); }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: minmax(320px, 1fr) minmax(300px, .82fr);
+      gap: clamp(24px, 5vw, 72px);
+      align-items: center;
+    }
+
+    .research-media {
+      overflow: hidden;
+      border-radius: 8px;
+      background: #fffdf7;
+      box-shadow: var(--shadow);
+    }
+
+    .research-media img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .metrics span {
+      padding: 12px 14px;
+      border-radius: 8px;
+      color: var(--forest);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      font-weight: 800;
+    }
 
     .timeline {
       display: grid;
@@ -314,232 +384,236 @@
     }
 
     .milestone {
-      padding: 18px;
-      border-left: 4px solid var(--amber);
+      min-height: 186px;
+      padding: 20px;
+      border-top: 4px solid var(--copper);
       border-radius: 8px;
       background: var(--panel);
-      min-height: 156px;
+      box-shadow: 0 14px 36px rgba(17,23,20,.08);
     }
 
-    .milestone time { color: var(--green-dark); font-weight: 800; }
-    .milestone h3 { margin: 8px 0; font-size: 19px; }
-    .milestone p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
-
-    .research {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(320px, .92fr);
-      gap: clamp(24px, 5vw, 64px);
-      align-items: center;
+    .milestone time {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--forest);
+      font-weight: 900;
     }
 
-    .research-media {
-      overflow: hidden;
-      border-radius: 8px;
-      background: #fff;
-      box-shadow: var(--shadow);
-    }
-
-    .research-media img { width: 100%; height: 100%; object-fit: cover; }
-
-    .metric-list {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .metric-list span {
-      padding: 12px 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-      color: #3f4a43;
-      font-weight: 700;
-    }
+    .milestone h3 { margin-bottom: 10px; font-size: 21px; }
+    .milestone p { margin-bottom: 0; font-size: 14px; }
 
     .contact {
       display: grid;
-      grid-template-columns: minmax(260px, .8fr) minmax(300px, 1fr);
-      gap: clamp(20px, 5vw, 56px);
+      grid-template-columns: minmax(260px, .82fr) minmax(300px, 1fr);
+      gap: clamp(22px, 5vw, 64px);
       align-items: center;
-      padding: clamp(38px, 6vw, 70px);
+      padding: clamp(38px, 6vw, 72px);
       border-radius: 8px;
-      color: #fff;
-      background: #1f4d36;
+      color: #fffdf7;
+      background: #14251f;
     }
 
-    .contact p { color: rgba(255, 255, 255, .78); }
-    .contact .button { border-color: rgba(255,255,255,.76); color: #fff; }
-    .contact .button.primary { background: #fff; color: var(--green-dark); box-shadow: none; }
+    .contact p { color: rgba(255, 253, 247, .74); }
+    .contact h2 { margin-bottom: 16px; }
 
     footer {
-      padding: 28px clamp(18px, 5vw, 72px);
+      padding: 28px clamp(22px, 5vw, 76px);
       color: var(--muted);
       border-top: 1px solid var(--line);
       font-size: 14px;
     }
 
-    @media (max-width: 980px) {
-      .hero, .section-head, .architecture, .research, .contact { grid-template-columns: 1fr; }
-      .hero { min-height: auto; }
-      .hero-media { min-height: 460px; }
-      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (max-width: 1180px) {
+      .series-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 920px) {
+      .hero-content,
+      .section-head,
+      .identity,
+      .architecture,
+      .research-grid,
+      .contact { grid-template-columns: 1fr; }
+      .hero { min-height: 900px; background-position: center; }
+      .identity-grid, .metrics { grid-template-columns: 1fr; }
       .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 640px) {
-      .site-nav { align-items: flex-start; }
+      .nav { position: absolute; padding: 14px 18px; }
       .nav-links { display: none; }
-      .hero { padding-left: 24px; padding-right: 24px; }
-      .lead { max-width: calc(100vw - 96px); font-size: 17px; }
-      .hero-stats, .grid, .timeline, .metric-list { grid-template-columns: 1fr; }
-      .hero-media { min-height: 360px; }
-      .media-main { inset: 0 0 62px 22px; }
-      .media-float { width: 76%; border-width: 6px; }
-      .card { min-height: auto; }
+      .hero { min-height: 860px; padding: 104px 22px 34px; }
+      .hero-content { width: calc(100vw - 44px); }
+      h1 { max-width: calc(100vw - 44px); font-size: 48px; line-height: 1.08; }
+      .hero-copy { width: 100%; max-width: 320px; font-size: 17px; }
+      .hero-note { width: 100%; max-width: 320px; padding: 18px; }
+      .series-grid, .timeline { grid-template-columns: 1fr; }
+      .series-card { min-height: auto; }
+      .flow li { grid-template-columns: 42px 1fr; }
+      .flow b { width: 42px; height: 42px; }
+      .button { width: 100%; }
     }
   </style>
 </head>
 <body>
-  <nav class="site-nav" aria-label="主导航">
+  <nav class="nav" aria-label="主导航">
     <a class="brand" href="#top" aria-label="RabbitRobot 首页">
       <img src="images/rabbitrobot/RabbitRobot3.png" alt="RabbitRobot logo">
       <span>RabbitRobot</span>
     </a>
     <div class="nav-links">
-      <a href="#projects">项目群</a>
+      <a href="#identity">关于我</a>
+      <a href="#series">全系列</a>
       <a href="#research">研究主线</a>
-      <a href="#timeline">迭代路线</a>
-      <a href="#contact">联系</a>
+      <a href="#contact">链接</a>
     </div>
   </nav>
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-      <div>
-        <p class="eyebrow">ROS2 机器人项目群</p>
-        <h1 id="hero-title">RabbitRobot</h1>
-        <p class="lead">一个围绕真实移动机器人平台持续演进的个人研究项目，覆盖 AMR 底盘、SLAM 建图、Nav2 导航、窄通道场景验证、手持 LiDAR 建图仪和具身智能机械臂实验。</p>
-        <div class="actions">
-          <a class="button primary" href="https://github.com/lijinghai/RabbitRobot" target="_blank" rel="noreferrer">查看 GitHub 仓库</a>
-          <a class="button secondary" href="#research">阅读研究主线</a>
+      <div class="hero-content">
+        <div>
+          <p class="kicker">李京海的机器人长期项目</p>
+          <h1 id="hero-title">RabbitRobot <span>全系列</span></h1>
+          <p class="hero-copy">用文科的问题意识理解场景，用工程笔记把真实机器人从底盘、建图、导航、机械臂到服务场景持续做下去。</p>
+          <div class="actions">
+            <a class="button light" href="https://github.com/lijinghai/RabbitRobot" target="_blank" rel="noreferrer">RabbitRobot 仓库</a>
+            <a class="button ghost" href="https://github.com/lijinghai" target="_blank" rel="noreferrer">我的 GitHub</a>
+          </div>
         </div>
-        <div class="hero-stats" aria-label="项目概览">
-          <div class="stat"><strong>ROS2</strong><span>Humble / Jazzy 工程实践</span></div>
-          <div class="stat"><strong>AMR</strong><span>真实底盘、传感器、闭环导航</span></div>
-          <div class="stat"><strong>E2E</strong><span>端到端局部规划研究方向</span></div>
-        </div>
-      </div>
-      <div class="hero-media" aria-label="RabbitRobot 实物展示">
-        <div class="media-main"><img src="images/rabbitrobot/robot_photo.jpg" alt="RabbitRobot 移动机器人实物图"></div>
-        <div class="media-float"><img src="images/rabbitrobot/RabbitRobot3.png" alt="RabbitRobot 项目标识"></div>
+        <aside class="hero-note" aria-label="项目定位">
+          <strong>核心不是一个 demo</strong>
+          <p>RabbitRobot 是一个可持续扩展的机器人项目群：AMR 是主线，HandLiDAR 提供地图能力，SCFH 提供真实场景，Arm 和 ElderBuddy 为具身服务机器人预留未来形态。</p>
+        </aside>
       </div>
     </section>
 
-    <section id="projects" class="section alt" aria-labelledby="projects-title">
+    <section id="identity" class="section" aria-labelledby="identity-title">
+      <div class="identity">
+        <div class="identity-photo">
+          <img src="images/rabbitrobot/RabbitRobot3.png" alt="RabbitRobot 项目标识">
+        </div>
+        <div>
+          <p class="kicker">Humanities Mind, Robotics Hands</p>
+          <h2 id="identity-title">文科式理解问题，工程式把问题落地</h2>
+          <p class="quote">先问机器人为什么要进入一个场景，再把传感器、底盘、代码和实验闭环接起来。</p>
+          <p>这个主页不把我包装成单一方向的开发者，而是展示 RabbitRobot 背后的完整方法：从真实需求出发，长期整理资料、记录实验、搭建硬件、调试 ROS2，再把问题推进到端到端局部规划研究。</p>
+          <div class="identity-grid">
+            <div class="identity-item"><b>叙事能力</b><span>把复杂工程拆成场景、用户、问题和证据。</span></div>
+            <div class="identity-item"><b>工程积累</b><span>ROS2、SLAM、Nav2、STM32、SolidWorks、传感器接入。</span></div>
+            <div class="identity-item"><b>研究闭环</b><span>baseline、rosbag、指标、模型训练和真实场景验证。</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="series" class="section deep" aria-labelledby="series-title">
       <div class="section-head">
-        <h2 id="projects-title">从底盘到场景的完整项目群</h2>
-        <p>RabbitRobot 不是单一 demo，而是一个长期积累的机器人研发工作区。核心价值在于把真实硬件、场景问题、软件栈和研究路线放在同一个闭环里推进。</p>
+        <h2 id="series-title">RabbitRobot 全系列地图</h2>
+        <p>每个子项目都不是孤立的分支，而是在同一个目标下互相补位：让一个真实机器人系统逐步具备移动、建图、导航、操作、服务和展示能力。</p>
       </div>
-      <div class="grid">
-        <article class="card">
+      <div class="series-grid">
+        <article class="series-card">
+          <small>01 / Core Platform</small>
           <h3>RabbitRobot_AMR</h3>
-          <p>移动机器人底盘与核心研究平台，包含 ROS2、Cartographer、FAST-LIO2、Point-LIO2、Nav2、DWB、EKF、底盘控制和真实硬件调试。</p>
-          <div class="tag-row"><span class="tag">AMR</span><span class="tag">Nav2</span><span class="tag">SLAM</span></div>
+          <p>移动机器人底盘与核心实验平台，是整个项目的主线。</p>
+          <ul><li>ROS2 Humble / Jazzy</li><li>Nav2 / DWB / EKF</li><li>FAST-LIO2 / Point-LIO2</li></ul>
         </article>
-        <article class="card">
+        <article class="series-card">
+          <small>02 / Mapping Tool</small>
           <h3>RabbitRobot_HandLiDAR</h3>
-          <p>手持 4D LiDAR 建图仪，用于采集更稳定、更高质量的环境地图，为移动机器人导航和局部规划实验提供地图基础。</p>
-          <div class="tag-row"><span class="tag">LiDAR</span><span class="tag">RTAB-Map</span><span class="tag">D435</span></div>
+          <p>手持 4D LiDAR 建图仪，为导航和规划实验提供更高质量地图。</p>
+          <ul><li>宇树 L1 / D435</li><li>RTAB-Map</li><li>多传感器建图</li></ul>
         </article>
-        <article class="card">
+        <article class="series-card">
+          <small>03 / Real Scenario</small>
           <h3>RabbitRobot_SCFH</h3>
-          <p>智慧鸡场净环机器人场景，聚焦狭长通道、低附着、金属结构干扰和真实服务机器人落地问题。</p>
-          <div class="tag-row"><span class="tag">窄通道</span><span class="tag">场景验证</span><span class="tag">服务机器人</span></div>
+          <p>智慧鸡场净环机器人场景，提供狭长通道和低附着测试环境。</p>
+          <ul><li>窄通道导航</li><li>服务机器人落地</li><li>复杂地面条件</li></ul>
         </article>
-        <article class="card">
+        <article class="series-card">
+          <small>04 / Embodied Arm</small>
           <h3>RabbitRobot_Arm</h3>
-          <p>具身智能机械臂方向，围绕 LeRobot、SmolVLA、ACT、MoveIt2 和视觉语言动作模型进行能力储备。</p>
-          <div class="tag-row"><span class="tag">LeRobot</span><span class="tag">SmolVLA</span><span class="tag">ACT</span></div>
+          <p>机械臂和具身智能实验，为未来移动操作机器人做能力储备。</p>
+          <ul><li>LeRobot / ACT</li><li>SmolVLA</li><li>MoveIt2 / Gemini2</li></ul>
         </article>
-        <article class="card">
+        <article class="series-card">
+          <small>05 / Service Concept</small>
           <h3>RabbitRobot_ElderBuddy</h3>
-          <p>面向老人陪伴和室内服务的概念设计，关注移动底盘复用、室内导航、人机交互和主动服务行为。</p>
-          <div class="tag-row"><span class="tag">陪伴机器人</span><span class="tag">室内导航</span><span class="tag">HRI</span></div>
+          <p>老人陪伴机器人概念，把底盘能力延展到室内服务和人机交互。</p>
+          <ul><li>室内导航</li><li>主动服务</li><li>陪伴与提醒</li></ul>
         </article>
-        <article class="card">
+        <article class="series-card">
+          <small>06 / Public Archive</small>
           <h3>RabbitRobot_Web</h3>
-          <p>项目展示网站与宣传材料入口，用来沉淀实物图片、技术文档、社媒入口和项目介绍内容。</p>
-          <div class="tag-row"><span class="tag">Portfolio</span><span class="tag">Docs</span><span class="tag">Showcase</span></div>
+          <p>项目展示、技术文档、图片资料和公开入口的沉淀层。</p>
+          <ul><li>作品集</li><li>技术入口</li><li>传播材料</li></ul>
         </article>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="architecture-title">
+    <section class="section alt" aria-labelledby="architecture-title">
       <div class="architecture">
         <img src="images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot 项目架构图">
         <div>
-          <p class="eyebrow">项目结构</p>
-          <h2 id="architecture-title">以 AMR 为核心，把硬件、地图、导航和 AI 规划接起来</h2>
-          <p>当前最重要的主线是：在真实移动机器人平台上，研究窄通道、低附着和复杂场景下的端到端局部规划，并与传统 Nav2 规划方法进行可复现实验对比。</p>
-          <ul class="steps">
-            <li><b>1</b><span><strong>真实机器人采集数据</strong>记录 scan、odom、tf、cmd_vel、goal_pose 和 costmap。</span></li>
-            <li><b>2</b><span><strong>传统方法作为 baseline</strong>使用 Nav2、DWB、Pure Pursuit、MPC 等方法建立对照组。</span></li>
-            <li><b>3</b><span><strong>训练局部规划模型</strong>从 LiDAR、目标点和当前速度直接输出 cmd_vel 或未来轨迹。</span></li>
+          <p class="kicker">System Thinking</p>
+          <h2 id="architecture-title">RabbitRobot 的结构不是目录，而是一条研发链路</h2>
+          <p>AMR 承担真实运动平台，HandLiDAR 解决地图质量，SCFH 提供场景压力，Arm 扩展操作能力，ElderBuddy 把机器人拉回人的日常需求，Web 负责把过程和成果公开表达。</p>
+          <ul class="flow">
+            <li><b>01</b><span><strong>硬件平台</strong>底盘、电机、传感器、主控和机械结构形成真实机器人载体。</span></li>
+            <li><b>02</b><span><strong>软件链路</strong>ROS2、SLAM、Nav2、EKF、串口控制和调试工具形成可运行系统。</span></li>
+            <li><b>03</b><span><strong>研究问题</strong>在窄通道、打滑、传感器噪声下比较传统规划和端到端局部规划。</span></li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="research" class="section alt" aria-labelledby="research-title">
-      <div class="research">
+    <section id="research" class="section" aria-labelledby="research-title">
+      <div class="research-grid">
         <div>
-          <p class="eyebrow">研究主线</p>
-          <h2 id="research-title">端到端局部规划，而不是只做一个能跑的演示</h2>
-          <p>RabbitRobot 的下一步重点是把 AMR V2 / SCFH 场景收敛成可复现研究平台：先稳定传统导航链路，再建立 rosbag 数据采集规范，最后训练第一个从 scan 与 goal 到 cmd_vel 的行为克隆模型。</p>
-          <div class="metric-list" aria-label="评估指标">
-            <span>成功率</span>
-            <span>碰撞率</span>
-            <span>横向偏差</span>
-            <span>轨迹平滑度</span>
-            <span>恢复能力</span>
-            <span>低附着鲁棒性</span>
+          <p class="kicker">Research Direction</p>
+          <h2 id="research-title">端到端局部规划：用真实 AMR 数据回答真实场景问题</h2>
+          <p>当前最值得继续推进的主线，是把 AMR V2 和 SCFH 场景整理为可复现实验平台。先把传统 Nav2 / DWB / Pure Pursuit / MPC 跑稳，再采集 scan、odom、tf、cmd_vel、goal_pose 和 local costmap 数据，训练第一个从 LiDAR 与目标到速度指令的局部规划模型。</p>
+          <div class="metrics" aria-label="评估指标">
+            <span>成功率</span><span>碰撞率</span><span>横向偏差</span><span>轨迹平滑度</span><span>恢复能力</span><span>低附着鲁棒性</span>
           </div>
         </div>
-        <div class="research-media"><img src="images/rabbitrobot/aloha_act.gif" alt="机器人动作学习演示动图"></div>
+        <div class="research-media">
+          <img src="images/rabbitrobot/aloha_act.gif" alt="机器人动作学习演示动图">
+        </div>
       </div>
     </section>
 
-    <section id="timeline" class="section" aria-labelledby="timeline-title">
+    <section class="section alt" aria-labelledby="timeline-title">
       <div class="section-head">
         <h2 id="timeline-title">AMR 迭代路线</h2>
-        <p>项目保留了从四驱原型车到全向移动底盘的迭代记录，这些历史版本是后续研究的硬件和工程经验基础。</p>
+        <p>这些版本保留了从能跑起来到能研究问题的工程路径，也让 RabbitRobot 不只是概念，而是逐步长出来的硬件和软件系统。</p>
       </div>
       <div class="timeline">
-        <article class="milestone"><time>V1.0</time><h3>四驱原型车</h3><p>树莓派 5、思岚 A1、宇树 L1、DABAI DCW2、Cartographer、Nav2 和视觉感知实验。</p></article>
-        <article class="milestone"><time>V2.0</time><h3>四驱升级车</h3><p>Jetson Orin Nano Super、C50C、MID360、VLP-16、FAST-LIO2、Point-LIO2 和 Autoware 探索。</p></article>
-        <article class="milestone"><time>V3.0</time><h3>平衡车方向</h3><p>Hoverboard FOC、STM32、ST-Link、IMU 接入和底盘控制链路验证。</p></article>
-        <article class="milestone"><time>V4.0</time><h3>全向轮方向</h3><p>SolidWorks 建模与全向移动底盘探索，为更复杂场景和移动操作预留空间。</p></article>
+        <article class="milestone"><time>V1.0 / 2025.06</time><h3>四驱原型车</h3><p>树莓派 5、思岚 A1、宇树 L1、DABAI DCW2、Cartographer、Nav2 和视觉感知实验。</p></article>
+        <article class="milestone"><time>V2.0 / 2025.10</time><h3>四驱升级车</h3><p>Jetson Orin Nano Super、C50C、MID360、VLP-16、FAST-LIO2、Point-LIO2 和 Autoware 探索。</p></article>
+        <article class="milestone"><time>V3.0 / 2026.03</time><h3>平衡车方向</h3><p>Hoverboard FOC、STM32、ST-Link、IMU 接入和底盘控制链路验证。</p></article>
+        <article class="milestone"><time>V4.0 / 2026.03+</time><h3>全向轮方向</h3><p>SolidWorks 建模与全向移动底盘探索，为更复杂场景和移动操作预留空间。</p></article>
       </div>
     </section>
 
     <section id="contact" class="section" aria-labelledby="contact-title">
       <div class="contact">
         <div>
-          <h2 id="contact-title">关于我</h2>
-          <p>我是李京海，长期关注 ROS2 机器人、SLAM 导航、具身智能和真实硬件系统。这个博客现在主要作为 RabbitRobot 的项目主页和研究记录入口。</p>
+          <h2 id="contact-title">公开入口</h2>
+          <p>这个页面会作为 lijinghai.github.io 的首页，展示 RabbitRobot 全系列项目，也作为后续论文、教程、演示视频和技术笔记的入口。</p>
         </div>
         <div class="actions">
-          <a class="button primary" href="https://github.com/lijinghai/RabbitRobot" target="_blank" rel="noreferrer">RabbitRobot 仓库</a>
-          <a class="button" href="https://github.com/Dorian1015" target="_blank" rel="noreferrer">个人 GitHub</a>
-          <a class="button" href="mailto:lijinghailjh@163.com">邮件联系</a>
+          <a class="button light" href="https://github.com/lijinghai" target="_blank" rel="noreferrer">GitHub / lijinghai</a>
+          <a class="button ghost" href="https://github.com/lijinghai/RabbitRobot" target="_blank" rel="noreferrer">RabbitRobot 项目</a>
+          <a class="button ghost" href="mailto:lijinghailjh@163.com">邮件联系</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <span>© 2026 李京海 · RabbitRobot · ROS2 · AMR · End-to-End Planning</span>
+    <span>© 2026 李京海 · RabbitRobot 全系列 · ROS2 · AMR · SLAM · End-to-End Planning · Embodied AI</span>
   </footer>
 </body>
 </html>
