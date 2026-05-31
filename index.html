@@ -1,912 +1,545 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <link rel="stylesheet" href="/css/tags.css" media="all">
-
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  
-  <title itemprop="name">李京海</title>
-  
-    <link rel="shortcut icon" href="/images/favicon.ico">
-  
-  <meta http-equiv="x-dns-prefetch-control" content="on">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
-  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
-  <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all">
-  <link rel="stylesheet" href="/css/lib.min.css" media="all">
-  <link rel="stylesheet" href="/css/font.css" media="all">
-  <link rel="stylesheet" href="/css/insight.css" media="all">
-  <link rel="stylesheet" href="/css/jquery.fancybox.min.css" media="all">
-  <link rel="stylesheet" href="/css/zoom.css" media="all">
-  <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
-" type="text/css" media="all"> -->
-  <script>
-  /*Initial Variables*/
-  var mashiro_option = new Object();
-  var mashiro_global = new Object();
-  mashiro_option.NProgressON = true;
-  /* 
-   * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
-   * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
-   */
-  mashiro_option.email_domain = "";
-  mashiro_option.email_name = "";
-  mashiro_option.cookie_version_control = "";
-  mashiro_option.qzone_autocomplete = false;
-  mashiro_option.site_name = "이경 해李京海";
-  mashiro_option.author_name = "李京海";
-  mashiro_option.site_url = "https://dorian1015.github.io";
-  mashiro_option.v_appId = "SRnSz55ovwb1QkAI9XcXxwEM-gzGzoHsz";
-  mashiro_option.v_appKey = "UcSN9covN7gf6ilAtzs54Whn";
-  mashiro_option.mathjax = "0";
-  mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
-  mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RabbitRobot | 李京海的机器人项目</title>
+  <meta name="description" content="RabbitRobot 是一个围绕 ROS2、AMR、自主导航、SLAM、端到端局部规划和具身智能实验持续演进的机器人项目群。">
+  <style>
+    :root {
+      --bg: #f7f8f5;
+      --panel: #ffffff;
+      --ink: #18201c;
+      --muted: #5c675f;
+      --line: #dfe5dc;
+      --green: #2f6f4e;
+      --green-dark: #1f4d36;
+      --amber: #d18a1f;
+      --blue: #2e5d87;
+      --shadow: 0 18px 50px rgba(24, 32, 28, .12);
+    }
 
-  // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
-  // mashiro_option.float_player_on = true;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: Inter, "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
 
-  /*End of Initial Variables*/
-  </script>
-  <script type="text/javascript">
-  var bg = "https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/cover/(0).jpg.webp,https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/cover/(1).jpg.webp,https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/cover/(2).jpg.webp,https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/github/122.jpg".split(",");
-  var bgindex = Math.floor(Math.random()*bg.length);
-  if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
-    alert('朋友，IE浏览器未适配哦~');
-  }
-  </script>
-  <style type="text/css">
-  .hljs-ln{border-collapse:collapse}.hljs-ln td{padding:0}.hljs-ln-n:before{content:attr(data-line-number)}
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    h1, h2, h3, p, span, a { overflow-wrap: anywhere; }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px clamp(18px, 4vw, 56px);
+      background: rgba(247, 248, 245, .88);
+      border-bottom: 1px solid rgba(223, 229, 220, .9);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover { color: var(--green-dark); }
+
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, .95fr);
+      align-items: center;
+      gap: clamp(26px, 5vw, 72px);
+      padding: clamp(44px, 7vw, 96px) clamp(18px, 5vw, 72px) 34px;
+    }
+
+    .hero > div { min-width: 0; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      color: var(--green-dark);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--amber);
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 780px;
+      margin-bottom: 20px;
+      font-size: clamp(44px, 7vw, 92px);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin-bottom: 30px;
+      color: #435046;
+      font-size: clamp(17px, 2vw, 22px);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 11px 18px;
+      border: 1px solid var(--green-dark);
+      border-radius: 8px;
+      font-weight: 700;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .button.primary {
+      color: #fff;
+      background: var(--green-dark);
+      box-shadow: 0 12px 28px rgba(31, 77, 54, .2);
+    }
+
+    .button:hover { transform: translateY(-1px); }
+    .button.secondary { color: var(--green-dark); background: transparent; }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 720px;
+    }
+
+    .stat {
+      min-height: 96px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .66);
+    }
+
+    .stat strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--green-dark);
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .stat span { color: var(--muted); font-size: 13px; }
+
+    .hero-media {
+      position: relative;
+      min-height: 520px;
+    }
+
+    .media-main {
+      position: absolute;
+      inset: 0 0 74px 48px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #dfe7db;
+      box-shadow: var(--shadow);
+    }
+
+    .media-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .media-float {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: min(66%, 420px);
+      overflow: hidden;
+      border: 8px solid var(--bg);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 16px 38px rgba(24, 32, 28, .18);
+    }
+
+    .section {
+      padding: clamp(56px, 8vw, 104px) clamp(18px, 5vw, 72px);
+      border-top: 1px solid var(--line);
+    }
+
+    .section.alt { background: #eef3ed; }
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(260px, .72fr) minmax(280px, 1fr);
+      gap: clamp(20px, 5vw, 64px);
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: clamp(30px, 4vw, 54px);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .section-head p { margin-bottom: 0; color: var(--muted); font-size: 17px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      min-height: 220px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 12px 34px rgba(24, 32, 28, .07);
+    }
+
+    .card h3 { margin-bottom: 10px; font-size: 21px; }
+    .card p { color: var(--muted); }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 5px 9px;
+      border-radius: 8px;
+      color: var(--green-dark);
+      background: #e7efe6;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .architecture {
+      display: grid;
+      grid-template-columns: minmax(320px, .9fr) minmax(300px, 1fr);
+      gap: clamp(22px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .architecture img {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .72);
+    }
+
+    .steps b {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      color: #fff;
+      background: var(--blue);
+    }
+
+    .steps strong { display: block; margin-bottom: 4px; }
+    .steps span { color: var(--muted); }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .milestone {
+      padding: 18px;
+      border-left: 4px solid var(--amber);
+      border-radius: 8px;
+      background: var(--panel);
+      min-height: 156px;
+    }
+
+    .milestone time { color: var(--green-dark); font-weight: 800; }
+    .milestone h3 { margin: 8px 0; font-size: 19px; }
+    .milestone p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+
+    .research {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .92fr);
+      gap: clamp(24px, 5vw, 64px);
+      align-items: center;
+    }
+
+    .research-media {
+      overflow: hidden;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .research-media img { width: 100%; height: 100%; object-fit: cover; }
+
+    .metric-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .metric-list span {
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      color: #3f4a43;
+      font-weight: 700;
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: minmax(260px, .8fr) minmax(300px, 1fr);
+      gap: clamp(20px, 5vw, 56px);
+      align-items: center;
+      padding: clamp(38px, 6vw, 70px);
+      border-radius: 8px;
+      color: #fff;
+      background: #1f4d36;
+    }
+
+    .contact p { color: rgba(255, 255, 255, .78); }
+    .contact .button { border-color: rgba(255,255,255,.76); color: #fff; }
+    .contact .button.primary { background: #fff; color: var(--green-dark); box-shadow: none; }
+
+    footer {
+      padding: 28px clamp(18px, 5vw, 72px);
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .hero, .section-head, .architecture, .research, .contact { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .hero-media { min-height: 460px; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .site-nav { align-items: flex-start; }
+      .nav-links { display: none; }
+      .hero { padding-left: 24px; padding-right: 24px; }
+      .lead { max-width: calc(100vw - 96px); font-size: 17px; }
+      .hero-stats, .grid, .timeline, .metric-list { grid-template-columns: 1fr; }
+      .hero-media { min-height: 360px; }
+      .media-main { inset: 0 0 62px 22px; }
+      .media-float { width: 76%; border-width: 6px; }
+      .card { min-height: auto; }
+    }
   </style>
-  <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
-  </style>
-<meta name="generator" content="Hexo 5.4.0">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
+<body>
+  <nav class="site-nav" aria-label="主导航">
+    <a class="brand" href="#top" aria-label="RabbitRobot 首页">
+      <img src="images/rabbitrobot/RabbitRobot3.png" alt="RabbitRobot logo">
+      <span>RabbitRobot</span>
+    </a>
+    <div class="nav-links">
+      <a href="#projects">项目群</a>
+      <a href="#research">研究主线</a>
+      <a href="#timeline">迭代路线</a>
+      <a href="#contact">联系</a>
+    </div>
+  </nav>
 
-<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
-  <div class="scrollbar" id="bar">
-  </div>
-  <a href="#" class="cd-top faa-float animated"></a>
-  <section id="main-container">
-    <div class="headertop filter-dot">
-  <div id="banner_wave_1"></div>
-  <div id="banner_wave_2"></div>
-  <figure id="centerbg" class="centerbg">
-    <div class="focusinfo no-select">
-      <div class="header-tou">
-        <a href="https://dorian1015.github.io">
-          <img src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/custom/tuxiang.jpg">
-        </a>
-      </div>
-      <div class="header-info">
-        <p>你知道吗，樱花飘落的速度是每秒五厘米</p>
-        <div class="top-social_v2">
-          <li id="bg-pre">
-            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
-          </li>
-          
-            
-              
-                <li>
-                  <a href="https://github.com/Dorian1015" target="_blank" class="social-github" title="github">
-                    <img src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/social/Logo GitHub.png">
-                  </a>
-                </li>
-              
-            
-              
-                <li>
-                  <a href="https://gitee.com/Dorian15" target="_blank" class="social-github" title="gitee">
-                    <img src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/social/gitee.png">
-                  </a>
-                </li>
-              
-            
-              
-                <li>
-                  <a href="mailto:lijinghailjh@163.com" target="_blank" class="social-github" title="email">
-                    <img src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/social/email.svg">
-                  </a>
-                </li>
-              
-            
-              
-                <li>
-                  <a href="https://blog.csdn.net/Dorian15" target="_blank" class="social-github" title="csdn">
-                    <img src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/social/csdn (1).png">
-                  </a>
-                </li>
-              
-            
-          
-          <li id="bg-next">
-            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
-          </li>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">ROS2 机器人项目群</p>
+        <h1 id="hero-title">RabbitRobot</h1>
+        <p class="lead">一个围绕真实移动机器人平台持续演进的个人研究项目，覆盖 AMR 底盘、SLAM 建图、Nav2 导航、窄通道场景验证、手持 LiDAR 建图仪和具身智能机械臂实验。</p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/lijinghai/RabbitRobot" target="_blank" rel="noreferrer">查看 GitHub 仓库</a>
+          <a class="button secondary" href="#research">阅读研究主线</a>
+        </div>
+        <div class="hero-stats" aria-label="项目概览">
+          <div class="stat"><strong>ROS2</strong><span>Humble / Jazzy 工程实践</span></div>
+          <div class="stat"><strong>AMR</strong><span>真实底盘、传感器、闭环导航</span></div>
+          <div class="stat"><strong>E2E</strong><span>端到端局部规划研究方向</span></div>
         </div>
       </div>
-    </div>
-  </figure>
-  <div id="video-container" style="">
-    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
-    </video>
-    <div id="video-btn" class="loadvideo videolive">
-    </div>
-    <div id="video-add">
-    </div>
-    <div class="video-stu">
-    </div>
-  </div>
-  <div class="headertop-down faa-float animated" onclick="headertop_down()">
-    <span>
-      <i class="fa fa-chevron-down" aria-hidden="true">
-      </i>
-    </span>
-  </div>
-</div>
-    <div id="page" class="site wrapper">
-      <header class="site-header no-select gizle sabit" role="banner">
-  <div class="site-top">
-    <div class="site-branding">
-      <span class="site-title">
-        <span class="logolink moe-mashiro">
-          <a href="/">
-            <span class="sakurasono">이경 해</span>
-            <span class="shironeko">李京海</span>
-          </a>
-        </span>
-      </span>
-    </div>
-    <div class="searchbox search-form-submit">
-      <i class="iconfont js-toggle-search iconsearch icon-search">
-      </i>
-    </div>
-    <div id="show-nav" class="showNav mobile-fit">
-      <div class="line line1">
+      <div class="hero-media" aria-label="RabbitRobot 实物展示">
+        <div class="media-main"><img src="images/rabbitrobot/robot_photo.jpg" alt="RabbitRobot 移动机器人实物图"></div>
+        <div class="media-float"><img src="images/rabbitrobot/RabbitRobot3.png" alt="RabbitRobot 项目标识"></div>
       </div>
-      <div class="line line2">
+    </section>
+
+    <section id="projects" class="section alt" aria-labelledby="projects-title">
+      <div class="section-head">
+        <h2 id="projects-title">从底盘到场景的完整项目群</h2>
+        <p>RabbitRobot 不是单一 demo，而是一个长期积累的机器人研发工作区。核心价值在于把真实硬件、场景问题、软件栈和研究路线放在同一个闭环里推进。</p>
       </div>
-      <div class="line line3">
+      <div class="grid">
+        <article class="card">
+          <h3>RabbitRobot_AMR</h3>
+          <p>移动机器人底盘与核心研究平台，包含 ROS2、Cartographer、FAST-LIO2、Point-LIO2、Nav2、DWB、EKF、底盘控制和真实硬件调试。</p>
+          <div class="tag-row"><span class="tag">AMR</span><span class="tag">Nav2</span><span class="tag">SLAM</span></div>
+        </article>
+        <article class="card">
+          <h3>RabbitRobot_HandLiDAR</h3>
+          <p>手持 4D LiDAR 建图仪，用于采集更稳定、更高质量的环境地图，为移动机器人导航和局部规划实验提供地图基础。</p>
+          <div class="tag-row"><span class="tag">LiDAR</span><span class="tag">RTAB-Map</span><span class="tag">D435</span></div>
+        </article>
+        <article class="card">
+          <h3>RabbitRobot_SCFH</h3>
+          <p>智慧鸡场净环机器人场景，聚焦狭长通道、低附着、金属结构干扰和真实服务机器人落地问题。</p>
+          <div class="tag-row"><span class="tag">窄通道</span><span class="tag">场景验证</span><span class="tag">服务机器人</span></div>
+        </article>
+        <article class="card">
+          <h3>RabbitRobot_Arm</h3>
+          <p>具身智能机械臂方向，围绕 LeRobot、SmolVLA、ACT、MoveIt2 和视觉语言动作模型进行能力储备。</p>
+          <div class="tag-row"><span class="tag">LeRobot</span><span class="tag">SmolVLA</span><span class="tag">ACT</span></div>
+        </article>
+        <article class="card">
+          <h3>RabbitRobot_ElderBuddy</h3>
+          <p>面向老人陪伴和室内服务的概念设计，关注移动底盘复用、室内导航、人机交互和主动服务行为。</p>
+          <div class="tag-row"><span class="tag">陪伴机器人</span><span class="tag">室内导航</span><span class="tag">HRI</span></div>
+        </article>
+        <article class="card">
+          <h3>RabbitRobot_Web</h3>
+          <p>项目展示网站与宣传材料入口，用来沉淀实物图片、技术文档、社媒入口和项目介绍内容。</p>
+          <div class="tag-row"><span class="tag">Portfolio</span><span class="tag">Docs</span><span class="tag">Showcase</span></div>
+        </article>
       </div>
-    </div>
-    <div class="lower-cantiner">
-      <div class="lower">
-        <nav class="mobile-fit-control hide">
-          <ul id="menu-new" class="menu">
-            
-              <li>
-                <a href="/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
-                    首页
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/archives">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
-                    归档
-                  </span>
-                </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/tags">
-                          <i class="fa fa-tags" aria-hidden="true"></i>
-                          标签
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
-                          <i class="fa fa-code" aria-hidden="true"></i>
-                          技术
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
-                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                          生活
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a href="/categories/%E9%9A%8F%E6%83%B3/">
-                          <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                          随想
-                        </a>
-                      </li>
-                    
-                  </ul>
-                
-              </li>
-            
-              <li>
-                <a href="/comment/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-                    留言板
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/links/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
-                    友人帐
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/donate/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
-                    赞赏
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/me/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
-                    我的简历
-                  </span>
-                </a>
-                
-              </li>
-            
-              <li>
-                <a href="/">
-                  <span class="faa-parent animated-hover">
-                    <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
-                    关于
-                  </span>
-                </a>
-                
-                  <ul class="sub-menu">
-                    
-                      <li>
-                        <a href="/about/">
-                          <i class="fa fa-meetup" aria-hidden="true"></i>
-                          我？
-                        </a>
-                      </li>
-                    
-                  </ul>
-                
-              </li>
-            
+    </section>
+
+    <section class="section" aria-labelledby="architecture-title">
+      <div class="architecture">
+        <img src="images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot 项目架构图">
+        <div>
+          <p class="eyebrow">项目结构</p>
+          <h2 id="architecture-title">以 AMR 为核心，把硬件、地图、导航和 AI 规划接起来</h2>
+          <p>当前最重要的主线是：在真实移动机器人平台上，研究窄通道、低附着和复杂场景下的端到端局部规划，并与传统 Nav2 规划方法进行可复现实验对比。</p>
+          <ul class="steps">
+            <li><b>1</b><span><strong>真实机器人采集数据</strong>记录 scan、odom、tf、cmd_vel、goal_pose 和 costmap。</span></li>
+            <li><b>2</b><span><strong>传统方法作为 baseline</strong>使用 Nav2、DWB、Pure Pursuit、MPC 等方法建立对照组。</span></li>
+            <li><b>3</b><span><strong>训练局部规划模型</strong>从 LiDAR、目标点和当前速度直接输出 cmd_vel 或未来轨迹。</span></li>
           </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="blank" style="padding-top: 0px;"></div>
-<div id="content" class="site-content">
-  
-  <div class="notice" style="margin-top:60px">
-    <i class="iconfont icon-notification">
-    </i>
-    <div class="notice-content">项目源码将在Github上持续更新.....</div>
-  </div>
-  
-  <div class="top-feature-row">
-  <h1 class="fes-title" style="font-family: 'Ubuntu', sans-serif;">
-  <i class="fa fa-anchor" aria-hidden="true">
-  </i>
-  START:DASH!!</h1>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="https://github.com/Dorian1015" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/startdash/github.jpg">
-        </div>
-        <div class="info">
-          <h3>我的Github</h3>
-          <p>github我的代码主战场</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="https://gitee.com/Dorian15" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/startdash/gitee.jpg">
-        </div>
-        <div class="info">
-          <h3>Gitee</h3>
-          <p>担心github打不开</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-  <div class="top-feature-v2">
-    <div class="the-feature square from_left_and_right">
-      <a href="/" target="_blank">
-        <div class="img">
-          <img src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/startdash/wu.jpg">
-        </div>
-        <div class="info">
-          <h3>还没想好放什么</h3>
-          <p>先搁在这吧。</p>
-        </div>
-      </a>
-    </div>
-  </div>
-  
-</div>
-  <div id="primary" class="content-area">
-    <main id="main" class="site-main" role="main">
-      <h1 class="main-title" style="font-family: 'Ubuntu', sans-serif;">
-      <i class="fa fa-envira" aria-hidden="true"></i>
-      Discovery</h1>
-      
-  <!-- 首页默认取最最新文章集 -->
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/3021/05/08/jian-li/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/github/计算机设计大赛.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>3021-5-8 00:05</div>
-      <a href="/3021/05/08/jian-li/" class="post-title">
-        <h3>我的简历</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E7%AE%80%E5%8E%86/">简历<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E7%AE%80%E5%8E%86/">简历</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>我的个人简历</p>
-        <div class="post-bottom">
-          <a href="/3021/05/08/jian-li/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
         </div>
       </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+    </section>
 
-  <div class="post-thumb">
-    <a href="/2021/06/20/yi-liao/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/MedicalSystem/登录.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-6-20 16:06</div>
-      <a href="/2021/06/20/yi-liao/" class="post-title">
-        <h3>医疗记录系统</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E6%8A%80%E6%9C%AF/">技术<em>·</em></a>
-          
-            <a href="/tags/%E5%8C%BB%E7%96%97%E8%AE%B0%E5%BD%95%E7%B3%BB%E7%BB%9F/">医疗记录系统<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
+    <section id="research" class="section alt" aria-labelledby="research-title">
+      <div class="research">
+        <div>
+          <p class="eyebrow">研究主线</p>
+          <h2 id="research-title">端到端局部规划，而不是只做一个能跑的演示</h2>
+          <p>RabbitRobot 的下一步重点是把 AMR V2 / SCFH 场景收敛成可复现研究平台：先稳定传统导航链路，再建立 rosbag 数据采集规范，最后训练第一个从 scan 与 goal 到 cmd_vel 的行为克隆模型。</p>
+          <div class="metric-list" aria-label="评估指标">
+            <span>成功率</span>
+            <span>碰撞率</span>
+            <span>横向偏差</span>
+            <span>轨迹平滑度</span>
+            <span>恢复能力</span>
+            <span>低附着鲁棒性</span>
+          </div>
+        </div>
+        <div class="research-media"><img src="images/rabbitrobot/aloha_act.gif" alt="机器人动作学习演示动图"></div>
       </div>
-      <div class="float-content">
-        <p>医疗记录系统</p>
-        <div class="post-bottom">
-          <a href="/2021/06/20/yi-liao/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
+    </section>
+
+    <section id="timeline" class="section" aria-labelledby="timeline-title">
+      <div class="section-head">
+        <h2 id="timeline-title">AMR 迭代路线</h2>
+        <p>项目保留了从四驱原型车到全向移动底盘的迭代记录，这些历史版本是后续研究的硬件和工程经验基础。</p>
+      </div>
+      <div class="timeline">
+        <article class="milestone"><time>V1.0</time><h3>四驱原型车</h3><p>树莓派 5、思岚 A1、宇树 L1、DABAI DCW2、Cartographer、Nav2 和视觉感知实验。</p></article>
+        <article class="milestone"><time>V2.0</time><h3>四驱升级车</h3><p>Jetson Orin Nano Super、C50C、MID360、VLP-16、FAST-LIO2、Point-LIO2 和 Autoware 探索。</p></article>
+        <article class="milestone"><time>V3.0</time><h3>平衡车方向</h3><p>Hoverboard FOC、STM32、ST-Link、IMU 接入和底盘控制链路验证。</p></article>
+        <article class="milestone"><time>V4.0</time><h3>全向轮方向</h3><p>SolidWorks 建模与全向移动底盘探索，为更复杂场景和移动操作预留空间。</p></article>
+      </div>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="contact">
+        <div>
+          <h2 id="contact-title">关于我</h2>
+          <p>我是李京海，长期关注 ROS2 机器人、SLAM 导航、具身智能和真实硬件系统。这个博客现在主要作为 RabbitRobot 的项目主页和研究记录入口。</p>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/lijinghai/RabbitRobot" target="_blank" rel="noreferrer">RabbitRobot 仓库</a>
+          <a class="button" href="https://github.com/Dorian1015" target="_blank" rel="noreferrer">个人 GitHub</a>
+          <a class="button" href="mailto:lijinghailjh@163.com">邮件联系</a>
         </div>
       </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb post-list-thumb-left"  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
+    </section>
+  </main>
 
-  <div class="post-thumb">
-    <a href="/2021/05/08/shi-wu-zhao-ling/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/warmsearch.assets/005.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-5-8 00:05</div>
-      <a href="/2021/05/08/shi-wu-zhao-ling/" class="post-title">
-        <h3>校园失物招领网站</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E6%8A%80%E6%9C%AF/">技术<em>·</em></a>
-          
-            <a href="/tags/%E5%A4%B1%E7%89%A9%E6%8B%9B%E9%A2%86%E7%BD%91%E7%AB%99/">失物招领网站<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>校园失物招领网站</p>
-        <div class="post-bottom">
-          <a href="/2021/05/08/shi-wu-zhao-ling/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-    
-<article  class="post post-list-thumb" itemscope="" itemtype="https://schema.org/BlogPosting">
-
-  <div class="post-thumb">
-    <a href="/2021/04/06/about-me/">
-      <img class="lazyload" onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/about-me.assets/e1ccb2b6bf61375a6b676a2f3efebd6.jpg">
-    </a>
-  </div>
-  <div class="post-content-wrap">
-    <div class="post-content">
-      <div class="post-date">
-        <i class="iconfont icon-time">
-        </i>2021-4-6 23:04</div>
-      <a href="/2021/04/06/about-me/" class="post-title">
-        <h3>关于一个小写的我</h3>
-      </a>
-      <div class="post-meta">
-        <span><i class="fa fa-tags"></i>
-        
-            <a href="/tags/%E5%85%B3%E4%BA%8E%E6%88%91/">关于我<em>·</em></a>
-          
-        </span>
-        <span>
-          <i class="iconfont icon-file"></i>
-          
-            <a href="/categories/%E7%94%9F%E6%B4%BB/">生活</a>
-          
-        </span>
-      </div>
-      <div class="float-content">
-        <p>我 MySelf</p>
-        <div class="post-bottom">
-          <a href="/2021/04/06/about-me/" class="button-normal">
-            <i class="iconfont icon-caidan"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</article>
-  
-
-
-    </main>
-      <!-- 首页默认取最最新文章集 -->
-    <!--  -->
-  </div>
-  
-</div>
-
-    </div>    
-    <div class="ins-search">
-    <div class="ins-search-mask"></div>
-    <div class="ins-search-container">
-        <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
-            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-(function (window) {
-    var INSIGHT_CONFIG = {
-        TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-        },
-        ROOT_URL: '/',
-        CONTENT_URL: '/content.json',
-    };
-    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-})(window);
-</script>
-    <!-- <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2021 李京海<br>
-      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer> -->
-<footer id="colophon" class="site-footer" role="contentinfo">
-  <div class="site-info">
-    <div class="footertext">
-      <div class="img-preload">
-        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
-        <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
-      </div>
-      <p style="color: #666666;">&copy 2021</p>
-    </div>
-    <div class="footer-device">
-    <p style="font-family: 'Ubuntu', sans-serif;">
-        <span style="color: #b9b9b9;">Theme <a href="https://github.com/honjun/hexo-theme-sakura" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Sakura</a> <i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> by <a href="https://2heng.xin/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Mashiro</a>&<a href="https://www.hojun.cn/" target="_blank" style="color: #b9b9b9;;text-decoration: underline dotted rgba(0, 0, 0, .1);">Hojun</a>, My Email is lijinghailjh@163.com</a>
-        </span>
-      </p>
-    </div>
-  </div><!-- .site-info -->
-</footer>
-
-
-
-<!-- <script src="/js/tocbot.js"></script> -->
-<script type="text/javascript" src="/js/lib.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script type="text/javascript" src="/js/InsightSearch.js"></script>
-<script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
-<script type="text/javascript" src="/js/zoom.min.js"></script>
-<script type="text/javascript" src="/js/sakura-app.js"></script>
-<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script>
-<script src="/js/botui.js"></script>
-<!-- 不蒜子 网页计数器 -->
-<script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script> -->
-<script type="text/javascript">
-/* <![CDATA[ */
-if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
-} else {
-  var Poi = {"pjax":"1","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
-}
-/* ]]> */
-
-</script>
-<script>
-$(document).ready(function() {
-  if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
-    if ($(".pattern-center").length > 0) { //有图的情况
-      tocbot.init({
-          // Where to render the table of contents.
-          tocSelector: '.toc', // 放置目录的容器
-          // Where to grab the headings to build the table of contents.
-          contentSelector: '.entry-content', // 正文内容所在
-          // Which headings to grab inside of the contentSelector element.
-          scrollSmooth: true,
-          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
-          headingsOffset: -400,
-          scrollSmoothOffset: -85
-      });
-    } else {
-      tocbot.init({
-          // Where to render the table of contents.
-          tocSelector: '.toc', // 放置目录的容器
-          // Where to grab the headings to build the table of contents.
-          contentSelector: '.entry-content', // 正文内容所在
-          // Which headings to grab inside of the contentSelector element.
-          scrollSmooth: true,
-          headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
-          headingsOffset: -85,
-          scrollSmoothOffset: -85
-      });
-    }
-    var offsetTop = $('.toc').offset().top - 95;
-    window.onscroll = function() {
-      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-      if (scrollTop >= offsetTop) {
-        $('.toc').addClass('toc-fixed');
-      } else {
-        $('.toc').removeClass('toc-fixed');
-      }
-    }
-  }
-});
-</script>
-
-
-  <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/ef9d41a8.js","daovoice")
-    daovoice('init', {
-      app_id: "ef9d41a8"
-    });
-    daovoice('update');
-  </script>
-  
-
-
-
-
-    <div class="openNav no-select" style="height: 50px;">
-      <div class="iconflat no-select" style="width: 50px; height: 50px;">
-        <div class="icon"></div>
-      </div>
-      <div class="site-branding search-form-submit">
-        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
-      </div>
-    </div>
-  </section>
-  <div id="mo-nav" class="">
-  <div class="m-avatar">
-    <img src="https://cdn.jsdelivr.net/gh/Dorian1015/cdn/img/custom/tuxiang.jpg">
-  </div>
-  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">이경 해李京海</p>
-  <p style="text-align: center; word-spacing: 20px;">
-    
-      
-        <a href="https://github.com/Dorian1015" class="fa fa-github" target="_blank" style="color: #333; margin-left:20px"></a>
-      
-    
-  </p>
-  <ul id="menu-new-1" class="menu">
-    
-      <li>
-        <a href="/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
-            首页
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
-        <a href="/archives">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
-            归档
-          </span>
-        </a>
-        
-          <ul class="sub-menu">
-            
-              <li>
-                <a href="/tags">
-                  <i class="fa fa-tags" aria-hidden="true"></i>
-                  标签
-                </a>
-              </li>
-            
-              <li>
-                <a href="/categories/%E6%8A%80%E6%9C%AF/">
-                  <i class="fa fa-code" aria-hidden="true"></i>
-                  技术
-                </a>
-              </li>
-            
-              <li>
-                <a href="/categories/%E7%94%9F%E6%B4%BB/">
-                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                  生活
-                </a>
-              </li>
-            
-              <li>
-                <a href="/categories/%E9%9A%8F%E6%83%B3/">
-                  <i class="fa fa-commenting-o" aria-hidden="true"></i>
-                  随想
-                </a>
-              </li>
-            
-          </ul>
-        
-      </li>
-    
-      <li>
-        <a href="/comment/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-pencil-square-o faa-tada" aria-hidden="true"></i>
-            留言板
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
-        <a href="/links/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
-            友人帐
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
-        <a href="/donate/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
-            赞赏
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
-        <a href="/me/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-heart faa-pulse" aria-hidden="true"></i>
-            我的简历
-          </span>
-        </a>
-        
-      </li>
-    
-      <li>
-        <a href="/">
-          <span class="faa-parent animated-hover">
-            <i class="fa  fa-leaf faa-wrench" aria-hidden="true"></i>
-            关于
-          </span>
-        </a>
-        
-          <ul class="sub-menu">
-            
-              <li>
-                <a href="/about/">
-                  <i class="fa fa-meetup" aria-hidden="true"></i>
-                  我？
-                </a>
-              </li>
-            
-          </ul>
-        
-      </li>
-    
-  </ul>
-  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2019 hexo-sakura</p>
-</div>
-<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
-<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
-<!-- require MetingJS -->
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-<style>
-  .aplayer .aplayer-lrc {
-    height: 35px;
-  }
-  .aplayer .aplayer-lrc p{
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 18px !important;
-  }
-  .aplayer .aplayer-lrc p.aplayer-lrc-current{
-    color: #FF1493;
-  }
-  .aplayer.aplayer-narrow .aplayer-body{
-    left: -66px !important;
-  }
-  .aplayer.aplayer-fixed .aplayer-lrc {
-    display: none;
-  }
-  .aplayer .aplayer-lrc.aplayer-lrc-hide {
-      display:none !important;
-  }
-  .aplayer.aplayer-fixed .lrc-show {
-    display: block;
-    background: rgba(255, 255, 255, 0.8);
-  }
-</style>
-<meting-js
-
-    id="2660651585"
-
-    server="netease"
-
-    type="playlist"
-
-    fixed="true"
-
-    autoplay="false"
-
-    loop="all"
-
-    order="random"
-
-    preload="auto"
-
-    volume="0.7"
-
-    mutex="true"
-
-</meting-js>
-<script>
-  $(function(){
-    $('body').on('click', '.aplayer', function(){
-      if($('.aplayer-button').hasClass('aplayer-play')) {
-        $('.aplayer-lrc').removeClass('lrc-show');
-      } else {
-        $('.aplayer-lrc').addClass('lrc-show');
-      }
-    })
-  });
-</script>
+  <footer>
+    <span>© 2026 李京海 · RabbitRobot · ROS2 · AMR · End-to-End Planning</span>
+  </footer>
 </body>
 </html>
-<!-- //社会主义价值观文字 -->
-<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/shehuizhuyi.js"></script>   
-<!-- <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/love.js"></script>   //点击出现爱心 -->
-<!-- <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/clickBom.js"></script>   //气球爆炸（有点影响体验） -->
-
-<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn@latest/js/hititle.js"></script>
-
-<!-- //背景效果 -->
-<!-- <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/piao.js"></script>   //漂浮彩带，点击可变换 -->
-
-<!-- //可随鼠标滚动并吸附的线条 -->
-<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/canvas-nest.min.js"></script>   
-
-
-<!-- //漂浮物效果 -->
-<!-- //樱花飘落 -->
-<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/sakura.js"></script>   
-
-<!-- <script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/snow.js"></script>   //雪花飘落 -->
-
-<!-- //原版 -->
-
-<!-- <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script> -->
-
-<!-- //我的修改版
-//修改内容：调整大小，去除了纸飞机游戏和info按钮 -->
-
-<script src="https://cdn.jsdelivr.net/gh/Natsuki-Kaede/Blog-Resources@master/live2d/autoload.js"></script>
-
-<!-- 禁用鼠标右键与F12 -->
-<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/noSomeKey.js"></script>
