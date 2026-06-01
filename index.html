@@ -18,6 +18,7 @@
       --copper: #b46f2d;
       --blue: #315f7d;
       --shadow: 0 22px 70px rgba(17, 23, 20, .15);
+      --max: 1320px;
     }
 
     * { box-sizing: border-box; }
@@ -80,19 +81,25 @@
 
     .hero {
       position: relative;
-      min-height: 94vh;
+      min-height: 92vh;
       display: grid;
       align-items: end;
       padding: 118px clamp(22px, 5vw, 76px) clamp(34px, 6vw, 72px);
       color: #fffdf7;
-      background: #151b17 url("images/rabbitrobot/robot_photo.jpg") center right / cover no-repeat;
+      background-color: #151b17;
+      background-image: url("images/rabbitrobot/robot_photo.jpg");
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
 
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(9, 13, 11, .56);
+      background:
+        linear-gradient(180deg, rgba(9, 13, 11, .2) 0%, rgba(9, 13, 11, .84) 100%),
+        linear-gradient(90deg, rgba(9, 13, 11, .78) 0%, rgba(9, 13, 11, .48) 48%, rgba(9, 13, 11, .28) 100%);
     }
 
     .hero-content {
@@ -103,6 +110,8 @@
       gap: clamp(26px, 5vw, 70px);
       align-items: end;
       width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
       min-width: 0;
     }
 
@@ -171,6 +180,12 @@
     }
 
     .button:hover { transform: translateY(-1px); }
+    .button:focus-visible,
+    .nav-links a:focus-visible,
+    .brand:focus-visible {
+      outline: 3px solid rgba(240, 201, 146, .9);
+      outline-offset: 4px;
+    }
     .button.light { color: var(--forest); background: #fffdf7; border-color: #fffdf7; }
     .button.ghost { color: #fffdf7; }
     .button.dark { color: #fffdf7; background: var(--forest); border-color: var(--forest); }
@@ -179,6 +194,18 @@
     .section {
       padding: clamp(58px, 8vw, 108px) clamp(22px, 5vw, 76px);
       border-top: 1px solid var(--line);
+    }
+
+    .section > .section-head,
+    .section > .identity,
+    .section > .series-grid,
+    .section > .architecture,
+    .section > .research-grid,
+    .section > .timeline,
+    .section > .contact {
+      max-width: var(--max);
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .section.deep {
@@ -261,7 +288,7 @@
 
     .series-grid {
       display: grid;
-      grid-template-columns: repeat(6, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 12px;
     }
 
@@ -273,6 +300,13 @@
       border: 1px solid rgba(255,255,255,.16);
       border-radius: 8px;
       background: rgba(255, 253, 247, .06);
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .series-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(240, 201, 146, .36);
+      background: rgba(255, 253, 247, .09);
     }
 
     .series-card:nth-child(2n) { background: rgba(180, 111, 45, .11); }
@@ -434,7 +468,7 @@
       .architecture,
       .research-grid,
       .contact { grid-template-columns: 1fr; }
-      .hero { min-height: 900px; background-position: center; }
+      .hero { min-height: 900px; background-position: center top; }
       .identity-grid, .metrics { grid-template-columns: 1fr; }
       .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
@@ -442,16 +476,21 @@
     @media (max-width: 640px) {
       .nav { position: absolute; padding: 14px 18px; }
       .nav-links { display: none; }
-      .hero { min-height: 860px; padding: 104px 22px 34px; }
+      .hero { min-height: 860px; padding: 104px 22px 34px; background-position: 54% top; }
       .hero-content { width: calc(100vw - 44px); }
-      h1 { max-width: calc(100vw - 44px); font-size: 48px; line-height: 1.08; }
-      .hero-copy { width: 100%; max-width: 320px; font-size: 17px; }
-      .hero-note { width: 100%; max-width: 320px; padding: 18px; }
+      h1 { max-width: calc(100vw - 44px); font-size: clamp(44px, 13vw, 56px); line-height: 1.08; }
+      .hero-copy { width: 100%; max-width: 340px; font-size: 17px; }
+      .hero-note { width: 100%; max-width: 340px; padding: 18px; }
       .series-grid, .timeline { grid-template-columns: 1fr; }
       .series-card { min-height: auto; }
       .flow li { grid-template-columns: 42px 1fr; }
       .flow b { width: 42px; height: 42px; }
       .button { width: 100%; }
+    }
+
+    @supports (min-height: 100svh) {
+      .hero { min-height: calc(100svh - 64px); }
+      @media (max-width: 920px) { .hero { min-height: calc(100svh - 56px); } }
     }
   </style>
 </head>
