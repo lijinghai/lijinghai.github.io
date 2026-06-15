@@ -4,8 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>算个文科生吧 | RabbitRobot 全系列机器人项目</title>
-  <meta name="description" content="算个文科生吧的 RabbitRobot 项目主页：面向端到端局部规划研究的 ROS2 机器人项目群，覆盖 AMR、HandLiDAR、SCFH、机械臂和服务机器人方向。">
-  <meta name="theme-color" content="#10241d">
+  <meta name="description" content="算个文科生吧的 RabbitRobot 全系列机器人项目主页，覆盖 AMR 移动机器人、手持 LiDAR 建图仪、SCFH 场景机器人、机械臂、陪伴机器人和展示网站。">
   <style>
     :root {
       --paper: #f3f0e8;
@@ -24,7 +23,6 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    :target { scroll-margin-top: 84px; }
     body {
       margin: 0;
       color: var(--ink);
@@ -32,12 +30,10 @@
       font-family: Inter, "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
       line-height: 1.65;
       overflow-x: hidden;
-      text-rendering: optimizeLegibility;
     }
 
     a { color: inherit; text-decoration: none; }
     img { display: block; max-width: 100%; }
-    figure { margin: 0; }
     h1, h2, h3, p { margin-top: 0; }
     h1, h2, h3 { line-height: 1.08; letter-spacing: 0; }
     p { color: var(--muted); }
@@ -195,33 +191,6 @@
     .button.dark { color: #fffdf7; background: var(--forest); border-color: var(--forest); }
     .button.outline { color: var(--forest); background: transparent; }
 
-    .hero-status {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 22px;
-      max-width: 760px;
-    }
-
-    .status-item {
-      padding: 14px;
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 8px;
-      background: rgba(255,255,255,.08);
-    }
-
-    .status-item b {
-      display: block;
-      color: #f0c992;
-      font-size: 20px;
-      line-height: 1.1;
-    }
-
-    .status-item span {
-      color: rgba(255,255,255,.74);
-      font-size: 13px;
-    }
-
     .section {
       padding: clamp(58px, 8vw, 108px) clamp(22px, 5vw, 76px);
       border-top: 1px solid var(--line);
@@ -233,8 +202,7 @@
     .section > .architecture,
     .section > .research-grid,
     .section > .timeline,
-    .section > .contact,
-    .section > .focus-grid {
+    .section > .contact {
       max-width: var(--max);
       margin-left: auto;
       margin-right: auto;
@@ -318,31 +286,6 @@
 
     .identity-item span { color: var(--muted); font-size: 14px; }
 
-    .focus-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .focus-card {
-      min-height: 210px;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-      box-shadow: 0 14px 36px rgba(17,23,20,.07);
-    }
-
-    .focus-card small {
-      display: block;
-      margin-bottom: 14px;
-      color: var(--copper);
-      font-weight: 900;
-    }
-
-    .focus-card h3 { margin-bottom: 12px; font-size: 22px; }
-    .focus-card p { margin-bottom: 0; font-size: 15px; }
-
     .series-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -394,24 +337,12 @@
       align-items: center;
     }
 
-    .architecture-media {
-      overflow-x: auto;
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-      background: var(--panel);
-    }
-
     .architecture img {
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--panel);
+      box-shadow: var(--shadow);
       width: 100%;
-    }
-
-    .architecture-caption {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 13px;
     }
 
     .flow {
@@ -481,31 +412,6 @@
       font-weight: 800;
     }
 
-    .research-plan {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .plan-item {
-      padding: 16px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: rgba(255, 253, 247, .72);
-    }
-
-    .plan-item b {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--forest);
-    }
-
-    .plan-item span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
     .timeline {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -545,23 +451,6 @@
     .contact p { color: rgba(255, 253, 247, .74); }
     .contact h2 { margin-bottom: 16px; }
 
-    .resource-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .resource-link {
-      display: grid;
-      gap: 4px;
-      padding: 16px 0;
-      border-top: 1px solid rgba(255,255,255,.16);
-    }
-
-    .resource-link:first-child { border-top: 0; padding-top: 0; }
-    .resource-link span { color: #fffdf7; font-weight: 900; }
-    .resource-link small { color: rgba(255,253,247,.66); }
-    .resource-link:hover span { color: #f0c992; }
-
     footer {
       padding: 28px clamp(22px, 5vw, 76px);
       color: var(--muted);
@@ -571,7 +460,6 @@
 
     @media (max-width: 1180px) {
       .series-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .focus-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 920px) {
@@ -582,9 +470,8 @@
       .research-grid,
       .contact { grid-template-columns: 1fr; }
       .hero { min-height: 900px; background-position: center top; }
-      .identity-grid, .metrics, .research-plan { grid-template-columns: 1fr; }
+      .identity-grid, .metrics { grid-template-columns: 1fr; }
       .timeline { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .architecture-media img { min-width: 760px; }
     }
 
     @media (max-width: 640px) {
@@ -595,7 +482,7 @@
       h1 { max-width: calc(100vw - 44px); font-size: clamp(44px, 13vw, 56px); line-height: 1.08; }
       .hero-copy { width: 100%; max-width: 340px; font-size: 17px; }
       .hero-note { width: 100%; max-width: 340px; padding: 18px; }
-      .hero-status, .series-grid, .timeline, .focus-grid { grid-template-columns: 1fr; }
+      .series-grid, .timeline { grid-template-columns: 1fr; }
       .series-card { min-height: auto; }
       .flow li { grid-template-columns: 42px 1fr; }
       .flow b { width: 42px; height: 42px; }
@@ -611,7 +498,7 @@
 <body>
   <nav class="nav" aria-label="主导航">
     <a class="brand" href="#top" aria-label="RabbitRobot 首页">
-      <img src="images/rabbitrobot/RabbitRobot3.png" alt="RabbitRobot logo" width="1024" height="1024" decoding="async">
+      <img src="images/rabbitrobot/RabbitRobot3.png" alt="RabbitRobot logo">
       <span>RabbitRobot</span>
     </a>
     <div class="nav-links">
@@ -626,23 +513,17 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
         <div>
-          <p class="kicker">面向端到端规划研究的 ROS2 机器人项目群</p>
+          <p class="kicker">算个文科生吧的机器人长期项目</p>
           <h1 id="hero-title">RabbitRobot <span>全系列</span></h1>
-          <p class="hero-copy">以真实 AMR 为核心，把底盘、建图、导航、场景、机械臂和数据闭环组织成一个长期演进的机器人研究工作区。</p>
+          <p class="hero-copy">用文科的问题意识理解场景，用工程笔记把真实机器人从底盘、建图、导航、机械臂到服务场景持续做下去。</p>
           <div class="actions">
-            <a class="button light" href="https://github.com/lijinghai/RabbitRobot" target="_blank" rel="noopener noreferrer">GitHub 项目群</a>
-            <a class="button ghost" href="https://gitee.com/RabbitRobotHub" target="_blank" rel="noopener noreferrer">Gitee 镜像入口</a>
-            <a class="button ghost" href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">个人 GitHub</a>
-          </div>
-          <div class="hero-status" aria-label="当前重点">
-            <div class="status-item"><b>AMR</b><span>主研究平台</span></div>
-            <div class="status-item"><b>SCFH</b><span>窄通道真实场景</span></div>
-            <div class="status-item"><b>E2E</b><span>scan + goal 到 cmd_vel</span></div>
+            <a class="button light" href="https://gitee.com/RabbitRobotHub" target="_blank" rel="noreferrer">RabbitRobot 仓库</a>
+            <a class="button ghost" href="https://github.com/lijinghai" target="_blank" rel="noreferrer">算个文科生吧的 GitHub</a>
           </div>
         </div>
         <aside class="hero-note" aria-label="项目定位">
-          <strong>重点不是一次性 demo</strong>
-          <p>RabbitRobot 通过真实硬件、真实场景和真实问题，逐步建立端到端规划研究所需要的数据、平台、baseline 和实验闭环。</p>
+          <strong>核心不是一个 demo</strong>
+          <p>RabbitRobot 是一个可持续扩展的机器人项目群：AMR 是主线，HandLiDAR 提供地图能力，SCFH 提供真实场景，Arm 和 ElderBuddy 为具身服务机器人预留未来形态。</p>
         </aside>
       </div>
     </section>
@@ -650,48 +531,19 @@
     <section id="identity" class="section" aria-labelledby="identity-title">
       <div class="identity">
         <div class="identity-photo">
-          <img src="images/rabbitrobot/RabbitRobot3.png" alt="RabbitRobot 项目标识" width="1024" height="1024" loading="lazy" decoding="async">
+          <img src="images/rabbitrobot/RabbitRobot3.png" alt="RabbitRobot 项目标识">
         </div>
         <div>
           <p class="kicker">Humanities Mind, Robotics Hands</p>
           <h2 id="identity-title">文科式理解问题，工程式把问题落地</h2>
           <p class="quote">先问机器人为什么要进入一个场景，再把传感器、底盘、代码和实验闭环接起来。</p>
-          <p>这个主页把 RabbitRobot 从“作品展示”推进到“研究入口”：从真实需求出发，长期整理资料、记录实验、搭建硬件、调试 ROS2，再把问题收束到窄通道、低附着、传感器噪声下的局部规划研究。</p>
+          <p>这个主页不把我包装成单一方向的开发者，而是展示 RabbitRobot 背后的完整方法：从真实需求出发，长期整理资料、记录实验、搭建硬件、调试 ROS2，再把问题推进到端到端局部规划研究。</p>
           <div class="identity-grid">
             <div class="identity-item"><b>叙事能力</b><span>把复杂工程拆成场景、用户、问题和证据。</span></div>
             <div class="identity-item"><b>工程积累</b><span>ROS2、SLAM、Nav2、STM32、SolidWorks、传感器接入。</span></div>
             <div class="identity-item"><b>研究闭环</b><span>baseline、rosbag、指标、模型训练和真实场景验证。</span></div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="section alt" aria-labelledby="focus-title">
-      <div class="section-head">
-        <h2 id="focus-title">当前优先级</h2>
-        <p>根据 RabbitRobot 主仓库的最新 README，短期最值得收敛的是 AMR V2 / SCFH 研究平台、导航稳定化、rosbag 数据规范和第一个行为克隆模型。</p>
-      </div>
-      <div class="focus-grid">
-        <article class="focus-card">
-          <small>01 / Platform</small>
-          <h3>AMR V2 + SCFH</h3>
-          <p>把四驱升级车和智慧鸡场窄通道场景作为主要研究载体，保留真实硬件约束。</p>
-        </article>
-        <article class="focus-card">
-          <small>02 / Baseline</small>
-          <h3>传统规划跑稳</h3>
-          <p>先修正 URDF、TF、里程计、EKF 和 DWB 参数，让 Nav2 / DWB 成为可靠对照组。</p>
-        </article>
-        <article class="focus-card">
-          <small>03 / Dataset</small>
-          <h3>rosbag 数据闭环</h3>
-          <p>标准化记录 scan、odom、tf、cmd_vel、goal_pose 和 local costmap。</p>
-        </article>
-        <article class="focus-card">
-          <small>04 / Model</small>
-          <h3>行为克隆模型</h3>
-          <p>训练第一个从 2D LiDAR、相对目标点和当前速度到 cmd_vel 的局部规划器。</p>
-        </article>
       </div>
     </section>
 
@@ -742,12 +594,7 @@
 
     <section class="section alt" aria-labelledby="architecture-title">
       <div class="architecture">
-        <figure>
-          <div class="architecture-media" tabindex="0" aria-label="RabbitRobot 项目架构图，可在小屏幕上横向滚动查看">
-            <img src="images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot 项目架构图" width="2340" height="1525" loading="lazy" decoding="async">
-          </div>
-          <figcaption class="architecture-caption">小屏幕可横向滑动查看完整架构图。</figcaption>
-        </figure>
+        <img src="images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot 项目架构图">
         <div>
           <p class="kicker">System Thinking</p>
           <h2 id="architecture-title">RabbitRobot 的结构不是目录，而是一条研发链路</h2>
@@ -767,17 +614,12 @@
           <p class="kicker">Research Direction</p>
           <h2 id="research-title">端到端局部规划：用真实 AMR 数据回答真实场景问题</h2>
           <p>当前最值得继续推进的主线，是把 AMR V2 和 SCFH 场景整理为可复现实验平台。先把传统 Nav2 / DWB / Pure Pursuit / MPC 跑稳，再采集 scan、odom、tf、cmd_vel、goal_pose 和 local costmap 数据，训练第一个从 LiDAR 与目标到速度指令的局部规划模型。</p>
-          <div class="research-plan" aria-label="研究闭环">
-            <div class="plan-item"><b>输入</b><span>2D LiDAR scan + 相对目标点 + 当前速度</span></div>
-            <div class="plan-item"><b>输出</b><span>cmd_vel.linear.x + cmd_vel.angular.z 或未来轨迹</span></div>
-            <div class="plan-item"><b>对照</b><span>Nav2 DWB、Pure Pursuit、Stanley、MPC</span></div>
-          </div>
           <div class="metrics" aria-label="评估指标">
             <span>成功率</span><span>碰撞率</span><span>横向偏差</span><span>轨迹平滑度</span><span>恢复能力</span><span>低附着鲁棒性</span>
           </div>
         </div>
         <div class="research-media">
-          <img src="images/rabbitrobot/aloha_act.gif" alt="机器人动作学习演示动图" width="500" height="375" loading="lazy" decoding="async">
+          <img src="images/rabbitrobot/aloha_act.gif" alt="机器人动作学习演示动图">
         </div>
       </div>
     </section>
@@ -801,19 +643,10 @@
           <h2 id="contact-title">公开入口</h2>
           <p>这个页面会作为算个文科生吧的公开主页，展示 RabbitRobot 全系列项目，也作为后续论文、教程、演示视频和技术笔记的入口。</p>
         </div>
-        <div class="resource-list" aria-label="公开链接">
-          <a class="resource-link" href="https://github.com/lijinghai/RabbitRobot" target="_blank" rel="noopener noreferrer">
-            <span>RabbitRobot GitHub 主仓库</span>
-            <small>ROS2 项目群、README、研究路线和文档索引。</small>
-          </a>
-          <a class="resource-link" href="https://gitee.com/RabbitRobotHub" target="_blank" rel="noopener noreferrer">
-            <span>RabbitRobot Gitee 入口</span>
-            <small>国内访问入口和项目群镜像。</small>
-          </a>
-          <a class="resource-link" href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">
-            <span>算个文科生吧的 GitHub</span>
-            <small>个人开源主页和后续公开项目入口。</small>
-          </a>
+        <div class="actions">
+          <a class="button light" href="https://github.com/lijinghai" target="_blank" rel="noreferrer">GitHub / 算个文科生吧</a>
+          <a class="button ghost" href="https://gitee.com/RabbitRobotHub" target="_blank" rel="noreferrer">RabbitRobot 项目</a>
+          <a class="button ghost" href="https://github.com/lijinghai" target="_blank" rel="noreferrer">联系算个文科生吧</a>
         </div>
       </div>
     </section>
