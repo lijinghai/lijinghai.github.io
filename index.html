@@ -379,6 +379,65 @@
       margin-top: 6px;
     }
 
+    .hardware-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, .92fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hardware-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .hardware-card.is-wide {
+      grid-column: 1 / -1;
+    }
+
+    .hardware-image img,
+    .hardware-gallery img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      background: var(--soft);
+    }
+
+    .hardware-card.is-portrait .hardware-image img {
+      aspect-ratio: 4 / 5;
+      object-position: 50% 44%;
+    }
+
+    .hardware-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .hardware-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .hardware-body h3 {
+      margin: 12px 0 10px;
+      color: var(--dark);
+      font-size: 22px;
+    }
+
+    .hardware-body p {
+      margin-bottom: 0;
+      font-size: 15px;
+    }
+
     .image-panel {
       margin: 0;
       padding: clamp(10px, 2vw, 16px);
@@ -731,10 +790,15 @@
       }
 
       .approach-text,
+      .hardware-grid,
       .repository-grid,
       .research-grid,
       .roadmap {
         grid-template-columns: 1fr;
+      }
+
+      .hardware-card.is-wide {
+        grid-column: auto;
       }
 
       .metrics {
@@ -781,6 +845,7 @@
       .content,
       .tldr,
       .hero-figure,
+      .hardware-card,
       .image-panel,
       .repository-card,
       .project-table-wrap,
@@ -808,6 +873,19 @@
         grid-template-columns: 1fr;
       }
 
+      .hardware-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .hardware-image img,
+      .hardware-gallery img {
+        aspect-ratio: 4 / 3;
+      }
+
+      .hardware-card.is-portrait .hardware-image img {
+        aspect-ratio: 4 / 5;
+      }
+
       .metrics {
         grid-template-columns: 1fr;
       }
@@ -831,6 +909,7 @@
         <span>RabbitRobot</span>
       </a>
       <div class="nav-links">
+        <a href="#hardware">Hardware</a>
         <a href="#abstract">Abstract</a>
         <a href="#approach">Approach</a>
         <a href="#projects">Projects</a>
@@ -898,6 +977,55 @@
       </div>
     </section>
 
+    <section id="hardware" class="section" aria-labelledby="hardware-title">
+      <div class="container">
+        <p class="section-kicker">Hardware Prototypes</p>
+        <h2 id="hardware-title" class="section-title">实物原型：扫地机 V1.0、手持雷达与全向轮小车</h2>
+        <div class="hardware-grid">
+          <article class="hardware-card">
+            <div class="hardware-image">
+              <img src="images/rabbitrobot/sweeper_v1.jpg" alt="RabbitRobot 扫地机 V1.0 实物原型">
+            </div>
+            <div class="hardware-body">
+              <div class="tag-list" aria-label="扫地机 V1.0 关键词">
+                <span class="tag">Sweeper V1.0</span><span class="tag">Cleaning AMR</span><span class="tag">ROS2-ready</span>
+              </div>
+              <h3>Sweeper V1.0</h3>
+              <p>清扫底盘的第一版实物：在铝型材底盘上集成清扫机构、车轮驱动、电源、主控和本地屏幕，先把真实地面上的运动、供电、布线和清扫机构布局跑通。</p>
+            </div>
+          </article>
+
+          <article class="hardware-card is-portrait">
+            <div class="hardware-image">
+              <img src="images/rabbitrobot/hand_lidar_prototype.jpg" alt="RabbitRobot 手持雷达建图工具实物">
+            </div>
+            <div class="hardware-body">
+              <div class="tag-list" aria-label="手持雷达关键词">
+                <span class="tag">HandLiDAR</span><span class="tag">Mapping Tool</span><span class="tag">Data Capture</span>
+              </div>
+              <h3>HandLiDAR 建图仪</h3>
+              <p>手持雷达建图工具：把传感器和手柄做成可移动采集形态，用来快速采集室内、走廊和机器人测试场的环境数据，为 AMR 导航先准备地图和传感器样本。</p>
+            </div>
+          </article>
+
+          <article class="hardware-card is-wide">
+            <div class="hardware-gallery">
+              <img src="images/rabbitrobot/omni_car_lab_pair.jpg" alt="RabbitRobot 全向轮小车与 AMR 底盘调试现场">
+              <img src="images/rabbitrobot/omni_car_amr_front.jpg" alt="RabbitRobot 全向轮 AMR 底盘正面实物">
+              <img src="images/rabbitrobot/omni_car_compact.jpg" alt="RabbitRobot 圆形全向轮小车实物">
+            </div>
+            <div class="hardware-body">
+              <div class="tag-list" aria-label="全向轮小车关键词">
+                <span class="tag">Omni Wheel</span><span class="tag">Mecanum</span><span class="tag">AMR Platform</span><span class="tag">Nav2</span>
+              </div>
+              <h3>Omni AMR 全向轮小车</h3>
+              <p>全向轮小车系列：从小尺寸验证车到铝型材 AMR 底盘，逐步验证轮系运动学、底盘控制、传感器安装高度、电源布线、远程控制和后续 ROS2/Nav2 导航实验。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="abstract" class="section is-light" aria-labelledby="abstract-title">
       <div class="narrow">
         <p class="section-kicker">Project Abstract</p>
@@ -955,6 +1083,12 @@
                 <td>核心实验平台</td>
                 <td>底盘控制、建图、导航、局部规划和真实数据采集。</td>
                 <td><span class="tag-list"><span class="tag">ROS2</span><span class="tag">Nav2</span><span class="tag">FAST-LIO2</span><span class="tag">Point-LIO2</span></span></td>
+              </tr>
+              <tr>
+                <td><b>RabbitRobot_Sweeper V1.0</b>扫地机第一代原型</td>
+                <td>清扫场景原型</td>
+                <td>用实物底盘验证清扫机构、供电、驱动、布线和 ROS2 接入前的硬件布局。</td>
+                <td><span class="tag-list"><span class="tag">Cleaning AMR</span><span class="tag">Sweeper</span><span class="tag">Field Test</span></span></td>
               </tr>
               <tr>
                 <td><b>RabbitRobot_HandLiDAR</b>手持雷达建图仪</td>
