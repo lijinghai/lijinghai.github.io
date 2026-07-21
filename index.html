@@ -477,6 +477,84 @@
       white-space: nowrap;
     }
 
+    .repository-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .repository-card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .repository-media {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--line);
+    }
+
+    .repository-media img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: var(--soft);
+    }
+
+    .repository-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .repository-body h3 {
+      margin-bottom: 10px;
+      color: var(--dark);
+      font-size: 22px;
+    }
+
+    .repository-body p {
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+
+    .repository-body ul {
+      margin: 0 0 18px;
+      padding-left: 20px;
+      font-size: 14px;
+    }
+
+    .repository-body li + li {
+      margin-top: 6px;
+    }
+
+    .repo-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: max-content;
+      max-width: 100%;
+      min-height: 38px;
+      margin-top: auto;
+      padding: 8px 14px;
+      color: #fff;
+      background: var(--dark);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .repo-link:hover {
+      background: #111318;
+    }
+
     .research-grid {
       display: grid;
       grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
@@ -653,6 +731,7 @@
       }
 
       .approach-text,
+      .repository-grid,
       .research-grid,
       .roadmap {
         grid-template-columns: 1fr;
@@ -703,6 +782,7 @@
       .tldr,
       .hero-figure,
       .image-panel,
+      .repository-card,
       .project-table-wrap,
       .research-media,
       .roadmap {
@@ -722,6 +802,10 @@
 
       .hero-figure img {
         aspect-ratio: 4 / 3;
+      }
+
+      .repository-media {
+        grid-template-columns: 1fr;
       }
 
       .metrics {
@@ -750,6 +834,7 @@
         <a href="#abstract">Abstract</a>
         <a href="#approach">Approach</a>
         <a href="#projects">Projects</a>
+        <a href="#repositories">Repos</a>
         <a href="#research">Research</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#bibtex">BibTeX</a>
@@ -878,6 +963,18 @@
                 <td><span class="tag-list"><span class="tag">Unitree L1</span><span class="tag">D435</span><span class="tag">RTAB-Map</span><span class="tag">SLAM</span></span></td>
               </tr>
               <tr>
+                <td><b>RabbitRobot_ROS2_Web</b>AMR Web 控制台</td>
+                <td>机器人操作界面</td>
+                <td>把 ROS/ROS2 地图、图层、导航、任务和状态监控搬到浏览器里。</td>
+                <td><span class="tag-list"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Three.js</span><span class="tag">roslib</span></span></td>
+              </tr>
+              <tr>
+                <td><b>RabbitRobot_D435_L1_RTABMap</b>多传感器建图导航</td>
+                <td>三维建图与定位</td>
+                <td>融合 Unitree L1、Intel RealSense D435 和 MPU6050，验证 RTAB-Map 与 FAST-LIO2 链路。</td>
+                <td><span class="tag-list"><span class="tag">RTAB-Map</span><span class="tag">D435</span><span class="tag">Unitree L1</span><span class="tag">MPU6050</span></span></td>
+              </tr>
+              <tr>
                 <td><b>RabbitRobot_SCFH</b>智慧鸡场净环机器人</td>
                 <td>真实压力场景</td>
                 <td>围绕狭长通道、低附着地面和服务机器人落地做需求验证。</td>
@@ -903,6 +1000,54 @@
               </tr>
             </tbody>
           </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="repositories" class="section" aria-labelledby="repositories-title">
+      <div class="container">
+        <p class="section-kicker">Repository Snapshots</p>
+        <h2 id="repositories-title" class="section-title">从 README 截图沉淀出来的实装模块</h2>
+        <div class="repository-grid">
+          <article class="repository-card">
+            <div class="repository-media">
+              <img src="images/rabbitrobot/ros2_web_home.png" alt="AMR Web 控制台主界面截图">
+              <img src="images/rabbitrobot/ros2_web_single_nav.png" alt="AMR Web 控制台单点导航截图">
+            </div>
+            <div class="repository-body">
+              <div class="tag-list" aria-label="AMR Web 控制台技术栈">
+                <span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Three.js</span><span class="tag">roslib</span>
+              </div>
+              <h3>ljh_robot_ros2_web</h3>
+              <p>这是 RabbitRobot 的浏览器端操作台：通过 rosbridge WebSocket 接入 ROS/ROS2，将地图可视化、图层配置、导航控制、重定位、手动控制、设备状态和系统日志集中在一个 Web UI 中。</p>
+              <ul>
+                <li>面向 AMR 的 2D/3D 地图视图，支持栅格地图、激光扫描、点云、路径和机器人模型等图层。</li>
+                <li>支持单点/多点导航、目标点设置、路径规划对比，以及与 RViz 结果互相校验。</li>
+                <li>用浏览器作为轻量控制入口，让机器人调试、演示和远程操作更容易复用。</li>
+              </ul>
+              <a class="repo-link" href="https://github.com/lijinghai/ljh_robot_ros2_web" target="_blank" rel="noreferrer">Open Repository</a>
+            </div>
+          </article>
+
+          <article class="repository-card">
+            <div class="repository-media">
+              <img src="images/rabbitrobot/rtabmap_overview.png" alt="RTAB-Map 多传感器建图导航截图">
+              <img src="images/rabbitrobot/rtabmap_rviz_pointcloud.png" alt="D435 点云 RViz2 可视化截图">
+            </div>
+            <div class="repository-body">
+              <div class="tag-list" aria-label="RTAB-Map 建图导航技术栈">
+                <span class="tag">RTAB-Map</span><span class="tag">FAST-LIO2</span><span class="tag">D435</span><span class="tag">Unitree L1</span>
+              </div>
+              <h3>RabbitRobot-D435-L1lidar-RTABMap-ROS2</h3>
+              <p>这是 RabbitRobot 的多传感器建图导航链路：用 Unitree L1 提供几何结构，Intel RealSense D435 提供彩色与深度数据，MPU6050 提供姿态补偿，再通过 FAST-LIO2 与 RTAB-Map 组织成可运行的 SLAM 实验。</p>
+              <ul>
+                <li>整理 D435 + RTAB-Map 的 ROS2 工作空间、launch 文件、话题映射和 RViz2/rtabmap_viz 可视化流程。</li>
+                <li>支持彩色点云、深度对齐、IMU Madgwick 滤波和静态 TF 配置，为 AMR 建图提供可复现入口。</li>
+                <li>作为 HandLiDAR 与 AMR 导航之间的桥，补齐地图生产、定位验证和后续自主导航实验。</li>
+              </ul>
+              <a class="repo-link" href="https://github.com/lijinghai/RabbitRobot-D435-L1lidar-RTABMap-ROS2" target="_blank" rel="noreferrer">Open Repository</a>
+            </div>
+          </article>
         </div>
       </div>
     </section>
