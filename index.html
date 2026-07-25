@@ -444,14 +444,46 @@
     }
 
     .hardware-body h3 {
-      margin: 12px 0 10px;
+      margin: 12px 0 4px;
       color: var(--dark);
       font-size: 22px;
+    }
+
+    .hardware-body .hardware-time {
+      margin: 0 0 12px;
+      color: var(--orange-dark);
+      font-size: 13px;
+      font-weight: 800;
     }
 
     .hardware-body p {
       margin-bottom: 0;
       font-size: 15px;
+    }
+
+    .hardware-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .hardware-detail-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 14px;
+      color: #fff;
+      background: var(--dark);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .hardware-detail-link:hover {
+      background: #111318;
+      text-decoration: none;
     }
 
     .amr2-showcase {
@@ -1201,7 +1233,11 @@
                 <span class="tag">AMR2</span><span class="tag">Hub-Wheel Servo</span><span class="tag">DiffDrive</span><span class="tag">VLN Execution</span>
               </div>
               <h3>AMR2 轮毂伺服差速 AMR</h3>
+              <p class="hardware-time"><time datetime="2026-07">2026.07+</time> · 当前真车执行平台</p>
               <p>新做的 AMR2 小车是 RabbitRobot 当前更重要的真车执行平台：从轮毂伺服、铝型材框架、MID360 安装位到 CAN 线束和导航脚本逐步收拢，再接入 Fast-LIO、ICP、Nav2 MPPI、速度平滑和近距离避障保护，为后续 VLN waypoint 执行、rosbag 回放和失败案例采集提供底座。</p>
+              <div class="hardware-actions">
+                <a class="hardware-detail-link" href="projects/rabbitrobot-amr2.html">查看项目介绍</a>
+              </div>
             </div>
           </article>
 
@@ -1214,7 +1250,11 @@
                 <span class="tag">Sweeper V1.0</span><span class="tag">Cleaning AMR</span><span class="tag">ROS2-ready</span>
               </div>
               <h3>Sweeper V1.0</h3>
+              <p class="hardware-time"><time datetime="2026-07">2026.07</time> · 清扫原型归档</p>
               <p>清扫底盘的第一版实物：在铝型材底盘上集成清扫机构、车轮驱动、电源、主控和本地屏幕，先把真实地面上的运动、供电、布线、重心和清扫机构布局跑通。</p>
+              <div class="hardware-actions">
+                <a class="hardware-detail-link" href="projects/rabbitrobot-sweeper-v1.html">查看项目介绍</a>
+              </div>
             </div>
           </article>
 
@@ -1227,7 +1267,11 @@
                 <span class="tag">HandLiDAR</span><span class="tag">Mapping Tool</span><span class="tag">Data Capture</span>
               </div>
               <h3>HandLiDAR 建图仪</h3>
+              <p class="hardware-time"><time datetime="2026-07">2026.07</time> · 手持建图工具</p>
               <p>手持雷达建图工具：把传感器、手柄、固定件和走线做成可移动采集形态，用来快速采集室内、走廊和机器人测试场的环境数据，为 AMR 导航先准备地图和传感器样本。</p>
+              <div class="hardware-actions">
+                <a class="hardware-detail-link" href="projects/rabbitrobot-handlidar.html">查看项目介绍</a>
+              </div>
             </div>
           </article>
 
@@ -1242,7 +1286,11 @@
                 <span class="tag">Omni Wheel</span><span class="tag">Mecanum</span><span class="tag">AMR Platform</span><span class="tag">Nav2</span>
               </div>
               <h3>Omni AMR 全向轮小车</h3>
+              <p class="hardware-time"><time datetime="2026-03">2026.03+</time> · 全向底盘验证</p>
               <p>全向轮小车系列：从小尺寸验证车到铝型材 AMR 底盘，一边调整轮系、安装高度、电源布线和传感器位置，一边验证底盘控制、远程控制和后续 ROS2/Nav2 导航实验。</p>
+              <div class="hardware-actions">
+                <a class="hardware-detail-link" href="projects/rabbitrobot-amr.html">查看项目介绍</a>
+              </div>
             </div>
           </article>
         </div>
