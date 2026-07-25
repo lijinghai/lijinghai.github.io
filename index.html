@@ -923,6 +923,66 @@
       font-size: 14px;
     }
 
+    .contact-intro {
+      width: min(100%, 820px);
+      margin: -8px auto 24px;
+      color: var(--muted);
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .contact-board {
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-board img {
+      display: block;
+      width: 100%;
+      background: #f8fafc;
+    }
+
+    .contact-board picture {
+      display: block;
+    }
+
+    .contact-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .contact-item {
+      min-height: 82px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .contact-item b {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--dark);
+      font-size: 15px;
+    }
+
+    .contact-item span,
+    .contact-item a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .contact-item a:hover {
+      color: var(--blue);
+    }
+
     .bibtex {
       position: relative;
       padding: 20px;
@@ -1028,6 +1088,7 @@
       .repository-grid,
       .research-grid,
       .vln-flow,
+      .contact-meta,
       .roadmap {
         grid-template-columns: 1fr;
       }
@@ -1093,10 +1154,16 @@
       .repository-card,
       .project-table-wrap,
       .research-media,
+      .contact-board,
+      .contact-meta,
       .roadmap {
         max-width: 280px;
         margin-left: auto;
         margin-right: auto;
+      }
+
+      .contact-board {
+        max-width: 420px;
       }
 
       .publication-links {
@@ -1164,6 +1231,7 @@
         <a href="#projects">Projects</a>
         <a href="#repositories">Repos</a>
         <a href="#roadmap">Roadmap</a>
+        <a href="#contact">Contact</a>
         <a href="#bibtex">BibTeX</a>
       </div>
     </div>
@@ -1628,6 +1696,34 @@
             <h3>AMR2 / VLN 数据闭环</h3>
             <p>以 AMR2 轮毂伺服真车为主平台，组织语言指令、地图区域、Web 控制台标注、Nav2 MPPI 执行和 rosbag 回放评估。</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <p class="section-kicker">Contact / Follow</p>
+        <h2 id="contact-title" class="section-title">找到我：小红书、B站、微信</h2>
+        <p class="contact-intro">欢迎通过下面的二维码关注 RabbitRobot 项目更新、B 站视频和日常工程记录；点击图片可以打开高清大图，手机扫码更方便。</p>
+        <a class="contact-board" href="images/rabbitrobot/contact_channels_stack.jpg" target="_blank" rel="noreferrer" aria-label="打开 RabbitRobot 联系方式高清拼接图">
+          <picture>
+            <source media="(max-width: 560px)" srcset="images/rabbitrobot/contact_channels_stack.jpg">
+            <img src="images/rabbitrobot/contact_channels_collage.jpg" alt="RabbitRobot 小红书、B站、微信联系方式二维码拼接图">
+          </picture>
+        </a>
+        <div class="contact-meta" aria-label="RabbitRobot 联系方式">
+          <div class="contact-item">
+            <b>小红书</b>
+            <span>小红书号：RabbitRobot2025</span>
+          </div>
+          <div class="contact-item">
+            <b>Bilibili</b>
+            <a href="https://space.bilibili.com/1339027047" target="_blank" rel="noreferrer">UID：1339027047</a>
+          </div>
+          <div class="contact-item">
+            <b>微信</b>
+            <span>扫码添加 · 江苏 苏州</span>
+          </div>
         </div>
       </div>
     </section>
