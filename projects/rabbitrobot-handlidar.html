@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RabbitRobot_HandLiDAR | RabbitRobot</title>
+  <meta name="description" content="HandLiDAR 是手持式 LiDAR 建图工具，用来在底盘不方便稳定建图时采集更高质量的地图、点云和视觉数据，再反哺 AMR/AMR2 导航实验。">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+  <nav class="detail-nav" aria-label="Project navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
+        <span>RabbitRobot</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#projects">Project Matrix</a>
+        <a href="../index.html#research">VLN Focus</a>
+        <a href="../index.html#repositories">Snapshots</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">地图生产工具</p>
+      <h1>RabbitRobot_HandLiDAR</h1>
+      <p class="subtitle">手持雷达建图仪</p>
+      <p class="summary">HandLiDAR 是手持式 LiDAR 建图工具，用来在底盘不方便稳定建图时采集更高质量的地图、点云和视觉数据，再反哺 AMR/AMR2 导航实验。</p>
+      <div class="meta-row">
+        <span class="meta-pill">Time · 2026.07</span>
+        <span class="meta-pill">Source · ljh_fastlivo2 README</span>
+        <span class="meta-pill">Repo · lijinghai/ljh_fastlivo2</span>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <img src="../images/rabbitrobot/hand_lidar_prototype.jpg" alt="RabbitRobot_HandLiDAR">
+    </figure>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">What It Does</p>
+          <h2>项目做的是什么</h2>
+          <ul class="highlight-list"><li>把 LiDAR、RGB-D、IMU、主控和外壳支撑组织成可手持采集的建图设备。</li><li>服务于 FAST-LIO/FAST-LIVO/RTAB-Map 等多传感器建图链路。</li><li>先用手持方式拿到更稳定的环境数据，再把地图交给移动底盘定位和导航使用。</li></ul>
+        </div>
+        <aside>
+          <p class="kicker">Stack</p>
+          <h2>技术关键词</h2>
+          <div class="stack"><span class="tag">LiDAR</span><span class="tag">RGB-D</span><span class="tag">FAST-LIVO2</span><span class="tag">RTAB-Map</span><span class="tag">Point Cloud</span><span class="tag">Calibration</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">VLN Relation</p>
+          <h2>和当前 VLN 主线的关系</h2>
+          <div class="note-panel">VLN 需要稳定的场景表示，HandLiDAR 负责提供更可靠的地图与点云底座。</div>
+        </div>
+        <div>
+          <p class="kicker">Craft Record</p>
+          <h2>工程痕迹</h2>
+          <p>这个项目保留了从硬件选型、结构验证、驱动调试、话题链路到现场反馈的连续记录。页面里放的不是单独的效果截图，而是一段可回溯的迭代线索。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Media</p>
+        <h2>关键画面</h2>
+        <div class="gallery">
+          <figure>
+              <img src="../images/rabbitrobot/hand_lidar_prototype.jpg" alt="RabbitRobot_HandLiDAR">
+              <figcaption>RabbitRobot_HandLiDAR</figcaption>
+            </figure><figure>
+              <img src="../images/rabbitrobot/rtabmap_rviz_pointcloud.png" alt="RabbitRobot_HandLiDAR 关键画面 2">
+              <figcaption>RabbitRobot_HandLiDAR 关键画面 2</figcaption>
+            </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">README Snapshot</p>
+        <h2>README / 项目说明片段</h2>
+        <div class="readme-box">
+          <h2>ljh_fastLivo2</h2>
+<p>Mid360 + 海康相机 + FAST-Calib + FAST-LIVO2 的 ROS2 Jazzy 工作区。</p>
+<p>这个项目主要实现两件事：</p>
+<ul>
+<li>使用 Livox Mid360 和海康 MV-CU013 相机完成雷达-相机外参标定。</li>
+<li>使用 FAST-LIVO2 运行视觉-激光融合 SLAM，并通过 RViz 或浏览器 Web 页面查看点云效果。</li>
+</ul>
+<p>项目作者：算个文科生吧</p>
+<p>联系方式：wx: RabbitRobot2025</p>
+<p>---</p>
+<h3>1. 当前项目实际情况</h3>
+<pre>| 项目 | 当前配置 |</pre>
+<pre>| --- | --- |</pre>
+<pre>| 系统 | Ubuntu 24.04 |</pre>
+<pre>| ROS2 | Jazzy |</pre>
+<pre>| 雷达 | Livox Mid360 |</pre>
+<pre>| 相机 | 海康 MV-CU013 |</pre>
+<pre>| 工作区路径 | `~/Desktop/ljh/code/ljh_fastLivo2` |</pre>
+<pre>| 雷达默认 IP | `192.168.1.132` |</pre>
+<pre>| 主机网口默认 IP | `192.168.1.50/24` |</pre>
+<pre>| 主机有线网口默认名 | `eno1` |</pre>
+<pre>| 雷达原始话题 | `/livox/lidar` |</pre>
+<pre>| 相机原始图像话题 | `/camera/color/image_raw` |</pre>
+<pre>| FAST-LIVO2 点云话题 | `/cloud_registered` |</pre>
+<pre>| Web 图像话题 | `/rgb_img` |</pre>
+<pre>| Web 默认端口 | `8080` |</pre>
+<p>如果你的电脑网口不是 <code>eno1</code>，启动前需要指定，例如：</p>
+<pre><code>LIVOX_IFACE=enp3s0 sudo bash scripts/setup_hardware.sh</code></pre>
+<p>---</p>
+<h3>2. 项目目录结构</h3>
+<p>项目根目录保持清爽：Web、脚本、源码、编译产物各放各的位置。</p>
+<pre><code>ljh_fastLivo2/
+├── web/                         # 浏览器点云查看器，只放前端文件
+│   ├── index.html
+│   ├── style.css
+│   └── viewer.js
+├── scripts/                     # 日常使用入口脚本，单独放在根目录
+│   ├── setup_hardware.sh        # 配置 Livox 网口和海康 USB 权限
+│   ├── launch_mid360_hik.sh     # 一键启动 FAST-LIVO2
+│   ├── launch_web_viewer.sh     # 启动 Web 点云查看器
+│   ├── open_rviz_default.sh     # 单独打开默认 RViz 配置
+│   └── fast_livo_web_bridge.py  # ROS2 到浏览器的 HTTP 桥接后端
+├── src/                         # ROS2 包和源码相关资料
+│   ├── FAST-LIVO2/              # FAST-LIVO2 主算法包
+│   ├── FAST-Calib-ROS2/         # 雷达-相机外参标定包
+│   ├── livox_ros_driver2/       # Livox Mid360 驱动
+│   ├── hik_camera_ros2_driver/  # 海康相机驱动
+│   ├── image_common/            # camera_info_manager 等依赖
+│   ├── rpg_vikit/               # FAST-LIVO2 依赖库
+│   ├── Sophus/                  # FAST-LIVO2 依赖库
+│   ├── config/                  # udev 等配置资料，不是 ROS 包
+│   ├── deps/                    # 本地第三方依赖，例如 Livox SDK2
+│   ├── calib_data/              # 标定 bag、稳态图等数据
+│   ├── docs/                    # 文档图片
+│   └── archive/                 # 旧文件备份
+├── build/                       # colcon 编译中间文件，自动生成
+├── install/                     # colcon 安装结果，运行时 source 这里
+├── log/                         # colcon 日志和运行日志
+├── MvSdkLog/                    # 海康 SDK 运行时可能自动生成的日志
+└── README.md</code></pre>
+<p><code>src/config</code>、<code>src/deps</code>、<code>src/docs</code>、<code>src/calib_data</code>、<code>src/archive</code> 中放了 <code>COLCON_IGNORE</code>，所以 colcon 不会把这些资料目录误识别成 ROS2 包。</p>
+<p>---</p>
+<h3>3. 当前 ROS2 包</h3>
+<p>在项目根目录执行：</p>
+<pre><code>colcon list</code></pre>
+<p>当前应识别到这些包：</p>
+<p class="excerpt-note">完整 README 已保存在本站快照中，可从本页底部打开。</p>
+<pre><code>camera_calibration_parsers
+camera_info_manager
+fast_calib
+fast_livo</code></pre>
+        </div>
+        <div class="source-actions">
+          <a class="button primary" href="readmes/rabbitrobot-handlidar.md">Open Local README Snapshot</a>
+          <a class="button" href="https://github.com/lijinghai/ljh_fastlivo2" target="_blank" rel="noreferrer">Source Repository</a>
+          <a class="button" href="../index.html#projects">Back to Project Matrix</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">RabbitRobot · RabbitRobot_HandLiDAR · 本页是 GitHub Pages 内部项目详情页。</div>
+  </footer>
+</body>
+</html>

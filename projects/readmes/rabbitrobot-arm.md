@@ -1,0 +1,616 @@
+<center style="
+    color: [[FF6600]];
+    font-size: 230%;
+    font-weight: bold;
+">RabbitRobot_Arm__具身智能机械臂
+</center>
+<center style="
+    color: [[FF6600]];
+    font-size: 230%;
+    font-weight: bold;
+">李京海进度汇报(7.12 - 7.25)    
+</center>
+[toc]
+
+
+
+> [!note]
+>
+> ## 一、什么是具身智能
+>
+> ### &emsp; 智能体通过身体与环境的互动产生的智能行为
+>
+> 
+>
+> ## 二、RoArm-M2-S实物图(左) 和 驱动板(右)
+>
+> <div align="center">
+> <div style="display: flex; gap: 1rem; justify-content: center; align-items: center;" >
+> <a href="https://github.com/lijinghai">
+> <img
+> src="10.RabbitRobot_Arm.assets/image-20250616141545342.png"
+> alt="RoArm-M2-S"
+> title="RoArm-M2-S"
+> style="width: 45%;" 
+> />
+> <img
+> src="10.RabbitRobot_Arm.assets/image-20250616141738765.png"
+> alt="RoArm-M2-S"
+> title="RoArm-M1"
+> style="width: 52%;"
+> />
+> </a>
+> </div>
+>
+> ### &emsp;RoArm-M2-S：由Waveshare生产，4自由度（4-DOF）机械臂，重量小于850克，有效载荷为0.5kg@1m，支持ROS2和多种通信模式（如WiFi、UART）。其设计适合教育、研究和DIY项目，
+>
+> ### ==但官方文档未明确提及LeRobot兼容性。==
+>
+> 
+>
+> ## 三、关于LeRobot：现实世界机器人领域的最先进人工智能
+>
+> 🤗 LeRobot 旨在用 PyTorch 为现实世界的机器人技术提供模型、数据集和工具。我们的目标是降低机器人技术的门槛，让每个人都能贡献自己的力量，并从共享数据集和预训练模型中受益。
+>
+> 🤗 LeRobot 包含最先进的方法，这些方法已被证明可以转移到现实世界，重点是模仿学习和强化学习。
+>
+> 🤗 LeRobot 已提供一系列预训练模型、包含人工收集演示的数据集以及模拟环境，无需组装机器人即可上手。未来几周，我们计划在市面上最经济实惠、性能最强大的机器人上添加更多对现实世界机器人技术的支持。
+>
+> 🤗 LeRobot 在 Hugging Face 社区页面上托管了预训练模型和数据集：huggingface.co/lerobot
+>
+> 
+>
+> ## 四、SmolVLA
+>
+> &emsp;LeRobot框架下的一个450M参数的==视觉-语言-动作==模型，训练于社区共享数据集，适合在消费级硬件（如单GPU或MacBook）上运行，性能优于许多大型模型。
+
+
+
+# 一、RoArm-M2-S环境配置
+
+> [!important]
+>
+> 环境基于ubuntu22.04 ROS2 humble环境搭建
+
+```shell
+sudo apt update && sudo apt upgrade
+sudo apt install git
+git clone https://github.com/DUDULRX/roarm_ws_em0.git      [[下载SDK]]
+
+sudo apt install ros-$ROS_DISTRO-moveit-*                       [[下载依赖]]
+sudo apt install ros-$ROS_DISTRO-foxglove-bridge
+sudo apt autoremove ros-$ROS_DISTRO-moveit-servo-*
+```
+
+> [!tip]
+>
+> 添加ROS2环境进入系统
+
+```shell
+echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
+sudo apt install software-properties-common
+sudo add-apt-repository universe
+sudo apt update && sudo apt install curl -y
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
+sudo apt install python3-pip
+cd ~/roarm_ws_em0
+python3 -m pip install -r requirements.txt
+
+sudo chmod +x build_first.sh
+. build_first.sh
+. build_common.sh
+
+
+colcon build
+colcon build --packages-select roarm_web_app launch_api ros2web_app ros2web_widgets ros2web ros2web_example_py --symlink-install 
+source install/set.bash
+```
+
+> [!note]
+>
+> SDK：  roarm_ws_em0 包介绍
+>
+> - roarm_ws_em0 —— 主要功能包
+>   - roarm_driver：驱动真实机械臂的通信节点
+>   - roarm_description：机械臂模型 URDF
+>   - roarm_moveit：运动学相关配置
+>   - roarm_moveit_ikfast_plugins：运动学求解器
+>   - roarm_moveit_cmd：指令控制相关服务
+>   - roarm_web_app：web端控制
+>   - moveit_servo：手柄控制
+> - roarm_else —— Web 应用相关依赖
+
+# 二、可视化操作RoArm-M2-S
+
+## 1.在rviz2中操作RoArm-M2-S
+
+- ###  **运行机械臂驱动节点**
+
+  ```shell
+  sudo chmod 666 /dev/ttyUSB0
+  ros2 run roarm_driver roarm_driver
+  ```
+
+- ### **查看机械臂模型关节**
+
+  ```shell
+  ros2 launch roarm_description display.launch.py
+  ```
+  
+  ![image-20250614193353595](./10.RabbitRobot_Arm.assets/image-20250614193353595.png)
+  
+  ![image-20250614193605499](./10.RabbitRobot_Arm.assets/image-20250614193605499.png)
+
+## 2.在**Moveit2** 操作RoArm-M2-S
+
+> [!note]
+>
+> ## **Moveit2 简介**
+>
+> MoveIt2 是一个用于机器人运动规划、操作和控制的开源软件。它提供了一套简单的用户接口，可以帮助开发者处理复杂的运动规划问题。
+>
+> MoveIt2 支持多种算法和策略，包括运动规划、运动执行、运动监控、运动学解析、碰撞检测等。它的强大功能使得它在工业、研究和教育领域都得到了广泛的应用。
+>
+> MoveIt2 是在 ROS2（Robot Operating System 2）环境下运行的，可以与其他 ROS2 工具和库无缝集成，大大提高了机器人开发的效率和便捷性。
+>
+> 通过拖拽机械臂的末端点，MoveIt2 能够自动计算出机械臂的运动路径，并通过驱动节点控制机械臂的实际运动。
+
+- 运行机械臂驱动节点
+
+  ```shell
+  ros2 run roarm_driver roarm_driver
+  ```
+
+- 启动Moveit2
+
+  ```shell
+  ros2 launch roarm_moveit interact.launch.py
+  ```
+
+  ![image-20250614194605235](./10.RabbitRobot_Arm.assets/image-20250614194605235.png)
+
+## 3.使用 Foxglove 进行 Web 端控制RoArm-M2-S
+
+> [!note]
+>
+> ## **Foxglove Studio 简介**
+>
+> Foxglove Studio 是一个开源的软件，用于可视化、调试和控制你的机器人。它提供了一个用户友好的界面，让你能够直接与机器人的数据进行交互。Foxglove Studio 支持多种数据格式，包括 ROS（Robot Operating System）消息、JSON、CSV 等。Foxglove Studio 的核心功能包括数据可视化、实时和历史数据查看、布局自定义等。此外，Foxglove Studio 还提供了一个插件系统，允许用户根据需要增加新的功能和工具。
+
+- 运行机械臂驱动节点
+
+  ```shell
+  ros2 run roarm_driver roarm_driver
+  ```
+
+- ==新终端== 开启机械臂控制的相关节点
+
+  ```shell
+  ros2 launch moveit_servo demo.launch.py
+  ```
+
+- ==新终端== 运行 ROS2 中的 Web 应用控制节点
+
+  ```shell
+  ros2 run roarm_moveit_cmd webappcontrol
+  ```
+
+- ==新终端== 启动 Foxglove Web 应用
+
+  ```shell
+  ros2 launch foxglove_bridge foxglove_bridge_launch.xml address:=10.0.0.122
+  ```
+
+  ![image-20250614202922890](./10.RabbitRobot_Arm.assets/image-20250614202922890.png)
+
+  ![image-20250614202953794](./10.RabbitRobot_Arm.assets/image-20250614202953794.png)
+
+  > [!tip]
+  >
+  > ##  **Foxglove**网址：https://app.foxglove.dev/c3405394/dashboard
+
+  <div align="center">
+    <div style="display: flex; gap: 1rem; justify-content: center; align-items: center;" >
+      <img
+        src="8.RabbitRobot_Arm.assets/image-20250614203325617.png"
+        alt="RoArm-M2-S"
+        title="RoArm-M2-S"
+        style="width: 90%;"
+      />
+    </div>
+  
+  | <img src="./10.RabbitRobot_Arm.assets/image-20250614204324314.png" alt="image-20250614204324314" style="zoom:150%;" /> | <img src="./10.RabbitRobot_Arm.assets/image-20250614204642942.png" alt="image-20250614204642942" style="zoom:150%;" /> |
+  | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  
+
+
+
+# 三、通过ROS2 + Movelt2整合实现RoArm-M2-S机械臂物品抓取功能
+
+- ## 流程图
+
+  ```SCSS
+  ┌───────────┐   image_raw    ┌────────────┐   PoseStamped  ┌─────────────┐
+  │ Camera    │ ─────────────> │ camera     │ ─────────────> │ pick_place  │
+  │ node      │                │ node       │                │ (MoveIt2)   │
+  └───────────┘                └────────────┘                └─────────────┘
+                                       ↑                                 │
+                                       │                                 ▼
+                                    calibration                   GripperCmd (topic/service)
+  
+  ```
+
+- ## 启动硬件驱动
+
+  ```bash
+  ros2 run roarm_driver roarm_driver serial_port:=/dev/ttyUSB0
+  ros2 launch roarm_description display.launch.py
+  ros2 launch roarm_moveit interact.launch.py
+  ```
+
+- ## 创建 ROS 2 工作空间
+
+  ```bash
+  sudo mkdir -p ljhroarm_ws/src
+  cd ~/ljhroarm_ws
+  colcon build
+  source install/setup.bash
+  ```
+
+- ### 在 ROS 2 环境安装 ultralytics
+
+  ```bash
+  pip install ultralytics opencv-python cv_bridge
+  sudo apt install ros-jazzy-cv-bridge ros-jazzy-image-transport
+  ```
+
+  
+
+- ## 将RoArm-M2-S机械臂添加到Lerobot，并使用SmolVLA
+
+  > [!important]
+  >
+  > 没事想写的，就是想突出强调一下，这可能是全网第一个且唯一实现的方法
+  >
+  > Author：算个文科生吧     @2025年6月17
+
+  ```shell
+  
+  ```
+
+  
+
+# 四、通过SmolVLA 实现RoArm-M2-S机械臂 的视觉抓取物品功能
+
+> [!note]                                           
+>
+> ## 🧠 VLA — Vision‑Language‑Action 模型
+>
+> - **全称**：Vision‑Language‑Action，即“**视觉–语言–动作”**模型。
+> - **作用**：融合视觉感知、语言理解与动作控制于一体，输入图片（或视频）和指令文本，直接输出机器人动作命令，能让机器人“看+听+做”在一个模型中完成。
+> - **为什么重要**：不再把感知、规划、控制拆解成独立模块，而是通过一个统一Transformer结构来端到端处理，使机器人能更灵活地理解新任务和不熟悉环境。
+>
+> ## 🧩 SmolVLA — 轻量级版本的 VLA
+>
+> - **全称**：SmolVLA（small + VLA），是 LeRobot 发布的一种轻量（≈450M 参数）VLA 模型。
+> - **设计定位**：
+>   - 专为普通 GPU、甚至无 GPU 的用户设计。
+>   - 提供视觉语言编码器（SmolVLM-2） + 动作专家网络（Transformer架构)。
+>   - 支持异步推理、跨模态推理，并尽可能保持性能。
+> - **优势**：
+>   - **高效轻量**：参数量少，能在消费级硬件上运行，但在抓取放置任务上性能不输大模型。
+>   - **开源完整**：模型、训练代码、LeRobot 集成环境都公开供使用者快速上手。
+> - **最佳场景**：适合嵌入式机器人和真实机械臂，用于实现视觉语言驱动的抓取任务。
+>
+> ## 🧮 ACT算法
+>
+> - ACT算法（Adaptive Computation Time / Action Chunking with Transformers）是人工智能领域中多种技术的统称，其核心思想是通过自适应机制优化计算过程或动作规划。
+>
+> - ### ⏱️ **一、自适应计算时间（Adaptive Computation Time, ACT）**
+>
+>   **目标**：动态调整模型在每一步的计算复杂度，优化资源分配
+>
+> - ### **🤖 二、动作分块（Action Chunking with Transformers, ACT）**
+>
+>   **目标**：解决机器人模仿学习中的复合误差问题，提升动作连贯性
+>
+> - ### 👀 **三、自适应压缩跟踪（Adaptive Compressive Tracking）**
+>
+>   **目标**：在视频序列中实现高效鲁棒的目标跟踪
+
+- ## 3D打印机械臂
+
+  <div align="center">
+  <div style="display: flex; gap: 1rem; justify-content: center; align-items: center;" >
+  <a href="https://github.com/lijinghai">
+  <img
+  src="10.RabbitRobot_Arm.assets/粉丝机械臂2.jpg"
+  alt="RabbitRobot_Arm"
+  title="RabbitRobot_Arm"
+  style="width: 45%;" 
+  />
+  <img
+  src="10.RabbitRobot_Arm.assets/image-20250616141738765.png"
+  alt="RabbitRobot_Arm"
+  title="RabbitRobot_Arm"
+  style="width: 52%;"
+  />
+  </a>
+  </div>
+  
+- ## 安装 Miniconda
+
+  - ### 对于Jetson / Pi5
+
+    ```bash
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-aarch64.sh
+    chmod +x Miniconda3-latest-Linux-aarch64.sh
+    ./Miniconda3-latest-Linux-aarch64.sh             # environment location: /home/lijinghai/miniconda3
+    source ~/.bashrc
+    ```
+
+  - ### 对于 X86 Ubuntu 22.04
+
+    ```bash
+    mkdir -p ~/miniconda3
+    cd miniconda3
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+    bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+    rm ~/miniconda3/miniconda.sh
+    source ~/miniconda3/bin/activate
+    conda init --all
+    ```
+
+  - ### 换源
+
+    ```bash
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+    conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+    conda config --set show_channel_urls yes
+    conda update -n base -c defaults conda
+    
+    
+    channels:
+      - defaults
+    show_channel_urls: true
+    default_channels:
+      - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+      - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+      - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+    custom_channels:
+      conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+      msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+      bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+      menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+      pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+      pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+      simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+      deepmodeling: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/
+    auto_activate_base: false
+    ```
+
+  - ### 创建并激活一个新的 conda 环境用于 lerobot
+
+    ```bash
+    conda create -y -n ljhlerobot python=3.10 && conda activate ljhlerobot
+    ```
+
+    | ![image-20250620154834637](./10.RabbitRobot_Arm.assets/image-20250620154834637.png) | <img src="./10.RabbitRobot_Arm.assets/image-20250620154925404.png" alt="image-20250620154925404" style="zoom:150%;" /> |
+    | ------------------------------------------------------------ | ------------------------------------------------------------ |
+
+- ## 安装pytorch 
+
+  ```bash
+  pip install torch==2.5.0+cu118  torchvision==0.16.0+cu118   torchaudio==2.5.0  --extra-index-url https://download.pytorch.org/whl/cu118
+  ```
+
+- ## 安装LeRobot
+
+  ```bash
+  git clone https://gitee.com/Marlboro1998/lerobot_seeed_version.git
+  # 切换集成奥比中光Orbbec Gemini2深度相机，发现单个深度相机效果优于2个RGB相机
+  git checkout orbbec
+  conda install ffmpeg -c conda-forge
+  
+  
+  # 官方
+  git clone https://github.com/huggingface/lerobot.git
+  cd lerobot
+  git fetch origin pull/820/head:pr-820
+  git checkout pr-820
+  python3 -m pip install --user roarm-sdk==0.1.0  
+  
+  
+  pip install -e .
+  pip install -e ".[aloha, pusht]"
+  pip install -e ".[smolvla]"
+  
+  ```
+
+  ![image-20250620165548091](./10.RabbitRobot_Arm.assets/image-20250620165548091.png)
+  
+- ## 校准舵机
+
+  ```bash
+  ls /dev/ttyACM*
+  sudo chmod 666 /dev/ttyACM0
+  python lerobot/scripts/configure_motor.py \
+    --port /dev/ttyACM0 \
+    --brand feetech \
+    --model sts3215 \
+    --baudrate 1000000 \
+    --ID 1
+  ```
+
+  | ![image-20250621161728667](./10.RabbitRobot_Arm.assets/image-20250621161728667.png) | <img src="./10.RabbitRobot_Arm.assets/280775557524a233ccabb4d224aa778.jpg" alt="280775557524a233ccabb4d224aa778" style="zoom: 25%;" /> |
+  | ------------------------------------------------------------ | ------------------------------------------------------------ |
+
+- ## 组装机械臂
+
+| ![IMG_0401](./10.RabbitRobot_Arm.assets/IMG_0401.JPG) | ![IMG_0403](./10.RabbitRobot_Arm.assets/IMG_0403.JPG) | ![IMG_0404](./10.RabbitRobot_Arm.assets/IMG_0404.JPG) |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| ![IMG_0406](./10.RabbitRobot_Arm.assets/IMG_0406.JPG) | ![IMG_0409](./10.RabbitRobot_Arm.assets/IMG_0409.JPG) | ![IMG_0410](./10.RabbitRobot_Arm.assets/IMG_0410.JPG) |
+| ![IMG_0411](./10.RabbitRobot_Arm.assets/IMG_0411.JPG) | ![IMG_0412](./10.RabbitRobot_Arm.assets/IMG_0412.JPG) | ![IMG_0413](./10.RabbitRobot_Arm.assets/IMG_0413.JPG) |
+| ![IMG_0414](./10.RabbitRobot_Arm.assets/IMG_0414.JPG) |                                                       |                                                       |
+
+- ## 校准机械臂
+
+  ```bash
+  #  follower  机械臂校准 
+  python lerobot/scripts/control_robot.py \
+    --robot.type=so101 \
+    --robot.cameras='{}' \
+    --control.type=calibrate \
+    --control.arms='["main_follower"]'
+  ```
+  
+  | <img src="./10.RabbitRobot_Arm.assets/a12369ffc53607f2598f7d49b1ba187.jpg" alt="a12369ffc53607f2598f7d49b1ba187"  /> | ![07994296e2cbbf32c784c84c9810e87](./10.RabbitRobot_Arm.assets/07994296e2cbbf32c784c84c9810e87.jpg) | ![fa3ec61efd54dc443f9fbd30d21f6f5](./10.RabbitRobot_Arm.assets/fa3ec61efd54dc443f9fbd30d21f6f5.jpg) |
+  | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  
+  ![image-20250622144356346](./10.RabbitRobot_Arm.assets/image-20250622144356346.png)
+  
+- ## 遥操作
+
+  ```bash
+  python lerobot/scripts/control_robot.py \
+    --robot.type=so101 \
+    --robot.cameras='{}' \
+    --control.type=teleoperate
+  ```
+
+- ## 添加摄像头
+
+  ```bash
+  python lerobot/scripts/control_robot.py \
+    --robot.type=so101 \
+    --control.type=teleoperate \
+    --control.display_data=true
+  ```
+
+- ## 配置Wandb.ai   进行要使用[权重和偏差](https://docs.wandb.ai/quickstart)进行实验跟踪，
+
+  网站： https://wandb.ai/home
+
+  配置`WANDB_API_KEY` [环境变量](https://docs.wandb.ai/guides/track/environment-variables/)。
+
+  ```shell
+  export WANDB_API_KEY=<your-wandb-api-key>b
+  ```
+
+  安装`wandb`库并登录。
+
+  ```bash
+  pip install wandb
+  wandb login 
+  ```
+
+  ![image-20250807122018061](./10.RabbitRobot_Arm.assets/image-20250807122018061.png)
+
+- ## 安装并启动机械臂摄像头(USB) 节点
+
+  ```bash
+  # 1. 安装 camera_ros
+  source /opt/ros/jazzy/setup.bash
+  sudo apt update
+  sudo apt install ros-jazzy-usb-cam
+  ```
+
+- ## 连接HuggingFace
+
+  ![image-20250805183119953](./10.RabbitRobot_Arm.assets/image-20250805183119953.png)
+
+- ##  录制数据集
+
+  > [!tip]
+  >
+  > - 可以先收集一个较小的数据集（比如 5 条）熟悉整个操作流程，熟悉之后就可以创建一个更大的数据集用于训练。
+  > - 一个好的开始任务是将一个有颜色的长方块物体抓到盒子中，抓取物体应该有较明显的颜色标识，比如黄色，长方体便于机械臂抓取且不会被机械臂遮挡视野。
+  > - 建议至少记录 50 个场景，每个位置 10 个场景，保持相机固定，并在整个录制过程中保持一致的抓取行为。
+  
+  ```bash
+  # 采集数据
+  python lerobot/scripts/control_robot.py \
+  --robot.type=so101 \
+  --control.type=record \
+  --control.fps=30 \
+  --control.single_task="把药放在篮子里" \
+  --control.repo_id=lijinghai/ljh_robot \
+  --control.tags='["so101","tutorial"]' \
+  --control.warmup_time_s=5 \
+  --control.episode_time_s=30 \
+  --control.reset_time_s=30 \
+  --control.num_episodes=50 \
+  --control.display_data=true \
+  --control.push_to_hub=true
+  ```
+  
+- ## 上传到HugginFace
+
+  - ### 检查登录状态
+
+    ```bash
+    huggingface-cli whoami
+    ```
+
+    ![image-20250807120803196](./10.RabbitRobot_Arm.assets/image-20250807120803196.png)
+
+  - ###  创建数据集仓库
+
+    ```bash
+    huggingface-cli repo create ljh_robot --type dataset
+    ```
+
+    ![image-20250807120838289](./10.RabbitRobot_Arm.assets/image-20250807120838289.png)
+
+  - ### 上传本地数据
+
+    ```bash
+    # 进入你的数据目录
+    cd "C:\Users\lijinghai\.cache\huggingface\lerobot\lijinghai"
+    
+    # 上传数据到 HuggingFace Hub
+    huggingface-cli upload lijinghai/ljh_robot . --include "**/*"
+    ```
+
+    ![image-20250807120933445](./10.RabbitRobot_Arm.assets/image-20250807120933445.png)
+
+- ##  训练
+
+  ```bash
+  python lerobot/scripts/train.py --dataset.repo_id=lijinghai/ljh_robot --policy.type=act --output_dir=outputs/train/act_ljh_robot --job_name=act_ljh_robot --policy.device=cuda --wandb.enable=true
+  ```
+
+  ![image-20250806223346768](./10.RabbitRobot_Arm.assets/image-20250806223346768.png)
+
+
+
+
+
+## 接入ROS2
+
+```bash
+https://github.com/Pavankv92/lerobot_ws.git
+```
+
+
+
+# 五、遇到的问题
+
+> [!warning]
+>
+> - ## 在树莓派中进行编译Moveit2时，直接陷入卡死状态
+
+### &emsp; 原因是：Moveit2默认编译是4个进程同步进行
+
+### &emsp;解决方法：构建编译时候通过参数设置==2个线程==
+
+```shell
+colcon build --parallel-workers 2                                 # 方法一
+colcon build --packages-select moveit_servo --parallel-workers 1  # 方法二
+```

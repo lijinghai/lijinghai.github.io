@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RabbitRobot_D435_L1_RTABMap | RabbitRobot</title>
+  <meta name="description" content="D435/L1/RTAB-Map 链路融合 Unitree L1、Intel RealSense D435/Gemini 系列相机和 IMU 数据，为 RabbitRobot 提供三维建图、视觉点云和定位验证能力。">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+  <nav class="detail-nav" aria-label="Project navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
+        <span>RabbitRobot</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#projects">Project Matrix</a>
+        <a href="../index.html#research">VLN Focus</a>
+        <a href="../index.html#repositories">Snapshots</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">三维建图与定位</p>
+      <h1>RabbitRobot_D435_L1_RTABMap</h1>
+      <p class="subtitle">多传感器建图导航</p>
+      <p class="summary">D435/L1/RTAB-Map 链路融合 Unitree L1、Intel RealSense D435/Gemini 系列相机和 IMU 数据，为 RabbitRobot 提供三维建图、视觉点云和定位验证能力。</p>
+      <div class="meta-row">
+        <span class="meta-pill">Time · 2026.07</span>
+        <span class="meta-pill">Source · ljh_rtabmap_LTME02A_Gemini335 README</span>
+        <span class="meta-pill">Repo · lijinghai/ljh_rtabmap_LTME02A_Gemini335</span>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <img src="../images/rabbitrobot/rtabmap_overview.png" alt="RabbitRobot_D435_L1_RTABMap">
+    </figure>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">What It Does</p>
+          <h2>项目做的是什么</h2>
+          <ul class="highlight-list"><li>整理 RGB-D、LiDAR、IMU、TF、Madgwick 滤波和 RTAB-Map 工作空间的启动路径。</li><li>用 RViz/rtabmap_viz 验证彩色点云、深度对齐、话题映射和建图效果。</li><li>连接 HandLiDAR 的地图采集与 AMR 的导航执行，是场景表示的重要中间层。</li></ul>
+        </div>
+        <aside>
+          <p class="kicker">Stack</p>
+          <h2>技术关键词</h2>
+          <div class="stack"><span class="tag">RTAB-Map</span><span class="tag">FAST-LIO2</span><span class="tag">D435</span><span class="tag">Gemini335</span><span class="tag">Unitree L1</span><span class="tag">IMU</span><span class="tag">TF</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">VLN Relation</p>
+          <h2>和当前 VLN 主线的关系</h2>
+          <div class="note-panel">VLN 的 grounding 需要视觉和几何信息，这条链路负责把真实场景转成可被策略引用的地图和观测。</div>
+        </div>
+        <div>
+          <p class="kicker">Craft Record</p>
+          <h2>工程痕迹</h2>
+          <p>这个项目保留了从硬件选型、结构验证、驱动调试、话题链路到现场反馈的连续记录。页面里放的不是单独的效果截图，而是一段可回溯的迭代线索。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Media</p>
+        <h2>关键画面</h2>
+        <div class="gallery">
+          <figure>
+              <img src="../images/rabbitrobot/rtabmap_overview.png" alt="RabbitRobot_D435_L1_RTABMap">
+              <figcaption>RabbitRobot_D435_L1_RTABMap</figcaption>
+            </figure><figure>
+              <img src="../images/rabbitrobot/rtabmap_rviz_pointcloud.png" alt="RabbitRobot_D435_L1_RTABMap 关键画面 2">
+              <figcaption>RabbitRobot_D435_L1_RTABMap 关键画面 2</figcaption>
+            </figure><figure>
+              <img src="../images/rabbitrobot/hand_lidar_prototype.jpg" alt="RabbitRobot_D435_L1_RTABMap 关键画面 3">
+              <figcaption>RabbitRobot_D435_L1_RTABMap 关键画面 3</figcaption>
+            </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">README Snapshot</p>
+        <h2>README / 项目说明片段</h2>
+        <div class="readme-box">
+          <h2>LTME-02A + Gemini 335 + RTAB-Map 融合建图项目</h2>
+<p>本项目用于在 ROS 2 Humble 环境下，把 <strong>力策 LTME-02A 2D 激光雷达</strong> 和 <strong>Orbbec Gemini 335 RGB-D 深度相机</strong> 接入 <strong>RTAB-Map</strong>，实现雷达、深度相机、里程计、地图和 RViz 的一键启动。</p>
+<p>当前默认方案已经不是单独看雷达，也不是只跑深度相机，而是完整融合：</p>
+<pre><code>Gemini335 RGB + Depth + CameraInfo -&gt; rgbd_sync ------&gt; /rgbd_image
+/rgbd_image -&gt; rtabmap_odom/rgbd_odometry ------------&gt; /odom
+LTME-02A /scan ---------------------------------------&gt; rtabmap
+/rgbd_image + /scan + /odom --------------------------&gt; rtabmap -&gt; /map + /mapData + /cloud_map</code></pre>
+<p>也就是说，RTAB-Map 同时拿到了：</p>
+<ul>
+<li>LTME-02A 雷达扫描 <code>/scan</code></li>
+<li>Gemini335 RGB-D 同步数据 <code>/rgbd_image</code></li>
+<li>默认由 RGB-D 里程计计算出来的 <code>/odom</code>；需要雷达 ICP 里程计时可用 <code>USE_ICP_ODOM=true</code> 切换</li>
+</ul>
+<blockquote>重要：当前链路已经融合运行，但要得到几何上准确的地图，还需要继续精调 <code>base_link -&gt; laser</code> 和 <code>base_link -&gt; camera_link</code> 外参。</blockquote>
+<p>---</p>
+<h3>运行截图</h3>
+<p>以下截图由当前项目实际启动后在 RViz 中抓取，截图文件位于 <code>docs/images/</code>。</p>
+<h4>RTAB-Map 融合建图视图</h4>
+<p>该视图由 <code>./scripts/start_gemini335_rtabmap.sh</code> 启动，包含 LTME-02A 雷达扫描、Gemini335 彩色/深度图像、RTAB-Map 点云地图和 2D 栅格地图。</p>
+<h4>雷达与深度相机外参校准视图</h4>
+<p>该视图由 <code>./scripts/start_fusion_calibration.sh</code> 启动，重点显示 LTME-02A <code>/scan</code> 与 Gemini335 <code>/camera/depth_registered/points</code>，用于观察雷达扫描线和深度点云是否在同一空间位置上对齐。</p>
+<h4>2026-06-23 本轮彩色 RTAB-Map 截图</h4>
+<p>这张图是本轮重新启动当前项目后抓取的 RViz 彩色截图，使用 <code>rviz/color_rtabmap_screenshot.rviz</code> 显示 <code>/map</code>、<code>/cloud_map</code>、<code>/mapData</code> 和 TF。注意：当前现场 RGB 画面本身偏灰白，所以点云虽然按 RGB8 彩色显示，视觉上仍然比较浅；这不是单色占据栅格，而是实际 RGB 点云颜色较淡。</p>
+<h4>2026-06-23 当前 TF 树</h4>
+<p>这张图根据本轮运行中的 <code>ros2 run tf2_tools view_frames</code> 输出整理，当前主链路为 <code>map -&gt; odom -&gt; base_link</code>，雷达和 Gemini335 都挂在 <code>base_link</code> 下。</p>
+<p>当前 TF 拓扑：</p>
+<pre><code>map
+└── odom                    # 动态 TF，约 20 Hz
+    └── base_link            # 动态 TF，约 12 Hz
+        ├── laser            # 静态 TF，LTME-02A
+        └── camera_link      # 静态 TF，Gemini335 安装外参
+            └── camera_depth_frame
+                ├── camera_color_frame
+                │   └── camera_color_optical_frame
+                └── camera_depth_optical_frame</code></pre>
+<p>本轮实测 <code>view_frames</code> 日志：<code>docs/logs/codex_tf_tree_current.log</code>。</p>
+<h4>2026-06-23 本轮操作记录</h4>
+<p>本轮重新检查并确认的 RTAB-Map 建图链路：</p>
+<pre><code>/scan          LTME-02A 雷达扫描输入
+/rgbd_image    Gemini335 RGB + Depth 同步输入
+/odom          RGB-D odometry 默认输出；可切换 LiDAR ICP
+/map           RTAB-Map 2D OccupancyGrid
+/mapData       RTAB-Map 图优化与 MapCloud 数据
+/cloud_map     RTAB-Map 彩色点云地图
+/tf, /tf_static 当前坐标树</code></pre>
+<p>本轮保留的关键配置：</p>
+<pre>| 项目 | 当前值 | 说明 |</pre>
+<pre>|------|--------|------|</pre>
+<pre>| `USE_SCAN` | `true` | RTAB-Map 订阅 `/scan`，雷达参与栅格/障碍物融合 |</pre>
+<pre>| `GRID_SENSOR` / `Grid/Sensor` | `2` | 当前效果最好；尝试 `1` 后 `/cloud_map` 点数明显变少，已恢复为 `2` |</pre>
+<pre>| `Grid/3D` | `true` | 开启 3D 栅格/点云建图 |</pre>
+<pre>| `Grid/FromDepth` | `true` | 使用 RGB-D 深度生成地图 |</pre>
+<pre>| `Grid/RangeMax` | `8.0` | 限制深度/栅格有效距离 |</pre>
+<pre>| `camera_x/y/z` | `0.08 / 0.00 / 0.18` | `base_link -&gt; camera_link` 当前外参 |</pre>
+<pre>| `camera_roll/pitch/yaw` | `0 / 0 / 0` | 当前相机姿态外参 |</pre>
+<pre>| `laser_x/y/z` | `0.00 / 0.00 / 0.10` | `base_link -&gt; laser` 当前外参 |</pre>
+<p class="excerpt-note">完整 README 已保存在本站快照中，可从本页底部打开。</p>
+        </div>
+        <div class="source-actions">
+          <a class="button primary" href="readmes/rabbitrobot-d435-l1-rtabmap.md">Open Local README Snapshot</a>
+          <a class="button" href="https://github.com/lijinghai/ljh_rtabmap_LTME02A_Gemini335" target="_blank" rel="noreferrer">Source Repository</a>
+          <a class="button" href="../index.html#projects">Back to Project Matrix</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">RabbitRobot · RabbitRobot_D435_L1_RTABMap · 本页是 GitHub Pages 内部项目详情页。</div>
+  </footer>
+</body>
+</html>

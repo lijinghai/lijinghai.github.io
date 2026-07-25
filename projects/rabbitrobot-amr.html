@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RabbitRobot_AMR | RabbitRobot</title>
+  <meta name="description" content="RabbitRobot_AMR 是整个项目群的底盘主线：从最初能跑起来的移动平台，逐步沉淀为 ROS2、SLAM、Nav2、传感器融合和真实场景数据采集的核心实验平台。">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+  <nav class="detail-nav" aria-label="Project navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
+        <span>RabbitRobot</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#projects">Project Matrix</a>
+        <a href="../index.html#research">VLN Focus</a>
+        <a href="../index.html#repositories">Snapshots</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">核心实验平台</p>
+      <h1>RabbitRobot_AMR</h1>
+      <p class="subtitle">移动底盘与核心项目</p>
+      <p class="summary">RabbitRobot_AMR 是整个项目群的底盘主线：从最初能跑起来的移动平台，逐步沉淀为 ROS2、SLAM、Nav2、传感器融合和真实场景数据采集的核心实验平台。</p>
+      <div class="meta-row">
+        <span class="meta-pill">Time · 2025.06-2026</span>
+        <span class="meta-pill">Source · RabbitRobot 项目群 README</span>
+        <span class="meta-pill">Repo · lijinghai/RabbitRobot</span>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <img src="../images/rabbitrobot/omni_car_lab_pair.jpg" alt="RabbitRobot_AMR">
+    </figure>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">What It Does</p>
+          <h2>项目做的是什么</h2>
+          <ul class="highlight-list"><li>围绕真实移动底盘积累 ROS2 节点、TF、里程计、雷达、相机和底层驱动调试记录。</li><li>覆盖 Cartographer、FAST-LIO2、Point-LIO2、RTAB-Map、Nav2 等导航建图链路。</li><li>保留多轮结构打样、安装布置、线束整理和现场测试结果，便于后续 AMR2 与 VLN 复用。</li></ul>
+        </div>
+        <aside>
+          <p class="kicker">Stack</p>
+          <h2>技术关键词</h2>
+          <div class="stack"><span class="tag">ROS2</span><span class="tag">Nav2</span><span class="tag">SLAM</span><span class="tag">TF</span><span class="tag">LiDAR</span><span class="tag">RGB-D</span><span class="tag">STM32</span><span class="tag">Jetson</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">VLN Relation</p>
+          <h2>和当前 VLN 主线的关系</h2>
+          <div class="note-panel">AMR 是 VLN 的底座能力来源：只有底盘执行、定位和地图链路稳定，语言策略生成的 waypoint 才能在真车上被验证。</div>
+        </div>
+        <div>
+          <p class="kicker">Craft Record</p>
+          <h2>工程痕迹</h2>
+          <p>这个项目保留了从硬件选型、结构验证、驱动调试、话题链路到现场反馈的连续记录。页面里放的不是单独的效果截图，而是一段可回溯的迭代线索。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Media</p>
+        <h2>关键画面</h2>
+        <div class="gallery">
+          <figure>
+              <img src="../images/rabbitrobot/omni_car_lab_pair.jpg" alt="RabbitRobot_AMR">
+              <figcaption>RabbitRobot_AMR</figcaption>
+            </figure><figure>
+              <img src="../images/rabbitrobot/omni_car_amr_front.jpg" alt="RabbitRobot_AMR 关键画面 2">
+              <figcaption>RabbitRobot_AMR 关键画面 2</figcaption>
+            </figure><figure>
+              <img src="../images/rabbitrobot/robot_photo.jpg" alt="RabbitRobot_AMR 关键画面 3">
+              <figcaption>RabbitRobot_AMR 关键画面 3</figcaption>
+            </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">README Snapshot</p>
+        <h2>README / 项目说明片段</h2>
+        <div class="readme-box">
+          <h2>RabbitRobot</h2>
+<p><strong>面向端到端规划研究的 ROS2 机器人项目群</strong></p>
+<p><span>github.com/lijinghai/RabbitRobot</span></p>
+<p>---</p>
+<h3>项目定位</h3>
+<p>RabbitRobot 是一个以 <strong>ROS2 移动机器人</strong> 为核心、逐步扩展到 <strong>手持建图、具身智能机械臂、场景化服务机器人与端到端规划研究</strong> 的个人机器人项目群。</p>
+<p>这个仓库不是单一 demo，而是一个长期积累的机器人研发工作区：里面包含真实硬件调试记录、ROS2 代码、SLAM / Nav2 / 感知实验、SolidWorks 结构设计、Obsidian 技术笔记、产品场景调研和展示网站。</p>
+<p>当前最重要的研究主线是：</p>
+<blockquote><strong>在真实移动机器人平台上，研究窄通道、低附着、复杂场景下的端到端局部规划与传统 Nav2 规划方法的对比。</strong></blockquote>
+<p>具体落点包括：</p>
+<ul>
+<li>用 AMR 小车采集真实 <code>scan / odom / cmd_vel / goal</code> 数据；</li>
+<li>以 Nav2、DWB、Pure Pursuit、MPC 等传统方法作为专家或 baseline；</li>
+<li>训练端到端局部 planner，从 LiDAR / costmap / goal 直接输出 <code>cmd_vel</code> 或未来轨迹；</li>
+<li>在鸡场窄通道、室内走廊等真实场景中做闭环验证。</li>
+</ul>
+<p>---</p>
+<h3>项目全景</h3>
+<pre><code>graph TB
+    R[&quot;RabbitRobot 项目群&quot;]
+
+    R --&gt; AMR[&quot;RabbitRobot_AMR&lt;br/&gt;移动机器人底盘 / 核心研究平台&quot;]
+    R --&gt; ARM[&quot;RabbitRobot_Arm&lt;br/&gt;LeRobot / SmolVLA / 机械臂&quot;]
+    R --&gt; LIDAR[&quot;RabbitRobot_HandLiDAR&lt;br/&gt;手持 4D LiDAR 建图仪&quot;]
+    R --&gt; SCFH[&quot;RabbitRobot_SCFH&lt;br/&gt;智慧鸡场净环机器人&quot;]
+    R --&gt; ELDER[&quot;RabbitRobot_ElderBuddy&lt;br/&gt;老人陪伴机器人概念&quot;]
+    R --&gt; WEB[&quot;RabbitRobot_Web&lt;br/&gt;项目展示网站&quot;]
+
+    AMR --&gt; NAV[&quot;Nav2 / DWB / SLAM / EKF / 底盘控制&quot;]
+    AMR --&gt; E2E[&quot;端到端局部规划研究&quot;]
+    LIDAR --&gt; MAP[&quot;高质量地图采集&quot;]
+    SCFH --&gt; SCENE[&quot;窄通道真实应用场景&quot;]
+    ARM --&gt; VLA[&quot;具身智能与 VLA 实验&quot;]</code></pre>
+<p>---</p>
+<h3>目录结构</h3>
+<pre><code>RabbitRobot/
+├── RabbitRobot_AMR/          # 移动机器人底盘，项目核心
+├── RabbitRobot_Arm/          # 具身智能机械臂，LeRobot / SmolVLA 实验
+├── RabbitRobot_HandLiDAR/    # 手持雷达建图仪，LiDAR + 视觉融合建图
+├── RabbitRobot_SCFH/         # 智慧鸡场净环机器人，窄通道应用场景
+├── RabbitRobot_ElderBuddy/   # 老人陪伴机器人概念设计与调研
+├── RabbitRobot_Web/          # 项目宣传网站
+├── README.assets/            # README 图片资源
+├── 素材/                     # 外部资料与素材，默认不纳入核心维护
+├── README.md                 # 项目主页
+├── 修改建议.md               # 当前 AMR 控制链路和导航问题分析
+├── RabbitRobot.xmind         # 项目脑图
+└── RabbitRobot_架构图.excalidraw</code></pre>
+<p>---</p>
+<h3>核心项目：RabbitRobot_AMR</h3>
+<p><span>RabbitRobot_AMR/</span> 是整个仓库的主线项目，目标是构建一个可以持续迭代的 ROS2 自主移动机器人平台。</p>
+<h4>迭代版本</h4>
+<pre>| 版本 | 时间 | 定位 | 主要内容 |</pre>
+<pre>|---|---:|---|---|</pre>
+<pre>| V1.0 | 2025.06 - 2025.09 | 四驱原型车 | 树莓派 5、思岚 A1、宇树 L1、DABAI DCW2、Cartographer、Nav2、视觉感知 |</pre>
+<pre>| V2.0 | 2025.10 | 四驱升级车 | Jetson Orin Nano Super、C50C、MID360、VLP-16、FAST-LIO2、Point-LIO2、Autoware |</pre>
+<pre>| V3.0 | 2026.03 | 平衡车方向 | Hoverboard FOC、STM32、ST-Link、IMU 接入 |</pre>
+<pre>| V4.0 | 2026.03+ | 全向轮方向 | SolidWorks 建模与全向移动底盘探索 |</pre>
+<h4>已覆盖能力</h4>
+<ul>
+<li>ROS2 Humble / Jazzy 工程实践；</li>
+<li>2D LiDAR 与 4D LiDAR 建图；</li>
+<li>Cartographer、FAST-LIO2、Point-LIO2、RTAB-Map；</li>
+<p class="excerpt-note">完整 README 已保存在本站快照中，可从本页底部打开。</p>
+</ul>
+        </div>
+        <div class="source-actions">
+          <a class="button primary" href="readmes/rabbitrobot-amr.md">Open Local README Snapshot</a>
+          <a class="button" href="https://github.com/lijinghai/RabbitRobot" target="_blank" rel="noreferrer">Source Repository</a>
+          <a class="button" href="../index.html#projects">Back to Project Matrix</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">RabbitRobot · RabbitRobot_AMR · 本页是 GitHub Pages 内部项目详情页。</div>
+  </footer>
+</body>
+</html>

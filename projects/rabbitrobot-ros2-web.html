@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RabbitRobot_ROS2_Web | RabbitRobot</title>
+  <meta name="description" content="ROS2 Web 控制台把地图可视化、图层开关、导航控制、任务管理、状态监控和日志入口搬进浏览器，减少机器人调试对 RViz 单机环境的依赖。">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+  <nav class="detail-nav" aria-label="Project navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
+        <span>RabbitRobot</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#projects">Project Matrix</a>
+        <a href="../index.html#research">VLN Focus</a>
+        <a href="../index.html#repositories">Snapshots</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">机器人操作界面</p>
+      <h1>RabbitRobot_ROS2_Web</h1>
+      <p class="subtitle">AMR Web 控制台</p>
+      <p class="summary">ROS2 Web 控制台把地图可视化、图层开关、导航控制、任务管理、状态监控和日志入口搬进浏览器，减少机器人调试对 RViz 单机环境的依赖。</p>
+      <div class="meta-row">
+        <span class="meta-pill">Time · 2026.07</span>
+        <span class="meta-pill">Source · ljh_robot_ros2_web GitHub README</span>
+        <span class="meta-pill">Repo · lijinghai/ljh_robot_ros2_web</span>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <img src="../images/rabbitrobot/ros2_web_home.png" alt="RabbitRobot_ROS2_Web">
+    </figure>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">What It Does</p>
+          <h2>项目做的是什么</h2>
+          <ul class="highlight-list"><li>React/TypeScript 前端，通过 WebSocket/rosbridge 接入 ROS/ROS2 数据。</li><li>支持地图、激光、点云、路径、机器人模型等图层化可视化。</li><li>面向真车调试，把单点/多点导航、重定位、手动控制和系统状态放到统一界面。</li></ul>
+        </div>
+        <aside>
+          <p class="kicker">Stack</p>
+          <h2>技术关键词</h2>
+          <div class="stack"><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Three.js</span><span class="tag">roslib</span><span class="tag">WebSocket</span><span class="tag">ROS2</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">VLN Relation</p>
+          <h2>和当前 VLN 主线的关系</h2>
+          <div class="note-panel">VLN 实验需要快速标注目标、触发任务和回看状态，Web 控制台是人机协同调试入口。</div>
+        </div>
+        <div>
+          <p class="kicker">Craft Record</p>
+          <h2>工程痕迹</h2>
+          <p>这个项目保留了从硬件选型、结构验证、驱动调试、话题链路到现场反馈的连续记录。页面里放的不是单独的效果截图，而是一段可回溯的迭代线索。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Media</p>
+        <h2>关键画面</h2>
+        <div class="gallery">
+          <figure>
+              <img src="../images/rabbitrobot/ros2_web_home.png" alt="RabbitRobot_ROS2_Web">
+              <figcaption>RabbitRobot_ROS2_Web</figcaption>
+            </figure><figure>
+              <img src="../images/rabbitrobot/ros2_web_single_nav.png" alt="RabbitRobot_ROS2_Web 关键画面 2">
+              <figcaption>RabbitRobot_ROS2_Web 关键画面 2</figcaption>
+            </figure><figure>
+              <img src="../images/rabbitrobot/amr2_web_navigation.jpg" alt="RabbitRobot_ROS2_Web 关键画面 3">
+              <figcaption>RabbitRobot_ROS2_Web 关键画面 3</figcaption>
+            </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">README Snapshot</p>
+        <h2>README / 项目说明片段</h2>
+        <div class="readme-box">
+          <h2>🤖 算个文科生吧 · AMR 控制台</h2>
+<p><strong>基于 Web 技术的机器人控制与可视化平台</strong></p>
+<p>---</p>
+<h3>🎯 项目简介</h3>
+<p><strong>AMR 控制台</strong> 是一个基于 Web 技术的机器人控制与可视化平台，专为自主移动机器人（AMR）设计。通过 WebSocket 连接 ROS 系统，提供实时 3D 可视化、地图编辑、导航控制、任务管理等核心功能，让机器人操作变得直观高效。</p>
+<h4>✨ 核心优势</h4>
+<pre>| 特性 | 说明 |</pre>
+<pre>|:----:|:----|</pre>
+<pre>| 🌐 **零安装部署** | 纯 Web 应用，无需安装客户端 |</pre>
+<pre>| 🎨 **现代化 UI** | 基于 React 19 构建的响应式界面 |</pre>
+<pre>| 🚀 **高性能渲染** | Three.js 驱动的实时 3D 可视化 |</pre>
+<pre>| 🔌 **ROS 集成** | 完整的 ROS/ROS2 消息支持 |</pre>
+<pre>| 🎛️ **灵活配置** | 可自定义的图层系统和主题 |</pre>
+<p>---</p>
+<h3>📸 界面预览</h3>
+<h4>登录页面</h4>
+<h4>主界面</h4>
+<p>---</p>
+<h3>✨ 功能特性</h3>
+<h4>🗺️ 地图可视化</h4>
+<ul>
+<li><strong>多图层系统</strong> - 支持栅格地图、代价地图、激光扫描、点云、路径等多种图层</li>
+<li><strong>2D/3D 视图切换</strong> - 灵活的视角切换，满足不同场景需求</li>
+<li><strong>实时更新</strong> - 基于 WebSocket 的实时数据流，低延迟可视化</li>
+<li><strong>图层管理</strong> - 独立的图层控制面板，支持显示/隐藏、透明度、颜色等配置</li>
+</ul>
+<p>&lt;em&gt;建图功能界面&lt;/em&gt;</p>
+<h4>🎮 机器人控制</h4>
+<ul>
+<li><strong>导航控制</strong> - 支持目标点导航、路径规划与跟踪</li>
+<li><strong>手动控制</strong> - 实时速度控制面板，支持线速度和角速度调节</li>
+<li><strong>重定位功能</strong> - 可视化重定位，支持在地图上直接设置机器人初始位姿</li>
+<li><strong>紧急停止</strong> - 一键紧急停止功能，保障安全</li>
+</ul>
+<p>&lt;em&gt;导航控制界面&lt;/em&gt;</p>
+<p>&lt;em&gt;Web端导航界面&lt;/em&gt;</p>
+<h4>单点导航</h4>
+<p>&lt;table&gt;</p>
+<p>&lt;tr&gt;</p>
+<p>&lt;td align=&quot;center&quot;&gt;</p>
+<p>&lt;em&gt;Web端单点导航&lt;/em&gt;</p>
+<p>&lt;/td&gt;</p>
+<p>&lt;td align=&quot;center&quot;&gt;</p>
+<p>&lt;em&gt;RViz单点导航对比&lt;/em&gt;</p>
+<p>&lt;/td&gt;</p>
+<p>&lt;/tr&gt;</p>
+<p>&lt;/table&gt;</p>
+<h4>多点导航</h4>
+<p class="excerpt-note">完整 README 已保存在本站快照中，可从本页底部打开。</p>
+        </div>
+        <div class="source-actions">
+          <a class="button primary" href="readmes/rabbitrobot-ros2-web.md">Open Local README Snapshot</a>
+          <a class="button" href="https://github.com/lijinghai/ljh_robot_ros2_web" target="_blank" rel="noreferrer">Source Repository</a>
+          <a class="button" href="../index.html#projects">Back to Project Matrix</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">RabbitRobot · RabbitRobot_ROS2_Web · 本页是 GitHub Pages 内部项目详情页。</div>
+  </footer>
+</body>
+</html>
