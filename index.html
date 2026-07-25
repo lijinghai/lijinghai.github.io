@@ -600,7 +600,7 @@
 
     .project-table {
       width: 100%;
-      min-width: 820px;
+      min-width: 960px;
       border-collapse: collapse;
       font-size: 15px;
     }
@@ -627,6 +627,21 @@
     .project-table b {
       display: block;
       color: var(--blue);
+    }
+
+    .project-time time {
+      display: block;
+      color: var(--dark);
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .project-time span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
     }
 
     .tag-list {
@@ -1305,6 +1320,7 @@
             <thead>
               <tr>
                 <th>Project</th>
+                <th>Time</th>
                 <th>Role</th>
                 <th>Current Focus</th>
                 <th>Stack / Keywords</th>
@@ -1313,66 +1329,77 @@
             <tbody>
               <tr>
                 <td><b>RabbitRobot_AMR</b>移动底盘与核心项目</td>
+                <td class="project-time"><time datetime="2025-06">2025.06-2026</time><span>底盘主线</span></td>
                 <td>核心实验平台</td>
                 <td>底盘控制、建图、导航、局部规划和真实数据采集。</td>
                 <td><span class="tag-list"><span class="tag">ROS2</span><span class="tag">Nav2</span><span class="tag">FAST-LIO2</span><span class="tag">Point-LIO2</span></span></td>
               </tr>
               <tr>
                 <td><b>RabbitRobot_AMR2</b>轮毂伺服真车平台</td>
+                <td class="project-time"><time datetime="2026-07">2026.07+</time><span>当前真车</span></td>
                 <td>VLN 真车执行底座</td>
                 <td>用 DS20270C CAN 轮毂伺服差速底盘、MID360、Fast-LIO、ICP、Nav2 MPPI、速度平滑和避障保护，承接 VLN waypoint 的真实执行与 rosbag 数据回收。</td>
                 <td><span class="tag-list"><span class="tag">Hub-Wheel AMR</span><span class="tag">DS20270C</span><span class="tag">MID360</span><span class="tag">Nav2 MPPI</span><span class="tag">Collision Monitor</span></span></td>
               </tr>
               <tr>
                 <td><b>RabbitRobot_VLN</b>视觉语言导航主线</td>
+                <td class="project-time"><time datetime="2026-07">2026.07+</time><span>当前研究</span></td>
                 <td>当前研究主线</td>
                 <td>把自然语言指令、视觉/地图 grounding、waypoint 规划和真实 AMR 执行评估串成闭环。</td>
                 <td><span class="tag-list"><span class="tag">VLN</span><span class="tag">VLM</span><span class="tag">Embodied Navigation</span><span class="tag">ROS2</span></span></td>
               </tr>
               <tr>
                 <td><b>RabbitRobot_Sweeper V1.0</b>扫地机第一代原型</td>
+                <td class="project-time"><time datetime="2026-07">2026.07</time><span>原型归档</span></td>
                 <td>清扫场景原型</td>
                 <td>用实物底盘验证清扫机构、供电、驱动、布线和 ROS2 接入前的硬件布局。</td>
                 <td><span class="tag-list"><span class="tag">Cleaning AMR</span><span class="tag">Sweeper</span><span class="tag">Field Test</span></span></td>
               </tr>
               <tr>
                 <td><b>RabbitRobot_HandLiDAR</b>手持雷达建图仪</td>
+                <td class="project-time"><time datetime="2026-07">2026.07</time><span>建图工具</span></td>
                 <td>地图生产工具</td>
                 <td>为 AMR 和场景实验提供更高质量地图与传感器数据。</td>
                 <td><span class="tag-list"><span class="tag">Unitree L1</span><span class="tag">D435</span><span class="tag">RTAB-Map</span><span class="tag">SLAM</span></span></td>
               </tr>
               <tr>
                 <td><b>RabbitRobot_ROS2_Web</b>AMR Web 控制台</td>
+                <td class="project-time"><time datetime="2026-07">2026.07</time><span>控制台整合</span></td>
                 <td>机器人操作界面</td>
                 <td>把 ROS/ROS2 地图、图层、导航、任务和状态监控搬到浏览器里。</td>
                 <td><span class="tag-list"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Three.js</span><span class="tag">roslib</span></span></td>
               </tr>
               <tr>
                 <td><b>RabbitRobot_D435_L1_RTABMap</b>多传感器建图导航</td>
+                <td class="project-time"><time datetime="2026-07">2026.07</time><span>建图链路</span></td>
                 <td>三维建图与定位</td>
                 <td>融合 Unitree L1、Intel RealSense D435 和 MPU6050，验证 RTAB-Map 与 FAST-LIO2 链路。</td>
                 <td><span class="tag-list"><span class="tag">RTAB-Map</span><span class="tag">D435</span><span class="tag">Unitree L1</span><span class="tag">MPU6050</span></span></td>
               </tr>
               <tr>
                 <td><b>RabbitRobot_SCFH</b>智慧鸡场净环机器人</td>
+                <td class="project-time"><time datetime="2025">2025-2026</time><span>场景验证</span></td>
                 <td>真实压力场景</td>
                 <td>围绕狭长通道、低附着地面和服务机器人落地做需求验证。</td>
                 <td><span class="tag-list"><span class="tag">Narrow Corridor</span><span class="tag">Field Test</span><span class="tag">AMR</span></span></td>
               </tr>
               <tr>
                 <td><b>RabbitRobot_Arm</b>具身智能机械臂</td>
+                <td class="project-time"><time datetime="2026">2026</time><span>操作方向</span></td>
                 <td>操作能力扩展</td>
                 <td>为移动操作机器人储备 LeRobot、ACT、MoveIt2 等能力。</td>
                 <td><span class="tag-list"><span class="tag">LeRobot</span><span class="tag">ACT</span><span class="tag">MoveIt2</span><span class="tag">Gemini2</span></span></td>
               </tr>
               <tr>
                 <td><b>RabbitRobot_ElderBuddy</b>老人陪伴机器人</td>
+                <td class="project-time"><time datetime="2026">2026</time><span>服务概念</span></td>
                 <td>服务概念验证</td>
                 <td>把导航、交互、提醒和陪伴需求放进室内服务机器人设想。</td>
                 <td><span class="tag-list"><span class="tag">Indoor Service</span><span class="tag">HRI</span><span class="tag">Companion Robot</span></span></td>
               </tr>
               <tr>
                 <td><b>RabbitRobot_Web</b>公开网站</td>
+                <td class="project-time"><time datetime="2026-07">2026.07</time><span>公开主页</span></td>
                 <td>公开归档入口</td>
                 <td>展示项目材料、技术笔记、图像资料和后续论文/报告入口。</td>
                 <td><span class="tag-list"><span class="tag">GitHub Pages</span><span class="tag">Docs</span><span class="tag">Portfolio</span></span></td>
