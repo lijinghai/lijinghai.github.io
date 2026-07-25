@@ -98,6 +98,7 @@ main { border-top: 1px solid var(--line); }
 .source-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 38px; padding: 8px 12px; border-radius: 6px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-weight: 800; }
 .button.primary { border-color: var(--orange); background: var(--orange); color: #fff; }
+.button.video { border-color: var(--blue); background: var(--blue); color: #fff; }
 .footer { border-top: 1px solid var(--line); padding: 24px 22px 34px; color: var(--muted); font-size: 14px; }
 @media (max-width: 860px) {
   .hero, .grid-2 { grid-template-columns: 1fr; }

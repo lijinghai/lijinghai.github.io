@@ -451,7 +451,7 @@
 
     .hardware-body .hardware-time {
       margin: 0 0 12px;
-      color: var(--orange-dark);
+      color: var(--accent);
       font-size: 13px;
       font-weight: 800;
     }
@@ -483,6 +483,24 @@
 
     .hardware-detail-link:hover {
       background: #111318;
+      text-decoration: none;
+    }
+
+    .hardware-video-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 8px 14px;
+      color: #fff;
+      background: var(--accent);
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 750;
+    }
+
+    .hardware-video-link:hover {
+      background: #b95624;
       text-decoration: none;
     }
 
@@ -1237,6 +1255,7 @@
               <p>新做的 AMR2 小车是 RabbitRobot 当前更重要的真车执行平台：从轮毂伺服、铝型材框架、MID360 安装位到 CAN 线束和导航脚本逐步收拢，再接入 Fast-LIO、ICP、Nav2 MPPI、速度平滑和近距离避障保护，为后续 VLN waypoint 执行、rosbag 回放和失败案例采集提供底座。</p>
               <div class="hardware-actions">
                 <a class="hardware-detail-link" href="projects/rabbitrobot-amr2.html">查看项目介绍</a>
+                <a class="hardware-video-link" href="https://www.bilibili.com/video/BV1543K6uEVM/" target="_blank" rel="noreferrer">观看项目视频</a>
               </div>
             </div>
           </article>
