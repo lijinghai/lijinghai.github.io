@@ -394,6 +394,14 @@
       align-items: stretch;
     }
 
+    .hardware-intro {
+      width: min(100%, 880px);
+      margin: -8px auto 24px;
+      color: var(--muted);
+      font-size: 16px;
+      text-align: center;
+    }
+
     .hardware-card {
       display: flex;
       flex-direction: column;
@@ -1021,6 +1029,7 @@
       .content,
       .tldr,
       .hero-figure,
+      .hardware-intro,
       .amr2-main-media,
       .amr2-panel,
       .amr2-gallery,
@@ -1163,7 +1172,7 @@
           <ul>
             <li><strong>当前主线是 VLN</strong>：让真实 AMR 从自然语言任务、视觉/地图观测和历史轨迹中理解“要去哪、怎么走、为什么这样走”。</li>
             <li><strong>AMR2 是 VLN 真车底座</strong>：轮毂伺服差速底盘接入 MID360、Fast-LIO、ICP、Nav2 MPPI、速度平滑和 collision monitor。</li>
-            <li><strong>RabbitRobot_AMR / HandLiDAR / ROS2_Web</strong> 提供可跑的底盘、可复现地图、导航界面和真实 rosbag 数据。</li>
+            <li><strong>每个设备都带着实物迭代痕迹</strong>：从轮系、支架、线束、传感器安装位到测试场调参，逐步沉淀成可复现的底盘、地图、导航界面和真实 rosbag 数据。</li>
             <li><strong>研究目标</strong> 是把语言指令 grounding、waypoint 规划、Nav2 执行层和真实场景评估放进同一个实验闭环。</li>
           </ul>
         </div>
@@ -1174,6 +1183,7 @@
       <div class="container">
         <p class="section-kicker">Hardware Prototypes</p>
         <h2 id="hardware-title" class="section-title">实物原型：AMR2、扫地机 V1.0、手持雷达与全向轮小车</h2>
+        <p class="hardware-intro">这些平台更像是在桌面、地面和测试场里一版版收拢出来的工程样本：轮子、型材、外壳、屏幕、线束和传感器安装位置，都留下了能继续复盘的实验痕迹。</p>
         <div class="hardware-grid">
           <article class="hardware-card is-wide">
             <div class="hardware-gallery">
@@ -1186,7 +1196,7 @@
                 <span class="tag">AMR2</span><span class="tag">Hub-Wheel Servo</span><span class="tag">DiffDrive</span><span class="tag">VLN Execution</span>
               </div>
               <h3>AMR2 轮毂伺服差速 AMR</h3>
-              <p>新做的 AMR2 小车是 RabbitRobot 当前更重要的真车执行平台：用 DS20270C 轮毂伺服差速底盘承载 MID360、Fast-LIO、ICP 定位、Nav2 MPPI、速度平滑和近距离避障保护，为后续 VLN waypoint 执行、rosbag 回放和失败案例采集提供底座。</p>
+              <p>新做的 AMR2 小车是 RabbitRobot 当前更重要的真车执行平台：从轮毂伺服、铝型材框架、MID360 安装位到 CAN 线束和导航脚本逐步收拢，再接入 Fast-LIO、ICP、Nav2 MPPI、速度平滑和近距离避障保护，为后续 VLN waypoint 执行、rosbag 回放和失败案例采集提供底座。</p>
             </div>
           </article>
 
@@ -1199,7 +1209,7 @@
                 <span class="tag">Sweeper V1.0</span><span class="tag">Cleaning AMR</span><span class="tag">ROS2-ready</span>
               </div>
               <h3>Sweeper V1.0</h3>
-              <p>清扫底盘的第一版实物：在铝型材底盘上集成清扫机构、车轮驱动、电源、主控和本地屏幕，先把真实地面上的运动、供电、布线和清扫机构布局跑通。</p>
+              <p>清扫底盘的第一版实物：在铝型材底盘上集成清扫机构、车轮驱动、电源、主控和本地屏幕，先把真实地面上的运动、供电、布线、重心和清扫机构布局跑通。</p>
             </div>
           </article>
 
@@ -1212,7 +1222,7 @@
                 <span class="tag">HandLiDAR</span><span class="tag">Mapping Tool</span><span class="tag">Data Capture</span>
               </div>
               <h3>HandLiDAR 建图仪</h3>
-              <p>手持雷达建图工具：把传感器和手柄做成可移动采集形态，用来快速采集室内、走廊和机器人测试场的环境数据，为 AMR 导航先准备地图和传感器样本。</p>
+              <p>手持雷达建图工具：把传感器、手柄、固定件和走线做成可移动采集形态，用来快速采集室内、走廊和机器人测试场的环境数据，为 AMR 导航先准备地图和传感器样本。</p>
             </div>
           </article>
 
@@ -1227,7 +1237,7 @@
                 <span class="tag">Omni Wheel</span><span class="tag">Mecanum</span><span class="tag">AMR Platform</span><span class="tag">Nav2</span>
               </div>
               <h3>Omni AMR 全向轮小车</h3>
-              <p>全向轮小车系列：从小尺寸验证车到铝型材 AMR 底盘，逐步验证轮系运动学、底盘控制、传感器安装高度、电源布线、远程控制和后续 ROS2/Nav2 导航实验。</p>
+              <p>全向轮小车系列：从小尺寸验证车到铝型材 AMR 底盘，一边调整轮系、安装高度、电源布线和传感器位置，一边验证底盘控制、远程控制和后续 ROS2/Nav2 导航实验。</p>
             </div>
           </article>
         </div>
@@ -1248,7 +1258,7 @@
               <span class="tag">ROS2 Humble</span><span class="tag">Livox MID360</span><span class="tag">Fast-LIO</span><span class="tag">Nav2 MPPI</span><span class="tag">DS20270C CAN</span>
             </div>
             <h3>VLN 的真实执行层</h3>
-            <p>AMR2 不是仿真 demo，而是 <code>ljh_amr2_hubwheel_drive</code> 真车工作空间：VLN/VLM 负责理解语言任务并生成 waypoint，AMR2 负责把 waypoint 转成地图定位、局部路径、速度指令、安全过滤和可回放数据。</p>
+            <p>AMR2 不是仿真 demo，而是 <code>ljh_amr2_hubwheel_drive</code> 真车工作空间：从底盘、线束、传感器安装到 launch 链路都服务于同一个闭环。VLN/VLM 负责理解语言任务并生成 waypoint，AMR2 负责把 waypoint 转成地图定位、局部路径、速度指令、安全过滤和可回放数据。</p>
             <div class="amr2-chain" aria-label="AMR2 主链路">
               <span>MID360</span>
               <span>Fast-LIO</span>
@@ -1279,7 +1289,7 @@
         <p class="section-kicker">Project Abstract</p>
         <h2 id="abstract-title" class="section-title">从一个能跑的机器人，推进到一个能听懂任务的机器人系统</h2>
         <div class="content">
-          <p>RabbitRobot 不是单个演示项目，而是一组围绕真实移动机器人逐步生长的工程和研究资产。现在它的主线正在转向 Vision-Language Navigation：让机器人把“去门口看一下”“绕开杂物到桌边”这类语言任务，落到地图、视觉观测、局部目标和 AMR2 真车动作上。</p>
+          <p>RabbitRobot 不是单个演示项目，而是一组围绕真实移动机器人逐步生长的工程和研究资产。它保留了从零件级搭建、结构打样、现场测试到软件链路整理的连续痕迹。现在它的主线正在转向 Vision-Language Navigation：让机器人把“去门口看一下”“绕开杂物到桌边”这类语言任务，落到地图、视觉观测、局部目标和 AMR2 真车动作上。</p>
           <p>这个主页采用学术项目页的表达方式：先给出真实硬件、系统资源与图示，再展开 VLN 方法、项目矩阵、研究指标和迭代路线。它更像一篇持续更新的 project page，而不是只展示视觉气氛的作品集。</p>
         </div>
       </div>
@@ -1297,7 +1307,7 @@
         <div class="approach-text">
           <article class="approach-item">
             <b>System Platform</b>
-            <p>以 AMR 底盘为核心，把主控、激光雷达、深度相机、驱动、电源和 ROS2 软件链路变成可持续迭代的平台。</p>
+            <p>以 AMR 底盘为核心，把主控、激光雷达、深度相机、驱动、电源、支架、线束和 ROS2 软件链路变成可持续迭代的平台。</p>
           </article>
           <article class="approach-item">
             <b>VLN Grounding</b>
