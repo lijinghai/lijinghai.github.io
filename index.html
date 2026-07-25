@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RabbitRobot VLN | 算个文科生吧的机器人研究主页</title>
-  <meta name="description" content="RabbitRobot 是算个文科生吧长期推进的机器人项目主页，以 Vision-Language Navigation (VLN) 为当前主线，展示真实 AMR 平台、手持 LiDAR 建图、ROS2 导航、Web 控制台与具身导航研究。">
+  <meta name="description" content="RabbitRobot 是算个文科生吧长期推进的机器人项目主页，以 Vision-Language Navigation (VLN) 为当前主线，展示 AMR2 轮毂伺服真车、手持 LiDAR 建图、ROS2 导航、Web 控制台与具身导航研究。">
   <meta name="keywords" content="RabbitRobot, VLN, Vision-Language Navigation, ROS2, AMR, SLAM, Nav2, embodied navigation, robotics, 算个文科生吧">
   <meta name="author" content="算个文科生吧">
   <meta property="og:type" content="website">
   <meta property="og:title" content="RabbitRobot VLN | 算个文科生吧的机器人研究主页">
-  <meta property="og:description" content="一个文科问题意识驱动的机器人全系列项目主页：以 VLN 为当前研究主线，把语言指令、视觉/地图感知、ROS2 导航和真实 AMR 实验连成闭环。">
-  <meta property="og:image" content="images/rabbitrobot/robot_photo.jpg">
+  <meta property="og:description" content="一个文科问题意识驱动的机器人全系列项目主页：以 VLN 为当前研究主线，把语言指令、视觉/地图感知、ROS2 导航、AMR2 真车执行和真实 AMR 实验连成闭环。">
+  <meta property="og:image" content="images/rabbitrobot/amr2_field_test_18s.jpg">
   <meta name="theme-color" content="#23272f">
   <link rel="icon" type="image/png" href="images/rabbitrobot/RabbitRobot_logo_icon.png">
   <style>
@@ -329,6 +329,14 @@
       color: var(--text);
     }
 
+    code {
+      padding: .08em .32em;
+      border-radius: 4px;
+      color: var(--dark);
+      background: var(--soft-2);
+      font-size: .94em;
+    }
+
     .teaser {
       padding-top: 38px;
     }
@@ -436,6 +444,110 @@
     .hardware-body p {
       margin-bottom: 0;
       font-size: 15px;
+    }
+
+    .amr2-showcase {
+      display: grid;
+      grid-template-columns: minmax(0, 1.06fr) minmax(320px, .94fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .amr2-main-media,
+    .amr2-panel {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .amr2-main-media img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .amr2-panel {
+      display: flex;
+      flex-direction: column;
+      padding: 22px;
+    }
+
+    .amr2-panel h3 {
+      margin: 12px 0 12px;
+      color: var(--dark);
+      font-size: 25px;
+    }
+
+    .amr2-panel p {
+      font-size: 15px;
+    }
+
+    .amr2-chain {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0;
+    }
+
+    .amr2-chain span {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border: 1px solid #d7dee8;
+      border-radius: 999px;
+      background: #f8fafc;
+      color: var(--dark);
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .amr2-specs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .amr2-spec {
+      min-height: 76px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .amr2-spec b {
+      display: block;
+      color: var(--green);
+      font-size: 15px;
+    }
+
+    .amr2-spec span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .amr2-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .amr2-gallery img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      background: var(--soft);
     }
 
     .image-panel {
@@ -614,6 +726,16 @@
       background: #111318;
     }
 
+    .repo-link.is-disabled {
+      color: var(--dark);
+      background: var(--soft-2);
+      cursor: default;
+    }
+
+    .repo-link.is-disabled:hover {
+      background: var(--soft-2);
+    }
+
     .research-grid {
       display: grid;
       grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
@@ -740,6 +862,12 @@
       white-space: pre;
     }
 
+    .bibtex code {
+      padding: 0;
+      background: transparent;
+      font-size: inherit;
+    }
+
     .copy-button {
       position: absolute;
       top: 14px;
@@ -817,11 +945,16 @@
       }
 
       .approach-text,
+      .amr2-showcase,
       .hardware-grid,
       .repository-grid,
       .research-grid,
       .vln-flow,
       .roadmap {
+        grid-template-columns: 1fr;
+      }
+
+      .amr2-specs {
         grid-template-columns: 1fr;
       }
 
@@ -873,6 +1006,9 @@
       .content,
       .tldr,
       .hero-figure,
+      .amr2-main-media,
+      .amr2-panel,
+      .amr2-gallery,
       .hardware-card,
       .image-panel,
       .repository-card,
@@ -902,6 +1038,10 @@
       }
 
       .hardware-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .amr2-gallery {
         grid-template-columns: 1fr;
       }
 
@@ -938,6 +1078,7 @@
       </a>
       <div class="nav-links">
         <a href="#research">VLN</a>
+        <a href="#amr2">AMR2</a>
         <a href="#hardware">Hardware</a>
         <a href="#abstract">Abstract</a>
         <a href="#approach">Approach</a>
@@ -983,6 +1124,10 @@
             <span class="button-mark" aria-hidden="true">VLN</span>
             <span>VLN Focus</span>
           </a>
+          <a class="resource-button secondary" href="#amr2">
+            <span class="button-mark" aria-hidden="true">AMR2</span>
+            <span>Real Robot</span>
+          </a>
           <a class="resource-button secondary" href="#bibtex">
             <span class="button-mark" aria-hidden="true">CITE</span>
             <span>Citation</span>
@@ -1002,6 +1147,7 @@
           <h2 id="tldr-title">TL;DR</h2>
           <ul>
             <li><strong>当前主线是 VLN</strong>：让真实 AMR 从自然语言任务、视觉/地图观测和历史轨迹中理解“要去哪、怎么走、为什么这样走”。</li>
+            <li><strong>AMR2 是 VLN 真车底座</strong>：轮毂伺服差速底盘接入 MID360、Fast-LIO、ICP、Nav2 MPPI、速度平滑和 collision monitor。</li>
             <li><strong>RabbitRobot_AMR / HandLiDAR / ROS2_Web</strong> 提供可跑的底盘、可复现地图、导航界面和真实 rosbag 数据。</li>
             <li><strong>研究目标</strong> 是把语言指令 grounding、waypoint 规划、Nav2 执行层和真实场景评估放进同一个实验闭环。</li>
           </ul>
@@ -1012,8 +1158,23 @@
     <section id="hardware" class="section" aria-labelledby="hardware-title">
       <div class="container">
         <p class="section-kicker">Hardware Prototypes</p>
-        <h2 id="hardware-title" class="section-title">实物原型：扫地机 V1.0、手持雷达与全向轮小车</h2>
+        <h2 id="hardware-title" class="section-title">实物原型：AMR2、扫地机 V1.0、手持雷达与全向轮小车</h2>
         <div class="hardware-grid">
+          <article class="hardware-card is-wide">
+            <div class="hardware-gallery">
+              <img src="images/rabbitrobot/amr2_field_test_10s.jpg" alt="AMR2 轮毂伺服小车实验室运动测试画面">
+              <img src="images/rabbitrobot/amr2_field_test_18s.jpg" alt="AMR2 绕纸箱障碍进行真车测试">
+              <img src="images/rabbitrobot/amr2_field_test_22s.jpg" alt="AMR2 在实验室地面继续导航测试">
+            </div>
+            <div class="hardware-body">
+              <div class="tag-list" aria-label="AMR2 关键词">
+                <span class="tag">AMR2</span><span class="tag">Hub-Wheel Servo</span><span class="tag">DiffDrive</span><span class="tag">VLN Execution</span>
+              </div>
+              <h3>AMR2 轮毂伺服差速 AMR</h3>
+              <p>新做的 AMR2 小车是 RabbitRobot 当前更重要的真车执行平台：用 DS20270C 轮毂伺服差速底盘承载 MID360、Fast-LIO、ICP 定位、Nav2 MPPI、速度平滑和近距离避障保护，为后续 VLN waypoint 执行、rosbag 回放和失败案例采集提供底座。</p>
+            </div>
+          </article>
+
           <article class="hardware-card">
             <div class="hardware-image">
               <img src="images/rabbitrobot/sweeper_v1.jpg" alt="RabbitRobot 扫地机 V1.0 实物原型">
@@ -1058,12 +1219,52 @@
       </div>
     </section>
 
-    <section id="abstract" class="section is-light" aria-labelledby="abstract-title">
+    <section id="amr2" class="section is-light" aria-labelledby="amr2-title">
+      <div class="container">
+        <p class="section-kicker">Latest Real Robot · AMR2</p>
+        <h2 id="amr2-title" class="section-title">AMR2：把 VLN waypoint 落到真车执行的轮毂伺服平台</h2>
+        <div class="amr2-showcase">
+          <figure class="amr2-main-media">
+            <img src="images/rabbitrobot/amr2_field_test_18s.jpg" alt="AMR2 在实验室地面围绕纸箱障碍进行真车测试">
+            <figcaption>AMR2 field-test frame from the July 2026 lab video: compact hub-wheel AMR running in a real cluttered indoor space.</figcaption>
+          </figure>
+          <article class="amr2-panel">
+            <div class="tag-list" aria-label="AMR2 技术栈">
+              <span class="tag">ROS2 Humble</span><span class="tag">Livox MID360</span><span class="tag">Fast-LIO</span><span class="tag">Nav2 MPPI</span><span class="tag">DS20270C CAN</span>
+            </div>
+            <h3>VLN 的真实执行层</h3>
+            <p>AMR2 不是仿真 demo，而是 <code>ljh_amr2_hubwheel_drive</code> 真车工作空间：VLN/VLM 负责理解语言任务并生成 waypoint，AMR2 负责把 waypoint 转成地图定位、局部路径、速度指令、安全过滤和可回放数据。</p>
+            <div class="amr2-chain" aria-label="AMR2 主链路">
+              <span>MID360</span>
+              <span>Fast-LIO</span>
+              <span>ICP map -> odom</span>
+              <span>Nav2 MPPI</span>
+              <span>velocity_smoother</span>
+              <span>collision_monitor</span>
+              <span>DS20270C CAN</span>
+            </div>
+            <div class="amr2-specs">
+              <div class="amr2-spec"><b>0.486 m × 0.450 m</b><span>实测矩形 footprint</span></div>
+              <div class="amr2-spec"><b>/cmd_vel_smooth</b><span>导航模式底盘入口</span></div>
+              <div class="amr2-spec"><b>0.20 m/s</b><span>MPPI 保守线速度上限</span></div>
+              <div class="amr2-spec"><b>rosbag loop</b><span>轨迹、状态与失败样例回收</span></div>
+            </div>
+          </article>
+        </div>
+        <div class="amr2-gallery" aria-label="AMR2 建图导航关键画面">
+          <img src="images/rabbitrobot/amr2_mapping.jpg" alt="AMR2 建图与 RViz/Gazebo 调试画面">
+          <img src="images/rabbitrobot/amr2_single_goal.jpg" alt="AMR2 Web 控制台单点导航画面">
+          <img src="images/rabbitrobot/amr2_web_navigation.jpg" alt="AMR2 Web 控制台 3D 导航画面">
+        </div>
+      </div>
+    </section>
+
+    <section id="abstract" class="section" aria-labelledby="abstract-title">
       <div class="narrow">
         <p class="section-kicker">Project Abstract</p>
         <h2 id="abstract-title" class="section-title">从一个能跑的机器人，推进到一个能听懂任务的机器人系统</h2>
         <div class="content">
-          <p>RabbitRobot 不是单个演示项目，而是一组围绕真实移动机器人逐步生长的工程和研究资产。现在它的主线正在转向 Vision-Language Navigation：让机器人把“去门口看一下”“绕开杂物到桌边”这类语言任务，落到地图、视觉观测、局部目标和底盘动作上。</p>
+          <p>RabbitRobot 不是单个演示项目，而是一组围绕真实移动机器人逐步生长的工程和研究资产。现在它的主线正在转向 Vision-Language Navigation：让机器人把“去门口看一下”“绕开杂物到桌边”这类语言任务，落到地图、视觉观测、局部目标和 AMR2 真车动作上。</p>
           <p>这个主页采用学术项目页的表达方式：先给出真实硬件、系统资源与图示，再展开 VLN 方法、项目矩阵、研究指标和迭代路线。它更像一篇持续更新的 project page，而不是只展示视觉气氛的作品集。</p>
         </div>
       </div>
@@ -1115,6 +1316,12 @@
                 <td>核心实验平台</td>
                 <td>底盘控制、建图、导航、局部规划和真实数据采集。</td>
                 <td><span class="tag-list"><span class="tag">ROS2</span><span class="tag">Nav2</span><span class="tag">FAST-LIO2</span><span class="tag">Point-LIO2</span></span></td>
+              </tr>
+              <tr>
+                <td><b>RabbitRobot_AMR2</b>轮毂伺服真车平台</td>
+                <td>VLN 真车执行底座</td>
+                <td>用 DS20270C CAN 轮毂伺服差速底盘、MID360、Fast-LIO、ICP、Nav2 MPPI、速度平滑和避障保护，承接 VLN waypoint 的真实执行与 rosbag 数据回收。</td>
+                <td><span class="tag-list"><span class="tag">Hub-Wheel AMR</span><span class="tag">DS20270C</span><span class="tag">MID360</span><span class="tag">Nav2 MPPI</span><span class="tag">Collision Monitor</span></span></td>
               </tr>
               <tr>
                 <td><b>RabbitRobot_VLN</b>视觉语言导航主线</td>
@@ -1183,6 +1390,26 @@
         <div class="repository-grid">
           <article class="repository-card">
             <div class="repository-media">
+              <img src="images/rabbitrobot/amr2_field_test_22s.jpg" alt="AMR2 轮毂伺服小车真实运动测试画面">
+              <img src="images/rabbitrobot/amr2_rviz.jpg" alt="AMR2 RViz 点云、TF 和机器人模型调试画面">
+            </div>
+            <div class="repository-body">
+              <div class="tag-list" aria-label="AMR2 工作空间技术栈">
+                <span class="tag">ROS2 Humble</span><span class="tag">Fast-LIO</span><span class="tag">ICP</span><span class="tag">MPPI</span><span class="tag">CAN</span>
+              </div>
+              <h3>ljh_amr2_hubwheel_drive</h3>
+              <p>这是 AMR2 轮毂伺服差速小车的真车导航工作空间，把 MID360 建图定位、Nav2 MPPI 执行、速度平滑、近距离避障和 DS20270C CAN 底盘驱动串成一条可复现实车链路。</p>
+              <ul>
+                <li>感知链路：MID360 激光/IMU 输入，Fast-LIO 输出里程计与点云，再转成 <code>/scan</code> 给定位和局部导航使用。</li>
+                <li>执行链路：<code>/cmd_vel_nav</code> 经 velocity_smoother 与 collision_monitor 后进入 <code>/cmd_vel_smooth</code>，避免绕过平滑和安全保护。</li>
+                <li>面向 VLN：把语言策略生成的 waypoint 交给真车执行，并回收轨迹、状态和失败样例。</li>
+              </ul>
+              <span class="repo-link is-disabled" aria-label="AMR2 workspace is currently local or private">Local Workspace</span>
+            </div>
+          </article>
+
+          <article class="repository-card">
+            <div class="repository-media">
               <img src="images/rabbitrobot/ros2_web_home.png" alt="AMR Web 控制台主界面截图">
               <img src="images/rabbitrobot/ros2_web_single_nav.png" alt="AMR Web 控制台单点导航截图">
             </div>
@@ -1230,8 +1457,8 @@
           <p class="section-kicker center">Current Focus · VLN</p>
           <h2 id="research-title" class="section-title">Vision-Language Navigation for Real AMR Robots</h2>
           <div class="content">
-            <p>当前最适合作为论文型主线推进的问题，是把 RabbitRobot AMR、手持雷达地图、Web 控制台和真实室内场景整理成一个小而真实的 VLN 实验平台。机器人不只接收坐标点，而是接收自然语言任务，再把语言中的目标、约束和路线偏好 grounding 到视觉/地图观测上。</p>
-            <p>短期路线是先用 Nav2 / DWB / Pure Pursuit / MPC 做稳定执行层，再收集语言指令、地图区域、视觉帧、waypoint、rosbag 轨迹和失败案例，逐步训练或评估能够提出中间目标并解释导航选择的 VLN/VLM 策略。</p>
+            <p>当前最适合作为论文型主线推进的问题，是把 RabbitRobot AMR2、手持雷达地图、Web 控制台和真实室内场景整理成一个小而真实的 VLN 实验平台。机器人不只接收坐标点，而是接收自然语言任务，再把语言中的目标、约束和路线偏好 grounding 到视觉/地图观测上。</p>
+            <p>短期路线是先用 AMR2 的 Nav2 MPPI、速度平滑、collision monitor 和 DS20270C CAN 底盘跑稳执行层，再收集语言指令、地图区域、视觉帧、waypoint、rosbag 轨迹和失败案例，逐步训练或评估能够提出中间目标并解释导航选择的 VLN/VLM 策略。</p>
           </div>
           <div class="vln-flow" aria-label="VLN 研究链路">
             <article class="vln-step">
@@ -1248,7 +1475,7 @@
             </article>
             <article class="vln-step">
               <b>ROS2 Execution</b>
-              <p>用 Nav2 和底盘控制完成真实执行，并回收 rosbag 轨迹作为下一轮数据。</p>
+              <p>由 AMR2 的 Nav2 MPPI、速度平滑、collision monitor 和 CAN 底盘完成真实执行，并回收 rosbag 轨迹。</p>
             </article>
           </div>
           <div class="metrics" aria-label="VLN 评估指标">
@@ -1288,9 +1515,9 @@
             <p>Hoverboard FOC、STM32、ST-Link、IMU 接入、cmd_vel/odom 话题和底盘控制验证。</p>
           </article>
           <article class="milestone">
-            <time>V4.0 · 2026.03+</time>
-            <h3>VLN 数据闭环</h3>
-            <p>在全向轮平台上组织语言指令、地图区域、Web 控制台标注、Nav2 执行和 rosbag 回放评估。</p>
+            <time>V4.0 · 2026.07+</time>
+            <h3>AMR2 / VLN 数据闭环</h3>
+            <p>以 AMR2 轮毂伺服真车为主平台，组织语言指令、地图区域、Web 控制台标注、Nav2 MPPI 执行和 rosbag 回放评估。</p>
           </article>
         </div>
       </div>
