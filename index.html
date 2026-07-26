@@ -532,6 +532,12 @@
       object-fit: cover;
     }
 
+    .algorithm-media.is-diagram img {
+      padding: 12px;
+      object-fit: contain;
+      background: #fff;
+    }
+
     .algorithm-body {
       padding: 22px 22px 22px 0;
     }
@@ -836,6 +842,12 @@
       aspect-ratio: 16 / 9;
       object-fit: cover;
       background: var(--soft);
+    }
+
+    .repository-media.is-diagram-media img {
+      padding: 8px;
+      object-fit: contain;
+      background: #fff;
     }
 
     .repository-body {
@@ -1540,8 +1552,8 @@
           <img src="images/rabbitrobot/amr2_web_navigation.jpg" alt="AMR2 Web 控制台 3D 导航画面">
         </div>
         <article class="algorithm-card">
-          <figure class="algorithm-media">
-            <img src="images/rabbitrobot/coverage_algorithm_overview.jpg" alt="RabbitRobot AMR2 扫地机覆盖路径算法的地图、覆盖线与 RViz 调试截图">
+          <figure class="algorithm-media is-diagram">
+            <img src="images/rabbitrobot/coverage_step_generated_path.png" alt="PCD 地图上矩形清扫区域生成 map-aware 覆盖路径，显示 12 个 waypoints 和 0.38 m clearance">
           </figure>
           <div class="algorithm-body">
             <p class="section-kicker">Coverage Planner · 2026.07.26</p>
@@ -1549,7 +1561,7 @@
             <p>这套扫地机覆盖算法不是简单画一组蛇形线：它会把 RViz 里拖出来的矩形或多边形区域，和真实 PCD 转出的 2D 地图、AMR2 的 <code>0.486 m × 0.450 m</code> footprint、障碍膨胀、安全内收和连通分块放在一起计算，最后输出 RViz/Nav2 可复用的 <code>/coverage_path</code>。</p>
             <div class="algorithm-stats" aria-label="覆盖算法关键指标">
               <div class="algorithm-stat"><b>0.38 m</b><span>map-aware clearance</span></div>
-              <div class="algorithm-stat"><b>12 / 128</b><span>常规区域 / 大框裁剪 waypoints</span></div>
+              <div class="algorithm-stat"><b>12 / 38 / 39</b><span>矩形 / known-free / 手动验证 waypoints</span></div>
               <div class="algorithm-stat"><b>36.38 m²</b><span>示例已知可通行覆盖区域</span></div>
             </div>
             <div class="hardware-actions">
@@ -1730,9 +1742,9 @@
           </article>
 
           <article class="repository-card">
-            <div class="repository-media">
-              <img src="images/rabbitrobot/coverage_sim_preview.png" alt="AMR2 扫地机覆盖仿真预览图">
-              <img src="images/rabbitrobot/coverage_path_demo.png" alt="扫地机覆盖路径往返覆盖线示意图">
+            <div class="repository-media is-diagram-media">
+              <img src="images/rabbitrobot/coverage_step_generated_path.png" alt="PCD 地图矩形区域生成覆盖路径截图">
+              <img src="images/rabbitrobot/coverage_step_poly_path.png" alt="Coverage Poly 五边形区域生成覆盖路径截图">
             </div>
             <div class="repository-body">
               <div class="tag-list" aria-label="覆盖路径算法技术栈">

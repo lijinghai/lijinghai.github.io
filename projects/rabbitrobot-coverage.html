@@ -38,7 +38,7 @@
       </div>
     </div>
     <figure class="hero-media diagram-media">
-      <img src="../images/rabbitrobot/coverage_algorithm_overview.jpg" alt="RabbitRobot 覆盖路径算法的地图、覆盖路径和 RViz 验证总览图">
+      <img src="../images/rabbitrobot/coverage_step_generated_path.png" alt="PCD 2D map 上矩形清扫区域生成 map-aware /coverage_path，包含 map-clipped drivable area、12 waypoints 和 0.38 m clearance">
     </figure>
   </header>
 
@@ -135,26 +135,34 @@
       <div class="container">
         <p class="kicker">Visual Evidence</p>
         <h2>关键截图</h2>
-        <div class="gallery">
+        <div class="gallery diagram-gallery">
           <figure>
-            <img src="../images/rabbitrobot/coverage_sim_preview.png" alt="AMR2 RViz-only 覆盖仿真预览">
-            <figcaption>RViz-only coverage simulation preview：地图、示例区域和 fake car 在同一坐标系内闭环。</figcaption>
+            <img src="../images/rabbitrobot/coverage_step_clicked_area.png" alt="PCD 2D map 上用 RViz Publish Point 点出矩形清扫区域">
+            <figcaption>Step 2：在 PCD 2D map 上点出清扫外轮廓，蓝色框是输入区域。</figcaption>
           </figure>
           <figure>
-            <img src="../images/rabbitrobot/coverage_path_demo.png" alt="扫地机覆盖路径往返覆盖线和障碍绕行效果">
-            <figcaption>Chicken-house aisle coverage path demo：往返覆盖线、转弯连接和障碍区域一起展示。</figcaption>
+            <img src="../images/rabbitrobot/coverage_step_generated_path.png" alt="PCD 2D map 上根据矩形清扫区域生成 map-aware 覆盖路径">
+            <figcaption>Step 3：算法裁剪出 map-clipped drivable area，并生成绿色 <code>/coverage_path</code> 覆盖线。</figcaption>
           </figure>
           <figure>
-            <img src="../images/rabbitrobot/coverage_pcd_2d_map.png" alt="ljh20260516 PCD 转出的完整 2D 地图">
-            <figcaption>由真实 <code>ljh20260516.pcd</code> 转出的 2D occupancy map。</figcaption>
+            <img src="../images/rabbitrobot/coverage_step_known_free_clip.png" alt="大框覆盖请求被 known-free 地图区域裁剪后生成覆盖路径">
+            <figcaption>Step 5：大框请求被 known-free 地图单元裁剪，证明路径不是简单穿过未知区。</figcaption>
           </figure>
           <figure>
-            <img src="../images/rabbitrobot/coverage_rviz.png" alt="RViz 中覆盖路径、多边形和分块调试画面">
-            <figcaption>RViz 调试画面：覆盖路径、区域 marker、TF 和假车状态一起检查。</figcaption>
+            <img src="../images/rabbitrobot/coverage_step_poly_path.png" alt="Coverage Poly 五边形区域在占据栅格地图中生成 128 waypoints 覆盖路径">
+            <figcaption>Coverage Poly：非矩形五边形区域也能在障碍地图里生成覆盖路径。</figcaption>
           </figure>
           <figure>
-            <img src="../images/rabbitrobot/coverage_amr2_platform.jpg" alt="AMR2 平台实物照片">
-            <figcaption>算法背后的 AMR2 平台：覆盖规划最终要落到这类真实底盘的安全执行链路上。</figcaption>
+            <img src="../images/rabbitrobot/coverage_step_following_path.png" alt="RViz-only fake car 沿生成的 map-aware 覆盖路径行走">
+            <figcaption>Step 4：RViz-only fake car 沿生成路径行走，用于验证路径跟随闭环。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/coverage_manual_selected_path.png" alt="手动选择真实狭长地图区域后生成 map-aware 覆盖路径">
+            <figcaption>Manual validation：真实狭长地图上的手动选区，生成 39 waypoints 覆盖路径。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/coverage_manual_follow_trace.png" alt="fake car 跟随手动选择区域生成的覆盖路径并留下 odometry trail">
+            <figcaption>Manual follow trace：fake car 跟随手动覆盖路径，记录 odometry trail 和运动距离。</figcaption>
           </figure>
         </div>
       </div>
