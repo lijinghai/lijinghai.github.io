@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RabbitRobot_CoveragePath | RabbitRobot</title>
+  <meta name="description" content="RabbitRobot_CoveragePath 是 AMR2 扫地机覆盖路径算法页面，介绍基于 PCD 2D 地图、OccupancyGrid、footprint 安全膨胀和 RViz 交互生成 map-aware 覆盖路径的 ROS2 实现。">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+  <nav class="detail-nav" aria-label="Project navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
+        <span>RabbitRobot</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#amr2">AMR2</a>
+        <a href="../index.html#hardware">Hardware</a>
+        <a href="../index.html#projects">Project Matrix</a>
+        <a href="readmes/rabbitrobot-coverage.md">README</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">Map-aware Cleaning Coverage</p>
+      <h1>RabbitRobot_<wbr>CoveragePath</h1>
+      <p class="subtitle">AMR2 扫地机覆盖路径算法</p>
+      <p class="summary">这是一套面向清扫/覆盖任务的 ROS2 Humble 覆盖规划器：在 RViz 里用鼠标画矩形或多边形区域，算法结合真实 PCD 转出的 2D 地图、AMR2 车体 footprint、占据栅格障碍、安全边距和连通分块，生成可视化、可验证、后续可交给 Nav2 执行器的覆盖路径。</p>
+      <div class="meta-row">
+        <span class="meta-pill">Time · 2026.07.26</span>
+        <span class="meta-pill">Repo · ljh_amr2_hubwheel_drive</span>
+        <span class="meta-pill">Branch · feature/coverage-path</span>
+        <span class="meta-pill">Status · RViz-only verified</span>
+      </div>
+    </div>
+    <figure class="hero-media diagram-media">
+      <img src="../images/rabbitrobot/coverage_algorithm_overview.jpg" alt="RabbitRobot 覆盖路径算法的地图、覆盖路径和 RViz 验证总览图">
+    </figure>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">What It Does</p>
+          <h2>不是画一条线，而是在地图里算清扫区域</h2>
+          <ul class="highlight-list">
+            <li>支持 RViz 顶部工具栏里的 <code>Coverage Rect</code> 拖拽矩形，也支持 <code>Coverage Poly</code> 点多边形和孔洞。</li>
+            <li>默认订阅 <code>/map</code>，只在已知 free cells 内规划，unknown、off-map 和占据区不会被硬塞进路径。</li>
+            <li>按 AMR2 的 <code>0.486 m x 0.450 m</code> footprint 和安全边距膨胀障碍，路径发布前校验 waypoint 与连接段。</li>
+            <li>小孔洞尽量跨越/绕行保持连续，大孔洞和凹多边形会触发分块，再用安全连接策略组织覆盖顺序。</li>
+            <li>输出标准 <code>nav_msgs/Path</code> 和带 yaw 的 <code>CoveragePath</code>，能给 RViz 调试，也给后续 Nav2 覆盖执行器留接口。</li>
+          </ul>
+        </div>
+        <aside>
+          <p class="kicker">Stack</p>
+          <h2>关键模块</h2>
+          <div class="stack">
+            <span class="tag">ROS2 Humble</span>
+            <span class="tag">OccupancyGrid</span>
+            <span class="tag">PCD 2D Map</span>
+            <span class="tag">Coverage Rect</span>
+            <span class="tag">Coverage Poly</span>
+            <span class="tag">Footprint Inflation</span>
+            <span class="tag">A*</span>
+            <span class="tag">Nav2-ready</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">Verified Numbers</p>
+        <h2>README 里已经跑通的关键指标</h2>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <b>0.38 m</b>
+            <span>map-aware clearance，按车体 footprint 和安全边距取中心点可通行余量</span>
+          </div>
+          <div class="metric-card">
+            <b>36.38 m²</b>
+            <span>示例清扫区域裁剪后的 selected_area</span>
+          </div>
+          <div class="metric-card">
+            <b>12</b>
+            <span>常规示例区域生成的 coverage waypoints</span>
+          </div>
+          <div class="metric-card">
+            <b>128</b>
+            <span>大框 known-free 裁剪验证生成的 waypoints</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Algorithm Flow</p>
+        <h2>覆盖路径算法处理流程</h2>
+        <div class="flow-list">
+          <article>
+            <h3>输入区域</h3>
+            <p>RViz 鼠标拖矩形或点多边形，也可以直接调用 <code>/coverage/compute_path</code> 传 polygon 和 holes。</p>
+          </article>
+          <article>
+            <h3>地图约束</h3>
+            <p>订阅 <code>/map</code>，把 PCD 2D 地图里的占据格、未知区域和地图外区域从覆盖区域中扣除。</p>
+          </article>
+          <article>
+            <h3>安全膨胀</h3>
+            <p>按 AMR2 footprint、<code>wall_margin</code> 和 safety margin 处理边界，避免路径贴墙或穿过障碍。</p>
+          </article>
+          <article>
+            <h3>扫描方向</h3>
+            <p><code>sweep_angle=-1.0</code> 时自动选择覆盖行数更少的方向，也能手动指定清扫方向。</p>
+          </article>
+          <article>
+            <h3>分块与连接</h3>
+            <p>遇到孔洞、凹多边形或多个 free component 时拆分区域，优先用安全圆弧/直连，必要时用 A* 连接。</p>
+          </article>
+          <article>
+            <h3>发布路径</h3>
+            <p>发布 <code>/coverage_path</code>、带 yaw 的 <code>/coverage/coverage_path</code>，并显示 polygon/block markers。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">Visual Evidence</p>
+        <h2>关键截图</h2>
+        <div class="gallery">
+          <figure>
+            <img src="../images/rabbitrobot/coverage_sim_preview.png" alt="AMR2 RViz-only 覆盖仿真预览">
+            <figcaption>RViz-only coverage simulation preview：地图、示例区域和 fake car 在同一坐标系内闭环。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/coverage_path_demo.png" alt="扫地机覆盖路径往返覆盖线和障碍绕行效果">
+            <figcaption>Chicken-house aisle coverage path demo：往返覆盖线、转弯连接和障碍区域一起展示。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/coverage_pcd_2d_map.png" alt="ljh20260516 PCD 转出的完整 2D 地图">
+            <figcaption>由真实 <code>ljh20260516.pcd</code> 转出的 2D occupancy map。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/coverage_rviz.png" alt="RViz 中覆盖路径、多边形和分块调试画面">
+            <figcaption>RViz 调试画面：覆盖路径、区域 marker、TF 和假车状态一起检查。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/coverage_amr2_platform.jpg" alt="AMR2 平台实物照片">
+            <figcaption>算法背后的 AMR2 平台：覆盖规划最终要落到这类真实底盘的安全执行链路上。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">ROS2 Interface</p>
+          <h2>服务、话题与参数</h2>
+          <table class="interface-table">
+            <thead>
+              <tr>
+                <th>接口</th>
+                <th>类型</th>
+                <th>作用</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>/coverage/compute_path</code></td>
+                <td>service</td>
+                <td>直接传 polygon / holes 计算覆盖路径。</td>
+              </tr>
+              <tr>
+                <td><code>/coverage_path</code></td>
+                <td>topic</td>
+                <td>标准 <code>nav_msgs/Path</code>，供 RViz 和后续执行器复用。</td>
+              </tr>
+              <tr>
+                <td><code>/coverage/coverage_path</code></td>
+                <td>topic</td>
+                <td>自定义覆盖路径消息，每个 waypoint 带 x / y / yaw。</td>
+              </tr>
+              <tr>
+                <td><code>/coverage_sim/start_path_following</code></td>
+                <td>service</td>
+                <td>让 RViz-only fake car 沿当前覆盖路径行走。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <aside>
+          <p class="kicker">Safety Boundary</p>
+          <h2>真车链路边界</h2>
+          <div class="note-panel">当前已经验证覆盖路径生成、地图 known-free 裁剪、RViz-only 跟随和 fake car 运动。真车自动清扫执行还没有直接下发到底盘，后续必须走 Nav2/覆盖执行器 -> velocity_smoother -> collision_monitor -> DS20270C CAN chassis，不能绕过速度平滑和近距离避障保护。</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">README Snapshot</p>
+        <h2>完整材料与测试记录</h2>
+        <div class="readme-box">
+          <h3>本次测试记录摘要</h3>
+          <p>测试环境为 2026-07-26，Ubuntu 22.04 WSL，ROS2 Humble，分支 <code>feature/coverage-path</code>。README 中记录了消息、覆盖算法、RViz-only 仿真包编译通过，PCD 地图加载、<code>/map</code> + <code>/scan</code> + <code>/coverage_path</code> 话题就绪，clicked-point workflow、known-free clearance validator、follow test 和 odometry move test 均通过。</p>
+          <pre><code>colcon build --symlink-install --packages-select ljh_robot_msg ljh_robot_coverage ljh_rviz2 ljh_robot_sim    PASS
+./run/check_ljh_sim_coverage_services.sh                                        PASS
+./run/check_ljh_sim_coverage_services.sh oversized map clip                     PASS, 128 waypoints
+./run/check_ljh_sim_coverage_services.sh map clearance validator                PASS, clearance=0.381m
+./run/check_ljh_sim_coverage_services.sh follow test                            PASS
+ros2 launch ljh_robot_sim ljh_amr2_rviz_sim.launch.py                           PASS</code></pre>
+          <p class="excerpt-note">这份页面只放关键链路；完整 README 和 PDF 快照保留在本站内，便于继续复盘。</p>
+        </div>
+        <div class="source-actions">
+          <a class="button primary" href="readmes/rabbitrobot-coverage.md">Open README Snapshot</a>
+          <a class="button" href="readmes/rabbitrobot-coverage.pdf">Download README PDF</a>
+          <a class="button video" href="https://github.com/lijinghai/ljh_amr2_hubwheel_drive" target="_blank" rel="noreferrer">Source Repository</a>
+          <a class="button" href="../index.html#projects">Back to Project Matrix</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">RabbitRobot · RabbitRobot_CoveragePath · 本页是 GitHub Pages 内部项目详情页。</div>
+  </footer>
+</body>
+</html>

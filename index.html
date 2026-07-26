@@ -504,6 +504,78 @@
       text-decoration: none;
     }
 
+    .algorithm-card {
+      display: grid;
+      grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+      gap: 22px;
+      align-items: center;
+      margin-top: 24px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .algorithm-media {
+      margin: 0;
+      height: 100%;
+      min-height: 280px;
+      background: var(--soft);
+    }
+
+    .algorithm-media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      object-fit: cover;
+    }
+
+    .algorithm-body {
+      padding: 22px 22px 22px 0;
+    }
+
+    .algorithm-body h3 {
+      margin: 10px 0 8px;
+      color: var(--dark);
+      font-size: 24px;
+    }
+
+    .algorithm-body p {
+      margin-bottom: 14px;
+      font-size: 15px;
+    }
+
+    .algorithm-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .algorithm-stat {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+
+    .algorithm-stat b {
+      display: block;
+      color: var(--dark);
+      font-size: 19px;
+      line-height: 1.2;
+    }
+
+    .algorithm-stat span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
     .amr2-showcase {
       display: grid;
       grid-template-columns: minmax(0, 1.06fr) minmax(320px, .94fr);
@@ -1106,6 +1178,7 @@
 
       .approach-text,
       .amr2-showcase,
+      .algorithm-card,
       .hardware-grid,
       .repository-grid,
       .research-grid,
@@ -1116,6 +1189,14 @@
       }
 
       .amr2-specs {
+        grid-template-columns: 1fr;
+      }
+
+      .algorithm-body {
+        padding: 0 18px 20px;
+      }
+
+      .algorithm-stats {
         grid-template-columns: 1fr;
       }
 
@@ -1193,6 +1274,11 @@
 
       .contact-board {
         max-width: 420px;
+      }
+
+      .algorithm-media,
+      .algorithm-media img {
+        min-height: 220px;
       }
 
       .publication-links {
@@ -1324,6 +1410,7 @@
           <ul>
             <li><strong>当前主线是 VLN</strong>：让真实 AMR 从自然语言任务、视觉/地图观测和历史轨迹中理解“要去哪、怎么走、为什么这样走”。</li>
             <li><strong>AMR2 是 VLN 真车底座</strong>：轮毂伺服差速底盘接入 MID360、Fast-LIO、ICP、Nav2 MPPI、速度平滑和 collision monitor。</li>
+            <li><strong>CoveragePath 是清扫算法能力</strong>：在真实 PCD 2D 地图里框选区域，按 footprint、安全边距、占据栅格和连通分块生成 map-aware 覆盖路径。</li>
             <li><strong>每个设备都带着实物迭代痕迹</strong>：从轮系、支架、线束、传感器安装位到测试场调参，逐步沉淀成可复现的底盘、地图、导航界面和真实 rosbag 数据。</li>
             <li><strong>研究目标</strong> 是把语言指令 grounding、waypoint 规划、Nav2 执行层和真实场景评估放进同一个实验闭环。</li>
           </ul>
@@ -1352,6 +1439,7 @@
               <p>新做的 AMR2 小车是 RabbitRobot 当前更重要的真车执行平台：从轮毂伺服、铝型材框架、MID360 安装位到 CAN 线束和导航脚本逐步收拢，再接入 Fast-LIO、ICP、Nav2 MPPI、速度平滑和近距离避障保护，为后续 VLN waypoint 执行、rosbag 回放和失败案例采集提供底座。</p>
               <div class="hardware-actions">
                 <a class="hardware-detail-link" href="projects/rabbitrobot-amr2.html">查看项目介绍</a>
+                <a class="hardware-detail-link" href="projects/rabbitrobot-coverage.html">覆盖算法</a>
                 <a class="hardware-video-link" href="https://www.bilibili.com/video/BV1543K6uEVM/" target="_blank" rel="noreferrer">观看项目视频</a>
               </div>
             </div>
@@ -1363,13 +1451,14 @@
             </div>
             <div class="hardware-body">
               <div class="tag-list" aria-label="扫地机 V1.0 关键词">
-                <span class="tag">Sweeper V1.0</span><span class="tag">Cleaning AMR</span><span class="tag">ROS2-ready</span>
+                <span class="tag">Sweeper V1.0</span><span class="tag">Cleaning AMR</span><span class="tag">Coverage Path</span><span class="tag">ROS2-ready</span>
               </div>
               <h3>Sweeper V1.0</h3>
               <p class="hardware-time"><time datetime="2026-07">2026.07</time> · 清扫原型归档</p>
               <p>清扫底盘的第一版实物：在铝型材底盘上集成清扫机构、车轮驱动、电源、主控和本地屏幕，先把真实地面上的运动、供电、布线、重心和清扫机构布局跑通。</p>
               <div class="hardware-actions">
                 <a class="hardware-detail-link" href="projects/rabbitrobot-sweeper-v1.html">查看项目介绍</a>
+                <a class="hardware-video-link" href="projects/rabbitrobot-coverage.html">覆盖算法</a>
               </div>
             </div>
           </article>
@@ -1450,6 +1539,25 @@
           <img src="images/rabbitrobot/amr2_single_goal.jpg" alt="AMR2 Web 控制台单点导航画面">
           <img src="images/rabbitrobot/amr2_web_navigation.jpg" alt="AMR2 Web 控制台 3D 导航画面">
         </div>
+        <article class="algorithm-card">
+          <figure class="algorithm-media">
+            <img src="images/rabbitrobot/coverage_algorithm_overview.jpg" alt="RabbitRobot AMR2 扫地机覆盖路径算法的地图、覆盖线与 RViz 调试截图">
+          </figure>
+          <div class="algorithm-body">
+            <p class="section-kicker">Coverage Planner · 2026.07.26</p>
+            <h3>鼠标画区域，自动生成可通行覆盖路径</h3>
+            <p>这套扫地机覆盖算法不是简单画一组蛇形线：它会把 RViz 里拖出来的矩形或多边形区域，和真实 PCD 转出的 2D 地图、AMR2 的 <code>0.486 m × 0.450 m</code> footprint、障碍膨胀、安全内收和连通分块放在一起计算，最后输出 RViz/Nav2 可复用的 <code>/coverage_path</code>。</p>
+            <div class="algorithm-stats" aria-label="覆盖算法关键指标">
+              <div class="algorithm-stat"><b>0.38 m</b><span>map-aware clearance</span></div>
+              <div class="algorithm-stat"><b>12 / 128</b><span>常规区域 / 大框裁剪 waypoints</span></div>
+              <div class="algorithm-stat"><b>36.38 m²</b><span>示例已知可通行覆盖区域</span></div>
+            </div>
+            <div class="hardware-actions">
+              <a class="hardware-detail-link" href="projects/rabbitrobot-coverage.html">查看覆盖算法详情</a>
+              <a class="hardware-video-link" href="projects/readmes/rabbitrobot-coverage.md">打开 README 快照</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -1519,6 +1627,13 @@
                 <td>VLN 真车执行底座</td>
                 <td>用 DS20270C CAN 轮毂伺服差速底盘、MID360、Fast-LIO、ICP、Nav2 MPPI、速度平滑和避障保护，承接 VLN waypoint 的真实执行与 rosbag 数据回收。</td>
                 <td><span class="tag-list"><span class="tag">Hub-Wheel AMR</span><span class="tag">DS20270C</span><span class="tag">MID360</span><span class="tag">Nav2 MPPI</span><span class="tag">Collision Monitor</span></span></td>
+              </tr>
+              <tr>
+                <td><a class="project-link" href="projects/rabbitrobot-coverage.html"><b>RabbitRobot_CoveragePath</b>扫地机覆盖路径算法</a></td>
+                <td class="project-time"><time datetime="2026-07-26">2026.07.26</time><span>覆盖规划</span></td>
+                <td>清扫/覆盖算法能力</td>
+                <td>在真实 PCD 2D 地图上，根据 RViz 框选区域、polygon holes、占据栅格、AMR2 footprint 和安全边距生成 map-aware 覆盖路径，并输出可接入后续 Nav2 执行器的路径。</td>
+                <td><span class="tag-list"><span class="tag">Coverage Path</span><span class="tag">OccupancyGrid</span><span class="tag">Footprint Inflation</span><span class="tag">A*</span><span class="tag">RViz Tool</span></span></td>
               </tr>
               <tr>
                 <td><a class="project-link" href="projects/rabbitrobot-vln.html"><b>RabbitRobot_VLN</b>视觉语言导航主线</a></td>
@@ -1611,6 +1726,26 @@
                 <li>面向 VLN：把语言策略生成的 waypoint 交给真车执行，并回收轨迹、状态和失败样例。</li>
               </ul>
               <a class="repo-link" href="projects/rabbitrobot-amr2.html">Project Details</a>
+            </div>
+          </article>
+
+          <article class="repository-card">
+            <div class="repository-media">
+              <img src="images/rabbitrobot/coverage_sim_preview.png" alt="AMR2 扫地机覆盖仿真预览图">
+              <img src="images/rabbitrobot/coverage_path_demo.png" alt="扫地机覆盖路径往返覆盖线示意图">
+            </div>
+            <div class="repository-body">
+              <div class="tag-list" aria-label="覆盖路径算法技术栈">
+                <span class="tag">ROS2 Humble</span><span class="tag">Coverage Rect</span><span class="tag">Coverage Poly</span><span class="tag">A*</span><span class="tag">Map-aware</span>
+              </div>
+              <h3>ljh_robot_coverage</h3>
+              <p>这是 AMR2 工作空间里新整理出的扫地机覆盖路径算法：从 RViz 鼠标框选区域出发，结合真实 PCD 转出的 OccupancyGrid、车体 footprint、安全边距和障碍孔洞，生成能在 RViz 中验证、后续可接 Nav2 执行器的覆盖路径。</p>
+              <ul>
+                <li>交互入口：<code>Coverage Rect</code> 拖矩形、<code>Coverage Poly</code> 点多边形，也支持直接调用 <code>/coverage/compute_path</code>。</li>
+                <li>地图约束：unknown/off-map 区域不参与规划，占据格按车体尺寸膨胀后从覆盖区域中扣除。</li>
+                <li>安全边界：当前覆盖路径生成与 RViz-only 跟随已验证，真车自动执行后续仍要走 Nav2、速度平滑和 collision monitor。</li>
+              </ul>
+              <a class="repo-link" href="projects/rabbitrobot-coverage.html">Project Details</a>
             </div>
           </article>
 
