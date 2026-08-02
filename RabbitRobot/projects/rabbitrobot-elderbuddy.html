@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RabbitRobot_ElderBuddy | RabbitRobot</title>
+  <meta name="description" content="ElderBuddy 是室内服务机器人概念页，把移动底盘、语音交互、陪伴、提醒、跌倒响应和小户型导航需求放在一起，思考 AMR 能力如何进入家庭服务场景。">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+  <nav class="detail-nav" aria-label="Project navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
+        <span>RabbitRobot</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#projects">Project Matrix</a>
+        <a href="../index.html#research">VLN Focus</a>
+        <a href="../index.html#repositories">Snapshots</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">服务概念验证</p>
+      <h1>RabbitRobot_ElderBuddy</h1>
+      <p class="subtitle">老人陪伴机器人</p>
+      <p class="summary">ElderBuddy 是室内服务机器人概念页，把移动底盘、语音交互、陪伴、提醒、跌倒响应和小户型导航需求放在一起，思考 AMR 能力如何进入家庭服务场景。</p>
+      <div class="meta-row">
+        <span class="meta-pill">Time · 2026</span>
+        <span class="meta-pill">Source · RabbitRobot_ElderBuddy README</span>
+        <span class="meta-pill">Repo · lijinghai/RabbitRobot</span>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <img src="../images/rabbitrobot/omni_car_compact.jpg" alt="RabbitRobot_ElderBuddy">
+    </figure>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">What It Does</p>
+          <h2>项目做的是什么</h2>
+          <ul class="highlight-list"><li>以移动底盘为产品核心，而不是把它当作普通附件。</li><li>围绕独居老人室内行动不便、陪伴、提醒和应急需求进行功能拆解。</li><li>后续可以复用 AMR 的 SLAM、避障、回充和远程控制能力。</li></ul>
+        </div>
+        <aside>
+          <p class="kicker">Stack</p>
+          <h2>技术关键词</h2>
+          <div class="stack"><span class="tag">Indoor Service</span><span class="tag">HRI</span><span class="tag">Companion Robot</span><span class="tag">SLAM</span><span class="tag">Voice</span><span class="tag">Safety</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">VLN Relation</p>
+          <h2>和当前 VLN 主线的关系</h2>
+          <div class="note-panel">家庭服务机器人的语言任务非常自然，ElderBuddy 为“听懂家里任务并自己过去”的 VLN 应用提供产品语境。</div>
+        </div>
+        <div>
+          <p class="kicker">Craft Record</p>
+          <h2>工程痕迹</h2>
+          <p>这个项目保留了从硬件选型、结构验证、驱动调试、话题链路到现场反馈的连续记录。页面里放的不是单独的效果截图，而是一段可回溯的迭代线索。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Media</p>
+        <h2>关键画面</h2>
+        <div class="gallery">
+          <figure>
+              <img src="../images/rabbitrobot/omni_car_compact.jpg" alt="RabbitRobot_ElderBuddy">
+              <figcaption>RabbitRobot_ElderBuddy</figcaption>
+            </figure><figure>
+              <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot_ElderBuddy 关键画面 2">
+              <figcaption>RabbitRobot_ElderBuddy 关键画面 2</figcaption>
+            </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">README Snapshot</p>
+        <h2>README / 项目说明片段</h2>
+        <div class="readme-box">
+          <p>&lt;center style=&quot;</p>
+<p>color: [[FF6600]];</p>
+<p>font-size: 330%;</p>
+<p>font-weight: bold;</p>
+<p>&quot;&gt;</p>
+<p>RabbitRobot_ElderBuddy</p>
+<blockquote>[!note]</blockquote>
+<blockquote></blockquote>
+<blockquote>#### &amp;emsp;针对独居老人的痛点（如孤独感、行动不便、生活不方便、缺乏交流），我们设计了一款基于移动底盘的智能陪伴机器人（暂命名为“ElderBuddy”）。这个产品以移动底盘为核心技术亮点，结合实际老人生活场景（如小户型居室、日常起居习惯、健康监测需求），实现从被动陪伴到主动协助的转变。移动底盘不是简单附件，而是产品的“灵魂”，它赋予机器人自主移动能力，让它像“活的伙伴”一样随时响应老人需求，避免老人因行动不便而感到无助。以下从市场定位、功能设计、硬件突出、技术实现、商业化路径等方面，结合实际一步步阐述如何做产品。</blockquote>
+<h2>一. <strong>市场定位与用户洞察（结合实际痛点）</strong></h2>
+<ul>
+<li><strong>目标用户</strong>：65岁以上独居老人，重点针对城市中低收入群体（每月养老支出有限）。实际调研显示，中国独居老人超过5000万（基于国家统计局数据），其中80%面临行动不便（如关节炎、视力衰退），70%感到孤独（缺乏子女陪伴），50%生活不便（如取物、就医）。</li>
+<li>痛点映射：</li>
+<li>孤独/没人说话：老人平均每天说话时间不足1小时，导致抑郁风险增加。</li>
+<li>行动不便/不方便：爬楼梯、弯腰取物易受伤，突发情况（如跌倒）无人发现。</li>
+<li><strong>产品定位</strong>：不是高端AI玩具，而是实用“家庭助手”，价格控制在2000-5000元人民币，强调“移动陪伴，零负担”。突出移动底盘的优势：它让机器人能“主动找你”，而非老人费力操作，解决实际中的“伸手够不着”问题。</li>
+</ul>
+<h2>二. <strong>核心功能设计（以移动底盘为亮点）</strong></h2>
+<p>产品以移动底盘为基础，构建多层功能体系。移动底盘采用轮式设计，支持室内导航，确保在老人家中（如客厅、卧室、厨房）自由移动。实际结合：老人家居空间有限（平均50-80㎡），底盘需小巧（直径&lt;50cm）、低噪音（&lt;40dB）、防撞（内置传感器）。</p>
+<ul>
+<li>### 解决孤独与没人说话：</li>
+</ul>
+<ul>
+<li>语音互动：内置AI聊天系统（如基于大模型的对话引擎），老人说“今天好无聊”，机器人可移动到身边，播放故事、音乐或视频通话家人。</li>
+</ul>
+<p>​	实际：集成微信/电话接口，每天主动“问候”老人，模拟人类陪伴。</p>
+<ul>
+<li>情感陪伴：机器人通过移动底盘“跟随”老人（如从沙发到厨房），边走边聊，避免老人觉得“冷冰冰”。</li>
+</ul>
+<ul>
+<li>### 解决行动不便与不方便：</li>
+</ul>
+<ul>
+<li>物品运送：老人说“帮我拿水杯”，机器人使用移动底盘导航到厨房，取物后送回。</li>
+</ul>
+<p>​	实际：底盘集成机械臂或托盘，负载5kg，支持坡度&lt;15°的家居环境。</p>
+<ul>
+<li>健康监测与紧急响应：底盘内置摄像头/传感器，巡逻监测老人跌倒（发生率高达30%），自动移动到身边呼救或拨打120。</li>
+</ul>
+<p>​	实际：结合穿戴设备（如手环），机器人可“赶到”现场，提供语音指导。</p>
+<ul>
+<li>日常协助：定时提醒吃药、喝水，移动底盘让它能“上门服务”，如推开门送餐（适配智能门锁）。</li>
+</ul>
+<ul>
+<li>### 突出移动底盘的独特卖点：</li>
+</ul>
+<ul>
+<li><strong>自主导航</strong>：使用SLAM（同时定位与地图构建）技术，老人首次使用时机器人“学习”家居布局，避开障碍（如地毯、门槛）。</li>
+</ul>
+<p>​	实际优势：老人无需遥控，机器人能“聪明”移动，减少老人操作负担。</p>
+<ul>
+<li><strong>多场景适应</strong>：底盘支持电池续航8小时，充电站自动返回。</li>
+</ul>
+<p>​	实际：针对老人夜间活动，添加夜视模式，让机器人“守护”床边。</p>
+<ul>
+<li><strong>扩展性</strong>：底盘模块化设计，可升级附件（如加装扫地功能），让产品从“陪伴型”向“全能型”演进。</li>
+</ul>
+<h4>使用表格总结功能与痛点对应：</h4>
+<pre>| 痛点          | 功能示例            | 移动底盘作用                       | 实际结合点                   |</pre>
+<pre>| ------------- | ------------------- | ---------------------------------- | ---------------------------- |</pre>
+<pre>| 孤独/没人说话 | AI聊天 + 视频通话   | 主动移动到老人身边，增强互动亲切感 | 老人卧床聊天，减少抑郁风险   |</pre>
+<pre>| 行动不便      | 物品运送 + 跌倒检测 | 快速导航响应，携带或引导老人       | 家居小空间，避免老人弯腰受伤 |</pre>
+<pre>| 不方便        | 提醒 + 巡逻监测     | 全屋移动覆盖，无死角服务           | 定时送药，适配独居小户型     |</pre>
+<h2>三、硬件与技术实现（实用性优先）</h2>
+<ul>
+<li><strong>核心硬件</strong>：移动底盘采用四轮驱动（成本低，稳定性高），集成激光雷达/超声波传感器（避障精度&gt;95%）。</li>
+</ul>
+<p>​	实际：，但优化为老人友好（速度&lt;0.5m/s，避免惊吓）。</p>
+<ul>
+<li><strong>软件集成</strong>：AI大脑使用开源框架（如ROS2机器人操作系统），支持离线语音（老人无WiFi时可用）。</li>
+</ul>
+<p>​        实际：数据隐私优先，只上传匿名健康数据给家人App。</p>
+<ul>
+<li><strong>原型开发步骤</strong>：</li>
+<li>MVP（最小 viable 产品）：先建底盘原型，测试导航（用Arduino或Raspberry Pi）。</li>
+<li>用户测试：找10-20位老人试用，收集反馈（如“移动太快”调整速度）。</li>
+<li>迭代：添加蓝牙连接智能家居（如灯、空调），让底盘“带队”控制全屋。</li>
+</ul>
+<ul>
+<li><strong>成本控制</strong>：底盘部件&lt;1000元，总成本&lt;3000元，确保大众可及。</li>
+</ul>
+<h2>四. <strong>商业化与推广路径</strong></h2>
+<ul>
+<li><strong>定价与变现</strong>：基础版3000元，订阅服务（AI升级、远程监控）每月50元。实际：合作养老院/社区，批量销售降低成本。</li>
+<li><strong>营销策略</strong>：强调“移动底盘，让陪伴无处不在”。短视频演示：机器人“跑”到老人身边递药，突出情感连接。渠道：京东/天猫老年专区，线下养老展。</li>
+<li><strong>风险与合规</strong>：实际考虑老人隐私（GDPR-like标准），安全测试（防倾倒）。如果涉及医疗，需医疗器械认证。</li>
+<li><strong>扩展潜力</strong>：未来升级底盘为室外版（轮椅适配），进入更大市场。</li>
+</ul>
+<p class="excerpt-note">完整 README 已保存在本站快照中，可从本页底部打开。</p>
+        </div>
+        <div class="source-actions">
+          <a class="button primary" href="readmes/rabbitrobot-elderbuddy.md">Open Local README Snapshot</a>
+          <a class="button" href="https://github.com/lijinghai/RabbitRobot" target="_blank" rel="noreferrer">Source Repository</a>
+          <a class="button" href="../index.html#projects">Back to Project Matrix</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">RabbitRobot · RabbitRobot_ElderBuddy · 本页是 GitHub Pages 内部项目详情页。</div>
+  </footer>
+</body>
+</html>
