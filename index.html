@@ -4,115 +4,503 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>算个文科生吧 | Lijinghai</title>
-  <meta name="description" content="算个文科生吧的个人主页入口。RabbitRobot 项目主页已迁移到 /RabbitRobot/。">
+  <meta name="description" content="Lijinghai / 算个文科生吧的个人主页：控制工程、ROS 2 机器人系统、自动驾驶、VLN 与 RabbitRobot 项目记录。">
+  <meta name="author" content="Lijinghai">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="算个文科生吧 | Lijinghai">
+  <meta property="og:description" content="控制工程方向硕士研究生，关注自动驾驶规划与决策、ROS 2 机器人系统、多传感器融合、VLN / 具身智能。">
+  <meta property="og:image" content="RabbitRobot/images/rabbitrobot/amr2_field_test_18s.jpg">
+  <link rel="icon" type="image/png" href="RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png">
   <style>
     :root {
-      color-scheme: light;
-      --bg: #f7f8fa;
-      --text: #20242a;
-      --muted: #66707d;
-      --line: #dde2ea;
+      --text: #232323;
+      --muted: #555;
+      --soft: #777;
+      --link: #1772d0;
+      --link-hover: #f09228;
       --accent: #d66a2f;
-      --panel: #ffffff;
-      --shadow: 0 18px 44px rgba(24, 31, 42, .08);
+      --dark: #1f2933;
+      --line: #e6e6e6;
+      --paper: #fff;
+      --warm: #fff8ef;
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      min-height: 100vh;
       color: var(--text);
-      background:
-        linear-gradient(180deg, #fff 0%, var(--bg) 100%);
-      font-family: Inter, "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
-      line-height: 1.65;
-    }
-
-    main {
-      display: grid;
-      min-height: 100vh;
-      place-items: center;
-      padding: 36px 18px;
-    }
-
-    .home {
-      width: min(720px, 100%);
-      padding: clamp(28px, 6vw, 48px);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: var(--panel);
-      box-shadow: var(--shadow);
-    }
-
-    .eyebrow {
-      margin: 0 0 12px;
-      color: var(--accent);
+      background: var(--paper);
+      font-family: Lato, Verdana, Helvetica, "Microsoft YaHei", "Noto Sans SC", sans-serif;
       font-size: 14px;
-      font-weight: 800;
-      letter-spacing: 0;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0 0 14px;
-      color: var(--text);
-      font-size: clamp(36px, 8vw, 64px);
-      line-height: 1.08;
-      letter-spacing: 0;
-    }
-
-    p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
+      line-height: 1.58;
     }
 
     a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 9px 16px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      color: var(--text);
-      background: #fff;
-      font-weight: 750;
+      color: var(--link);
       text-decoration: none;
     }
 
-    a.primary {
-      border-color: var(--accent);
-      color: #fff;
-      background: var(--accent);
+    a:hover,
+    a:focus {
+      color: var(--link-hover);
+      text-decoration: none;
     }
 
-    a:hover {
-      transform: translateY(-1px);
+    p {
+      margin: 0 0 12px;
+      color: var(--text);
+    }
+
+    ul {
+      margin: 8px 0 0 20px;
+      padding: 0;
+    }
+
+    li {
+      margin: 4px 0;
+      color: var(--text);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      width: min(100%, 850px);
+      margin: 0 auto;
+      padding: 24px 22px 52px;
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 28px;
+      align-items: center;
+      padding: 12px 0 18px;
+    }
+
+    h1 {
+      margin: 8px 0 14px;
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1.15;
+      text-align: center;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0;
+      padding: 0;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.3;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      display: inline;
+      margin: 0;
+      padding: 0;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .name-line {
+      color: var(--soft);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .profile-photo {
+      width: 230px;
+      aspect-ratio: 1;
+      margin: 0 auto;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--line);
+    }
+
+    .links {
+      margin-top: 16px;
+      text-align: center;
+      color: var(--soft);
+    }
+
+    .links a {
+      white-space: nowrap;
+    }
+
+    .rabbit-cta {
+      display: flex;
+      justify-content: center;
+      margin: 18px 0 4px;
+    }
+
+    .rabbit-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 18px;
+      border: 1px solid var(--dark);
+      border-radius: 6px;
+      color: #fff;
+      background: var(--dark);
+      font-size: 15px;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(31, 41, 51, .12);
+    }
+
+    .rabbit-button:hover,
+    .rabbit-button:focus {
+      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .section-title {
+      padding: 22px 0 10px;
+      border-top: 1px solid var(--line);
+    }
+
+    .interest-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px 24px;
+      padding: 6px 0 12px;
+    }
+
+    .interest {
+      min-width: 0;
+    }
+
+    .interest b {
+      display: block;
+      margin-bottom: 2px;
+      font-size: 14px;
+    }
+
+    .interest span {
+      color: var(--muted);
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .thumb {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 4px;
+      background: var(--warm);
+      border: 1px solid var(--line);
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .thumb.contain img {
+      object-fit: contain;
+      padding: 8px;
+      background: #fbfbfb;
+    }
+
+    .meta {
+      color: var(--muted);
+    }
+
+    .venue {
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .entry-links {
+      margin-top: 5px;
+      color: var(--soft);
+    }
+
+    .note {
+      color: var(--muted);
+    }
+
+    .stack-table {
+      width: 100%;
+      margin-top: 4px;
+      border-spacing: 0;
+      border-collapse: collapse;
+    }
+
+    .stack-table th,
+    .stack-table td {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .stack-table th {
+      width: 190px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    footer {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--soft);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .page {
+        padding: 18px 16px 42px;
+      }
+
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .intro-media {
+        order: -1;
+      }
+
+      .profile-photo {
+        width: min(210px, 68vw);
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .interest-grid,
+      .entry {
+        grid-template-columns: 1fr;
+      }
+
+      .entry {
+        gap: 10px;
+      }
+
+      .thumb {
+        max-width: 360px;
+      }
+
+      .stack-table th {
+        width: 120px;
+      }
     }
   </style>
 </head>
 <body>
-  <main>
-    <section class="home" aria-labelledby="page-title">
-      <p class="eyebrow">Lijinghai</p>
-      <h1 id="page-title">算个文科生吧</h1>
-      <p>这里先作为个人主页入口保留。原来的 RabbitRobot 项目主页已经迁移到新的路径。</p>
-      <div class="actions">
-        <a class="primary" href="RabbitRobot/">RabbitRobot 项目主页</a>
-        <a href="https://github.com/lijinghai" target="_blank" rel="noreferrer">GitHub</a>
+  <main class="page">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <h1 id="page-title">算个文科生吧</h1>
+        <p class="name-line">Lijinghai · RabbitRobot · Control Engineering</p>
+        <p>
+          你好，我是 <strong>lijinghai</strong>。我关注自动驾驶规划与决策、ROS 2 机器人系统、多传感器融合定位建图，以及 VLN / 具身智能导航。
+        </p>
+        <p>
+          我正在长期推进 <strong>RabbitRobot</strong>：从真实 AMR 底盘、LiDAR/深度相机、SLAM、Nav2、Web 控制台，到语言任务理解和真车执行，把一个机器人项目做成可以持续复现、展示和迭代的工程闭环。
+        </p>
+        <p>
+          当前研究线索更偏向长程 VLN 中的偏航检测、可验证恢复、语义子目标规划和真实移动机器人落地。我希望项目既能保留工程现场的痕迹，也能逐步长出研究问题。
+        </p>
+        <div class="rabbit-cta">
+          <a class="rabbit-button" href="RabbitRobot/">进入 RabbitRobot 全系列主页</a>
+        </div>
+        <p class="links">
+          <a href="https://github.com/lijinghai" target="_blank" rel="noreferrer">GitHub</a>
+          &nbsp;/&nbsp;
+          <a href="https://blog.csdn.net/Dorian15" target="_blank" rel="noreferrer">CSDN</a>
+          &nbsp;/&nbsp;
+          <a href="https://space.bilibili.com/1339027047" target="_blank" rel="noreferrer">Bilibili</a>
+          &nbsp;/&nbsp;
+          <a href="mailto:lijinghailjh@163.com">Email</a>
+        </p>
+      </div>
+      <div class="intro-media">
+        <img class="profile-photo" src="RabbitRobot/images/custom/avatar.jpg" alt="Lijinghai profile photo">
       </div>
     </section>
+
+    <section aria-labelledby="interests-title">
+      <div class="section-title">
+        <h2 id="interests-title">Research Interests</h2>
+      </div>
+      <div class="interest-grid">
+        <p class="interest">
+          <b>VLN / Embodied AI</b>
+          <span>语言目标理解、语义子目标、历史记忆、偏航检测与恢复。</span>
+        </p>
+        <p class="interest">
+          <b>Robotics Systems</b>
+          <span>ROS 2、Nav2、EKF、串口控制、Jetson 部署和机器人 Web 控制。</span>
+        </p>
+        <p class="interest">
+          <b>SLAM and Localization</b>
+          <span>FAST-LIO、Point-LIO、RTAB-Map、Cartographer 与多传感器融合建图。</span>
+        </p>
+        <p class="interest">
+          <b>Autonomous Driving</b>
+          <span>局部规划、轨迹优化、低附着鲁棒性和可回放实验评估。</span>
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="projects-title">
+      <div class="section-title">
+        <h2 id="projects-title">Selected Projects</h2>
+      </div>
+
+      <article class="entry">
+        <a class="thumb" href="RabbitRobot/">
+          <img src="RabbitRobot/images/rabbitrobot/amr2_field_test_18s.jpg" alt="RabbitRobot AMR2 real robot field test">
+        </a>
+        <div>
+          <h3>RabbitRobot: 面向 VLN 的真实机器人项目</h3>
+          <br>
+          <span class="meta"><strong>Lijinghai</strong> · ROS 2 AMR · Vision-Language Navigation</span>
+          <br>
+          <span class="venue">Long-running personal robotics research and engineering suite</span>
+          <p class="note">
+            RabbitRobot 不是单个演示项目，而是一组围绕真实移动机器人生长的工程资产：AMR2 真车、扫地机覆盖路径、手持 LiDAR、ROS2 Web 控制台和 VLN 研究主线。
+          </p>
+          <p class="entry-links">
+            <a href="RabbitRobot/">project page</a>
+            /
+            <a href="https://github.com/lijinghai" target="_blank" rel="noreferrer">github</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <a class="thumb" href="RabbitRobot/projects/rabbitrobot-amr2.html">
+          <img src="RabbitRobot/images/rabbitrobot/amr2_web_navigation.jpg" alt="AMR2 web navigation console">
+        </a>
+        <div>
+          <h3>RabbitRobot_AMR2: 轮毂伺服 ROS 2 真车平台</h3>
+          <br>
+          <span class="meta">MID360 · FAST-LIO · ICP · Nav2 MPPI · Web Console</span>
+          <p class="note">
+            AMR2 是当前最核心的真车执行底座，用于把 VLN waypoint 和导航任务落到地图定位、局部路径、速度指令、安全过滤和可回放数据上。
+          </p>
+          <p class="entry-links">
+            <a href="RabbitRobot/projects/rabbitrobot-amr2.html">details</a>
+            /
+            <a href="https://www.bilibili.com/video/BV1543K6uEVM/" target="_blank" rel="noreferrer">video</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <a class="thumb contain" href="RabbitRobot/projects/rabbitrobot-coverage.html">
+          <img src="RabbitRobot/images/rabbitrobot/coverage_step_generated_path.png" alt="Coverage path generated on occupancy map">
+        </a>
+        <div>
+          <h3>Coverage Path Planning: 扫地机覆盖路径算法</h3>
+          <br>
+          <span class="meta">OccupancyGrid · footprint clearance · RViz Rect/Poly · Nav2 bridge</span>
+          <p class="note">
+            面向真实地图和机器人 footprint 的覆盖路径生成：将用户绘制区域裁剪到 known-free 空间，避开障碍与未知区域，并输出可视化、可验证、可桥接到 Nav2 的路径。
+          </p>
+          <p class="entry-links">
+            <a href="RabbitRobot/projects/rabbitrobot-coverage.html">details</a>
+            /
+            <a href="RabbitRobot/projects/readmes/rabbitrobot-coverage.md">readme</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <a class="thumb" href="RabbitRobot/projects/rabbitrobot-handlidar.html">
+          <img src="RabbitRobot/images/rabbitrobot/hand_lidar_prototype.jpg" alt="RabbitRobot hand LiDAR prototype">
+        </a>
+        <div>
+          <h3>HandLiDAR and Multi-Sensor Mapping</h3>
+          <br>
+          <span class="meta">Unitree L1 · D435 · RTAB-Map · point cloud mapping</span>
+          <p class="note">
+            手持 LiDAR 与多传感器建图工具用于补足真实场景地图能力，把传感器、点云、位姿估计和后续导航实验放进同一条机器人研发链路。
+          </p>
+          <p class="entry-links">
+            <a href="RabbitRobot/projects/rabbitrobot-handlidar.html">details</a>
+            /
+            <a href="RabbitRobot/projects/rabbitrobot-d435-l1-rtabmap.html">rtab-map</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <a class="thumb contain" href="RabbitRobot/projects/rabbitrobot-vln.html">
+          <img src="RabbitRobot/images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot architecture diagram">
+        </a>
+        <div>
+          <h3>VLR Research Vault: 长程 VLN 偏航检测与可验证恢复</h3>
+          <br>
+          <span class="meta">waypoint planning · semantic subgoals · topology-aware recovery · VLM reasoning</span>
+          <p class="note">
+            研究库围绕 VLN / VLM Agent / planning 展开，关注如何让移动机器人在长程任务中识别偏航、解释状态、恢复路线，并最终回到真实 AMR 平台验证。
+          </p>
+          <p class="entry-links">
+            <a href="RabbitRobot/projects/rabbitrobot-vln.html">RabbitRobot_VLN</a>
+            /
+            <a href="RabbitRobot/#research">research line</a>
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="stack-title">
+      <div class="section-title">
+        <h2 id="stack-title">Technical Stack</h2>
+      </div>
+      <table class="stack-table">
+        <tbody>
+          <tr>
+            <th>Programming</th>
+            <td>Python, C++, Java, JavaScript / TypeScript</td>
+          </tr>
+          <tr>
+            <th>Robotics</th>
+            <td>ROS 2, Nav2, Autoware, RTAB-Map, Cartographer, FAST-LIO, Point-LIO, EKF</td>
+          </tr>
+          <tr>
+            <th>Hardware</th>
+            <td>LiDAR, depth camera, IMU, UWB, Jetson, STM32, CAN / serial control</td>
+          </tr>
+          <tr>
+            <th>AI and Web</th>
+            <td>VLN / VLA, YOLO, BEV perception, HuggingFace, LeRobot, React, Vue, Spring Boot, Docker, Nginx</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      © 2026 Lijinghai · RabbitRobot · Built for GitHub Pages
+    </footer>
   </main>
 </body>
 </html>
