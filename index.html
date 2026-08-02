@@ -139,6 +139,17 @@
       white-space: nowrap;
     }
 
+    .section-links {
+      margin-top: 6px;
+      text-align: center;
+      color: var(--soft);
+      font-size: 13px;
+    }
+
+    .section-links a {
+      white-space: nowrap;
+    }
+
     .rabbit-cta {
       display: flex;
       justify-content: center;
@@ -170,6 +181,27 @@
     .section-title {
       padding: 22px 0 10px;
       border-top: 1px solid var(--line);
+    }
+
+    .news-list {
+      margin: 0;
+      padding: 0 0 8px;
+      list-style: none;
+    }
+
+    .news-list li {
+      display: grid;
+      grid-template-columns: 82px minmax(0, 1fr);
+      gap: 14px;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .news-list time,
+    .news-list b {
+      color: var(--text);
+      font-weight: 700;
     }
 
     .interest-grid {
@@ -236,6 +268,10 @@
       color: var(--soft);
     }
 
+    .entry-links a:first-child {
+      font-weight: 700;
+    }
+
     .note {
       color: var(--muted);
     }
@@ -286,7 +322,8 @@
     .contact-image img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      padding: 8px;
+      object-fit: contain;
       object-position: center;
     }
 
@@ -348,6 +385,11 @@
         width: 120px;
       }
 
+      .news-list li {
+        grid-template-columns: 64px minmax(0, 1fr);
+        gap: 10px;
+      }
+
       .contact-grid {
         grid-template-columns: 1fr;
         gap: 22px;
@@ -386,10 +428,39 @@
           &nbsp;/&nbsp;
           <a href="mailto:lijinghailjh@163.com">Email</a>
         </p>
+        <p class="section-links">
+          <a href="#interests-title">Research</a>
+          &nbsp;/&nbsp;
+          <a href="#projects-title">Projects</a>
+          &nbsp;/&nbsp;
+          <a href="#stack-title">Stack</a>
+          &nbsp;/&nbsp;
+          <a href="#find-title">Find Me</a>
+        </p>
       </div>
       <div class="intro-media">
         <img class="profile-photo" src="RabbitRobot/images/custom/avatar.jpg" alt="Lijinghai profile photo">
       </div>
+    </section>
+
+    <section aria-labelledby="currently-title">
+      <div class="section-title">
+        <h2 id="currently-title">Currently</h2>
+      </div>
+      <ul class="news-list">
+        <li>
+          <time datetime="2026">2026</time>
+          <span><b>主线：</b>围绕 AMR2 真车执行、ROS 2 导航和 Vision-Language Navigation 继续收拢 RabbitRobot。</span>
+        </li>
+        <li>
+          <time datetime="2026-08">2026.08</time>
+          <span><b>主页：</b>把根路径整理成个人学术主页，并把 RabbitRobot 全系列项目稳定保留在 <a href="RabbitRobot/">/RabbitRobot/</a>。</span>
+        </li>
+        <li>
+          <time datetime="2026-07">2026.07</time>
+          <span><b>工程证据：</b>持续沉淀 map-aware 覆盖路径、AMR2 真车测试、ROS2 Web 控制和 LiDAR 建图记录。</span>
+        </li>
+      </ul>
     </section>
 
     <section aria-labelledby="interests-title">
