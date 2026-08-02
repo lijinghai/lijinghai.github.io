@@ -262,6 +262,44 @@
       font-weight: 700;
     }
 
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      padding-top: 10px;
+    }
+
+    .contact-card {
+      min-width: 0;
+    }
+
+    .contact-image {
+      display: block;
+      overflow: hidden;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #fafafa;
+    }
+
+    .contact-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .contact-card h3 {
+      display: block;
+      margin-top: 10px;
+    }
+
+    .contact-card p {
+      margin-top: 4px;
+      color: var(--muted);
+    }
+
     footer {
       margin-top: 24px;
       padding-top: 18px;
@@ -308,6 +346,15 @@
 
       .stack-table th {
         width: 120px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .contact-card {
+        max-width: 360px;
       }
     }
   </style>
@@ -496,6 +543,37 @@
           </tr>
         </tbody>
       </table>
+    </section>
+
+    <section aria-labelledby="find-title">
+      <div class="section-title">
+        <h2 id="find-title">Find Me</h2>
+      </div>
+      <div class="contact-grid">
+        <article class="contact-card">
+          <a class="contact-image" href="images/contact/xiaohongshu-card.jpg" target="_blank" rel="noreferrer">
+            <img src="images/contact/xiaohongshu-card.jpg" alt="小红书：理想主义的焊工日记，RabbitRobot2025">
+          </a>
+          <h3>小红书</h3>
+          <p>理想主义的焊工日记 · RabbitRobot2025</p>
+        </article>
+
+        <article class="contact-card">
+          <a class="contact-image" href="https://space.bilibili.com/1339027047" target="_blank" rel="noreferrer">
+            <img src="images/contact/bilibili-qr.jpg" alt="B站：理想主义的焊工日记，UID 1339027047">
+          </a>
+          <h3>Bilibili</h3>
+          <p>理想主义的焊工日记 · UID 1339027047</p>
+        </article>
+
+        <article class="contact-card">
+          <a class="contact-image" href="images/contact/wechat-qr.png" target="_blank" rel="noreferrer">
+            <img src="images/contact/wechat-qr.png" alt="微信：理想主义的焊工日记">
+          </a>
+          <h3>WeChat</h3>
+          <p>理想主义的焊工日记 · 江苏苏州</p>
+        </article>
+      </div>
     </section>
 
     <footer>
