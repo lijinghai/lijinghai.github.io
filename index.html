@@ -235,6 +235,13 @@
       position: relative;
     }
 
+    .section-lead {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.72;
+    }
+
     .section-title h2::after {
       position: absolute;
       left: 0;
@@ -356,7 +363,7 @@
       display: grid;
       grid-template-columns: 180px minmax(0, 1fr);
       gap: 22px;
-      align-items: center;
+      align-items: start;
       margin: 0 -8px;
       padding: 16px 8px;
       border-radius: 6px;
@@ -399,6 +406,39 @@
 
     .meta {
       color: var(--muted);
+    }
+
+    .project-kicker {
+      display: inline-block;
+      margin-bottom: 5px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .project-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px 12px;
+      margin: 9px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .project-points li {
+      min-width: 0;
+      padding-left: 10px;
+      border-left: 2px solid var(--line);
+    }
+
+    .project-points b {
+      color: var(--text);
+      font-weight: 700;
     }
 
     .venue {
@@ -537,6 +577,7 @@
 
       .interest-grid,
       .snapshot-grid,
+      .project-points,
       .entry {
         grid-template-columns: 1fr;
       }
@@ -714,24 +755,56 @@
       <div class="section-title">
         <h2 id="projects-title">Selected Projects</h2>
       </div>
+      <p class="section-lead">
+        下面这些项目按招聘者最容易理解的能力链排列：先看长期平台和研究方向，再看真实机器人系统、路径规划、建图工具链和工程效率工具。每个入口都尽量指向可验证的项目页、README、视频或源码。
+      </p>
 
       <article class="entry">
         <a class="thumb" href="RabbitRobot/">
           <img src="RabbitRobot/images/rabbitrobot/amr2_field_test_18s.jpg" alt="RabbitRobot AMR2 real robot field test">
         </a>
         <div>
-          <h3>RabbitRobot: 面向 VLN 的真实机器人项目</h3>
+          <span class="project-kicker">Main Platform</span>
+          <h3>RabbitRobot: 真实 AMR 与 VLN 研究平台</h3>
+          <span class="meta"><strong>Lijinghai</strong> · ROS 2 AMR · Vision-Language Navigation · Real-Robot System</span>
           <br>
-          <span class="meta"><strong>Lijinghai</strong> · ROS 2 AMR · Vision-Language Navigation</span>
-          <br>
-          <span class="venue">Long-running personal robotics research and engineering suite</span>
+          <span class="venue">长期个人机器人平台 / 研究试验台 / 工程作品集主线</span>
           <p class="note">
-            个人长期机器人平台，从机械结构、传感器、ROS 2 中间件、导航算法、Web 可视化到公开文档持续迭代。它是我的研究试验台，也是展示工程闭环能力的主项目。
+            RabbitRobot 是我长期推进的开源机器人平台：从底盘结构、电机与传感器接入、ROS 2 / Nav2、SLAM、多传感器融合，到 Web 控制台、数据记录和公开文档持续迭代。它不是一个孤立 demo，而是我把论文问题、真实硬件和可复现实验接起来的主项目。
           </p>
+          <ul class="project-points">
+            <li><b>系统闭环</b>：机械、传感器、导航、Web、文档一体化推进。</li>
+            <li><b>研究承载</b>：作为 VLN、SLAM、路径规划和真实 AMR 验证平台。</li>
+            <li><b>招聘价值</b>：展示从 0 到 1 搭系统、跑实验、讲清楚的能力。</li>
+          </ul>
           <p class="entry-links">
             <a href="RabbitRobot/">project page</a>
             /
-            <a href="https://github.com/lijinghai" target="_blank" rel="noreferrer">github</a>
+            <a href="https://github.com/lijinghai" target="_blank" rel="noreferrer">GitHub profile</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <a class="thumb contain" href="RabbitRobot/projects/rabbitrobot-vln.html">
+          <img src="RabbitRobot/images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot architecture diagram">
+        </a>
+        <div>
+          <span class="project-kicker">Research Direction</span>
+          <h3>RabbitRobot_VLN / VLR: 长程导航偏航检测与可验证恢复</h3>
+          <span class="meta">VLN · VLM Agent · semantic subgoals · topology / BEV memory · recovery verification</span>
+          <p class="note">
+            围绕 Vision-Language Navigation，我重点关注长程导航中“走偏了如何发现、如何解释、如何恢复”的问题：把自然语言任务、视觉/地图 grounding、waypoint 规划、历史记忆和真实 AMR 执行评估串成一条实验链路。目标是形成可复现的 baseline、ablation、failure analysis 和后续论文/报告入口。
+          </p>
+          <ul class="project-points">
+            <li><b>研究问题</b>：长程 VLN 的偏航检测、状态表征和恢复策略。</li>
+            <li><b>方法线索</b>：语义子目标、拓扑记忆、BEV 线索和 VLM 推理。</li>
+            <li><b>落地方式</b>：用 RabbitRobot 承接仿真到真车的验证闭环。</li>
+          </ul>
+          <p class="entry-links">
+            <a href="RabbitRobot/projects/rabbitrobot-vln.html">RabbitRobot_VLN</a>
+            /
+            <a href="RabbitRobot/#research">research line</a>
           </p>
         </div>
       </article>
@@ -741,12 +814,17 @@
           <img src="RabbitRobot/images/rabbitrobot/amr2_web_navigation.jpg" alt="AMR2 web navigation console">
         </a>
         <div>
-          <h3>RabbitRobot_AMR2: 轮毂伺服 ROS 2 真车平台</h3>
-          <br>
-          <span class="meta">MID360 · FAST-LIO · ICP · Nav2 MPPI · Web Console</span>
+          <span class="project-kicker">Real Robot System</span>
+          <h3>RabbitRobot_AMR2: ROS 2 真车导航与安全链路</h3>
+          <span class="meta">DS20270C · Livox MID360 · FAST-LIO · ICP localization · Nav2 MPPI · Web Console</span>
           <p class="note">
-            真实轮毂伺服 AMR 平台，覆盖 MID360 接入、FAST-LIO 建图、ICP 定位、Nav2 MPPI 导航和 Web 控制台。重点是把算法验证放到真实底盘、地图、TF、速度链路和实验记录里。
+            AMR2 是一套真实轮毂伺服 AMR 系统，覆盖 MID360 接入、FAST-LIO 建图、ICP 定位、pointcloud-to-laserscan、Nav2 MPPI 控制、速度平滑、collision monitor 和 Web 控制台。项目重点是把导航算法放到真实底盘、地图、TF、速度链路和实验记录里验证。
           </p>
+          <ul class="project-points">
+            <li><b>硬件链路</b>：轮毂伺服底盘、LiDAR、CAN/串口、Jetson/工控部署。</li>
+            <li><b>导航链路</b>：map -> odom、Nav2、MPPI、速度平滑和避障保护。</li>
+            <li><b>验证材料</b>：真车图片、Web 导航画面、运行视频和项目详情页。</li>
+          </ul>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-amr2.html">details</a>
             /
@@ -760,12 +838,17 @@
           <img src="RabbitRobot/images/rabbitrobot/coverage_step_generated_path.png" alt="Coverage path generated on occupancy map">
         </a>
         <div>
-          <h3>Coverage Path Planning: 扫地机覆盖路径算法</h3>
-          <br>
-          <span class="meta">OccupancyGrid · footprint clearance · RViz Rect/Poly · Nav2 bridge</span>
+          <span class="project-kicker">Planning / Product Scenario</span>
+          <h3>Coverage Path Planning: 面向清洁/巡检 AMR 的覆盖路径规划</h3>
+          <span class="meta">OccupancyGrid · map-aware clipping · footprint clearance · RViz Rect/Poly · Nav2 bridge</span>
           <p class="note">
-            面向清洁/巡检 AMR 的覆盖路径能力：基于真实 occupancy map 和机器人 footprint 生成可视化路径，处理 known-free 裁剪、障碍避让、RViz 交互、仿真跟随和 Nav2 桥接验证。
+            这个项目把“在真实地图上画一块区域，然后让机器人生成安全覆盖路径”做成可交互能力：基于 PCD 转出的 2D occupancy map，结合机器人 footprint、安全膨胀、known-free 裁剪、障碍避让和连通区域选择，输出可视化 `/coverage_path`，并提供 RViz 工具、Web 控制台和 Nav2 dry-run 桥接。
           </p>
+          <ul class="project-points">
+            <li><b>应用场景</b>：清洁、巡检、窄通道和规则区域覆盖。</li>
+            <li><b>算法重点</b>：地图裁剪、footprint clearance、障碍膨胀和路径校验。</li>
+            <li><b>工程接口</b>：RViz Rect/Poly、ROS2 service、Web API、Nav2 桥接。</li>
+          </ul>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-coverage.html">details</a>
             /
@@ -779,12 +862,17 @@
           <img src="RabbitRobot/images/rabbitrobot/hand_lidar_prototype.jpg" alt="RabbitRobot hand LiDAR prototype">
         </a>
         <div>
-          <h3>HandLiDAR and Multi-Sensor Mapping</h3>
-          <br>
-          <span class="meta">Unitree L1 · D435 · RTAB-Map · point cloud mapping</span>
+          <span class="project-kicker">Mapping / Perception Tools</span>
+          <h3>HandLiDAR / Multi-Sensor Mapping: 环境采集与建图工具链</h3>
+          <span class="meta">Unitree L1 · D435 · Livox MID360 · RTAB-Map · FAST-LIO / FAST-LIVO2 · point cloud mapping</span>
           <p class="note">
-            围绕真实场景采集与地图构建的传感器工具链，连接 LiDAR、深度相机、点云、位姿估计和 RTAB-Map / FAST-LIO 类建图流程，为导航和 VLN 任务提供环境基础。
+            围绕真实场景采集和地图构建，我搭建了手持 LiDAR、多传感器采集和点云/视觉建图工具链，连接 LiDAR、深度相机、点云、位姿估计、RTAB-Map、FAST-LIO / FAST-LIVO2 等流程。它为导航、覆盖路径和 VLN 任务提供环境数据基础。
           </p>
+          <ul class="project-points">
+            <li><b>传感器</b>：LiDAR、深度相机、IMU 和视觉/点云输入。</li>
+            <li><b>建图链路</b>：RTAB-Map、FAST-LIO、FAST-LIVO2、点云查看和标定流程。</li>
+            <li><b>项目价值</b>：让机器人任务有真实地图、真实数据和复盘材料。</li>
+          </ul>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-handlidar.html">details</a>
             /
@@ -794,20 +882,25 @@
       </article>
 
       <article class="entry">
-        <a class="thumb contain" href="RabbitRobot/projects/rabbitrobot-vln.html">
-          <img src="RabbitRobot/images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot architecture diagram">
+        <a class="thumb" href="RabbitRobot/projects/rabbitrobot-ros2-web.html">
+          <img src="RabbitRobot/images/rabbitrobot/ros2_web_home.png" alt="ROS2 Web robot console">
         </a>
         <div>
-          <h3>VLR Research Vault: 长程 VLN 偏航检测与可验证恢复</h3>
-          <br>
-          <span class="meta">waypoint planning · semantic subgoals · topology-aware recovery · VLM reasoning</span>
+          <span class="project-kicker">Engineering Tools</span>
+          <h3>Robot Web Tools: ROS2 控制台、字典与远程同步</h3>
+          <span class="meta">rosbridge · React / Vite · systemd · SSH / SFTP · GitHub workflow</span>
           <p class="note">
-            Obsidian 科研库和实验路线，围绕长程 VLN 的偏航检测、语义状态表示、拓扑/BEV 记忆、恢复动作生成与验证展开。目标是形成可复现的 baseline、ablation 和 failure analysis。
+            除了机器人算法本身，我也在做提高机器人开发效率的工具：ROS2 Web 控制台把地图、图层、导航控制、任务状态和日志入口放进浏览器；R550 ROS2 Web Dictionary 用来检索真实节点、话题、服务和动作；`ljh_sync_web` 负责远程机器人代码的 SSH/SFTP 增量同步、过滤、备份和 GitHub 上传。
           </p>
+          <ul class="project-points">
+            <li><b>调试效率</b>：降低对单机 RViz 环境和手工命令的依赖。</li>
+            <li><b>远程运维</b>：systemd、rosbridge、局域网访问和多设备同步。</li>
+            <li><b>工程习惯</b>：配置持久化、日志、备份、测试截图和提交记录。</li>
+          </ul>
           <p class="entry-links">
-            <a href="RabbitRobot/projects/rabbitrobot-vln.html">RabbitRobot_VLN</a>
+            <a href="RabbitRobot/projects/rabbitrobot-ros2-web.html">ROS2 Web</a>
             /
-            <a href="RabbitRobot/#research">research line</a>
+            <a href="RabbitRobot/projects/rabbitrobot-web.html">RabbitRobot Web</a>
           </p>
         </div>
       </article>
