@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robot Web Tools | RabbitRobot</title>
+  <meta name="description" content="Robot Web Tools 汇总 RabbitRobot 的机器人 Web 工具链：ROS2 Web 控制台、R550 ROS2 节点 / Topic 字典，以及 LJH Sync Web 远程同步控制台。">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+  <nav class="detail-nav" aria-label="Project navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
+        <span>RabbitRobot</span>
+      </a>
+      <div class="nav-links">
+        <a href="../../#projects-title">Personal Projects</a>
+        <a href="../index.html#projects">Project Matrix</a>
+        <a href="../index.html#research">VLN Focus</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">Engineering Tools</p>
+      <h1>Robot Web Tools</h1>
+      <p class="subtitle">ROS2 控制台、字典与远程同步工具链</p>
+      <p class="summary">
+        Robot Web Tools 不是单一页面，而是我在真实机器人开发中沉淀出来的一组 Web 工具：用浏览器查看和操作机器人状态，用 ROS2 字典检索节点 / Topic / Service / Action，用同步控制台把远程机器人代码稳定拉回本机并上传到 GitHub。
+      </p>
+      <div class="meta-row">
+        <span class="meta-pill">Time · 2026.07 - 2026.08</span>
+        <span class="meta-pill">Context · RabbitRobot / R550 / ljh_sync_web</span>
+        <span class="meta-pill">Focus · robot debugging, documentation, remote workflow</span>
+      </div>
+    </div>
+    <figure class="hero-media diagram-media">
+      <img src="../images/rabbitrobot/robot_web_tools_overview.png" alt="Robot Web Tools overview">
+    </figure>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <p class="kicker">What It Contains</p>
+        <h2>这组工具具体对应什么</h2>
+        <div class="flow-list">
+          <article>
+            <h3>ROS2 Web 控制台</h3>
+            <p>把地图、图层、导航控制、任务状态和系统日志放进浏览器，减少真实机器人调试对单机 RViz 环境的依赖。</p>
+          </article>
+          <article>
+            <h3>R550 ROS2 字典</h3>
+            <p>面向 WHEELTEC R550 项目整理功能、节点、Topic、Service、Action 和 launch 信息，让复杂 ROS2 工程可以被快速检索。</p>
+          </article>
+          <article>
+            <h3>LJH Sync Web</h3>
+            <p>通过 SSH / SFTP 对比远程 Linux 机器人项目与本地目录，支持增量同步、过滤、备份、日志和 GitHub 上传。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">Why It Matters</p>
+          <h2>为什么它适合放在主页</h2>
+          <p>
+            机器人项目真正难的地方不只是算法本身，还有调试入口、状态观察、数据复盘、远程文件同步和多人可读的文档化。这个工具链展示的是我把真实机器人开发流程工具化的能力：让问题能被看见、被定位、被复现，也能被整理成别人可以继续使用的工程入口。
+          </p>
+        </div>
+        <aside>
+          <p class="kicker">Stack</p>
+          <h2>技术关键词</h2>
+          <div class="stack">
+            <span class="tag">ROS2</span>
+            <span class="tag">rosbridge</span>
+            <span class="tag">React / Vite</span>
+            <span class="tag">Python HTTP Server</span>
+            <span class="tag">systemd</span>
+            <span class="tag">SSH / SFTP</span>
+            <span class="tag">Git workflow</span>
+            <span class="tag">GitHub Pages</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Media</p>
+        <h2>关键画面</h2>
+        <div class="gallery">
+          <figure>
+            <img src="../images/rabbitrobot/ros2_web_home.png" alt="ROS2 Web console map and status view">
+            <figcaption>ROS2 Web 控制台：地图、导航状态和任务面板。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ros2_dictionary_features.png" alt="R550 ROS2 dictionary feature table">
+            <figcaption>R550 ROS2 字典：功能、Topic 和依赖关系检索。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ljh_sync_web_recovery.png" alt="LJH Sync Web remote sync dashboard">
+            <figcaption>LJH Sync Web：远程扫描、增量同步和 GitHub 上传。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">Consistency Map</p>
+        <h2>标题、文字和链接如何对应</h2>
+        <table class="interface-table">
+          <thead>
+            <tr>
+              <th>主页展示</th>
+              <th>对应项目</th>
+              <th>本页证据</th>
+              <th>作用</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ROS2 控制台</td>
+              <td>RabbitRobot_ROS2_Web</td>
+              <td>控制台截图与站内详情页</td>
+              <td>浏览器可视化地图、状态、导航和日志。</td>
+            </tr>
+            <tr>
+              <td>字典</td>
+              <td>R550 ROS2 节点 / Topic 字典</td>
+              <td>本机字典服务截图与功能表</td>
+              <td>检索真实 ROS2 工程中的功能、节点、话题和依赖。</td>
+            </tr>
+            <tr>
+              <td>远程同步</td>
+              <td>LJH Sync Web</td>
+              <td>同步控制台 README 截图</td>
+              <td>把远程机器人代码增量同步到本机，并整理上传流程。</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="source-actions">
+          <a class="button primary" href="rabbitrobot-ros2-web.html">Open ROS2 Web Detail</a>
+          <a class="button" href="rabbitrobot-web.html">Open RabbitRobot Web Detail</a>
+          <a class="button" href="../../#projects-title">Back to Personal Homepage</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">RabbitRobot · Robot Web Tools · 本页是 GitHub Pages 内部项目详情页。</div>
+  </footer>
+</body>
+</html>
