@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>算个文科生吧 | Lijinghai</title>
-  <meta name="description" content="Lijinghai / 算个文科生吧的个人主页：控制工程、ROS 2 机器人系统、自动驾驶、VLN 与 RabbitRobot 项目记录。">
+  <meta name="description" content="Lijinghai 的个人主页：控制工程硕士研究生，聚焦 ROS 2 移动机器人、Nav2、SLAM、多传感器融合、VLN / 具身智能与 RabbitRobot 真实机器人平台。">
   <meta name="author" content="Lijinghai">
   <meta property="og:type" content="website">
   <meta property="og:title" content="算个文科生吧 | Lijinghai">
-  <meta property="og:description" content="控制工程方向硕士研究生，关注自动驾驶规划与决策、ROS 2 机器人系统、多传感器融合、VLN / 具身智能。">
+  <meta property="og:description" content="控制工程方向硕士研究生，面向机器人软件、移动机器人算法、VLN / 具身智能和真实 AMR 系统工程。">
   <meta property="og:image" content="RabbitRobot/images/rabbitrobot/amr2_field_test_18s.jpg">
   <link rel="icon" type="image/png" href="RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png">
   <style>
@@ -162,6 +162,19 @@
       white-space: nowrap;
     }
 
+    .role-line {
+      margin: 0 0 14px;
+      color: var(--dark);
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
     .rabbit-cta {
       display: flex;
       justify-content: center;
@@ -264,6 +277,38 @@
     .news-list b {
       color: var(--text);
       font-weight: 700;
+    }
+
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 4px 0 12px;
+    }
+
+    .snapshot-card {
+      min-width: 0;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, .82);
+      transition: background-color .18s ease, box-shadow .2s ease, transform .2s ease;
+    }
+
+    .snapshot-card:hover {
+      background: rgba(255, 248, 239, .78);
+      box-shadow: var(--paper-shadow);
+      transform: translateY(-2px);
+    }
+
+    .snapshot-card b {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .snapshot-card span {
+      color: var(--muted);
     }
 
     .interest-grid {
@@ -425,8 +470,8 @@
     }
 
     .has-js .reveal {
-      opacity: 0;
-      transform: translateY(14px);
+      opacity: 1;
+      transform: none;
       transition: opacity .46s ease, transform .46s ease;
       transition-delay: var(--reveal-delay, 0ms);
     }
@@ -478,6 +523,7 @@
       }
 
       .interest-grid,
+      .snapshot-grid,
       .entry {
         grid-template-columns: 1fr;
       }
@@ -533,16 +579,17 @@
   <main class="page">
     <section class="intro" aria-labelledby="page-title">
       <div>
-        <h1 id="page-title">算个文科生吧</h1>
-        <p class="name-line">Lijinghai · RabbitRobot · Control Engineering</p>
+        <h1 id="page-title">Lijinghai</h1>
+        <p class="role-line">机器人系统与 VLN 工程研究者</p>
+        <p class="name-line">Control Engineering · ROS 2 / Nav2 · AMR · Vision-Language Navigation · RabbitRobot</p>
         <p>
-          你好，我是 <strong>lijinghai</strong>。我关注自动驾驶规划与决策、ROS 2 机器人系统、多传感器融合定位建图，以及 VLN / 具身智能导航。
+          你好，我是 <strong>lijinghai</strong>，控制工程方向硕士研究生。我的研究和实习主线集中在 <span class="highlight">Vision-Language Navigation</span>、移动机器人导航和真实 AMR 系统工程。
         </p>
         <p>
-          我正在长期推进 <strong>RabbitRobot</strong>：从真实 AMR 底盘、LiDAR/深度相机、SLAM、Nav2、Web 控制台，到语言任务理解和真车执行，把一个机器人项目做成可以持续复现、展示和迭代的工程闭环。
+          我长期推进 <strong>RabbitRobot</strong>：从底盘结构、电机与传感器接入、ROS 2 / Nav2、SLAM 与多传感器融合，到 Web 可视化、数据记录和实验复盘，把论文想法接到可运行的真实机器人平台上。
         </p>
         <p>
-          当前研究线索更偏向长程 VLN 中的偏航检测、可验证恢复、语义子目标规划和真实移动机器人落地。我希望项目既能保留工程现场的痕迹，也能逐步长出研究问题。
+          面向招聘者，我更希望被理解为一个能把 <span class="highlight">机器人软件、导航算法、工程部署和研究验证</span> 串起来的人：既能读论文、做实验，也能把系统搭起来、跑起来、讲清楚。
         </p>
         <div class="rabbit-cta">
           <a class="rabbit-button" href="RabbitRobot/">进入 RabbitRobot 全系列主页</a>
@@ -559,6 +606,8 @@
         <p class="section-links">
           <a href="#interests-title">Research</a>
           &nbsp;/&nbsp;
+          <a href="#snapshot-title">Snapshot</a>
+          &nbsp;/&nbsp;
           <a href="#projects-title">Projects</a>
           &nbsp;/&nbsp;
           <a href="#stack-title">Stack</a>
@@ -571,6 +620,30 @@
       </div>
     </section>
 
+    <section aria-labelledby="snapshot-title">
+      <div class="section-title">
+        <h2 id="snapshot-title">Recruiter Snapshot</h2>
+      </div>
+      <div class="snapshot-grid">
+        <p class="snapshot-card">
+          <b>岗位方向</b>
+          <span>机器人软件工程、移动机器人算法、ROS 2 / Nav2 系统集成、VLN / 具身智能工程。</span>
+        </p>
+        <p class="snapshot-card">
+          <b>核心价值</b>
+          <span>把硬件、传感器、导航、Web 工具和实验记录串成可运行、可复现、可展示的系统闭环。</span>
+        </p>
+        <p class="snapshot-card">
+          <b>项目证据</b>
+          <span>RabbitRobot AMR2、覆盖路径规划、HandLiDAR、多传感器建图、R550 ROS2 Web 控制与字典工具。</span>
+        </p>
+        <p class="snapshot-card">
+          <b>研究主线</b>
+          <span>长程 VLN 中的偏航检测、语义子目标规划、可验证恢复和真实移动机器人落地验证。</span>
+        </p>
+      </div>
+    </section>
+
     <section aria-labelledby="currently-title">
       <div class="section-title">
         <h2 id="currently-title">Currently</h2>
@@ -578,39 +651,39 @@
       <ul class="news-list">
         <li>
           <time datetime="2026">2026</time>
-          <span><b>主线：</b>围绕 AMR2 真车执行、ROS 2 导航和 Vision-Language Navigation 继续收拢 RabbitRobot。</span>
+          <span><b>研究主线：</b>围绕真实 AMR 平台推进 Vision-Language Navigation、偏航检测与可验证恢复。</span>
         </li>
         <li>
           <time datetime="2026-08">2026.08</time>
-          <span><b>主页：</b>把根路径整理成个人学术主页，并把 RabbitRobot 全系列项目稳定保留在 <a href="RabbitRobot/">/RabbitRobot/</a>。</span>
+          <span><b>工程主线：</b>沉淀 RabbitRobot 的 ROS 2 / Nav2、SLAM、Web 控制台、覆盖路径和 CAD/3D 打印资产。</span>
         </li>
         <li>
           <time datetime="2026-07">2026.07</time>
-          <span><b>工程证据：</b>持续沉淀 map-aware 覆盖路径、AMR2 真车测试、ROS2 Web 控制和 LiDAR 建图记录。</span>
+          <span><b>公开展示：</b>把 <a href="RabbitRobot/">/RabbitRobot/</a> 作为项目主页，GitHub、B站和技术文档作为可验证入口。</span>
         </li>
       </ul>
     </section>
 
     <section aria-labelledby="interests-title">
       <div class="section-title">
-        <h2 id="interests-title">Research Interests</h2>
+        <h2 id="interests-title">Research / Engineering Focus</h2>
       </div>
       <div class="interest-grid">
         <p class="interest">
-          <b>VLN / Embodied AI</b>
-          <span>语言目标理解、语义子目标、历史记忆、偏航检测与恢复。</span>
+          <b>VLN and Embodied Navigation</b>
+          <span>语言目标理解、语义子目标规划、历史记忆、偏航检测、恢复动作生成与验证。</span>
         </p>
         <p class="interest">
-          <b>Robotics Systems</b>
-          <span>ROS 2、Nav2、EKF、串口控制、Jetson 部署和机器人 Web 控制。</span>
+          <b>ROS 2 Robot Systems</b>
+          <span>Nav2、MPPI、EKF、串口/CAN 控制、Jetson 部署、rosbridge 和机器人 Web 工具。</span>
         </p>
         <p class="interest">
-          <b>SLAM and Localization</b>
-          <span>FAST-LIO、Point-LIO、RTAB-Map、Cartographer 与多传感器融合建图。</span>
+          <b>SLAM and Multi-Sensor Fusion</b>
+          <span>LiDAR、深度相机、IMU、RTAB-Map、FAST-LIO、Point-LIO、Cartographer 与定位建图。</span>
         </p>
         <p class="interest">
-          <b>Autonomous Driving</b>
-          <span>局部规划、轨迹优化、低附着鲁棒性和可回放实验评估。</span>
+          <b>AMR / AGV Productization</b>
+          <span>底盘结构、路径覆盖、运动安全、可靠性验证、实验复盘和面向产品级的系统整理。</span>
         </p>
       </div>
     </section>
@@ -631,7 +704,7 @@
           <br>
           <span class="venue">Long-running personal robotics research and engineering suite</span>
           <p class="note">
-            RabbitRobot 不是单个演示项目，而是一组围绕真实移动机器人生长的工程资产：AMR2 真车、扫地机覆盖路径、手持 LiDAR、ROS2 Web 控制台和 VLN 研究主线。
+            个人长期机器人平台，从机械结构、传感器、ROS 2 中间件、导航算法、Web 可视化到公开文档持续迭代。它是我的研究试验台，也是展示工程闭环能力的主项目。
           </p>
           <p class="entry-links">
             <a href="RabbitRobot/">project page</a>
@@ -650,7 +723,7 @@
           <br>
           <span class="meta">MID360 · FAST-LIO · ICP · Nav2 MPPI · Web Console</span>
           <p class="note">
-            AMR2 是当前最核心的真车执行底座，用于把 VLN waypoint 和导航任务落到地图定位、局部路径、速度指令、安全过滤和可回放数据上。
+            真实轮毂伺服 AMR 平台，覆盖 MID360 接入、FAST-LIO 建图、ICP 定位、Nav2 MPPI 导航和 Web 控制台。重点是把算法验证放到真实底盘、地图、TF、速度链路和实验记录里。
           </p>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-amr2.html">details</a>
@@ -669,7 +742,7 @@
           <br>
           <span class="meta">OccupancyGrid · footprint clearance · RViz Rect/Poly · Nav2 bridge</span>
           <p class="note">
-            面向真实地图和机器人 footprint 的覆盖路径生成：将用户绘制区域裁剪到 known-free 空间，避开障碍与未知区域，并输出可视化、可验证、可桥接到 Nav2 的路径。
+            面向清洁/巡检 AMR 的覆盖路径能力：基于真实 occupancy map 和机器人 footprint 生成可视化路径，处理 known-free 裁剪、障碍避让、RViz 交互、仿真跟随和 Nav2 桥接验证。
           </p>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-coverage.html">details</a>
@@ -688,7 +761,7 @@
           <br>
           <span class="meta">Unitree L1 · D435 · RTAB-Map · point cloud mapping</span>
           <p class="note">
-            手持 LiDAR 与多传感器建图工具用于补足真实场景地图能力，把传感器、点云、位姿估计和后续导航实验放进同一条机器人研发链路。
+            围绕真实场景采集与地图构建的传感器工具链，连接 LiDAR、深度相机、点云、位姿估计和 RTAB-Map / FAST-LIO 类建图流程，为导航和 VLN 任务提供环境基础。
           </p>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-handlidar.html">details</a>
@@ -707,7 +780,7 @@
           <br>
           <span class="meta">waypoint planning · semantic subgoals · topology-aware recovery · VLM reasoning</span>
           <p class="note">
-            研究库围绕 VLN / VLM Agent / planning 展开，关注如何让移动机器人在长程任务中识别偏航、解释状态、恢复路线，并最终回到真实 AMR 平台验证。
+            Obsidian 科研库和实验路线，围绕长程 VLN 的偏航检测、语义状态表示、拓扑/BEV 记忆、恢复动作生成与验证展开。目标是形成可复现的 baseline、ablation 和 failure analysis。
           </p>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-vln.html">RabbitRobot_VLN</a>
@@ -730,7 +803,7 @@
           </tr>
           <tr>
             <th>Robotics</th>
-            <td>ROS 2, Nav2, Autoware, RTAB-Map, Cartographer, FAST-LIO, Point-LIO, EKF</td>
+            <td>ROS 2, Nav2, MPPI, Autoware, RTAB-Map, Cartographer, FAST-LIO, Point-LIO, EKF</td>
           </tr>
           <tr>
             <th>Hardware</th>
@@ -738,7 +811,7 @@
           </tr>
           <tr>
             <th>AI and Web</th>
-            <td>VLN / VLA, YOLO, BEV perception, HuggingFace, LeRobot, React, Vue, Spring Boot, Docker, Nginx</td>
+            <td>VLN / VLA, VLM Agent, YOLO, BEV perception, HuggingFace, LeRobot, React, Vue, Spring Boot, Docker, Nginx</td>
           </tr>
         </tbody>
       </table>
