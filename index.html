@@ -645,7 +645,7 @@
           我长期推进 <strong>RabbitRobot</strong>：从底盘结构、电机与传感器接入、ROS 2 / Nav2、SLAM 与多传感器融合，到 Web 可视化、数据记录和实验复盘，把论文想法接到可运行的真实机器人平台上。
         </p>
         <p>
-          面向招聘者，我更希望被理解为一个能把 <span class="highlight">机器人软件、导航算法、工程部署和研究验证</span> 串起来的人：既能读论文、做实验，也能把系统搭起来、跑起来、讲清楚。
+          面向未来的研究和工程机会，我更希望被理解为一个能把 <span class="highlight">机器人软件、导航算法、工程部署和研究验证</span> 串起来的人：既能读论文、做实验，也能把系统搭起来、跑起来、讲清楚。
         </p>
         <div class="rabbit-cta">
           <a class="rabbit-button" href="RabbitRobot/">进入 RabbitRobot 全系列主页</a>
@@ -678,7 +678,7 @@
 
     <section aria-labelledby="snapshot-title">
       <div class="section-title">
-        <h2 id="snapshot-title">Recruiter Snapshot</h2>
+        <h2 id="snapshot-title">Profile Snapshot</h2>
       </div>
       <div class="snapshot-grid">
         <p class="snapshot-card">
@@ -777,7 +777,7 @@
           <ul class="project-points">
             <li><b>系统闭环</b>：机械、传感器、导航、Web、文档一体化推进。</li>
             <li><b>研究承载</b>：作为 VLN、SLAM、路径规划和真实 AMR 验证平台。</li>
-            <li><b>招聘价值</b>：展示从 0 到 1 搭系统、跑实验、讲清楚的能力。</li>
+            <li><b>展示价值</b>：展示从 0 到 1 搭系统、跑实验、讲清楚的能力。</li>
           </ul>
           <p class="entry-links">
             <a href="RabbitRobot/">project page</a>
@@ -816,45 +816,21 @@
           <img src="RabbitRobot/images/rabbitrobot/amr2_coverage_web_console.gif" alt="AMR2 Web 3D coverage console">
         </a>
         <div>
-          <span class="project-kicker">Real Robot System</span>
-          <h3>RabbitRobot_AMR2: ROS 2 真车覆盖作业与安全链路</h3>
-          <span class="meta">PCD map · SolidWorks STL · Coverage planner · Nav2 MPPI · DS20270C · Web 3D Console</span>
+          <span class="project-kicker">AMR / Coverage System</span>
+          <h3>RabbitRobot_AMR2: 真车覆盖作业、导航与安全链路</h3>
+          <span class="meta">PCD map · SolidWorks STL · Coverage Rect/Poly · Nav2 MPPI · DS20270C · Web 3D Console</span>
           <p class="note">
-            AMR2 是一套真实轮毂伺服 AMR 系统：用真实 PCD 地图和真实 SolidWorks 底盘做覆盖作业仿真，Web 控制台加载 3D STL 并同步 <code>/Odometry</code>，覆盖路径再通过 Nav2 dry-run 和 DS20270C 安全链验证。项目重点是把算法、硬件、Web 工具和验证记录串成可复现闭环。
+            AMR2 现在把原来的真车系统和覆盖路径规划合在一条链路里展示：用真实 PCD 地图和真实 SolidWorks 底盘做覆盖作业仿真，支持 RViz Rect/Poly 画区域、Web 3D 控制台同步 <code>/Odometry</code>，覆盖路径再通过 Nav2 dry-run 和 DS20270C 安全链验证。
           </p>
           <ul class="project-points">
             <li><b>真实输入</b>：PCD 地图、CAD mesh、0.486 x 0.450 m footprint。</li>
-            <li><b>系统链路</b>：覆盖路径、Web 3D、Nav2 dry-run、速度安全链。</li>
-            <li><b>验证材料</b>：6 包构建、浏览器检查、RViz smoke、DS dry-run。</li>
+            <li><b>覆盖能力</b>：区域输入、known-free 裁剪、障碍膨胀和路径校验。</li>
+            <li><b>验证材料</b>：Web 3D、RViz smoke、Nav2 dry-run、DS dry-run。</li>
           </ul>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-amr2.html">details</a>
             /
             <a href="https://www.bilibili.com/video/BV1543K6uEVM/" target="_blank" rel="noreferrer">video</a>
-          </p>
-        </div>
-      </article>
-
-      <article class="entry">
-        <a class="thumb contain" href="RabbitRobot/projects/rabbitrobot-coverage.html">
-          <img src="RabbitRobot/images/rabbitrobot/coverage_step_generated_path.png" alt="Coverage path generated on occupancy map">
-        </a>
-        <div>
-          <span class="project-kicker">Planning / Product Scenario</span>
-          <h3>Coverage Path Planning: 面向清洁/巡检 AMR 的覆盖路径规划</h3>
-          <span class="meta">OccupancyGrid · map-aware clipping · footprint clearance · RViz Rect/Poly · Nav2 bridge</span>
-          <p class="note">
-            这个项目把“在真实地图上画一块区域，然后让机器人生成安全覆盖路径”做成可交互能力：基于 PCD 转出的 2D occupancy map，结合机器人 footprint、安全膨胀、known-free 裁剪、障碍避让和连通区域选择，输出可视化 `/coverage_path`，并提供 RViz 工具、Web 控制台和 Nav2 dry-run 桥接。
-          </p>
-          <ul class="project-points">
-            <li><b>应用场景</b>：清洁、巡检、窄通道和规则区域覆盖。</li>
-            <li><b>算法重点</b>：地图裁剪、footprint clearance、障碍膨胀和路径校验。</li>
-            <li><b>工程接口</b>：RViz Rect/Poly、ROS2 service、Web API、Nav2 桥接。</li>
-          </ul>
-          <p class="entry-links">
-            <a href="RabbitRobot/projects/rabbitrobot-coverage.html">details</a>
-            /
-            <a href="RabbitRobot/projects/readmes/rabbitrobot-coverage.md">readme</a>
           </p>
         </div>
       </article>

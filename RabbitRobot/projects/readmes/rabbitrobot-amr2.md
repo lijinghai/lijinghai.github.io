@@ -2,7 +2,7 @@
 
 RabbitRobot_AMR2 是我的 ROS 2 真车 AMR 工程平台。它不是单独的仿真 demo，而是把真实 PCD 地图、真实 SolidWorks 底盘、覆盖路径规划、Web 3D 控制台、Nav2 和 DS20270C 轮毂底盘安全链放在一起验证。
 
-## 招聘者速读
+## 项目速读
 
 - **项目定位：** 真实 AMR / AGV 平台，用于导航、覆盖作业、VLN/VLR 和机器人系统工程验证。
 - **核心链路：** `PCD map -> Coverage planner -> RViz/Web visualization -> Nav2 bridge -> velocity_smoother -> collision_monitor -> DS20270C`。
