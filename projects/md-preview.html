@@ -229,14 +229,30 @@
       const markdownNode = document.getElementById("markdown");
       const headingIds = new Map();
 
-      const allowedReadme = /^readmes\/[^?#]+\.md$/i;
-      if (!allowedReadme.test(sourcePath) || sourcePath.includes("..")) {
+      const legacyReadme = /^readmes\/([^\/?#]+)\.md$/i;
+      const sourceReadme = /^readme-source\/([^\/?#]+)\.txt$/i;
+      if (sourcePath.includes("..")) {
         showError("Missing or unsupported Markdown file.");
         return;
       }
 
-      const markdownUrl = new URL(sourcePath, location.href);
-      pathNode.textContent = sourcePath;
+      const legacyMatch = sourcePath.match(legacyReadme);
+      const sourceMatch = sourcePath.match(sourceReadme);
+      let displayPath = sourcePath;
+      let fetchPath = "";
+      if (legacyMatch) {
+        fetchPath = `readme-source/${legacyMatch[1]}.txt`;
+      } else if (sourceMatch) {
+        fetchPath = sourcePath;
+        displayPath = `readmes/${sourceMatch[1]}.md`;
+      } else {
+        showError("Missing or unsupported Markdown file.");
+        return;
+      }
+
+      const markdownUrl = new URL(fetchPath, location.href);
+      const assetBaseUrl = new URL(displayPath, location.href);
+      pathNode.textContent = displayPath;
 
       fetch(markdownUrl.href)
         .then((response) => {
@@ -244,10 +260,10 @@
           return response.text();
         })
         .then((markdown) => {
-          const title = findTitle(markdown) || sourcePath.split("/").pop();
+          const title = findTitle(markdown) || displayPath.split("/").pop();
           titleNode.textContent = title;
           document.title = `${title} | Markdown Preview`;
-          markdownNode.innerHTML = renderMarkdown(markdown, markdownUrl);
+          markdownNode.innerHTML = renderMarkdown(markdown, assetBaseUrl);
           renderMermaid();
         })
         .catch((error) => {

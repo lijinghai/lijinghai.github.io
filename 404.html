@@ -4,6 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page Not Found | RabbitRobot</title>
+  <script>
+    (() => {
+      const match = location.pathname.match(/^\/(?:(RabbitRobot)\/)?projects\/readmes\/([^/]+\.md)$/i);
+      if (!match) return;
+      const projectRoot = match[1] ? "/RabbitRobot/projects/" : "/projects/";
+      const source = `readmes/${match[2]}`;
+      location.replace(`${projectRoot}md-preview.html?src=${encodeURIComponent(source)}${location.hash}`);
+    })();
+  </script>
   <style>
     body {
       margin: 0;
