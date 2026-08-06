@@ -691,7 +691,7 @@
         </p>
         <p class="snapshot-card">
           <b>项目证据</b>
-          <span>RabbitRobot AMR2、覆盖路径规划、HandLiDAR、多传感器建图、R550 ROS2 Web 控制与字典工具。</span>
+          <span>RabbitRobot AMR2 端到端系统、覆盖路径规划、HandLiDAR、多传感器建图、R550 ROS2 Web 控制与字典工具。</span>
         </p>
         <p class="snapshot-card">
           <b>研究主线</b>
@@ -720,7 +720,7 @@
         </li>
         <li>
           <time datetime="2026-08">2026.08</time>
-          <span><b>工程主线：</b>沉淀 RabbitRobot 的 ROS 2 / Nav2、SLAM、Web 控制台、覆盖路径和 CAD/3D 打印资产。</span>
+          <span><b>工程主线：</b>沉淀 RabbitRobot 的 ROS 2 / Nav2、SLAM、Web 3D 控制台、覆盖路径、真实 CAD 底盘和 DS20270C 安全链。</span>
         </li>
         <li>
           <time datetime="2026-07">2026.07</time>
@@ -813,19 +813,19 @@
 
       <article class="entry">
         <a class="thumb" href="RabbitRobot/projects/rabbitrobot-amr2.html">
-          <img src="RabbitRobot/images/rabbitrobot/amr2_web_navigation.jpg" alt="AMR2 web navigation console">
+          <img src="RabbitRobot/images/rabbitrobot/amr2_coverage_web_console.gif" alt="AMR2 Web 3D coverage console">
         </a>
         <div>
           <span class="project-kicker">Real Robot System</span>
-          <h3>RabbitRobot_AMR2: ROS 2 真车导航与安全链路</h3>
-          <span class="meta">DS20270C · Livox MID360 · FAST-LIO · ICP localization · Nav2 MPPI · Web Console</span>
+          <h3>RabbitRobot_AMR2: ROS 2 真车覆盖作业与安全链路</h3>
+          <span class="meta">PCD map · SolidWorks STL · Coverage planner · Nav2 MPPI · DS20270C · Web 3D Console</span>
           <p class="note">
-            AMR2 是一套真实轮毂伺服 AMR 系统，覆盖 MID360 接入、FAST-LIO 建图、ICP 定位、pointcloud-to-laserscan、Nav2 MPPI 控制、速度平滑、collision monitor 和 Web 控制台。项目重点是把导航算法放到真实底盘、地图、TF、速度链路和实验记录里验证。
+            AMR2 是一套真实轮毂伺服 AMR 系统：用真实 PCD 地图和真实 SolidWorks 底盘做覆盖作业仿真，Web 控制台加载 3D STL 并同步 <code>/Odometry</code>，覆盖路径再通过 Nav2 dry-run 和 DS20270C 安全链验证。项目重点是把算法、硬件、Web 工具和验证记录串成可复现闭环。
           </p>
           <ul class="project-points">
-            <li><b>硬件链路</b>：轮毂伺服底盘、LiDAR、CAN/串口、Jetson/工控部署。</li>
-            <li><b>导航链路</b>：map -> odom、Nav2、MPPI、速度平滑和避障保护。</li>
-            <li><b>验证材料</b>：真车图片、Web 导航画面、运行视频和项目详情页。</li>
+            <li><b>真实输入</b>：PCD 地图、CAD mesh、0.486 x 0.450 m footprint。</li>
+            <li><b>系统链路</b>：覆盖路径、Web 3D、Nav2 dry-run、速度安全链。</li>
+            <li><b>验证材料</b>：6 包构建、浏览器检查、RViz smoke、DS dry-run。</li>
           </ul>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-amr2.html">details</a>
