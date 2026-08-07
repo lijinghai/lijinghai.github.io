@@ -363,24 +363,22 @@
 
     .entry {
       display: grid;
-      grid-template-columns: 180px minmax(0, 1fr);
-      gap: 22px;
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 24px;
       align-items: start;
-      margin: 0 -8px;
-      padding: 16px 8px;
-      border-radius: 6px;
-      transition: background-color .2s ease, box-shadow .2s ease, transform .2s ease;
+      margin: 0;
+      padding: 18px 0 20px;
+      border-bottom: 1px solid var(--line);
+      transition: background-color .2s ease;
     }
 
     .entry:hover {
-      background: rgba(255, 248, 239, .72);
-      box-shadow: var(--paper-shadow);
-      transform: translateY(-2px);
+      background: rgba(255, 248, 239, .52);
     }
 
     .thumb {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 16 / 10;
       overflow: hidden;
       border-radius: 4px;
       background: var(--warm);
@@ -402,34 +400,39 @@
 
     .thumb.contain img {
       object-fit: contain;
-      padding: 8px;
+      padding: 6px;
       background: #fbfbfb;
     }
 
+    .entry h3 {
+      display: block;
+      margin: 0 0 4px;
+      color: #627382;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.22;
+    }
+
     .meta {
+      display: block;
+      margin-top: 2px;
       color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
     }
 
     .project-kicker {
       display: inline-block;
-      margin-bottom: 5px;
+      margin: 0 6px 4px 0;
       color: var(--accent);
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0;
+      letter-spacing: .06em;
       text-transform: uppercase;
     }
 
     .project-points {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 6px 12px;
-      margin: 9px 0 0;
-      padding: 0;
-      list-style: none;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
+      display: none;
     }
 
     .project-points li {
@@ -444,13 +447,16 @@
     }
 
     .venue {
+      display: block;
+      margin-top: 4px;
       color: var(--muted);
       font-style: italic;
     }
 
     .entry-links {
-      margin-top: 5px;
+      margin: 6px 0 0;
       color: var(--soft);
+      font-size: 15px;
     }
 
     .entry-links a:first-child {
@@ -459,6 +465,8 @@
 
     .note {
       color: var(--muted);
+      font-size: 15px;
+      line-height: 1.62;
     }
 
     .stack-table {
@@ -586,10 +594,11 @@
 
       .entry {
         gap: 10px;
+        padding: 16px 0 18px;
       }
 
       .thumb {
-        max-width: 360px;
+        max-width: 420px;
       }
 
       .stack-table th {
@@ -769,10 +778,9 @@
           <span class="project-kicker">Main Platform</span>
           <h3>RabbitRobot: 真实 AMR 与 VLN 研究平台</h3>
           <span class="meta"><strong>Lijinghai</strong> · ROS 2 AMR · Vision-Language Navigation · Real-Robot System</span>
-          <br>
           <span class="venue">长期个人机器人平台 / 研究试验台 / 工程作品集主线</span>
           <p class="note">
-            RabbitRobot 是我长期推进的开源机器人平台：从底盘结构、电机与传感器接入、ROS 2 / Nav2、SLAM、多传感器融合，到 Web 控制台、数据记录和公开文档持续迭代。它不是一个孤立 demo，而是我把论文问题、真实硬件和可复现实验接起来的主项目。
+            长期推进的真实 AMR 平台，覆盖底盘结构、电机与传感器接入、ROS 2 / Nav2、SLAM、多传感器融合、Web 控制台和实验记录，用来把 VLN、SLAM、路径规划问题接到真车上验证。
           </p>
           <ul class="project-points">
             <li><b>系统闭环</b>：机械、传感器、导航、Web、文档一体化推进。</li>
@@ -796,7 +804,7 @@
           <h3>RabbitRobot_VLN / VLR: 长程导航偏航检测与可验证恢复</h3>
           <span class="meta">VLN · VLM Agent · semantic subgoals · topology / BEV memory · recovery verification</span>
           <p class="note">
-            围绕 Vision-Language Navigation，我重点关注长程导航中“走偏了如何发现、如何解释、如何恢复”的问题：把自然语言任务、视觉/地图 grounding、waypoint 规划、历史记忆和真实 AMR 执行评估串成一条实验链路。目标是形成可复现的 baseline、ablation、failure analysis 和后续论文/报告入口。
+            面向长程 VLN 中“走偏了如何发现、如何解释、如何恢复”的问题，串联语言任务、视觉/地图 grounding、waypoint 规划、历史记忆和真实 AMR 执行评估，沉淀可复现实验链路。
           </p>
           <ul class="project-points">
             <li><b>研究问题</b>：长程 VLN 的偏航检测、状态表征和恢复策略。</li>
@@ -820,7 +828,7 @@
           <h3>RabbitRobot_AMR2: 真车覆盖作业、导航与安全链路</h3>
           <span class="meta">PCD map · SolidWorks STL · Coverage Rect/Poly · Nav2 MPPI · DS20270C · Web 3D Console</span>
           <p class="note">
-            AMR2 现在把原来的真车系统和覆盖路径规划合在一条链路里展示：用真实 PCD 地图和真实 SolidWorks 底盘做覆盖作业仿真，支持 RViz Rect/Poly 画区域、Web 3D 控制台同步 <code>/Odometry</code>，覆盖路径再通过 Nav2 dry-run 和 DS20270C 安全链验证。
+            把真实 PCD 地图、SolidWorks 底盘、覆盖区域输入、Web 3D 控制台、Nav2 dry-run 和 DS20270C 安全链放到一条链路里，展示 AMR2 的覆盖作业与工程验证能力。
           </p>
           <ul class="project-points">
             <li><b>真实输入</b>：PCD 地图、CAD mesh、0.486 x 0.450 m footprint。</li>
@@ -844,7 +852,7 @@
           <h3>HandLiDAR / Multi-Sensor Mapping: 环境采集与建图工具链</h3>
           <span class="meta">Unitree L1 · D435 · Livox MID360 · RTAB-Map · FAST-LIO / FAST-LIVO2 · point cloud mapping</span>
           <p class="note">
-            围绕真实场景采集和地图构建，我搭建了手持 LiDAR、多传感器采集和点云/视觉建图工具链，连接 LiDAR、深度相机、点云、位姿估计、RTAB-Map、FAST-LIO / FAST-LIVO2 等流程。它为导航、覆盖路径和 VLN 任务提供环境数据基础。
+            手持 LiDAR 与多传感器建图工具链，连接 Unitree L1、D435、Livox MID360、RTAB-Map、FAST-LIO / FAST-LIVO2，为导航、覆盖路径和 VLN 任务提供真实场景地图与数据。
           </p>
           <ul class="project-points">
             <li><b>传感器</b>：LiDAR、深度相机、IMU 和视觉/点云输入。</li>
@@ -868,7 +876,7 @@
           <h3>Robot Web Tools: ROS2 控制台、字典与远程同步</h3>
           <span class="meta">rosbridge · React / Vite · systemd · SSH / SFTP · GitHub workflow</span>
           <p class="note">
-            除了机器人算法本身，我也在做提高机器人开发效率的工具：ROS2 Web 控制台把地图、图层、导航控制、任务状态和日志入口放进浏览器；R550 ROS2 Web Dictionary 用来检索真实节点、话题、服务和动作；`ljh_sync_web` 负责远程机器人代码的 SSH/SFTP 增量同步、过滤、备份和 GitHub 上传。
+            面向机器人开发效率的 Web 工具集合：ROS2 控制台、R550 ROS2 Web Dictionary 与 <code>ljh_sync_web</code>，覆盖可视化调试、节点/话题检索、远程同步、备份和 GitHub 上传。
           </p>
           <ul class="project-points">
             <li><b>调试效率</b>：降低对单机 RViz 环境和手工命令的依赖。</li>
