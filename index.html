@@ -46,6 +46,16 @@
       line-height: 1.58;
     }
 
+    p,
+    li,
+    th,
+    td,
+    h1,
+    h2,
+    h3 {
+      overflow-wrap: anywhere;
+    }
+
     a {
       color: var(--link);
       text-decoration: none;
@@ -155,24 +165,34 @@
     }
 
     .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+      align-items: center;
       margin-top: 16px;
       text-align: left;
       color: var(--soft);
     }
 
-    .links a {
+    .links a,
+    .section-links a {
       white-space: nowrap;
     }
 
     .section-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+      align-items: center;
       margin-top: 6px;
       text-align: left;
       color: var(--soft);
       font-size: 13px;
     }
 
-    .section-links a {
-      white-space: nowrap;
+    .link-sep {
+      color: var(--soft);
+      user-select: none;
     }
 
     .role-line {
@@ -186,6 +206,20 @@
     .highlight {
       color: var(--accent);
       font-weight: 700;
+    }
+
+    .hero-claim {
+      margin: 0 0 12px;
+      color: var(--dark);
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.42;
+    }
+
+    .english-summary {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
     }
 
     .rabbit-cta {
@@ -297,6 +331,93 @@
     .news-list b {
       color: var(--text);
       font-weight: 700;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      padding: 4px 0 14px;
+    }
+
+    .highlight-card,
+    .report-card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, .86);
+      transition: background-color .18s ease, box-shadow .2s ease, transform .2s ease;
+    }
+
+    .highlight-card {
+      padding: 14px 15px;
+    }
+
+    .highlight-card:hover,
+    .report-card:hover {
+      background: rgba(255, 248, 239, .72);
+      box-shadow: var(--paper-shadow);
+      transform: translateY(-2px);
+    }
+
+    .highlight-card h3,
+    .report-card h3 {
+      display: block;
+      margin: 0 0 6px;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .highlight-card p,
+    .report-card p {
+      margin-bottom: 8px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .proof-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+      margin: 10px 0 0;
+      color: var(--soft);
+      font-size: 13px;
+    }
+
+    .proof-links a:first-child {
+      font-weight: 700;
+    }
+
+    .metric-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .metric {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 3px 8px;
+      border: 1px solid rgba(214, 106, 47, .22);
+      border-radius: 999px;
+      color: #8a4a23;
+      background: rgba(255, 248, 239, .85);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .report-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 4px 0 12px;
+    }
+
+    .report-card {
+      padding: 13px 14px;
     }
 
     .snapshot-grid {
@@ -586,7 +707,8 @@
 
       .intro-media {
         order: 0;
-        width: min(160px, 48vw);
+        width: min(132px, 36vw);
+        padding: 5px;
       }
 
       .profile-photo {
@@ -603,12 +725,15 @@
       .links,
       .section-links {
         text-align: center;
+        justify-content: center;
       }
 
       .rabbit-cta {
         justify-content: center;
       }
 
+      .highlight-grid,
+      .report-grid,
       .interest-grid,
       .snapshot-grid,
       .project-points,
@@ -671,41 +796,100 @@
         <h1 id="page-title">Jinghai Li</h1>
         <p class="role-line">控制工程硕士研究生 · Robotics / VLN / AMR Systems</p>
         <p class="name-line">Research interests: Vision-Language Navigation, ROS 2 AMR Systems, SLAM, Multi-Sensor Fusion</p>
+        <p class="hero-claim">I build research-grade AMR systems that connect VLN ideas to real robots.</p>
         <p>
-          你好，我是 <strong>Jinghai Li</strong>，控制工程方向硕士研究生。我的研究和实习主线集中在 <span class="highlight">Vision-Language Navigation</span>、移动机器人导航和真实 AMR 系统工程。
+          你好，我是 <strong>Jinghai Li</strong>。我关注 <span class="highlight">Vision-Language Navigation</span>、ROS 2 / Nav2、SLAM 与多传感器融合，长期推进 RabbitRobot 真实 AMR 平台，把算法、硬件、Web 工具和实验记录做成可运行、可验证、可复现的系统闭环。
         </p>
-        <p>
-          我长期推进 <strong>RabbitRobot</strong>：从底盘结构、电机与传感器接入、ROS 2 / Nav2、SLAM 与多传感器融合，到 Web 可视化、数据记录和实验复盘，把论文想法接到可运行的真实机器人平台上。
-        </p>
-        <p>
-          面向未来的研究和工程机会，我更希望被理解为一个能把 <span class="highlight">机器人软件、导航算法、工程部署和研究验证</span> 串起来的人：既能读论文、做实验，也能把系统搭起来、跑起来、讲清楚。
+        <p class="english-summary">
+          My work sits between robotics research and engineering implementation: real-robot navigation, coverage planning, sensor integration, web-based robot tooling, and VLN-oriented verification on physical AMR platforms.
         </p>
         <div class="rabbit-cta">
           <a class="rabbit-button" href="RabbitRobot/">进入 RabbitRobot 全系列主页</a>
         </div>
-        <p class="links">
+        <nav class="links" aria-label="Profile links">
           <a href="https://github.com/lijinghai" target="_blank" rel="noreferrer">GitHub</a>
-          &nbsp;/&nbsp;
+          <span class="link-sep">/</span>
           <a href="https://blog.csdn.net/Dorian15" target="_blank" rel="noreferrer">CSDN</a>
-          &nbsp;/&nbsp;
+          <span class="link-sep">/</span>
           <a href="https://space.bilibili.com/1339027047" target="_blank" rel="noreferrer">Bilibili</a>
-          &nbsp;/&nbsp;
+          <span class="link-sep">/</span>
           <a href="mailto:lijinghailjh@163.com">Email</a>
-        </p>
-        <p class="section-links">
+          <span class="link-sep">/</span>
+          <a href="cv.html">CV</a>
+        </nav>
+        <nav class="section-links" aria-label="Page sections">
+          <a href="#highlights-title">Highlights</a>
+          <span class="link-sep">/</span>
           <a href="#interests-title">Research</a>
-          &nbsp;/&nbsp;
+          <span class="link-sep">/</span>
           <a href="#snapshot-title">Snapshot</a>
-          &nbsp;/&nbsp;
+          <span class="link-sep">/</span>
           <a href="#projects-title">Projects</a>
-          &nbsp;/&nbsp;
+          <span class="link-sep">/</span>
+          <a href="#reports-title">Reports</a>
+          <span class="link-sep">/</span>
           <a href="#stack-title">Stack</a>
-          &nbsp;/&nbsp;
+          <span class="link-sep">/</span>
           <a href="#find-title">Find Me</a>
-        </p>
+        </nav>
       </div>
       <div class="intro-media">
         <img class="profile-photo" src="images/profile/jinghai-li-portrait-soft.jpg" alt="Jinghai Li portrait">
+      </div>
+    </section>
+
+    <section aria-labelledby="highlights-title">
+      <div class="section-title">
+        <h2 id="highlights-title">Selected Highlights</h2>
+      </div>
+      <p class="section-lead">
+        Three compact proof points for what I can build, test, and explain on real robot systems.
+      </p>
+      <div class="highlight-grid">
+        <article class="highlight-card">
+          <h3>RabbitRobot real-robot research platform</h3>
+          <p>从底盘、电机、传感器、ROS 2 / Nav2、SLAM 到 Web 控制台，把 VLN 与移动机器人系统接到真实 AMR 上验证。</p>
+          <div class="metric-row">
+            <span class="metric">Real AMR</span>
+            <span class="metric">ROS 2 / Nav2</span>
+            <span class="metric">VLN testbed</span>
+          </div>
+          <p class="proof-links">
+            <a href="RabbitRobot/">Project page</a>
+            <span class="link-sep">/</span>
+            <a href="https://github.com/lijinghai" target="_blank" rel="noreferrer">GitHub</a>
+          </p>
+        </article>
+
+        <article class="highlight-card">
+          <h3>AMR2 coverage planning and safety chain</h3>
+          <p>支持矩形/多边形覆盖区域、known-free 裁剪、障碍膨胀、路径校验、Web 3D 预览和 DS20270C dry-run 验证。</p>
+          <div class="metric-row">
+            <span class="metric">0.486 x 0.450 m footprint</span>
+            <span class="metric">Coverage Rect / Poly</span>
+            <span class="metric">Web 3D</span>
+          </div>
+          <p class="proof-links">
+            <a href="RabbitRobot/projects/rabbitrobot-amr2.html">AMR2 details</a>
+            <span class="link-sep">/</span>
+            <a href="RabbitRobot/projects/rabbitrobot-coverage.html">Coverage report</a>
+          </p>
+        </article>
+
+        <article class="highlight-card">
+          <h3>VLN / VLR line with engineering verification</h3>
+          <p>围绕长程 VLN 的偏航检测、语义子目标、拓扑/BEV 记忆与恢复验证，把研究问题落到可复盘的 AMR 实验链路。</p>
+          <div class="metric-row">
+            <span class="metric">Deviation detection</span>
+            <span class="metric">VLM agent</span>
+            <span class="metric">Recovery verification</span>
+          </div>
+          <p class="proof-links">
+            <a href="RabbitRobot/projects/rabbitrobot-vln.html">VLN project</a>
+            <span class="link-sep">/</span>
+            <a href="RabbitRobot/#research">Research line</a>
+          </p>
+        </article>
       </div>
     </section>
 
@@ -914,6 +1098,56 @@
           </p>
         </div>
       </article>
+    </section>
+
+    <section aria-labelledby="reports-title">
+      <div class="section-title">
+        <h2 id="reports-title">Publications / Reports / CV</h2>
+      </div>
+      <p class="section-lead">
+        I am turning the robot system work into clearer technical reports and research notes. The current public evidence is project-first: reproducible pages, videos, code links, and system documentation.
+      </p>
+      <div class="report-grid">
+        <article class="report-card">
+          <h3>Technical CV</h3>
+          <p>One-page technical profile for robotics / VLN / AMR opportunities, with selected projects, stack, and public links.</p>
+          <p class="proof-links">
+            <a href="cv.html">Open CV</a>
+            <span class="link-sep">/</span>
+            <a href="mailto:lijinghailjh@163.com">Email</a>
+          </p>
+        </article>
+
+        <article class="report-card">
+          <h3>AMR2 system report</h3>
+          <p>真实 AMR2 平台、覆盖作业、Nav2 / MPPI、CAD footprint、Web 3D 控制台与安全链路的系统级说明。</p>
+          <p class="proof-links">
+            <a href="RabbitRobot/projects/rabbitrobot-amr2.html">Read report</a>
+            <span class="link-sep">/</span>
+            <a href="https://www.bilibili.com/video/BV1543K6uEVM/" target="_blank" rel="noreferrer">Video</a>
+          </p>
+        </article>
+
+        <article class="report-card">
+          <h3>Coverage planning note</h3>
+          <p>覆盖路径规划从 RViz 区域输入、地图裁剪、障碍膨胀、安全边距到 waypoint 校验的工程化记录。</p>
+          <p class="proof-links">
+            <a href="RabbitRobot/projects/rabbitrobot-coverage.html">Read note</a>
+            <span class="link-sep">/</span>
+            <a href="RabbitRobot/projects/rabbitrobot-coverage.html">Coverage details</a>
+          </p>
+        </article>
+
+        <article class="report-card">
+          <h3>VLN / VLR research note</h3>
+          <p>长程 VLN 偏航检测、语义子目标、拓扑/BEV 记忆与真实机器人恢复验证的研究路线整理。</p>
+          <p class="proof-links">
+            <a href="RabbitRobot/projects/rabbitrobot-vln.html">Read note</a>
+            <span class="link-sep">/</span>
+            <a href="RabbitRobot/#research">Research line</a>
+          </p>
+        </article>
+      </div>
     </section>
 
     <section aria-labelledby="stack-title">
