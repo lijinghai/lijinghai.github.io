@@ -9,7 +9,7 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="算个文科生吧 | Jinghai Li">
   <meta property="og:description" content="控制工程方向硕士研究生，面向机器人软件、移动机器人算法、VLN / 具身智能和真实 AMR 系统工程。">
-  <meta property="og:image" content="images/profile/jinghai-li-portrait.jpg">
+  <meta property="og:image" content="images/profile/jinghai-li-portrait-soft.jpg">
   <link rel="icon" type="image/png" href="RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png">
   <style>
     :root {
@@ -86,8 +86,8 @@
 
     .intro {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 196px;
-      gap: 34px;
+      grid-template-columns: minmax(0, 1fr) 184px;
+      gap: 38px;
       align-items: start;
       padding: 10px 0 22px;
     }
@@ -125,22 +125,32 @@
       text-align: left;
     }
 
+    .intro-media {
+      justify-self: center;
+      width: 184px;
+      padding: 7px;
+      border: 1px solid rgba(31, 41, 51, .10);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #fffdf9 0%, #f8fafb 100%);
+      box-shadow: 0 8px 22px rgba(31, 41, 51, .07);
+    }
+
     .profile-photo {
-      width: 176px;
+      width: 100%;
       aspect-ratio: 3 / 4;
-      margin: 0 auto;
-      border-radius: 6px;
+      margin: 0;
+      border-radius: 4px;
       object-fit: cover;
       object-position: 50% 39%;
       padding: 0;
-      background: #fff;
-      border: 1px solid var(--line);
-      box-shadow: 0 6px 18px rgba(31, 41, 51, .06);
+      background: #f5f6f5;
+      border: 1px solid rgba(31, 41, 51, .08);
+      box-shadow: none;
       transition: transform .24s ease, box-shadow .24s ease;
     }
 
     .profile-photo:hover {
-      box-shadow: 0 10px 24px rgba(31, 41, 51, .10);
+      box-shadow: 0 8px 18px rgba(31, 41, 51, .09);
       transform: translateY(-2px);
     }
 
@@ -576,10 +586,11 @@
 
       .intro-media {
         order: 0;
+        width: min(160px, 48vw);
       }
 
       .profile-photo {
-        width: min(152px, 44vw);
+        width: 100%;
       }
 
       h1 {
@@ -694,7 +705,7 @@
         </p>
       </div>
       <div class="intro-media">
-        <img class="profile-photo" src="images/profile/jinghai-li-portrait.jpg" alt="Jinghai Li portrait">
+        <img class="profile-photo" src="images/profile/jinghai-li-portrait-soft.jpg" alt="Jinghai Li portrait">
       </div>
     </section>
 
