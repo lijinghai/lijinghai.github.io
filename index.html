@@ -96,8 +96,8 @@
 
     .intro {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 184px;
-      gap: 38px;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 42px;
       align-items: start;
       padding: 10px 0 22px;
     }
@@ -136,9 +136,9 @@
     }
 
     .intro-media {
-      justify-self: center;
-      width: 184px;
-      padding: 7px;
+      justify-self: end;
+      width: 280px;
+      padding: 12px;
       border: 1px solid rgba(31, 41, 51, .10);
       border-radius: 8px;
       background: linear-gradient(180deg, #fffdf9 0%, #f8fafb 100%);
@@ -146,9 +146,9 @@
     }
 
     .profile-photo {
-      width: 100%;
+      width: 170px;
       aspect-ratio: 3 / 4;
-      margin: 0;
+      margin: 0 auto 12px;
       border-radius: 4px;
       object-fit: cover;
       object-position: 50% 39%;
@@ -162,6 +162,71 @@
     .profile-photo:hover {
       box-shadow: 0 8px 18px rgba(31, 41, 51, .09);
       transform: translateY(-2px);
+    }
+
+    .side-panel {
+      padding-top: 11px;
+      border-top: 1px solid rgba(31, 41, 51, .10);
+    }
+
+    .side-kicker {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .side-facts {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .side-facts li {
+      display: grid;
+      grid-template-columns: 84px minmax(0, 1fr);
+      gap: 8px;
+      margin: 0;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(31, 41, 51, .08);
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .side-facts li:last-child {
+      border-bottom: 0;
+    }
+
+    .side-facts b {
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .side-facts span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .side-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .side-actions a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border: 1px solid rgba(214, 106, 47, .25);
+      border-radius: 999px;
+      background: rgba(255, 248, 239, .78);
+      color: #8a4a23;
+      font-size: 12px;
+      font-weight: 700;
     }
 
     .links {
@@ -707,12 +772,18 @@
 
       .intro-media {
         order: 0;
+        justify-self: center;
         width: min(132px, 36vw);
         padding: 5px;
       }
 
       .profile-photo {
         width: 100%;
+        margin-bottom: 0;
+      }
+
+      .side-panel {
+        display: none;
       }
 
       h1 {
@@ -835,6 +906,18 @@
       </div>
       <div class="intro-media">
         <img class="profile-photo" src="images/profile/jinghai-li-portrait-soft.jpg" alt="Jinghai Li portrait">
+        <div class="side-panel">
+          <p class="side-kicker">At a glance</p>
+          <ul class="side-facts">
+            <li><b>Platform</b><span>RabbitRobot / AMR2 real robot system</span></li>
+            <li><b>Research</b><span>VLN, deviation detection, recovery verification</span></li>
+            <li><b>Stack</b><span>ROS 2, Nav2, SLAM, sensors, Web tools</span></li>
+          </ul>
+          <div class="side-actions">
+            <a href="cv.html">Technical CV</a>
+            <a href="RabbitRobot/">Project portfolio</a>
+          </div>
+        </div>
       </div>
     </section>
 
