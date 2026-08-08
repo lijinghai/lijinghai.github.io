@@ -31,7 +31,7 @@
       <p class="summary">ROS2 Web 控制台把地图可视化、图层开关、导航控制、任务管理、状态监控和日志入口搬进浏览器，减少机器人调试对 RViz 单机环境的依赖。</p>
       <div class="meta-row">
         <span class="meta-pill">Time · 2026.07</span>
-        <span class="meta-pill">Source · Local README snapshot</span>
+        <span class="meta-pill">Source · ROS2 Web console</span>
         <span class="meta-pill">Context · Robot Web Tools</span>
       </div>
     </div>
@@ -78,13 +78,13 @@
         <div class="gallery">
           <figure>
               <img src="../images/rabbitrobot/ros2_web_home.png" alt="RabbitRobot_ROS2_Web">
-              <figcaption>RabbitRobot_ROS2_Web</figcaption>
+              <figcaption>主控制台：地图、机器人状态、图层和操作入口集中在一个界面。</figcaption>
             </figure><figure>
-              <img src="../images/rabbitrobot/ros2_web_single_nav.png" alt="RabbitRobot_ROS2_Web 关键画面 2">
-              <figcaption>RabbitRobot_ROS2_Web 关键画面 2</figcaption>
+              <img src="../images/rabbitrobot/ros2_web_single_nav.png" alt="ROS2 Web 控制台单点导航界面">
+              <figcaption>单点导航：在 Web 地图上设置目标点，并和 RViz 结果互相校验。</figcaption>
             </figure><figure>
-              <img src="../images/rabbitrobot/amr2_web_navigation.jpg" alt="RabbitRobot_ROS2_Web 关键画面 3">
-              <figcaption>RabbitRobot_ROS2_Web 关键画面 3</figcaption>
+              <img src="../images/rabbitrobot/amr2_web_navigation.jpg" alt="AMR2 Web 导航状态界面">
+              <figcaption>AMR2 视角：把真实小车、路径和导航状态放进同一套调试界面。</figcaption>
             </figure>
         </div>
       </div>
@@ -92,62 +92,21 @@
 
     <section class="section is-soft">
       <div class="container">
-        <p class="kicker">README Snapshot</p>
-        <h2>README / 项目说明片段</h2>
+        <p class="kicker">Implementation Notes</p>
+        <h2>控制台能力拆解</h2>
         <div class="readme-box">
-          <h2>🤖 算个文科生吧 · AMR 控制台</h2>
-<p><strong>基于 Web 技术的机器人控制与可视化平台</strong></p>
-<p>---</p>
-<h3>🎯 项目简介</h3>
-<p><strong>AMR 控制台</strong> 是一个基于 Web 技术的机器人控制与可视化平台，专为自主移动机器人（AMR）设计。通过 WebSocket 连接 ROS 系统，提供实时 3D 可视化、地图编辑、导航控制、任务管理等核心功能，让机器人操作变得直观高效。</p>
-<h4>✨ 核心优势</h4>
-<pre>| 特性 | 说明 |</pre>
-<pre>|:----:|:----|</pre>
-<pre>| 🌐 **零安装部署** | 纯 Web 应用，无需安装客户端 |</pre>
-<pre>| 🎨 **现代化 UI** | 基于 React 19 构建的响应式界面 |</pre>
-<pre>| 🚀 **高性能渲染** | Three.js 驱动的实时 3D 可视化 |</pre>
-<pre>| 🔌 **ROS 集成** | 完整的 ROS/ROS2 消息支持 |</pre>
-<pre>| 🎛️ **灵活配置** | 可自定义的图层系统和主题 |</pre>
-<p>---</p>
-<h3>📸 界面预览</h3>
-<h4>登录页面</h4>
-<h4>主界面</h4>
-<p>---</p>
-<h3>✨ 功能特性</h3>
-<h4>🗺️ 地图可视化</h4>
-<ul>
-<li><strong>多图层系统</strong> - 支持栅格地图、代价地图、激光扫描、点云、路径等多种图层</li>
-<li><strong>2D/3D 视图切换</strong> - 灵活的视角切换，满足不同场景需求</li>
-<li><strong>实时更新</strong> - 基于 WebSocket 的实时数据流，低延迟可视化</li>
-<li><strong>图层管理</strong> - 独立的图层控制面板，支持显示/隐藏、透明度、颜色等配置</li>
-</ul>
-<p>&lt;em&gt;建图功能界面&lt;/em&gt;</p>
-<h4>🎮 机器人控制</h4>
-<ul>
-<li><strong>导航控制</strong> - 支持目标点导航、路径规划与跟踪</li>
-<li><strong>手动控制</strong> - 实时速度控制面板，支持线速度和角速度调节</li>
-<li><strong>重定位功能</strong> - 可视化重定位，支持在地图上直接设置机器人初始位姿</li>
-<li><strong>紧急停止</strong> - 一键紧急停止功能，保障安全</li>
-</ul>
-<p>&lt;em&gt;导航控制界面&lt;/em&gt;</p>
-<p>&lt;em&gt;Web端导航界面&lt;/em&gt;</p>
-<h4>单点导航</h4>
-<p>&lt;table&gt;</p>
-<p>&lt;tr&gt;</p>
-<p>&lt;td align=&quot;center&quot;&gt;</p>
-<p>&lt;em&gt;Web端单点导航&lt;/em&gt;</p>
-<p>&lt;/td&gt;</p>
-<p>&lt;td align=&quot;center&quot;&gt;</p>
-<p>&lt;em&gt;RViz单点导航对比&lt;/em&gt;</p>
-<p>&lt;/td&gt;</p>
-<p>&lt;/tr&gt;</p>
-<p>&lt;/table&gt;</p>
-<h4>多点导航</h4>
-<p class="excerpt-note">完整 README 已保存在本站快照中，可从本页底部打开。</p>
+          <h3>为什么要做 Web 控制台</h3>
+          <p>传统机器人调试往往分散在 RViz、终端、参数文件和日志窗口里。这个控制台把高频操作收拢到浏览器：看地图、发目标点、检查机器人状态、切换图层、观察路径和回看异常，尽量减少“一个任务开一堆窗口”的调试成本。</p>
+          <h3>关键能力</h3>
+          <ul>
+            <li><strong>地图与图层：</strong>栅格地图、路径、机器人模型、激光/点云等信息按图层管理，便于定位问题来源。</li>
+            <li><strong>导航与重定位：</strong>支持 Web 端目标点设置、单点导航、路径结果观察和初始位姿设置。</li>
+            <li><strong>真车状态：</strong>把 AMR2 的位置、速度、连接状态和操作反馈集中展示，服务现场调试。</li>
+            <li><strong>ROS/ROS2 接入：</strong>通过 WebSocket / rosbridge 连接机器人系统，为后续覆盖地图和 VLN 任务入口留出接口。</li>
+          </ul>
         </div>
         <div class="source-actions">
-          <a class="button primary" href="md-preview.html?src=readmes/rabbitrobot-ros2-web.md">Open Local README Snapshot</a>
-          <a class="button" href="robot-web-tools.html">Open Robot Web Tools</a>
+          <a class="button primary" href="robot-web-tools.html">Open Robot Web Tools</a>
           <a class="button" href="../index.html#projects">Back to Project Matrix</a>
         </div>
       </div>

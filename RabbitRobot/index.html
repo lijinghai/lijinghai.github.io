@@ -508,7 +508,7 @@
       display: grid;
       grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
       gap: 22px;
-      align-items: center;
+      align-items: stretch;
       margin-top: 24px;
       overflow: hidden;
       border: 1px solid var(--line);
@@ -518,7 +518,6 @@
     }
 
     .algorithm-media {
-      align-self: start;
       margin: 0;
       min-height: 280px;
       background: var(--soft);
@@ -546,6 +545,33 @@
     .algorithm-media.is-diagram img {
       aspect-ratio: 16 / 9;
       height: auto;
+    }
+
+    .coverage-visual-stack {
+      display: grid;
+      grid-template-rows: repeat(3, minmax(0, auto)) auto;
+      gap: 10px;
+      height: 100%;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .coverage-visual-stack img {
+      width: 100%;
+      min-height: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    .coverage-visual-stack figcaption {
+      padding: 8px 6px 0;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.45;
+      text-align: center;
     }
 
     .algorithm-body {
@@ -620,38 +646,6 @@
       color: var(--muted);
       font-size: 12px;
       line-height: 1.55;
-    }
-
-    .coverage-mini-gallery {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin: 16px 0 4px;
-    }
-
-    .coverage-mini-gallery figure {
-      overflow: hidden;
-      margin: 0;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fff;
-    }
-
-    .coverage-mini-gallery img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: contain;
-      padding: 6px;
-      background: #fff;
-    }
-
-    .coverage-mini-gallery figcaption {
-      padding: 8px 9px 9px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 1.35;
     }
 
     .algorithm-note {
@@ -1295,10 +1289,6 @@
         grid-template-columns: 1fr;
       }
 
-      .coverage-mini-gallery {
-        grid-template-columns: 1fr 1fr;
-      }
-
       .hardware-card.is-wide {
         grid-column: auto;
       }
@@ -1380,8 +1370,7 @@
         min-height: 220px;
       }
 
-      .algorithm-flow,
-      .coverage-mini-gallery {
+      .algorithm-flow {
         grid-template-columns: 1fr;
       }
 
@@ -1644,8 +1633,11 @@
           <img src="images/rabbitrobot/amr2_web_navigation.jpg" alt="AMR2 Web 控制台 3D 导航画面">
         </div>
         <article class="algorithm-card">
-          <figure class="algorithm-media is-diagram">
+          <figure class="algorithm-media is-diagram coverage-visual-stack">
+            <img src="images/rabbitrobot/coverage_step_clicked_area.png" alt="RViz 中点击或拖拽得到覆盖区域轮廓" loading="eager" decoding="async">
+            <img src="images/rabbitrobot/coverage_step_known_free_clip.png" alt="覆盖区域按 PCD 2D 地图 known-free 空间裁剪" loading="eager" decoding="async">
             <img src="images/rabbitrobot/coverage_step_generated_path.png" alt="PCD 地图上矩形清扫区域生成 map-aware 覆盖路径，显示 12 个 waypoints 和 0.38 m clearance" loading="eager" decoding="async">
+            <figcaption>区域输入、地图裁剪、路径生成三步放在同一侧，避免重复堆文字。</figcaption>
           </figure>
           <div class="algorithm-body">
             <p class="section-kicker">Coverage Planner · 2026.07.26</p>
@@ -1673,20 +1665,6 @@
               <div class="algorithm-stat"><b>0.38 m</b><span>map-aware clearance</span></div>
               <div class="algorithm-stat"><b>12 / 38 / 39</b><span>矩形 / known-free / 手动验证 waypoints</span></div>
               <div class="algorithm-stat"><b>36.38 m²</b><span>示例已知可通行覆盖区域</span></div>
-            </div>
-            <div class="coverage-mini-gallery" aria-label="覆盖算法图文验证">
-              <figure>
-                <img src="images/rabbitrobot/coverage_step_clicked_area.png" alt="RViz 中点击或拖拽得到覆盖区域轮廓" loading="eager" decoding="async">
-                <figcaption>RViz 框选清扫区域</figcaption>
-              </figure>
-              <figure>
-                <img src="images/rabbitrobot/coverage_step_known_free_clip.png" alt="覆盖区域按 PCD 2D 地图 known-free 空间裁剪" loading="eager" decoding="async">
-                <figcaption>只保留地图可通行空间</figcaption>
-              </figure>
-              <figure>
-                <img src="images/rabbitrobot/coverage_step_following_path.png" alt="RViz-only fake car 沿覆盖路径跟随验证" loading="eager" decoding="async">
-                <figcaption>仿真小车沿路径跟随</figcaption>
-              </figure>
             </div>
             <p class="algorithm-note">算法本身只负责区域理解、覆盖路径生成和 RViz/消息发布；真车执行仍然要进入 Nav2、速度平滑、collision monitor 与 DS20270C CAN 底盘链路，避免绕过安全保护。</p>
             <div class="hardware-actions">
@@ -1862,26 +1840,6 @@
                 <li>面向 VLN：把语言策略生成的 waypoint 交给真车执行，并回收轨迹、状态和失败样例。</li>
               </ul>
               <a class="repo-link" href="projects/rabbitrobot-amr2.html">Project Details</a>
-            </div>
-          </article>
-
-          <article class="repository-card">
-            <div class="repository-media is-diagram-media">
-              <img src="images/rabbitrobot/coverage_step_generated_path.png" alt="PCD 地图矩形区域生成覆盖路径截图">
-              <img src="images/rabbitrobot/coverage_step_poly_path.png" alt="Coverage Poly 五边形区域生成覆盖路径截图">
-            </div>
-            <div class="repository-body">
-              <div class="tag-list" aria-label="覆盖路径算法技术栈">
-                <span class="tag">ROS2 Humble</span><span class="tag">Coverage Rect</span><span class="tag">Coverage Poly</span><span class="tag">A*</span><span class="tag">Map-aware</span>
-              </div>
-              <h3>ljh_robot_coverage</h3>
-              <p>这是 AMR2 工作空间里新整理出的扫地机覆盖路径算法：从 RViz 鼠标框选区域出发，结合真实 PCD 转出的 OccupancyGrid、车体 footprint、安全边距和障碍孔洞，生成能在 RViz 中验证、后续可接 Nav2 执行器的覆盖路径。</p>
-              <ul>
-                <li>交互入口：<code>Coverage Rect</code> 拖矩形、<code>Coverage Poly</code> 点多边形，也支持直接调用 <code>/coverage/compute_path</code>。</li>
-                <li>地图约束：unknown/off-map 区域不参与规划，占据格按车体尺寸膨胀后从覆盖区域中扣除。</li>
-                <li>安全边界：当前覆盖路径生成与 RViz-only 跟随已验证，真车自动执行后续仍要走 Nav2、速度平滑和 collision monitor。</li>
-              </ul>
-              <a class="repo-link" href="projects/rabbitrobot-coverage.html">Project Details</a>
             </div>
           </article>
 
