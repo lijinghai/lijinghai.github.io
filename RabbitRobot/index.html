@@ -640,8 +640,9 @@
     .coverage-mini-gallery img {
       display: block;
       width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+      padding: 6px;
       background: #fff;
     }
 
@@ -1644,7 +1645,7 @@
         </div>
         <article class="algorithm-card">
           <figure class="algorithm-media is-diagram">
-            <img src="images/rabbitrobot/coverage_step_generated_path.png" alt="PCD 地图上矩形清扫区域生成 map-aware 覆盖路径，显示 12 个 waypoints 和 0.38 m clearance">
+            <img src="images/rabbitrobot/coverage_step_generated_path.png" alt="PCD 地图上矩形清扫区域生成 map-aware 覆盖路径，显示 12 个 waypoints 和 0.38 m clearance" loading="eager" decoding="async">
           </figure>
           <div class="algorithm-body">
             <p class="section-kicker">Coverage Planner · 2026.07.26</p>
@@ -1675,15 +1676,15 @@
             </div>
             <div class="coverage-mini-gallery" aria-label="覆盖算法图文验证">
               <figure>
-                <img src="images/rabbitrobot/coverage_step_clicked_area.png" alt="RViz 中点击或拖拽得到覆盖区域轮廓">
+                <img src="images/rabbitrobot/coverage_step_clicked_area.png" alt="RViz 中点击或拖拽得到覆盖区域轮廓" loading="eager" decoding="async">
                 <figcaption>RViz 框选清扫区域</figcaption>
               </figure>
               <figure>
-                <img src="images/rabbitrobot/coverage_step_known_free_clip.png" alt="覆盖区域按 PCD 2D 地图 known-free 空间裁剪">
+                <img src="images/rabbitrobot/coverage_step_known_free_clip.png" alt="覆盖区域按 PCD 2D 地图 known-free 空间裁剪" loading="eager" decoding="async">
                 <figcaption>只保留地图可通行空间</figcaption>
               </figure>
               <figure>
-                <img src="images/rabbitrobot/coverage_step_following_path.png" alt="RViz-only fake car 沿覆盖路径跟随验证">
+                <img src="images/rabbitrobot/coverage_step_following_path.png" alt="RViz-only fake car 沿覆盖路径跟随验证" loading="eager" decoding="async">
                 <figcaption>仿真小车沿路径跟随</figcaption>
               </figure>
             </div>
