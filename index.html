@@ -3,14 +3,44 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>算个文科生吧 | Jinghai Li</title>
+  <title>Jinghai Li | Robotics, VLN, AMR Systems</title>
   <meta name="description" content="Jinghai Li 的个人主页：控制工程硕士研究生，聚焦 Vision-Language Navigation、真实 AMR 系统、SLAM / 多传感器建图与 RabbitRobot 机器人平台。">
   <meta name="author" content="Jinghai Li">
+  <link rel="canonical" href="https://lijinghai.github.io/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="算个文科生吧 | Jinghai Li">
+  <meta property="og:title" content="Jinghai Li | Robotics, VLN, AMR Systems">
   <meta property="og:description" content="一个简洁的机器人 / VLN / AMR 技术主页：快速展示研究方向、代表项目、技术报告和 RabbitRobot 真实机器人平台。">
-  <meta property="og:image" content="images/profile/jinghai-li-portrait-soft.jpg">
+  <meta property="og:url" content="https://lijinghai.github.io/">
+  <meta property="og:image" content="https://lijinghai.github.io/images/profile/jinghai-li-portrait-soft.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Jinghai Li | Robotics, VLN, AMR Systems">
+  <meta name="twitter:description" content="Robotics / VLN / AMR Systems homepage with RabbitRobot real-robot project evidence.">
+  <meta name="twitter:image" content="https://lijinghai.github.io/images/profile/jinghai-li-portrait-soft.jpg">
   <link rel="icon" type="image/png" href="RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Jinghai Li",
+      "alternateName": "算个文科生吧",
+      "url": "https://lijinghai.github.io/",
+      "image": "https://lijinghai.github.io/images/profile/jinghai-li-portrait-soft.jpg",
+      "jobTitle": "Control Engineering Graduate Student",
+      "knowsAbout": [
+        "Vision-Language Navigation",
+        "Robotics",
+        "AMR Systems",
+        "ROS 2",
+        "SLAM",
+        "Multi-Sensor Mapping"
+      ],
+      "sameAs": [
+        "https://github.com/lijinghai",
+        "https://blog.csdn.net/Dorian15",
+        "https://space.bilibili.com/1339027047"
+      ]
+    }
+  </script>
   <style>
     :root {
       --text: #232323;
@@ -31,10 +61,15 @@
     }
 
     html {
+      width: 100%;
+      max-width: 100%;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
+      width: 100%;
+      max-width: 100%;
       margin: 0;
       color: var(--text);
       background:
@@ -44,6 +79,7 @@
       font-family: Lato, Verdana, Helvetica, "Microsoft YaHei", "Noto Sans SC", sans-serif;
       font-size: 14px;
       line-height: 1.58;
+      overflow-x: hidden;
     }
 
     p,
@@ -89,9 +125,11 @@
     }
 
     .page {
-      width: min(100%, 1040px);
+      width: 100%;
+      max-width: 1040px;
       margin: 0 auto;
       padding: 24px 22px 52px;
+      overflow: hidden;
     }
 
     .intro {
@@ -100,6 +138,10 @@
       gap: 38px;
       align-items: start;
       padding: 10px 0 22px;
+    }
+
+    .intro > * {
+      min-width: 0;
     }
 
     h1 {
@@ -326,18 +368,17 @@
     .rabbit-button {
       flex-direction: column;
       align-items: flex-start;
-      min-width: 196px;
-      min-height: 64px;
-      padding: 10px 22px 11px;
-      border: 1px solid rgba(214, 106, 47, .55);
+      min-width: 210px;
+      min-height: 62px;
+      padding: 11px 22px 12px;
+      border: 1px solid rgba(31, 41, 51, .94);
       color: #fff;
-      background: linear-gradient(135deg, #101923 0%, var(--dark) 58%, #b95f2e 100%);
-      box-shadow: 0 16px 34px rgba(31, 41, 51, .22), 0 0 0 4px rgba(214, 106, 47, .08);
-      animation: rabbitPulse 2.8s ease-in-out infinite;
+      background: var(--dark);
+      box-shadow: 0 12px 28px rgba(31, 41, 51, .18), inset 4px 0 0 var(--accent);
     }
 
     .button-eyebrow {
-      color: rgba(255, 238, 220, .86);
+      color: rgba(255, 215, 184, .92);
       font-size: 10px;
       font-weight: 800;
       letter-spacing: .08em;
@@ -349,6 +390,13 @@
       margin-top: 3px;
       font-size: 18px;
       line-height: 1.15;
+    }
+
+    .button-title::after {
+      margin-left: 8px;
+      color: rgba(255, 215, 184, .92);
+      content: "->";
+      font-size: 15px;
     }
 
     .secondary-button {
@@ -374,7 +422,7 @@
       color: #fff;
       background: var(--accent);
       border-color: var(--accent);
-      box-shadow: 0 18px 42px rgba(214, 106, 47, .30), 0 0 0 5px rgba(214, 106, 47, .12);
+      box-shadow: 0 16px 34px rgba(214, 106, 47, .24), inset 4px 0 0 rgba(255, 255, 255, .26);
       transform: translateY(-1px);
     }
 
@@ -389,17 +437,6 @@
       border-color: rgba(214, 106, 47, .36);
       background: rgba(255, 248, 239, .75);
       transform: translateY(-1px);
-    }
-
-    @keyframes rabbitPulse {
-      0%,
-      100% {
-        box-shadow: 0 16px 34px rgba(31, 41, 51, .22), 0 0 0 4px rgba(214, 106, 47, .08);
-      }
-
-      50% {
-        box-shadow: 0 18px 40px rgba(31, 41, 51, .25), 0 0 0 7px rgba(214, 106, 47, .12);
-      }
     }
 
     .section-title {
@@ -886,6 +923,8 @@
 
     @media (max-width: 720px) {
       .page {
+        width: 100%;
+        max-width: 100%;
         padding: 18px 16px 42px;
       }
 
@@ -957,8 +996,14 @@
       }
 
       .rabbit-button {
+        width: 100%;
         min-width: 100%;
         align-items: center;
+      }
+
+      .secondary-button {
+        flex: 1 1 calc(50% - 5px);
+        min-width: 0;
       }
 
       .highlight-card {
@@ -1039,31 +1084,31 @@
       <div>
         <h1 id="page-title">Jinghai Li</h1>
         <p class="role-line"><span class="role-chunk">控制工程硕士研究生</span><span class="role-divider">·</span><span class="role-chunk">Robotics / VLN / AMR Systems</span></p>
-        <p class="name-line">Research interests: Vision-Language Navigation, ROS 2 AMR Systems, SLAM, Multi-Sensor Fusion</p>
+        <p class="name-line">Research interests: Vision-Language Navigation, real-robot AMR systems, SLAM / mapping</p>
         <p class="hero-claim">I build research-grade AMR systems that connect VLN ideas to real robots.</p>
         <p>
-          你好，我是 <strong>Jinghai Li</strong>。我关注 <span class="highlight">Vision-Language Navigation</span>、真实 AMR 系统和多传感器建图，长期推进 RabbitRobot 平台，把研究想法接到可以运行、记录和复盘的真实机器人上。
+          你好，我是 <strong>Jinghai Li</strong>。我关注 <span class="highlight">Vision-Language Navigation</span>、真实 AMR 系统和多传感器建图；RabbitRobot 小车从底盘装配、电控接线、传感器集成到 ROS 2 / Web 工具，都是我自己一点点搭起来的。
         </p>
         <p class="english-summary">
           My homepage is a doorway: quick proof of who I am, what I study, what I have built, and where to find the detailed RabbitRobot work.
         </p>
         <div class="hero-actions">
           <a class="rabbit-button" href="RabbitRobot/" aria-label="Open RabbitRobot main project page">
-            <span class="button-eyebrow">Main Project</span>
+            <span class="button-eyebrow">Self-built Main Project</span>
             <span class="button-title">RabbitRobot</span>
           </a>
-          <a class="secondary-button" href="https://github.com/lijinghai" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="secondary-button" href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a class="secondary-button" href="mailto:lijinghailjh@163.com">Email</a>
         </div>
       </div>
       <div class="intro-media">
-        <img class="profile-photo" src="images/profile/jinghai-li-portrait-soft.jpg" alt="Jinghai Li portrait">
+        <img class="profile-photo" src="images/profile/jinghai-li-portrait-soft.jpg" alt="Jinghai Li portrait" loading="eager" decoding="async">
         <div class="side-panel">
-          <p class="side-kicker">At a glance</p>
+          <p class="side-kicker">Research Profile</p>
           <ul class="side-facts">
-            <li><b>Research</b><span>VLN, AMR systems, SLAM / mapping</span></li>
-            <li><b>Platform</b><span>RabbitRobot / AMR2 real robot system</span></li>
-            <li><b>Evidence</b><span>Code, videos, reports, real-robot validation</span></li>
+            <li><b>Focus</b><span>VLN, AMR systems, SLAM / mapping</span></li>
+            <li><b>Current</b><span>Real-robot VLN verification on RabbitRobot</span></li>
+            <li><b>Build</b><span>Self-built AMR prototypes, sensors, ROS 2 stack</span></li>
           </ul>
         </div>
       </div>
@@ -1080,7 +1125,7 @@
         </p>
         <p class="focus-card">
           <b>Real-robot AMR Systems</b>
-          <span>把底盘、传感器、导航、安全链路和 Web 工具接成完整 AMR 系统。目标是能跑、能测、能复盘。</span>
+          <span>自己动手搭底盘、电控、传感器和 ROS 2 系统。目标是能跑、能测、能复盘。</span>
         </p>
         <p class="focus-card">
           <b>SLAM and Multi-Sensor Fusion</b>
@@ -1100,31 +1145,30 @@
 
       <article class="entry">
         <a class="thumb" href="RabbitRobot/">
-          <img src="RabbitRobot/images/rabbitrobot/amr2_turning_loop.gif" alt="RabbitRobot AMR2 real robot turning test">
+          <img src="RabbitRobot/images/rabbitrobot/amr2_turning_loop.gif" alt="RabbitRobot AMR2 real robot turning test" loading="lazy" decoding="async">
         </a>
         <div>
           <span class="project-kicker">Main Platform</span>
           <h3>RabbitRobot Platform</h3>
           <span class="meta">Real AMR · ROS 2 / Nav2 · SLAM · Web tools · VLN testbed</span>
           <p class="note">
-            真实 AMR 平台，覆盖底盘、传感器、导航、建图、Web 控制台和实验记录。它是我把 VLN、SLAM 和覆盖规划问题接到真车上的主入口。
+            真实 AMR 平台，覆盖自己装配的小车底盘、电机/传感器接入、导航、建图、Web 控制台和实验记录。它是我把 VLN、SLAM 和覆盖规划问题接到真车上的主入口。
           </p>
           <div class="metric-row">
-            <span class="metric">Project page</span>
-            <span class="metric">GitHub evidence</span>
+            <span class="metric">Self-built AMR</span>
             <span class="metric">Real-robot videos</span>
           </div>
           <p class="entry-links">
             <a href="RabbitRobot/">Project page</a>
             /
-            <a href="https://github.com/lijinghai" target="_blank" rel="noreferrer">GitHub repositories</a>
+            <a href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">GitHub evidence</a>
           </p>
         </div>
       </article>
 
       <article class="entry">
         <a class="thumb contain" href="RabbitRobot/projects/rabbitrobot-vln.html">
-          <img src="RabbitRobot/images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot architecture diagram">
+          <img src="RabbitRobot/images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot architecture diagram" loading="lazy" decoding="async">
         </a>
         <div>
           <span class="project-kicker">Research Direction</span>
@@ -1135,7 +1179,6 @@
           </p>
           <div class="metric-row">
             <span class="metric">Technical note</span>
-            <span class="metric">Research line</span>
             <span class="metric">AMR verification</span>
           </div>
           <p class="entry-links">
@@ -1148,7 +1191,7 @@
 
       <article class="entry">
         <a class="thumb" href="RabbitRobot/projects/rabbitrobot-amr2.html">
-          <img src="RabbitRobot/images/rabbitrobot/amr2_coverage_web_console.gif" alt="AMR2 Web 3D coverage console">
+          <img src="RabbitRobot/images/rabbitrobot/amr2_coverage_web_console.gif" alt="AMR2 Web 3D coverage console" loading="lazy" decoding="async">
         </a>
         <div>
           <span class="project-kicker">AMR / Coverage System</span>
@@ -1158,9 +1201,8 @@
             把地图、底盘 footprint、覆盖区域输入、路径校验、Web 3D 预览和驱动器 dry-run 放进一条可验证链路，强调 AMR 系统工程能力。
           </p>
           <div class="metric-row">
-            <span class="metric">Coverage report</span>
             <span class="metric">Web 3D</span>
-            <span class="metric">Real AMR</span>
+            <span class="metric">Self-built chassis</span>
           </div>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-amr2.html">AMR2 details</a>
@@ -1197,18 +1239,18 @@
         <h2 id="contact-title">Contact</h2>
       </div>
       <p class="contact-line">
-        <a href="https://github.com/lijinghai" target="_blank" rel="noreferrer">GitHub</a>
+        <a href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">GitHub</a>
         <span class="link-sep">/</span>
         <a href="mailto:lijinghailjh@163.com">Email</a>
         <span class="link-sep">/</span>
-        <a href="https://space.bilibili.com/1339027047" target="_blank" rel="noreferrer">Bilibili</a>
+        <a href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer">Bilibili</a>
         <span class="link-sep">/</span>
-        <a href="https://blog.csdn.net/Dorian15" target="_blank" rel="noreferrer">CSDN</a>
+        <a href="https://blog.csdn.net/Dorian15" target="_blank" rel="noopener noreferrer">CSDN</a>
       </p>
     </section>
 
     <footer>
-      © 2026 Jinghai Li · RabbitRobot · Built for GitHub Pages
+      © 2026 Jinghai Li · 算个文科生吧 · RabbitRobot
     </footer>
   </main>
   <script>
