@@ -499,6 +499,14 @@ code {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.web-console-gallery {
+  margin-top: 18px;
+}
+
+.web-console-actions {
+  margin-top: 20px;
+}
+
 .readme-box {
   max-width: 980px;
   margin: 0 auto;

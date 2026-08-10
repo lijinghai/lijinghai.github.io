@@ -130,6 +130,58 @@
     </section>
 
     <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">ROS2 Web Console</p>
+        <h2>AMR2 的浏览器控制台与调试入口</h2>
+        <p class="summary">
+          <code>ljh_robot_ros2_web</code> 是 AMR2 真车链路里的 Web 操作层：它通过 rosbridge 连接 ROS/ROS2，把地图图层、机器人位姿、导航目标、任务状态和 RViz 对照结果放到浏览器里，方便在实验现场快速看清“机器人在哪里、目标在哪里、路径是否可信、Web 和 RViz 是否一致”。
+        </p>
+        <figure class="wide-media">
+          <img src="../images/rabbitrobot/ros2_web_home.png" alt="ljh_robot_ros2_web main AMR dashboard" decoding="async">
+          <figcaption>主控制台首页：把地图、机器人、任务入口和状态面板集中到浏览器里，适合作为 AMR2 现场调试的第一屏。</figcaption>
+        </figure>
+        <div class="gallery diagram-gallery web-console-gallery">
+          <figure>
+            <img src="../images/rabbitrobot/ros2_web_connection.png" alt="ROS WebSocket connection page for AMR web console" decoding="async">
+            <figcaption>连接页：输入 rosbridge WebSocket 地址后接入机器人系统，支持本机、局域网和移动端调试。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ros2_web_mapping.png" alt="ROS2 web map visualization and map editing screen" decoding="async">
+            <figcaption>建图/地图视图：把栅格地图、激光/点云、轨迹和图层配置放在同一界面，便于检查 AMR2 地图质量。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ros2_web_navigation_panel.png" alt="AMR web navigation control panel" decoding="async">
+            <figcaption>导航控制面板：用浏览器选择目标点、查看路径规划和机器人执行状态，比只看终端日志更直观。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ros2_web_navigation_live.png" alt="Web navigation interface with live AMR state" decoding="async">
+            <figcaption>Web 端导航界面：把地图、路径、机器人姿态和任务反馈组合起来，用于 AMR2 单点/多点导航验证。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ros2_web_single_nav.png" alt="Web single-goal navigation view" decoding="async">
+            <figcaption>Web 单点导航：在浏览器端下发目标并观察路径结果，对后续 VLN waypoint 执行也有直接复用价值。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ros2_web_single_nav_rviz.png" alt="RViz single-goal navigation comparison" decoding="async">
+            <figcaption>RViz 单点导航对照：同一任务同时在 RViz 中验证，避免 Web 可视化和 ROS 实际状态脱节。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ros2_web_multi_nav.png" alt="Web multi-goal navigation workflow" decoding="async">
+            <figcaption>Web 多点导航：更接近真实 AMR 任务流，可用于巡检、覆盖路径 waypoint 和长程导航任务的前端入口。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ros2_web_multi_nav_rviz.png" alt="RViz multi-goal navigation comparison" decoding="async">
+            <figcaption>RViz 多点导航对照：用 RViz 复核 Web 端多目标任务，形成“前端操作 - ROS 状态 - 可视化验证”的闭环。</figcaption>
+          </figure>
+        </div>
+        <div class="source-actions web-console-actions">
+          <a class="button" href="https://github.com/lijinghai/ljh_robot_ros2_web" target="_blank" rel="noreferrer">Web Console Repository</a>
+          <a class="button" href="robot-web-tools.html">Robot Web Tools</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="container grid-2">
         <div>
           <p class="kicker">What I Built</p>
@@ -235,6 +287,7 @@
           <a class="button" href="rabbitrobot-coverage.html">Coverage Algorithm Detail</a>
           <a class="button video" href="https://www.bilibili.com/video/BV1543K6uEVM/" target="_blank" rel="noreferrer">Project Video</a>
           <a class="button" href="https://github.com/lijinghai/ljh_amr2_hubwheel_drive" target="_blank" rel="noreferrer">Source Repository</a>
+          <a class="button" href="https://github.com/lijinghai/ljh_robot_ros2_web" target="_blank" rel="noreferrer">Web Console Repository</a>
         </div>
       </div>
     </section>
