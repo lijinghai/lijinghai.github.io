@@ -324,10 +324,31 @@
     }
 
     .rabbit-button {
-      border: 1px solid var(--dark);
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 196px;
+      min-height: 64px;
+      padding: 10px 22px 11px;
+      border: 1px solid rgba(214, 106, 47, .55);
       color: #fff;
-      background: var(--dark);
-      box-shadow: 0 8px 20px rgba(31, 41, 51, .12);
+      background: linear-gradient(135deg, #101923 0%, var(--dark) 58%, #b95f2e 100%);
+      box-shadow: 0 16px 34px rgba(31, 41, 51, .22), 0 0 0 4px rgba(214, 106, 47, .08);
+      animation: rabbitPulse 2.8s ease-in-out infinite;
+    }
+
+    .button-eyebrow {
+      color: rgba(255, 238, 220, .86);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .button-title {
+      margin-top: 3px;
+      font-size: 18px;
+      line-height: 1.15;
     }
 
     .secondary-button {
@@ -353,7 +374,7 @@
       color: #fff;
       background: var(--accent);
       border-color: var(--accent);
-      box-shadow: 0 14px 30px rgba(214, 106, 47, .22);
+      box-shadow: 0 18px 42px rgba(214, 106, 47, .30), 0 0 0 5px rgba(214, 106, 47, .12);
       transform: translateY(-1px);
     }
 
@@ -368,6 +389,17 @@
       border-color: rgba(214, 106, 47, .36);
       background: rgba(255, 248, 239, .75);
       transform: translateY(-1px);
+    }
+
+    @keyframes rabbitPulse {
+      0%,
+      100% {
+        box-shadow: 0 16px 34px rgba(31, 41, 51, .22), 0 0 0 4px rgba(214, 106, 47, .08);
+      }
+
+      50% {
+        box-shadow: 0 18px 40px rgba(31, 41, 51, .25), 0 0 0 7px rgba(214, 106, 47, .12);
+      }
     }
 
     .section-title {
@@ -924,6 +956,11 @@
         justify-content: center;
       }
 
+      .rabbit-button {
+        min-width: 100%;
+        align-items: center;
+      }
+
       .highlight-card {
         padding: 13px 14px;
       }
@@ -1011,7 +1048,10 @@
           My homepage is a doorway: quick proof of who I am, what I study, what I have built, and where to find the detailed RabbitRobot work.
         </p>
         <div class="hero-actions">
-          <a class="rabbit-button" href="RabbitRobot/">RabbitRobot</a>
+          <a class="rabbit-button" href="RabbitRobot/" aria-label="Open RabbitRobot main project page">
+            <span class="button-eyebrow">Main Project</span>
+            <span class="button-title">RabbitRobot</span>
+          </a>
           <a class="secondary-button" href="https://github.com/lijinghai" target="_blank" rel="noreferrer">GitHub</a>
           <a class="secondary-button" href="mailto:lijinghailjh@163.com">Email</a>
         </div>
