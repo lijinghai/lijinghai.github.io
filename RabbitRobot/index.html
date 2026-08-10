@@ -1528,7 +1528,7 @@
                 <span class="tag">AMR2</span><span class="tag">Hub-Wheel Servo</span><span class="tag">DiffDrive</span><span class="tag">VLN Execution</span>
               </div>
               <h3>AMR2 轮毂伺服差速 AMR</h3>
-              <p class="hardware-time"><time datetime="2025-12">2025.12</time> · 当前真车执行平台</p>
+              <p class="hardware-time"><time datetime="2026-07">2026.07</time> · 当前真车执行平台</p>
               <p>新做的 AMR2 小车是 RabbitRobot 当前更重要的真车执行平台：从轮毂伺服、铝型材框架、MID360 安装位到 CAN 线束和导航脚本逐步收拢，再接入 Fast-LIO、ICP、Nav2 MPPI、速度平滑和近距离避障保护，为后续 VLN waypoint 执行、rosbag 回放和失败案例采集提供底座。</p>
               <div class="hardware-actions">
                 <a class="hardware-detail-link" href="projects/rabbitrobot-amr2.html">查看项目介绍</a>
@@ -1640,7 +1640,7 @@
             <figcaption>区域输入、地图裁剪、路径生成三步放在同一侧，避免重复堆文字。</figcaption>
           </figure>
           <div class="algorithm-body">
-            <p class="section-kicker">Coverage Planner · 2026.07.26</p>
+            <p class="section-kicker">Coverage Planner · 2026.02</p>
             <h3>鼠标画区域，自动生成可通行覆盖路径</h3>
             <p>这套扫地机覆盖算法不是简单画一组蛇形线：它会把 RViz 里拖出来的矩形或多边形区域，和真实 PCD 转出的 2D 地图、AMR2 的 <code>0.486 m × 0.450 m</code> footprint、障碍膨胀、安全内收和连通分块放在一起计算，最后输出 RViz/Nav2 可复用的 <code>/coverage_path</code>。</p>
             <div class="algorithm-flow" aria-label="覆盖算法处理流程">
@@ -1737,21 +1737,21 @@
               </tr>
               <tr>
                 <td><a class="project-link" href="projects/rabbitrobot-amr2.html"><b>RabbitRobot_AMR2</b>轮毂伺服真车平台</a></td>
-                <td class="project-time"><time datetime="2025-12">2025.12</time><span>当前真车</span></td>
+                <td class="project-time"><time datetime="2026-07">2026.07</time><span>当前真车</span></td>
                 <td>VLN 真车执行底座</td>
                 <td>用 DS20270C CAN 轮毂伺服差速底盘、MID360、Fast-LIO、ICP、Nav2 MPPI、速度平滑和避障保护，承接 VLN waypoint 的真实执行与 rosbag 数据回收。</td>
                 <td><span class="tag-list"><span class="tag">Hub-Wheel AMR</span><span class="tag">DS20270C</span><span class="tag">MID360</span><span class="tag">Nav2 MPPI</span><span class="tag">Collision Monitor</span></span></td>
               </tr>
               <tr>
                 <td><a class="project-link" href="projects/rabbitrobot-coverage.html"><b>RabbitRobot_CoveragePath</b>扫地机覆盖路径算法</a></td>
-                <td class="project-time"><time datetime="2026-07-26">2026.07.26</time><span>覆盖规划</span></td>
+                <td class="project-time"><time datetime="2026-02">2026.02</time><span>覆盖规划</span></td>
                 <td>清扫/覆盖算法能力</td>
                 <td>在真实 PCD 2D 地图上，根据 RViz 框选区域、polygon holes、占据栅格、AMR2 footprint 和安全边距生成 map-aware 覆盖路径，并输出可接入后续 Nav2 执行器的路径。</td>
                 <td><span class="tag-list"><span class="tag">Coverage Path</span><span class="tag">OccupancyGrid</span><span class="tag">Footprint Inflation</span><span class="tag">A*</span><span class="tag">RViz Tool</span></span></td>
               </tr>
               <tr>
                 <td><a class="project-link" href="projects/rabbitrobot-vln.html"><b>RabbitRobot_VLN</b>视觉语言导航主线</a></td>
-                <td class="project-time"><time datetime="2026-07">2026.07+</time><span>当前研究</span></td>
+                <td class="project-time"><time datetime="2025-12">2025.12</time><span>当前研究</span></td>
                 <td>当前研究主线</td>
                 <td>把自然语言指令、视觉/地图 grounding、waypoint 规划和真实 AMR 执行评估串成闭环。</td>
                 <td><span class="tag-list"><span class="tag">VLN</span><span class="tag">VLM</span><span class="tag">Embodied Navigation</span><span class="tag">ROS2</span></span></td>
@@ -1765,7 +1765,7 @@
               </tr>
               <tr>
                 <td><a class="project-link" href="projects/rabbitrobot-edulite-a3-vla.html"><b>EDULITE A3 LeRobot VLA Debug</b>灵足 A3 机械臂调试</a></td>
-                <td class="project-time"><time datetime="2026-08">2026.08</time><span>具身操作</span></td>
+                <td class="project-time"><time datetime="2026-04">2026.04</time><span>具身操作</span></td>
                 <td>VLA 机械臂验证载体</td>
                 <td>使用 RobStride EDULITE_A3 / 灵足 A3 机械臂调试 LeRobot VLA pi0.5，把真实机械臂运动、MoveIt2 规划和后续视觉语言动作策略接到一条链路里。</td>
                 <td><span class="tag-list"><span class="tag">EDULITE_A3</span><span class="tag">LeRobot</span><span class="tag">VLA pi0.5</span><span class="tag">MoveIt2</span></span></td>
@@ -1964,7 +1964,7 @@
             <p>Hoverboard FOC、STM32、ST-Link、IMU 接入、cmd_vel/odom 话题和底盘控制验证。</p>
           </article>
           <article class="milestone">
-            <time>V4.0 · 2026.07+</time>
+            <time>V4.0 · 2026.07</time>
             <h3>AMR2 / VLN 数据闭环</h3>
             <p>以 AMR2 轮毂伺服真车为主平台，组织语言指令、地图区域、Web 控制台标注、Nav2 MPPI 执行和 rosbag 回放评估。</p>
           </article>

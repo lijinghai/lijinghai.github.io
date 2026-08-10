@@ -31,7 +31,7 @@
       <p class="subtitle">AMR2 扫地机覆盖路径算法</p>
       <p class="summary">这是一套面向清扫/覆盖任务的 ROS2 Humble 覆盖规划器：在 RViz 里用鼠标画矩形或多边形区域，算法结合真实 PCD 转出的 2D 地图、AMR2 车体 footprint、占据栅格障碍、安全边距和连通分块，生成可视化、可验证、后续可交给 Nav2 执行器的覆盖路径。</p>
       <div class="meta-row">
-        <span class="meta-pill">Time · 2026.07.26</span>
+        <span class="meta-pill">Time · 2026.02</span>
         <span class="meta-pill">Repo · ljh_amr2_hubwheel_drive</span>
         <span class="meta-pill">Branch · feature/coverage-path</span>
         <span class="meta-pill">Status · RViz-only verified</span>
@@ -219,7 +219,7 @@
         <h2>完整材料与测试记录</h2>
         <div class="readme-box">
           <h3>本次测试记录摘要</h3>
-          <p>测试环境为 2026-07-26，Ubuntu 22.04 WSL，ROS2 Humble，分支 <code>feature/coverage-path</code>。README 中记录了消息、覆盖算法、RViz-only 仿真包编译通过，PCD 地图加载、<code>/map</code> + <code>/scan</code> + <code>/coverage_path</code> 话题就绪，clicked-point workflow、known-free clearance validator、follow test 和 odometry move test 均通过。</p>
+          <p>测试环境为 2026-02，Ubuntu 22.04 WSL，ROS2 Humble，分支 <code>feature/coverage-path</code>。README 中记录了消息、覆盖算法、RViz-only 仿真包编译通过，PCD 地图加载、<code>/map</code> + <code>/scan</code> + <code>/coverage_path</code> 话题就绪，clicked-point workflow、known-free clearance validator、follow test 和 odometry move test 均通过。</p>
           <pre><code>colcon build --symlink-install --packages-select ljh_robot_msg ljh_robot_coverage ljh_rviz2 ljh_robot_sim    PASS
 ./run/check_ljh_sim_coverage_services.sh                                        PASS
 ./run/check_ljh_sim_coverage_services.sh oversized map clip                     PASS, 128 waypoints
