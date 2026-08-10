@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Robot Dog VLN Testbed | RabbitRobot</title>
+  <meta name="description" content="Robot Dog VLN Testbed 是 RabbitRobot 的四足机器狗视觉语言导航验证页面，展示机器狗真实运动素材、VLN 接入计划、语言目标 grounding、空间定位、真实执行和恢复验证链路。">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+  <nav class="detail-nav" aria-label="Project navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
+        <span>RabbitRobot</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#projects">Project Matrix</a>
+        <a href="../index.html#research">VLN Focus</a>
+        <a href="rabbitrobot-vln.html">VLN Line</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">VLN / Legged Robot</p>
+      <h1>Robot Dog VLN Testbed</h1>
+      <p class="subtitle">面向视觉语言导航的四足机器狗真实平台</p>
+      <p class="summary">
+        这台机器狗是 RabbitRobot 从轮式 AMR 扩展到四足平台的下一步：先用真实运动、转向和室内空间验证平台可控性，再逐步接入自然语言目标、视觉观测、空间定位和失败恢复评估，让 VLN 不只停留在模拟器或静态路线图里。
+      </p>
+      <div class="meta-row">
+        <span class="meta-pill">Time · 2026.08</span>
+        <span class="meta-pill">Stage · 平台接入准备</span>
+        <span class="meta-pill">Direction · VLN / Embodied Navigation</span>
+        <span class="meta-pill">Evidence · 真实机器狗运动视频</span>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="../index.html#projects">Back to RabbitRobot</a>
+        <a class="button" href="rabbitrobot-vln.html">VLN Research Line</a>
+        <a class="button" href="rabbitrobot-amr2.html">AMR2 Baseline</a>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <img src="../images/rabbitrobot/robotdog_vln_demo.gif" alt="Robot dog walking and turning in the lab as a future VLN platform">
+      <figcaption>机器狗在真实室内场景中行走、转向和接近目标区域；这段素材作为后续 VLN 四足平台的第一组公开证据。</figcaption>
+    </figure>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <p class="kicker">At A Glance</p>
+        <h2>为什么单独做这个页面</h2>
+        <div class="proof-grid">
+          <p class="proof-card">
+            <b>2026.08</b>
+            <span>新增四足平台入口，和 AMR2 一起构成真实机器人 VLN 验证线。</span>
+          </p>
+          <p class="proof-card">
+            <b>Legged VLN</b>
+            <span>从轮式导航扩展到四足运动，关注更复杂的转向、绕行和室内动态空间。</span>
+          </p>
+          <p class="proof-card">
+            <b>Real Motion</b>
+            <span>页面保留真实视频动图和关键帧，先证明平台不是纸面概念。</span>
+          </p>
+          <p class="proof-card">
+            <b>Research Bridge</b>
+            <span>复用 RabbitRobot 的 VLN 问题意识：语言目标、视觉/地图 grounding、执行与恢复。</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">VLN Chain</p>
+        <h2>计划中的机器狗 VLN 闭环</h2>
+        <div class="pipeline">
+          <article>
+            <h3>1. Language Goal</h3>
+            <p>把“走到桌边”“绕开线缆到门口”等自然语言任务整理成可复现实验指令。</p>
+          </article>
+          <article>
+            <h3>2. Visual Observation</h3>
+            <p>采集机器狗视角下的室内画面、目标区域和关键障碍物，为语义 grounding 准备数据。</p>
+          </article>
+          <article>
+            <h3>3. Spatial Grounding</h3>
+            <p>将视觉线索、局部空间、机器人姿态和任务目标对齐，形成可执行的中间目标。</p>
+          </article>
+          <article>
+            <h3>4. Legged Execution</h3>
+            <p>让机器狗执行转向、接近、绕行和停止动作，并记录轨迹、状态和失败片段。</p>
+          </article>
+          <article>
+            <h3>5. Recovery Check</h3>
+            <p>重点观察偏航、走错目标、绕行失败等情况，评估 VLN 策略能否解释并恢复。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Visual Evidence</p>
+        <h2>真实运动关键帧</h2>
+        <div class="gallery">
+          <figure>
+            <img src="../images/rabbitrobot/robotdog_vln_walk.jpg" alt="Robot dog walking toward the marked indoor area">
+            <figcaption>行走阶段：机器狗进入室内测试区域，保留周围桌椅、线缆和 AMR 小车作为真实场景参照。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/robotdog_vln_turn.jpg" alt="Robot dog turning near the marked area in the lab">
+            <figcaption>转向阶段：四足平台在目标区域附近调整方向，适合后续做偏航检测和恢复验证。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/robotdog_vln_approach.jpg" alt="Robot dog approaching the camera after turning in the lab">
+            <figcaption>接近阶段：机器狗靠近观察端，后续可以用于构造“到达/未到达”的视觉语言判断样例。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">Research Position</p>
+          <h2>它和 AMR2 / VLN 主线的关系</h2>
+          <p>
+            AMR2 负责把轮式 AMR 的建图、Nav2、覆盖路径和 Web 控制台跑稳；机器狗页面则作为下一条四足 VLN 线索，强调更灵活的真实运动平台。两者不是重复展示，而是同一个问题在不同机器人载体上的延伸。
+          </p>
+          <p>
+            当前页面刻意把状态写成“平台接入准备”：先公开真实运动证据和研究链路，后续再补充传感器接入、数据采集、语言任务集、失败案例和评估指标。
+          </p>
+        </div>
+        <aside>
+          <p class="kicker">Stack / Keywords</p>
+          <h2>关键词</h2>
+          <div class="stack">
+            <span class="tag">Robot Dog</span>
+            <span class="tag">VLN</span>
+            <span class="tag">Embodied Navigation</span>
+            <span class="tag">Visual Grounding</span>
+            <span class="tag">Legged Robot</span>
+            <span class="tag">Real Robot Video</span>
+            <span class="tag">Failure Recovery</span>
+            <span class="tag">RabbitRobot</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Roadmap</p>
+        <h2>后续页面会继续补的内容</h2>
+        <table class="interface-table">
+          <thead>
+            <tr>
+              <th>阶段</th>
+              <th>目标</th>
+              <th>会展示什么证据</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Platform Bring-up</td>
+              <td>整理机器狗基本运动、转向、停止和安全边界。</td>
+              <td>更多实机动图、控制脚本、运动测试记录。</td>
+            </tr>
+            <tr>
+              <td>VLN Data Capture</td>
+              <td>采集语言任务、视觉帧、目标区域和到达结果。</td>
+              <td>任务表、关键帧、轨迹/状态记录。</td>
+            </tr>
+            <tr>
+              <td>Policy Evaluation</td>
+              <td>比较不同 VLN/VLM 策略在真实机器狗上的执行结果。</td>
+              <td>成功率、路径效率、偏航/恢复案例和失败分析。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">RabbitRobot · Robot Dog VLN Testbed · 四足平台视觉语言导航记录页。</div>
+  </footer>
+</body>
+</html>
