@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EDULITE A3 LeRobot VLA Debug | RabbitRobot</title>
+  <meta name="description" content="RabbitRobot EDULITE A3 LeRobot VLA Debug 页面，记录使用 RobStride EDULITE_A3 / 灵足 A3 机械臂调试 LeRobot VLA pi0.5、MoveIt2/RViz 规划和真实机械臂具身操作链路。">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+  <nav class="detail-nav" aria-label="Project navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
+        <span>RabbitRobot</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#projects">Project Matrix</a>
+        <a href="../index.html#research">VLN Focus</a>
+        <a href="rabbitrobot-robotdog-vln.html">Robot Dog VLN</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">Manipulation / VLA</p>
+      <h1>EDULITE A3 LeRobot VLA Debug</h1>
+      <p class="subtitle">灵足 A3 机械臂与 LeRobot VLA pi0.5 调试记录</p>
+      <p class="summary">
+        这条线补上 RabbitRobot 的具身操作能力：用 RobStride EDULITE_A3 / 灵足 A3 机械臂做真实机械臂 bring-up，结合 MoveIt2/RViz 规划界面和 LeRobot VLA pi0.5 调试，为后续“看见目标、理解语言、输出动作”的 VLA 实验准备真实平台。
+      </p>
+      <div class="meta-row">
+        <span class="meta-pill">Time · 2026.08</span>
+        <span class="meta-pill">Platform · RobStride EDULITE_A3</span>
+        <span class="meta-pill">Model line · LeRobot VLA pi0.5</span>
+        <span class="meta-pill">Evidence · Real arm + MoveIt2</span>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="../index.html#projects">Back to RabbitRobot</a>
+        <a class="button" href="https://github.com/RobStride/EDULITE_A3" target="_blank" rel="noreferrer">EDULITE_A3 Repo</a>
+        <a class="button" href="../index.html#research">Research Line</a>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <img src="../images/rabbitrobot/edulite_a3_lerobot_vla_demo.gif" alt="EDULITE A3 robotic arm real robot debugging demo">
+      <figcaption>灵足 A3 真实机械臂调试片段：先把运动、控制和现场操作跑起来，再逐步接入 LeRobot / VLA 的数据与策略验证。</figcaption>
+    </figure>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <p class="kicker">At A Glance</p>
+        <h2>项目定位</h2>
+        <div class="proof-grid">
+          <p class="proof-card">
+            <b>2026.08</b>
+            <span>新增真实机械臂调试线，补齐 RabbitRobot 从导航到操作的能力面。</span>
+          </p>
+          <p class="proof-card">
+            <b>EDULITE A3</b>
+            <span>使用 RobStride / 灵足 A3 机械臂作为桌面具身操作平台。</span>
+          </p>
+          <p class="proof-card">
+            <b>LeRobot pi0.5</b>
+            <span>围绕 VLA 调试准备动作数据、视觉观察和策略接入链路。</span>
+          </p>
+          <p class="proof-card">
+            <b>MoveIt2</b>
+            <span>用 RViz / MotionPlanning 界面验证机械臂模型、规划组和运动约束。</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">VLA Chain</p>
+        <h2>从机械臂 bring-up 到 VLA 调试</h2>
+        <div class="pipeline">
+          <article>
+            <h3>1. Arm Bring-up</h3>
+            <p>先确认灵足 A3 的关节、末端、供电和基础控制链路，保证真实机械臂可以稳定运动。</p>
+          </article>
+          <article>
+            <h3>2. Motion Planning</h3>
+            <p>通过 MoveIt2 / RViz 规划界面检查 planning group、目标姿态、速度/加速度缩放和路径可达性。</p>
+          </article>
+          <article>
+            <h3>3. Data Capture</h3>
+            <p>围绕桌面物体、手眼观察和动作轨迹整理后续 LeRobot 需要的数据格式和实验场景。</p>
+          </article>
+          <article>
+            <h3>4. VLA Policy</h3>
+            <p>将视觉观察、语言目标和动作输出接入 LeRobot VLA pi0.5 调试，验证策略到真实机械臂的落地路径。</p>
+          </article>
+          <article>
+            <h3>5. Failure Review</h3>
+            <p>记录抓取失败、目标偏差、动作抖动和不可达姿态，形成后续训练/评估样例。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Visual Evidence</p>
+        <h2>真实调试画面</h2>
+        <div class="evidence-grid">
+          <figure>
+            <img src="../images/rabbitrobot/edulite_a3_real_arm_frame.jpg" alt="EDULITE A3 robotic arm real robot debugging frame">
+            <figcaption>真实机械臂调试现场：灵足 A3 与桌面物体、相机/观察环境共同构成后续 VLA 数据采集场景。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/edulite_a3_moveit_planning.jpg" alt="EDULITE A3 MoveIt2 RViz motion planning interface">
+            <figcaption>MoveIt2 / RViz MotionPlanning：检查 planning group、末端目标、关节状态和路径规划约束。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">Research Position</p>
+          <h2>它和 VLN / RabbitRobot 主线的关系</h2>
+          <p>
+            机器狗和 AMR2 解决“到哪里去、怎么导航”的问题；灵足 A3 机械臂则把主线扩展到“到达后如何操作”。这让 RabbitRobot 不只展示移动导航，也开始覆盖视觉语言动作策略、桌面操作和真实机械臂执行。
+          </p>
+          <p>
+            当前页面记录的是调试阶段：真实机械臂已经进入公开展示，后续再逐步补充 LeRobot 数据采集、pi0.5 策略验证、动作成功/失败案例和可复现实验脚本。
+          </p>
+        </div>
+        <aside>
+          <p class="kicker">Stack / Keywords</p>
+          <h2>关键词</h2>
+          <div class="stack">
+            <span class="tag">EDULITE_A3</span>
+            <span class="tag">灵足 A3</span>
+            <span class="tag">Robotic Arm</span>
+            <span class="tag">LeRobot</span>
+            <span class="tag">VLA pi0.5</span>
+            <span class="tag">MoveIt2</span>
+            <span class="tag">RViz</span>
+            <span class="tag">Embodied Manipulation</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Next Steps</p>
+        <h2>后续会补充的证据</h2>
+        <table class="interface-table">
+          <thead>
+            <tr>
+              <th>阶段</th>
+              <th>目标</th>
+              <th>公开证据</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Control / Planning</td>
+              <td>整理灵足 A3 控制、MoveIt2 planning group 和末端执行器调试记录。</td>
+              <td>启动命令、RViz 配置、规划截图和真实运动视频。</td>
+            </tr>
+            <tr>
+              <td>LeRobot Data</td>
+              <td>采集视觉帧、动作序列和语言目标，形成可复现实验任务。</td>
+              <td>数据目录、任务说明、失败样例和 replay 记录。</td>
+            </tr>
+            <tr>
+              <td>VLA Evaluation</td>
+              <td>验证 pi0.5 策略在真实桌面操作中的动作质量和恢复能力。</td>
+              <td>成功率、动作稳定性、偏差分析和典型视频。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">RabbitRobot · EDULITE A3 LeRobot VLA Debug · 真实机械臂具身操作记录页。</div>
+  </footer>
+</body>
+</html>
