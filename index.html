@@ -952,29 +952,43 @@
     .friend-link-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 12px;
       padding: 4px 0 6px;
     }
 
     .friend-link-card {
       display: grid;
-      grid-template-columns: 42px minmax(0, 1fr) 26px;
-      gap: 12px;
+      position: relative;
+      grid-template-columns: 46px minmax(0, 1fr) 28px;
+      gap: 13px;
       align-items: center;
-      min-height: 116px;
-      padding: 14px 15px;
+      overflow: hidden;
+      min-height: 108px;
+      padding: 14px 16px;
       border: 1px solid rgba(31, 41, 51, .10);
       border-radius: 6px;
       color: var(--text);
-      background: rgba(255, 255, 255, .84);
+      background:
+        linear-gradient(90deg, rgba(255, 248, 239, .86) 0, rgba(255, 255, 255, .92) 34%, rgba(255, 255, 255, .86) 100%);
       transition: border-color .18s ease, box-shadow .2s ease, transform .2s ease, background-color .18s ease;
+    }
+
+    .friend-link-card::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(214, 106, 47, .82), rgba(214, 106, 47, .14));
+      content: "";
     }
 
     .friend-link-card:hover,
     .friend-link-card:focus {
       color: var(--text);
       border-color: rgba(214, 106, 47, .36);
-      background: rgba(255, 248, 239, .72);
+      background:
+        linear-gradient(90deg, rgba(255, 248, 239, .96) 0, #fff 34%, rgba(255, 255, 255, .92) 100%);
       box-shadow: var(--paper-shadow);
       transform: translateY(-2px);
     }
@@ -988,21 +1002,35 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
+      width: 46px;
+      height: 46px;
       border: 1px solid rgba(214, 106, 47, .22);
       border-radius: 50%;
       color: #a84f22;
-      background: #fff8ef;
+      background: #fff;
       font-size: 13px;
       font-weight: 800;
       line-height: 1;
+    }
+
+    .friend-link-mark img {
+      width: 31px;
+      height: 31px;
+      object-fit: contain;
     }
 
     .friend-link-body {
       display: grid;
       gap: 2px;
       min-width: 0;
+    }
+
+    .friend-link-row {
+      display: flex;
+      min-width: 0;
+      flex-wrap: wrap;
+      gap: 5px 8px;
+      align-items: center;
     }
 
     .friend-link-kicker {
@@ -1017,6 +1045,20 @@
       color: var(--dark);
       font-size: 17px;
       line-height: 1.24;
+    }
+
+    .friend-link-status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 20px;
+      padding: 2px 7px;
+      border: 1px solid rgba(214, 106, 47, .20);
+      border-radius: 999px;
+      color: #8a4a23;
+      background: rgba(255, 248, 239, .72);
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1;
     }
 
     .friend-link-note {
@@ -1038,11 +1080,11 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 26px;
-      height: 26px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
       color: #a84f22;
-      background: rgba(214, 106, 47, .10);
+      background: rgba(214, 106, 47, .12);
       font-size: 16px;
       transition: color .18s ease, background-color .18s ease, transform .2s ease;
     }
@@ -1432,17 +1474,22 @@
 
     <section aria-labelledby="friends-title">
       <div class="section-title">
-        <h2 id="friends-title">友情链接</h2>
+        <h2 id="friends-title">项目入口 / 友情链接</h2>
       </div>
       <p class="section-lead">
-        两个长期维护的公开入口：一个放真实机器人项目，一个放 AI 与校园文化产品原型。
+        两个长期维护的公开入口，分别记录真实机器人平台和 AI 校园文化产品原型。
       </p>
       <div class="friend-link-grid">
         <a class="friend-link-card" href="https://lijinghai.github.io/RabbitRobot/" aria-label="打开 RabbitRobot 全系列机器人主页">
-          <span class="friend-link-mark" aria-hidden="true">RR</span>
+          <span class="friend-link-mark" aria-hidden="true">
+            <img src="RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png" alt="">
+          </span>
           <span class="friend-link-body">
             <span class="friend-link-kicker">Robotics / VLN</span>
-            <strong>RabbitRobot</strong>
+            <span class="friend-link-row">
+              <strong>RabbitRobot</strong>
+              <span class="friend-link-status">LIVE</span>
+            </span>
             <span class="friend-link-note">真实 AMR、ROS 2、SLAM、多传感器建图与 VLN 主线。</span>
             <span class="friend-link-url">https://lijinghai.github.io/RabbitRobot/</span>
           </span>
@@ -1452,7 +1499,10 @@
           <span class="friend-link-mark" aria-hidden="true">YA</span>
           <span class="friend-link-body">
             <span class="friend-link-kicker">AI / Campus Culture</span>
-            <strong>YAVIS 扬维斯</strong>
+            <span class="friend-link-row">
+              <strong>YAVIS 扬维斯</strong>
+              <span class="friend-link-status">LIVE</span>
+            </span>
             <span class="friend-link-note">AI 语音交互与扬州大学历史文化结合的校园陪伴玩偶项目。</span>
             <span class="friend-link-url">https://lijinghai.github.io/YAVIS</span>
           </span>
