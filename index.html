@@ -949,6 +949,111 @@
       outline-offset: 3px;
     }
 
+    .friend-link-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      padding: 4px 0 6px;
+    }
+
+    .friend-link-card {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) 26px;
+      gap: 12px;
+      align-items: center;
+      min-height: 116px;
+      padding: 14px 15px;
+      border: 1px solid rgba(31, 41, 51, .10);
+      border-radius: 6px;
+      color: var(--text);
+      background: rgba(255, 255, 255, .84);
+      transition: border-color .18s ease, box-shadow .2s ease, transform .2s ease, background-color .18s ease;
+    }
+
+    .friend-link-card:hover,
+    .friend-link-card:focus {
+      color: var(--text);
+      border-color: rgba(214, 106, 47, .36);
+      background: rgba(255, 248, 239, .72);
+      box-shadow: var(--paper-shadow);
+      transform: translateY(-2px);
+    }
+
+    .friend-link-card:focus-visible {
+      outline: 2px solid rgba(168, 79, 34, .55);
+      outline-offset: 3px;
+    }
+
+    .friend-link-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(214, 106, 47, .22);
+      border-radius: 50%;
+      color: #a84f22;
+      background: #fff8ef;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .friend-link-body {
+      display: grid;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .friend-link-kicker {
+      color: #a84f22;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .friend-link-card strong {
+      color: var(--dark);
+      font-size: 17px;
+      line-height: 1.24;
+    }
+
+    .friend-link-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .friend-link-url {
+      margin-top: 4px;
+      color: #5f6e7b;
+      font-family: "JetBrains Mono", Consolas, "Microsoft YaHei", monospace;
+      font-size: 12px;
+      line-height: 1.35;
+      overflow-wrap: anywhere;
+    }
+
+    .friend-link-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      color: #a84f22;
+      background: rgba(214, 106, 47, .10);
+      font-size: 16px;
+      transition: color .18s ease, background-color .18s ease, transform .2s ease;
+    }
+
+    .friend-link-card:hover .friend-link-arrow,
+    .friend-link-card:focus .friend-link-arrow {
+      color: #fff;
+      background: var(--accent);
+      transform: translateX(2px);
+    }
+
     footer {
       margin-top: 24px;
       padding-top: 18px;
@@ -1057,9 +1162,21 @@
       .interest-grid,
       .focus-grid,
       .snapshot-grid,
+      .friend-link-grid,
       .project-points,
       .entry {
         grid-template-columns: 1fr;
+      }
+
+      .friend-link-card {
+        grid-template-columns: 38px minmax(0, 1fr) 24px;
+        min-height: 108px;
+        padding: 13px 14px;
+      }
+
+      .friend-link-mark {
+        width: 38px;
+        height: 38px;
       }
 
       .notes-list li {
@@ -1310,6 +1427,37 @@
           <h3>微信</h3>
           <p>扫码添加我为朋友</p>
         </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="friends-title">
+      <div class="section-title">
+        <h2 id="friends-title">友情链接</h2>
+      </div>
+      <p class="section-lead">
+        两个长期维护的公开入口：一个放真实机器人项目，一个放 AI 与校园文化产品原型。
+      </p>
+      <div class="friend-link-grid">
+        <a class="friend-link-card" href="https://lijinghai.github.io/RabbitRobot/" aria-label="打开 RabbitRobot 全系列机器人主页">
+          <span class="friend-link-mark" aria-hidden="true">RR</span>
+          <span class="friend-link-body">
+            <span class="friend-link-kicker">Robotics / VLN</span>
+            <strong>RabbitRobot</strong>
+            <span class="friend-link-note">真实 AMR、ROS 2、SLAM、多传感器建图与 VLN 主线。</span>
+            <span class="friend-link-url">https://lijinghai.github.io/RabbitRobot/</span>
+          </span>
+          <span class="friend-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+        <a class="friend-link-card" href="https://lijinghai.github.io/YAVIS" aria-label="打开 YAVIS 扬维斯项目主页">
+          <span class="friend-link-mark" aria-hidden="true">YA</span>
+          <span class="friend-link-body">
+            <span class="friend-link-kicker">AI / Campus Culture</span>
+            <strong>YAVIS 扬维斯</strong>
+            <span class="friend-link-note">AI 语音交互与扬州大学历史文化结合的校园陪伴玩偶项目。</span>
+            <span class="friend-link-url">https://lijinghai.github.io/YAVIS</span>
+          </span>
+          <span class="friend-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
       </div>
     </section>
 
