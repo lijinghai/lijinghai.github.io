@@ -878,10 +878,13 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
+      justify-items: center;
       padding-top: 10px;
     }
 
     .contact-card {
+      width: 100%;
+      max-width: 280px;
       min-width: 0;
       transition: transform .2s ease;
     }
@@ -935,6 +938,15 @@
     .contact-card p {
       margin-top: 4px;
       color: var(--muted);
+    }
+
+    .contact-card a {
+      color: var(--text);
+    }
+
+    .contact-image:focus-visible {
+      outline: 2px solid rgba(168, 79, 34, .55);
+      outline-offset: 3px;
     }
 
     footer {
@@ -1079,7 +1091,7 @@
       }
 
       .contact-card {
-        max-width: 360px;
+        max-width: 300px;
       }
     }
 
@@ -1276,6 +1288,29 @@
         <span class="link-sep">/</span>
         <a href="https://blog.csdn.net/Dorian15" target="_blank" rel="noopener noreferrer">CSDN</a>
       </p>
+      <div class="contact-grid" aria-label="小红书、B站、微信联系方式">
+        <article class="contact-card">
+          <a class="contact-image" href="images/contact/xiaohongshu-card.jpg" target="_blank" rel="noopener noreferrer" aria-label="打开小红书联系方式大图">
+            <img src="images/contact/xiaohongshu-card.jpg" alt="小红书：理想主义的焊工日记，账号 RabbitRobot2025" loading="eager" decoding="async">
+          </a>
+          <h3>小红书</h3>
+          <p>理想主义的焊工日记 · 小红书号：RabbitRobot2025</p>
+        </article>
+        <article class="contact-card">
+          <a class="contact-image" href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer" aria-label="打开 B站主页">
+            <img src="images/contact/bilibili-qr.jpg" alt="B站：理想主义的焊工日记，UID 1339027047" loading="eager" decoding="async">
+          </a>
+          <h3>B站</h3>
+          <p><a href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer">UID：1339027047</a></p>
+        </article>
+        <article class="contact-card">
+          <a class="contact-image" href="images/contact/wechat-qr.png" target="_blank" rel="noopener noreferrer" aria-label="打开微信二维码大图">
+            <img src="images/contact/wechat-qr.png" alt="微信：理想主义的焊工日记二维码" loading="eager" decoding="async">
+          </a>
+          <h3>微信</h3>
+          <p>扫码添加我为朋友</p>
+        </article>
+      </div>
     </section>
 
     <footer>
