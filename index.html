@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jinghai Li | Robotics, VLN, AMR Systems</title>
-  <meta name="description" content="Jinghai Li 的个人主页：控制工程硕士研究生，聚焦 Vision-Language Navigation、真实 AMR 系统、SLAM / 多传感器建图与 RabbitRobot 机器人平台。">
+  <title>Jinghai Li | Real-Robot VLN and AMR Systems</title>
+  <meta name="description" content="Jinghai Li 的个人技术主页，聚焦 Vision-Language Navigation、真实 AMR 机器人系统、SLAM / 多传感器建图和 RabbitRobot 自研机器人平台。">
   <meta name="author" content="Jinghai Li">
   <link rel="canonical" href="https://lijinghai.github.io/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Jinghai Li | Robotics, VLN, AMR Systems">
-  <meta property="og:description" content="一个简洁的机器人 / VLN / AMR 技术主页：快速展示研究方向、代表项目、技术报告和 RabbitRobot 真实机器人平台。">
+  <meta property="og:title" content="Jinghai Li | Real-Robot VLN and AMR Systems">
+  <meta property="og:description" content="Robotics / VLN / AMR Systems homepage with real robot builds, ROS 2 / Nav2, SLAM, Web tools, and RabbitRobot project evidence.">
   <meta property="og:url" content="https://lijinghai.github.io/">
   <meta property="og:image" content="https://lijinghai.github.io/images/profile/jinghai-li-portrait-soft.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jinghai Li | Robotics, VLN, AMR Systems">
-  <meta name="twitter:description" content="Robotics / VLN / AMR Systems homepage with RabbitRobot real-robot project evidence.">
+  <meta name="twitter:title" content="Jinghai Li | Real-Robot VLN and AMR Systems">
+  <meta name="twitter:description" content="Real-robot VLN and AMR systems, grounded by the RabbitRobot self-built platform.">
   <meta name="twitter:image" content="https://lijinghai.github.io/images/profile/jinghai-li-portrait-soft.jpg">
   <link rel="icon" type="image/png" href="RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png">
   <script type="application/ld+json">
@@ -26,34 +26,44 @@
       "url": "https://lijinghai.github.io/",
       "image": "https://lijinghai.github.io/images/profile/jinghai-li-portrait-soft.jpg",
       "jobTitle": "Control Engineering Graduate Student",
+      "email": "mailto:lijinghailjh@163.com",
       "knowsAbout": [
         "Vision-Language Navigation",
-        "Robotics",
-        "AMR Systems",
+        "Real-Robot AMR Systems",
         "ROS 2",
+        "Nav2",
         "SLAM",
-        "Multi-Sensor Mapping"
+        "Multi-Sensor Mapping",
+        "Robot Web Tools"
       ],
       "sameAs": [
         "https://github.com/lijinghai",
         "https://blog.csdn.net/Dorian15",
-        "https://space.bilibili.com/1339027047"
+        "https://space.bilibili.com/1339027047",
+        "https://lijinghai.github.io/RabbitRobot/"
       ]
     }
   </script>
   <style>
     :root {
-      --text: #232323;
-      --muted: #555;
-      --soft: #777;
-      --link: #1772d0;
-      --link-hover: #f09228;
-      --accent: #d66a2f;
-      --dark: #1f2933;
-      --line: #e6e6e6;
-      --paper: #fff;
-      --warm: #fff8ef;
-      --paper-shadow: 0 10px 28px rgba(31, 41, 51, .08);
+      --bg: #f7f8f6;
+      --panel: #ffffff;
+      --paper: #fbfcfa;
+      --ink: #172033;
+      --text: #334155;
+      --muted: #64748b;
+      --soft: #8a94a6;
+      --line: #e2e8f0;
+      --line-strong: #cbd5e1;
+      --teal: #0f766e;
+      --teal-soft: #e7f4f1;
+      --blue: #164e63;
+      --blue-soft: #e8f2f5;
+      --amber: #b45309;
+      --amber-soft: #fff5e7;
+      --shadow: 0 20px 45px rgba(23, 32, 51, .08);
+      --shadow-sm: 0 10px 24px rgba(23, 32, 51, .07);
+      --radius: 8px;
     }
 
     * {
@@ -73,50 +83,30 @@
       margin: 0;
       color: var(--text);
       background:
-        linear-gradient(180deg, rgba(31, 41, 51, .028) 1px, transparent 1px),
-        var(--paper);
-      background-size: 100% 32px, auto;
-      font-family: Lato, Verdana, Helvetica, "Microsoft YaHei", "Noto Sans SC", sans-serif;
-      font-size: 14px;
-      line-height: 1.58;
+        linear-gradient(180deg, rgba(226, 232, 240, .62) 0, rgba(247, 248, 246, 0) 240px),
+        var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.72;
+      letter-spacing: 0;
       overflow-x: hidden;
     }
 
-    p,
-    li,
-    th,
-    td,
-    h1,
-    h2,
-    h3 {
-      overflow-wrap: anywhere;
-    }
-
     a {
-      color: var(--link);
+      color: var(--blue);
       text-decoration: none;
-      transition: color .18s ease, background-color .18s ease, border-color .18s ease;
+      transition: color .18s ease, border-color .18s ease, background-color .18s ease, transform .18s ease, box-shadow .18s ease;
     }
 
     a:hover,
     a:focus {
-      color: var(--link-hover);
-      text-decoration: none;
+      color: var(--teal);
     }
 
-    p {
-      margin: 0 0 12px;
-      color: var(--text);
-    }
-
-    ul {
-      margin: 8px 0 0 20px;
-      padding: 0;
-    }
-
-    li {
-      margin: 4px 0;
-      color: var(--text);
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid rgba(15, 118, 110, .30);
+      outline-offset: 3px;
     }
 
     img {
@@ -124,1177 +114,1077 @@
       max-width: 100%;
     }
 
-    .page {
+    p,
+    li,
+    h1,
+    h2,
+    h3,
+    a,
+    span {
+      overflow-wrap: anywhere;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(203, 213, 225, .82);
+      background: rgba(247, 248, 246, .92);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       width: 100%;
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 24px 22px 52px;
-      overflow: hidden;
-    }
-
-    .intro {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 252px;
-      gap: 38px;
-      align-items: start;
-      padding: 10px 0 22px;
-    }
-
-    .intro > * {
+      max-width: 1180px;
       min-width: 0;
+      margin: 0 auto;
+      padding: 13px 22px;
+      gap: 18px;
     }
 
-    h1 {
-      margin: 2px 0 10px;
-      font-size: 36px;
-      font-weight: 400;
-      line-height: 1.15;
-      text-align: left;
-      letter-spacing: 0;
-    }
-
-    h2 {
-      margin: 0;
-      padding: 0;
-      font-size: 22px;
-      font-weight: 400;
-      line-height: 1.3;
-      letter-spacing: 0;
-    }
-
-    h3 {
-      display: inline;
-      margin: 0;
-      padding: 0;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0;
-    }
-
-    .name-line {
-      color: var(--soft);
-      font-size: 13px;
-      text-align: left;
-    }
-
-    .intro-media {
-      justify-self: end;
-      width: 252px;
-      padding: 10px;
-      border: 1px solid rgba(31, 41, 51, .10);
-      border-radius: 8px;
-      background: linear-gradient(180deg, #fffdf9 0%, #f8fafb 100%);
-      box-shadow: 0 8px 22px rgba(31, 41, 51, .07);
-    }
-
-    .profile-photo {
-      width: 148px;
-      aspect-ratio: 3 / 4;
-      margin: 0 auto 10px;
-      border-radius: 4px;
-      object-fit: cover;
-      object-position: 50% 39%;
-      padding: 0;
-      background: #f5f6f5;
-      border: 1px solid rgba(31, 41, 51, .08);
-      box-shadow: none;
-      transition: transform .24s ease, box-shadow .24s ease;
-    }
-
-    .profile-photo:hover {
-      box-shadow: 0 8px 18px rgba(31, 41, 51, .09);
-      transform: translateY(-2px);
-    }
-
-    .side-panel {
-      padding-top: 9px;
-      border-top: 1px solid rgba(31, 41, 51, .10);
-    }
-
-    .side-kicker {
-      margin: 0 0 8px;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    .side-facts {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .side-facts li {
-      display: grid;
-      grid-template-columns: 74px minmax(0, 1fr);
-      gap: 8px;
-      margin: 0;
-      padding: 6px 0;
-      border-bottom: 1px solid rgba(31, 41, 51, .08);
-      color: var(--muted);
-      line-height: 1.45;
-    }
-
-    .side-facts li:last-child {
-      border-bottom: 0;
-    }
-
-    .side-facts b {
-      color: var(--text);
-      font-size: 13px;
-    }
-
-    .side-facts span {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .side-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .side-actions a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 28px;
-      padding: 4px 9px;
-      border: 1px solid rgba(214, 106, 47, .25);
-      border-radius: 999px;
-      background: rgba(255, 248, 239, .78);
-      color: #8a4a23;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 10px;
-      align-items: center;
-      margin-top: 16px;
-      text-align: left;
-      color: var(--soft);
-    }
-
-    .links a,
-    .section-links a {
+    .brand {
+      flex: 0 0 auto;
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
       white-space: nowrap;
     }
 
-    .section-links {
+    .nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 4px 10px;
+      justify-content: flex-end;
+      gap: 6px 18px;
+      min-width: 0;
+    }
+
+    .nav a {
+      display: inline-flex;
       align-items: center;
-      margin-top: 6px;
-      text-align: left;
-      color: var(--soft);
+      min-height: 32px;
+      color: var(--muted);
       font-size: 13px;
-    }
-
-    .link-sep {
-      color: var(--soft);
-      user-select: none;
-    }
-
-    .role-line {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2px 8px;
-      margin: 0 0 14px;
-      color: var(--dark);
-      font-size: 16px;
       font-weight: 700;
-      text-align: left;
-      text-wrap: balance;
+      white-space: nowrap;
     }
 
-    .highlight {
-      color: var(--accent);
-      font-weight: 700;
+    .nav a:hover,
+    .nav a:focus {
+      color: var(--teal);
     }
 
-    .hero-claim {
-      max-width: 680px;
+    .nav .nav-rabbit {
+      min-height: 34px;
+      padding: 5px 10px;
+      border: 1px solid rgba(22, 78, 99, .18);
+      border-radius: 999px;
+      color: #fff;
+      background: var(--blue);
+      box-shadow: 0 8px 16px rgba(22, 78, 99, .14);
+    }
+
+    .nav .nav-rabbit:hover,
+    .nav .nav-rabbit:focus {
+      color: #fff;
+      background: var(--teal);
+      transform: translateY(-1px);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 246px minmax(0, 1fr);
+      gap: 44px;
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 36px 22px 64px;
+    }
+
+    .profile {
+      align-self: start;
+      position: sticky;
+      top: 82px;
+      min-width: 0;
+    }
+
+    .profile-card {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .88);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .portrait-wrap {
+      overflow: hidden;
+      width: 142px;
+      aspect-ratio: 1 / 1;
+      margin: 0 auto 16px;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      background: #eef2f0;
+    }
+
+    .portrait {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 36%;
+    }
+
+    .profile h1 {
+      margin: 0 0 2px;
+      color: var(--ink);
+      font-size: 25px;
+      line-height: 1.16;
+      font-weight: 850;
+      letter-spacing: 0;
+    }
+
+    .cn-name {
       margin: 0 0 12px;
-      color: var(--dark);
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.42;
-      text-wrap: balance;
-    }
-
-    .english-summary {
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.65;
+      font-weight: 700;
     }
 
-    .rabbit-cta {
+    .profile-title {
+      margin: 0 0 12px;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.56;
+    }
+
+    .profile-title strong {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .profile-links {
+      display: grid;
+      gap: 7px;
+      margin: 14px 0 0;
+    }
+
+    .profile-links a {
       display: flex;
-      justify-content: flex-start;
-      margin: 18px 0 4px;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 44px;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--text);
+      background: var(--paper);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .profile-links a:hover,
+    .profile-links a:focus {
+      border-color: rgba(15, 118, 110, .32);
+      color: var(--teal);
+      background: var(--teal-soft);
+      transform: translateY(-1px);
+    }
+
+    .profile-links span {
+      color: var(--soft);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .mini-facts {
+      display: grid;
+      gap: 9px;
+      margin: 16px 0 0;
+      padding: 15px 0 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .mini-fact b {
+      display: block;
+      color: var(--ink);
+      font-size: 12px;
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .mini-fact span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .main {
+      min-width: 0;
+    }
+
+    .hero {
+      min-width: 0;
+      padding: 58px 66px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      margin: 0 0 16px;
+      padding: 3px 9px;
+      border: 1px solid rgba(15, 118, 110, .20);
+      border-radius: 999px;
+      color: var(--teal);
+      background: var(--teal-soft);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+
+    .hero h2 {
+      max-width: 720px;
+      margin: 0;
+      color: var(--ink);
+      font-size: 50px;
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .hero-lead {
+      max-width: 780px;
+      margin-top: 24px;
+      color: var(--text);
+      font-size: 17px;
+      line-height: 1.82;
+    }
+
+    .hero-lead strong {
+      color: var(--ink);
+      font-weight: 850;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin: 18px 0 4px;
-    }
-
-    .rabbit-button,
-    .secondary-button {
-      display: inline-flex;
-      position: relative;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      min-height: 46px;
-      padding: 10px 18px;
-      border-radius: 6px;
-      font-size: 15px;
-      font-weight: 700;
-      transition: transform .2s ease, box-shadow .2s ease, background-color .18s ease, border-color .18s ease;
-    }
-
-    .rabbit-button {
       gap: 12px;
-      justify-content: flex-start;
-      min-width: 246px;
-      min-height: 56px;
-      padding: 10px 13px;
-      border: 1px solid rgba(214, 106, 47, .30);
-      color: var(--dark);
-      background: linear-gradient(180deg, #fffdf9 0%, #fff8ef 100%);
-      box-shadow: 0 9px 22px rgba(31, 41, 51, .08);
+      margin-top: 28px;
     }
 
-    .button-eyebrow {
-      color: #a84f22;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: .06em;
-      line-height: 1.1;
-      text-transform: uppercase;
+    .rabbit-cta,
+    .secondary-cta {
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      border-radius: 7px;
+      font-weight: 850;
     }
 
-    .button-copy {
-      display: flex;
-      flex: 1 1 auto;
-      min-width: 0;
-      flex-direction: column;
-      align-items: flex-start;
+    .rabbit-cta {
+      gap: 12px;
+      min-width: 286px;
+      padding: 11px 14px 11px 12px;
+      color: #fff;
+      background: var(--blue);
+      box-shadow: 0 14px 28px rgba(22, 78, 99, .22);
     }
 
-    .button-title {
-      margin-top: 3px;
-      color: var(--dark);
-      font-size: 16px;
-      line-height: 1.15;
+    .rabbit-cta:hover,
+    .rabbit-cta:focus {
+      color: #fff;
+      background: var(--teal);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(15, 118, 110, .24);
     }
 
-    .rabbit-button-icon {
+    .rabbit-logo {
       flex: 0 0 auto;
       width: 34px;
       height: 34px;
       padding: 4px;
-      border: 1px solid rgba(214, 106, 47, .18);
       border-radius: 50%;
       background: #fff;
       object-fit: contain;
     }
 
-    .button-arrow {
-      display: inline-flex;
-      flex: 0 0 auto;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      margin-left: 2px;
-      border-radius: 50%;
-      color: #a84f22;
-      background: rgba(214, 106, 47, .10);
-      font-size: 16px;
-      line-height: 1;
-      transition: color .18s ease, background-color .18s ease, transform .2s ease;
-    }
-
-    .secondary-button {
-      border: 1px solid var(--line);
-      color: var(--dark);
-      background: rgba(255, 255, 255, .72);
-    }
-
-    .rabbit-button:hover,
-    .rabbit-button:focus {
-      color: var(--dark);
-      background: #fff;
-      border-color: rgba(214, 106, 47, .58);
-      box-shadow: 0 13px 30px rgba(214, 106, 47, .16);
-      transform: translateY(-1px);
-    }
-
-    .rabbit-button:hover .button-arrow,
-    .rabbit-button:focus .button-arrow {
-      color: #fff;
-      background: var(--accent);
-      transform: translateX(2px);
-    }
-
-    .rabbit-button:focus-visible,
-    .secondary-button:focus-visible {
-      outline: 2px solid rgba(168, 79, 34, .55);
-      outline-offset: 3px;
-    }
-
-    .secondary-button:hover,
-    .secondary-button:focus {
-      color: var(--accent);
-      border-color: rgba(214, 106, 47, .36);
-      background: rgba(255, 248, 239, .75);
-      transform: translateY(-1px);
-    }
-
-    .section-title {
-      position: relative;
-      padding: 22px 0 10px;
-      border-top: 1px solid var(--line);
-    }
-
-    .section-title h2 {
-      position: relative;
-    }
-
-    .section-lead {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.72;
-    }
-
-    .section-title h2::after {
-      position: absolute;
-      left: 0;
-      bottom: -8px;
-      width: 28px;
-      height: 2px;
-      background: var(--accent);
-      content: "";
-      transform: scaleX(.45);
-      transform-origin: left center;
-      transition: transform .42s ease;
-    }
-
-    .is-visible .section-title h2::after {
-      transform: scaleX(1);
-    }
-
-    .news-list {
-      margin: 0;
-      padding: 0 0 8px;
-      list-style: none;
-    }
-
-    .news-list li {
+    .rabbit-copy {
       display: grid;
-      grid-template-columns: 82px minmax(0, 1fr);
-      gap: 14px;
-      padding: 7px 0;
-      border-bottom: 1px solid var(--line);
-      color: var(--muted);
-      transition: background-color .18s ease, padding-left .18s ease;
-    }
-
-    .news-list li:hover {
-      padding-left: 6px;
-      background: rgba(255, 248, 239, .7);
-    }
-
-    .news-list time,
-    .news-list b {
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .highlight-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      padding: 4px 0 14px;
-    }
-
-    .highlight-card,
-    .report-card {
+      flex: 1 1 auto;
       min-width: 0;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, .86);
-      transition: background-color .18s ease, box-shadow .2s ease, transform .2s ease;
+      line-height: 1.22;
     }
 
-    .highlight-card {
-      padding: 14px 15px;
-    }
-
-    .highlight-card:hover,
-    .report-card:hover {
-      background: rgba(255, 248, 239, .72);
-      box-shadow: var(--paper-shadow);
-      transform: translateY(-2px);
-    }
-
-    .highlight-card h3,
-    .report-card h3 {
-      display: block;
-      margin: 0 0 6px;
-      color: var(--text);
-      font-size: 16px;
-      line-height: 1.3;
-      text-wrap: balance;
-    }
-
-    .highlight-card p,
-    .report-card p {
-      margin-bottom: 8px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .proof-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px 10px;
-      margin: 10px 0 0;
-      color: var(--soft);
-      font-size: 13px;
-    }
-
-    .proof-links a:first-child {
-      font-weight: 700;
-    }
-
-    .evidence-line {
-      padding-top: 2px;
-      color: var(--text);
-      font-size: 13px;
-      line-height: 1.55;
-    }
-
-    .evidence-line b {
-      color: var(--accent);
-    }
-
-    .metric-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-top: 4px;
-    }
-
-    .metric {
-      display: inline-flex;
-      align-items: center;
-      min-height: 20px;
-      padding: 1px 7px;
-      border: 1px solid rgba(214, 106, 47, .22);
-      border-radius: 999px;
-      color: #8a4a23;
-      background: rgba(255, 248, 239, .85);
+    .rabbit-copy small {
+      color: rgba(255, 255, 255, .78);
       font-size: 11px;
-      font-weight: 700;
+      font-weight: 800;
+      text-transform: uppercase;
     }
 
-    .report-grid {
+    .rabbit-copy span {
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .rabbit-arrow {
+      color: rgba(255, 255, 255, .88);
+      font-size: 18px;
+    }
+
+    .secondary-cta {
+      justify-content: center;
+      padding: 11px 18px;
+      border: 1px solid var(--line-strong);
+      color: var(--ink);
+      background: var(--panel);
+    }
+
+    .secondary-cta:hover,
+    .secondary-cta:focus {
+      border-color: rgba(15, 118, 110, .32);
+      color: var(--teal);
+      background: var(--teal-soft);
+      transform: translateY(-1px);
+    }
+
+    .proof-strip {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      padding: 4px 0 12px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
     }
 
-    .report-card {
-      padding: 13px 14px;
-    }
-
-    .snapshot-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      padding: 4px 0 12px;
-    }
-
-    .snapshot-card {
+    .proof {
       min-width: 0;
       padding: 12px 14px;
       border: 1px solid var(--line);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, .82);
-      transition: background-color .18s ease, box-shadow .2s ease, transform .2s ease;
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .72);
     }
 
-    .snapshot-card:hover {
-      background: rgba(255, 248, 239, .78);
-      box-shadow: var(--paper-shadow);
-      transform: translateY(-2px);
-    }
-
-    .snapshot-card b {
+    .proof b {
       display: block;
-      margin-bottom: 4px;
-      color: var(--text);
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.34;
     }
 
-    .snapshot-card span {
+    .proof span {
+      display: block;
+      margin-top: 2px;
       color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
     }
 
-    .statement {
-      margin: 4px 0 12px;
-      padding: 2px 0 2px 18px;
-      border-left: 3px solid var(--accent);
-      color: var(--text);
-      font-size: 15px;
-      line-height: 1.72;
+    .section {
+      min-width: 0;
+      padding-top: 70px;
     }
 
-    .statement strong {
-      color: var(--accent);
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
     }
 
-    .interest-grid {
+    .section h2 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 32px;
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .section-note {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .timeline {
+      position: relative;
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px 24px;
-      padding: 6px 0 12px;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .timeline::before {
+      position: absolute;
+      top: 9px;
+      bottom: 13px;
+      left: 88px;
+      width: 1px;
+      background: var(--line-strong);
+      content: "";
+    }
+
+    .timeline li {
+      display: grid;
+      grid-template-columns: 68px minmax(0, 1fr);
+      gap: 40px;
+      position: relative;
+      margin: 0;
+      padding: 11px 0;
+    }
+
+    .timeline li::before {
+      position: absolute;
+      top: 21px;
+      left: 83px;
+      width: 11px;
+      height: 11px;
+      border: 2px solid #fff;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 0 1px rgba(15, 118, 110, .24);
+      content: "";
+    }
+
+    .timeline time {
+      color: var(--soft);
+      font-size: 13px;
+      font-weight: 850;
+      line-height: 1.5;
+    }
+
+    .timeline p {
+      color: var(--text);
+      line-height: 1.58;
+    }
+
+    .timeline b {
+      color: var(--ink);
+      font-weight: 850;
+    }
+
+    .work-list {
+      display: grid;
+      gap: 28px;
+    }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: minmax(240px, 42%) minmax(0, 1fr);
+      gap: 28px;
+      min-width: 0;
+      padding: 0 0 28px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .work-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .work-media {
+      overflow: hidden;
+      align-self: start;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #eef2f5;
+      box-shadow: 0 8px 18px rgba(23, 32, 51, .06);
+    }
+
+    .work-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .24s ease, filter .24s ease;
+    }
+
+    .work-media.contain img {
+      object-fit: contain;
+      padding: 8px;
+      background: #fff;
+    }
+
+    .work-item:hover .work-media img {
+      filter: saturate(1.05) contrast(1.03);
+      transform: scale(1.025);
+    }
+
+    .work-content {
+      min-width: 0;
+      padding-top: 2px;
+    }
+
+    .project-kicker {
+      display: inline-flex;
+      align-items: center;
+      min-height: 23px;
+      margin: 0 0 8px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      color: var(--blue);
+      background: var(--blue-soft);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .work-content h3 {
+      margin: 0;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.24;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .meta {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .work-desc {
+      margin-top: 11px;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .contrib-list {
+      display: grid;
+      gap: 6px;
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .contrib-list li {
+      position: relative;
+      padding-left: 16px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .contrib-list li::before {
+      position: absolute;
+      top: .72em;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      content: "";
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 23px;
+      padding: 2px 8px;
+      border: 1px solid rgba(180, 83, 9, .18);
+      border-radius: 999px;
+      color: var(--amber);
+      background: var(--amber-soft);
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 14px;
+      color: var(--soft);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .link-row a {
+      border-bottom: 1px solid rgba(22, 78, 99, .28);
     }
 
     .focus-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
-      padding: 4px 0 10px;
     }
 
-    .interest,
     .focus-card {
       min-width: 0;
-      border-radius: 4px;
-      transition: background-color .18s ease, transform .18s ease;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .76);
+      transition: border-color .18s ease, background-color .18s ease, transform .18s ease, box-shadow .18s ease;
     }
 
-    .interest:hover,
     .focus-card:hover {
-      background: rgba(255, 248, 239, .72);
-      transform: translateY(-1px);
+      border-color: rgba(15, 118, 110, .26);
+      background: #fff;
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-2px);
     }
 
-    .interest b,
     .focus-card b {
       display: block;
-      margin-bottom: 2px;
-      font-size: 14px;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.35;
     }
 
-    .interest span,
     .focus-card span {
+      display: block;
       color: var(--muted);
+      line-height: 1.6;
     }
 
-    .stack-line,
-    .related-links,
-    .contact-line {
-      margin: 6px 0 12px;
-      color: var(--muted);
+    .build-evidence {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .evidence {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+
+    .evidence b {
+      display: block;
+      color: var(--ink);
       font-size: 14px;
-      line-height: 1.65;
+      line-height: 1.35;
     }
 
-    .stack-line b {
-      color: var(--text);
+    .evidence span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.48;
     }
 
-    .notes-list {
-      margin: 0 0 12px;
+    .reports {
+      display: grid;
+      margin: 0;
       padding: 0;
       list-style: none;
     }
 
-    .notes-list li {
+    .reports li {
       display: grid;
       grid-template-columns: 210px minmax(0, 1fr);
-      gap: 16px;
+      gap: 22px;
       margin: 0;
-      padding: 9px 0;
+      padding: 14px 0;
       border-bottom: 1px solid var(--line);
     }
 
-    .notes-list a {
-      font-weight: 700;
+    .reports li:last-child {
+      border-bottom: 0;
     }
 
-    .notes-list span {
+    .reports a {
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .reports a:hover,
+    .reports a:focus {
+      color: var(--teal);
+    }
+
+    .reports span {
       color: var(--muted);
+      line-height: 1.62;
     }
 
-    .entry {
+    .contact-panel {
       display: grid;
-      grid-template-columns: minmax(160px, 196px) minmax(0, 1fr);
-      gap: 16px;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 310px);
+      gap: 22px;
       align-items: center;
-      margin: 0;
-      padding: 9px 0 10px;
-      border-bottom: 1px solid var(--line);
-      transition: background-color .2s ease;
-    }
-
-    .entry:hover {
-      background: rgba(255, 248, 239, .52);
-    }
-
-    .thumb {
-      width: 100%;
-      aspect-ratio: 2.25 / 1;
-      overflow: hidden;
-      border-radius: 4px;
-      background: var(--warm);
+      padding: 24px;
       border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: var(--shadow-sm);
     }
 
-    .thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: filter .22s ease, transform .28s ease;
+    .contact-panel h2 {
+      margin: 0 0 8px;
+      color: var(--ink);
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 900;
     }
 
-    .entry:hover .thumb img,
-    .thumb:focus img {
-      filter: saturate(1.06) contrast(1.03);
-      transform: scale(1.035);
-    }
-
-    .thumb.contain img {
-      object-fit: contain;
-      padding: 5px;
-      background: #fbfbfb;
-    }
-
-    .entry h3 {
-      display: block;
-      margin: 0 0 1px;
-      color: #627382;
-      font-size: 17px;
-      font-weight: 700;
-      line-height: 1.18;
-    }
-
-    .meta {
-      display: -webkit-box;
-      overflow: hidden;
-      margin-top: 1px;
+    .contact-panel p {
       color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.35;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
     }
 
-    .project-kicker {
-      display: inline-block;
-      margin: 0 6px 2px 0;
-      color: var(--accent);
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: .055em;
-      text-transform: uppercase;
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 14px;
+      font-weight: 850;
     }
 
-    .project-points {
-      display: none;
-    }
-
-    .project-points li {
-      min-width: 0;
-      padding-left: 10px;
-      border-left: 2px solid var(--line);
-    }
-
-    .project-points b {
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .venue {
-      display: block;
-      margin-top: 4px;
-      color: var(--muted);
-      font-style: italic;
-    }
-
-    .entry-links {
-      margin: 3px 0 0;
-      color: var(--soft);
-      font-size: 13.5px;
-      line-height: 1.35;
-    }
-
-    .entry-links a:first-child {
-      font-weight: 700;
-    }
-
-    .note {
-      display: -webkit-box;
-      overflow: hidden;
-      margin: 3px 0 0;
-      color: var(--muted);
-      font-size: 13.5px;
-      line-height: 1.42;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 1;
-    }
-
-    .stack-table {
-      width: 100%;
-      margin-top: 4px;
-      border-spacing: 0;
-      border-collapse: collapse;
-    }
-
-    .stack-table th,
-    .stack-table td {
-      padding: 8px 0;
-      border-bottom: 1px solid var(--line);
-      vertical-align: top;
-      text-align: left;
-      font-size: 14px;
-    }
-
-    .stack-table th {
-      width: 190px;
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .contact-grid {
+    .project-door {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      justify-items: center;
-      padding-top: 10px;
+      gap: 8px;
+      padding: 16px;
+      border: 1px solid rgba(15, 118, 110, .18);
+      border-radius: var(--radius);
+      color: var(--ink);
+      background: var(--teal-soft);
     }
 
-    .contact-card {
-      width: 100%;
-      max-width: 280px;
-      min-width: 0;
-      transition: transform .2s ease;
-    }
-
-    .contact-card:hover {
+    .project-door:hover,
+    .project-door:focus {
+      color: var(--ink);
+      border-color: rgba(15, 118, 110, .36);
+      background: #fff;
       transform: translateY(-2px);
     }
 
-    .contact-image {
-      display: block;
-      overflow: hidden;
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      background: #fafafa;
-      transition: border-color .2s ease, box-shadow .2s ease;
+    .project-door-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .contact-card:hover .contact-image,
-    .contact-image:focus {
-      border-color: rgba(214, 106, 47, .38);
-      box-shadow: var(--paper-shadow);
-    }
-
-    .contact-image img {
-      width: 100%;
-      height: 100%;
-      padding: 8px;
+    .project-door img {
+      width: 36px;
+      height: 36px;
+      padding: 4px;
+      border-radius: 50%;
+      background: #fff;
       object-fit: contain;
-      object-position: center;
+    }
+
+    .project-door strong {
+      display: block;
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .project-door span {
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .project-door p {
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.52;
+    }
+
+    .extra-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    footer {
+      margin-top: 54px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--soft);
+      font-size: 13px;
     }
 
     .has-js .reveal {
-      opacity: 1;
-      transform: none;
-      transition: opacity .46s ease, transform .46s ease;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .45s ease, transform .45s ease;
       transition-delay: var(--reveal-delay, 0ms);
     }
 
     .has-js .reveal.is-visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
     }
 
-    .contact-card h3 {
-      display: block;
-      margin-top: 10px;
-    }
+    @media (max-width: 980px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
 
-    .contact-card p {
-      margin-top: 4px;
-      color: var(--muted);
-    }
+      .nav {
+        justify-content: flex-start;
+      }
 
-    .contact-card a {
-      color: var(--text);
-    }
+      .layout {
+        grid-template-columns: 1fr;
+        gap: 26px;
+        padding-top: 24px;
+      }
 
-    .contact-image:focus-visible {
-      outline: 2px solid rgba(168, 79, 34, .55);
-      outline-offset: 3px;
-    }
+      .profile {
+        position: static;
+        order: 3;
+      }
 
-    .friend-link-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      padding: 4px 0 6px;
-    }
+      .main {
+        display: contents;
+      }
 
-    .friend-link-card {
-      display: grid;
-      position: relative;
-      grid-template-columns: 46px minmax(0, 1fr) 28px;
-      gap: 13px;
-      align-items: center;
-      overflow: hidden;
-      min-height: 108px;
-      padding: 14px 16px;
-      border: 1px solid rgba(31, 41, 51, .10);
-      border-radius: 6px;
-      color: var(--text);
-      background:
-        linear-gradient(90deg, rgba(255, 248, 239, .86) 0, rgba(255, 255, 255, .92) 34%, rgba(255, 255, 255, .86) 100%);
-      transition: border-color .18s ease, box-shadow .2s ease, transform .2s ease, background-color .18s ease;
-    }
+      .hero {
+        order: 1;
+      }
 
-    .friend-link-card::before {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, rgba(214, 106, 47, .82), rgba(214, 106, 47, .14));
-      content: "";
-    }
+      .proof-strip {
+        order: 2;
+      }
 
-    .friend-link-card:hover,
-    .friend-link-card:focus {
-      color: var(--text);
-      border-color: rgba(214, 106, 47, .36);
-      background:
-        linear-gradient(90deg, rgba(255, 248, 239, .96) 0, #fff 34%, rgba(255, 255, 255, .92) 100%);
-      box-shadow: var(--paper-shadow);
-      transform: translateY(-2px);
-    }
+      #updates {
+        order: 4;
+      }
 
-    .friend-link-card:focus-visible {
-      outline: 2px solid rgba(168, 79, 34, .55);
-      outline-offset: 3px;
-    }
+      #work {
+        order: 5;
+      }
 
-    .friend-link-mark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 46px;
-      height: 46px;
-      border: 1px solid rgba(214, 106, 47, .22);
-      border-radius: 50%;
-      color: #a84f22;
-      background: #fff;
-      font-size: 13px;
-      font-weight: 800;
-      line-height: 1;
-    }
+      #focus {
+        order: 6;
+      }
 
-    .friend-link-mark img {
-      width: 31px;
-      height: 31px;
-      object-fit: contain;
-    }
+      #reports {
+        order: 7;
+      }
 
-    .friend-link-body {
-      display: grid;
-      gap: 2px;
-      min-width: 0;
-    }
+      #contact {
+        order: 8;
+      }
 
-    .friend-link-row {
-      display: flex;
-      min-width: 0;
-      flex-wrap: wrap;
-      gap: 5px 8px;
-      align-items: center;
-    }
+      footer {
+        order: 9;
+      }
 
-    .friend-link-kicker {
-      color: #a84f22;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
+      .profile-card {
+        display: grid;
+        grid-template-columns: 130px minmax(0, 1fr);
+        gap: 18px;
+        align-items: center;
+      }
 
-    .friend-link-card strong {
-      color: var(--dark);
-      font-size: 17px;
-      line-height: 1.24;
-    }
+      .portrait-wrap {
+        width: 124px;
+        margin: 0;
+      }
 
-    .friend-link-status {
-      display: inline-flex;
-      align-items: center;
-      min-height: 20px;
-      padding: 2px 7px;
-      border: 1px solid rgba(214, 106, 47, .20);
-      border-radius: 999px;
-      color: #8a4a23;
-      background: rgba(255, 248, 239, .72);
-      font-size: 11px;
-      font-weight: 800;
-      line-height: 1;
-    }
+      .profile-links,
+      .mini-facts {
+        grid-column: 1 / -1;
+      }
 
-    .friend-link-note {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.45;
-    }
+      .hero {
+        padding: 42px 34px;
+      }
 
-    .friend-link-url {
-      margin-top: 4px;
-      color: #5f6e7b;
-      font-family: "JetBrains Mono", Consolas, "Microsoft YaHei", monospace;
-      font-size: 12px;
-      line-height: 1.35;
-      overflow-wrap: anywhere;
-    }
+      .hero h2 {
+        font-size: 42px;
+      }
 
-    .friend-link-arrow {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      color: #a84f22;
-      background: rgba(214, 106, 47, .12);
-      font-size: 16px;
-      transition: color .18s ease, background-color .18s ease, transform .2s ease;
-    }
+      .proof-strip,
+      .build-evidence {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
 
-    .friend-link-card:hover .friend-link-arrow,
-    .friend-link-card:focus .friend-link-arrow {
-      color: #fff;
-      background: var(--accent);
-      transform: translateX(2px);
-    }
-
-    footer {
-      margin-top: 24px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      color: var(--soft);
-      font-size: 13px;
-      text-align: center;
+      .focus-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 720px) {
-      .page {
-        width: 100%;
-        max-width: 100%;
-        padding: 18px 16px 42px;
+      body {
+        font-size: 14px;
       }
 
-      .intro {
+      .topbar-inner,
+      .layout {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .brand {
+        white-space: normal;
+      }
+
+      .nav {
+        gap: 6px 12px;
+      }
+
+      .profile-card {
+        grid-template-columns: 112px minmax(0, 1fr);
+        gap: 14px;
+      }
+
+      .portrait-wrap {
+        width: 112px;
+      }
+
+      .hero {
+        padding: 30px 20px;
+      }
+
+      .hero h2 {
+        font-size: 34px;
+        line-height: 1.1;
+      }
+
+      .hero-lead {
+        margin-top: 18px;
+        font-size: 15px;
+      }
+
+      .hero-actions {
+        display: grid;
         grid-template-columns: 1fr;
+      }
+
+      .rabbit-cta {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .secondary-cta {
+        width: 100%;
+      }
+
+      .proof-strip,
+      .build-evidence {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding-top: 46px;
+      }
+
+      .section-header {
+        align-items: start;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .section h2 {
+        font-size: 27px;
+      }
+
+      .section-note {
+        text-align: left;
+      }
+
+      .timeline::before {
+        left: 72px;
+      }
+
+      .timeline li {
+        grid-template-columns: 58px minmax(0, 1fr);
+        gap: 28px;
+      }
+
+      .timeline li::before {
+        left: 67px;
+      }
+
+      .work-item {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .work-content h3 {
+        font-size: 20px;
+      }
+
+      .reports li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .contact-panel {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .topbar-inner,
+      .layout {
+        padding-left: 13px;
+        padding-right: 13px;
+      }
+
+      .hero h2 {
+        font-size: 30px;
+      }
+
+      .profile-card {
+        grid-template-columns: 96px minmax(0, 1fr);
         gap: 12px;
       }
 
-      .intro-media {
-        order: 0;
-        justify-self: center;
-        width: min(116px, 31vw);
-        padding: 5px;
+      .portrait-wrap {
+        width: 96px;
       }
 
-      .profile-photo {
-        width: 100%;
-        margin-bottom: 0;
+      .rabbit-cta {
+        align-items: flex-start;
       }
 
-      .side-panel {
+      .timeline::before {
         display: none;
       }
 
-      h1 {
-        font-size: 30px;
-        text-align: center;
-      }
-
-      .role-line,
-      .name-line,
-      .links,
-      .section-links {
-        text-align: center;
-        justify-content: center;
-      }
-
-      .role-line {
-        max-width: 320px;
-        margin-right: auto;
-        margin-left: auto;
-        gap: 0;
-        line-height: 1.42;
-      }
-
-      .role-line .role-chunk {
-        width: 100%;
-      }
-
-      .role-divider {
-        display: none;
-      }
-
-      .name-line {
-        max-width: 330px;
-        margin-right: auto;
-        margin-left: auto;
-        line-height: 1.55;
-      }
-
-      .hero-claim {
-        font-size: 17px;
-        line-height: 1.46;
-      }
-
-      .rabbit-cta,
-      .hero-actions {
-        justify-content: center;
-      }
-
-      .rabbit-button {
-        width: 100%;
-        min-width: 100%;
-        align-items: center;
-      }
-
-      .secondary-button {
-        flex: 1 1 calc(50% - 5px);
-        min-width: 0;
-      }
-
-      .highlight-card {
-        padding: 13px 14px;
-      }
-
-      .highlight-card h3 {
-        font-size: 15px;
-        line-height: 1.34;
-      }
-
-      .highlight-grid,
-      .report-grid,
-      .interest-grid,
-      .focus-grid,
-      .snapshot-grid,
-      .friend-link-grid,
-      .project-points {
-        grid-template-columns: 1fr;
-      }
-
-      .friend-link-card {
-        grid-template-columns: 38px minmax(0, 1fr) 24px;
-        min-height: 108px;
-        padding: 13px 14px;
-      }
-
-      .friend-link-mark {
-        width: 38px;
-        height: 38px;
-      }
-
-      .notes-list li {
+      .timeline li {
         grid-template-columns: 1fr;
         gap: 2px;
+        padding: 12px 0;
       }
 
-      .entry {
-        grid-template-columns: 88px minmax(0, 1fr);
-        gap: 9px;
-        align-items: center;
-        padding: 9px 0 10px;
-      }
-
-      .thumb {
-        max-width: none;
-        aspect-ratio: 1.38 / 1;
-      }
-
-      .project-kicker {
-        margin-bottom: 2px;
-        font-size: 10px;
-      }
-
-      .entry h3 {
-        font-size: 15.5px;
-        line-height: 1.2;
-      }
-
-      .meta,
-      .note {
-        font-size: 12.5px;
-        line-height: 1.34;
-      }
-
-      .note {
+      .timeline li::before {
         display: none;
-      }
-
-      .metric {
-        min-height: 18px;
-        padding: 1px 5px;
-        font-size: 10px;
-      }
-
-      .entry-links {
-        margin-top: 2px;
-        font-size: 12px;
-        line-height: 1.3;
-      }
-
-      .stack-table th {
-        width: 120px;
-      }
-
-      .news-list li {
-        grid-template-columns: 64px minmax(0, 1fr);
-        gap: 10px;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 22px;
-      }
-
-      .contact-card {
-        max-width: 300px;
       }
     }
 
@@ -1319,246 +1209,330 @@
   </style>
 </head>
 <body>
-  <main class="page">
-    <section class="intro" aria-labelledby="page-title">
-      <div>
-        <h1 id="page-title">Jinghai Li</h1>
-        <p class="role-line"><span class="role-chunk">控制工程硕士研究生</span><span class="role-divider">·</span><span class="role-chunk">Robotics / VLN / AMR Systems</span></p>
-        <p class="name-line">Research interests: Vision-Language Navigation, real-robot AMR systems, SLAM / mapping</p>
-        <p class="hero-claim">I build research-grade AMR systems that connect VLN ideas to real robots.</p>
-        <p>
-          你好，我是 <strong>Jinghai Li</strong>。我关注 <span class="highlight">Vision-Language Navigation</span>、真实 AMR 系统和多传感器建图；RabbitRobot 小车从底盘装配、电控接线、传感器集成到 ROS 2 / Web 工具，都是我自己一点点搭起来的。
-        </p>
-        <p class="english-summary">
-          My homepage is a doorway: quick proof of who I am, what I study, what I have built, and where to find the detailed RabbitRobot work.
+  <header class="topbar" aria-label="Primary navigation">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">Jinghai Li</a>
+      <nav class="nav" aria-label="Homepage sections">
+        <a class="nav-rabbit" href="RabbitRobot/">RabbitRobot</a>
+        <a href="#updates">Updates</a>
+        <a href="#work">Selected Work</a>
+        <a href="#focus">Research Focus</a>
+        <a href="#reports">Reports</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="layout" id="top">
+    <aside class="profile" aria-label="Jinghai Li profile">
+      <div class="profile-card">
+        <div class="portrait-wrap">
+          <img class="portrait" src="images/profile/jinghai-li-portrait-soft.jpg" alt="Jinghai Li portrait" loading="eager" decoding="async">
+        </div>
+        <div>
+          <h1>Jinghai Li</h1>
+          <p class="cn-name">算个文科生吧</p>
+          <p class="profile-title">
+            <strong>Control Engineering graduate student</strong><br>
+            Robotics / VLN / real-robot AMR systems
+          </p>
+        </div>
+        <div class="profile-links" aria-label="Profile links">
+          <a href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">GitHub <span>code</span></a>
+          <a href="mailto:lijinghailjh@163.com">Email <span>contact</span></a>
+          <a href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer">Bilibili <span>video</span></a>
+          <a href="https://blog.csdn.net/Dorian15" target="_blank" rel="noopener noreferrer">CSDN <span>notes</span></a>
+        </div>
+        <div class="mini-facts">
+          <p class="mini-fact">
+            <b>Main line</b>
+            <span>Vision-Language Navigation grounded on real AMR execution.</span>
+          </p>
+          <p class="mini-fact">
+            <b>Hands-on build</b>
+            <span>Self-built chassis, wiring, sensors, ROS 2 stack, Web cockpit.</span>
+          </p>
+          <p class="mini-fact">
+            <b>Public platform</b>
+            <span>RabbitRobot documents the complete robot system and experiments.</span>
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="hero reveal" aria-labelledby="hero-title">
+        <p class="eyebrow">Real-Robot VLN / AMR Systems</p>
+        <h2 id="hero-title">Building robots that make navigation research executable.</h2>
+        <p class="hero-lead">
+          I focus on <strong>Vision-Language Navigation</strong>, SLAM / mapping, and research-grade AMR systems. My main evidence is RabbitRobot: a self-built robot platform where chassis assembly, motor drive, sensor integration, ROS 2 / Nav2, Web visualization, coverage planning, and real-robot data collection are connected into one engineering loop.
         </p>
         <div class="hero-actions">
-          <a class="rabbit-button" href="RabbitRobot/" aria-label="Open RabbitRobot main project page">
-            <img class="rabbit-button-icon" src="RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png" alt="" aria-hidden="true">
-            <span class="button-copy">
-              <span class="button-eyebrow">Project Homepage</span>
-              <span class="button-title">RabbitRobot</span>
+          <a class="rabbit-cta" href="RabbitRobot/" aria-label="Open RabbitRobot project homepage">
+            <img class="rabbit-logo" src="RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png" alt="" aria-hidden="true">
+            <span class="rabbit-copy">
+              <small>Main project</small>
+              <span>Explore RabbitRobot</span>
             </span>
-            <span class="button-arrow" aria-hidden="true">&rarr;</span>
+            <span class="rabbit-arrow" aria-hidden="true">&rarr;</span>
           </a>
-          <a class="secondary-button" href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a class="secondary-button" href="mailto:lijinghailjh@163.com">Email</a>
+          <a class="secondary-cta" href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="secondary-cta" href="mailto:lijinghailjh@163.com">Email</a>
         </div>
+      </section>
+
+      <div class="proof-strip reveal" aria-label="Technical proof summary">
+        <p class="proof"><b>Self-built AMR</b><span>Chassis, wiring, sensors, drive, safety chain.</span></p>
+        <p class="proof"><b>ROS 2 / Nav2</b><span>Mapping, localization, planning, Web control.</span></p>
+        <p class="proof"><b>VLN testbed</b><span>Language goals to waypoints and recovery checks.</span></p>
+        <p class="proof"><b>Public evidence</b><span>Project pages, images, videos, GitHub notes.</span></p>
       </div>
-      <div class="intro-media">
-        <img class="profile-photo" src="images/profile/jinghai-li-portrait-soft.jpg" alt="Jinghai Li portrait" loading="eager" decoding="async">
-        <div class="side-panel">
-          <p class="side-kicker">Research Profile</p>
-          <ul class="side-facts">
-            <li><b>Focus</b><span>VLN, AMR systems, SLAM / mapping</span></li>
-            <li><b>Current</b><span>Real-robot VLN verification on RabbitRobot</span></li>
-            <li><b>Build</b><span>Self-built AMR prototypes, sensors, ROS 2 stack</span></li>
-          </ul>
+
+      <section class="section reveal" id="updates" aria-labelledby="updates-title">
+        <div class="section-header">
+          <h2 id="updates-title">Updates</h2>
+          <p class="section-note">A short timeline that keeps the homepage technical and verifiable.</p>
         </div>
-      </div>
-    </section>
+        <ul class="timeline">
+          <li>
+            <time datetime="2026-08">2026.08</time>
+            <p><b>Homepage reorganized around VLN and real-robot evidence.</b> The front page now points visitors to research focus, selected systems, and RabbitRobot as the detailed project space.</p>
+          </li>
+          <li>
+            <time datetime="2026-07">2026.07</time>
+            <p><b>Coverage planning and AMR2 Web console documented.</b> The pipeline connects map-aware coverage region input, path validation, Web 3D preview, and dry-run execution.</p>
+          </li>
+          <li>
+            <time datetime="2025-12">2025.12</time>
+            <p><b>RabbitRobot_AMR2 became the current real-robot platform.</b> The build emphasizes a hub-wheel servo chassis, MID360, Fast-LIO, Nav2 MPPI, and safety checks for physical experiments.</p>
+          </li>
+          <li>
+            <time datetime="2025-09">2025.9</time>
+            <p><b>D435 / Unitree L1 / RTAB-Map mapping chain started.</b> The mapping work adds RGB-D, LiDAR, and external IMU experiments to support AMR navigation and VLN data collection.</p>
+          </li>
+        </ul>
+      </section>
 
-    <section aria-labelledby="focus-title">
-      <div class="section-title">
-        <h2 id="focus-title">Research Focus</h2>
-      </div>
-      <div class="focus-grid">
-        <p class="focus-card">
-          <b>Vision-Language Navigation</b>
-          <span>关注语言目标如何落到真实空间行动。重点是长程任务中的偏航检测、语义子目标和恢复验证。</span>
-        </p>
-        <p class="focus-card">
-          <b>Real-robot AMR Systems</b>
-          <span>自己动手搭底盘、电控、传感器和 ROS 2 系统。目标是能跑、能测、能复盘。</span>
-        </p>
-        <p class="focus-card">
-          <b>SLAM and Multi-Sensor Fusion</b>
-          <span>为导航和 VLN 提供可靠地图与现场数据。关注 LiDAR、深度相机、IMU 与点云建图链路。</span>
-        </p>
-      </div>
-      <p class="stack-line"><b>Toolchain:</b> ROS 2, Nav2, SLAM, LiDAR, VLM, Web tools.</p>
-    </section>
+      <section class="section reveal" id="work" aria-labelledby="work-title">
+        <div class="section-header">
+          <h2 id="work-title">Selected Work</h2>
+          <p class="section-note">Representative systems, shown as project-style entries rather than resume blocks.</p>
+        </div>
 
-    <section aria-labelledby="work-title">
-      <div class="section-title">
-        <h2 id="work-title">Selected Work</h2>
-      </div>
-      <p class="section-lead">
-        Three public entry points that show what I have built and how the VLN / AMR direction is grounded in real systems.
-      </p>
+        <div class="work-list">
+          <article class="work-item">
+            <a class="work-media" href="RabbitRobot/">
+              <img src="RabbitRobot/images/rabbitrobot/amr2_turning_loop.gif" alt="RabbitRobot AMR2 turning test on a real robot" loading="lazy" decoding="async">
+            </a>
+            <div class="work-content">
+              <span class="project-kicker">Main Platform</span>
+              <h3>RabbitRobot Platform: a self-built real AMR system</h3>
+              <p class="meta">Role: individual builder / system integrator · Robotics, ROS 2, Nav2, SLAM, Web tools</p>
+              <p class="work-desc">
+                RabbitRobot is my long-term robot platform. It is not a static demo page: it records how a real AMR is assembled, wired, mapped, controlled, visualized, and used as a testbed for VLN-style navigation tasks.
+              </p>
+              <ul class="contrib-list">
+                <li>Built the physical robot stack from chassis, motor drive, sensors, wiring, and field tests.</li>
+                <li>Connected ROS 2 / Nav2 / SLAM / Web visualization into a repeatable robot experiment workflow.</li>
+                <li>Uses real robot evidence to support future VLN waypoint execution and failure recovery research.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag">Self-built AMR</span>
+                <span class="tag">ROS 2</span>
+                <span class="tag">Nav2</span>
+                <span class="tag">VLN testbed</span>
+              </div>
+              <p class="link-row">
+                <a href="RabbitRobot/">Project homepage</a>
+                <a href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">GitHub profile</a>
+              </p>
+            </div>
+          </article>
 
-      <article class="entry">
-        <a class="thumb" href="RabbitRobot/">
-          <img src="RabbitRobot/images/rabbitrobot/amr2_turning_loop.gif" alt="RabbitRobot AMR2 real robot turning test" loading="lazy" decoding="async">
-        </a>
-        <div>
-          <span class="project-kicker">Main Platform</span>
-          <h3>RabbitRobot Platform</h3>
-          <span class="meta">Real AMR · ROS 2 / Nav2 · SLAM · Web tools · VLN testbed</span>
-          <p class="note">
-            真实 AMR 平台，覆盖自己装配的小车底盘、电机/传感器接入、导航、建图、Web 控制台和实验记录。它是我把 VLN、SLAM 和覆盖规划问题接到真车上的主入口。
+          <article class="work-item">
+            <a class="work-media contain" href="RabbitRobot/projects/rabbitrobot-vln.html">
+              <img src="RabbitRobot/images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot architecture for VLN and AMR systems" loading="lazy" decoding="async">
+            </a>
+            <div class="work-content">
+              <span class="project-kicker">Research Line</span>
+              <h3>VLN / VLR on real AMR: from language goals to recoverable navigation</h3>
+              <p class="meta">Direction: Vision-Language Navigation · semantic goals, map grounding, waypoint execution</p>
+              <p class="work-desc">
+                My VLN work is organized around a practical question: when a robot receives a natural-language goal, how can the system ground it, execute it, notice deviation, and recover on a physical platform?
+              </p>
+              <ul class="contrib-list">
+                <li>Uses AMR2 as the execution layer for language-conditioned waypoint and route experiments.</li>
+                <li>Focuses on deviation detection, semantic subgoals, real robot status, and rosbag-based analysis.</li>
+                <li>Keeps classical Nav2 baselines visible, so learned policies can be compared against stable robot behavior.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag">VLN</span>
+                <span class="tag">VLM</span>
+                <span class="tag">Waypoint policy</span>
+                <span class="tag">Real-robot evaluation</span>
+              </div>
+              <p class="link-row">
+                <a href="RabbitRobot/projects/rabbitrobot-vln.html">VLN note</a>
+                <a href="RabbitRobot/#research">RabbitRobot research line</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <a class="work-media" href="RabbitRobot/projects/rabbitrobot-amr2.html">
+              <img src="RabbitRobot/images/rabbitrobot/amr2_coverage_web_console.gif" alt="AMR2 Web 3D coverage console" loading="lazy" decoding="async">
+            </a>
+            <div class="work-content">
+              <span class="project-kicker">AMR System</span>
+              <h3>AMR2 Coverage and Safety System</h3>
+              <p class="meta">System: hub-wheel AMR · map-aware coverage · Web 3D console · safety chain</p>
+              <p class="work-desc">
+                AMR2 turns a hand-built chassis into a system that can map, localize, preview routes, and validate coverage paths before real execution. It is the engineering layer that makes robot experiments inspectable.
+              </p>
+              <ul class="contrib-list">
+                <li>Integrates MID360, Fast-LIO, ICP alignment, Nav2 MPPI, DS20270C CAN drive, speed smoothing, and collision monitoring.</li>
+                <li>Transforms map-aware coverage planning into visual Web tooling with footprint and path checks.</li>
+                <li>Emphasizes testability: dry-run, RViz, Web preview, and real robot field evidence all point to the same system.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag">AMR2</span>
+                <span class="tag">Coverage planning</span>
+                <span class="tag">Web 3D</span>
+                <span class="tag">Safety validation</span>
+              </div>
+              <p class="link-row">
+                <a href="RabbitRobot/projects/rabbitrobot-amr2.html">AMR2 details</a>
+                <a href="RabbitRobot/projects/rabbitrobot-coverage.html">Coverage report</a>
+              </p>
+            </div>
+          </article>
+
+          <article class="work-item">
+            <a class="work-media" href="RabbitRobot/projects/rabbitrobot-d435-l1-rtabmap.html">
+              <img src="RabbitRobot/images/rabbitrobot/rtabmap_overview.png" alt="D435 L1 RTAB-Map multi-sensor mapping overview" loading="lazy" decoding="async">
+            </a>
+            <div class="work-content">
+              <span class="project-kicker">Mapping Chain</span>
+              <h3>D435 / Unitree L1 / RTAB-Map multi-sensor mapping</h3>
+              <p class="meta">System: RGB-D, LiDAR, IMU, RTAB-Map, FAST-LIO2 · 2025.9</p>
+              <p class="work-desc">
+                This line builds maps and sensor data for AMR navigation. It combines RGB-D camera, Unitree L1 LiDAR, external MPU6050 IMU, ROS 2 launch files, RViz, and RTAB-Map / FAST-LIO2 experiments.
+              </p>
+              <ul class="contrib-list">
+                <li>Compensates for D435 without internal IMU by adding Jetson + MPU6050 ROS 2 integration.</li>
+                <li>Documents driver setup, point cloud visualization, launch files, TF, synchronization, and mapping workflow.</li>
+                <li>Provides map production capability for navigation, coverage planning, and future VLN experiments.</li>
+              </ul>
+              <div class="tag-row">
+                <span class="tag">RTAB-Map</span>
+                <span class="tag">Unitree L1</span>
+                <span class="tag">D435</span>
+                <span class="tag">MPU6050</span>
+              </div>
+              <p class="link-row">
+                <a href="RabbitRobot/projects/rabbitrobot-d435-l1-rtabmap.html">Mapping details</a>
+                <a href="RabbitRobot/projects/rabbitrobot-handlidar.html">HandLiDAR</a>
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="focus" aria-labelledby="focus-title">
+        <div class="section-header">
+          <h2 id="focus-title">Research Focus</h2>
+          <p class="section-note">Three directions, all tied back to robot experiments.</p>
+        </div>
+        <div class="focus-grid">
+          <p class="focus-card">
+            <b>Vision-Language Navigation</b>
+            <span>Study how language goals can be grounded into maps, visual observations, waypoints, and robot actions, especially when long-horizon execution drifts or fails.</span>
           </p>
-          <div class="metric-row">
-            <span class="metric">Self-built AMR</span>
-            <span class="metric">Real-robot videos</span>
+          <p class="focus-card">
+            <b>Real-Robot AMR Systems</b>
+            <span>Build and debug the real system: chassis, motor drive, LiDAR, RGB-D camera, IMU, ROS 2 launch, Nav2 behavior, safety limits, and data replay.</span>
+          </p>
+          <p class="focus-card">
+            <b>SLAM / Multi-Sensor Mapping</b>
+            <span>Create reliable maps and field data using LiDAR, depth camera, IMU, RTAB-Map, FAST-LIO2, RViz, Web visualization, and rosbag workflows.</span>
+          </p>
+        </div>
+        <div class="build-evidence" aria-label="Hands-on engineering evidence">
+          <p class="evidence"><b>Mechanical</b><span>Hand-built AMR prototypes, sensor mounts, chassis layout, and field-test iteration.</span></p>
+          <p class="evidence"><b>Electrical</b><span>Motor drive, Jetson, LiDAR, RGB-D camera, IMU, CAN/serial wiring, and safety checks.</span></p>
+          <p class="evidence"><b>Software</b><span>ROS 2 packages, launch files, mapping, Nav2, Web tools, scripts, and reproducible notes.</span></p>
+          <p class="evidence"><b>Evaluation</b><span>Real robot images, videos, RViz/Web evidence, route dry-runs, and rosbag-based debugging.</span></p>
+        </div>
+      </section>
+
+      <section class="section reveal" id="reports" aria-labelledby="reports-title">
+        <div class="section-header">
+          <h2 id="reports-title">Notes / Reports</h2>
+          <p class="section-note">Technical entry points for recruiters and collaborators who want more detail.</p>
+        </div>
+        <ul class="reports">
+          <li>
+            <a href="RabbitRobot/projects/rabbitrobot-vln.html">VLN technical note</a>
+            <span>Language-conditioned navigation, deviation detection, semantic subgoals, real AMR execution, and recovery verification.</span>
+          </li>
+          <li>
+            <a href="RabbitRobot/projects/rabbitrobot-amr2.html">AMR2 system report</a>
+            <span>Hub-wheel servo platform, MID360, Fast-LIO, ICP, Nav2 MPPI, Web console, and safety validation.</span>
+          </li>
+          <li>
+            <a href="RabbitRobot/projects/rabbitrobot-coverage.html">Coverage planning note</a>
+            <span>Map-aware coverage input, known-free clipping, obstacle inflation, polygon areas, A* transitions, and dry-run workflow.</span>
+          </li>
+          <li>
+            <a href="RabbitRobot/projects/rabbitrobot-d435-l1-rtabmap.html">D435 / L1 / RTAB-Map note</a>
+            <span>RGB-D camera, LiDAR, external IMU, RTAB-Map / FAST-LIO2, point cloud visualization, and ROS 2 launch workflow.</span>
+          </li>
+          <li>
+            <a href="RabbitRobot/projects/robot-web-tools.html">Robot Web infrastructure</a>
+            <span>ROS 2 Web cockpit, map display, 3D robot view, navigation controls, remote debugging tools, and project documentation.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section reveal" id="contact" aria-labelledby="contact-title">
+        <div class="contact-panel">
+          <div>
+            <h2 id="contact-title">Contact</h2>
+            <p>
+              I am building toward a technically credible personal research homepage: less decoration, more robot evidence. For the full project archive, start with RabbitRobot.
+            </p>
+            <div class="contact-links" aria-label="Contact links">
+              <a href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="mailto:lijinghailjh@163.com">Email</a>
+              <a href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer">Bilibili</a>
+              <a href="https://blog.csdn.net/Dorian15" target="_blank" rel="noopener noreferrer">CSDN</a>
+            </div>
           </div>
-          <p class="entry-links">
-            <a href="RabbitRobot/">Project page</a>
-            /
-            <a href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">GitHub evidence</a>
-          </p>
-        </div>
-      </article>
-
-      <article class="entry">
-        <a class="thumb contain" href="RabbitRobot/projects/rabbitrobot-vln.html">
-          <img src="RabbitRobot/images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot architecture diagram" loading="lazy" decoding="async">
-        </a>
-        <div>
-          <span class="project-kicker">Research Direction</span>
-          <h3>VLN / VLR Research Line</h3>
-          <span class="meta">Long-horizon navigation · deviation detection · semantic subgoals · recovery verification</span>
-          <p class="note">
-            研究长程 VLN 中“走偏了如何发现、如何解释、如何恢复”的问题。展示从语言目标、视觉/地图 grounding 到真实 AMR 恢复验证的技术路线。
-          </p>
-          <div class="metric-row">
-            <span class="metric">Technical note</span>
-            <span class="metric">AMR verification</span>
-          </div>
-          <p class="entry-links">
-            <a href="RabbitRobot/projects/rabbitrobot-vln.html">VLN project</a>
-            /
-            <a href="RabbitRobot/#research">Research line</a>
-          </p>
-        </div>
-      </article>
-
-      <article class="entry">
-        <a class="thumb" href="RabbitRobot/projects/rabbitrobot-amr2.html">
-          <img src="RabbitRobot/images/rabbitrobot/amr2_coverage_web_console.gif" alt="AMR2 Web 3D coverage console" loading="lazy" decoding="async">
-        </a>
-        <div>
-          <span class="project-kicker">AMR / Coverage System</span>
-          <h3>AMR2 Coverage & Safety System</h3>
-          <span class="meta">Coverage planning · Web 3D console · Nav2 dry-run · DS20270C safety chain</span>
-          <p class="note">
-            把地图、底盘 footprint、覆盖区域输入、路径校验、Web 3D 预览和驱动器 dry-run 放进一条可验证链路，强调 AMR 系统工程能力。
-          </p>
-          <div class="metric-row">
-            <span class="metric">Web 3D</span>
-            <span class="metric">Self-built chassis</span>
-          </div>
-          <p class="entry-links">
-            <a href="RabbitRobot/projects/rabbitrobot-amr2.html">AMR2 details</a>
-            /
-            <a href="RabbitRobot/projects/rabbitrobot-coverage.html">Coverage report</a>
-          </p>
-        </div>
-      </article>
-
-      <p class="related-links">
-        Smaller tools:
-        <a href="RabbitRobot/projects/rabbitrobot-handlidar.html">HandLiDAR / mapping</a>
-        <span class="link-sep">/</span>
-        <a href="RabbitRobot/projects/robot-web-tools.html">Robot Web Tools</a>
-        <span class="link-sep">/</span>
-        <a href="RabbitRobot/projects/rabbitrobot-ros2-web.html">ROS2 Web console</a>
-      </p>
-    </section>
-
-    <section aria-labelledby="reports-title">
-      <div class="section-title">
-        <h2 id="reports-title">Notes / Reports</h2>
-      </div>
-      <ul class="notes-list">
-        <li><a href="RabbitRobot/projects/rabbitrobot-vln.html">VLN technical note</a><span>Long-horizon VLN, deviation detection, semantic subgoals, and real AMR recovery verification.</span></li>
-        <li><a href="RabbitRobot/projects/rabbitrobot-amr2.html">AMR2 system report</a><span>Real AMR platform, navigation chain, Web 3D console, footprint, and safety validation.</span></li>
-        <li><a href="RabbitRobot/projects/rabbitrobot-coverage.html">Coverage planning note</a><span>Coverage area input, map clipping, obstacle inflation, waypoint checks, and dry-run workflow.</span></li>
-        <li><a href="RabbitRobot/projects/robot-web-tools.html">Robot web infrastructure</a><span>ROS2 console, R550 dictionary, remote sync, and reusable robot-development tooling.</span></li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="contact-title">
-      <div class="section-title">
-        <h2 id="contact-title">Contact</h2>
-      </div>
-      <p class="contact-line">
-        <a href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <span class="link-sep">/</span>
-        <a href="mailto:lijinghailjh@163.com">Email</a>
-        <span class="link-sep">/</span>
-        <a href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer">Bilibili</a>
-        <span class="link-sep">/</span>
-        <a href="https://blog.csdn.net/Dorian15" target="_blank" rel="noopener noreferrer">CSDN</a>
-      </p>
-      <div class="contact-grid" aria-label="小红书、B站、微信联系方式">
-        <article class="contact-card">
-          <a class="contact-image" href="images/contact/xiaohongshu-card.jpg" target="_blank" rel="noopener noreferrer" aria-label="打开小红书联系方式大图">
-            <img src="images/contact/xiaohongshu-card.jpg" alt="小红书：理想主义的焊工日记，账号 RabbitRobot2025" loading="eager" decoding="async">
-          </a>
-          <h3>小红书</h3>
-          <p>理想主义的焊工日记 · 小红书号：RabbitRobot2025</p>
-        </article>
-        <article class="contact-card">
-          <a class="contact-image" href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer" aria-label="打开 B站主页">
-            <img src="images/contact/bilibili-qr.jpg" alt="B站：理想主义的焊工日记，UID 1339027047" loading="eager" decoding="async">
-          </a>
-          <h3>B站</h3>
-          <p><a href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer">UID：1339027047</a></p>
-        </article>
-        <article class="contact-card">
-          <a class="contact-image" href="images/contact/wechat-qr.png" target="_blank" rel="noopener noreferrer" aria-label="打开微信二维码大图">
-            <img src="images/contact/wechat-qr.png" alt="微信：理想主义的焊工日记二维码" loading="eager" decoding="async">
-          </a>
-          <h3>微信</h3>
-          <p>扫码添加我为朋友</p>
-        </article>
-      </div>
-    </section>
-
-    <section aria-labelledby="friends-title">
-      <div class="section-title">
-        <h2 id="friends-title">项目入口 / 友情链接</h2>
-      </div>
-      <p class="section-lead">
-        两个长期维护的公开入口，分别记录真实机器人平台和 AI 校园文化产品原型。
-      </p>
-      <div class="friend-link-grid">
-        <a class="friend-link-card" href="https://lijinghai.github.io/RabbitRobot/" aria-label="打开 RabbitRobot 全系列机器人主页">
-          <span class="friend-link-mark" aria-hidden="true">
-            <img src="RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png" alt="">
-          </span>
-          <span class="friend-link-body">
-            <span class="friend-link-kicker">Robotics / VLN</span>
-            <span class="friend-link-row">
-              <strong>RabbitRobot</strong>
-              <span class="friend-link-status">LIVE</span>
+          <a class="project-door" href="RabbitRobot/" aria-label="Open RabbitRobot full project homepage">
+            <span class="project-door-row">
+              <img src="RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png" alt="" aria-hidden="true">
+              <span>
+                <strong>RabbitRobot</strong>
+                <span>Detailed project archive</span>
+              </span>
             </span>
-            <span class="friend-link-note">真实 AMR、ROS 2、SLAM、多传感器建图与 VLN 主线。</span>
-            <span class="friend-link-url">https://lijinghai.github.io/RabbitRobot/</span>
-          </span>
-          <span class="friend-link-arrow" aria-hidden="true">&rarr;</span>
-        </a>
-        <a class="friend-link-card" href="https://lijinghai.github.io/YAVIS" aria-label="打开 YAVIS 扬维斯项目主页">
-          <span class="friend-link-mark" aria-hidden="true">YA</span>
-          <span class="friend-link-body">
-            <span class="friend-link-kicker">AI / Campus Culture</span>
-            <span class="friend-link-row">
-              <strong>YAVIS 扬维斯</strong>
-              <span class="friend-link-status">LIVE</span>
-            </span>
-            <span class="friend-link-note">AI 语音交互与扬州大学历史文化结合的校园陪伴玩偶项目。</span>
-            <span class="friend-link-url">https://lijinghai.github.io/YAVIS</span>
-          </span>
-          <span class="friend-link-arrow" aria-hidden="true">&rarr;</span>
-        </a>
-      </div>
-    </section>
+            <p>Real AMR, ROS 2, SLAM, multi-sensor mapping, coverage planning, Web tools, and VLN research line.</p>
+          </a>
+        </div>
+        <div class="extra-links">
+          <span>Other public build:</span>
+          <a href="YAVIS/">YAVIS</a>
+          <a href="RabbitRobot/projects/rabbitrobot-ros2-web.html">ROS2 Web console</a>
+          <a href="RabbitRobot/projects/rabbitrobot-handlidar.html">HandLiDAR</a>
+        </div>
+      </section>
 
-    <footer>
-      © 2026 Jinghai Li · 算个文科生吧 · RabbitRobot
-    </footer>
-  </main>
+      <footer>
+        © 2026 Jinghai Li · Robotics / VLN / AMR Systems · RabbitRobot
+      </footer>
+    </main>
+  </div>
+
   <script>
     (() => {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
@@ -1568,14 +1542,12 @@
       document.documentElement.classList.add("has-js");
 
       const targets = [
-        document.querySelector(".intro"),
-        ...document.querySelectorAll("main > section"),
-        ...document.querySelectorAll(".entry, .focus-card, .notes-list li")
+        ...document.querySelectorAll(".reveal"),
+        ...document.querySelectorAll(".work-item, .focus-card, .reports li")
       ].filter(Boolean);
 
       targets.forEach((target, index) => {
-        target.classList.add("reveal");
-        target.style.setProperty("--reveal-delay", `${Math.min(index * 24, 180)}ms`);
+        target.style.setProperty("--reveal-delay", `${Math.min(index * 18, 160)}ms`);
       });
 
       if (!("IntersectionObserver" in window)) {
@@ -1588,7 +1560,6 @@
           if (!entry.isIntersecting) {
             return;
           }
-
           entry.target.classList.add("is-visible");
           observer.unobserve(entry.target);
         });
