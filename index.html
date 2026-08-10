@@ -366,37 +366,66 @@
     }
 
     .rabbit-button {
-      flex-direction: column;
-      align-items: flex-start;
-      min-width: 210px;
-      min-height: 62px;
-      padding: 11px 22px 12px;
-      border: 1px solid rgba(31, 41, 51, .94);
-      color: #fff;
-      background: var(--dark);
-      box-shadow: 0 12px 28px rgba(31, 41, 51, .18), inset 4px 0 0 var(--accent);
+      gap: 12px;
+      justify-content: flex-start;
+      min-width: 246px;
+      min-height: 56px;
+      padding: 10px 13px;
+      border: 1px solid rgba(214, 106, 47, .30);
+      color: var(--dark);
+      background: linear-gradient(180deg, #fffdf9 0%, #fff8ef 100%);
+      box-shadow: 0 9px 22px rgba(31, 41, 51, .08);
     }
 
     .button-eyebrow {
-      color: rgba(255, 215, 184, .92);
+      color: #a84f22;
       font-size: 10px;
       font-weight: 800;
-      letter-spacing: .08em;
+      letter-spacing: .06em;
       line-height: 1.1;
       text-transform: uppercase;
     }
 
+    .button-copy {
+      display: flex;
+      flex: 1 1 auto;
+      min-width: 0;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
     .button-title {
       margin-top: 3px;
-      font-size: 18px;
+      color: var(--dark);
+      font-size: 16px;
       line-height: 1.15;
     }
 
-    .button-title::after {
-      margin-left: 8px;
-      color: rgba(255, 215, 184, .92);
-      content: "->";
-      font-size: 15px;
+    .rabbit-button-icon {
+      flex: 0 0 auto;
+      width: 34px;
+      height: 34px;
+      padding: 4px;
+      border: 1px solid rgba(214, 106, 47, .18);
+      border-radius: 50%;
+      background: #fff;
+      object-fit: contain;
+    }
+
+    .button-arrow {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-left: 2px;
+      border-radius: 50%;
+      color: #a84f22;
+      background: rgba(214, 106, 47, .10);
+      font-size: 16px;
+      line-height: 1;
+      transition: color .18s ease, background-color .18s ease, transform .2s ease;
     }
 
     .secondary-button {
@@ -405,30 +434,26 @@
       background: rgba(255, 255, 255, .72);
     }
 
-    .rabbit-button::after {
-      position: absolute;
-      top: -40%;
-      left: -45%;
-      width: 34%;
-      height: 180%;
-      background: rgba(255, 255, 255, .28);
-      content: "";
-      transform: translateX(-180%) rotate(18deg);
-      transition: transform .45s ease;
-    }
-
     .rabbit-button:hover,
     .rabbit-button:focus {
-      color: #fff;
-      background: var(--accent);
-      border-color: var(--accent);
-      box-shadow: 0 16px 34px rgba(214, 106, 47, .24), inset 4px 0 0 rgba(255, 255, 255, .26);
+      color: var(--dark);
+      background: #fff;
+      border-color: rgba(214, 106, 47, .58);
+      box-shadow: 0 13px 30px rgba(214, 106, 47, .16);
       transform: translateY(-1px);
     }
 
-    .rabbit-button:hover::after,
-    .rabbit-button:focus::after {
-      transform: translateX(430%) rotate(18deg);
+    .rabbit-button:hover .button-arrow,
+    .rabbit-button:focus .button-arrow {
+      color: #fff;
+      background: var(--accent);
+      transform: translateX(2px);
+    }
+
+    .rabbit-button:focus-visible,
+    .secondary-button:focus-visible {
+      outline: 2px solid rgba(168, 79, 34, .55);
+      outline-offset: 3px;
     }
 
     .secondary-button:hover,
@@ -1094,8 +1119,12 @@
         </p>
         <div class="hero-actions">
           <a class="rabbit-button" href="RabbitRobot/" aria-label="Open RabbitRobot main project page">
-            <span class="button-eyebrow">Self-built Main Project</span>
-            <span class="button-title">RabbitRobot</span>
+            <img class="rabbit-button-icon" src="RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png" alt="" aria-hidden="true">
+            <span class="button-copy">
+              <span class="button-eyebrow">Project Homepage</span>
+              <span class="button-title">RabbitRobot</span>
+            </span>
+            <span class="button-arrow" aria-hidden="true">&rarr;</span>
           </a>
           <a class="secondary-button" href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a class="secondary-button" href="mailto:lijinghailjh@163.com">Email</a>
