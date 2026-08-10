@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>扬维斯 YAVIS | AI x 扬州大学历史文化</title>
+  <meta name="description" content="扬维斯 YAVIS 是一款将 AI 语音交互与扬州大学历史文化相结合的校园陪伴玩偶，让扬大校史、校园故事与校友记忆可以被听见、被讲述、被陪伴。">
+  <meta property="og:title" content="扬维斯 YAVIS | AI x 扬州大学历史文化">
+  <meta property="og:description" content="让扬州大学的历史文化通过 AI 被听见。">
+  <meta property="og:image" content="https://lijinghai.github.io/images/yavis/yzu-main-campus.png">
+  <meta property="og:url" content="https://lijinghai.github.io/YAVIS/">
+  <link rel="canonical" href="https://lijinghai.github.io/YAVIS/">
+  <link rel="icon" href="../images/favicon.ico">
+  <style>
+    :root {
+      --ink: #07120d;
+      --ink-2: #102119;
+      --paper: #f7f4e9;
+      --paper-2: #ece6d4;
+      --jade: #1e8f6a;
+      --jade-dark: #0a5c45;
+      --gold: #d8a943;
+      --red: #b9332d;
+      --sky: #6fcbd2;
+      --white: #ffffff;
+      --muted: #657267;
+      --line: rgba(255, 255, 255, 0.22);
+      --shadow: 0 24px 70px rgba(3, 17, 11, 0.28);
+      --radius: 8px;
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      background:
+        linear-gradient(90deg, rgba(7, 18, 13, 0.04) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(7, 18, 13, 0.04) 1px, transparent 1px),
+        var(--paper);
+      background-size: 42px 42px;
+    }
+
+    .nav {
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      color: var(--white);
+      background: rgba(7, 18, 13, 0.42);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      color: var(--ink);
+      background: linear-gradient(135deg, var(--gold), #fff0a8 45%, var(--jade));
+      border-radius: 8px;
+      box-shadow: 0 0 26px rgba(216, 169, 67, 0.35);
+    }
+
+    .brand span {
+      display: block;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .nav-links a {
+      transition: color 160ms ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-action {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 16px;
+      color: var(--ink);
+      background: var(--gold);
+      border-radius: 8px;
+      font-weight: 800;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 88svh;
+      display: flex;
+      align-items: center;
+      color: var(--white);
+      background-image:
+        linear-gradient(90deg, rgba(4, 13, 9, 0.86) 0%, rgba(4, 13, 9, 0.62) 40%, rgba(4, 13, 9, 0.14) 100%),
+        linear-gradient(180deg, rgba(4, 13, 9, 0.22), rgba(4, 13, 9, 0.86)),
+        url("../images/yavis/yzu-main-campus.png");
+      background-position: center;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, transparent 0 7%, rgba(255, 255, 255, 0.08) 7.15%, transparent 7.3%),
+        linear-gradient(0deg, transparent 0 12%, rgba(255, 255, 255, 0.07) 12.12%, transparent 12.28%);
+      background-size: 180px 180px;
+      mix-blend-mode: screen;
+      opacity: 0.42;
+    }
+
+    #signal-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.78;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: calc(100% - 48px);
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 112px 0 64px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      padding: 7px 12px;
+      color: #f8eab6;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 999px;
+      backdrop-filter: blur(12px);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .signal-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      box-shadow: 0 0 18px var(--gold);
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 840px;
+      margin-bottom: 20px;
+      font-size: 78px;
+      line-height: 1.03;
+      font-weight: 900;
+      letter-spacing: 0;
+    }
+
+    .hero-lead {
+      max-width: 760px;
+      margin-bottom: 28px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 22px;
+      line-height: 1.75;
+      overflow-wrap: anywhere;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 38px;
+    }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.30);
+      font-weight: 800;
+      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button.primary {
+      color: var(--ink);
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .button.secondary {
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      max-width: 820px;
+      border-top: 1px solid rgba(255, 255, 255, 0.26);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+      background: rgba(7, 18, 13, 0.22);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-stat {
+      min-height: 92px;
+      padding: 16px 18px;
+      border-right: 1px solid rgba(255, 255, 255, 0.20);
+    }
+
+    .hero-stat:last-child {
+      border-right: 0;
+    }
+
+    .hero-stat strong {
+      display: block;
+      color: #ffe7a0;
+      font-size: 25px;
+      line-height: 1.2;
+    }
+
+    .hero-stat span {
+      display: block;
+      margin-top: 4px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 13px;
+    }
+
+    .section {
+      position: relative;
+      padding: 96px 0;
+    }
+
+    .section.dark {
+      color: var(--white);
+      background:
+        linear-gradient(135deg, rgba(185, 51, 45, 0.26), transparent 30%),
+        linear-gradient(240deg, rgba(216, 169, 67, 0.18), transparent 34%),
+        var(--ink);
+    }
+
+    .section.jade {
+      color: var(--white);
+      background:
+        linear-gradient(120deg, rgba(216, 169, 67, 0.16), transparent 36%),
+        linear-gradient(0deg, rgba(255, 255, 255, 0.06), transparent),
+        var(--jade-dark);
+    }
+
+    .wrap {
+      width: calc(100% - 48px);
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      max-width: 820px;
+      margin-bottom: 42px;
+    }
+
+    .kicker {
+      margin-bottom: 10px;
+      color: var(--red);
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .dark .kicker,
+    .jade .kicker {
+      color: #ffe7a0;
+    }
+
+    h2 {
+      margin-bottom: 14px;
+      font-size: 42px;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .section-title p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 18px;
+      overflow-wrap: anywhere;
+    }
+
+    .dark .section-title p,
+    .jade .section-title p {
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .culture-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .image-stage {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      background: var(--ink);
+    }
+
+    .image-stage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-stage .caption {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      padding: 18px;
+      color: var(--white);
+      background: rgba(7, 18, 13, 0.70);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      backdrop-filter: blur(16px);
+    }
+
+    .caption strong {
+      display: block;
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    .caption span {
+      display: block;
+      margin-top: 6px;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 14px;
+    }
+
+    .culture-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .culture-card {
+      padding: 22px;
+      border-radius: 8px;
+      background: var(--white);
+      border: 1px solid rgba(7, 18, 13, 0.10);
+      box-shadow: 0 12px 34px rgba(7, 18, 13, 0.08);
+    }
+
+    .culture-card .number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 12px;
+      color: var(--white);
+      background: var(--jade-dark);
+      border-radius: 8px;
+      font-weight: 900;
+    }
+
+    .culture-card h3 {
+      margin-bottom: 8px;
+      font-size: 22px;
+      line-height: 1.3;
+    }
+
+    .culture-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.20);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+    }
+
+    .timeline-item {
+      min-height: 260px;
+      padding: 28px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+    }
+
+    .timeline-item time {
+      display: block;
+      margin-bottom: 16px;
+      color: #ffe7a0;
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    .timeline-item p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .visual-wall {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      grid-auto-rows: 210px;
+      gap: 14px;
+    }
+
+    .visual-tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      background: var(--ink);
+      box-shadow: 0 14px 36px rgba(7, 18, 13, 0.16);
+    }
+
+    .visual-tile.large {
+      grid-row: span 2;
+    }
+
+    .visual-tile.wide {
+      grid-column: span 2;
+    }
+
+    .visual-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 500ms ease, filter 500ms ease;
+    }
+
+    .visual-tile:hover img {
+      transform: scale(1.04);
+      filter: saturate(1.08);
+    }
+
+    .visual-tile label {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      max-width: calc(100% - 24px);
+      padding: 7px 10px;
+      color: var(--white);
+      background: rgba(7, 18, 13, 0.70);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 800;
+      backdrop-filter: blur(12px);
+    }
+
+    .engine-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .engine-card {
+      min-height: 290px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(16px);
+    }
+
+    .engine-card .line {
+      width: 52px;
+      height: 4px;
+      background: var(--gold);
+    }
+
+    .engine-card h3 {
+      margin: 26px 0 10px;
+      font-size: 22px;
+    }
+
+    .engine-card p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.76);
+    }
+
+    .engine-card strong {
+      color: #ffe7a0;
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .scenario-card {
+      position: relative;
+      min-height: 380px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      border-radius: 8px;
+      color: var(--white);
+      background: var(--ink);
+      box-shadow: var(--shadow);
+    }
+
+    .scenario-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.74;
+      transition: transform 500ms ease;
+    }
+
+    .scenario-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .scenario-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(7, 18, 13, 0.05), rgba(7, 18, 13, 0.92));
+    }
+
+    .scenario-content {
+      position: relative;
+      z-index: 1;
+      padding: 24px;
+    }
+
+    .scenario-content h3 {
+      margin-bottom: 10px;
+      font-size: 25px;
+    }
+
+    .scenario-content p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .prototype {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .device-panel {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .device-panel img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.18);
+    }
+
+    .prototype-copy h2 {
+      color: var(--white);
+    }
+
+    .prototype-copy p {
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 18px;
+    }
+
+    .spec-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .spec {
+      padding: 16px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.17);
+    }
+
+    .spec strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #ffe7a0;
+    }
+
+    .spec span {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 14px;
+    }
+
+    .voice-strip {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+      padding: 44px;
+      color: var(--white);
+      background:
+        linear-gradient(120deg, rgba(185, 51, 45, 0.74), rgba(10, 92, 69, 0.88)),
+        url("../images/yavis/yzu-campus-axis.jpg");
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .voice-strip h2 {
+      margin-bottom: 8px;
+    }
+
+    .voice-strip p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.80);
+    }
+
+    .voice-card {
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 8px;
+      background: rgba(7, 18, 13, 0.56);
+      backdrop-filter: blur(14px);
+    }
+
+    .voice-card .wake {
+      display: block;
+      color: #ffe7a0;
+      font-size: 32px;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .voice-card .reply {
+      margin-top: 16px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 18px;
+    }
+
+    .source-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .source-list a {
+      min-height: 86px;
+      padding: 16px;
+      border-radius: 8px;
+      color: var(--white);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .source-list strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #ffe7a0;
+    }
+
+    .source-list span {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 32px 0;
+      color: rgba(255, 255, 255, 0.66);
+      background: #050b08;
+      font-size: 14px;
+    }
+
+    footer .wrap {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        padding: 0 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      h1 {
+        font-size: 58px;
+      }
+
+      .hero-lead {
+        font-size: 19px;
+      }
+
+      .hero-stats,
+      .timeline,
+      .engine-grid,
+      .scenario-grid,
+      .prototype,
+      .voice-strip,
+      .culture-grid,
+      .source-list {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .culture-grid,
+      .prototype,
+      .voice-strip {
+        align-items: stretch;
+      }
+
+      .timeline-item {
+        min-height: 230px;
+      }
+
+      .visual-wall {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .visual-tile.large,
+      .visual-tile.wide {
+        grid-column: auto;
+        grid-row: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        height: 64px;
+        padding: 0 16px;
+      }
+
+      .brand-mark {
+        width: 34px;
+        height: 34px;
+      }
+
+      .brand strong {
+        font-size: 15px;
+      }
+
+      .brand span {
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: 88svh;
+        align-items: flex-end;
+      }
+
+      .hero-inner {
+        width: calc(100% - 32px);
+        max-width: 1180px;
+        padding: 84px 0 28px;
+      }
+
+      .eyebrow {
+        font-size: 12px;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      h2 {
+        font-size: 31px;
+      }
+
+      .hero-lead,
+      .section-title p,
+      .prototype-copy p {
+        font-size: 16px;
+      }
+
+      .hero-lead {
+        max-width: 358px;
+      }
+
+      .hero-actions {
+        align-items: stretch;
+        max-width: 358px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-stats {
+        max-width: 358px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-stats,
+      .timeline,
+      .engine-grid,
+      .scenario-grid,
+      .prototype,
+      .device-panel,
+      .voice-strip,
+      .culture-grid,
+      .source-list,
+      .spec-list {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-stat {
+        min-height: auto;
+        padding: 14px 16px;
+        border-right: 1px solid rgba(255, 255, 255, 0.20);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+      }
+
+      .hero-stat:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .hero-stat:nth-last-child(-n + 2) {
+        border-bottom: 0;
+      }
+
+      .section {
+        padding: 68px 0;
+      }
+
+      .wrap {
+        width: calc(100% - 32px);
+        max-width: 1180px;
+      }
+
+      .image-stage {
+        min-height: 420px;
+      }
+
+      .visual-wall {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 240px;
+      }
+
+      .scenario-card {
+        min-height: 320px;
+      }
+
+      .voice-strip {
+        padding: 24px;
+      }
+
+      .voice-card .wake {
+        font-size: 26px;
+      }
+
+      footer .wrap {
+        display: block;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      #signal-canvas {
+        display: none;
+      }
+
+      .button,
+      .visual-tile img,
+      .scenario-card img {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="#top" aria-label="扬维斯 YAVIS 首页">
+        <div class="brand-mark">Y</div>
+        <div>
+          <strong>扬维斯 YAVIS</strong>
+          <span>AI x 扬州大学历史文化</span>
+        </div>
+      </a>
+      <div class="nav-links">
+        <a href="#culture">文化引擎</a>
+        <a href="#timeline">校史文脉</a>
+        <a href="#gallery">视觉画廊</a>
+        <a href="#prototype">产品原型</a>
+        <a class="nav-action" href="#wake">唤醒小扬同学</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <canvas id="signal-canvas" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <div class="eyebrow"><span class="signal-dot"></span>Campus Memory AI Companion</div>
+        <h1>扬维斯 YAVIS</h1>
+        <p class="hero-lead">一款将 AI 语音交互与扬州大学历史文化相结合的校园陪伴玩偶，让百年校史、校园地标、学院故事与校友记忆可以被听见、被讲述、被陪伴。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#culture">看 AI 如何讲扬大故事</a>
+          <a class="button secondary" href="#gallery">进入视觉画廊</a>
+        </div>
+        <div class="hero-stats" aria-label="扬维斯核心信息">
+          <div class="hero-stat">
+            <strong>1902</strong>
+            <span>扬大文脉可追溯至近代教育源头</span>
+          </div>
+          <div class="hero-stat">
+            <strong>1992</strong>
+            <span>六校合并组建新的扬州大学</span>
+          </div>
+          <div class="hero-stat">
+            <strong>坚苦自立</strong>
+            <span>校训精神进入 AI 文化人格</span>
+          </div>
+          <div class="hero-stat">
+            <strong>小扬同学</strong>
+            <span>日常语音唤醒词</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="culture">
+        <div class="wrap">
+          <div class="section-title">
+            <div class="kicker">AI x University Culture</div>
+            <h2>不是把 AI 放进玩偶，而是把扬大的历史文化变成可对话的陪伴。</h2>
+            <p>扬维斯的内容核心不是通用聊天，而是围绕扬州大学的校史沿革、校训精神、校园地标、学院故事、学习成长和校友记忆，构建一个有母校气息的 AI 校园伙伴。</p>
+          </div>
+
+          <div class="culture-grid">
+            <div class="image-stage">
+              <img src="../images/yavis/yzu-modern-lake.webp" alt="扬州大学校园湖景与现代建筑" loading="lazy">
+              <div class="caption">
+                <strong>让校园文化从资料页走进真实对话</strong>
+                <span>从“你知道扬大吗”到“小扬同学，给我讲讲这座校园”。</span>
+              </div>
+            </div>
+
+            <div class="culture-list">
+              <article class="culture-card">
+                <span class="number">01</span>
+                <h3>校史问答</h3>
+                <p>把学校沿革、重要节点、校训校风整理成知识库，让用户通过语音自然提问。</p>
+              </article>
+              <article class="culture-card">
+                <span class="number">02</span>
+                <h3>校园故事</h3>
+                <p>将地标、校区、学院、图书馆、食堂、活动节点转化为有画面感的讲述。</p>
+              </article>
+              <article class="culture-card">
+                <span class="number">03</span>
+                <h3>学习陪伴</h3>
+                <p>围绕复习、背词、考研、竞赛、成长规划，提供更像校园伙伴的鼓励与建议。</p>
+              </article>
+              <article class="culture-card">
+                <span class="number">04</span>
+                <h3>校友记忆</h3>
+                <p>当校友再次唤醒它，听见的是“欢迎回到扬大”的温暖回应。</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark" id="timeline">
+        <div class="wrap">
+          <div class="section-title">
+            <div class="kicker">Culture Timeline</div>
+            <h2>从百年文脉到 AI 校园伙伴。</h2>
+            <p>扬维斯把学校历史文化拆成可检索、可讲述、可唤醒的内容模块，让校史不只停留在展板上。</p>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-item">
+              <time>1902</time>
+              <h3>百年文脉</h3>
+              <p>从近代教育传统中延伸出的办学根系，成为 YAVIS 校史讲述的第一层底色。</p>
+            </article>
+            <article class="timeline-item">
+              <time>1992</time>
+              <h3>新扬大形成</h3>
+              <p>六所高校合并组建新的扬州大学，多学科、多校区、多记忆在同一校园身份下汇聚。</p>
+            </article>
+            <article class="timeline-item">
+              <time>校训</time>
+              <h3>坚苦自立</h3>
+              <p>把校训精神转化为学习陪伴中的表达方式，温暖但不空泛，亲切但不冒充官方。</p>
+            </article>
+            <article class="timeline-item">
+              <time>AI</time>
+              <h3>可对话传承</h3>
+              <p>通过语音唤醒、知识检索、大模型回答和实体玩偶形态，让校园文化拥有新的入口。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="wrap">
+          <div class="section-title">
+            <div class="kicker">Visual Gallery</div>
+            <h2>图像、声音、表情，一起组成“会讲扬大故事”的 AI 玩偶。</h2>
+            <p>宣传页采用校园影像、硬件原型、AI 交互架构和动态眼神素材，展示 YAVIS 从文化概念走向实体产品的路径。</p>
+          </div>
+
+          <div class="visual-wall" aria-label="扬维斯视觉画廊">
+            <figure class="visual-tile large">
+              <img src="../images/yavis/yzu-traditional-gate.jpg" alt="扬州大学传统校门建筑" loading="lazy">
+              <label>扬大历史文化入口</label>
+            </figure>
+            <figure class="visual-tile">
+              <img src="../images/yavis/emotion-happy.gif" alt="扬维斯开心表情动图" loading="lazy">
+              <label>开心回应</label>
+            </figure>
+            <figure class="visual-tile">
+              <img src="../images/yavis/emotion-thinking.gif" alt="扬维斯思考表情动图" loading="lazy">
+              <label>思考中</label>
+            </figure>
+            <figure class="visual-tile wide">
+              <img src="../images/yavis/yzu-campus-axis.jpg" alt="扬州大学校园建筑与道路" loading="lazy">
+              <label>校园空间与地标记忆</label>
+            </figure>
+            <figure class="visual-tile">
+              <img src="../images/yavis/device-display.jpg" alt="AI 语音设备显示屏原型" loading="lazy">
+              <label>表情屏原型</label>
+            </figure>
+            <figure class="visual-tile">
+              <img src="../images/yavis/prototype-wiring.jpg" alt="ESP32 AI 语音硬件接线图" loading="lazy">
+              <label>语音硬件底座</label>
+            </figure>
+            <figure class="visual-tile">
+              <img src="../images/yavis/emotion-love.gif" alt="扬维斯喜欢表情动图" loading="lazy">
+              <label>校友情感</label>
+            </figure>
+            <figure class="visual-tile">
+              <img src="../images/yavis/emotion-sleep.gif" alt="扬维斯睡觉表情动图" loading="lazy">
+              <label>日常陪伴</label>
+            </figure>
+            <figure class="visual-tile wide">
+              <img src="../images/yavis/ai-mcp-graph.jpg" alt="AI 语音交互与 MCP 架构图" loading="lazy">
+              <label>AI 交互与知识能力扩展</label>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="section jade">
+        <div class="wrap">
+          <div class="section-title">
+            <div class="kicker">Knowledge Engine</div>
+            <h2>一个面向扬大的 AI 文化知识引擎。</h2>
+            <p>YAVIS 的真正价值，是把校园历史文化整理成可更新、可检索、可陪伴的知识系统。</p>
+          </div>
+
+          <div class="engine-grid">
+            <article class="engine-card">
+              <div>
+                <div class="line"></div>
+                <h3>校史文脉库</h3>
+                <p>整理学校沿革、重要年份、校训校徽、办学精神，回答“扬大从哪里来”。</p>
+              </div>
+              <strong>History</strong>
+            </article>
+            <article class="engine-card">
+              <div>
+                <div class="line"></div>
+                <h3>校园地图库</h3>
+                <p>沉淀校区、地标、图书馆、食堂、宿舍等空间内容，回答“我在扬大哪里”。</p>
+              </div>
+              <strong>Campus</strong>
+            </article>
+            <article class="engine-card">
+              <div>
+                <div class="line"></div>
+                <h3>学习成长库</h3>
+                <p>提供复习规划、学习鼓励、竞赛备考、考研建议，让 AI 陪伴更有实际帮助。</p>
+              </div>
+              <strong>Study</strong>
+            </article>
+            <article class="engine-card">
+              <div>
+                <div class="line"></div>
+                <h3>校友记忆库</h3>
+                <p>收集不涉及隐私的校园故事与共同记忆，让毕业后的重逢也有声音。</p>
+              </div>
+              <strong>Alumni</strong>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="section-title">
+            <div class="kicker">Scenes</div>
+            <h2>它可以出现在学生、校友和校园文化传播的多个场景。</h2>
+          </div>
+
+          <div class="scenario-grid">
+            <article class="scenario-card">
+              <img src="../images/yavis/yzu-main-campus.png" alt="扬州大学航拍校园" loading="lazy">
+              <div class="scenario-content">
+                <h3>新生初识扬大</h3>
+                <p>“小扬同学，扬大有哪些校区？图书馆怎么用？我应该先熟悉哪里？”</p>
+              </div>
+            </article>
+            <article class="scenario-card">
+              <img src="../images/yavis/yzu-modern-lake.webp" alt="扬州大学湖畔校园" loading="lazy">
+              <div class="scenario-content">
+                <h3>学生学习陪伴</h3>
+                <p>从番茄钟鼓励到复习规划，让 AI 的语气带一点校园伙伴的亲近感。</p>
+              </div>
+            </article>
+            <article class="scenario-card">
+              <img src="../images/yavis/yzu-traditional-gate.jpg" alt="扬州大学校门" loading="lazy">
+              <div class="scenario-content">
+                <h3>校友回到母校</h3>
+                <p>不是假装知道每个人的经历，而是用共同的校园记忆接住那句“我回来了”。</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark" id="prototype">
+        <div class="wrap prototype">
+          <div class="device-panel" aria-label="扬维斯产品原型素材">
+            <img src="../images/yavis/device-form.jpg" alt="AI 语音设备外形参考" loading="lazy">
+            <img src="../images/yavis/device-display.jpg" alt="AI 语音设备显示屏参考" loading="lazy">
+            <img src="../images/yavis/emotion-happy.gif" alt="开心动态眼神" loading="lazy">
+            <img src="../images/yavis/emotion-thinking.gif" alt="思考动态眼神" loading="lazy">
+          </div>
+          <div class="prototype-copy">
+            <div class="kicker">Prototype Stack</div>
+            <h2>实体玩偶是入口，AI 校园文化系统才是灵魂。</h2>
+            <p>YAVIS 基于 ESP32-S3 语音硬件、小智 AI 交互框架、自定义唤醒词和校园知识库二次开发。它可以听见“小扬同学”，通过语音把用户的问题带到服务端，再结合扬州大学历史文化知识进行回答。</p>
+            <div class="spec-list">
+              <div class="spec">
+                <strong>自定义唤醒</strong>
+                <span>“小扬同学”形成校园身份记忆点。</span>
+              </div>
+              <div class="spec">
+                <strong>语音交互</strong>
+                <span>ASR + LLM + TTS，让校史文化可自然对话。</span>
+              </div>
+              <div class="spec">
+                <strong>表情显示</strong>
+                <span>开心、思考、心动、休息等状态增强陪伴感。</span>
+              </div>
+              <div class="spec">
+                <strong>知识库扩展</strong>
+                <span>后续可持续补充校史、地标、学院和校友故事。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="wake">
+        <div class="wrap">
+          <div class="voice-strip">
+            <div>
+              <div class="kicker">Wake Word</div>
+              <h2>一句“小扬同学”，唤醒一段扬大记忆。</h2>
+              <p>对外传播时，YAVIS 的口号可以聚焦在“AI 让扬州大学历史文化活起来”。它不是学校官方发布渠道，而是一个以扬大文化为灵感的 AI 校园陪伴项目。</p>
+            </div>
+            <div class="voice-card">
+              <span class="wake">“小扬同学，给我讲讲扬大的故事。”</span>
+              <div class="reply">“你好，我是扬维斯 YAVIS。让我从扬大的百年文脉、校园地标和那些温暖的母校记忆开始讲起。”</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark">
+        <div class="wrap">
+          <div class="section-title">
+            <div class="kicker">Reference</div>
+            <h2>资料边界清楚，文化表达才可信。</h2>
+            <p>校园事实类内容应以扬州大学最新官方信息为准。YAVIS 可以讲述、陪伴和传播文化记忆，但不冒充学校官方部门发布通知、政策或承诺。</p>
+          </div>
+          <div class="source-list">
+            <a href="https://www.yzu.edu.cn/xxgk/xxjj.htm" target="_blank" rel="noopener">
+              <strong>学校简介</strong>
+              <span>扬州大学官网公开信息</span>
+            </a>
+            <a href="https://www.yzu.edu.cn/xxgk/lsyg.htm" target="_blank" rel="noopener">
+              <strong>历史沿革</strong>
+              <span>1902 文脉与 1992 合并等校史信息</span>
+            </a>
+            <a href="https://www.yzu.edu.cn/xxgk/ydbs.htm" target="_blank" rel="noopener">
+              <strong>扬大标识</strong>
+              <span>校训、校徽等文化标识资料</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <span>YAVIS / 扬维斯 - AI x 扬州大学历史文化概念宣传页</span>
+        <span>Built for https://lijinghai.github.io/YAVIS/</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const canvas = document.getElementById("signal-canvas");
+      if (!canvas || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+      const ctx = canvas.getContext("2d");
+      const points = [];
+      let width = 0;
+      let height = 0;
+      let frame = 0;
+
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        width = Math.max(1, Math.floor(rect.width * window.devicePixelRatio));
+        height = Math.max(1, Math.floor(rect.height * window.devicePixelRatio));
+        canvas.width = width;
+        canvas.height = height;
+        points.length = 0;
+        const count = window.innerWidth < 700 ? 36 : 72;
+        for (let i = 0; i < count; i += 1) {
+          points.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.42 * window.devicePixelRatio,
+            vy: (Math.random() - 0.5) * 0.42 * window.devicePixelRatio,
+            r: (Math.random() * 1.4 + 0.8) * window.devicePixelRatio
+          });
+        }
+      }
+
+      function step() {
+        frame += 1;
+        ctx.clearRect(0, 0, width, height);
+        ctx.globalCompositeOperation = "lighter";
+
+        for (const p of points) {
+          p.x += p.vx;
+          p.y += p.vy;
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+        }
+
+        for (let i = 0; i < points.length; i += 1) {
+          const a = points[i];
+          for (let j = i + 1; j < points.length; j += 1) {
+            const b = points[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const d = Math.sqrt(dx * dx + dy * dy);
+            const limit = 150 * window.devicePixelRatio;
+            if (d < limit) {
+              const alpha = (1 - d / limit) * 0.20;
+              ctx.strokeStyle = "rgba(216, 169, 67, " + alpha + ")";
+              ctx.lineWidth = 1 * window.devicePixelRatio;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        for (const p of points) {
+          const pulse = 0.45 + Math.sin(frame / 40 + p.x) * 0.18;
+          ctx.fillStyle = "rgba(111, 203, 210, " + pulse + ")";
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      resize();
+      window.addEventListener("resize", resize, { passive: true });
+      step();
+    })();
+  </script>
+</body>
+</html>
