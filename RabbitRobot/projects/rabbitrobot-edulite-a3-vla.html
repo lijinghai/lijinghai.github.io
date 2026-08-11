@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EDULITE A3 LeRobot VLA Debug | RabbitRobot</title>
-  <meta name="description" content="RabbitRobot EDULITE A3 LeRobot VLA Debug 页面，记录使用 RobStride EDULITE_A3 / 灵足 A3 机械臂调试 LeRobot VLA pi0.5、MoveIt2/RViz 规划和真实机械臂具身操作链路。">
+  <title>EDULITE A3 LeRobot VLA Testbed | RabbitRobot</title>
+  <meta name="description" content="RabbitRobot EDULITE A3 LeRobot VLA Testbed：自制 3D 打印 7 自由度机械臂、Python SDK、ROS2 Control、MoveIt2/RViz、SocketCAN、重力补偿与 LeRobot pi0.5 接入调试记录。">
   <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
   <link rel="stylesheet" href="project-detail.css">
 </head>
@@ -25,51 +25,51 @@
 
   <header class="hero">
     <div>
-      <p class="kicker">Manipulation / VLA</p>
-      <h1>EDULITE A3 LeRobot VLA Debug</h1>
-      <p class="subtitle">灵足 A3 机械臂与 LeRobot VLA pi0.5 调试记录</p>
+      <p class="kicker">Manipulation / VLA / Real Arm</p>
+      <h1>EDULITE A3 <br class="mobile-break">LeRobot VLA <br class="mobile-break">Testbed</h1>
+      <p class="subtitle">自制 3D 打印机械臂<br>LeRobot pi0.5 <br class="mobile-break">真实具身操作平台</p>
       <p class="summary">
-        这条线补上 RabbitRobot 的具身操作能力：用 RobStride EDULITE_A3 / 灵足 A3 机械臂做真实机械臂 bring-up，结合 MoveIt2/RViz 规划界面和 LeRobot VLA pi0.5 调试，为后续“看见目标、理解语言、输出动作”的 VLA 实验准备真实平台。
+        这是 RabbitRobot 从“会移动、会导航”继续走向“能看见、能理解、能操作”的机械臂分支。我围绕灵足 A3 / EDULITE_A3 自己完成 3D 打印与装配，把 7 自由度真实机械臂接入 SocketCAN、Python SDK、ROS2 Control、MoveIt2/RViz 和 LeRobot pi0.5 调试链路，用真实硬件验证 VLA 不是只停留在论文或模拟器里。
       </p>
       <div class="meta-row">
         <span class="meta-pill">Time · 2026.04</span>
-        <span class="meta-pill">Platform · RobStride EDULITE_A3</span>
-        <span class="meta-pill">Model line · LeRobot VLA pi0.5</span>
-        <span class="meta-pill">Evidence · Real arm + MoveIt2</span>
+        <span class="meta-pill">Build · 自制 3D 打印机械臂</span>
+        <span class="meta-pill">Control · Python SDK + ROS2</span>
+        <span class="meta-pill">VLA · LeRobot pi0.5</span>
       </div>
       <div class="hero-actions">
         <a class="button primary" href="../index.html#projects">Back to RabbitRobot</a>
-        <a class="button" href="https://github.com/RobStride/EDULITE_A3" target="_blank" rel="noreferrer">EDULITE_A3 Repo</a>
-        <a class="button" href="../index.html#research">Research Line</a>
+        <a class="button" href="https://github.com/RobStride/EDULITE_A3" target="_blank" rel="noopener noreferrer">EDULITE_A3 Base</a>
+        <a class="button" href="rabbitrobot-arm.html">Arm Research Line</a>
       </div>
     </div>
     <figure class="hero-media">
-      <img src="../images/rabbitrobot/edulite_a3_lerobot_vla_demo.gif" alt="EDULITE A3 robotic arm real robot debugging demo">
-      <figcaption>灵足 A3 真实机械臂调试片段：先把运动、控制和现场操作跑起来，再逐步接入 LeRobot / VLA 的数据与策略验证。</figcaption>
+      <img src="../images/rabbitrobot/edulite_a3_lerobot_vla_demo.gif" alt="Self-built EDULITE A3 robotic arm moving during LeRobot VLA debugging" loading="eager">
+      <figcaption>真实机械臂调试片段：先把自制硬件、CAN 通信、关节控制和现场运动跑通，再把视觉、语言目标和动作策略接入 LeRobot / VLA 实验链路。</figcaption>
     </figure>
   </header>
 
   <main>
     <section class="section">
       <div class="container">
-        <p class="kicker">At A Glance</p>
-        <h2>项目定位</h2>
+        <p class="kicker">Recruiter Quick Read</p>
+        <h2>这不是一个只会跑 Demo 的机械臂项目</h2>
         <div class="proof-grid">
           <p class="proof-card">
-            <b>2026.04</b>
-            <span>新增真实机械臂调试线，补齐 RabbitRobot 从导航到操作的能力面。</span>
+            <b>7-DOF</b>
+            <span>6 个臂关节 + L7 夹爪，包含真实关节限位、电机方向、力矩/速度限制和末端执行。</span>
           </p>
           <p class="proof-card">
-            <b>EDULITE A3</b>
-            <span>使用 RobStride / 灵足 A3 机械臂作为桌面具身操作平台。</span>
+            <b>3D Printed</b>
+            <span>自己打印、装配和接线，硬件目录保留 STEP、3MF、线束图纸和组装 SOP。</span>
           </p>
           <p class="proof-card">
-            <b>LeRobot pi0.5</b>
-            <span>围绕 VLA 调试准备动作数据、视觉观察和策略接入链路。</span>
+            <b>200Hz</b>
+            <span>Python SDK 内置后台控制循环，做位置平滑、速度前馈、重力补偿和限位保护。</span>
           </p>
           <p class="proof-card">
             <b>MoveIt2</b>
-            <span>用 RViz / MotionPlanning 界面验证机械臂模型、规划组和运动约束。</span>
+            <span>真实硬件接入 ROS2 Control 与 MoveIt2/RViz，用规划界面验证可达性和轨迹执行。</span>
           </p>
         </div>
       </div>
@@ -77,28 +77,106 @@
 
     <section class="section is-soft">
       <div class="container">
-        <p class="kicker">VLA Chain</p>
-        <h2>从机械臂 bring-up 到 VLA 调试</h2>
+        <p class="kicker">What I Built</p>
+        <h2>我实际做了什么</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>硬件自制与装配</h3>
+            <p>把灵足 A3 机械臂从制造资料变成真实可调试平台：3D 打印结构件、装配关节、连接 Robstride 电机、处理供电、CAN 线束和夹爪执行器。</p>
+            <ul>
+              <li><code>hardware/3mf/Edulite_A3.3mf</code></li>
+              <li><code>hardware/step/Edulite_A3.step</code></li>
+              <li><code>hardware/wiring/</code> 与组装 SOP</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>纯 Python 控制 SDK</h3>
+            <p>构建可脱离 ROS 使用的机械臂控制层：SocketCAN 直连 Robstride 电机，支持关节控制、轨迹队列、状态读取、零力矩示教和多臂管理。</p>
+            <ul>
+              <li><code>ELA3Interface</code> 主接口</li>
+              <li><code>MoveJ</code> / <code>MoveL</code> / <code>JointCtrl</code></li>
+              <li><code>ArmManager</code> 多机械臂管理</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>ROS2 Control 与 MoveIt2</h3>
+            <p>把机械臂接到研究常用机器人软件栈：URDF、ros2_control 硬件接口、FollowJointTrajectory、MoveIt2 规划组、RViz 可视化和真实硬件 launch。</p>
+            <ul>
+              <li><code>el_a3_hardware</code> 硬件接口插件</li>
+              <li><code>el_a3_moveit_config</code> 规划配置</li>
+              <li><code>/arm_controller/follow_joint_trajectory</code></li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>VLA / LeRobot 接入调试</h3>
+            <p>围绕 LeRobot pi0.5 准备真实桌面操作链路，把相机观察、语言任务、动作轨迹和真实执行结果组织成后续可训练、可评估的数据闭环。</p>
+            <ul>
+              <li>视觉观察 + 语言目标 + 动作序列</li>
+              <li>真实失败样例和恢复分析</li>
+              <li>从导航 VLN 延伸到操作 VLA</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">System Map</p>
+        <h2>系统能力图</h2>
+        <div class="system-map" aria-label="EDULITE A3 VLA system map">
+          <div class="map-column">
+            <div class="map-node">
+              <b>自制硬件</b>
+              <span>3D 打印结构、线束、供电、7 个 Robstride 电机、L7 夹爪。</span>
+            </div>
+            <div class="map-node">
+              <b>底层通信</b>
+              <span>SocketCAN / SLCAN、CAN 2.0 扩展帧、1 Mbps、反馈接收线程。</span>
+            </div>
+          </div>
+          <div class="map-center">
+            <b>EDULITE A3<br>LeRobot VLA Testbed</b>
+            <span>真实机械臂具身操作验证平台</span>
+          </div>
+          <div class="map-column">
+            <div class="map-node">
+              <b>机器人软件栈</b>
+              <span>Python SDK、ROS2 Control、MoveIt2、RViz、FollowJointTrajectory。</span>
+            </div>
+            <div class="map-node">
+              <b>VLA 实验线</b>
+              <span>相机观察、语言目标、动作输出、成功/失败样例、LeRobot pi0.5。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">Control Chain</p>
+        <h2>从语言任务到真实机械臂动作</h2>
         <div class="pipeline">
           <article>
-            <h3>1. Arm Bring-up</h3>
-            <p>先确认灵足 A3 的关节、末端、供电和基础控制链路，保证真实机械臂可以稳定运动。</p>
+            <h3>1. Task</h3>
+            <p>把“抓取桌面物体”“移动到目标位置”这类语言目标整理为可复现实验任务。</p>
           </article>
           <article>
-            <h3>2. Motion Planning</h3>
-            <p>通过 MoveIt2 / RViz 规划界面检查 planning group、目标姿态、速度/加速度缩放和路径可达性。</p>
+            <h3>2. Observation</h3>
+            <p>采集机械臂视角/外部相机画面，保留物体、末端、桌面和失败状态。</p>
           </article>
           <article>
-            <h3>3. Data Capture</h3>
-            <p>围绕桌面物体、手眼观察和动作轨迹整理后续 LeRobot 需要的数据格式和实验场景。</p>
+            <h3>3. LeRobot pi0.5</h3>
+            <p>接入 VLA 策略调试，把视觉与语言条件转成动作或中间目标。</p>
           </article>
           <article>
-            <h3>4. VLA Policy</h3>
-            <p>将视觉观察、语言目标和动作输出接入 LeRobot VLA pi0.5 调试，验证策略到真实机械臂的落地路径。</p>
+            <h3>4. Planner / SDK</h3>
+            <p>将策略输出落到 MoveIt2 规划或 Python SDK 轨迹控制，处理速度、限位和可达性。</p>
           </article>
           <article>
-            <h3>5. Failure Review</h3>
-            <p>记录抓取失败、目标偏差、动作抖动和不可达姿态，形成后续训练/评估样例。</p>
+            <h3>5. Real Arm</h3>
+            <p>通过 CAN 下发到真实电机，记录关节反馈、力矩、执行偏差和恢复过程。</p>
           </article>
         </div>
       </div>
@@ -110,12 +188,12 @@
         <h2>真实调试画面</h2>
         <div class="evidence-grid">
           <figure>
-            <img src="../images/rabbitrobot/edulite_a3_real_arm_frame.jpg" alt="EDULITE A3 robotic arm real robot debugging frame">
-            <figcaption>真实机械臂调试现场：灵足 A3 与桌面物体、相机/观察环境共同构成后续 VLA 数据采集场景。</figcaption>
+            <img src="../images/rabbitrobot/edulite_a3_real_arm_frame.jpg" alt="Self-built EDULITE A3 robotic arm on the lab desk" loading="lazy" decoding="async">
+            <figcaption>自制 3D 打印机械臂实拍：桌面场景、末端执行器和物体共同构成后续 LeRobot 数据采集环境。</figcaption>
           </figure>
           <figure>
-            <img src="../images/rabbitrobot/edulite_a3_moveit_planning.jpg" alt="EDULITE A3 MoveIt2 RViz motion planning interface">
-            <figcaption>MoveIt2 / RViz MotionPlanning：检查 planning group、末端目标、关节状态和路径规划约束。</figcaption>
+            <img src="../images/rabbitrobot/edulite_a3_moveit_planning.jpg" alt="EDULITE A3 MoveIt2 RViz motion planning interface" loading="lazy" decoding="async">
+            <figcaption>MoveIt2 / RViz MotionPlanning：检查 planning group、末端目标、关节状态、碰撞约束和路径可达性。</figcaption>
           </figure>
         </div>
       </div>
@@ -124,14 +202,14 @@
     <section class="section is-soft">
       <div class="container grid-2">
         <div>
-          <p class="kicker">Research Position</p>
-          <h2>它和 VLN / RabbitRobot 主线的关系</h2>
-          <p>
-            机器狗和 AMR2 解决“到哪里去、怎么导航”的问题；灵足 A3 机械臂则把主线扩展到“到达后如何操作”。这让 RabbitRobot 不只展示移动导航，也开始覆盖视觉语言动作策略、桌面操作和真实机械臂执行。
-          </p>
-          <p>
-            当前页面记录的是调试阶段：真实机械臂已经进入公开展示，后续再逐步补充 LeRobot 数据采集、pi0.5 策略验证、动作成功/失败案例和可复现实验脚本。
-          </p>
+          <p class="kicker">Engineering Difficulty</p>
+          <h2>这个项目难在哪里</h2>
+          <ul class="highlight-list">
+            <li><b>机械、电子、控制、AI 同时打通：</b>不是只训练模型，也不是只搭页面，而是把 3D 打印硬件、电机总线、运动控制、规划软件和 VLA 接入放在同一台真实机器上。</li>
+            <li><b>真实机械臂比仿真更难：</b>需要处理关节方向、限位、速度、抖动、供电、线束、CAN 接口、反馈延迟和末端不可达等问题。</li>
+            <li><b>既能做底层，也能接研究：</b>底层有 CAN 驱动、200Hz 控制循环和 ros2_control；上层能接 MoveIt2、RViz、LeRobot pi0.5 和视觉语言动作任务。</li>
+            <li><b>把失败变成数据：</b>抓取偏差、轨迹抖动、目标不可达、恢复失败都可以沉淀为后续 VLA 训练与评估材料。</li>
+          </ul>
         </div>
         <aside>
           <p class="kicker">Stack / Keywords</p>
@@ -139,11 +217,15 @@
           <div class="stack">
             <span class="tag">EDULITE_A3</span>
             <span class="tag">灵足 A3</span>
-            <span class="tag">Robotic Arm</span>
-            <span class="tag">LeRobot</span>
-            <span class="tag">VLA pi0.5</span>
+            <span class="tag">3D Printing</span>
+            <span class="tag">SocketCAN</span>
+            <span class="tag">Python SDK</span>
+            <span class="tag">ROS2 Control</span>
             <span class="tag">MoveIt2</span>
             <span class="tag">RViz</span>
+            <span class="tag">Pinocchio RNEA</span>
+            <span class="tag">LeRobot pi0.5</span>
+            <span class="tag">VLA</span>
             <span class="tag">Embodied Manipulation</span>
           </div>
         </aside>
@@ -152,31 +234,109 @@
 
     <section class="section">
       <div class="container">
-        <p class="kicker">Next Steps</p>
-        <h2>后续会补充的证据</h2>
+        <p class="kicker">Code Evidence</p>
+        <h2>代码仓库里的硬证据</h2>
         <table class="interface-table">
           <thead>
             <tr>
-              <th>阶段</th>
-              <th>目标</th>
-              <th>公开证据</th>
+              <th>模块</th>
+              <th>我展示的能力</th>
+              <th>对应工程证据</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td>Hardware Manufacturing</td>
+              <td>从 3D 模型、打印文件、线束和 SOP 到真实机械臂装配。</td>
+              <td><code>hardware/step/</code>、<code>hardware/3mf/</code>、<code>hardware/wiring/</code>、<code>hardware/assembly_sop/</code></td>
+            </tr>
+            <tr>
+              <td>Python SDK</td>
+              <td>纯 Python 控制接口，支持关节控制、轨迹执行、反馈读取、重力补偿和多臂管理。</td>
+              <td><code>el_a3_sdk/el_a3_sdk/interface.py</code>、<code>trajectory.py</code>、<code>arm_manager.py</code></td>
+            </tr>
+            <tr>
+              <td>CAN Driver</td>
+              <td>SocketCAN / SLCAN 底层通信，直接面向 Robstride 电机反馈和控制帧。</td>
+              <td><code>can_driver.py</code>、<code>slcan_can_driver.py</code>、<code>scripts/auto_detect_can.py</code></td>
+            </tr>
+            <tr>
+              <td>ROS2 Control</td>
+              <td>真实硬件接口、控制器切换、调试 topic、关节轨迹 action 和零力矩控制器。</td>
+              <td><code>el_a3_hardware</code>、<code>ROS_INTERFACE_REFERENCE.md</code>、<code>HARDWARE_INTERFACE.md</code></td>
+            </tr>
+            <tr>
+              <td>MoveIt2 / RViz</td>
+              <td>URDF、planning group、运动学、OMPL 规划、真实硬件 MoveIt launch 与路点测试。</td>
+              <td><code>el_a3_moveit_config</code>、<code>test_moveit_waypoints.py</code>、<code>EDULITE-A3.urdf</code></td>
+            </tr>
+            <tr>
+              <td>Calibration / Safety</td>
+              <td>Pinocchio RNEA 重力补偿、惯量/重力标定、限位保护、零力矩拖动示教。</td>
+              <td><code>gravity_calibration.py</code>、<code>pinocchio_gravity_calibration.py</code>、<code>dynamics_calibration.py</code></td>
+            </tr>
+            <tr>
+              <td>Teleop / Data</td>
+              <td>Xbox 遥操作、主从跟随、多 CAN 调试，为 LeRobot 数据采集准备人工示教入口。</td>
+              <td><code>el_a3_teleop</code>、<code>teleop_master_slave.py</code>、<code>XBOX_HOW_TO_USE.md</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">Innovation</p>
+        <h2>创新点和招聘者应该看到的价值</h2>
+        <div class="feature-grid compact">
+          <article class="feature-card">
+            <h3>低成本真实 VLA 平台</h3>
+            <p>用自制 3D 打印机械臂承接 LeRobot pi0.5，而不是依赖昂贵工业臂，让 VLA 研究可以在真实桌面场景快速迭代。</p>
+          </article>
+          <article class="feature-card">
+            <h3>双栈控制架构</h3>
+            <p>同一台机械臂同时支持纯 Python SDK 和 ROS2/MoveIt2，既方便快速实验，也能接入标准机器人研究工具链。</p>
+          </article>
+          <article class="feature-card">
+            <h3>可观测的硬件调试</h3>
+            <p>通过关节状态、力矩反馈、重力补偿 topic、控制器状态和真实视频，把“为什么失败”变成可分析数据。</p>
+          </article>
+          <article class="feature-card">
+            <h3>从 VLN 到 VLA 的延伸</h3>
+            <p>RabbitRobot 的主线不是只做导航：AMR/机器狗负责“到达”，机械臂负责“操作”，共同服务真实具身智能系统。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Status</p>
+        <h2>当前状态与下一步</h2>
+        <table class="interface-table">
+          <thead>
+            <tr>
+              <th>阶段</th>
+              <th>已经完成 / 正在调试</th>
+              <th>后续会补的公开证据</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Hardware Bring-up</td>
+              <td>机械臂实体、关节、电机、线束、CAN 接口和基础运动已经进入实机调试。</td>
+              <td>更多装配细节、关键部件照片、接线图和安全边界记录。</td>
+            </tr>
+            <tr>
               <td>Control / Planning</td>
-              <td>整理灵足 A3 控制、MoveIt2 planning group 和末端执行器调试记录。</td>
-              <td>启动命令、RViz 配置、规划截图和真实运动视频。</td>
+              <td>Python SDK、ROS2 Control、MoveIt2/RViz 和真实硬件规划链路已具备展示证据。</td>
+              <td>控制器状态截图、轨迹误差记录、MoveIt 路点测试和完整 launch 流程。</td>
             </tr>
             <tr>
-              <td>LeRobot Data</td>
-              <td>采集视觉帧、动作序列和语言目标，形成可复现实验任务。</td>
-              <td>数据目录、任务说明、失败样例和 replay 记录。</td>
-            </tr>
-            <tr>
-              <td>VLA Evaluation</td>
-              <td>验证 pi0.5 策略在真实桌面操作中的动作质量和恢复能力。</td>
-              <td>成功率、动作稳定性、偏差分析和典型视频。</td>
+              <td>LeRobot VLA</td>
+              <td>围绕 pi0.5 做真实机械臂接入调试，准备视觉帧、语言目标和动作序列。</td>
+              <td>任务定义、数据集结构、replay 视频、成功/失败统计和策略评估结果。</td>
             </tr>
           </tbody>
         </table>
@@ -185,7 +345,7 @@
   </main>
 
   <footer class="footer">
-    <div class="container">RabbitRobot · EDULITE A3 LeRobot VLA Debug · 真实机械臂具身操作记录页。</div>
+    <div class="container">RabbitRobot · EDULITE A3 LeRobot VLA Testbed · 自制 3D 打印机械臂具身操作记录页。</div>
   </footer>
 </body>
 </html>
