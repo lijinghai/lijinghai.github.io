@@ -1448,9 +1448,9 @@
   <main id="top">
     <header class="paper-hero">
       <div class="hero-inner">
-        <p class="eyebrow">VLN Robot Project Page</p>
-        <h1 class="publication-title"><span class="title-line">RabbitRobot:</span> <span class="title-line">面向 VLN 的</span> <span class="title-line">真实机器人项目</span></h1>
-        <p class="publication-subtitle">A humanities-informed Vision-Language Navigation project suite for real AMR platforms, LiDAR mapping, ROS2 navigation, and embodied instruction following.</p>
+        <p class="eyebrow">AMR Foundation Project Page</p>
+        <h1 class="publication-title"><span class="title-line">RabbitRobot:</span> <span class="title-line">AMR 工程底座</span> <span class="title-line">与 VLN 下一步计划</span></h1>
+        <p class="publication-subtitle">A real AMR project archive for chassis, LiDAR mapping, ROS2 navigation, Web tools, coverage planning, and the next VLN / VLR research step.</p>
 
         <div class="authors" aria-label="作者">
           <a href="https://github.com/lijinghai" target="_blank" rel="noreferrer">算个文科生吧</a>
@@ -1529,7 +1529,7 @@
               </div>
               <h3>AMR2 轮毂伺服差速 AMR</h3>
               <p class="hardware-time"><time datetime="2026-07">2026.07</time> · 当前真车执行平台</p>
-              <p>新做的 AMR2 小车是 RabbitRobot 当前更重要的真车执行平台：从轮毂伺服、铝型材框架、MID360 安装位到 CAN 线束和导航脚本逐步收拢，再接入 Fast-LIO、ICP、Nav2 MPPI、速度平滑和近距离避障保护，为后续 VLN waypoint 执行、rosbag 回放和失败案例采集提供底座。</p>
+              <p>新做的 AMR2 小车是 RabbitRobot 更重要的真车执行平台：从轮毂伺服、铝型材框架、MID360 安装位到 CAN 线束和导航脚本逐步收拢，再接入 Fast-LIO、ICP、Nav2 MPPI、速度平滑和近距离避障保护，为后续 VLN waypoint 执行、rosbag 回放和失败案例采集提供底座。</p>
               <div class="hardware-actions">
                 <a class="hardware-detail-link" href="projects/rabbitrobot-amr2.html">查看项目介绍</a>
                 <a class="hardware-detail-link" href="projects/rabbitrobot-coverage.html">覆盖算法</a>
@@ -1680,8 +1680,8 @@
         <p class="section-kicker">Project Abstract</p>
         <h2 id="abstract-title" class="section-title">从一个能跑的机器人，推进到一个能听懂任务的机器人系统</h2>
         <div class="content">
-          <p>RabbitRobot 不是单个演示项目，而是一组围绕真实移动机器人逐步生长的工程和研究资产。它保留了从零件级搭建、结构打样、现场测试到软件链路整理的连续痕迹。现在它的主线正在转向 Vision-Language Navigation：让机器人把“去门口看一下”“绕开杂物到桌边”这类语言任务，落到地图、视觉观测、局部目标和 AMR2 真车动作上。</p>
-          <p>这个主页采用学术项目页的表达方式：先给出真实硬件、系统资源与图示，再展开 VLN 方法、项目矩阵、研究指标和迭代路线。它更像一篇持续更新的 project page，而不是只展示视觉气氛的作品集。</p>
+          <p>RabbitRobot 不是单个演示项目，而是一组围绕真实移动机器人逐步生长的工程和研究资产。它保留了从零件级搭建、结构打样、现场测试到软件链路整理的连续痕迹。2025 阶段先把 AMR 底盘、SLAM / Nav2、Web 控制台、覆盖路径和多传感器建图资料整理扎实；下一步再把 Vision-Language Navigation 接入真实机器人，让“去门口看一下”“绕开杂物到桌边”这类语言任务落到地图、视觉观测、局部目标和 AMR2 真车动作上。</p>
+          <p>这个主页采用学术项目页的表达方式：先给出真实硬件、系统资源与图示，再展开项目矩阵、工程闭环、后续 VLN 计划和迭代路线。它更像一篇持续更新的 project page，而不是只展示视觉气氛的作品集。</p>
         </div>
       </div>
     </section>
@@ -1723,14 +1723,14 @@
                 <th>Project</th>
                 <th>Time</th>
                 <th>Role</th>
-                <th>Current Focus</th>
+                <th>Focus / Next Value</th>
                 <th>Stack / Keywords</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><a class="project-link" href="projects/rabbitrobot-amr.html"><b>RabbitRobot_AMR</b>移动底盘与核心项目</a></td>
-                <td class="project-time"><time datetime="2025-06">2025.06-2026</time><span>底盘主线</span></td>
+                <td class="project-time"><time datetime="2025-06">2025.06-2026</time><span>底盘平台</span></td>
                 <td>核心实验平台</td>
                 <td>底盘控制、建图、导航、局部规划和真实数据采集。</td>
                 <td><span class="tag-list"><span class="tag">ROS2</span><span class="tag">Nav2</span><span class="tag">FAST-LIO2</span><span class="tag">Point-LIO2</span></span></td>
@@ -1738,8 +1738,8 @@
               <tr>
                 <td><a class="project-link" href="projects/rabbitrobot-amr2.html"><b>RabbitRobot_AMR2</b>轮毂伺服真车平台</a></td>
                 <td class="project-time"><time datetime="2026-07">2026.07</time><span>当前真车</span></td>
-                <td>VLN 真车执行底座</td>
-                <td>用 DS20270C CAN 轮毂伺服差速底盘、MID360、Fast-LIO、ICP、Nav2 MPPI、速度平滑和避障保护，承接 VLN waypoint 的真实执行与 rosbag 数据回收。</td>
+                <td>后续 VLN 真车执行底座</td>
+                <td>用 DS20270C CAN 轮毂伺服差速底盘、MID360、Fast-LIO、ICP、Nav2 MPPI、速度平滑和避障保护，先跑稳 AMR 执行层，再承接后续 VLN waypoint 的真实执行与 rosbag 数据回收。</td>
                 <td><span class="tag-list"><span class="tag">Hub-Wheel AMR</span><span class="tag">DS20270C</span><span class="tag">MID360</span><span class="tag">Nav2 MPPI</span><span class="tag">Collision Monitor</span></span></td>
               </tr>
               <tr>
@@ -1851,7 +1851,7 @@
               <ul>
                 <li>感知链路：MID360 激光/IMU 输入，Fast-LIO 输出里程计与点云，再转成 <code>/scan</code> 给定位和局部导航使用。</li>
                 <li>执行链路：<code>/cmd_vel_nav</code> 经 velocity_smoother 与 collision_monitor 后进入 <code>/cmd_vel_smooth</code>，避免绕过平滑和安全保护。</li>
-                <li>面向 VLN：把语言策略生成的 waypoint 交给真车执行，并回收轨迹、状态和失败样例。</li>
+                <li>后续面向 VLN：把语言策略生成的 waypoint 交给真车执行，并回收轨迹、状态和失败样例。</li>
               </ul>
               <a class="repo-link" href="projects/rabbitrobot-amr2.html">Project Details</a>
             </div>
@@ -1903,11 +1903,11 @@
     <section id="research" class="section" aria-labelledby="research-title">
       <div class="container research-grid">
         <div>
-          <p class="section-kicker center">Current Focus · VLN</p>
-          <h2 id="research-title" class="section-title">Vision-Language Navigation for Real AMR Robots</h2>
+          <p class="section-kicker center">Next Plan · VLN</p>
+          <h2 id="research-title" class="section-title">Vision-Language Navigation as the Next Step for Real AMR Robots</h2>
           <div class="content">
-            <p>当前最适合作为论文型主线推进的问题，是把 RabbitRobot AMR2、手持雷达地图、Web 控制台和真实室内场景整理成一个小而真实的 VLN 实验平台。机器人不只接收坐标点，而是接收自然语言任务，再把语言中的目标、约束和路线偏好 grounding 到视觉/地图观测上。</p>
-            <p>短期路线是先用 AMR2 的 Nav2 MPPI、速度平滑、collision monitor 和 DS20270C CAN 底盘跑稳执行层，再收集语言指令、地图区域、视觉帧、waypoint、rosbag 轨迹和失败案例，逐步训练或评估能够提出中间目标并解释导航选择的 VLN/VLM 策略。</p>
+            <p>VLN / VLR 在 RabbitRobot 里是下一步计划：先把 AMR2、手持雷达地图、Web 控制台和真实室内场景整理成一个小而可靠的实验底座。等机器人稳定接收坐标点、跑通地图与 Nav2 后，再让它接收自然语言任务，并把语言中的目标、约束和路线偏好 grounding 到视觉/地图观测上。</p>
+            <p>短期路线是继续用 AMR2 的 Nav2 MPPI、速度平滑、collision monitor 和 DS20270C CAN 底盘跑稳执行层，再收集语言指令、地图区域、视觉帧、waypoint、rosbag 轨迹和失败案例，逐步训练或评估能够提出中间目标并解释导航选择的 VLN/VLM 策略。</p>
           </div>
           <div class="vln-flow" aria-label="VLN 研究链路">
             <article class="vln-step">
@@ -1946,7 +1946,7 @@
     <section id="roadmap" class="section is-light" aria-labelledby="roadmap-title">
       <div class="container">
         <p class="section-kicker">Roadmap</p>
-        <h2 id="roadmap-title" class="section-title">AMR / VLN 迭代路线</h2>
+        <h2 id="roadmap-title" class="section-title">AMR 迭代路线与 VLN 下一步</h2>
         <div class="roadmap">
           <article class="milestone">
             <time>V1.0 · 2025.06-09</time>
