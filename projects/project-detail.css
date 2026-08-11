@@ -79,6 +79,7 @@ main { border-top: 1px solid var(--line); }
 .section.is-soft { background: var(--soft); }
 .container { max-width: 1120px; margin: 0 auto; }
 .section h2 { margin: 0 0 18px; font-size: 27px; line-height: 1.22; }
+.section-lead { max-width: 920px; margin: 0 auto 24px; color: #475569; font-size: 17px; line-height: 1.68; }
 .grid-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 380px); gap: 28px; align-items: start; }
 .highlight-list { margin: 0; padding-left: 20px; color: #475569; }
 .highlight-list li { margin: 8px 0; }
@@ -89,6 +90,16 @@ main { border-top: 1px solid var(--line); }
 .metric-card { min-height: 110px; padding: 15px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
 .metric-card b { display: block; color: var(--ink); font-size: 24px; line-height: 1.15; }
 .metric-card span { display: block; margin-top: 6px; color: var(--muted); font-size: 13px; font-weight: 700; }
+.feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.feature-grid.compact { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.feature-card { min-width: 0; padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+.feature-card h3 { margin: 0 0 7px; font-size: 17px; line-height: 1.3; }
+.feature-card p { margin: 0; color: #475569; font-size: 14px; line-height: 1.6; }
+.mechanical-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 18px; }
+.cad-figure { margin: 0; border: 1px solid var(--line); border-radius: 8px; background: #fff; overflow: hidden; }
+.cad-figure img { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; background: #fff; display: block; }
+.cad-figure figcaption { padding: 11px 12px; color: var(--muted); font-size: 13px; }
+.evidence-table { max-width: 980px; margin: 0 auto; }
 .flow-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; counter-reset: flow; }
 .flow-list article { position: relative; min-height: 150px; padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
 .flow-list article::before { counter-increment: flow; content: counter(flow); display: inline-grid; place-items: center; width: 28px; height: 28px; margin-bottom: 10px; border-radius: 999px; background: var(--orange); color: #fff; font-weight: 800; }
@@ -146,7 +157,7 @@ main { border-top: 1px solid var(--line); }
   .hero, .grid-2 { grid-template-columns: 1fr; }
   .grid-2 > * { min-width: 0; }
   .hero-media { order: -1; }
-  .metric-grid, .flow-list, .proof-grid, .evidence-grid, .pipeline, .split-note { grid-template-columns: 1fr; }
+  .metric-grid, .flow-list, .proof-grid, .evidence-grid, .pipeline, .split-note, .feature-grid, .feature-grid.compact, .mechanical-grid { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: 1fr; }
   .readme-box pre code,
   .interface-table code {
@@ -155,4 +166,88 @@ main { border-top: 1px solid var(--line); }
   }
   .nav-inner { align-items: flex-start; flex-direction: column; }
   .nav-links { flex-wrap: wrap; gap: 12px; }
+}
+
+@media (max-width: 560px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-size: 15px;
+  }
+
+  .hero,
+  .section {
+    width: 100%;
+    max-width: 100vw;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .container,
+  .hero > div:first-child,
+  .hero-media,
+  .wide-media,
+  .evidence-grid,
+  .proof-grid,
+  .pipeline,
+  .mechanical-grid,
+  .feature-grid,
+  .gallery {
+    width: 100%;
+    max-width: 358px;
+    min-width: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  h1 {
+    font-size: clamp(30px, 8vw, 38px);
+    overflow-wrap: anywhere;
+    word-break: break-all;
+  }
+
+  .subtitle,
+  .summary,
+  .section h2,
+  .proof-card,
+  .note-panel,
+  .highlight-list,
+  .plain-list,
+  .pipeline article,
+  .evidence-grid figcaption,
+  .gallery figcaption,
+  .readme-box {
+    overflow-wrap: anywhere;
+    word-break: break-all;
+  }
+
+  .hero-media {
+    overflow-x: auto;
+  }
+
+  .hero-media img {
+    aspect-ratio: auto;
+    max-width: 100%;
+    max-height: none;
+    object-fit: contain;
+  }
+
+  .hero-actions,
+  .source-actions {
+    align-items: stretch;
+    flex-direction: column;
+    width: 100%;
+    max-width: min(100%, 280px);
+  }
+
+  .button {
+    width: 100%;
+    white-space: normal;
+    text-align: center;
+  }
 }

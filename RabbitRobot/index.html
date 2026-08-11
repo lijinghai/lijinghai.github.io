@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RabbitRobot VLN | 算个文科生吧的机器人研究主页</title>
-  <meta name="description" content="RabbitRobot 是算个文科生吧长期推进的机器人项目主页，以 Vision-Language Navigation (VLN) 为当前主线，展示 AMR2 轮毂伺服真车、手持 LiDAR 建图、ROS2 导航、Web 控制台与具身导航研究。">
+  <title>RabbitRobot AMR | 算个文科生吧的机器人项目主页</title>
+  <meta name="description" content="RabbitRobot 是算个文科生吧长期推进的机器人项目主页，2025 阶段重点展示 AMR 底盘、SLAM / Nav2、手持 LiDAR 建图、ROS2 Web 控制台和覆盖路径，VLN 是下一步计划。">
   <meta name="keywords" content="RabbitRobot, VLN, Vision-Language Navigation, ROS2, AMR, SLAM, Nav2, embodied navigation, robotics, 算个文科生吧">
   <meta name="author" content="算个文科生吧">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="RabbitRobot VLN | 算个文科生吧的机器人研究主页">
-  <meta property="og:description" content="一个文科问题意识驱动的机器人全系列项目主页：以 VLN 为当前研究主线，把语言指令、视觉/地图感知、ROS2 导航、AMR2 真车执行和真实 AMR 实验连成闭环。">
+  <meta property="og:title" content="RabbitRobot AMR | 算个文科生吧的机器人项目主页">
+  <meta property="og:description" content="一个文科问题意识驱动的机器人全系列项目主页：2025 先沉淀 AMR、SLAM、Nav2、Web 控制台和覆盖路径能力，VLN 作为下一步研究计划。">
   <meta property="og:image" content="images/rabbitrobot/amr2_field_test_18s.jpg">
   <meta name="theme-color" content="#23272f">
   <link rel="icon" type="image/png" href="images/rabbitrobot/RabbitRobot_logo_icon.png">
@@ -1477,7 +1477,7 @@
           </a>
           <a class="resource-button secondary" href="#research">
             <span class="button-mark" aria-hidden="true">VLN</span>
-            <span>VLN Focus</span>
+            <span>VLN Plan</span>
           </a>
           <a class="resource-button secondary" href="#amr2">
             <span class="button-mark" aria-hidden="true">AMR2</span>
@@ -1501,11 +1501,11 @@
         <div class="tldr content">
           <h2 id="tldr-title">TL;DR</h2>
           <ul>
-            <li><strong>当前主线是 VLN</strong>：让真实 AMR 从自然语言任务、视觉/地图观测和历史轨迹中理解“要去哪、怎么走、为什么这样走”。</li>
-            <li><strong>AMR2 是 VLN 真车底座</strong>：轮毂伺服差速底盘接入 MID360、Fast-LIO、ICP、Nav2 MPPI、速度平滑和 collision monitor。</li>
+            <li><strong>2025 阶段先做 AMR 工程底座</strong>：把底盘、传感器、SLAM、Nav2、Web 控制台和实验记录整理成可复盘的图文档案。</li>
+            <li><strong>AMR2 是后续 VLN 的真车底座</strong>：轮毂伺服差速底盘接入 MID360、Fast-LIO、ICP、Nav2 MPPI、速度平滑和 collision monitor。</li>
             <li><strong>CoveragePath 是清扫算法能力</strong>：在真实 PCD 2D 地图里框选区域，按 footprint、安全边距、占据栅格和连通分块生成 map-aware 覆盖路径。</li>
             <li><strong>每个设备都带着实物迭代痕迹</strong>：从轮系、支架、线束、传感器安装位到测试场调参，逐步沉淀成可复现的底盘、地图、导航界面和真实 rosbag 数据。</li>
-            <li><strong>研究目标</strong> 是把语言指令 grounding、waypoint 规划、Nav2 执行层和真实场景评估放进同一个实验闭环。</li>
+            <li><strong>下一步计划</strong> 是把语言指令 grounding、waypoint 规划、Nav2 执行层和真实场景评估放进同一个实验闭环，也就是 VLN / VLR 研究线。</li>
           </ul>
         </div>
       </div>
@@ -1750,11 +1750,11 @@
                 <td><span class="tag-list"><span class="tag">Coverage Path</span><span class="tag">OccupancyGrid</span><span class="tag">Footprint Inflation</span><span class="tag">A*</span><span class="tag">RViz Tool</span></span></td>
               </tr>
               <tr>
-                <td><a class="project-link" href="projects/rabbitrobot-vln.html"><b>RabbitRobot_VLN</b>视觉语言导航主线</a></td>
-                <td class="project-time"><time datetime="2025-12">2025.12</time><span>当前研究</span></td>
-                <td>当前研究主线</td>
-                <td>把自然语言指令、视觉/地图 grounding、waypoint 规划和真实 AMR 执行评估串成闭环。</td>
-                <td><span class="tag-list"><span class="tag">VLN</span><span class="tag">VLM</span><span class="tag">Embodied Navigation</span><span class="tag">ROS2</span></span></td>
+                <td><a class="project-link" href="projects/rabbitrobot-vln.html"><b>RabbitRobot_2025</b>AMR 图文项目档案</a></td>
+                <td class="project-time"><time datetime="2025-12">2025.12</time><span>项目档案</span></td>
+                <td>AMR 基础沉淀 / VLN 下一步计划</td>
+                <td>用图文整理 2025 阶段 RabbitRobot 的底盘、建图、导航、Web 控制台和覆盖路径基础；VLN / VLR 是后续要接入真实 AMR 的下一步研究线。</td>
+                <td><span class="tag-list"><span class="tag">AMR</span><span class="tag">SLAM</span><span class="tag">Nav2</span><span class="tag">Web Console</span><span class="tag">VLN Next</span></span></td>
               </tr>
               <tr>
                 <td><a class="project-link" href="projects/rabbitrobot-robotdog-vln.html"><b>Robot Dog VLN Testbed</b>四足机器狗导航验证平台</a></td>

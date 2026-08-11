@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RabbitRobot_VLN | RabbitRobot</title>
-  <meta name="description" content="RabbitRobot_VLN 关注真实 AMR 的 Vision-Language Navigation：把自然语言任务、视觉/地图 grounding、waypoint 规划和真车执行评估串成闭环。">
+  <title>RabbitRobot 2025 Archive | AMR Foundation & VLN Next Plan</title>
+  <meta name="description" content="RabbitRobot 2025 图文项目档案：记录 AMR 底盘、SLAM / Nav2、Web 控制台、覆盖路径和多传感器建图基础，并说明 VLN / VLR 是下一步计划。">
   <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
   <link rel="stylesheet" href="project-detail.css">
 </head>
@@ -17,7 +17,7 @@
       </a>
       <div class="nav-links">
         <a href="../index.html#projects">Project Matrix</a>
-        <a href="../index.html#research">VLN Focus</a>
+        <a href="../index.html#research">VLN Plan</a>
         <a href="../index.html#repositories">Snapshots</a>
       </div>
     </div>
@@ -25,96 +25,163 @@
 
   <header class="hero">
     <div>
-      <p class="kicker">当前研究主线</p>
-      <h1>RabbitRobot_VLN</h1>
-      <p class="subtitle">视觉语言导航主线</p>
-      <p class="summary">RabbitRobot_VLN 关注真实 AMR 的 Vision-Language Navigation：把自然语言任务、视觉/地图 grounding、waypoint 规划和真车执行评估串成闭环。</p>
+      <p class="kicker">2025 Project Archive</p>
+      <h1>RabbitRobot 2025</h1>
+      <p class="subtitle">AMR 基础沉淀、图文项目档案与 VLN 下一步计划</p>
+      <p class="summary">
+        这页不再把 VLN 写成已经到达的当前主线，而是回到 2025 阶段本身：RabbitRobot 先完成底盘、传感器、建图、导航、Web 控制台、覆盖路径和实验记录的基础闭环。VLN / VLR 会作为下一步计划，在这些真实机器人能力稳定后继续接入。
+      </p>
       <div class="meta-row">
         <span class="meta-pill">Time · 2025.12</span>
-        <span class="meta-pill">Source · 站内 VLN 研究说明</span>
+        <span class="meta-pill">Stage · AMR foundation</span>
+        <span class="meta-pill">Next · VLN / VLR plan</span>
         <span class="meta-pill">Repo · lijinghai/RabbitRobot</span>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="../index.html#projects">Back to RabbitRobot</a>
+        <a class="button" href="rabbitrobot-amr2.html">AMR2 Detail</a>
+        <a class="button" href="https://github.com/lijinghai/RabbitRobot" target="_blank" rel="noreferrer">Source Repository</a>
       </div>
     </div>
     <figure class="hero-media">
-      <img src="../images/rabbitrobot/amr2_web_navigation.jpg" alt="RabbitRobot_VLN">
+      <img src="../images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot 2025 project architecture diagram">
+      <figcaption>RabbitRobot 全系列架构图：2025 阶段先把 AMR、SLAM、Web 控制台、覆盖路径和项目资料打底，VLN 是后续要接上的研究计划。</figcaption>
     </figure>
   </header>
 
   <main>
     <section class="section">
-      <div class="container grid-2">
-        <div>
-          <p class="kicker">What It Does</p>
-          <h2>项目做的是什么</h2>
-          <ul class="highlight-list"><li>把“去门口”“绕开杂物到桌边”等语言任务整理成可复现的实验指令。</li><li>用 AMR2 的 Nav2、地图、视觉帧和机器人状态承接 VLN 策略输出。</li><li>评估成功率、碰撞率、路径效率、恢复能力和策略解释性，而不是只看单次演示。</li></ul>
+      <div class="container">
+        <p class="kicker">At A Glance</p>
+        <h2>这一页现在要表达什么</h2>
+        <div class="proof-grid">
+          <p class="proof-card">
+            <b>2025 档案</b>
+            <span>记录 RabbitRobot 从小车、传感器、建图到网页展示的阶段性成果。</span>
+          </p>
+          <p class="proof-card">
+            <b>AMR 基础</b>
+            <span>把 ROS 2、Nav2、SLAM、底盘控制和现场调试作为后续研究底座。</span>
+          </p>
+          <p class="proof-card">
+            <b>图文证据</b>
+            <span>用架构图、真车画面、地图、Web 控制台和覆盖路径说明项目不是纯概念。</span>
+          </p>
+          <p class="proof-card">
+            <b>VLN 下一步</b>
+            <span>等导航 baseline、地图和数据记录跑稳后，再接语言目标与视觉 grounding。</span>
+          </p>
         </div>
-        <aside>
-          <p class="kicker">Stack</p>
-          <h2>技术关键词</h2>
-          <div class="stack"><span class="tag">VLN</span><span class="tag">VLM</span><span class="tag">Embodied Navigation</span><span class="tag">Waypoint Policy</span><span class="tag">ROS2</span><span class="tag">Nav2</span><span class="tag">rosbag</span></div>
-        </aside>
       </div>
     </section>
 
     <section class="section is-soft">
       <div class="container grid-2">
         <div>
-          <p class="kicker">VLN Relation</p>
-          <h2>和当前 VLN 主线的关系</h2>
-          <div class="note-panel">这是当前主线本身：先把传统导航 baseline 跑稳，再把语言目标和真实场景数据逐步接入策略评估。</div>
+          <p class="kicker">What Is Done</p>
+          <h2>2025 阶段先沉淀的能力</h2>
+          <ul class="highlight-list">
+            <li>搭出 RabbitRobot AMR 原型，把底盘、电机、传感器、供电和 ROS 2 运行环境串起来。</li>
+            <li>用 D435、Unitree L1、MPU6050、RTAB-Map / FAST-LIO2 等链路积累多传感器建图经验。</li>
+            <li>把 Nav2 单点导航、地图可视化、机器人状态和 Web 控制台做成可以展示和复盘的入口。</li>
+            <li>围绕清扫/覆盖场景做地图约束下的覆盖路径规划，为 AMR 区域作业准备算法基础。</li>
+          </ul>
         </div>
-        <div>
-          <p class="kicker">Craft Record</p>
-          <h2>工程痕迹</h2>
-          <p>这个项目保留了从硬件选型、结构验证、驱动调试、话题链路到现场反馈的连续记录。页面里放的不是单独的效果截图，而是一段可回溯的迭代线索。</p>
+        <aside>
+          <p class="kicker">Stack</p>
+          <h2>技术关键词</h2>
+          <div class="stack">
+            <span class="tag">ROS 2</span>
+            <span class="tag">Nav2</span>
+            <span class="tag">RTAB-Map</span>
+            <span class="tag">FAST-LIO2</span>
+            <span class="tag">D435 / L1</span>
+            <span class="tag">Web Console</span>
+            <span class="tag">Coverage Path</span>
+            <span class="tag">VLN Next</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Visual Record</p>
+        <h2>图文项目记录</h2>
+        <div class="evidence-grid">
+          <figure>
+            <img src="../images/rabbitrobot/amr2_web_navigation.jpg" alt="RabbitRobot AMR navigation web view">
+            <figcaption>Web 导航画面：先把真实 AMR 的地图、目标点、导航状态和操作入口打通，这是后续 VLN waypoint 执行的工程前提。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ros2_web_home.png" alt="RabbitRobot ROS2 web console home">
+            <figcaption>ROS2 Web 控制台：把原本分散在 RViz、终端和话题里的信息集中到浏览器，方便演示、调试和复盘。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/rtabmap_overview.png" alt="D435 L1 RTAB-Map mapping overview">
+            <figcaption>多传感器建图链路：用深度相机、激光雷达和 IMU 数据沉淀地图生产能力，为导航和后续语义任务提供场景基础。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/coverage_step_generated_path.png" alt="Coverage path generated on real map">
+            <figcaption>覆盖路径规划：从真实地图中选择区域，生成可检查的覆盖轨迹，服务于清扫/消毒等区域作业任务。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">Next Plan</p>
+        <h2>VLN 为什么是下一步计划</h2>
+        <div class="note-panel">
+          VLN / VLR 不是 2025 阶段已经完成的结果，而是建立在 AMR、地图、导航、安全链和数据记录之上的下一层能力。先让机器人稳定知道“自己在哪、地图是什么、目标点怎么跑、失败如何记录”，再让语言任务进入系统，才有真实可评估的意义。
+        </div>
+        <div class="pipeline">
+          <article>
+            <h3>1. AMR Baseline</h3>
+            <p>先跑稳 SLAM、定位、Nav2、速度链和基本避障，形成可复现的导航 baseline。</p>
+          </article>
+          <article>
+            <h3>2. Data Record</h3>
+            <p>记录地图、视觉帧、轨迹、目标点、失败片段和 rosbag，让实验可以回放。</p>
+          </article>
+          <article>
+            <h3>3. Language Goal</h3>
+            <p>把“去桌边”“绕过障碍到门口”等指令转成可落地的语义目标和中间 waypoint。</p>
+          </article>
+          <article>
+            <h3>4. Visual Grounding</h3>
+            <p>把视觉观测、地图区域和机器人位姿对齐，判断目标是否可见、可达、需要绕行。</p>
+          </article>
+          <article>
+            <h3>5. Recovery Check</h3>
+            <p>重点评估走偏、目标误判、绕行失败和恢复策略，让 VLN 有真实指标。</p>
+          </article>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <p class="kicker">Media</p>
-        <h2>关键画面</h2>
-        <div class="gallery">
-          <figure>
-              <img src="../images/rabbitrobot/amr2_web_navigation.jpg" alt="RabbitRobot_VLN">
-              <figcaption>RabbitRobot_VLN</figcaption>
-            </figure><figure>
-              <img src="../images/rabbitrobot/amr2_single_goal.jpg" alt="RabbitRobot_VLN 关键画面 2">
-              <figcaption>RabbitRobot_VLN 关键画面 2</figcaption>
-            </figure><figure>
-              <img src="../images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot_VLN 关键画面 3">
-              <figcaption>RabbitRobot_VLN 关键画面 3</figcaption>
-            </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section is-soft">
-      <div class="container">
         <p class="kicker">README Snapshot</p>
         <h2>README / 项目说明片段</h2>
         <div class="readme-box">
-          <h2>RabbitRobot_VLN</h2>
-<p><strong>时间</strong>：2025.12</p>
-<p><strong>定位</strong>：视觉语言导航主线</p>
-<h3>项目说明</h3>
-<p>RabbitRobot_VLN 关注真实 AMR 的 Vision-Language Navigation：把自然语言任务、视觉/地图 grounding、waypoint 规划和真车执行评估串成闭环。</p>
-<h3>关键记录</h3>
-<ul>
-<li>把“去门口”“绕开杂物到桌边”等语言任务整理成可复现的实验指令。</li>
-<li>用 AMR2 的 Nav2、地图、视觉帧和机器人状态承接 VLN 策略输出。</li>
-<li>评估成功率、碰撞率、路径效率、恢复能力和策略解释性，而不是只看单次演示。</li>
-</ul>
-<h3>技术关键词</h3>
-<p>VLN, VLM, Embodied Navigation, Waypoint Policy, ROS2, Nav2, rosbag</p>
-<h3>与 VLN 主线的关系</h3>
-<p>这是当前主线本身：先把传统导航 baseline 跑稳，再把语言目标和真实场景数据逐步接入策略评估。</p>
-<h3>工程痕迹</h3>
-<p>这个项目页记录的是从结构、线束、驱动、参数到实测反馈逐步收拢出来的系统，而不是只保留最后一张效果图。</p>
+          <h2>RabbitRobot 2025 Project Archive</h2>
+          <p><strong>时间</strong>：2025.12</p>
+          <p><strong>定位</strong>：AMR 基础沉淀与 VLN 下一步计划</p>
+          <h3>项目说明</h3>
+          <p>RabbitRobot 2025 阶段重点整理真实 AMR 原型、SLAM / Nav2、多传感器建图、Web 控制台和覆盖路径规划。这个页面用于图文展示已经搭起来的机器人系统基础，而不是宣称 VLN 已经完成或已进入当前主线。</p>
+          <h3>关键记录</h3>
+          <ul>
+            <li>AMR 原型、传感器接入、导航界面和项目架构图构成了 2025 阶段的公开证据。</li>
+            <li>多传感器建图和 Web 控制台让后续实验可以被看见、被调试、被复盘。</li>
+            <li>覆盖路径和清扫场景为移动机器人区域作业准备了可继续扩展的算法接口。</li>
+          </ul>
+          <h3>与 VLN 的关系</h3>
+          <p>VLN / VLR 是下一步计划：等 AMR baseline、地图、导航安全链和数据记录稳定后，再把语言目标、视觉 grounding、waypoint 策略和失败恢复评估接入真实机器人。</p>
         </div>
         <div class="source-actions">
-          <a class="button primary" href="md-preview.html?src=readmes/rabbitrobot-vln.md">Open Local README Snapshot</a>
+          <a class="button primary" href="md-preview.html?src=readme-source/rabbitrobot-vln.txt">Open README Snapshot</a>
           <a class="button" href="https://github.com/lijinghai/RabbitRobot" target="_blank" rel="noreferrer">Source Repository</a>
           <a class="button" href="../index.html#projects">Back to Project Matrix</a>
         </div>
@@ -123,7 +190,7 @@
   </main>
 
   <footer class="footer">
-    <div class="container">RabbitRobot · RabbitRobot_VLN · 本页是 GitHub Pages 内部项目详情页。</div>
+    <div class="container">RabbitRobot · 2025 AMR project archive · VLN / VLR is the next research plan.</div>
   </footer>
 </body>
 </html>

@@ -1,27 +1,28 @@
-# RabbitRobot_VLN
+# RabbitRobot 2025 Project Archive
 
-**时间**：2026.07+
+**时间**：2025.12
 
-**定位**：视觉语言导航主线
+**定位**：AMR 基础沉淀与 VLN 下一步计划
 
 ## 项目说明
 
-RabbitRobot_VLN 关注真实 AMR 的 Vision-Language Navigation：把自然语言任务、视觉/地图 grounding、waypoint 规划和真车执行评估串成闭环。
+RabbitRobot 2025 阶段重点整理真实 AMR 原型、SLAM / Nav2、多传感器建图、Web 控制台和覆盖路径规划。这个页面用于图文展示已经搭起来的机器人系统基础，而不是宣称 VLN 已经完成或已进入当前主线。
 
 ## 关键记录
 
-- 把“去门口”“绕开杂物到桌边”等语言任务整理成可复现的实验指令。
-- 用 AMR2 的 Nav2、地图、视觉帧和机器人状态承接 VLN 策略输出。
-- 评估成功率、碰撞率、路径效率、恢复能力和策略解释性，而不是只看单次演示。
+- AMR 原型、传感器接入、导航界面和项目架构图构成了 2025 阶段的公开证据。
+- 多传感器建图和 Web 控制台让后续实验可以被看见、被调试、被复盘。
+- 覆盖路径和清扫场景为移动机器人区域作业准备了可继续扩展的算法接口。
+- 后续如果要做 VLN / VLR，可以复用已有的地图、Nav2 baseline、Web 可视化和 rosbag 记录链路。
 
 ## 技术关键词
 
-VLN, VLM, Embodied Navigation, Waypoint Policy, ROS2, Nav2, rosbag
+AMR, ROS2, Nav2, SLAM, RTAB-Map, FAST-LIO2, Web Console, Coverage Path, VLN Next Plan
 
-## 与 VLN 主线的关系
+## 与 VLN 的关系
 
-这是当前主线本身：先把传统导航 baseline 跑稳，再把语言目标和真实场景数据逐步接入策略评估。
+VLN / VLR 是下一步计划：等 AMR baseline、地图、导航安全链和数据记录稳定后，再把语言目标、视觉 grounding、waypoint 策略和失败恢复评估接入真实机器人。
 
 ## 工程痕迹
 
-这个项目页记录的是从结构、线束、驱动、参数到实测反馈逐步收拢出来的系统，而不是只保留最后一张效果图。
+这个项目页保留的是从结构、传感器、地图、导航、网页控制台到覆盖路径逐步收拢出来的 2025 阶段系统，而不是只保留最后一张效果图，也不是把尚未开始的 VLN 写成已经完成的成果。
