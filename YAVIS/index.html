@@ -224,6 +224,7 @@
       color: rgba(255, 255, 255, 0.86);
       font-size: 22px;
       line-height: 1.72;
+      overflow-wrap: anywhere;
     }
 
     .hero-actions {
@@ -356,6 +357,78 @@
       margin-bottom: 0;
       color: var(--muted);
       font-size: 17px;
+    }
+
+    .name-story {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 58px;
+      align-items: start;
+    }
+
+    .name-mark {
+      position: sticky;
+      top: 104px;
+    }
+
+    .name-mark h2 {
+      margin-bottom: 18px;
+      font-size: 56px;
+      line-height: 1.08;
+    }
+
+    .name-mark p {
+      max-width: 380px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .name-copy {
+      border-top: 1px solid var(--line);
+    }
+
+    .name-copy p {
+      margin: 0;
+      padding: 24px 0;
+      color: var(--muted);
+      border-bottom: 1px solid var(--line);
+      font-size: 18px;
+    }
+
+    .name-copy .name-lead {
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1.55;
+      font-weight: 760;
+    }
+
+    .lineage {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 28px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .lineage-card {
+      min-height: 132px;
+      padding: 22px;
+      background: var(--white);
+    }
+
+    .lineage-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    .lineage-card span {
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .photo-feature {
@@ -643,16 +716,19 @@
       }
 
       .statement,
+      .name-story,
       .product-layout,
       .voice-panel {
         grid-template-columns: 1fr;
       }
 
-      .statement-title {
+      .statement-title,
+      .name-mark {
         position: static;
       }
 
       .scene-grid,
+      .lineage,
       .knowledge,
       .source-row {
         grid-template-columns: 1fr 1fr;
@@ -691,6 +767,10 @@
       .hero-logo {
         margin-bottom: 16px;
         font-size: 16px;
+      }
+
+      .hero-lockup {
+        max-width: 358px;
       }
 
       h1 {
@@ -742,6 +822,14 @@
         gap: 10px;
       }
 
+      .name-mark h2 {
+        font-size: 38px;
+      }
+
+      .name-copy .name-lead {
+        font-size: 20px;
+      }
+
       .photo-feature {
         min-height: 78svh;
       }
@@ -751,6 +839,7 @@
       }
 
       .scene-grid,
+      .lineage,
       .product-layout,
       .product-specs,
       .product-media,
@@ -804,6 +893,7 @@
     </a>
     <div class="nav-links">
       <a href="#idea">设计初衷</a>
+      <a href="#name">名字由来</a>
       <a href="#scenes">校园场景</a>
       <a href="#product">原型状态</a>
       <a href="#knowledge">资料内容</a>
@@ -846,6 +936,41 @@
             <strong>陪伴</strong>
             <p>对学生，它陪你学习和适应校园；对校友，它不替你编经历，只把共同的扬大记忆轻轻递回来。</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="name">
+      <div class="wrap name-story">
+        <div class="name-mark">
+          <div class="eyebrow">为什么叫 YAVIS</div>
+          <h2>从 JARVIS 到 YAVIS，把未来感留给扬大。</h2>
+          <p>这个名字不是生造出来的。它来自一次致敬，也来自一个很具体的愿望：让扬州大学的校园记忆，有一个可以被唤醒的声音。</p>
+        </div>
+
+        <div>
+          <div class="name-copy">
+            <p class="name-lead">扬维斯 YAVIS，是一款以扬州大学校园记忆为灵感打造的 AI 陪伴玩偶。</p>
+            <p>它的日常唤醒词是“小扬同学”。这个称呼既像一位亲切的校园伙伴，也像一个懂母校、懂学习、懂陪伴的智能助手。它可以回答扬州大学相关的校园问答，讲述校史与校园故事，陪伴学生学习成长，也为校友保存一份关于母校的温暖记忆。</p>
+            <p>“YAVIS”这个名字，来自对钢铁侠语音助手 JARVIS 的致敬。JARVIS 不只是系统，更像一位始终在身边回应、协助和守护的伙伴。理想同学的 AI 叫 LiVIS，让智能陪伴从科幻想象走进真实生活。</p>
+            <p>而 YAVIS 中的 “Y”，属于 Yangzhou，属于扬州大学，也属于“小扬同学”。如果说 JARVIS 陪伴钢铁侠走向未来，LiVIS 陪伴人们进入智能生活，那么 YAVIS 想陪伴的，是扬州大学的学生、校友，以及每一份关于母校的校园记忆。</p>
+            <p>我们希望扬维斯不只是一个会说话的玩偶，而是一个能连接母校、学生与校友情感的 AI 校园伙伴。它会听见一句“小扬同学”，也会把一座校园的故事，轻轻讲给你听。</p>
+          </div>
+
+          <div class="lineage" aria-label="YAVIS 命名线索">
+            <div class="lineage-card">
+              <strong>JARVIS</strong>
+              <span>来自科幻想象中的智能助手，代表陪伴、回应与守护。</span>
+            </div>
+            <div class="lineage-card">
+              <strong>LiVIS</strong>
+              <span>智能生活里的新一代陪伴形态，让助手进入真实日常。</span>
+            </div>
+            <div class="lineage-card">
+              <strong>YAVIS</strong>
+              <span>把 Y 留给 Yangzhou，留给扬州大学，也留给“小扬同学”。</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
