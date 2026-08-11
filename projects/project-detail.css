@@ -205,6 +205,91 @@ main { border-top: 1px solid var(--line); }
     margin-right: 0;
   }
 
+  .interface-table.evidence-table,
+  .interface-table.evidence-table tbody,
+  .interface-table.evidence-table tr,
+  .interface-table.evidence-table td,
+  .interface-table.verification-table,
+  .interface-table.verification-table tbody,
+  .interface-table.verification-table tr,
+  .interface-table.verification-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .interface-table.evidence-table,
+  .interface-table.verification-table {
+    border-radius: 8px;
+    font-size: 15px;
+  }
+
+  .interface-table.evidence-table thead,
+  .interface-table.verification-table thead {
+    display: none;
+  }
+
+  .interface-table.evidence-table tr,
+  .interface-table.verification-table tr {
+    padding: 14px 14px 12px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .interface-table.evidence-table tr:last-child,
+  .interface-table.verification-table tr:last-child {
+    border-bottom: 0;
+  }
+
+  .interface-table.evidence-table td,
+  .interface-table.verification-table td {
+    padding: 0;
+    border-bottom: 0;
+    line-height: 1.58;
+  }
+
+  .interface-table.evidence-table td + td,
+  .interface-table.verification-table td + td {
+    margin-top: 9px;
+  }
+
+  .interface-table.evidence-table td::before,
+  .interface-table.verification-table td::before {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  .interface-table.evidence-table td:nth-child(1)::before {
+    content: "版本";
+  }
+
+  .interface-table.evidence-table td:nth-child(2)::before {
+    content: "本地 CAD 证据";
+  }
+
+  .interface-table.evidence-table td:nth-child(3)::before {
+    content: "结构重点";
+  }
+
+  .interface-table.evidence-table td:nth-child(4)::before {
+    content: "适合对外表达的价值";
+  }
+
+  .interface-table.verification-table td:nth-child(1)::before {
+    content: "验证对象";
+  }
+
+  .interface-table.verification-table td:nth-child(2)::before {
+    content: "结果";
+  }
+
+  .interface-table.verification-table td:nth-child(3)::before {
+    content: "说明";
+  }
+
   h1 {
     font-size: clamp(30px, 8vw, 38px);
     overflow-wrap: anywhere;

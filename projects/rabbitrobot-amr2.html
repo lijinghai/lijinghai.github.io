@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RabbitRobot_AMR2 | ROS 2 真车 AMR 系统</title>
-  <meta name="description" content="RabbitRobot_AMR2 是 Lijinghai 的 ROS 2 真车 AMR 工程平台，展示 PCD 地图、覆盖路径规划、Web 3D 控制台、Nav2 安全链和 DS20270C 轮毂底盘 dry-run 验证。">
+  <title>RabbitRobot_AMR2 | 自建轮毂伺服 AMR 平台</title>
+  <meta name="description" content="RabbitRobot_AMR2 是 Lijinghai 自建的轮毂伺服 AMR 平台，展示机械 V5.1/V5.2 迭代、ROS 2 Humble、Nav2 MPPI、PCD 地图覆盖规划、Web 控制台和 DS20270C 安全链。">
   <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
   <link rel="stylesheet" href="project-detail.css">
 </head>
@@ -17,6 +17,7 @@
       </a>
       <div class="nav-links">
         <a href="../index.html#projects">Project Matrix</a>
+        <a href="../index.html#amr2">AMR2</a>
         <a href="../index.html#research">VLN Focus</a>
         <a href="../index.html#repositories">Snapshots</a>
       </div>
@@ -25,27 +26,28 @@
 
   <header class="hero">
     <div>
-      <p class="kicker">AMR / Coverage System</p>
+      <p class="kicker">Main Platform / Real AMR</p>
       <h1>RabbitRobot_AMR2</h1>
-      <p class="subtitle">ROS 2 真车覆盖作业、导航安全链与 DS20270C 轮毂底盘</p>
+      <p class="subtitle">自建轮毂伺服 AMR：机械 V5.1 到 V5.2，接入 ROS 2 / Nav2 / Web 控制台</p>
       <p class="summary">
-        AMR2 不是单独的导航 demo，而是一条从真实点云地图、真实 SolidWorks 底盘、覆盖路径规划、Web 3D 控制台，到 Nav2 和底盘安全链的端到端机器人系统。它把原来容易分散的“真车系统”和“覆盖路径规划”合并到同一条可验证链路里。
+        这不是只在屏幕里跑的导航 demo，而是一台从底盘 CAD、型材/底板结构、轮毂电机、传感器安装，到 ROS 2 工作空间、PCD 地图、覆盖路径、Web 3D 控制台和底盘安全链都能互相对上的真实 AMR 平台。
       </p>
       <div class="meta-row">
+        <span class="meta-pill">Self-built AMR</span>
+        <span class="meta-pill">SolidWorks V5.1 / V5.2</span>
         <span class="meta-pill">ROS 2 Humble</span>
-        <span class="meta-pill">Livox MID360 / PCD Map</span>
         <span class="meta-pill">Nav2 Hybrid-A* + MPPI</span>
-        <span class="meta-pill">DS20270C CAN 0x602</span>
+        <span class="meta-pill">DS20270C CAN</span>
       </div>
       <div class="hero-actions">
-        <a class="button primary" href="../index.html#projects">Back to RabbitRobot</a>
+        <a class="button primary" href="md-preview.html?src=readme-source/rabbitrobot-amr2.txt">Engineering Brief</a>
         <a class="button video" href="https://www.bilibili.com/video/BV1543K6uEVM/" target="_blank" rel="noreferrer">Project Video</a>
         <a class="button" href="https://github.com/lijinghai/ljh_amr2_hubwheel_drive" target="_blank" rel="noreferrer">Source Repository</a>
       </div>
     </div>
     <figure class="hero-media dark">
-      <img src="../images/rabbitrobot/amr2_coverage_web_console.gif" alt="RabbitRobot AMR2 Web 3D coverage console demo">
-      <figcaption>Web 控制台展示真实 SolidWorks STL 小车、PCD 地图和覆盖作业流程。</figcaption>
+      <img src="../images/rabbitrobot/amr2_turning_loop.gif?v=detail" alt="RabbitRobot AMR2 real robot turning test">
+      <figcaption>真实实验室测试画面：AMR2 在杂物、纸箱和有限空间中验证底盘运动、导航和后续任务执行链路。</figcaption>
     </figure>
   </header>
 
@@ -53,24 +55,93 @@
     <section class="section">
       <div class="container">
         <p class="kicker">At A Glance</p>
-        <h2>系统成果概览</h2>
+        <h2>一眼看懂这台车</h2>
         <div class="proof-grid">
           <p class="proof-card">
-            <b>真实 AMR</b>
-            <span>轮毂伺服差速底盘，使用真实 CAD mesh 和真实 footprint 做仿真约束。</span>
-          </p>
-          <p class="proof-card">
-            <b>5 条主通道</b>
-            <span>基于真实 PCD 地图抽取长通道，做可解释的覆盖路径验证。</span>
+            <b>机械真实迭代</b>
+            <span>V5.1 是型材框架试制版，V5.2 收敛为低矮底板式底盘；两版都保留 SolidWorks 装配证据。</span>
           </p>
           <p class="proof-card">
             <b>0.486 x 0.450 m</b>
-            <span>按 AMR2 实际车体 footprint 做地图裁剪、避障膨胀和安全间隙。</span>
+            <span>AMR2 实际车体 footprint 进入覆盖规划、地图裁剪、避障膨胀和 RViz/Web 视觉验证。</span>
           </p>
           <p class="proof-card">
-            <b>0x602 / dry-run</b>
-            <span>DS20270C 差速 CAN 链路保留 dry-run、自检、诊断和真车安全门。</span>
+            <b>PCD 到可走路径</b>
+            <span>从真实 <code>ljh20260516.pcd</code> 转二维栅格地图，再做 5 条主通道覆盖路径。</span>
           </p>
+          <p class="proof-card">
+            <b>安全链闭合</b>
+            <span>Nav2 输出继续经过速度平滑、碰撞监测和激光安全过滤，再到 DS20270C CAN。</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">Mechanical Iteration</p>
+        <h2>从机械第一版到第二版</h2>
+        <p class="section-lead">
+          我把本地两套 SolidWorks 装配体都打开导出了预览：V5.1 更像早期型材验证车，重点是把轮毂电机、3030/3060 框架和安装空间跑通；V5.2 则明显转向低重心、平板化、孔位规则化的 AMR 底盘，更适合后续外壳、电控板和传感器模块继续叠加。
+        </p>
+        <div class="mechanical-grid">
+          <figure class="cad-figure">
+            <img src="../images/rabbitrobot/amr2_v51_isometric.png" alt="AMR V5.1 SolidWorks isometric preview" loading="lazy" decoding="async">
+            <figcaption>V5.1 第一版：3030/3060 型材框架，围绕轮毂电机和横梁布置做装配验证。</figcaption>
+          </figure>
+          <figure class="cad-figure">
+            <img src="../images/rabbitrobot/amr2_v52_isometric.png" alt="AMR V5.2 SolidWorks isometric preview" loading="lazy" decoding="async">
+            <figcaption>V5.2 第二版：低矮平板底盘、双轮毂轮、四角脚轮、规则安装孔和圆角外轮廓。</figcaption>
+          </figure>
+        </div>
+        <table class="interface-table evidence-table">
+          <thead>
+            <tr>
+              <th>版本</th>
+              <th>本地 CAD 证据</th>
+              <th>结构重点</th>
+              <th>适合对外表达的价值</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>V5.1 第一版</td>
+              <td>1 个 SLDASM、24 个 SLDPRT、1 个 STEP；材料记录含 3030/3060 型材和 70 个角码。</td>
+              <td>用 486 mm、450 mm、225 mm、195 mm 等型材段搭出框架，先验证轮毂电机固定和整体空间。</td>
+              <td>说明项目不是只买成品底盘，而是从机械装配、采购清单和结构打样开始推进。</td>
+            </tr>
+            <tr>
+              <td>V5.2 第二版</td>
+              <td>1 个 SLDASM、2 个 SLDPRT；SolidWorks 预览已导出等轴测和俯视图。</td>
+              <td>从开放框架收敛到一体化底板，轮毂轮与脚轮位置更清楚，孔位更利于安装电控和传感器。</td>
+              <td>说明底盘已经进入更接近真车执行平台的形态，可以承接 Nav2、Web 控制台和 VLN waypoint 实验。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Visual Evidence</p>
+        <h2>图文证据：CAD、实车、RViz 和地图</h2>
+        <div class="evidence-grid">
+          <figure>
+            <img src="../images/rabbitrobot/amr2_v52_top.png" alt="AMR V5.2 SolidWorks top view" loading="lazy" decoding="async">
+            <figcaption>V5.2 俯视图：轮毂轮居中布置，四角脚轮和安装孔位为后续传感器、电控板、外壳留出接口。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/amr2_field_test_18s.jpg" alt="AMR2 real robot field test in the lab" loading="lazy" decoding="async">
+            <figcaption>真车现场画面：小车在实验室环境绕障测试，能把 CAD 结构和真实底盘运动对应起来。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/amr2_chassis_mesh_selfcheck.png" alt="SolidWorks AMR chassis mesh self-check in RViz" loading="lazy" decoding="async">
+            <figcaption>SolidWorks mesh 进入 RViz/Web：蓝色矩形保留规划 footprint，视觉模型不再只是手写盒子。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/amr2_pcd_denoise_full.png" alt="PCD map denoise before and after projection" loading="lazy" decoding="async">
+            <figcaption>PCD 转 2D 地图降噪：从真实点云提取可用于覆盖规划和 Nav2 的 occupancy map。</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -82,23 +153,23 @@
         <div class="pipeline">
           <article>
             <h3>1. 真实地图</h3>
-            <p>用 <code>ljh20260516.pcd</code> 转 2D occupancy map，默认降噪，保留通道结构并减少孤立噪点。</p>
+            <p>使用 <code>ljh20260516.pcd</code> 投影为 2D occupancy map，并通过降噪流程保留通道结构。</p>
           </article>
           <article>
             <h3>2. 覆盖规划</h3>
-            <p>RViz Rect/Poly 或服务 polygon 输入区域，算法结合 footprint、known-free 裁剪和 A* 连接生成路径。</p>
+            <p><code>ljh_robot_coverage</code> 接收 Rect/Poly 区域，结合 footprint、known-free 裁剪和 A* 连接生成路径。</p>
           </article>
           <article>
-            <h3>3. Web / RViz 可视化</h3>
-            <p>Web 控制台自动启动 rosbridge，加载真实 STL，小车位姿由 <code>/Odometry</code> 同步。</p>
+            <h3>3. Web / RViz</h3>
+            <p>Web 控制台通过 rosbridge 同步地图、路径和 <code>/Odometry</code>；RViz 用于对照真实 ROS 状态。</p>
           </article>
           <article>
             <h3>4. Nav2 桥接</h3>
             <p>覆盖路径可转换为 <code>FollowWaypoints</code> 或 <code>NavigateToPose</code>，默认 dry-run，不自动发车。</p>
           </article>
           <article>
-            <h3>5. 底盘安全链</h3>
-            <p>真车速度继续走 <code>/cmd_vel_nav -> smoother -> collision_monitor -> /cmd_vel_smooth -> DS20270C</code>。</p>
+            <h3>5. 底盘安全</h3>
+            <p>速度链路保持 <code>/cmd_vel_nav -> smoother -> collision_monitor -> /cmd_vel_safe -> DS20270C</code>。</p>
           </article>
         </div>
       </div>
@@ -106,59 +177,58 @@
 
     <section class="section">
       <div class="container">
-        <p class="kicker">Visual Evidence</p>
-        <h2>关键画面</h2>
-        <div class="evidence-grid">
+        <p class="kicker">ROS2 Web Console</p>
+        <h2>浏览器控制台：现场调试第一屏</h2>
+        <p class="section-lead">
+          <code>ljh_robot_ros2_web</code> 把地图、机器人位姿、目标点、路径结果和任务状态放进浏览器里。它不是绕开 ROS 的独立前端，而是通过 rosbridge 把 Web 操作和 RViz/ROS 状态连起来，方便现场快速判断“机器人在哪里、目标在哪里、路径是否可信”。
+        </p>
+        <figure class="wide-media">
+          <img src="../images/rabbitrobot/ros2_web_home.png" alt="AMR2 ROS2 web dashboard" loading="lazy" decoding="async">
+          <figcaption>主控制台首页：地图、机器人状态、任务入口和连接状态集中展示，适合作为 AMR2 调试入口。</figcaption>
+        </figure>
+        <div class="gallery diagram-gallery web-console-gallery">
           <figure>
-            <img src="../images/rabbitrobot/amr2_coverage_3d_panel.png" alt="AMR2 Web 3D coverage panel">
-            <figcaption>Web 覆盖控制台：左侧是 3D 实车 AGV 面板，右侧是从真实 PCD 生成的长通道地图。</figcaption>
+            <img src="../images/rabbitrobot/amr2_coverage_web_console.gif" alt="AMR2 Web 3D coverage console demo" loading="lazy" decoding="async">
+            <figcaption>覆盖地图动图：Web 中加载真实 CAD 小车、PCD 地图和覆盖路径，形成可视化工作流。</figcaption>
           </figure>
           <figure>
-            <img src="../images/rabbitrobot/amr2_coverage_rviz_poly.png" alt="RViz Coverage Poly path result">
-            <figcaption>RViz Coverage Poly：鼠标点选多边形区域后生成 `/coverage_path`，fake car 用于离车跟随验证。</figcaption>
+            <img src="../images/rabbitrobot/ros2_web_navigation_live.png" alt="Web navigation interface with live AMR state" loading="lazy" decoding="async">
+            <figcaption>Web 导航界面：在浏览器端查看路径、机器人姿态和任务反馈，便于和 RViz 互相校验。</figcaption>
           </figure>
           <figure>
-            <img class="contain" src="../images/rabbitrobot/amr2_pcd_denoise_full.png" alt="PCD denoise before and after map projection">
-            <figcaption>PCD 转 2D 地图降噪：从原始点云投影到更干净的 occupancy map，为覆盖和 Nav2 提供可用地图。</figcaption>
+            <img src="../images/rabbitrobot/ros2_web_multi_nav.png" alt="Web multi-goal navigation workflow" loading="lazy" decoding="async">
+            <figcaption>多点导航：更接近巡检、覆盖 waypoint 和 VLN 中间目标执行的真实任务形态。</figcaption>
           </figure>
           <figure>
-            <img class="contain" src="../images/rabbitrobot/amr2_chassis_mesh_selfcheck.png" alt="SolidWorks AMR chassis mesh self-check">
-            <figcaption>真实 SolidWorks AMR 底盘：STL mesh 进入 RViz/Web，蓝色矩形为规划 footprint。</figcaption>
+            <img src="../images/rabbitrobot/amr2_coverage_rviz_poly.png" alt="RViz coverage polygon path result" loading="lazy" decoding="async">
+            <figcaption>RViz Coverage Poly：鼠标点选多边形区域后生成 <code>/coverage_path</code>，离车验证路径跟随。</figcaption>
           </figure>
         </div>
       </div>
     </section>
 
     <section class="section is-soft">
-      <div class="container grid-2">
-        <div>
-          <p class="kicker">What I Built</p>
-          <h2>我在这个项目里体现的能力</h2>
-          <ul class="highlight-list">
-            <li>把覆盖路径算法接入 ROS 2 消息、服务和 RViz 交互工具，而不是停留在单脚本画线。</li>
-            <li>把真实 PCD 地图转成可用于仿真和 Nav2 的 2D map，并把降噪流程固化到 <code>save_2dmap.sh</code>。</li>
-            <li>让 Web 控制台读取 CAD、DS、Nav2 和覆盖参数，展示 3D 实车 AGV 和实时 `/Odometry` 状态。</li>
-            <li>把 DS20270C 底盘驱动收进安全链路，默认订阅 <code>/cmd_vel_smooth</code>，并加入只读参数审查和运行诊断。</li>
-            <li>用自动测试、浏览器截图、RViz smoke、6 包构建和 dry-run 自检证明链路没有只停在“能看”。</li>
-          </ul>
+      <div class="container">
+        <p class="kicker">What I Built</p>
+        <h2>我在这个项目里完成的关键工作</h2>
+        <div class="feature-grid compact">
+          <article class="feature-card">
+            <h3>机械到仿真一致</h3>
+            <p>把 SolidWorks 底盘转为 STL mesh，并在 RViz/Web 中和 <code>0.486 x 0.450 m</code> 规划 footprint 对齐。</p>
+          </article>
+          <article class="feature-card">
+            <h3>覆盖路径算法接入 ROS</h3>
+            <p>把覆盖规划从单脚本推进到 ROS 2 服务、消息、RViz 交互工具和可复用路径输出。</p>
+          </article>
+          <article class="feature-card">
+            <h3>Nav2 差速底盘链路</h3>
+            <p>按 DS20270C 双轮差速底盘适配 Hybrid-A*、MPPI、速度平滑和最后一层激光安全门。</p>
+          </article>
+          <article class="feature-card">
+            <h3>Web 可视化工具</h3>
+            <p>让浏览器读取地图、CAD、导航和覆盖参数，作为实验现场比终端日志更直观的控制台。</p>
+          </article>
         </div>
-        <aside>
-          <p class="kicker">Stack</p>
-          <h2>技术关键词</h2>
-          <div class="stack">
-            <span class="tag">ROS 2 Humble</span>
-            <span class="tag">Nav2</span>
-            <span class="tag">Hybrid-A*</span>
-            <span class="tag">MPPI</span>
-            <span class="tag">Three.js</span>
-            <span class="tag">rosbridge</span>
-            <span class="tag">Livox MID360</span>
-            <span class="tag">PCD / OccupancyGrid</span>
-            <span class="tag">RViz Plugin</span>
-            <span class="tag">DS20270C CAN</span>
-            <span class="tag">SolidWorks STL</span>
-          </div>
-        </aside>
       </div>
     </section>
 
@@ -166,7 +236,7 @@
       <div class="container">
         <p class="kicker">Verification</p>
         <h2>验证记录和安全边界</h2>
-        <table class="interface-table">
+        <table class="interface-table verification-table">
           <thead>
             <tr>
               <th>验证对象</th>
@@ -176,29 +246,29 @@
           </thead>
           <tbody>
             <tr>
+              <td>SolidWorks 预览导出</td>
+              <td>PASS</td>
+              <td>V5.1 / V5.2 装配体均能通过 SolidWorks COM 打开，并导出非空等轴测和俯视图。</td>
+            </tr>
+            <tr>
+              <td>真实 CAD mesh 接入</td>
+              <td>PASS</td>
+              <td>工程记录中已验证从 AMR_v1.0 装配体导出 26 个 STL 组件，ROS visual extents 约 <code>0.510 x 0.552 x 0.210 m</code>。</td>
+            </tr>
+            <tr>
               <td>覆盖仿真服务</td>
               <td>PASS</td>
-              <td>PCD 地图加载、主 5 通道覆盖、多边形覆盖、Nav2 dry-run 和 fake car 移动均通过。</td>
+              <td>主地图 5 通道、clicked polygon、fake car follower 和 Nav2 dry-run 均保留验证记录。</td>
             </tr>
             <tr>
-              <td>Web 控制台</td>
-              <td>PASS</td>
-              <td><code>npm run build</code>、浏览器 3D WebGL、rosbridge 自动启动和移动端 390px 检查通过。</td>
+              <td>Nav2 / 安全门配置</td>
+              <td>PASS / gated</td>
+              <td>Hybrid-A*、MPPI DiffDrive、collision monitor、<code>/cmd_vel_safe</code> 和 0x602 dry-run 已接入；完整真车运动仍需现场急停和人工安全门。</td>
             </tr>
             <tr>
-              <td>ROS 2 构建</td>
-              <td>PASS</td>
-              <td><code>ljh_robot_msg</code>、<code>ljh_robot_coverage</code>、<code>ljh_rviz2</code>、<code>ljh_robot_sim</code>、<code>robot_navigation2</code>、<code>ljh_robot_ds20270c_can_driver</code> 6 包构建通过。</td>
-            </tr>
-            <tr>
-              <td>DS20270C 驱动</td>
-              <td>PASS / dry-run</td>
-              <td>状态话题、<code>0x602</code> 配置、运行诊断字段、前进/后退/停止速度斜坡通过 dry-run 自检。</td>
-            </tr>
-            <tr>
-              <td>真车运动</td>
-              <td>Safety gated</td>
-              <td>覆盖算法不直接控车；真实运动必须现场急停可用、轮子架空、人旁站守，再显式开启 bench test。</td>
+              <td>公开展示边界</td>
+              <td>Scoped</td>
+              <td>页面只展示公开截图、CAD 预览和工程摘要，不公开原始 PCD、内部日志、现场私有配置或本地绝对路径。</td>
             </tr>
           </tbody>
         </table>
@@ -209,18 +279,18 @@
       <div class="container split-note">
         <div>
           <p class="kicker">System Value</p>
-          <h2>工程价值与系统边界</h2>
+          <h2>这页要讲出的核心价值</h2>
           <p>
-            这个项目的价值不只是“会 ROS 2”或者“做过一个网页”。更关键的是把真实机器人里的多层系统同时对齐：地图数据要能被算法用，算法输出要能被 RViz 和 Web 看懂，Web 不能绕过安全链，底盘驱动不能把调试命令直接变成风险动作，所有结果还要留下可复查证据。
+            AMR2 的价值在于它把很多容易分散的能力接成一条可复查的工程链：机械模型不是孤立文件，能进入仿真；地图不是截图，能进入覆盖规划；Web 不是展示壳，能和 ROS 状态对齐；底盘驱动不是直接吃危险速度，而是放在 Nav2 和安全门之后。
           </p>
           <ul class="plain-list">
-            <li>面对复杂系统时，我会先定义边界，再把可验证的小链路接起来。</li>
-            <li>面对真实硬件时，我会保留 dry-run、自检、状态诊断和人工安全门。</li>
-            <li>面对公开展示时，我会用图、参数、测试结果和源码入口说明能力来源。</li>
+            <li>面对真实机器人，我保留从 CAD、装配、代码、地图到现场测试的证据链。</li>
+            <li>面对导航和覆盖任务，我先把可视化、dry-run 和安全边界做清楚，再谈真车执行。</li>
+            <li>面对后续 VLN / VLR，我把 AMR2 当成 waypoint 执行、rosbag 回放和失败案例采集的真实底座。</li>
           </ul>
         </div>
         <aside class="note-panel">
-          AMR2 是 RabbitRobot 的真车执行底座，也服务于后续 VLN / VLR 研究。它负责把语言策略或覆盖策略生成的 waypoint，落到真实地图、定位、局部控制、速度链路和可回放数据里。
+          详情页可以用一句话概括：这是一台自己设计、自己接线、自己写 ROS/Web 工具，并且把真实地图和真实安全链跑通的 AMR 平台。
         </aside>
       </div>
     </section>
@@ -230,18 +300,19 @@
         <p class="kicker">Artifacts</p>
         <h2>可打开的材料</h2>
         <div class="source-actions">
-          <a class="button primary" href="md-preview.html?src=readmes/rabbitrobot-amr2.md">Open Engineering Brief</a>
+          <a class="button primary" href="md-preview.html?src=readme-source/rabbitrobot-amr2.txt">Open Engineering Brief</a>
           <a class="button" href="../index.html#projects">Back to Project Matrix</a>
           <a class="button" href="rabbitrobot-coverage.html">Coverage Algorithm Detail</a>
           <a class="button video" href="https://www.bilibili.com/video/BV1543K6uEVM/" target="_blank" rel="noreferrer">Project Video</a>
           <a class="button" href="https://github.com/lijinghai/ljh_amr2_hubwheel_drive" target="_blank" rel="noreferrer">Source Repository</a>
+          <a class="button" href="https://github.com/lijinghai/ljh_robot_ros2_web" target="_blank" rel="noreferrer">Web Console Repository</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container">RabbitRobot · AMR2 real robot system · 页面聚焦公开展示材料，不包含原始 PCD、内部日志或现场私有配置。</div>
+    <div class="container">RabbitRobot · AMR2 real robot platform · 页面聚焦公开展示材料，不包含原始 PCD、内部日志或现场私有配置。</div>
   </footer>
 </body>
 </html>
