@@ -74,6 +74,8 @@ h1 { margin: 0; font-size: clamp(34px, 5vw, 58px); line-height: 1.05; letter-spa
 .hero-media { border: 1px solid var(--line); background: var(--soft); border-radius: 8px; overflow: hidden; box-shadow: 0 18px 40px rgba(15, 23, 42, .08); }
 .hero-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
 .hero-media.diagram-media img { aspect-ratio: 16 / 9; object-fit: contain; background: #fff; }
+.hero-media.video-embed { background: #000; }
+.hero-media iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; background: #000; }
 main { border-top: 1px solid var(--line); }
 .section { padding: 42px 22px; }
 .section.is-soft { background: var(--soft); }

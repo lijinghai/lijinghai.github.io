@@ -232,6 +232,18 @@ h1 {
   background: #fff;
 }
 
+.hero-media.video-embed {
+  background: #000;
+}
+
+.hero-media iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  background: #000;
+}
+
 .hero-media.dark img {
   background: #111827;
 }
