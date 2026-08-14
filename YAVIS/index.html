@@ -264,6 +264,7 @@
     .section {
       padding: 112px 0;
       background: var(--white);
+      scroll-margin-top: 68px;
     }
 
     .section.soft {
@@ -439,6 +440,7 @@
       color: var(--white);
       background-position: center;
       background-size: cover;
+      scroll-margin-top: 68px;
     }
 
     .photo-feature.culture {
@@ -567,6 +569,92 @@
       object-fit: cover;
       border-radius: var(--radius);
       background: #111111;
+    }
+
+    .eye-debug-layout {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 52px;
+      align-items: start;
+    }
+
+    .eye-debug-copy {
+      position: sticky;
+      top: 104px;
+    }
+
+    .eye-debug-copy p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .debug-facts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1px;
+      margin-top: 30px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .debug-fact {
+      padding: 20px;
+      background: var(--white);
+    }
+
+    .debug-fact strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .debug-fact span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .debug-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .debug-figure {
+      margin: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.06);
+    }
+
+    .debug-figure.wide {
+      grid-column: 1 / -1;
+    }
+
+    .debug-figure img {
+      width: 100%;
+      background: #ffffff;
+    }
+
+    .debug-figure.dark-image img {
+      background: #02080a;
+    }
+
+    .debug-figure figcaption {
+      padding: 18px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+      border-top: 1px solid var(--line);
+    }
+
+    .debug-figure figcaption strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ink);
+      font-size: 17px;
     }
 
     .knowledge {
@@ -718,12 +806,14 @@
       .statement,
       .name-story,
       .product-layout,
+      .eye-debug-layout,
       .voice-panel {
         grid-template-columns: 1fr;
       }
 
       .statement-title,
-      .name-mark {
+      .name-mark,
+      .eye-debug-copy {
         position: static;
       }
 
@@ -843,10 +933,15 @@
       .product-layout,
       .product-specs,
       .product-media,
+      .debug-gallery,
       .knowledge,
       .voice-panel,
       .source-row {
         grid-template-columns: 1fr;
+      }
+
+      .debug-figure.wide {
+        grid-column: auto;
       }
 
       .knowledge-item {
@@ -896,6 +991,7 @@
       <a href="#name">名字由来</a>
       <a href="#scenes">校园场景</a>
       <a href="#product">原型状态</a>
+      <a href="#eye-debug">眼睛调试</a>
       <a href="#knowledge">资料内容</a>
       <a class="nav-cta" href="#voice">小扬同学</a>
     </div>
@@ -1050,6 +1146,74 @@
           <img src="../images/yavis/emotion-happy.gif" alt="扬维斯开心表情动图" loading="lazy" decoding="async">
           <img src="../images/yavis/emotion-thinking.gif" alt="扬维斯思考表情动图" loading="lazy" decoding="async">
           <img src="../images/yavis/device-form.jpg" alt="语音玩偶外形参考" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft" id="eye-debug">
+      <div class="wrap eye-debug-layout">
+        <div class="eye-debug-copy">
+          <div class="eyebrow">眼睛方向调试</div>
+          <h2>为什么左右眼还会看起来反？</h2>
+          <p>这块 AI-EYE 原型的两只圆屏共用同一路显示内容。如果其中一块屏幕在装配上相当于旋转了 180°，代码里只改一套表情素材时，带“上/下方向”的嘴弧、眉毛和单侧高光就会被翻过去。</p>
+          <p>所以这次不是继续加重镜像参数，而是把眼睛素材改成“中心对称”的玩偶风格：高光、腮红、装饰线都成对出现，正着看和旋转 180° 看都不会像表情倒挂。</p>
+
+          <div class="debug-facts" aria-label="眼睛调试结论">
+            <div class="debug-fact">
+              <strong>根因</strong>
+              <span>双眼共用一路显示，单屏旋转参数无法分别校正左右两只物理眼睛。</span>
+            </div>
+            <div class="debug-fact">
+              <strong>修复方向</strong>
+              <span>把素材改成 180° 双向安全，而不是只依赖镜像开关。</span>
+            </div>
+            <div class="debug-fact">
+              <strong>当前版本</strong>
+              <span>运行时图集已切到 dual-safe 眼睛，适合玩偶圆屏和倒装容错。</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="debug-gallery" aria-label="YAVIS 眼睛调试图片记录">
+          <figure class="debug-figure wide">
+            <img src="../images/yavis/eye-feedback-screenshot-20260814.png" alt="用户反馈的眼睛素材前后对比截图" loading="eager" decoding="async">
+            <figcaption>
+              <strong>反馈截图</strong>
+              这张截图说明上一版虽然换成了更软的玩偶风格，但右侧旋转检查里仍能看到嘴弧、眉线等方向特征被翻转，所以还不适合双眼共用一路显示的装配方式。
+            </figcaption>
+          </figure>
+
+          <figure class="debug-figure dark-image">
+            <img src="../images/yavis/eye-before-photo-eye.png" alt="photo-eye 写实眼睛图集" loading="eager" decoding="async">
+            <figcaption>
+              <strong>初版 photo-eye</strong>
+              更像写实眼球，单侧高光和上下眼线明显；一旦有一只屏幕倒装，左右眼会像在做不同表情。
+            </figcaption>
+          </figure>
+
+          <figure class="debug-figure dark-image">
+            <img src="../images/yavis/eye-soft-bean-iteration.png" alt="soft-bean 玩偶眼睛过渡图集" loading="eager" decoding="async">
+            <figcaption>
+              <strong>过渡版 soft-bean</strong>
+              气质更像玩偶，但仍保留“上眉下嘴”的方向感，所以旋转后还能看出反向。
+            </figcaption>
+          </figure>
+
+          <figure class="debug-figure dark-image">
+            <img src="../images/yavis/eye-dual-safe-grid.png" alt="dual-safe 双向安全眼睛图集" loading="eager" decoding="async">
+            <figcaption>
+              <strong>最终 dual-safe</strong>
+              运行时使用的新版图集。表情以中心眼仁、成对高光、成对装饰表达，不再依赖唯一的上方或下方细节。
+            </figcaption>
+          </figure>
+
+          <figure class="debug-figure dark-image">
+            <img src="../images/yavis/eye-dual-safe-rotation-check.png" alt="dual-safe 眼睛图集 180 度旋转检查" loading="eager" decoding="async">
+            <figcaption>
+              <strong>180° 旋转检查</strong>
+              每组上方是正常方向，下方是旋转 180° 后的效果。目标不是像素完全相同，而是实物双眼看起来仍属于同一种玩偶表情。
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
