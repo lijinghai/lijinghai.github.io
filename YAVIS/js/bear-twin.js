@@ -24,6 +24,87 @@
     const coordY = $("#coordY");
     const coordZ = $("#coordZ");
     const liveClock = $("#liveClock");
+    const featureIndex = $("#featureIndex");
+    const featureTitle = $("#featureTitle");
+    const featureDescription = $("#featureDescription");
+    const featureTags = $("#featureTags");
+    const featureSource = $("#featureSource");
+    const featureButtons = [...document.querySelectorAll("[data-feature]")];
+
+    const featureContent = {
+        head: {
+            index: "01 / HEAD TOUCH",
+            title: "摸摸头，它会主动回应你",
+            description: "头部内置一路电容触摸感应。轻轻摸头时，扬维斯会切换触摸反馈表情，并在空闲状态发出亲切问候。",
+            tags: ["头部触摸", "表情反馈", "主动问候"],
+            source: "YAVIS 固件头部触摸通道与触摸问候逻辑",
+        },
+        eyes: {
+            index: "02 / DUAL EYES",
+            title: "双眼屏幕，让情绪被看见",
+            description: "双眼圆形屏幕会显示开心、思考、喜欢、休息等状态。语音和触摸发生时，眼睛会一起改变神态，让陪伴不只停留在声音里。",
+            tags: ["双眼圆屏", "动态表情", "触摸联动"],
+            source: "YAVIS 双眼显示固件与统一表情资产",
+        },
+        voice: {
+            index: "03 / VOICE",
+            title: "“小扬同学”语音唤醒",
+            description: "喊一声“小扬同学”，扬维斯就能进入对话。它会用亲切、年轻、有校园感的语气回应你。",
+            tags: ["自定义唤醒词", "自然语音对话", "校园伙伴人格"],
+            source: "YAVIS 固件自定义唤醒词与语音对话链路",
+        },
+        core: {
+            index: "04 / YZU KNOWLEDGE",
+            title: "专属于扬州大学的知识核心",
+            description: "扬维斯接入扬州大学校园知识内容，可以讲校史、校训、校区地标、校园生活和学习成长；涉及政策与流程时，会提醒以学校最新官方信息为准。",
+            tags: ["扬大校史", "校园生活", "学习成长", "知识边界"],
+            source: "扬州大学校园知识库与 YAVIS 校园伙伴人格",
+        },
+        touch: {
+            index: "05 / BODY TOUCH",
+            title: "身体触摸，让拥抱也有回应",
+            description: "身体内置第二路触摸感应，与头部触摸共同组成双路互动。轻触或拥抱时，玩偶能够识别触摸并给出表情和语音反馈。",
+            tags: ["身体触摸", "双路感应", "拥抱反馈"],
+            source: "YAVIS 固件身体触摸通道与自适应触摸基线",
+        },
+        button: {
+            index: "06 / CHAT BUTTON",
+            title: "藏在手部的对话控制键",
+            description: "短按可以切换聊天状态，让扬维斯随时进入或退出对话；长按可以重置网络配置，方便现场展示和重新连接。",
+            tags: ["短按对话", "快速唤醒", "长按配网"],
+            source: "YAVIS 固件 BOOT 按键聊天与网络配置逻辑",
+        },
+    };
+
+    function activateFeature(key) {
+        const content = featureContent[key];
+        if (!content || !featureTitle) return;
+
+        featureIndex.textContent = content.index;
+        featureTitle.textContent = content.title;
+        featureDescription.textContent = content.description;
+        featureTags.replaceChildren(...content.tags.map((tag) => {
+            const element = document.createElement("span");
+            element.textContent = tag;
+            return element;
+        }));
+        featureSource.textContent = content.source;
+
+        featureButtons.forEach((button) => {
+            const active = button.dataset.feature === key;
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", String(active));
+        });
+    }
+
+    featureButtons.forEach((button) => {
+        const activate = () => activateFeature(button.dataset.feature);
+        button.addEventListener("mouseenter", activate);
+        button.addEventListener("focus", activate);
+        button.addEventListener("click", activate);
+    });
+
+    activateFeature("voice");
 
     const state = {
         autoRotate: true,

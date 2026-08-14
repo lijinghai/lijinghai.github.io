@@ -4,10 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#efe3cf">
-    <meta name="description" content="扬州大学毕业小熊 · 扬维斯 YAVIS 3D 数字孪生 WebGL 展示页">
+    <meta name="description" content="扬维斯 YAVIS 是为扬州大学打造的 AI 校园陪伴玩偶，支持小扬同学语音唤醒、双眼表情、触摸回应和扬大校园知识问答。">
+    <meta property="og:title" content="扬维斯 YAVIS · 扬州大学 AI 校园陪伴玩偶">
+    <meta property="og:description" content="把扬州大学的校园记忆，放进一只可以语音、表情和触摸回应的 AI 玩偶。">
+    <meta property="og:image" content="https://lijinghai.github.io/YAVIS/images/bear-twin/toy-transparent-v3.png">
+    <meta property="og:url" content="https://lijinghai.github.io/YAVIS/">
     <title>扬维斯 YAVIS · 小熊数字孪生</title>
-    <link rel="stylesheet" href="css/bear-twin.css?v=yavis-0814">
-    <script defer src="js/bear-twin.js?v=yavis-0814"></script>
+    <link rel="canonical" href="https://lijinghai.github.io/YAVIS/">
+    <link rel="stylesheet" href="css/bear-twin.css?v=yavis-campus-0814">
+    <script defer src="js/bear-twin.js?v=yavis-campus-0814"></script>
 </head>
 <body>
     <div class="page-noise" aria-hidden="true"></div>
@@ -26,6 +31,11 @@
                 <small>YAVIS DIGITAL TWIN · 001</small>
             </span>
         </a>
+        <nav class="top-nav" aria-label="页面导航">
+            <a href="#digitalTwin">3D 孪生</a>
+            <a href="#campusStory">扬大定制</a>
+            <a href="#featureMap">功能图谱</a>
+        </nav>
         <div class="live-status" aria-label="数字孪生在线状态">
             <span class="live-dot"></span>
             <span>扬维斯 YAVIS 在线</span>
@@ -33,12 +43,12 @@
         </div>
     </header>
 
-    <main class="twin-layout">
+    <main class="twin-layout" id="digitalTwin">
         <section class="intro-panel reveal reveal-one">
-            <p class="eyebrow">YAVIS DIGITAL TWIN / NO. 001</p>
-            <h1>一只会呼吸的<br><em>扬维斯 YAVIS</em></h1>
+            <p class="eyebrow">BUILT FOR YANGZHOU UNIVERSITY / YAVIS 001</p>
+            <h1>为扬州大学打造的<br><em>扬维斯 YAVIS</em></h1>
             <p class="intro-copy">
-                把真实毛绒、毕业帽、吊牌与卷轴完整带进数字空间。轻轻拖动它，感受一只小熊从照片走向可交互生命体的那一刻。
+                一只懂扬大校史、校园生活和学生成长的 AI 校园陪伴玩偶。叫一声“小扬同学”，它会用语音、表情与触摸回应，把母校、学生和校友情感连接在一起。
             </p>
 
             <div class="intro-actions" aria-label="展示快捷操作">
@@ -51,16 +61,16 @@
 
             <dl class="quick-stats">
                 <div>
-                    <dt>材质还原</dt>
-                    <dd>毛绒 / 织物</dd>
+                    <dt>校园身份</dt>
+                    <dd>扬州大学 AI 校园伙伴</dd>
                 </div>
                 <div>
-                    <dt>影像来源</dt>
-                    <dd>MOV · Frame 31</dd>
+                    <dt>日常唤醒</dt>
+                    <dd>“小扬同学”</dd>
                 </div>
                 <div>
-                    <dt>交互维度</dt>
-                    <dd>实时 3D 浮雕</dd>
+                    <dt>核心交互</dt>
+                    <dd>语音 / 表情 / 触摸</dd>
                 </div>
             </dl>
         </section>
@@ -142,11 +152,11 @@
 
             <article class="identity-card">
                 <div class="identity-topline">
-                    <span class="identity-chip">ACTIVE</span>
-                    <span class="identity-code">YDU-BEAR-001</span>
+                    <span class="identity-chip">YANGZHOU UNIVERSITY</span>
+                    <span class="identity-code">YAVIS-YZU-001</span>
                 </div>
-                <h2>毕业小熊</h2>
-                <p>Warm Companion / Campus Edition</p>
+                <h2>扬维斯 YAVIS</h2>
+                <p>AI Campus Companion / Yangzhou University</p>
                 <div class="voice-wave" aria-hidden="true">
                     <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
                 </div>
@@ -154,18 +164,22 @@
 
             <div class="spec-list">
                 <div class="spec-row">
-                    <span>表面纹理</span>
-                    <strong>高保真毛绒</strong>
+                    <span>校园身份</span>
+                    <strong>为扬州大学打造</strong>
                 </div>
                 <div class="spec-row">
-                    <span>关键附件</span>
-                    <strong>帽 / 吊牌 / 卷轴</strong>
+                    <span>唤醒词</span>
+                    <strong>小扬同学</strong>
+                </div>
+                <div class="spec-row">
+                    <span>交互方式</span>
+                    <strong>语音 / 表情 / 触摸</strong>
                 </div>
                 <div class="spec-row">
                     <span>当前姿态</span>
                     <strong id="poseReadout">正面巡航</strong>
                 </div>
-                <div class="spec-row">
+                <div class="spec-row spec-row-technical" aria-hidden="true">
                     <span>渲染状态</span>
                     <strong id="renderReadout">初始化</strong>
                 </div>
@@ -173,8 +187,8 @@
 
             <article class="warm-note">
                 <span class="note-mark">“</span>
-                <p>数字孪生不只是复刻外形，也是在保存它曾经陪伴过你的温度。</p>
-                <small>WARMTH IS ALSO DATA.</small>
+                <p>它不是一只通用 AI 玩具，而是一位记得扬大校史、校园生活与校友情感的“小扬同学”。</p>
+                <small>MADE FOR YANGZHOU UNIVERSITY.</small>
             </article>
 
             <div class="coordinate-card" aria-label="模型空间坐标">
@@ -185,9 +199,116 @@
         </aside>
     </main>
 
+    <section class="campus-story" id="campusStory" aria-labelledby="campusStoryTitle">
+        <div class="campus-story-head">
+            <div>
+                <p class="eyebrow">YANGZHOU UNIVERSITY × YAVIS</p>
+                <h2 id="campusStoryTitle">把扬州大学的校园记忆，放进一只可以回应你的玩偶。</h2>
+            </div>
+            <p>
+                “Y”属于 Yangzhou，也属于扬州大学和“小扬同学”。扬维斯以扬大校园记忆为灵感打造，面向新生、在校生、老师、校友和来访者，让校史文化、校园服务、学习成长与母校情感拥有一个更亲近的入口。
+            </p>
+        </div>
+
+        <div class="campus-gallery" aria-label="扬州大学校园场景">
+            <article class="campus-scene campus-scene-wide">
+                <img src="../images/yavis/yzu-main-campus.png" alt="扬州大学主校区航拍" loading="lazy" decoding="async">
+                <div>
+                    <span>01 / 新生</span>
+                    <h3>认识扬大</h3>
+                    <p>介绍校史、校训、校区、学院、图书馆和校园地标，帮助新生更快建立校园归属感。</p>
+                </div>
+            </article>
+            <article class="campus-scene">
+                <img src="../images/yavis/yzu-modern-lake.webp" alt="扬州大学湖景校园" loading="lazy" decoding="async">
+                <div>
+                    <span>02 / 学生</span>
+                    <h3>陪伴成长</h3>
+                    <p>围绕学习规划、复习鼓励、校园生活和成长问题，提供温暖而有边界的陪伴。</p>
+                </div>
+            </article>
+            <article class="campus-scene">
+                <img src="../images/yavis/yzu-traditional-gate.jpg" alt="扬州大学校门" loading="lazy" decoding="async">
+                <div>
+                    <span>03 / 校友</span>
+                    <h3>保存母校记忆</h3>
+                    <p>用共同的校园地标、历史文化和熟悉称呼，轻轻唤回属于扬大人的温暖记忆。</p>
+                </div>
+            </article>
+        </div>
+
+        <div class="campus-commitments" aria-label="扬维斯校园定位">
+            <div><strong>专属身份</strong><span>扬州大学 AI 校园陪伴伙伴</span></div>
+            <div><strong>专属称呼</strong><span>“小扬同学”语音唤醒</span></div>
+            <div><strong>专属知识</strong><span>扬大校史、地标与校园生活知识库</span></div>
+            <div><strong>清晰边界</strong><span>不替学校发布政策、通知或承诺</span></div>
+        </div>
+    </section>
+
+    <section class="feature-map" id="featureMap" aria-labelledby="featureMapTitle">
+        <div class="feature-map-head">
+            <div>
+                <p class="eyebrow">INTERACTIVE FUNCTION MAP</p>
+                <h2 id="featureMapTitle">把鼠标放到扬维斯身上，看看它如何听见、理解与回应。</h2>
+            </div>
+            <p>悬停或点击玩偶上的功能点。手机端可以直接点击下方功能卡片。</p>
+        </div>
+
+        <div class="feature-map-layout">
+            <div class="feature-bear" aria-label="扬维斯功能部位图">
+                <div class="feature-bear-halo" aria-hidden="true"></div>
+                <img src="images/bear-twin/toy-transparent-v3.png" alt="扬维斯毕业小熊功能部位展示" loading="lazy" decoding="async">
+
+                <button class="feature-pin feature-pin-head" type="button" data-feature="head" aria-label="查看头部触摸功能" aria-pressed="false">
+                    <span>01</span><small>头部触摸</small>
+                </button>
+                <button class="feature-pin feature-pin-eyes" type="button" data-feature="eyes" aria-label="查看双眼表情功能" aria-pressed="false">
+                    <span>02</span><small>双眼表情</small>
+                </button>
+                <button class="feature-pin feature-pin-voice" type="button" data-feature="voice" aria-label="查看语音唤醒功能" aria-pressed="true">
+                    <span>03</span><small>语音唤醒</small>
+                </button>
+                <button class="feature-pin feature-pin-core" type="button" data-feature="core" aria-label="查看扬大知识核心" aria-pressed="false">
+                    <span>04</span><small>扬大知识</small>
+                </button>
+                <button class="feature-pin feature-pin-touch" type="button" data-feature="touch" aria-label="查看身体触摸功能" aria-pressed="false">
+                    <span>05</span><small>身体触摸</small>
+                </button>
+                <button class="feature-pin feature-pin-button" type="button" data-feature="button" aria-label="查看手部对话键功能" aria-pressed="false">
+                    <span>06</span><small>手部对话键</small>
+                </button>
+            </div>
+
+            <div class="feature-console">
+                <div class="feature-console-topline">
+                    <span id="featureIndex">03 / VOICE</span>
+                    <span class="feature-console-status">PROTOTYPE ACTIVE</span>
+                </div>
+                <h3 id="featureTitle">“小扬同学”语音唤醒</h3>
+                <p id="featureDescription">喊一声“小扬同学”，扬维斯就能进入对话。它会用亲切、年轻、有校园感的语气回应你。</p>
+                <div class="feature-tags" id="featureTags" aria-label="当前功能关键词">
+                    <span>自定义唤醒词</span><span>自然语音对话</span><span>校园伙伴人格</span>
+                </div>
+                <div class="feature-source">
+                    <span>功能依据</span>
+                    <strong id="featureSource">YAVIS 固件自定义唤醒词与语音对话链路</strong>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-selector" aria-label="扬维斯功能列表">
+            <button type="button" data-feature="head"><span>01</span><strong>头部触摸</strong><small>摸摸头，触发问候与表情反馈</small></button>
+            <button type="button" data-feature="eyes"><span>02</span><strong>双眼表情</strong><small>开心、思考、喜欢、休息等状态</small></button>
+            <button class="is-active" type="button" data-feature="voice"><span>03</span><strong>语音唤醒</strong><small>喊“小扬同学”开始自然对话</small></button>
+            <button type="button" data-feature="core"><span>04</span><strong>扬大知识</strong><small>校史、地标、校园生活与学习成长</small></button>
+            <button type="button" data-feature="touch"><span>05</span><strong>身体触摸</strong><small>第二路触摸感应，让拥抱也有回应</small></button>
+            <button type="button" data-feature="button"><span>06</span><strong>手部对话键</strong><small>短按切换聊天，长按重置配网</small></button>
+        </div>
+    </section>
+
     <footer class="page-footer">
-        <span>REAL OBJECT → DIGITAL RELIEF → WARM COMPANION</span>
-        <span>扬州大学毕业小熊 · 影像数字化展示</span>
+        <span>YANGZHOU UNIVERSITY → CAMPUS MEMORY → AI COMPANION</span>
+        <span>扬维斯 YAVIS · 为扬州大学打造的 AI 校园陪伴玩偶</span>
     </footer>
 
     <noscript>请启用 JavaScript 以查看小熊的 3D 扬维斯 YAVIS 展示。</noscript>
