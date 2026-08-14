@@ -1,1257 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>扬维斯 YAVIS | 一只记得扬大的校园陪伴玩偶</title>
-  <meta name="description" content="扬维斯 YAVIS 是一款以扬州大学校园记忆为灵感的陪伴玩偶。叫一声“小扬同学”，它会陪你聊校史、地标、学习生活和校友记忆。">
-  <meta property="og:title" content="扬维斯 YAVIS | 一只记得扬大的校园陪伴玩偶">
-  <meta property="og:description" content="把扬州大学的校园记忆，放进一只可以回应你的玩偶。">
-  <meta property="og:image" content="https://lijinghai.github.io/images/yavis/yzu-main-campus.png">
-  <meta property="og:url" content="https://lijinghai.github.io/YAVIS/">
-  <link rel="canonical" href="https://lijinghai.github.io/YAVIS/">
-  <link rel="icon" href="../images/favicon.ico">
-  <link rel="preload" as="image" href="../images/yavis/yzu-main-campus.png">
-  <style>
-    :root {
-      --ink: #101010;
-      --text: #222222;
-      --muted: #6f6f6f;
-      --soft: #f5f5f2;
-      --line: #e7e4dd;
-      --white: #ffffff;
-      --gold: #c59a45;
-      --green: #1f5b45;
-      --focus: #d6a23c;
-      --radius: 8px;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      color: var(--text);
-      background: var(--white);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
-      line-height: 1.65;
-      overflow-x: hidden;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid var(--focus);
-      outline-offset: 4px;
-      border-radius: var(--radius);
-    }
-
-    .skip-link {
-      position: fixed;
-      z-index: 100;
-      top: 12px;
-      left: 12px;
-      padding: 10px 14px;
-      color: var(--ink);
-      background: #f2d27e;
-      border-radius: var(--radius);
-      font-weight: 800;
-      transform: translateY(-180%);
-      transition: transform 160ms ease;
-    }
-
-    .skip-link:focus {
-      transform: translateY(0);
-    }
-
-    .nav {
-      position: fixed;
-      z-index: 20;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 48px;
-      color: var(--white);
-      background: rgba(0, 0, 0, 0.18);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-      backdrop-filter: blur(16px);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 800;
-    }
-
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      color: var(--ink);
-      background: var(--white);
-      border-radius: 8px;
-      font-weight: 900;
-    }
-
-    .brand small {
-      display: block;
-      margin-top: 1px;
-      color: rgba(255, 255, 255, 0.68);
-      font-size: 12px;
-      font-weight: 600;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 30px;
-      align-items: center;
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .nav-links a {
-      transition: color 160ms ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--white);
-    }
-
-    .nav-cta {
-      min-height: 42px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 16px;
-      color: var(--ink);
-      background: var(--white);
-      border-radius: var(--radius);
-      font-weight: 800;
-    }
-
-    .hero {
-      position: relative;
-      min-height: 92svh;
-      display: flex;
-      align-items: flex-end;
-      color: var(--white);
-      background-image:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.12) 62%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.58)),
-        url("../images/yavis/yzu-main-campus.png");
-      background-position: center;
-      background-size: cover;
-    }
-
-    .hero-inner {
-      width: calc(100% - 96px);
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 0 86px;
-    }
-
-    .hero-lockup {
-      max-width: 620px;
-    }
-
-    .hero-logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      color: rgba(255, 255, 255, 0.90);
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .hero-logo::before {
-      content: "Y";
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      color: var(--ink);
-      background: var(--white);
-      border-radius: 8px;
-      font-weight: 900;
-    }
-
-    h1,
-    h2,
-    h3,
-    p,
-    figure {
-      margin-top: 0;
-    }
-
-    h1 {
-      margin-bottom: 18px;
-      color: var(--white);
-      font-size: 64px;
-      line-height: 1.08;
-      font-weight: 850;
-      letter-spacing: 0;
-    }
-
-    .hero-lead {
-      max-width: 650px;
-      margin-bottom: 28px;
-      color: rgba(255, 255, 255, 0.86);
-      font-size: 22px;
-      line-height: 1.72;
-      overflow-wrap: anywhere;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .button {
-      min-height: 46px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 18px;
-      border-radius: var(--radius);
-      font-weight: 800;
-      transition: transform 160ms ease, background 160ms ease, color 160ms ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button.light {
-      color: var(--ink);
-      background: var(--white);
-    }
-
-    .button.ghost {
-      color: var(--white);
-      border: 1px solid rgba(255, 255, 255, 0.44);
-      background: rgba(255, 255, 255, 0.06);
-      backdrop-filter: blur(12px);
-    }
-
-    .section {
-      padding: 112px 0;
-      background: var(--white);
-      scroll-margin-top: 68px;
-    }
-
-    .section.soft {
-      background: var(--soft);
-    }
-
-    .section.black {
-      color: var(--white);
-      background: var(--ink);
-    }
-
-    .wrap {
-      width: calc(100% - 96px);
-      max-width: 1180px;
-      margin: 0 auto;
-    }
-
-    .section-head {
-      max-width: 780px;
-      margin-bottom: 54px;
-    }
-
-    .eyebrow {
-      margin-bottom: 12px;
-      color: var(--gold);
-      font-size: 13px;
-      font-weight: 850;
-      text-transform: uppercase;
-    }
-
-    h2 {
-      margin-bottom: 16px;
-      color: var(--ink);
-      font-size: 44px;
-      line-height: 1.2;
-      font-weight: 820;
-      letter-spacing: 0;
-    }
-
-    .black h2,
-    .black h3 {
-      color: var(--white);
-    }
-
-    .section-head p,
-    .lead {
-      margin-bottom: 0;
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .black .section-head p,
-    .black .lead {
-      color: rgba(255, 255, 255, 0.72);
-    }
-
-    .statement {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 54px;
-      align-items: start;
-    }
-
-    .statement-title {
-      position: sticky;
-      top: 104px;
-    }
-
-    .statement-copy {
-      display: grid;
-      gap: 30px;
-      border-top: 1px solid var(--line);
-    }
-
-    .statement-item {
-      display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 22px;
-      padding-top: 30px;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 30px;
-    }
-
-    .statement-item strong {
-      color: var(--ink);
-      font-size: 24px;
-      line-height: 1.15;
-    }
-
-    .statement-item p {
-      margin-bottom: 0;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .name-story {
-      display: grid;
-      grid-template-columns: 0.78fr 1.22fr;
-      gap: 58px;
-      align-items: start;
-    }
-
-    .name-mark {
-      position: sticky;
-      top: 104px;
-    }
-
-    .name-mark h2 {
-      margin-bottom: 18px;
-      font-size: 56px;
-      line-height: 1.08;
-    }
-
-    .name-mark p {
-      max-width: 380px;
-      margin-bottom: 0;
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .name-copy {
-      border-top: 1px solid var(--line);
-    }
-
-    .name-copy p {
-      margin: 0;
-      padding: 24px 0;
-      color: var(--muted);
-      border-bottom: 1px solid var(--line);
-      font-size: 18px;
-    }
-
-    .name-copy .name-lead {
-      color: var(--ink);
-      font-size: 24px;
-      line-height: 1.55;
-      font-weight: 760;
-    }
-
-    .lineage {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      margin-top: 28px;
-      background: var(--line);
-      border: 1px solid var(--line);
-    }
-
-    .lineage-card {
-      min-height: 132px;
-      padding: 22px;
-      background: var(--white);
-    }
-
-    .lineage-card strong {
-      display: block;
-      margin-bottom: 8px;
-      color: var(--ink);
-      font-size: 24px;
-      line-height: 1.1;
-    }
-
-    .lineage-card span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .photo-feature {
-      position: relative;
-      min-height: 88svh;
-      display: flex;
-      align-items: flex-end;
-      color: var(--white);
-      background-position: center;
-      background-size: cover;
-      scroll-margin-top: 68px;
-    }
-
-    .photo-feature.culture {
-      background-image:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.12)),
-        linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.64)),
-        url("../images/yavis/yzu-modern-lake.webp");
-    }
-
-    .photo-feature.memory {
-      background-image:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.10)),
-        linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.66)),
-        url("../images/yavis/yzu-traditional-gate.jpg");
-    }
-
-    .photo-copy {
-      width: calc(100% - 96px);
-      max-width: 1180px;
-      margin: 0 auto;
-      padding-bottom: 86px;
-    }
-
-    .photo-copy-inner {
-      max-width: 560px;
-    }
-
-    .photo-copy h2 {
-      color: var(--white);
-      font-size: 48px;
-    }
-
-    .photo-copy p {
-      color: rgba(255, 255, 255, 0.80);
-      font-size: 19px;
-    }
-
-    .scene-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .scene {
-      overflow: hidden;
-      border-radius: var(--radius);
-      background: var(--white);
-      border: 1px solid var(--line);
-      box-shadow: 0 10px 34px rgba(0, 0, 0, 0.06);
-    }
-
-    .scene img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-    }
-
-    .scene-body {
-      padding: 24px;
-    }
-
-    .scene h3 {
-      margin-bottom: 8px;
-      color: var(--ink);
-      font-size: 23px;
-      line-height: 1.3;
-    }
-
-    .scene p {
-      margin-bottom: 0;
-      color: var(--muted);
-    }
-
-    .product-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 42px;
-      align-items: center;
-    }
-
-    .product-copy h2 {
-      max-width: 520px;
-    }
-
-    .product-copy p {
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .product-specs {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      margin-top: 34px;
-      background: var(--line);
-      border: 1px solid var(--line);
-    }
-
-    .product-spec {
-      min-height: 112px;
-      padding: 20px;
-      background: var(--white);
-    }
-
-    .product-spec strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--ink);
-      font-size: 18px;
-    }
-
-    .product-spec span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .product-real {
-      margin: 0;
-      overflow: hidden;
-      border-radius: var(--radius);
-      border: 1px solid var(--line);
-      background: var(--white);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.10);
-    }
-
-    .product-real img {
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      object-fit: cover;
-      object-position: center;
-      background: #eeeeea;
-    }
-
-    .product-real figcaption {
-      padding: 20px;
-      border-top: 1px solid var(--line);
-      background: var(--white);
-    }
-
-    .product-real figcaption strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--ink);
-      font-size: 20px;
-      line-height: 1.3;
-    }
-
-    .product-real figcaption span {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .eye-debug-layout {
-      display: grid;
-      grid-template-columns: 0.86fr 1.14fr;
-      gap: 52px;
-      align-items: center;
-    }
-
-    .eye-debug-copy {
-      position: sticky;
-      top: 104px;
-    }
-
-    .eye-debug-copy p {
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .eye-debug-note {
-      margin: 28px 0 0;
-      padding: 18px 20px;
-      color: var(--ink);
-      background: var(--white);
-      border-left: 4px solid var(--gold);
-      font-size: 18px;
-      font-weight: 760;
-    }
-
-    .eye-debug-media {
-      margin: 0;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--white);
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.08);
-    }
-
-    .eye-debug-media img {
-      width: 100%;
-      background: var(--soft);
-    }
-
-    .eye-debug-media figcaption {
-      padding: 18px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.6;
-      border-top: 1px solid var(--line);
-    }
-
-    .eye-debug-media figcaption strong {
-      display: block;
-      margin-bottom: 4px;
-      color: var(--ink);
-      font-size: 17px;
-    }
-
-    .knowledge {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: rgba(255, 255, 255, 0.18);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-    }
-
-    .knowledge-item {
-      min-height: 260px;
-      padding: 28px;
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .knowledge-item span {
-      display: block;
-      margin-bottom: 54px;
-      color: rgba(255, 255, 255, 0.48);
-      font-weight: 800;
-    }
-
-    .knowledge-item h3 {
-      margin-bottom: 10px;
-      font-size: 23px;
-    }
-
-    .knowledge-item p {
-      margin-bottom: 0;
-      color: rgba(255, 255, 255, 0.70);
-    }
-
-    .voice-panel {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--line);
-      border: 1px solid var(--line);
-    }
-
-    .voice-card {
-      min-height: 330px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 38px;
-      background: var(--white);
-    }
-
-    .voice-card.dark {
-      color: var(--white);
-      background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.72)),
-        url("../images/yavis/yzu-campus-axis.jpg");
-      background-position: center;
-      background-size: cover;
-    }
-
-    .voice-card h2 {
-      margin-bottom: 0;
-      font-size: 38px;
-    }
-
-    .voice-card.dark h2 {
-      color: var(--white);
-    }
-
-    .voice-card p {
-      margin-bottom: 0;
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .voice-card.dark p {
-      color: rgba(255, 255, 255, 0.80);
-    }
-
-    .source-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 42px;
-    }
-
-    .source-row a {
-      min-height: 104px;
-      padding: 20px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .source-row strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--white);
-    }
-
-    .source-row span {
-      color: rgba(255, 255, 255, 0.62);
-      font-size: 14px;
-    }
-
-    .source-note {
-      margin-top: 18px;
-      color: rgba(255, 255, 255, 0.58);
-      font-size: 13px;
-    }
-
-    footer {
-      padding: 34px 0;
-      color: rgba(255, 255, 255, 0.62);
-      background: #060606;
-      font-size: 14px;
-    }
-
-    footer .wrap {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    @media (max-width: 980px) {
-      .nav {
-        padding: 0 24px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hero-inner,
-      .wrap,
-      .photo-copy {
-        width: calc(100% - 48px);
-      }
-
-      h1 {
-        font-size: 52px;
-      }
-
-      h2,
-      .photo-copy h2 {
-        font-size: 36px;
-      }
-
-      .statement,
-      .name-story,
-      .product-layout,
-      .eye-debug-layout,
-      .voice-panel {
-        grid-template-columns: 1fr;
-      }
-
-      .statement-title,
-      .name-mark,
-      .eye-debug-copy {
-        position: static;
-      }
-
-      .scene-grid,
-      .lineage,
-      .knowledge,
-      .source-row {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav {
-        height: 62px;
-        padding: 0 16px;
-      }
-
-      .brand-mark {
-        width: 32px;
-        height: 32px;
-      }
-
-      .brand strong {
-        font-size: 15px;
-      }
-
-      .brand small {
-        font-size: 11px;
-      }
-
-      .hero {
-        min-height: 88svh;
-        background-position: 58% center;
-      }
-
-      .hero-inner {
-        width: calc(100% - 32px);
-        padding-bottom: 42px;
-      }
-
-      .hero-logo {
-        margin-bottom: 16px;
-        font-size: 16px;
-      }
-
-      .hero-lockup {
-        max-width: 358px;
-      }
-
-      h1 {
-        font-size: 42px;
-      }
-
-      .hero-lead {
-        font-size: 17px;
-      }
-
-      .hero-actions {
-        align-items: stretch;
-      }
-
-      .button {
-        width: 100%;
-        min-height: 48px;
-      }
-
-      .section {
-        padding: 72px 0;
-      }
-
-      .wrap,
-      .photo-copy {
-        width: calc(100% - 32px);
-      }
-
-      .section-head {
-        margin-bottom: 34px;
-      }
-
-      h2,
-      .photo-copy h2,
-      .voice-card h2 {
-        font-size: 30px;
-      }
-
-      .section-head p,
-      .lead,
-      .photo-copy p,
-      .product-copy p,
-      .voice-card p {
-        font-size: 16px;
-      }
-
-      .statement-item {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-
-      .name-mark h2 {
-        font-size: 38px;
-      }
-
-      .name-copy .name-lead {
-        font-size: 20px;
-      }
-
-      .photo-feature {
-        min-height: 78svh;
-      }
-
-      .photo-copy {
-        padding-bottom: 48px;
-      }
-
-      .scene-grid,
-      .lineage,
-      .product-layout,
-      .product-specs,
-      .knowledge,
-      .voice-panel,
-      .source-row {
-        grid-template-columns: 1fr;
-      }
-
-      .knowledge-item {
-        min-height: 210px;
-      }
-
-      .knowledge-item span {
-        margin-bottom: 34px;
-      }
-
-      .voice-card {
-        min-height: 280px;
-        padding: 28px;
-      }
-
-      footer .wrap {
-        display: block;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .skip-link,
-      .button,
-      .nav-links a {
-        transition: none;
-      }
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#efe3cf">
+    <meta name="description" content="扬州大学毕业小熊 · 扬维斯 YAVIS 3D 数字孪生 WebGL 展示页">
+    <title>扬维斯 YAVIS · 小熊数字孪生</title>
+    <link rel="stylesheet" href="css/bear-twin.css?v=yavis-0814">
+    <script defer src="js/bear-twin.js?v=yavis-0814"></script>
 </head>
 <body>
-  <a class="skip-link" href="#main">跳到主要内容</a>
+    <div class="page-noise" aria-hidden="true"></div>
+    <div class="ambient-orb ambient-orb-one" aria-hidden="true"></div>
+    <div class="ambient-orb ambient-orb-two" aria-hidden="true"></div>
 
-  <nav class="nav" aria-label="主导航">
-    <a class="brand" href="#top" aria-label="扬维斯 YAVIS 首页">
-      <span class="brand-mark">Y</span>
-      <span>
-        <strong>扬维斯 YAVIS</strong>
-        <small>扬州大学校园记忆玩偶</small>
-      </span>
-    </a>
-    <div class="nav-links">
-      <a href="#idea">设计初衷</a>
-      <a href="#name">名字由来</a>
-      <a href="#scenes">校园场景</a>
-      <a href="#product">原型状态</a>
-      <a href="#eye-debug">表情展示</a>
-      <a href="#knowledge">资料内容</a>
-      <a class="nav-cta" href="#voice">小扬同学</a>
-    </div>
-  </nav>
-
-  <header class="hero" id="top">
-    <div class="hero-inner">
-      <div class="hero-lockup">
-        <div class="hero-logo">yavis</div>
-        <h1>扬维斯 YAVIS</h1>
-        <p class="hero-lead">一只以扬州大学校园记忆为灵感的陪伴玩偶。你叫它“小扬同学”，它会用亲近的语气聊校史、地标、学习生活和校友记忆。</p>
-        <div class="hero-actions">
-          <a class="button light" href="#idea">看看设计初衷</a>
-          <a class="button ghost" href="#voice">听听小扬同学</a>
+    <header class="topbar">
+        <a class="brand" href="index.html" aria-label="扬维斯 YAVIS 小熊首页">
+            <span class="brand-mark" aria-hidden="true">
+                <span class="brand-ear brand-ear-left"></span>
+                <span class="brand-ear brand-ear-right"></span>
+                <span class="brand-face"></span>
+            </span>
+            <span>
+                <strong>扬维斯 YAVIS</strong>
+                <small>YAVIS DIGITAL TWIN · 001</small>
+            </span>
+        </a>
+        <div class="live-status" aria-label="数字孪生在线状态">
+            <span class="live-dot"></span>
+            <span>扬维斯 YAVIS 在线</span>
+            <time id="liveClock">--:--:--</time>
         </div>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <main id="main">
-    <section class="section" id="idea">
-      <div class="wrap statement">
-        <div class="statement-title">
-          <div class="eyebrow">设计初衷</div>
-          <h2>把母校记忆，放进一只可以回应你的玩偶。</h2>
-          <p class="lead">扬维斯不摆出冷冰冰的工具姿态。它更像一个放在书桌、宿舍或校友家里的小伙伴，记得扬大的名字、路、故事和那句“欢迎回到扬大”。</p>
-        </div>
-        <div class="statement-copy">
-          <article class="statement-item">
-            <strong>校史</strong>
-            <p>从学校源流、校训精神和文化标识开始，把原本分散的资料整理成容易听懂、问得到的母校故事。</p>
-          </article>
-          <article class="statement-item">
-            <strong>校园</strong>
-            <p>把校区、地标、图书馆、食堂、学院与活动节点放进同一份资料里，让新生、在校生和校友都能找到熟悉的入口。</p>
-          </article>
-          <article class="statement-item">
-            <strong>陪伴</strong>
-            <p>对学生，它陪你学习和适应校园；对校友，它不替你编经历，只把共同的扬大记忆轻轻递回来。</p>
-          </article>
-        </div>
-      </div>
-    </section>
+    <main class="twin-layout">
+        <section class="intro-panel reveal reveal-one">
+            <p class="eyebrow">YAVIS DIGITAL TWIN / NO. 001</p>
+            <h1>一只会呼吸的<br><em>扬维斯 YAVIS</em></h1>
+            <p class="intro-copy">
+                把真实毛绒、毕业帽、吊牌与卷轴完整带进数字空间。轻轻拖动它，感受一只小熊从照片走向可交互生命体的那一刻。
+            </p>
 
-    <section class="section soft" id="name">
-      <div class="wrap name-story">
-        <div class="name-mark">
-          <div class="eyebrow">为什么叫 YAVIS</div>
-          <h2>从 JARVIS 到 YAVIS，把未来感留给扬大。</h2>
-          <p>这个名字不是生造出来的。它来自一次致敬，也来自一个很具体的愿望：让扬州大学的校园记忆，有一个可以被唤醒的声音。</p>
-        </div>
-
-        <div>
-          <div class="name-copy">
-            <p class="name-lead">扬维斯 YAVIS，是一款以扬州大学校园记忆为灵感打造的 AI 陪伴玩偶。</p>
-            <p>它的日常唤醒词是“小扬同学”。这个称呼既像一位亲切的校园伙伴，也像一个懂母校、懂学习、懂陪伴的智能助手。它可以回答扬州大学相关的校园问答，讲述校史与校园故事，陪伴学生学习成长，也为校友保存一份关于母校的温暖记忆。</p>
-            <p>“YAVIS”这个名字，来自对钢铁侠语音助手 JARVIS 的致敬。JARVIS 不只是系统，更像一位始终在身边回应、协助和守护的伙伴。理想同学的 AI 叫 LiVIS，让智能陪伴从科幻想象走进真实生活。</p>
-            <p>而 YAVIS 中的 “Y”，属于 Yangzhou，属于扬州大学，也属于“小扬同学”。如果说 JARVIS 陪伴钢铁侠走向未来，LiVIS 陪伴人们进入智能生活，那么 YAVIS 想陪伴的，是扬州大学的学生、校友，以及每一份关于母校的校园记忆。</p>
-            <p>我们希望扬维斯不只是一个会说话的玩偶，而是一个能连接母校、学生与校友情感的 AI 校园伙伴。它会听见一句“小扬同学”，也会把一座校园的故事，轻轻讲给你听。</p>
-          </div>
-
-          <div class="lineage" aria-label="YAVIS 命名线索">
-            <div class="lineage-card">
-              <strong>JARVIS</strong>
-              <span>来自科幻想象中的智能助手，代表陪伴、回应与守护。</span>
+            <div class="intro-actions" aria-label="展示快捷操作">
+                <button class="primary-action" id="focusBearBtn" type="button">
+                    <span class="action-pulse"></span>
+                    靠近小熊
+                </button>
+                <button class="text-action" id="introScanBtn" type="button">开启数字扫描 <span>↗</span></button>
             </div>
-            <div class="lineage-card">
-              <strong>LiVIS</strong>
-              <span>智能生活里的新一代陪伴形态，让助手进入真实日常。</span>
+
+            <dl class="quick-stats">
+                <div>
+                    <dt>材质还原</dt>
+                    <dd>毛绒 / 织物</dd>
+                </div>
+                <div>
+                    <dt>影像来源</dt>
+                    <dd>MOV · Frame 31</dd>
+                </div>
+                <div>
+                    <dt>交互维度</dt>
+                    <dd>实时 3D 浮雕</dd>
+                </div>
+            </dl>
+        </section>
+
+        <section class="stage-shell reveal reveal-two" aria-label="小熊三维交互展示区">
+            <div class="stage-heading">
+                <div>
+                    <span class="section-index">01</span>
+                    <span class="section-label">LIVE SPECIMEN</span>
+                </div>
+                <div class="stage-readout">
+                    <span>ROT <b id="angleReadout">+00.0°</b></span>
+                    <span>ZOOM <b id="zoomReadout">100%</b></span>
+                </div>
             </div>
-            <div class="lineage-card">
-              <strong>YAVIS</strong>
-              <span>把 Y 留给 Yangzhou，留给扬州大学，也留给“小扬同学”。</span>
+
+            <div class="model-viewport" id="modelViewport">
+                <div class="loading-state" id="loadingState">
+                    <span class="loading-ring"></span>
+                    <strong>正在唤醒扬维斯 YAVIS</strong>
+                    <small>BUILDING RELIEF MESH</small>
+                </div>
+
+                <div class="halo halo-back" aria-hidden="true"></div>
+                <div class="orbit orbit-one" aria-hidden="true"></div>
+                <div class="orbit orbit-two" aria-hidden="true"></div>
+                <div class="scan-beam" aria-hidden="true"></div>
+                <canvas id="bearCanvas" aria-label="可拖动旋转的小熊扬维斯 YAVIS"></canvas>
+                <img class="model-fallback" id="modelFallback" src="images/bear-twin/toy-transparent-v3.png" alt="毕业小熊透明图">
+
+                <div class="model-shadow" aria-hidden="true"></div>
+                <div class="pedestal" aria-hidden="true">
+                    <div class="pedestal-top"></div>
+                    <div class="pedestal-side"></div>
+                    <div class="pedestal-line"></div>
+                </div>
+
+                <div class="hotspot hotspot-hat" aria-hidden="true">
+                    <span></span><small>毕业帽</small>
+                </div>
+                <div class="hotspot hotspot-scroll" aria-hidden="true">
+                    <span></span><small>毕业卷轴</small>
+                </div>
+
+                <div class="drag-hint" id="dragHint">
+                    <span class="drag-icon" aria-hidden="true">↔</span>
+                    拖动旋转 · 滚轮缩放
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="photo-feature culture" aria-label="扬州大学校园文化图片">
-      <div class="photo-copy">
-        <div class="photo-copy-inner">
-          <div class="eyebrow">校园记忆</div>
-          <h2>从校门、湖岸和教室里，长出一个声音。</h2>
-          <p>当你说“小扬同学”，扬维斯会用校园伙伴的语气，把校史文化、日常生活和学习陪伴慢慢串起来。</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section soft" id="scenes">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">校园场景</div>
-          <h2>三个典型场景，连接学生、校园与校友。</h2>
-          <p>先从三类最真实的人开始：刚来的新生、正在学习生活的学生、已经离开又常常想起母校的校友。</p>
-        </div>
-
-        <div class="scene-grid">
-          <article class="scene">
-            <img src="../images/yavis/yzu-main-campus.png" alt="扬州大学主校区航拍" loading="lazy" decoding="async">
-            <div class="scene-body">
-              <h3>新生认识校园</h3>
-              <p>介绍校区、图书馆、地标与常见校园问题，帮助新生更快建立归属感。</p>
+            <div class="control-deck">
+                <div class="control-group control-buttons">
+                    <button class="deck-button is-active" id="autoRotateBtn" type="button" aria-pressed="true">
+                        <span class="button-icon">◌</span>
+                        自动巡航
+                    </button>
+                    <button class="deck-button" id="scanBtn" type="button" aria-pressed="false">
+                        <span class="button-icon">⌁</span>
+                        扫描视图
+                    </button>
+                    <button class="deck-button" id="resetBtn" type="button">
+                        <span class="button-icon">↺</span>
+                        复位
+                    </button>
+                </div>
+                <label class="light-control" for="lightRange">
+                    <span>暖光强度</span>
+                    <input id="lightRange" type="range" min="30" max="120" value="82">
+                    <output id="lightOutput">82</output>
+                </label>
             </div>
-          </article>
-          <article class="scene">
-            <img src="../images/yavis/yzu-modern-lake.webp" alt="扬州大学湖景校园" loading="lazy" decoding="async">
-            <div class="scene-body">
-              <h3>学生学习陪伴</h3>
-              <p>背词、复习、番茄钟、备考建议，用更亲切的语气陪伴日常成长。</p>
+        </section>
+
+        <aside class="spec-panel reveal reveal-three">
+            <div class="spec-heading">
+                <span class="section-index">02</span>
+                <span class="section-label">TWIN PROFILE</span>
             </div>
-          </article>
-          <article class="scene">
-            <img src="../images/yavis/yzu-traditional-gate.jpg" alt="扬州大学校门" loading="lazy" decoding="async">
-            <div class="scene-body">
-              <h3>校友回到母校</h3>
-              <p>不假装知道每个人的经历，而是唤起共同的校园记忆和母校情感。</p>
+
+            <article class="identity-card">
+                <div class="identity-topline">
+                    <span class="identity-chip">ACTIVE</span>
+                    <span class="identity-code">YDU-BEAR-001</span>
+                </div>
+                <h2>毕业小熊</h2>
+                <p>Warm Companion / Campus Edition</p>
+                <div class="voice-wave" aria-hidden="true">
+                    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                </div>
+            </article>
+
+            <div class="spec-list">
+                <div class="spec-row">
+                    <span>表面纹理</span>
+                    <strong>高保真毛绒</strong>
+                </div>
+                <div class="spec-row">
+                    <span>关键附件</span>
+                    <strong>帽 / 吊牌 / 卷轴</strong>
+                </div>
+                <div class="spec-row">
+                    <span>当前姿态</span>
+                    <strong id="poseReadout">正面巡航</strong>
+                </div>
+                <div class="spec-row">
+                    <span>渲染状态</span>
+                    <strong id="renderReadout">初始化</strong>
+                </div>
             </div>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <section class="section" id="product">
-      <div class="wrap product-layout">
-        <div class="product-copy">
-          <div class="eyebrow">原型状态</div>
-          <h2>现在先把它做成这只真实的小扬同学。</h2>
-          <p>目前的原型已经完成“小扬同学”唤醒、语音对话、双眼屏幕表情、触摸回应和线上资料库接入。展示时不再用方盒硬件和眼球素材代替它，而是直接回到这只穿着扬大礼服、戴着学位帽、拿着毕业卷轴的真实玩偶。</p>
-          <div class="product-specs" aria-label="扬维斯产品能力">
-            <div class="product-spec">
-              <strong>唤醒词</strong>
-              <span>“小扬同学”，形成亲切的校园身份。</span>
+            <article class="warm-note">
+                <span class="note-mark">“</span>
+                <p>数字孪生不只是复刻外形，也是在保存它曾经陪伴过你的温度。</p>
+                <small>WARMTH IS ALSO DATA.</small>
+            </article>
+
+            <div class="coordinate-card" aria-label="模型空间坐标">
+                <div><span>X</span><b id="coordX">0.00</b></div>
+                <div><span>Y</span><b id="coordY">0.00</b></div>
+                <div><span>Z</span><b id="coordZ">1.00</b></div>
             </div>
-            <div class="product-spec">
-              <strong>日常对话</strong>
-              <span>自然问答，讲述扬大校史与校园生活。</span>
-            </div>
-            <div class="product-spec">
-              <strong>眼睛表情</strong>
-              <span>开心、思考、喜欢、休息等状态表达。</span>
-            </div>
-            <div class="product-spec">
-              <strong>校园资料</strong>
-              <span>持续补充校史、地标、学院与校友故事。</span>
-            </div>
-          </div>
-        </div>
+        </aside>
+    </main>
 
-        <figure class="product-real" aria-label="扬维斯真实玩偶展示图">
-          <img src="../images/yavis/yavis-real-toy-photo.jpg" alt="穿着扬州大学礼服、戴着学位帽并拿着毕业卷轴的真实扬维斯玩偶" loading="eager" decoding="async">
-          <figcaption>
-            <strong>真实玩偶展示图</strong>
-            <span>这一版换成你现在手里的 YAVIS 玩偶完整展示图，保留学位帽、扬大礼服、毕业卷轴和展台感，不再让旧硬件参考图占据产品展示位。</span>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
+    <footer class="page-footer">
+        <span>REAL OBJECT → DIGITAL RELIEF → WARM COMPANION</span>
+        <span>扬州大学毕业小熊 · 影像数字化展示</span>
+    </footer>
 
-    <section class="section soft" id="eye-debug">
-      <div class="wrap eye-debug-layout">
-        <div class="eye-debug-copy">
-          <div class="eyebrow">双眼表情展示</div>
-          <h2>让每一种表情，都更像扬维斯。</h2>
-          <p>扬维斯的双眼是整只玩偶最有记忆点的部分。我们把开心、思考、喜欢、休息等状态整理成统一风格，让它一出现就有自己的神态。</p>
-          <p>这一页只保留最能代表效果的一张总览图，重点集中、画面更干净，浏览时能更直接地感受到扬维斯的表情气质。</p>
-          <p class="eye-debug-note">这一页只放最有代表性的表情展示，不再堆满零散画面。</p>
-        </div>
-
-        <figure class="eye-debug-media" aria-label="YAVIS 双眼表情展示图">
-          <img src="../images/yavis/eye-debug-summary.png" alt="扬维斯双眼表情总览图" loading="eager" decoding="async">
-          <figcaption>
-            <strong>双眼表情总览</strong>
-            把最能代表扬维斯气质的表情整理成一张图，方便一眼看到它的神态。
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section class="photo-feature memory" aria-label="扬州大学校门与校友记忆">
-      <div class="photo-copy">
-        <div class="photo-copy-inner">
-          <div class="eyebrow">校友记忆</div>
-          <h2>欢迎回到扬大。</h2>
-          <p>对校友来说，扬维斯不是一台资料查询工具，而是一份能被轻轻唤起的母校记忆。</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section black" id="knowledge">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">资料内容</div>
-          <h2>先把资料做稳，再谈温度。</h2>
-          <p>扬维斯已经接入“扬州大学校园知识库”。校史、校训、校区、校园问答会持续补充；涉及政策、时间、费用、流程等可能变化的信息，以扬州大学最新官方渠道为准。</p>
-        </div>
-
-        <div class="knowledge" aria-label="扬维斯知识内容模块">
-          <article class="knowledge-item">
-            <span>01</span>
-            <h3>校史沿革</h3>
-            <p>从百年文脉、办学节点到学校发展脉络，构建可追溯的校史内容。</p>
-          </article>
-          <article class="knowledge-item">
-            <span>02</span>
-            <h3>校训标识</h3>
-            <p>校训、校徽、校歌与精神文化，形成扬维斯的表达底色。</p>
-          </article>
-          <article class="knowledge-item">
-            <span>03</span>
-            <h3>校园生活</h3>
-            <p>校区、学院、图书馆、食堂、宿舍和活动节点，慢慢补成一张可问的校园地图。</p>
-          </article>
-          <article class="knowledge-item">
-            <span>04</span>
-            <h3>问答边界</h3>
-            <p>能聊校园文化和学习生活；遇到招生、校历、缴费等正式信息，会提醒去看学校官方渠道。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="voice">
-      <div class="wrap">
-        <div class="voice-panel">
-          <article class="voice-card">
-            <div>
-              <div class="eyebrow">日常称呼</div>
-              <h2>小扬同学</h2>
-            </div>
-            <p>一句像喊同学一样的称呼，让校园文化从资料里走出来，变成可以陪你说话的伙伴。</p>
-          </article>
-          <article class="voice-card dark">
-            <div>
-              <div class="eyebrow">轻声回应</div>
-              <h2>“你好，我是扬维斯。”</h2>
-            </div>
-            <p>“我可以陪你了解扬大的校史、校园生活和学习成长，也陪校友留住一点关于母校的温暖记忆。”</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section black">
-      <div class="wrap">
-        <div class="section-head">
-          <div class="eyebrow">资料来源</div>
-          <h2>它讲母校故事，但不替学校发布通知。</h2>
-          <p>YAVIS 可以讲述、陪伴和传播扬州大学历史文化记忆，但不冒充学校官方部门发布政策、通知或承诺。</p>
-        </div>
-        <div class="source-row">
-          <a href="https://www.yzu.edu.cn/xxgk/xxjj.htm" target="_blank" rel="noopener">
-            <strong>学校简介</strong>
-            <span>扬州大学官网公开信息</span>
-          </a>
-          <a href="https://www.yzu.edu.cn/xxgk/lsyg.htm" target="_blank" rel="noopener">
-            <strong>历史沿革</strong>
-            <span>校史脉络与重要节点</span>
-          </a>
-          <a href="https://www.yzu.edu.cn/xxgk/ydbs.htm" target="_blank" rel="noopener">
-            <strong>扬大标识</strong>
-            <span>校训、校徽等文化资料</span>
-          </a>
-        </div>
-        <p class="source-note">正式展示前建议补充图片授权、知识库来源清单与校园故事采集规范。</p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <span>YAVIS / 扬维斯 - 扬州大学校园记忆陪伴玩偶</span>
-      <span>https://lijinghai.github.io/YAVIS/</span>
-    </div>
-  </footer>
+    <noscript>请启用 JavaScript 以查看小熊的 3D 扬维斯 YAVIS 展示。</noscript>
 </body>
 </html>
