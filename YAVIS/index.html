@@ -557,18 +557,40 @@
       font-size: 14px;
     }
 
-    .product-media {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
+    .product-real {
+      margin: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--white);
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.10);
     }
 
-    .product-media img {
+    .product-real img {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 4 / 5;
       object-fit: cover;
-      border-radius: var(--radius);
-      background: #111111;
+      object-position: center;
+      background: #eeeeea;
+    }
+
+    .product-real figcaption {
+      padding: 20px;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .product-real figcaption strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink);
+      font-size: 20px;
+      line-height: 1.3;
+    }
+
+    .product-real figcaption span {
+      color: var(--muted);
+      font-size: 15px;
     }
 
     .eye-debug-layout {
@@ -932,7 +954,6 @@
       .lineage,
       .product-layout,
       .product-specs,
-      .product-media,
       .debug-gallery,
       .knowledge,
       .voice-panel,
@@ -1119,8 +1140,8 @@
       <div class="wrap product-layout">
         <div class="product-copy">
           <div class="eyebrow">原型状态</div>
-          <h2>先做成能陪伴的一只小玩偶。</h2>
-          <p>目前的原型已经完成“小扬同学”唤醒、语音对话、双眼屏幕表情、触摸回应和线上资料库接入。它不急着把内部原理摆到台前，而是先把回答、表情和手感做得像一个可靠的校园伙伴。</p>
+          <h2>现在先把它做成这只真实的小扬同学。</h2>
+          <p>目前的原型已经完成“小扬同学”唤醒、语音对话、双眼屏幕表情、触摸回应和线上资料库接入。展示时不再用方盒硬件和眼球素材代替它，而是直接回到这只穿着扬大礼服、戴着学位帽、拿着毕业卷轴的真实玩偶。</p>
           <div class="product-specs" aria-label="扬维斯产品能力">
             <div class="product-spec">
               <strong>唤醒词</strong>
@@ -1141,12 +1162,13 @@
           </div>
         </div>
 
-        <div class="product-media" aria-label="扬维斯硬件与表情素材">
-          <img src="../images/yavis/device-display.jpg" alt="语音玩偶显示屏原型" loading="lazy" decoding="async">
-          <img src="../images/yavis/emotion-happy.gif" alt="扬维斯开心表情动图" loading="lazy" decoding="async">
-          <img src="../images/yavis/emotion-thinking.gif" alt="扬维斯思考表情动图" loading="lazy" decoding="async">
-          <img src="../images/yavis/device-form.jpg" alt="语音玩偶外形参考" loading="lazy" decoding="async">
-        </div>
+        <figure class="product-real" aria-label="扬维斯真实玩偶实拍">
+          <img src="../images/yavis/yavis-real-toy-photo.jpg" alt="穿着扬州大学礼服、戴着学位帽并拿着毕业卷轴的真实扬维斯玩偶" loading="eager" decoding="async">
+          <figcaption>
+            <strong>真实玩偶实拍</strong>
+            <span>这一版直接使用现在手里的 YAVIS 玩偶，不再用开发板外壳、眼球素材或旧硬件参考图占据产品展示位。</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
