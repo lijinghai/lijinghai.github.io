@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Jinghai Li | Robotics, VLN, AMR Systems</title>
-  <meta name="description" content="Jinghai Li 的个人主页：控制工程硕士研究生，聚焦 Vision-Language Navigation、真实 AMR 系统、SLAM / 多传感器建图与 RabbitRobot 机器人平台。">
+  <meta name="description" content="Jinghai Li 的个人主页：从自建 AMR、机器狗和机械臂出发，研究长程 Vision-Language Navigation、偏航检测与可验证恢复。">
   <meta name="author" content="Jinghai Li">
   <link rel="canonical" href="https://lijinghai.github.io/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Jinghai Li | Robotics, VLN, AMR Systems">
-  <meta property="og:description" content="一个简洁的机器人 / VLN / AMR 技术主页：快速展示研究方向、代表项目、技术报告和 RabbitRobot 真实机器人平台。">
+  <meta property="og:description" content="从真实机器人系统出发，研究长程 VLN 如何发现偏航、利用历史状态并完成可验证恢复。">
   <meta property="og:url" content="https://lijinghai.github.io/">
   <meta property="og:image" content="https://lijinghai.github.io/images/profile/jinghai-li-portrait-soft.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Jinghai Li | Robotics, VLN, AMR Systems">
-  <meta name="twitter:description" content="Robotics / VLN / AMR Systems homepage with RabbitRobot real-robot project evidence.">
+  <meta name="twitter:description" content="Real robots first: long-horizon VLN, deviation detection, recovery, and the RabbitRobot engineering base.">
   <meta name="twitter:image" content="https://lijinghai.github.io/images/profile/jinghai-li-portrait-soft.jpg">
   <link rel="icon" type="image/png" href="RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png">
   <script type="application/ld+json">
@@ -1346,13 +1346,13 @@
       <div>
         <h1 id="page-title">Jinghai Li</h1>
         <p class="role-line"><span class="role-chunk">控制工程硕士研究生</span><span class="role-divider">·</span><span class="role-chunk">Robotics / VLN / AMR Systems</span></p>
-        <p class="name-line">Research interests: Vision-Language Navigation, real-robot AMR systems, SLAM / mapping</p>
-        <p class="hero-claim">I build real AMR systems and use them as the testbed for active VLN research.</p>
+        <p class="name-line">Research interests: Long-horizon Vision-Language Navigation, real-robot systems, SLAM / mapping</p>
+        <p class="hero-claim">I build the robot first, then study how long-horizon navigation goes wrong and recovers.</p>
         <p>
-          你好，我是 <strong>Jinghai Li</strong>。我关注 <span class="highlight">Vision-Language Navigation</span>、真实 AMR 系统和多传感器建图；RabbitRobot 小车从底盘装配、电控接线、传感器集成到 ROS 2 / Web 工具，都是我自己一点点搭起来的。
+          你好，我是 <strong>Jinghai Li</strong>，一名控制工程硕士研究生。我的工作从真实机器人开始：自己装底盘、接电控和传感器，把 ROS 2、Nav2、建图与 Web 工具跑通，再把机器狗和 AMR 用作 <span class="highlight">Vision-Language Navigation</span> 的实验平台。
         </p>
         <p class="english-summary">
-          My homepage is a doorway: quick proof of who I am, what I study, what I have built, and where to find the detailed RabbitRobot work.
+          我现在关心的问题很具体：机器人在长程指令中什么时候开始走偏，怎样结合历史状态和语义子目标判断偏差，又怎样留下足够证据，确认它真的恢复了。
         </p>
         <div class="hero-actions">
           <a class="rabbit-button" href="RabbitRobot/" aria-label="Open RabbitRobot main project page">
@@ -1372,9 +1372,9 @@
         <div class="side-panel">
           <p class="side-kicker">Research Profile</p>
           <ul class="side-facts">
-            <li><b>Focus</b><span>VLN, AMR systems, SLAM / mapping</span></li>
-            <li><b>Current</b><span>AMR system build with active VLN grounding work</span></li>
-            <li><b>Build</b><span>Self-built AMR prototypes, sensors, ROS 2 stack</span></li>
+            <li><b>Focus</b><span>Long-horizon VLN, deviation detection, recovery</span></li>
+            <li><b>Current</b><span>Robot dog RGB-D chain ready; recovery research in progress</span></li>
+            <li><b>Build</b><span>Self-built AMR / arm, sensors, ROS 2 / Nav2 / Web</span></li>
           </ul>
         </div>
       </div>
@@ -1387,18 +1387,18 @@
       <div class="focus-grid">
         <p class="focus-card">
           <b>Vision-Language Navigation</b>
-          <span>关注语言目标如何落到真实空间行动。重点是长程任务中的偏航检测、语义子目标和恢复验证。</span>
+          <span>研究机器人执行长指令时何时开始偏离；结合历史状态、当前观察和语义子目标做偏差判断，并验证恢复是否真的有效。</span>
         </p>
         <p class="focus-card">
           <b>Real-robot AMR Systems</b>
-          <span>自己动手搭底盘、电控、传感器和 ROS 2 系统。目标是能跑、能测、能复盘。</span>
+          <span>从底盘、电控、线束和传感器到 ROS 2 / Nav2 自己搭建。真实系统不是展示背景，而是问题、数据和失败案例的来源。</span>
         </p>
         <p class="focus-card">
-          <b>SLAM and Multi-Sensor Fusion</b>
-          <span>为导航和 VLN 提供可靠地图与现场数据。关注 LiDAR、深度相机、IMU 与点云建图链路。</span>
+          <b>Mapping and Verifiable Execution</b>
+          <span>用 LiDAR、RGB-D、IMU 与地图建立可复盘的执行链；目标点、状态变化、规划路径和实际轨迹都应当能检查。</span>
         </p>
       </div>
-      <p class="stack-line"><b>Toolchain:</b> ROS 2, Nav2, SLAM, LiDAR, VLM, Web tools.</p>
+      <p class="stack-line"><b>Toolchain:</b> ROS 2, Nav2, SLAM, LiDAR, RGB-D, VLM / VLA, Web tools.</p>
     </section>
 
     <section aria-labelledby="work-title">
@@ -1406,7 +1406,7 @@
         <h2 id="work-title">Selected Work</h2>
       </div>
       <p class="section-lead">
-        Public entry points that show what I have built and how the VLN / AMR direction is grounded in real systems.
+        这些项目不是并列的标签，而是一条连续路径：先把机器人造出来、跑起来、记录下来，再把 VLN / VLA 问题接进真实系统。
       </p>
 
       <article class="entry">
@@ -1416,20 +1416,20 @@
         <div>
           <span class="project-kicker">VLN / Legged Robot</span>
           <h3>Robot Dog VLN Testbed</h3>
-          <span class="meta">Quadruped robot &middot; Vision-Language Navigation &middot; real-world embodied navigation</span>
+          <span class="meta">Quadruped robot &middot; Gemini 335 RGB-D &middot; long-horizon VLN &middot; recovery</span>
           <p class="note">
-            我正在把这台机器狗作为 VLN / 具身导航的新平台：从语言目标、视觉观察、空间定位到真实机器人执行，用于逐步验证跨场景导航、转向恢复和长程任务。
+            Gemini 335 的彩色、深度与点云采集链路已经接入 ROS 2。下一步围绕长程 VLN 记录机器人何时走偏，并验证历史状态、语义子目标和恢复策略是否真正改善执行。
           </p>
           <div class="metric-row">
-            <span class="metric">Legged VLN</span>
-            <span class="metric">Real robot motion</span>
+            <span class="metric">Gemini 335 RGB-D</span>
+            <span class="metric">Deviation &amp; recovery</span>
           </div>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-robotdog-vln.html">Robot dog details</a>
             /
             <a href="RabbitRobot/">RabbitRobot platform</a>
           </p>
-          <span class="project-date"><time datetime="2026-08">2026.08</time> · Legged VLN platform</span>
+          <span class="project-date"><time datetime="2026-08">2026.08</time> · RGB-D chain ready / recovery research in progress</span>
         </div>
       </article>
 
@@ -1440,20 +1440,20 @@
         <div>
           <span class="project-kicker">Main Platform</span>
           <h3>RabbitRobot Platform</h3>
-          <span class="meta">Real AMR &middot; ROS 2 / Nav2 &middot; SLAM &middot; Web tools &middot; active VLN work</span>
+          <span class="meta">Real AMR &middot; ROS 2 / Nav2 &middot; SLAM &middot; sensors &middot; Web tools</span>
           <p class="note">
-            真实 AMR 平台，覆盖自己装配的小车底盘、电机/传感器接入、导航、建图、Web 控制台和实验记录。它把 SLAM、Nav2 和覆盖规划跑稳，同时作为 VLN / VLR 接入真实机器人的执行底座。
+            这是我从底盘、电控、线束、传感器安装到 ROS 2、Nav2 和 Web 工具一步步搭起的工程底座。它承担建图、定位、导航、数据记录和真车执行，也是后续 VLN 实验的可靠基线。
           </p>
           <div class="metric-row">
             <span class="metric">Self-built AMR</span>
-            <span class="metric">Real-robot videos</span>
+            <span class="metric">Nav2 baseline</span>
           </div>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-amr2.html">AMR2 detail page</a>
             /
             <a href="RabbitRobot/">Project page</a>
           </p>
-          <span class="project-date"><time datetime="2026-07">2026.07</time> · Self-built AMR platform</span>
+          <span class="project-date"><time datetime="2026-07">2026.07</time> · Self-built AMR engineering base</span>
         </div>
       </article>
 
@@ -1464,20 +1464,20 @@
         <div>
           <span class="project-kicker">Manipulation / VLA</span>
           <h3>EDULITE A3 LeRobot VLA Testbed</h3>
-          <span class="meta">自制 3D 打印机械臂 &middot; Python SDK &middot; ROS2 / MoveIt2 &middot; LeRobot pi0.5</span>
+          <span class="meta">3D 打印装配 &middot; CAN / Python SDK &middot; ROS 2 / MoveIt 2 &middot; LeRobot pi0.5</span>
           <p class="note">
-            自己 3D 打印和装配灵足 A3 机械臂，打通 CAN、Python SDK、ROS2/MoveIt2 与 LeRobot pi0.5，把真实硬件操作接到 VLA 调试链路里。
+            从 3D 打印装配、CAN 电机通信到 ROS 2 / MoveIt 2 与 LeRobot pi0.5，把 VLA 从模型接口接到真实关节反馈。这是我从导航向具身操作延伸的一条支线。
           </p>
           <div class="metric-row">
-            <span class="metric">Self-built arm</span>
-            <span class="metric">LeRobot VLA</span>
+            <span class="metric">Hardware bring-up</span>
+            <span class="metric">VLA branch</span>
           </div>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-edulite-a3-vla.html">Arm VLA details</a>
             /
             <a href="https://github.com/RobStride/EDULITE_A3" target="_blank" rel="noopener noreferrer">EDULITE_A3</a>
           </p>
-          <span class="project-date"><time datetime="2026-04">2026.04</time> · Self-built robotic arm VLA</span>
+          <span class="project-date"><time datetime="2026-04">2026.04</time> · Real-arm VLA branch</span>
         </div>
       </article>
 
@@ -1488,20 +1488,20 @@
         <div>
           <span class="project-kicker">2025 Project Archive</span>
           <h3>RabbitRobot AMR Foundation</h3>
-          <span class="meta">AMR platform · SLAM / Nav2 · Web console · coverage planning · active VLN work</span>
+          <span class="meta">AMR prototypes · SLAM / Nav2 · multi-sensor mapping · Web console · coverage planning</span>
           <p class="note">
-            2025 阶段先把 RabbitRobot 的底盘、建图、导航、Web 控制台和覆盖路径记录整理成图文档案；VLN / VLR 不是 2025 已完成成果，而是正在接入真实 AMR 的研究线。
+            这里保留 2025 年真实做过的底盘迭代、SLAM / Nav2、多传感器建图、Web 控制台和覆盖规划。它不是对当前研究的重复包装，而是今天能继续做真机 VLN 的工程来路。
           </p>
           <div class="metric-row">
-            <span class="metric">2025 archive</span>
-            <span class="metric">active VLN work</span>
+            <span class="metric">Engineering archive</span>
+            <span class="metric">Reusable foundation</span>
           </div>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-vln.html">Project details</a>
             /
             <a href="RabbitRobot/">RabbitRobot platform</a>
           </p>
-          <span class="project-date"><time datetime="2025-12">2025.12</time> · AMR archive / active VLN work</span>
+          <span class="project-date"><time datetime="2025-12">2025.12</time> · AMR engineering foundation</span>
         </div>
       </article>
 
@@ -1512,20 +1512,20 @@
         <div>
           <span class="project-kicker">AMR / Coverage System</span>
           <h3>AMR2 Coverage & Safety System</h3>
-          <span class="meta">Coverage planning · Web 3D console · Nav2 dry-run · DS20270C safety chain</span>
+          <span class="meta">Region segmentation · coverage planning · Nav2-ready path · Web 3D evidence</span>
           <p class="note">
-            把地图、底盘 footprint、覆盖区域输入、路径校验、Web 3D 预览和驱动器 dry-run 放进一条可验证链路，强调 AMR 系统工程能力。
+            覆盖区域先结合占据栅格、车体 footprint 与安全边距做裁剪和连通分块，再生成路径并检查连接。规划路径、状态变化和跟随轨迹会保留下来，便于和 Nav2 执行链继续对照。
           </p>
           <div class="metric-row">
-            <span class="metric">Web 3D</span>
-            <span class="metric">Self-built chassis</span>
+            <span class="metric">Map-aware segments</span>
+            <span class="metric">Path evidence</span>
           </div>
           <p class="entry-links">
             <a href="RabbitRobot/projects/rabbitrobot-amr2.html">AMR2 details</a>
             /
             <a href="RabbitRobot/projects/rabbitrobot-coverage.html">Coverage report</a>
           </p>
-          <span class="project-date"><time datetime="2026-02">2026.02</time> · Coverage planner</span>
+          <span class="project-date"><time datetime="2026-02">2026.02</time> · Verifiable coverage pipeline</span>
         </div>
       </article>
 
@@ -1541,13 +1541,13 @@
 
     <section aria-labelledby="reports-title">
       <div class="section-title">
-        <h2 id="reports-title">Notes / Reports</h2>
+        <h2 id="reports-title">Recent Verified Work</h2>
       </div>
       <ul class="notes-list">
-        <li><a href="RabbitRobot/projects/rabbitrobot-vln.html">RabbitRobot 2025 archive</a><span>AMR platform, SLAM/Nav2, Web console, coverage planning evidence, and VLN as the active research line.</span></li>
-        <li><a href="RabbitRobot/projects/rabbitrobot-amr2.html">AMR2 system report</a><span>Real AMR platform, navigation chain, Web 3D console, footprint, and safety validation.</span></li>
-        <li><a href="RabbitRobot/projects/rabbitrobot-coverage.html">Coverage planning note</a><span>Coverage area input, map clipping, obstacle inflation, waypoint checks, and dry-run workflow.</span></li>
-        <li><a href="RabbitRobot/projects/robot-web-tools.html">Robot web infrastructure</a><span>ROS2 console, R550 dictionary, remote sync, and reusable robot-development tooling.</span></li>
+        <li><a href="RabbitRobot/projects/rabbitrobot-vln.html">RabbitRobot engineering archive</a><span>Chassis iterations, SLAM / Nav2, multi-sensor mapping, Web console, and coverage-planning evidence.</span></li>
+        <li><a href="RabbitRobot/projects/rabbitrobot-amr2.html">AMR2 navigation baseline</a><span>Self-built chassis, mapping/localization, Nav2 execution, Web 3D state, and safety-chain evidence.</span></li>
+        <li><a href="RabbitRobot/projects/rabbitrobot-coverage.html">Coverage planning evidence</a><span>Map clipping, connected-region segmentation, obstacle inflation, path checks, and follower trajectory.</span></li>
+        <li><a href="RabbitRobot/projects/robot-web-tools.html">Robot development tools</a><span>ROS 2 console, R550 dictionary, remote sync, and reusable interfaces for inspecting real systems.</span></li>
       </ul>
     </section>
 
