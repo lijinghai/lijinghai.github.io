@@ -4,26 +4,28 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
-### 2026-08-17 - Go2X 机器狗项目改写
+### 2026-08-17 - Go2X × MiniCPM-RobotTrack 项目强化
 
-本次只修改主页 `Selected Work` 中的第一张机器狗卡片，以及对应的机器狗详情页。页面延续原有白底、蓝橙链接和渐变标题风格，内容从“平台接入准备”更新为有代码、实机画面和测量数据支撑的工程记录；其他项目卡片与详情页不变。
+本次只修改主页 `Selected Work` 中的第一张机器狗卡片，以及对应的机器狗详情页。页面延续原有白底、蓝橙链接和渐变标题风格，将叙事中心从一般的 RGB-D 接入提升为 `Go2X × MiniCPM-RobotTrack`：突出时序多模态输入、机器人适配器、跨机服务化、8 点轨迹推理和安全控制边界；其他项目卡片与详情页不变。
 
 ```mermaid
 flowchart LR
-  CAMERA["Gemini 335<br/>1280x720 RGB-D"] --> ROS["ROS 2 Jazzy<br/>robot_gmini335"]
-  ROS --> RELAY["640x360 RGB-D relay<br/>RGB 10 Hz / Depth 5 Hz"]
-  RELAY --> BRIDGE["rosbridge<br/>WebSocket 9090"]
-  BRIDGE --> MODEL["MiniCPM Shadow<br/>31-frame history"]
-  MODEL --> TRAJ["8-point trajectory"]
-  TRAJ -. "dry-run / armed=false" .-> MOTION["Go2X motion bridge"]
+  SENSOR["Go2X observation<br/>RGB + Depth + Odom + CameraInfo"] --> RELAY["rclpy RGB-D relay<br/>JPEG + 16-bit compressedDepth"]
+  RELAY --> BRIDGE["rosbridge data plane<br/>WebSocket + client heartbeat"]
+  BRIDGE --> ADAPTER["YAML robot adapter<br/>topics + intrinsics + motion limits"]
+  ADAPTER --> MODEL["MiniCPM-RobotTrack<br/>31-frame temporal context"]
+  MODEL --> TRAJ["8-point local trajectory"]
+  TRAJ -. "shadow + dry_run + armed=false" .-> MOTION["Go2X motion bridge"]
 ```
 
 | 内容 | 实际改动与证据 |
 | --- | --- |
-| 首页第一卡片 | 写明 Unitree Go2X、ROS 2 Jazzy、Gemini 335 与 MiniCPM Shadow；展示 1280×720@30 RGB-D 和 140 次 Shadow 推理结果 |
-| 详情页 | 增加完整数据架构、RGB / 深度实机帧、跨机中继、代码职责、六项技术难点、安全边界和招聘者 / 导师视角的能力说明 |
-| 真实结果 | RGB / 对齐深度 29.970 / 29.962 Hz；18 秒 140 次推理；8 点轨迹；0 模型错误、0 传感器故障 |
-| 安全边界 | 明确 Shadow、dry-run、`armed=false`，没有把尚未完成的实机自主跟随或长程 VLN 恢复写成既成结果 |
+| 首页第一卡片 | 主标题改为 `Go2X × MiniCPM-RobotTrack`，直接展示 RGB-D + Odom、31 帧时序上下文、8 点轨迹和 140 次推理结果 |
+| 模型技术栈 | 增加 MiniCPM-RobotTrack 核心架构：多模态输入、时序上下文、YAML 机器人适配器、轨迹接口与控制安全门 |
+| 数据工程 | 写明 RGB 的 JPEG / INTER_AREA 路径，以及 16UC1 compressedDepth 的 PNG 解析、最近邻缩放和几何语义保持 |
+| 跨机服务化 | 展示 rclpy relay、rosbridge WebSocket、客户端心跳、QoS depth=1、PID / 日志 / 进程组生命周期管理 |
+| 真实结果 | RGB 9.67 Hz、深度 4.84 Hz、Odom 19.67 Hz；18 秒 140 次推理；8 点轨迹；0 模型错误、0 传感器故障 |
+| 安全边界 | 明确 Official Shadow、dry-run、`armed=false`，没有把尚未完成的实机自主跟随或长程 VLN 恢复写成既成结果 |
 | 新增素材 | Gemini 335 RGB、对齐深度、MiniCPM 中继帧，以及桌面 / 手机端页面实测截图 |
 | 关键文件 | `index.html`、`RabbitRobot/projects/rabbitrobot-robotdog-vln.html`、`RabbitRobot/images/rabbitrobot/go2x_*` |
 | 页面验证 | 桌面端与 390×844 手机端均无横向溢出、坏图或浏览器警告；所有本地引用存在 |
@@ -35,6 +37,8 @@ flowchart LR
 机器狗详情页桌面端与手机端：
 
 ![机器狗详情页桌面端](docs/images/updates/2026-08-17-robotdog-profile/desktop-detail.png)
+
+![MiniCPM-RobotTrack 技术栈](docs/images/updates/2026-08-17-robotdog-profile/model-stack.png)
 
 ![机器狗详情页手机端](docs/images/updates/2026-08-17-robotdog-profile/mobile-detail.png)
 

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Go2X 机器狗：RGB-D 感知与安全推理链 | RabbitRobot</title>
-  <meta name="description" content="Unitree Go2X 机器狗工程记录：Orbbec Gemini 335 RGB-D 接入、ROS 2 Jazzy 数据链、跨机 rosbridge 中继、MiniCPM Shadow 推理、安全边界与后续 VLN 实机验证计划。">
+  <title>Go2X × MiniCPM-RobotTrack | 时序多模态轨迹推理</title>
+  <meta name="description" content="Go2X × MiniCPM-RobotTrack 工程记录：Gemini 335 RGB-D、ROS 2 里程计、31 帧时序上下文、8 点轨迹推理、跨机服务化、机器人适配与安全 Shadow 验证。">
   <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
   <link rel="stylesheet" href="project-detail.css">
 </head>
@@ -17,6 +17,7 @@
       </a>
       <div class="nav-links">
         <a href="../../index.html#work-title">Selected Work</a>
+        <a href="#model-stack">Model Stack</a>
         <a href="#architecture">System</a>
         <a href="#challenges">Challenges</a>
         <a href="#status">Status</a>
@@ -27,17 +28,17 @@
 
   <header class="hero">
     <div>
-      <p class="kicker">Real Robot / RGB-D / VLM</p>
-      <h1>Go2X 机器狗：RGB-D 感知与安全推理链</h1>
-      <p class="subtitle">从 RGB-D 接入到 <span style="white-space: nowrap;">MiniCPM Shadow</span> 验证</p>
+      <p class="kicker">Embodied AI / Robot Tracking / VLN</p>
+      <h1>Go2X &times; <span style="white-space: nowrap;">MiniCPM-RobotTrack</span></h1>
+      <p class="subtitle">四足机器人的时序多模态感知与轨迹推理</p>
       <p class="summary">
-        这不是一页“机器狗概念展示”。我把 <span style="white-space: nowrap;">Orbbec Gemini 335</span> 接入真实 Go2X，在 <span style="white-space: nowrap;">ROS 2 Jazzy</span> 下跑通彩色、对齐深度、内参与相机内部 TF，再解决跨机器传输的带宽和连接稳定性，最终让 MiniCPM 连续读取 31 帧历史并输出 8 点轨迹。当前验证止于安全的 Shadow 推理：模型能看、能算，但运动桥保持未解锁，不把尚未完成的自主跟随写成结果。
+        我把真实 Go2X 的 RGB、对齐深度、<span style="white-space: nowrap;">CameraInfo</span> 与里程计接入 <span style="white-space: nowrap;">MiniCPM-RobotTrack</span>：机器人侧负责 ROS 2 感知、几何信息、限频压缩和 <span style="white-space: nowrap;">WebSocket</span> 数据面，模型侧通过机器人配置适配器维护 31 帧时序上下文并输出 8 点轨迹。这个项目覆盖的不只是模型调用，还包括多模态数据契约、深度编码、QoS、跨机服务生命周期、轨迹接口和运动安全门。当前实测止于 <span style="white-space: nowrap;">Shadow / dry-run</span>，控制桥保持未解锁。
       </p>
       <div class="meta-row">
-        <span class="meta-pill">Platform · Unitree Go2X</span>
-        <span class="meta-pill">Host · Ubuntu 24.04 / ROS 2 Jazzy</span>
-        <span class="meta-pill">Camera · Gemini 335 / USB 3.2</span>
-        <span class="meta-pill">Stage · Perception + Shadow verified</span>
+        <span class="meta-pill">Model · MiniCPM-RobotTrack / Official Shadow</span>
+        <span class="meta-pill">Input · RGB-D + Odom + CameraInfo</span>
+        <span class="meta-pill">Temporal · 31 frames → 8-point trajectory</span>
+        <span class="meta-pill">Safety · dry_run=true / armed=false</span>
       </div>
       <div class="hero-actions">
         <a class="button primary" href="../../index.html#work-title">返回个人主页</a>
@@ -47,7 +48,7 @@
     </div>
     <figure class="hero-media">
       <img src="../images/rabbitrobot/robotdog_vln_demo.gif" alt="Go2X robot dog walking, turning and approaching in the real lab">
-      <figcaption>真实运动素材：Go2X 在室内完成行走、转向与接近。该动图证明平台可运动；下面的 RGB-D 与 Shadow 结果证明新增的感知和模型链路。</figcaption>
+      <figcaption>真实 Go2X 运动素材。平台能行走不等于模型已经闭环控制；本页重点展示 MiniCPM-RobotTrack 的多模态输入、时序推理、轨迹输出和安全隔离。</figcaption>
     </figure>
   </header>
 
@@ -55,57 +56,103 @@
     <section class="section">
       <div class="container">
         <p class="kicker">Verified Result</p>
-        <h2>先看已经验证到哪一步</h2>
-        <p class="section-lead">所有数字都来自实际设备、ROS 2 topic 测量和跨机 Shadow 测试，不用“基本完成”代替证据。</p>
+        <h2>先看 MiniCPM-RobotTrack 的实测结果</h2>
+        <p class="section-lead">输入、上下文、输出和安全状态都可以量化，不用“模型已经接上”这种模糊描述代替验证。</p>
         <div class="proof-grid">
           <p class="proof-card">
-            <b>29.970 / 29.962 Hz</b>
-            <span>RGB 与对齐深度均为 1280&times;720；ROS 输出分别为 rgb8 与 16UC1。</span>
+            <b>31 帧上下文</b>
+            <span>模型连续利用历史观测，而不是只对单帧图像做一次性判断。</span>
+          </p>
+          <p class="proof-card">
+            <b>8 点轨迹</b>
+            <span>输出是面向机器人执行层的局部轨迹接口，不只是目标类别或自然语言描述。</span>
           </p>
           <p class="proof-card">
             <b>18 s / 140 次</b>
-            <span>MiniCPM Shadow 连续推理，生成 8 点轨迹；0 次模型错误、0 次传感器故障。</span>
+            <span>Official Shadow 连续推理；0 次模型错误、0 次传感器故障。</span>
           </p>
           <p class="proof-card">
-            <b>640&times;360 中继</b>
-            <span>跨机侧实测 RGB 约 9.67 Hz、深度约 4.84 Hz、里程计约 19.67 Hz。</span>
-          </p>
-          <p class="proof-card">
-            <b>Shadow / Dry-run</b>
-            <span><code>armed=false</code>，没有 <code>/cmd_vel_out</code> 发布者，测试期间机器狗未被模型驱动。</span>
+            <b>控制层未解锁</b>
+            <span><code>shadow + dry_run + armed=false</code>，轨迹输出没有直接变成真机速度。</span>
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section is-soft" id="architecture">
+    <section class="section is-soft" id="model-stack">
+      <div class="container">
+        <p class="kicker">MiniCPM-RobotTrack Stack</p>
+        <h2>模型不是孤立运行，而是嵌入机器人数据与控制系统</h2>
+        <p class="section-lead">我把 MiniCPM-RobotTrack 放在一个明确的机器人接口里：左侧是可校验的多模态观测，中间是带历史状态的轨迹推理，右侧是硬件适配与安全门。</p>
+        <div class="system-map">
+          <div class="map-column">
+            <div class="map-node">
+              <b>Multimodal Ingress</b>
+              <span>RGB CompressedImage、16UC1 compressedDepth、CameraInfo、Odom。</span>
+            </div>
+            <div class="map-node">
+              <b>Temporal Context</b>
+              <span>31 帧历史观测、时间戳与数据新鲜度检查，避免只依赖单帧。</span>
+            </div>
+          </div>
+          <div class="map-center">
+            <b>MiniCPM-RobotTrack</b>
+            <span>Official inference<br>Shadow / dry-run<br>8-point trajectory</span>
+          </div>
+          <div class="map-column">
+            <div class="map-node">
+              <b>Robot Adapter</b>
+              <span>YAML 声明 topic、相机内外参、holonomic quadruped 与速度约束。</span>
+            </div>
+            <div class="map-node">
+              <b>Safe Motion Boundary</b>
+              <span>轨迹接口 → 控制门 → <code>/cmd_vel_out</code>；当前控制桥保持锁定。</span>
+            </div>
+          </div>
+        </div>
+        <div class="stack">
+          <span class="tag">MiniCPM-RobotTrack</span>
+          <span class="tag">Temporal Vision-Language Inference</span>
+          <span class="tag">Python / OpenCV / NumPy</span>
+          <span class="tag">ROS 2 rclpy</span>
+          <span class="tag">rosbridge / WebSocket</span>
+          <span class="tag">CompressedImage / compressedDepth</span>
+          <span class="tag">YAML Robot Adapter</span>
+          <span class="tag">CycloneDDS</span>
+          <span class="tag">Unitree Go2X</span>
+          <span class="tag">Shadow / Dry-run Safety</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="architecture">
       <div class="container">
         <p class="kicker">System Architecture</p>
-        <h2>我搭建的完整数据路径</h2>
-        <p class="section-lead">感知、传输、模型和运动控制被拆成独立边界。任何一层不稳定，都能单独测量和替换，而不是把所有问题塞进一个启动脚本。</p>
+        <h2>从 Go2X 到 MiniCPM-RobotTrack 的跨机数据面</h2>
+        <p class="section-lead">这条链路跨越机器人主机与推理服务器。感知、传输、机器人适配、模型和运动控制相互解耦，每一层都有独立的状态和故障边界。</p>
         <div class="pipeline">
           <article>
-            <h3>1. Gemini 335</h3>
-            <p>USB 3.2 接入；固件 1.8.10。相机原始输出 RGB 与深度，并提供设备标定内参。</p>
+            <h3>1. RGB-D + Odom</h3>
+            <p>Gemini 335 发布 RGB、对齐深度与 CameraInfo；Go2X 同时提供约 20 Hz 里程计。</p>
           </article>
           <article>
-            <h3>2. ROS 2 Driver</h3>
-            <p>固定 OrbbecSDK_ROS2 v2.9.3，由 <code>robot_gmini335</code> 统一配置、launch 与 topic 命名。</p>
+            <h3>2. rclpy RGB-D Relay</h3>
+            <p>OpenCV 解码、缩放和重新编码；RGB 走 JPEG，16 位深度走 nearest-neighbor + PNG。</p>
           </article>
           <article>
-            <h3>3. RGB-D Relay</h3>
-            <p>为模型侧缩放至 640&times;360，并分别限制 RGB 10 Hz、深度 5 Hz，避免原始流压垮跨机链路。</p>
+            <h3>3. rosbridge Data Plane</h3>
+            <p>WebSocket 传输压缩图像、深度、内参与里程计；客户端心跳维持长连接。</p>
           </article>
           <article>
-            <h3>4. rosbridge</h3>
-            <p>通过 9090 WebSocket 提供数据入口；修正重复 Ping 导致的周期性断线，并保留客户端心跳。</p>
+            <h3>4. YAML Robot Adapter</h3>
+            <p>绑定 topic、640&times;360 内参、TF 外参契约、四足底盘类型与 0.15 m/s 速度边界。</p>
           </article>
           <article>
-            <h3>5. MiniCPM Shadow</h3>
-            <p>读取 RGB-D、里程计与 31 帧历史，生成 8 点轨迹；运动桥独立保持 <code>armed=false</code>。</p>
+            <h3>5. Temporal Trajectory</h3>
+            <p>MiniCPM-RobotTrack 使用 31 帧历史进行 Official Shadow 推理，输出 8 点局部轨迹。</p>
           </article>
         </div>
-        <p class="note-panel">安全边界：<b>模型输出轨迹 ≠ 机器人已经执行轨迹</b>。从 Shadow 切到实机前，还需要相机外参、深度保护、限速和现场急停共同通过。</p>
+        <p class="note-panel">系统边界：<b>MiniCPM-RobotTrack 输出轨迹 ≠ Go2X 已经执行轨迹</b>。推理服务、机器人适配器和运动桥是三层独立接口；本次只验证前两层。</p>
       </div>
     </section>
 
@@ -161,17 +208,27 @@
     <section class="section is-soft">
       <div class="container">
         <p class="kicker">Cross-machine Inference</p>
-        <h2>为什么没有直接把 1280&times;720 原始流扔给模型</h2>
-        <p class="section-lead">第一次跨机传输暴露的不是模型问题，而是吞吐、排队和连接保活问题。为此我增加了一条专用的模型输入链路。</p>
+        <h2>为时序模型设计输入链，而不是简单转发图像</h2>
+        <p class="section-lead">MiniCPM-RobotTrack 需要连续、最新且几何含义不被破坏的观测。机器人侧因此单独处理 RGB、16 位深度、频率、QoS 和消息头。</p>
         <figure class="wide-media">
           <img src="../images/rabbitrobot/go2x_minicpm_relay.jpg" alt="640 by 360 RGB frame received by the MiniCPM relay from Go2X">
-          <figcaption>MiniCPM 侧实际收到的 640&times;360 RGB 帧。该帧经过专用 relay，而不是在模型进程里临时处理原始 30 Hz 数据。</figcaption>
+          <figcaption>MiniCPM-RobotTrack 侧实际收到的 640&times;360 RGB 帧。传输层在模型进程之外完成限频与编码，避免推理队列被旧帧淹没。</figcaption>
         </figure>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>RGB 路径：面向吞吐</h3>
+            <p>JPEG 解码后使用 <code>INTER_AREA</code> 缩放，再以 quality 80 编码；保留原始 ROS header，让服务端仍可判断帧时间。</p>
+          </article>
+          <article class="feature-card">
+            <h3>Depth 路径：面向几何</h3>
+            <p>从 <code>compressedDepth</code> 中定位 PNG，按 16 位深度解码，使用 <code>INTER_NEAREST</code> 缩放并重新封装，避免插值制造不存在的距离值。</p>
+          </article>
+        </div>
         <div class="metric-grid">
           <p class="metric-card"><b>9.67 Hz</b><span>跨机 RGB 实测频率</span></p>
           <p class="metric-card"><b>4.84 Hz</b><span>跨机深度实测频率</span></p>
           <p class="metric-card"><b>19.67 Hz</b><span>跨机里程计实测频率</span></p>
-          <p class="metric-card"><b>31 frames</b><span>模型使用的历史观测窗口</span></p>
+          <p class="metric-card"><b>QoS depth = 1</b><span>只保留最新消息，限制跨机积压</span></p>
         </div>
       </div>
     </section>
@@ -201,23 +258,31 @@
     <section class="section is-soft">
       <div class="container">
         <p class="kicker">Engineering Ownership</p>
-        <h2>我具体实现了什么</h2>
+        <h2>MiniCPM-RobotTrack 技术栈在 Go2X 上如何落地</h2>
         <div class="feature-grid">
           <article class="feature-card">
-            <h3>可复现的相机集成</h3>
-            <p>没有直接追随厂商浮动分支，而是固定 SDK / ROS Wrapper v2.9.3，并在 <code>robot_gmini335</code> 中维护项目自己的参数与统一 launch。</p>
+            <h3>多模态 ROS 2 接口</h3>
+            <p>将 RGB、compressedDepth、CameraInfo 和 Odom 组织成模型可消费的数据契约，同时保留 header、编码格式和传感器几何信息。</p>
           </article>
           <article class="feature-card">
-            <h3>一致的 ROS 2 运行环境</h3>
-            <p>统一 ROS_DOMAIN_ID=0、CycloneDDS 与网络接口，让相机、Go2X 里程计、Nav2 和跨机节点处在可诊断的发现环境中。</p>
+            <h3>YAML 机器人适配器</h3>
+            <p><code>unitree_go2x_gemini335.yaml</code> 声明话题、相机内外参契约、四足运动模型、速度限制与深度用途，让模型服务不写死某一台机器人。</p>
           </article>
           <article class="feature-card">
-            <h3>面向模型的 RGB-D 中继</h3>
-            <p><code>minicpm_rgbd_relay.py</code> 负责缩放、限频和重新发布，不让高分辨率原始流直接在 WebSocket 和模型队列中积压。</p>
+            <h3>时序轨迹推理接口</h3>
+            <p>MiniCPM-RobotTrack 维护 31 帧历史上下文，输出 8 点局部轨迹；接口从“识别到了什么”推进到“机器人下一段如何移动”。</p>
           </article>
           <article class="feature-card">
-            <h3>一键启动与安全默认值</h3>
-            <p><code>go2x_minicpm_interface.sh</code> 管理 relay、rosbridge 和 dry-run 控制桥；<code>go2x_shadow.sh</code> 固定以 Shadow 模式启动。</p>
+            <h3>几何保持的深度中继</h3>
+            <p><code>minicpm_rgbd_relay.py</code> 分离 RGB 与深度处理路径，用最近邻缩放保存离散毫米深度，不把深度图当普通彩色图片处理。</p>
+          </article>
+          <article class="feature-card">
+            <h3>跨机服务生命周期</h3>
+            <p><code>go2x_minicpm_interface.sh</code> 管理 relay、rosbridge、端口、PID、进程组、日志与状态；停止时清理整组子进程，避免残留节点。</p>
+          </article>
+          <article class="feature-card">
+            <h3>推理到控制的安全门</h3>
+            <p><code>go2x_shadow.sh</code> 固定 Official + Shadow + dry-run；底层速度桥另设 <code>armed=false</code> 和 deadman，不允许模型服务直接获得真机运动权限。</p>
           </article>
         </div>
       </div>
@@ -226,31 +291,31 @@
     <section class="section" id="challenges">
       <div class="container">
         <p class="kicker">Technical Challenges</p>
-        <h2>真正费时间的不是“把节点启动起来”</h2>
+        <h2>真正的难点在模型、数据与机器人之间</h2>
         <div class="feature-grid">
           <article class="feature-card">
-            <h3>1. 厂商驱动可复现性</h3>
-            <p><b>问题：</b>相机 Wrapper 持续更新，直接跟随主分支会让参数和行为漂移。<br><b>处理：</b>固定 v2.9.3，并把项目配置与厂商源码分层。<br><b>结果：</b>四个 ROS 包可重复编译，设备参数和 topic 保持稳定。</p>
+            <h3>1. 多模态数据契约</h3>
+            <p><b>问题：</b>模型需要 RGB、深度、内参、外参和 Odom，但它们的频率、编码与坐标系不同。<br><b>处理：</b>用 ROS topic + YAML adapter 显式描述每个输入和机器人运动模型。<br><b>结果：</b>服务端不依赖隐式约定，换机器人时可以替换配置而不是重写推理主流程。</p>
           </article>
           <article class="feature-card">
-            <h3>2. ROS 2 发现不一致</h3>
-            <p><b>问题：</b>不同 shell、Domain 和 DDS 网卡选择会出现“节点在、topic 看不到”。<br><b>处理：</b>统一 Domain 0、CycloneDDS 和网络环境入口。<br><b>结果：</b>相机、里程计和控制侧使用同一套发现规则。</p>
+            <h3>2. 深度不能按普通图像缩放</h3>
+            <p><b>问题：</b>双线性插值会在障碍边缘生成虚假的中间距离。<br><b>处理：</b>解析 compressedDepth PNG，保留 16UC1，并使用最近邻缩放。<br><b>结果：</b>传到模型侧的深度仍保持离散测距语义，可继续用于安全判断。</p>
           </article>
           <article class="feature-card">
             <h3>3. RGB-D 带宽与排队</h3>
             <p><b>问题：</b>两路 1280&times;720@30 原始流跨机后出现积压、延迟和重连。<br><b>处理：</b>建立 640&times;360、RGB 10 Hz / Depth 5 Hz 的专用 relay。<br><b>结果：</b>模型侧拿到持续更新的输入，而不是处理越来越旧的帧。</p>
           </article>
           <article class="feature-card">
-            <h3>4. rosbridge 周期性断线</h3>
+            <h3>4. WebSocket 长连接稳定性</h3>
             <p><b>问题：</b>服务端 Ping 与客户端心跳重复，约 20 秒出现一次断线重连。<br><b>处理：</b>移除冗余服务端 Ping，保留客户端心跳。<br><b>结果：</b>18 秒连续 Shadow 测试无连接中断。</p>
           </article>
           <article class="feature-card">
-            <h3>5. 启动阶段的数据新鲜度</h3>
-            <p><b>问题：</b>服务重启后的前 3&ndash;5 秒会短暂出现 <code>camera_stale</code>。<br><b>处理：</b>区分“节点已启动”和“新鲜数据已到达”，按时间戳检查输入。<br><b>结果：</b>状态判断不再只依赖 topic 名称或进程是否存在。</p>
+            <h3>5. 时序上下文的数据新鲜度</h3>
+            <p><b>问题：</b>服务重启后的前 3&ndash;5 秒会短暂出现 <code>camera_stale</code>；旧帧混入 31 帧窗口会污染时序判断。<br><b>处理：</b>区分“进程已启动”和“最新观测已到达”，按时间戳与实测频率检查输入。<br><b>结果：</b>历史上下文建立在新鲜帧上，而不是在积压队列上。</p>
           </article>
           <article class="feature-card">
-            <h3>6. 模型输出与真实运动隔离</h3>
-            <p><b>问题：</b>感知链刚跑通时直接接真机，任何时延、误检或坐标问题都会变成运动风险。<br><b>处理：</b>Shadow、dry-run、<code>armed=false</code> 三层约束。<br><b>结果：</b>能先统计模型行为，再决定何时进入低速实机验证。</p>
+            <h3>6. 轨迹推理与控制权限隔离</h3>
+            <p><b>问题：</b>8 点轨迹仍可能受时延、坐标或目标误判影响，不能直接等同于安全速度。<br><b>处理：</b>模型 Shadow、服务 dry-run、底桥 <code>armed=false</code>，并保留限速与 deadman。<br><b>结果：</b>可以先统计轨迹质量，再单独审批真实运动链路。</p>
           </article>
         </div>
       </div>
@@ -270,14 +335,14 @@
           </thead>
           <tbody>
             <tr>
-              <td>ROS 2 构建</td>
-              <td>4 个包通过</td>
-              <td><code>orbbec_camera_msgs</code>、<code>orbbec_camera</code>、<code>robot_gmini335</code>、<code>go2x_cmd_vel_bridge</code>。</td>
+              <td>机器人适配器</td>
+              <td>Go2X 专用 YAML 已接入</td>
+              <td>包含 RGB-D / Odom topic、640&times;360 内参、TF 外参契约、holonomic quadruped 与速度边界。</td>
             </tr>
             <tr>
-              <td>相机发布</td>
-              <td>RGB / Depth 各 1 个发布者</td>
-              <td>没有旧 JPEG bridge 重复发布；两路 CameraInfo 与相机内部 <code>/tf_static</code> 均收到实机消息。</td>
+              <td>多模态输入</td>
+              <td>RGB 9.67 / Depth 4.84 / Odom 19.67 Hz</td>
+              <td>三路数据均从真实 Go2X 跨机到达 MiniCPM-RobotTrack 服务端。</td>
             </tr>
             <tr>
               <td>Shadow 推理</td>
@@ -285,9 +350,9 @@
               <td>0 模型错误、0 传感器故障；使用 31 帧历史观测。</td>
             </tr>
             <tr>
-              <td>自动化测试</td>
+              <td>服务与接口测试</td>
               <td>23 项通过</td>
-              <td>覆盖本轮 MiniCPM / Go2X 接口修改的既有测试集。</td>
+              <td>覆盖本轮 MiniCPM-RobotTrack / Go2X 机器人配置与接口修改的既有测试集。</td>
             </tr>
             <tr>
               <td>运动安全</td>
@@ -302,23 +367,23 @@
     <section class="section">
       <div class="container">
         <p class="kicker">For Reviewers</p>
-        <h2>这个项目能说明什么</h2>
+        <h2>它不是一个只会调用模型的 Demo</h2>
         <div class="feature-grid compact">
           <article class="feature-card">
-            <h3>系统落地能力</h3>
-            <p>能从 USB 设备、驱动、ROS 2 topic 一直追到远端模型输入，不只停在单个算法仓库。</p>
+            <h3>Embodied AI 集成</h3>
+            <p>把视觉语言模型放进真实机器人数据面，贯通传感器、ROS 2、跨机传输、模型输入和轨迹接口。</p>
           </article>
           <article class="feature-card">
-            <h3>问题定位能力</h3>
-            <p>把“模型不稳定”拆成带宽、积压、DDS 发现、心跳和数据新鲜度问题，并用测量结果逐项收敛。</p>
+            <h3>时序多模态推理</h3>
+            <p>不只做单帧识别，而是组合 RGB、深度、Odom 和 31 帧历史，输出面向运动层的 8 点轨迹。</p>
           </article>
           <article class="feature-card">
-            <h3>机器人安全意识</h3>
-            <p>先 Shadow、再低速、后闭环；模型输出与运动执行解耦，未验证的链路默认不解锁。</p>
+            <h3>机器人软件架构</h3>
+            <p>用 YAML adapter、QoS、服务生命周期、日志与状态接口降低硬件耦合，能定位模型之外的系统问题。</p>
           </article>
           <article class="feature-card">
-            <h3>研究判断</h3>
-            <p>明确区分“推理链跑通”和“VLN 已完成”。剩余问题被写成可测量的实验，而不是路线图口号。</p>
+            <h3>安全与研究严谨性</h3>
+            <p>明确区分轨迹推理和真实执行；未完成外参、深度保护与低速闭环前，不用成功视频掩盖系统边界。</p>
           </article>
         </div>
       </div>
@@ -339,8 +404,8 @@
           <tbody>
             <tr>
               <td>已完成</td>
-              <td>Gemini 335 驱动、RGB-D / CameraInfo / 相机内部 TF、统一 launch、跨机 relay、rosbridge、MiniCPM Shadow 推理。</td>
-              <td>已有实机帧、频率、连接与推理统计作为证据。</td>
+              <td>Gemini 335 RGB-D、Odom、rclpy relay、rosbridge、Go2X YAML adapter、31 帧上下文与 MiniCPM-RobotTrack 8 点轨迹 Shadow 推理。</td>
+              <td>已有实机帧、输入频率、连接状态、140 次推理与测试结果作为证据。</td>
             </tr>
             <tr>
               <td>待标定</td>
@@ -349,12 +414,12 @@
             </tr>
             <tr>
               <td>待安全验证</td>
-              <td>深度近障保护、速度上限、急停、IMU / 时间同步策略。</td>
+              <td>启用 MiniCPM-RobotTrack 深度保护、速度上限、急停、IMU / 时间同步策略。</td>
               <td>静态台架和牵引保护下连续通过，再进入低速地面测试。</td>
             </tr>
             <tr>
               <td>待实机闭环</td>
-              <td>将 8 点轨迹转换为受限速度控制，验证跟随、停止和异常恢复。</td>
+              <td>将 8 点轨迹经过独立控制器转换为受限速度，验证跟随、停止和异常恢复。</td>
               <td>先在短距离、单目标场景记录规划轨迹与实际轨迹，再扩大任务难度。</td>
             </tr>
             <tr>
@@ -373,7 +438,7 @@
   </main>
 
   <footer class="footer">
-    <div class="container">Jinghai Li · Go2X RGB-D &amp; Safe VLM Integration · 真实机器人工程记录</div>
+    <div class="container">Jinghai Li · Go2X × MiniCPM-RobotTrack · 时序多模态轨迹推理与真实机器人集成</div>
   </footer>
 </body>
 </html>
