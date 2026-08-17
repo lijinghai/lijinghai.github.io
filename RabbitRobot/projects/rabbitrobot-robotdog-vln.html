@@ -3,193 +3,377 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Robot Dog VLN Testbed | RabbitRobot</title>
-  <meta name="description" content="Robot Dog VLN Testbed 是 RabbitRobot 的四足机器狗视觉语言导航验证页面，展示机器狗真实运动素材、VLN 接入计划、语言目标 grounding、空间定位、真实执行和恢复验证链路。">
+  <title>Go2X 机器狗：RGB-D 感知与安全推理链 | RabbitRobot</title>
+  <meta name="description" content="Unitree Go2X 机器狗工程记录：Orbbec Gemini 335 RGB-D 接入、ROS 2 Jazzy 数据链、跨机 rosbridge 中继、MiniCPM Shadow 推理、安全边界与后续 VLN 实机验证计划。">
   <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
   <link rel="stylesheet" href="project-detail.css">
 </head>
 <body>
   <nav class="detail-nav" aria-label="Project navigation">
     <div class="nav-inner">
-      <a class="brand" href="../index.html">
+      <a class="brand" href="../../index.html">
         <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
-        <span>RabbitRobot</span>
+        <span>Jinghai Li</span>
       </a>
       <div class="nav-links">
-        <a href="../index.html#projects">Project Matrix</a>
-        <a href="../index.html#research">VLN Focus</a>
-        <a href="rabbitrobot-vln.html">VLN Line</a>
+        <a href="../../index.html#work-title">Selected Work</a>
+        <a href="#architecture">System</a>
+        <a href="#challenges">Challenges</a>
+        <a href="#status">Status</a>
+        <a href="https://github.com/lijinghai/ljh_Go2X" target="_blank" rel="noopener noreferrer">Source</a>
       </div>
     </div>
   </nav>
 
   <header class="hero">
     <div>
-      <p class="kicker">VLN / Legged Robot</p>
-      <h1>Robot Dog VLN Testbed</h1>
-      <p class="subtitle">面向视觉语言导航的四足机器狗真实平台</p>
+      <p class="kicker">Real Robot / RGB-D / VLM</p>
+      <h1>Go2X 机器狗：RGB-D 感知与安全推理链</h1>
+      <p class="subtitle">从 RGB-D 接入到 <span style="white-space: nowrap;">MiniCPM Shadow</span> 验证</p>
       <p class="summary">
-        这台机器狗是 RabbitRobot 从轮式 AMR 扩展到四足平台的下一步：先用真实运动、转向和室内空间验证平台可控性，再逐步接入自然语言目标、视觉观测、空间定位和失败恢复评估，让 VLN 不只停留在模拟器或静态路线图里。
+        这不是一页“机器狗概念展示”。我把 <span style="white-space: nowrap;">Orbbec Gemini 335</span> 接入真实 Go2X，在 <span style="white-space: nowrap;">ROS 2 Jazzy</span> 下跑通彩色、对齐深度、内参与相机内部 TF，再解决跨机器传输的带宽和连接稳定性，最终让 MiniCPM 连续读取 31 帧历史并输出 8 点轨迹。当前验证止于安全的 Shadow 推理：模型能看、能算，但运动桥保持未解锁，不把尚未完成的自主跟随写成结果。
       </p>
       <div class="meta-row">
-        <span class="meta-pill">Time · 2026.08</span>
-        <span class="meta-pill">Stage · 平台接入准备</span>
-        <span class="meta-pill">Direction · VLN / Embodied Navigation</span>
-        <span class="meta-pill">Evidence · 真实机器狗运动视频</span>
+        <span class="meta-pill">Platform · Unitree Go2X</span>
+        <span class="meta-pill">Host · Ubuntu 24.04 / ROS 2 Jazzy</span>
+        <span class="meta-pill">Camera · Gemini 335 / USB 3.2</span>
+        <span class="meta-pill">Stage · Perception + Shadow verified</span>
       </div>
       <div class="hero-actions">
-        <a class="button primary" href="../index.html#projects">Back to RabbitRobot</a>
-        <a class="button" href="rabbitrobot-vln.html">VLN Research Line</a>
-        <a class="button" href="rabbitrobot-amr2.html">AMR2 Baseline</a>
+        <a class="button primary" href="../../index.html#work-title">返回个人主页</a>
+        <a class="button" href="https://github.com/lijinghai/ljh_Go2X" target="_blank" rel="noopener noreferrer">查看 Go2X 源码</a>
+        <a class="button" href="rabbitrobot-vln.html">VLN 研究主线</a>
       </div>
     </div>
     <figure class="hero-media">
-      <img src="../images/rabbitrobot/robotdog_vln_demo.gif" alt="Robot dog walking and turning in the lab as a future VLN platform">
-      <figcaption>机器狗在真实室内场景中行走、转向和接近目标区域；这段素材作为后续 VLN 四足平台的第一组公开证据。</figcaption>
+      <img src="../images/rabbitrobot/robotdog_vln_demo.gif" alt="Go2X robot dog walking, turning and approaching in the real lab">
+      <figcaption>真实运动素材：Go2X 在室内完成行走、转向与接近。该动图证明平台可运动；下面的 RGB-D 与 Shadow 结果证明新增的感知和模型链路。</figcaption>
     </figure>
   </header>
 
   <main>
     <section class="section">
       <div class="container">
-        <p class="kicker">At A Glance</p>
-        <h2>为什么单独做这个页面</h2>
+        <p class="kicker">Verified Result</p>
+        <h2>先看已经验证到哪一步</h2>
+        <p class="section-lead">所有数字都来自实际设备、ROS 2 topic 测量和跨机 Shadow 测试，不用“基本完成”代替证据。</p>
         <div class="proof-grid">
           <p class="proof-card">
-            <b>2026.08</b>
-            <span>新增四足平台入口，和 AMR2 一起构成真实机器人 VLN 验证线。</span>
+            <b>29.970 / 29.962 Hz</b>
+            <span>RGB 与对齐深度均为 1280&times;720；ROS 输出分别为 rgb8 与 16UC1。</span>
           </p>
           <p class="proof-card">
-            <b>Legged VLN</b>
-            <span>从轮式导航扩展到四足运动，关注更复杂的转向、绕行和室内动态空间。</span>
+            <b>18 s / 140 次</b>
+            <span>MiniCPM Shadow 连续推理，生成 8 点轨迹；0 次模型错误、0 次传感器故障。</span>
           </p>
           <p class="proof-card">
-            <b>Real Motion</b>
-            <span>页面保留真实视频动图和关键帧，先证明平台不是纸面概念。</span>
+            <b>640&times;360 中继</b>
+            <span>跨机侧实测 RGB 约 9.67 Hz、深度约 4.84 Hz、里程计约 19.67 Hz。</span>
           </p>
           <p class="proof-card">
-            <b>Research Bridge</b>
-            <span>复用 RabbitRobot 的 VLN 问题意识：语言目标、视觉/地图 grounding、执行与恢复。</span>
+            <b>Shadow / Dry-run</b>
+            <span><code>armed=false</code>，没有 <code>/cmd_vel_out</code> 发布者，测试期间机器狗未被模型驱动。</span>
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section is-soft">
+    <section class="section is-soft" id="architecture">
       <div class="container">
-        <p class="kicker">VLN Chain</p>
-        <h2>计划中的机器狗 VLN 闭环</h2>
+        <p class="kicker">System Architecture</p>
+        <h2>我搭建的完整数据路径</h2>
+        <p class="section-lead">感知、传输、模型和运动控制被拆成独立边界。任何一层不稳定，都能单独测量和替换，而不是把所有问题塞进一个启动脚本。</p>
         <div class="pipeline">
           <article>
-            <h3>1. Language Goal</h3>
-            <p>把“走到桌边”“绕开线缆到门口”等自然语言任务整理成可复现实验指令。</p>
+            <h3>1. Gemini 335</h3>
+            <p>USB 3.2 接入；固件 1.8.10。相机原始输出 RGB 与深度，并提供设备标定内参。</p>
           </article>
           <article>
-            <h3>2. Visual Observation</h3>
-            <p>采集机器狗视角下的室内画面、目标区域和关键障碍物，为语义 grounding 准备数据。</p>
+            <h3>2. ROS 2 Driver</h3>
+            <p>固定 OrbbecSDK_ROS2 v2.9.3，由 <code>robot_gmini335</code> 统一配置、launch 与 topic 命名。</p>
           </article>
           <article>
-            <h3>3. Spatial Grounding</h3>
-            <p>将视觉线索、局部空间、机器人姿态和任务目标对齐，形成可执行的中间目标。</p>
+            <h3>3. RGB-D Relay</h3>
+            <p>为模型侧缩放至 640&times;360，并分别限制 RGB 10 Hz、深度 5 Hz，避免原始流压垮跨机链路。</p>
           </article>
           <article>
-            <h3>4. Legged Execution</h3>
-            <p>让机器狗执行转向、接近、绕行和停止动作，并记录轨迹、状态和失败片段。</p>
+            <h3>4. rosbridge</h3>
+            <p>通过 9090 WebSocket 提供数据入口；修正重复 Ping 导致的周期性断线，并保留客户端心跳。</p>
           </article>
           <article>
-            <h3>5. Recovery Check</h3>
-            <p>重点观察偏航、走错目标、绕行失败等情况，评估 VLN 策略能否解释并恢复。</p>
+            <h3>5. MiniCPM Shadow</h3>
+            <p>读取 RGB-D、里程计与 31 帧历史，生成 8 点轨迹；运动桥独立保持 <code>armed=false</code>。</p>
           </article>
         </div>
+        <p class="note-panel">安全边界：<b>模型输出轨迹 ≠ 机器人已经执行轨迹</b>。从 Shadow 切到实机前，还需要相机外参、深度保护、限速和现场急停共同通过。</p>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="evidence">
       <div class="container">
-        <p class="kicker">Visual Evidence</p>
-        <h2>真实运动关键帧</h2>
-        <div class="gallery">
+        <p class="kicker">RGB-D Evidence</p>
+        <h2>同一时刻的真实彩色与对齐深度</h2>
+        <p class="section-lead">页面直接保留相机实机帧，而不是设备宣传图。深度已按 RGB 投影几何对齐，便于后续目标定位、距离保护和轨迹约束。</p>
+        <div class="evidence-grid">
           <figure>
-            <img src="../images/rabbitrobot/robotdog_vln_walk.jpg" alt="Robot dog walking toward the marked indoor area">
-            <figcaption>行走阶段：机器狗进入室内测试区域，保留周围桌椅、线缆和 AMR 小车作为真实场景参照。</figcaption>
+            <img src="../images/rabbitrobot/go2x_gemini335_rgb.png" alt="Gemini 335 real RGB frame captured through ROS 2 on Go2X">
+            <figcaption>RGB 实机帧：1280&times;720、rgb8，实测约 29.970 Hz。画面来自机器狗感知链路。</figcaption>
           </figure>
           <figure>
-            <img src="../images/rabbitrobot/robotdog_vln_turn.jpg" alt="Robot dog turning near the marked area in the lab">
-            <figcaption>转向阶段：四足平台在目标区域附近调整方向，适合后续做偏航检测和恢复验证。</figcaption>
-          </figure>
-          <figure>
-            <img src="../images/rabbitrobot/robotdog_vln_approach.jpg" alt="Robot dog approaching the camera after turning in the lab">
-            <figcaption>接近阶段：机器狗靠近观察端，后续可以用于构造“到达/未到达”的视觉语言判断样例。</figcaption>
+            <img src="../images/rabbitrobot/go2x_gemini335_depth.png" alt="Gemini 335 aligned depth frame captured through ROS 2 on Go2X">
+            <figcaption>对齐深度实机帧：1280&times;720、16UC1，实测约 29.962 Hz；黑色区域表示当前视角下的无效或缺失深度。</figcaption>
           </figure>
         </div>
-      </div>
-    </section>
-
-    <section class="section is-soft">
-      <div class="container grid-2">
-        <div>
-          <p class="kicker">Research Position</p>
-          <h2>它和 AMR2 / VLN 主线的关系</h2>
-          <p>
-            AMR2 负责把轮式 AMR 的建图、Nav2、覆盖路径和 Web 控制台跑稳；机器狗页面则作为下一条四足 VLN 线索，强调更灵活的真实运动平台。两者不是重复展示，而是同一个问题在不同机器人载体上的延伸。
-          </p>
-          <p>
-            当前页面刻意把状态写成“平台接入准备”：先公开真实运动证据和研究链路，后续再补充传感器接入、数据采集、语言任务集、失败案例和评估指标。
-          </p>
-        </div>
-        <aside>
-          <p class="kicker">Stack / Keywords</p>
-          <h2>关键词</h2>
-          <div class="stack">
-            <span class="tag">Robot Dog</span>
-            <span class="tag">VLN</span>
-            <span class="tag">Embodied Navigation</span>
-            <span class="tag">Visual Grounding</span>
-            <span class="tag">Legged Robot</span>
-            <span class="tag">Real Robot Video</span>
-            <span class="tag">Failure Recovery</span>
-            <span class="tag">RabbitRobot</span>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <p class="kicker">Roadmap</p>
-        <h2>后续页面会继续补的内容</h2>
-        <table class="interface-table">
+        <table class="interface-table verification-table">
           <thead>
             <tr>
-              <th>阶段</th>
-              <th>目标</th>
-              <th>会展示什么证据</th>
+              <th>验证对象</th>
+              <th>结果</th>
+              <th>为什么重要</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Platform Bring-up</td>
-              <td>整理机器狗基本运动、转向、停止和安全边界。</td>
-              <td>更多实机动图、控制脚本、运动测试记录。</td>
+              <td>RGB 有效视场角</td>
+              <td>H 85.6306° / V 55.0358° / D 93.4943°</td>
+              <td>由实际 CameraInfo 内参计算，后续投影与视野判断使用的是这组几何，而不是只抄产品页。</td>
             </tr>
             <tr>
-              <td>VLN Data Capture</td>
-              <td>采集语言任务、视觉帧、目标区域和到达结果。</td>
-              <td>任务表、关键帧、轨迹/状态记录。</td>
+              <td>原生深度视场角</td>
+              <td>H 91.2381° / V 65.1269° / D 100.6216°</td>
+              <td>说明深度原始视野宽于 RGB；对齐到 RGB 后必须接受裁切，不能把两者当成同一相机模型。</td>
             </tr>
             <tr>
-              <td>Policy Evaluation</td>
-              <td>比较不同 VLN/VLM 策略在真实机器狗上的执行结果。</td>
-              <td>成功率、路径效率、偏航/恢复案例和失败分析。</td>
+              <td>双目基线</td>
+              <td>约 50.1541 mm</td>
+              <td>是理解深度几何和近远距离质量的重要硬件参数。</td>
+            </tr>
+            <tr>
+              <td>默认计算负载</td>
+              <td>点云、IR、IMU 默认关闭</td>
+              <td>先保证核心 RGB-D 链路稳定，按任务需要再开启高负载数据，避免“全部打开”造成无意义资源竞争。</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">Cross-machine Inference</p>
+        <h2>为什么没有直接把 1280&times;720 原始流扔给模型</h2>
+        <p class="section-lead">第一次跨机传输暴露的不是模型问题，而是吞吐、排队和连接保活问题。为此我增加了一条专用的模型输入链路。</p>
+        <figure class="wide-media">
+          <img src="../images/rabbitrobot/go2x_minicpm_relay.jpg" alt="640 by 360 RGB frame received by the MiniCPM relay from Go2X">
+          <figcaption>MiniCPM 侧实际收到的 640&times;360 RGB 帧。该帧经过专用 relay，而不是在模型进程里临时处理原始 30 Hz 数据。</figcaption>
+        </figure>
+        <div class="metric-grid">
+          <p class="metric-card"><b>9.67 Hz</b><span>跨机 RGB 实测频率</span></p>
+          <p class="metric-card"><b>4.84 Hz</b><span>跨机深度实测频率</span></p>
+          <p class="metric-card"><b>19.67 Hz</b><span>跨机里程计实测频率</span></p>
+          <p class="metric-card"><b>31 frames</b><span>模型使用的历史观测窗口</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Real Motion</p>
+        <h2>平台运动能力与感知链分开取证</h2>
+        <p class="section-lead">已有运动素材说明 Go2X 能在真实室内环境中行走、转向和接近；本轮新增工作则集中在 RGB-D 与模型接口，两类证据不混为一谈。</p>
+        <div class="gallery">
+          <figure>
+            <img src="../images/rabbitrobot/robotdog_vln_walk.jpg" alt="Go2X walking into the indoor test area">
+            <figcaption>行走：进入测试区域，周围保留桌椅、线缆和移动平台等真实干扰。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/robotdog_vln_turn.jpg" alt="Go2X turning in the indoor test area">
+            <figcaption>转向：四足平台调整朝向，为后续偏航检测、轨迹比较和恢复实验提供动作基础。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/robotdog_vln_approach.jpg" alt="Go2X approaching after a turn">
+            <figcaption>接近：可用于构造“是否到达目标区域”的视觉判定与停止条件。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">Engineering Ownership</p>
+        <h2>我具体实现了什么</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>可复现的相机集成</h3>
+            <p>没有直接追随厂商浮动分支，而是固定 SDK / ROS Wrapper v2.9.3，并在 <code>robot_gmini335</code> 中维护项目自己的参数与统一 launch。</p>
+          </article>
+          <article class="feature-card">
+            <h3>一致的 ROS 2 运行环境</h3>
+            <p>统一 ROS_DOMAIN_ID=0、CycloneDDS 与网络接口，让相机、Go2X 里程计、Nav2 和跨机节点处在可诊断的发现环境中。</p>
+          </article>
+          <article class="feature-card">
+            <h3>面向模型的 RGB-D 中继</h3>
+            <p><code>minicpm_rgbd_relay.py</code> 负责缩放、限频和重新发布，不让高分辨率原始流直接在 WebSocket 和模型队列中积压。</p>
+          </article>
+          <article class="feature-card">
+            <h3>一键启动与安全默认值</h3>
+            <p><code>go2x_minicpm_interface.sh</code> 管理 relay、rosbridge 和 dry-run 控制桥；<code>go2x_shadow.sh</code> 固定以 Shadow 模式启动。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="challenges">
+      <div class="container">
+        <p class="kicker">Technical Challenges</p>
+        <h2>真正费时间的不是“把节点启动起来”</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>1. 厂商驱动可复现性</h3>
+            <p><b>问题：</b>相机 Wrapper 持续更新，直接跟随主分支会让参数和行为漂移。<br><b>处理：</b>固定 v2.9.3，并把项目配置与厂商源码分层。<br><b>结果：</b>四个 ROS 包可重复编译，设备参数和 topic 保持稳定。</p>
+          </article>
+          <article class="feature-card">
+            <h3>2. ROS 2 发现不一致</h3>
+            <p><b>问题：</b>不同 shell、Domain 和 DDS 网卡选择会出现“节点在、topic 看不到”。<br><b>处理：</b>统一 Domain 0、CycloneDDS 和网络环境入口。<br><b>结果：</b>相机、里程计和控制侧使用同一套发现规则。</p>
+          </article>
+          <article class="feature-card">
+            <h3>3. RGB-D 带宽与排队</h3>
+            <p><b>问题：</b>两路 1280&times;720@30 原始流跨机后出现积压、延迟和重连。<br><b>处理：</b>建立 640&times;360、RGB 10 Hz / Depth 5 Hz 的专用 relay。<br><b>结果：</b>模型侧拿到持续更新的输入，而不是处理越来越旧的帧。</p>
+          </article>
+          <article class="feature-card">
+            <h3>4. rosbridge 周期性断线</h3>
+            <p><b>问题：</b>服务端 Ping 与客户端心跳重复，约 20 秒出现一次断线重连。<br><b>处理：</b>移除冗余服务端 Ping，保留客户端心跳。<br><b>结果：</b>18 秒连续 Shadow 测试无连接中断。</p>
+          </article>
+          <article class="feature-card">
+            <h3>5. 启动阶段的数据新鲜度</h3>
+            <p><b>问题：</b>服务重启后的前 3&ndash;5 秒会短暂出现 <code>camera_stale</code>。<br><b>处理：</b>区分“节点已启动”和“新鲜数据已到达”，按时间戳检查输入。<br><b>结果：</b>状态判断不再只依赖 topic 名称或进程是否存在。</p>
+          </article>
+          <article class="feature-card">
+            <h3>6. 模型输出与真实运动隔离</h3>
+            <p><b>问题：</b>感知链刚跑通时直接接真机，任何时延、误检或坐标问题都会变成运动风险。<br><b>处理：</b>Shadow、dry-run、<code>armed=false</code> 三层约束。<br><b>结果：</b>能先统计模型行为，再决定何时进入低速实机验证。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">Verification</p>
+        <h2>验证记录</h2>
+        <table class="interface-table verification-table">
+          <thead>
+            <tr>
+              <th>验证对象</th>
+              <th>结果</th>
+              <th>说明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ROS 2 构建</td>
+              <td>4 个包通过</td>
+              <td><code>orbbec_camera_msgs</code>、<code>orbbec_camera</code>、<code>robot_gmini335</code>、<code>go2x_cmd_vel_bridge</code>。</td>
+            </tr>
+            <tr>
+              <td>相机发布</td>
+              <td>RGB / Depth 各 1 个发布者</td>
+              <td>没有旧 JPEG bridge 重复发布；两路 CameraInfo 与相机内部 <code>/tf_static</code> 均收到实机消息。</td>
+            </tr>
+            <tr>
+              <td>Shadow 推理</td>
+              <td>18 秒、140 次、8 点轨迹</td>
+              <td>0 模型错误、0 传感器故障；使用 31 帧历史观测。</td>
+            </tr>
+            <tr>
+              <td>自动化测试</td>
+              <td>23 项通过</td>
+              <td>覆盖本轮 MiniCPM / Go2X 接口修改的既有测试集。</td>
+            </tr>
+            <tr>
+              <td>运动安全</td>
+              <td>未向真机发布速度</td>
+              <td>无 <code>/cmd_vel_out</code> 发布者；底层桥保持 <code>armed=false</code>。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">For Reviewers</p>
+        <h2>这个项目能说明什么</h2>
+        <div class="feature-grid compact">
+          <article class="feature-card">
+            <h3>系统落地能力</h3>
+            <p>能从 USB 设备、驱动、ROS 2 topic 一直追到远端模型输入，不只停在单个算法仓库。</p>
+          </article>
+          <article class="feature-card">
+            <h3>问题定位能力</h3>
+            <p>把“模型不稳定”拆成带宽、积压、DDS 发现、心跳和数据新鲜度问题，并用测量结果逐项收敛。</p>
+          </article>
+          <article class="feature-card">
+            <h3>机器人安全意识</h3>
+            <p>先 Shadow、再低速、后闭环；模型输出与运动执行解耦，未验证的链路默认不解锁。</p>
+          </article>
+          <article class="feature-card">
+            <h3>研究判断</h3>
+            <p>明确区分“推理链跑通”和“VLN 已完成”。剩余问题被写成可测量的实验，而不是路线图口号。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft" id="status">
+      <div class="container">
+        <p class="kicker">Honest Status</p>
+        <h2>已完成、未完成与下一步</h2>
+        <table class="interface-table">
+          <thead>
+            <tr>
+              <th>状态</th>
+              <th>内容</th>
+              <th>进入下一阶段的判据</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>已完成</td>
+              <td>Gemini 335 驱动、RGB-D / CameraInfo / 相机内部 TF、统一 launch、跨机 relay、rosbridge、MiniCPM Shadow 推理。</td>
+              <td>已有实机帧、频率、连接与推理统计作为证据。</td>
+            </tr>
+            <tr>
+              <td>待标定</td>
+              <td>Gemini 335 到 <code>base_link</code> 的六自由度安装外参；当前 <code>publish_mount_tf=false</code>。</td>
+              <td>完成最终支架安装和机械测量后，验证坐标投影误差。</td>
+            </tr>
+            <tr>
+              <td>待安全验证</td>
+              <td>深度近障保护、速度上限、急停、IMU / 时间同步策略。</td>
+              <td>静态台架和牵引保护下连续通过，再进入低速地面测试。</td>
+            </tr>
+            <tr>
+              <td>待实机闭环</td>
+              <td>将 8 点轨迹转换为受限速度控制，验证跟随、停止和异常恢复。</td>
+              <td>先在短距离、单目标场景记录规划轨迹与实际轨迹，再扩大任务难度。</td>
+            </tr>
+            <tr>
+              <td>研究目标</td>
+              <td>长程 VLN 中的偏航检测、历史状态利用、语义子目标与恢复。</td>
+              <td>建立成功率、路径效率、偏航发现延迟和恢复成功率，而不是只展示成功视频。</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="source-actions">
+          <a class="button primary" href="https://github.com/lijinghai/ljh_Go2X" target="_blank" rel="noopener noreferrer">Go2X Repository</a>
+          <a class="button" href="../../index.html#work-title">Back to Selected Work</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
-    <div class="container">RabbitRobot · Robot Dog VLN Testbed · 四足平台视觉语言导航记录页。</div>
+    <div class="container">Jinghai Li · Go2X RGB-D &amp; Safe VLM Integration · 真实机器人工程记录</div>
   </footer>
 </body>
 </html>
