@@ -4,6 +4,21 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-08-20 - Selected Work 研究路线顺序调整
+
+本次按研究叙事调整主页项目顺序：将当前正在推进的 `RabbitRobot × OmniHand 2025` 放到 `Go2X × MiniCPM-RobotTrack` 之前，让访问者先看到最新的灵巧操作方向，再回看机器狗的 VLN / 时序推理验证；其余项目内容、详情页和视觉系统保持不变。
+
+| 内容 | 修改后状态 |
+| --- | --- |
+| 首屏项目顺序 | `OmniHand 2025` → `Go2X × MiniCPM-RobotTrack` → `RabbitRobot Platform` → `EDULITE A3` |
+| 修改范围 | 仅调整 `index.html` 中两个 `Selected Work` 项目的 DOM 顺序 |
+| 响应式验证 | 桌面端 1280px、手机端 390×844 均无横向溢出，前四项顺序通过 DOM 检查 |
+| 控制台验证 | 浏览器 error / warning 均为空 |
+
+![Selected Work 换序后的桌面端](docs/images/updates/2026-08-20-omnihand/home-work-reordered-desktop.png)
+
+![Selected Work 换序后的手机端](docs/images/updates/2026-08-20-omnihand/home-work-reordered-mobile.png)
+
 ### 2026-08-20 - OmniHand 2025 双手灵巧操作研究线
 
 本次在主页 `Selected Work` 中新增 `RabbitRobot × OmniHand 2025`，并新增对应详情页。页面使用 2026.08.20 真实双手操作视频生成封面 GIF，同时根据 OmniHand 灵动款 2025 产品手册和本地动作配置，区分产品能力、当前实机 bring-up 证据与尚未完成的 VLA 闭环，保持主页从 VLN / AMR 向具身操作延伸的路线。
@@ -18,7 +33,7 @@ flowchart LR
 
 | 内容 | 实际改动与证据 |
 | --- | --- |
-| 首页卡片 | `index.html` 在机器狗之后加入灵巧手项目，显示 2026.08.20、10 轴动作控制、CANFD / USB 与 Active 状态 |
+| 首页卡片 | `index.html` 将灵巧手项目置于机器狗之前，显示 2026.08.20、10 轴动作控制、CANFD / USB 与 Active 状态 |
 | 详情页 | 新增 `RabbitRobot/projects/rabbitrobot-omnihand-2025.html`，包含产品事实、控制链、视觉证据、研究定位和诚实状态表 |
 | 动态素材 | `RabbitRobot/images/rabbitrobot/omnihand_2025_demo.gif` 由用户提供的 32.37 秒、1280×720 实拍视频压缩生成；静态封面为 `omnihand_2025_cover.jpg` |
 | 技术事实 | 产品手册核对 16 自由度、约 180 mm、约 500 g、400+ 触觉点、CANFD / RS485 / USB；动作配置核对左右手握拳/打开和 10 轴序列模板 |
