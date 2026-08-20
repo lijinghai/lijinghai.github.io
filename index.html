@@ -879,6 +879,10 @@
       -webkit-line-clamp: 1;
     }
 
+    .technical-note {
+      -webkit-line-clamp: 2;
+    }
+
     .stack-table {
       width: 100%;
       margin-top: 4px;
@@ -1289,6 +1293,10 @@
         display: none;
       }
 
+      .technical-note {
+        display: -webkit-box;
+      }
+
       .metric {
         min-height: 18px;
         padding: 1px 5px;
@@ -1417,8 +1425,8 @@
           <span class="project-kicker">Manipulation / Dexterous Hand / VLA</span>
           <h3>RabbitRobot &times; OmniHand 2025</h3>
           <span class="meta">双手实机台架 &middot; 10-axis action control &middot; CANFD / USB &middot; tactile interaction</span>
-          <p class="note">
-            今天把智元 OmniHand 灵动款 2025 接进具身操作研究线：先验证双手动作、左右手姿态和可回放序列，再把视觉、触觉与语言任务接入后续 VLA 实验。
+          <p class="note technical-note">
+            围绕 10 轴主动关节控制建立 USB / CANFD 动作链，记录双手姿态与序列回放；下一步融合视觉观测、关节状态和 400+ 触觉点，形成可复现的 VLA 操作评测。
           </p>
           <div class="metric-row">
             <span class="metric">2026.08.20 real-hand record</span>
