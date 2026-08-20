@@ -767,7 +767,8 @@
       border: 0;
     }
 
-    .thumb img {
+    .thumb img,
+    .thumb video {
       width: 100%;
       height: auto;
       object-fit: contain;
@@ -780,7 +781,9 @@
     }
 
     .entry:hover .thumb img,
-    .thumb:focus img {
+    .entry:hover .thumb video,
+    .thumb:focus img,
+    .thumb:focus video {
       filter: saturate(1.06) contrast(1.03);
       transform: scale(1.015);
     }
@@ -1419,7 +1422,9 @@
 
       <article class="entry">
         <a class="thumb" href="RabbitRobot/projects/rabbitrobot-omnihand-2025.html">
-          <img src="RabbitRobot/images/rabbitrobot/omnihand_2025_demo.gif" alt="2026.08.20 OmniHand 2025 dexterous hands performing real tabletop motion on the RabbitRobot bench" loading="lazy" decoding="async">
+          <video data-home-loop autoplay muted loop playsinline preload="metadata" poster="RabbitRobot/images/rabbitrobot/omnihand_2025_cover.jpg" width="960" height="540" aria-label="2026.08.20 OmniHand 2025 dexterous hands performing real tabletop motion on the RabbitRobot bench">
+            <source src="RabbitRobot/videos/omnihand_2025_home_hd.mp4" type="video/mp4">
+          </video>
         </a>
         <div>
           <span class="project-kicker">Manipulation / Dexterous Hand / VLA</span>
@@ -1441,7 +1446,9 @@
 
       <article class="entry">
         <a class="thumb" href="RabbitRobot/projects/rabbitrobot-robotdog-vln.html">
-          <img src="RabbitRobot/images/rabbitrobot/robotdog_vln_demo.gif" alt="Go2X robot dog walking and turning in the real lab" loading="lazy" decoding="async">
+          <video data-home-loop autoplay muted loop playsinline preload="metadata" poster="RabbitRobot/images/rabbitrobot/robotdog_vln_walk.jpg" width="960" height="540" aria-label="Go2X robot dog walking and turning in the real lab">
+            <source src="RabbitRobot/videos/robotdog_vln_demo_hd.mp4" type="video/mp4">
+          </video>
         </a>
         <div>
           <span class="project-kicker">Embodied AI / Robot Tracking</span>
@@ -1463,7 +1470,9 @@
 
       <article class="entry">
         <a class="thumb" href="RabbitRobot/projects/rabbitrobot-amr2.html">
-          <img src="RabbitRobot/images/rabbitrobot/amr2_turning_loop.gif?v=forward-loop" alt="RabbitRobot AMR2 real robot turning test" loading="lazy" decoding="async">
+          <video data-home-loop autoplay muted loop playsinline preload="metadata" poster="RabbitRobot/images/rabbitrobot/amr2_field_test_10s.jpg" width="960" height="540" aria-label="RabbitRobot AMR2 real robot turning test">
+            <source src="RabbitRobot/videos/amr2_turning_loop_hd.mp4" type="video/mp4">
+          </video>
         </a>
         <div>
           <span class="project-kicker">Main Platform</span>
@@ -1662,7 +1671,12 @@
   </main>
   <script>
     (() => {
+      const homeVideos = document.querySelectorAll("video[data-home-loop]");
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        homeVideos.forEach((video) => {
+          video.removeAttribute("autoplay");
+          video.pause();
+        });
         return;
       }
 

@@ -4,6 +4,28 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-08-20 - 首页三项机器人动效高清化
+
+本次保持主页原有研究档案式布局和项目顺序不变，将 OmniHand、Go2X 机器狗与 RabbitRobot AMR2 三张首页 GIF 动效升级为带静态封面的高清循环 MP4。画面统一到 `960×540`，通过 Lanczos 放大、色阶收敛、轻量饱和度与锐度校正减弱原素材的灰雾感；同时使用静音、自动播放、循环和 `playsinline`，兼顾桌面与手机端浏览。
+
+| 内容 | 实际改动与证据 |
+| --- | --- |
+| OmniHand | `omnihand_2025_home_hd.mp4`，`960×540`、15 fps、约 `4.37 MB` |
+| Go2X 机器狗 | `robotdog_vln_demo_hd.mp4`，`960×540`、12 fps、约 `2.09 MB` |
+| RabbitRobot AMR2 | `amr2_turning_loop_hd.mp4`，`960×540`、24 fps、约 `0.18 MB` |
+| 加载成本 | 三张原 GIF 合计约 `12.74 MB`，三张高清 MP4 合计约 `6.64 MB`，减少约 `47.9%` |
+| 页面实现 | 首页使用 `poster + autoplay + muted + loop + playsinline + preload=metadata`；保留卡片点击进入详情页，并对 `prefers-reduced-motion` 用户暂停自动播放 |
+| 真实验证 | 本地浏览器在桌面端和 `390×844` 手机端确认三段视频均 `readyState=4`、`paused=false`、`muted=true`、视频尺寸 `960×540`；横向溢出为 false，控制台 error/warning 为 0 |
+| 关键文件 | `index.html`、`RabbitRobot/videos/*_hd.mp4`、`docs/images/updates/2026-08-20-home-hd/` |
+
+桌面端首页项目动效：
+
+![首页高清动效桌面端](docs/images/updates/2026-08-20-home-hd/desktop-projects.png)
+
+390×844 手机端项目动效：
+
+![首页高清动效手机端](docs/images/updates/2026-08-20-home-hd/mobile-projects.png)
+
 ### 2026-08-20 - OmniHand 产品参数区说明精简
 
 本次移除 OmniHand 详情页 `Product Facts` 标题下方的说明性句子，保留四行产品参数表和后续研究内容，让页面从标题直接进入可核对的结构、触觉、动作配置与通信事实。
