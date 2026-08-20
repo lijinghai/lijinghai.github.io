@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RabbitRobot × OmniHand 2025 | 灵巧手具身操作线</title>
+  <meta name="description" content="RabbitRobot OmniHand 灵动款 2025 实机操作记录：双手桌面台架、10 个主动轴动作控制、CANFD/USB 通信、触觉交互与从 VLN 延伸到 VLA 的具身操作研究线。">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+  <nav class="detail-nav" aria-label="Project navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
+        <span>Jinghai Li</span>
+      </a>
+      <div class="nav-links">
+        <a href="../../index.html#work-title">Selected Work</a>
+        <a href="#control">Control Chain</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#status">Status</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">Manipulation / Dexterous Hand / VLA</p>
+      <h1>RabbitRobot &times; <span style="white-space: nowrap;">OmniHand 2025</span></h1>
+      <p class="subtitle">从会移动，到会理解，再到会操作</p>
+      <p class="summary">
+        这是我在真实机器人路线上的新一段：把智元 OmniHand 灵动款 2025 接进 RabbitRobot 的具身操作研究线。当前以双手桌面台架为起点，围绕动作姿态、关节控制、左右手切换和后续触觉感知，逐步把灵巧手从“能动”推进到“可观察、可复现、可评估”的 VLA 实验对象。视频记录的是今天的真实双手操作过程，页面只写已经看到和已经确认的部分。
+      </p>
+      <div class="meta-row">
+        <span class="meta-pill">Time · 2026.08.20</span>
+        <span class="meta-pill">Hardware · OmniHand 灵动款 2025</span>
+        <span class="meta-pill">Control · 10 active axes / USB / CANFD</span>
+        <span class="meta-pill">Status · Active hardware bring-up</span>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="../../index.html#work-title">返回个人主页</a>
+        <a class="button" href="rabbitrobot-robotdog-vln.html">机器狗 VLN 详情</a>
+        <a class="button" href="rabbitrobot-edulite-a3-vla.html">机械臂 VLA 详情</a>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <img src="../images/rabbitrobot/omnihand_2025_demo.gif" alt="左右两只 OmniHand 灵动款 2025 在桌面台架上进行真实动作操作" loading="eager">
+      <figcaption>2026.08.20 实拍 GIF：左右两只 OmniHand 灵动款 2025 在桌面环境中的动作演示。当前页面把它作为实机 bring-up 证据，不把演示视频包装成已经完成的 VLA 闭环。</figcaption>
+    </figure>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Current Evidence</p>
+        <h2>先看这条灵巧手研究线已经站在哪里</h2>
+        <p class="section-lead">产品规格、动作配置和现场视频分别承担不同的证据角色：规格说明“它能做什么”，配置说明“我如何控制它”，视频说明“今天真实发生了什么”。</p>
+        <div class="proof-grid">
+          <p class="proof-card">
+            <b>双手实机台架</b>
+            <span>视频记录左右两只 OmniHand 2025 同处桌面环境，能看到手指与拇指的真实多关节动作。</span>
+          </p>
+          <p class="proof-card">
+            <b>10 轴控制面</b>
+            <span>产品手册对本型号上位机控制按 1–10 号主动轴组织，动作配置也以 10 轴位置数组保存。</span>
+          </p>
+          <p class="proof-card">
+            <b>握拳 / 打开</b>
+            <span>本地动作库已包含左右手“握拳”“打开”姿态，序列模板支持动作引用与延迟编排。</span>
+          </p>
+          <p class="proof-card">
+            <b>Active / 未夸大</b>
+            <span>当前是实机 bring-up 与操作研究阶段；触觉闭环、示教数据和 VLA 评估仍在推进。</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft" id="control">
+      <div class="container">
+        <p class="kicker">Control Chain</p>
+        <h2>从姿态文件到真实手指动作</h2>
+        <p class="section-lead">我先把灵巧手当作一个可观测、可复现的执行器，再把它接进后续的操作策略和数据闭环。这样做的目的不是堆协议名词，而是让每一次动作都能追溯。</p>
+        <div class="system-map" aria-label="OmniHand 2025 control chain">
+          <div class="map-column">
+            <div class="map-node">
+              <b>动作与序列</b>
+              <span>actions.json 保存左右手握拳、打开等姿态；sequence_template.json 支持 10 轴位置数组与 delay_ms。</span>
+            </div>
+            <div class="map-node">
+              <b>人机界面</b>
+              <span>上位机可连接设备、编辑单关节位置、查看实时位置/速度/电流曲线，并保存自定义动作。</span>
+            </div>
+          </div>
+          <div class="map-center">
+            <b>OmniHand 2025</b>
+            <span>双手桌面台架<br>真实关节动作<br>VLA 操作入口</span>
+          </div>
+          <div class="map-column">
+            <div class="map-node">
+              <b>底层通信</b>
+              <span>产品手册提供 CANFD、RS485 与 USB 通信路径；USB 上位机链路使用 460800 波特率。</span>
+            </div>
+            <div class="map-node">
+              <b>下一层研究</b>
+              <span>触觉读数、视觉观察、语言任务、示教轨迹与真实执行结果，逐步组织成可评估的操作数据。</span>
+            </div>
+          </div>
+        </div>
+        <div class="stack">
+          <span class="tag">OmniHand 灵动款 2025</span>
+          <span class="tag">10-axis action control</span>
+          <span class="tag">CANFD / RS485 / USB</span>
+          <span class="tag">握拳 / 打开</span>
+          <span class="tag">触觉交互</span>
+          <span class="tag">桌面操作</span>
+          <span class="tag">VLA / Embodied Manipulation</span>
+          <span class="tag">RabbitRobot</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Product Facts</p>
+        <h2>把产品能力与当前研究状态分开记录</h2>
+        <p class="section-lead">以下硬件参数来自智元 OmniHand 灵动款 2025 产品使用说明书；它们是平台能力，不等同于我已经完成的实验结果。</p>
+        <table class="interface-table verification-table">
+          <thead>
+            <tr>
+              <th>维度</th>
+              <th>公开资料 / 本地文件</th>
+              <th>对当前研究的意义</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>结构与自由度</td>
+              <td>产品资料标称 16 自由度，总长约 180 mm、重量约 500 g；上位机控制按 10 个主动轴组织。</td>
+              <td>紧凑尺寸适合桌面级人形/操作实验；研究侧先以 10 轴动作接口建立可复现控制。</td>
+            </tr>
+            <tr>
+              <td>触觉交互</td>
+              <td>手册描述覆盖手心、手背和五指的 400+ 点触觉感应，并支持指尖、手心、手背数据读取。</td>
+              <td>后续可以把接触状态纳入视觉语言动作闭环，而不是只依赖 RGB 画面。</td>
+            </tr>
+            <tr>
+              <td>动作配置</td>
+              <td>本地 <code>omnihand_2025_default_actions.json</code> 含左右手握拳/打开；序列模板支持动作引用、内联 positions 和延迟。</td>
+              <td>动作可以从一次性手势升级为可回放的实验片段，为示教和失败复盘留接口。</td>
+            </tr>
+            <tr>
+              <td>通信路径</td>
+              <td>产品资料提供 CANFD、RS485、USB 连接方式；CANFD 仲裁域 1M、数据域 5M，USB 串口为 460800。</td>
+              <td>底层通信、动作层和上层策略可以解耦，便于将来接入 ROS 2、数据采集和安全控制。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">What I Am Building</p>
+        <h2>我不是只把手摆在桌面上，而是在搭一条操作研究线</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>动作可复现</h3>
+            <p>先用握拳、打开和自定义姿态验证 10 轴位置接口，再逐步补充速度、时间和左右手组合，避免“视频里动过”就算完成。</p>
+            <ul>
+              <li><code>assets/action/omnihand_2025/</code></li>
+              <li><code>assets/sequence/omnihand_2025/</code></li>
+              <li>动作引用与 delay_ms 编排</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>观察与接触</h3>
+            <p>把视觉观察和触觉反馈放在同一条记录链里，关注手指是否到位、物体是否接触、动作是否需要停止或恢复。</p>
+            <ul>
+              <li>指尖 / 手心 / 手背触觉接口</li>
+              <li>关节位置、速度、电流与故障</li>
+              <li>真实桌面场景与失败样例</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>从 VLN 延伸到 VLA</h3>
+            <p>机器狗和 AMR 负责“到哪里”，灵巧手负责“怎么拿、怎么放、怎么接触”。两条线最终汇合到真实具身智能系统。</p>
+            <ul>
+              <li>语言目标与桌面任务</li>
+              <li>视觉 / 触觉条件</li>
+              <li>动作策略与执行反馈</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>安全边界先于演示</h3>
+            <p>手册明确限制负载、冲击、尖锐物体和液体环境；我的公开记录也会区分产品能力、现场动作与尚未完成的闭环验证。</p>
+            <ul>
+              <li>低速、低风险桌面操作</li>
+              <li>限位与异常停止</li>
+              <li>实机数据优先于概念包装</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="evidence">
+      <div class="container">
+        <p class="kicker">Visual Evidence</p>
+        <h2>今天的真实操作记录</h2>
+        <p class="section-lead">封面 GIF 来自 2026 年 8 月 20 日的现场视频；静态封面用于快速加载，动态素材保留双手动作变化和桌面实验语境。</p>
+        <div class="evidence-grid">
+          <figure>
+            <img src="../images/rabbitrobot/omnihand_2025_cover.jpg" alt="左右两只 OmniHand 2025 灵巧手在 RabbitRobot 实验桌上的实拍封面" loading="lazy" decoding="async">
+            <figcaption>双手实机台架：左右手、供电线束、控制电脑与产品资料共同出现在同一实验场景中。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/omnihand_2025_demo.gif" alt="OmniHand 2025 灵巧手手指和拇指进行动作演示的动态记录" loading="lazy" decoding="async">
+            <figcaption>动态记录：动作演示只作为当前 bring-up 证据；后续会继续补充协议日志、动作回放和任务级评估。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">Research Positioning</p>
+        <h2>这只手在我的路线里承担什么角色</h2>
+        <div class="pipeline">
+          <article>
+            <h3>1. Real hardware</h3>
+            <p>先把左右手、供电、通信和关节动作放到真实桌面环境里，建立可靠的硬件起点。</p>
+          </article>
+          <article>
+            <h3>2. Action primitives</h3>
+            <p>把打开、握拳和自定义姿态变成可命名、可回放、可比较的动作原语。</p>
+          </article>
+          <article>
+            <h3>3. Observation</h3>
+            <p>同步视觉、关节反馈和触觉区域，记录动作过程中的接触、偏差与异常。</p>
+          </article>
+          <article>
+            <h3>4. VLA task</h3>
+            <p>将语言目标和桌面物体组织成小任务，逐步接入示教、策略和动作数据。</p>
+          </article>
+          <article>
+            <h3>5. Verifiable execution</h3>
+            <p>用成功率、动作误差、接触状态和恢复过程评价系统，而不是只展示一次成功动作。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="status">
+      <div class="container">
+        <p class="kicker">Honest Status</p>
+        <h2>当前状态与下一步</h2>
+        <table class="interface-table">
+          <thead>
+            <tr>
+              <th>阶段</th>
+              <th>当前公开状态</th>
+              <th>进入下一阶段的判据</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>已记录</td>
+              <td>2026.08.20 双手 OmniHand 2025 桌面动作视频；封面 GIF 与静态图已整理。</td>
+              <td>保留原始视频语境，补充更清晰的分段动作和现场日志。</td>
+            </tr>
+            <tr>
+              <td>正在推进</td>
+              <td>围绕 10 轴动作、左右手姿态、动作序列与底层通信建立稳定的可回放控制链。</td>
+              <td>完成连续回放、位置/速度/电流记录和异常停止验证。</td>
+            </tr>
+            <tr>
+              <td>待接入</td>
+              <td>把触觉区域、视觉观察和语言任务统一到桌面操作数据结构。</td>
+              <td>形成带时间戳的观察—动作—反馈样例，并能复盘失败原因。</td>
+            </tr>
+            <tr>
+              <td>研究目标</td>
+              <td>从机器狗 / AMR 的 VLN 执行链，延伸到灵巧手的 VLA 操作链。</td>
+              <td>用可重复任务、动作误差、接触状态和恢复成功率评估真实操作能力。</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="source-actions">
+          <a class="button primary" href="../../index.html#work-title">Back to Selected Work</a>
+          <a class="button" href="rabbitrobot-vln.html">RabbitRobot engineering archive</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Jinghai Li · RabbitRobot × OmniHand 2025 · 从真实机器人移动走向具身操作。</div>
+  </footer>
+</body>
+</html>

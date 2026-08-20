@@ -4,6 +4,38 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-08-20 - OmniHand 2025 双手灵巧操作研究线
+
+本次在主页 `Selected Work` 中新增 `RabbitRobot × OmniHand 2025`，并新增对应详情页。页面使用 2026.08.20 真实双手操作视频生成封面 GIF，同时根据 OmniHand 灵动款 2025 产品手册和本地动作配置，区分产品能力、当前实机 bring-up 证据与尚未完成的 VLA 闭环，保持主页从 VLN / AMR 向具身操作延伸的路线。
+
+```mermaid
+flowchart LR
+  A[双手 OmniHand 2025 实机视频] --> B[握拳 / 打开动作与 10 轴序列]
+  B --> C[关节控制与动作回放]
+  C --> D[触觉 + 视觉观察]
+  D --> E[VLA 桌面操作评估]
+```
+
+| 内容 | 实际改动与证据 |
+| --- | --- |
+| 首页卡片 | `index.html` 在机器狗之后加入灵巧手项目，显示 2026.08.20、10 轴动作控制、CANFD / USB 与 Active 状态 |
+| 详情页 | 新增 `RabbitRobot/projects/rabbitrobot-omnihand-2025.html`，包含产品事实、控制链、视觉证据、研究定位和诚实状态表 |
+| 动态素材 | `RabbitRobot/images/rabbitrobot/omnihand_2025_demo.gif` 由用户提供的 32.37 秒、1280×720 实拍视频压缩生成；静态封面为 `omnihand_2025_cover.jpg` |
+| 技术事实 | 产品手册核对 16 自由度、约 180 mm、约 500 g、400+ 触觉点、CANFD / RS485 / USB；动作配置核对左右手握拳/打开和 10 轴序列模板 |
+| 页面验证 | 本地浏览器实际打开主页与详情页；桌面端、390×844 手机端均无横向溢出；控制台 error/warning 均为空；本地图片/GIF/CSS 引用存在 |
+
+主页 Selected Work 实际效果：
+
+![OmniHand 主页卡片](docs/images/updates/2026-08-20-omnihand/home-desktop.png)
+
+灵巧手详情页桌面端：
+
+![OmniHand 详情页](docs/images/updates/2026-08-20-omnihand/detail-desktop.png)
+
+灵巧手详情页手机端：
+
+![OmniHand 详情页手机端](docs/images/updates/2026-08-20-omnihand/detail-mobile.png)
+
 ### 2026-08-17 - Go2X × MiniCPM-RobotTrack 项目强化
 
 本次只修改主页 `Selected Work` 中的第一张机器狗卡片，以及对应的机器狗详情页。页面延续原有白底、蓝橙链接和渐变标题风格，将叙事中心从一般的 RGB-D 接入提升为 `Go2X × MiniCPM-RobotTrack`：突出时序多模态输入、机器人适配器、跨机服务化、8 点轨迹推理和安全控制边界；同时移除私有 Go2X 仓库的公开入口，其他项目卡片与详情页不变。
