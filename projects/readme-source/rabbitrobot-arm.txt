@@ -500,7 +500,7 @@ source install/set.bash
   配置`WANDB_API_KEY` [环境变量](https://docs.wandb.ai/guides/track/environment-variables/)。
 
   ```shell
-  export WANDB_API_KEY=<your-wandb-api-key>b
+  export WANDB_API_KEY="<your-wandb-api-key>"
   ```
 
   安装`wandb`库并登录。

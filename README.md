@@ -4,6 +4,26 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-08-27 - 修复 GitGuardian 检测到的 W&B 密钥泄露
+
+本次修复公开机械臂教程中的 Weights & Biases API Key 暴露问题，不改变 W&B 实验跟踪、登录命令或页面内容结构。文档继续指导用户通过环境变量配置自己的密钥，但仓库不再保存任何真实凭据；同时清理 Git 历史中的同一明文，避免 GitGuardian 继续从旧提交命中。
+
+| 内容 | 实际改动与证据 |
+| --- | --- |
+| 泄露源 | `projects/readme-source/rabbitrobot-arm.txt` 与 `RabbitRobot/projects/readme-source/rabbitrobot-arm.txt` 的示例行 |
+| 修复方式 | 将真实值替换为 `export WANDB_API_KEY="<your-wandb-api-key>"`，保留环境变量和 `wandb login` 流程 |
+| 历史处理 | 重写 `main` 历史并强制推送，移除同一明文在公开提交中的可检索内容 |
+| 扫描结果 | 当前工作树与清理后的 Git 历史均不再包含原始密钥；保留的 `WANDB_API_KEY` 仅为变量名和安全占位符 |
+| 功能影响 | 页面、项目说明、W&B 配置步骤和其他研究内容保持不变 |
+| 关键文件 | `projects/readme-source/rabbitrobot-arm.txt`、`RabbitRobot/projects/readme-source/rabbitrobot-arm.txt`、`README.md` |
+
+安全边界：该 API Key 已经公开，必须在 W&B 控制台立即撤销并重新生成；本仓库只负责删除公开副本，无法代替账户侧轮换。
+
+`main` 历史清理链路：
+
+`公开文档示例` → `占位符` → `历史重写` → `强制推送` → `GitGuardian 不再命中`
+
+
 ### 2026-08-20 - 首页三项机器人动效高清化
 
 本次保持主页原有研究档案式布局和项目顺序不变，将 OmniHand、Go2X 机器狗与 RabbitRobot AMR2 三张首页 GIF 动效升级为带静态封面的高清循环 MP4。画面统一到 `960×540`，通过 Lanczos 放大、色阶收敛、轻量饱和度与锐度校正减弱原素材的灰雾感；同时使用静音、自动播放、循环和 `playsinline`，兼顾桌面与手机端浏览。
