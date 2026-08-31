@@ -4,6 +4,23 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-08-31 - 首页聚焦 ROS 2 Web 控制台
+
+本次只调整首页项目列表中原来的 AMR2 覆盖规划卡片，将其收束为 `ljh_robot_ros2_web` ROS 2 Web 控制台：使用源码仓库 README 中的真实界面截图，补充连接、地图图层、导航、重定位、设备状态与日志能力。其他项目卡片、详情页、页面结构和既有功能均保持不变。
+
+| 内容 | 实际改动与证据 |
+| --- | --- |
+| 首页入口 | `index.html` 对应卡片改为 `RabbitRobot ROS 2 Web 控制台`，链接现有详情页与源码仓库 |
+| 技术叙事 | React 19、TypeScript、Three.js、rosbridge WebSocket、ROS 2、Nav2 / SLAM 可视化 |
+| 真实截图 | `RabbitRobot/images/rabbitrobot/ros2_web_home.png`，与 `ljh_robot_ros2_web` README 主界面素材一致 |
+| 用户可见功能 | 2D/3D 地图、图层配置、激光/点云/TF/路径、单点/多点导航、重定位、手动控制、任务和日志 |
+| 来源版本 | `lijinghai/ljh_robot_ros2_web` main，核对提交 `8749857` |
+| 验证结果 | 本地浏览器确认首页 HTTP 200、目标卡片文案和链接存在、桌面与 `390px` 手机端无横向溢出；其他项目入口数量与顺序不变 |
+
+数据链路：浏览器 UI ↔ rosbridge WebSocket ↔ ROS 2 / Nav2 / SLAM；输出地图、激光、点云、TF、路径与设备状态，输入图层、导航、重定位、手动控制和日志操作。
+
+![ROS 2 Web 控制台主界面](RabbitRobot/images/rabbitrobot/ros2_web_home.png)
+
 ### 2026-08-27 - 修复 GitGuardian 检测到的 W&B 密钥泄露
 
 本次修复公开机械臂教程中的 Weights & Biases API Key 暴露问题，不改变 W&B 实验跟踪、登录命令或页面内容结构。文档继续指导用户通过环境变量配置自己的密钥，但仓库不再保存任何真实凭据；同时清理 Git 历史中的同一明文，避免 GitGuardian 继续从旧提交命中。
