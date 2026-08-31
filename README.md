@@ -6,18 +6,18 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ### 2026-08-31 - 新增 DAS Ego × UMI 实机数据采集项目
 
-本次在 `Selected Work` 最前面新增当前设备项目 `DAS Ego + UMI`，使用用户本人拍摄的实操视频作为首页动效与详情页证据。源视频为带 `-90°` 旋转元数据的 4K 竖屏素材，已顺时针旋转并输出横屏版本：首页使用轻量 `960×540` MP4，详情页使用 `1280×720` MP4；同时从同一段实操中提取三张横屏帧，补充第一视角采集、双手协同、触觉/状态和 MCAP 数据链路说明。其他项目顺序、原有视觉风格与功能保持不变。
+本次在 `Selected Work` 最前面新增当前设备项目 `DAS Ego + UMI`，使用用户本人拍摄的实操视频作为首页动效与详情页证据。源视频为带 `-90°` 旋转元数据的 4K 竖屏素材；桌面原始文件保持不动，网页使用同分辨率、同帧率的高码率横屏版本，不做 `960×540/1280×720` 降级，同时从同一段实操中提取原始尺寸 PNG 帧。由于 GitHub 普通仓库单文件上限为 100MB 且 GitHub Pages 不支持 Git LFS，页面版本控制在 100MB 内；第一视角采集、双手协同、触觉/状态和 MCAP 数据链路说明保持不变。
 
 | 内容 | 实际改动与证据 |
 | --- | --- |
 | 首页入口 | `index.html` 在 OmniHand 前新增 `我的设备现在是 DAS Ego × UMI` 卡片，链接到独立详情页 |
-| 视频处理 | `ego_umi_2026_demo_landscape.mp4`（960×540 首页）与 `ego_umi_2026_demo_landscape_1280.mp4`（1280×720 详情页），去除旋转元数据后顺时针旋转为横屏 |
-| 真实画面 | `ego_umi_2026_cover.jpg`、`ego_umi_2026_frame_04.jpg`、`ego_umi_2026_frame_08.jpg`、`ego_umi_2026_frame_14.jpg` 均由用户实操视频提取 |
+| 视频处理 | `ego_umi_2026_demo_4k.mp4`（约 `90MB`），保持 `3840×2160 / 60fps`，去除 `-90°` 显示旋转并以高码率 H.264 输出横屏；桌面原始 `144MB` 文件不改动 |
+| 真实画面 | `ego_umi_2026_cover_4k.png`、`ego_umi_2026_04_4k.png`、`ego_umi_2026_08_4k.png`、`ego_umi_2026_14_4k.png` 均为 `3840×2160` 原始尺寸无损 PNG |
 | 技术叙事 | 参考 GenRobot DAS Ego 手册与 DAS Gripper 产品资料，写入 6 路 RGB、270° 视场、6 轴 IMU、UMI 触觉/末端状态、MCAP 落盘和 VLA 示教方向 |
 | 详情页面 | 新增 `RabbitRobot/projects/rabbitrobot-ego-umi.html`，包含横屏视频、官方规格表、四张实操帧、研究定位与诚实状态 |
-| 验证结果 | 本地浏览器确认首页卡片、横屏视频 `960×540` 可解码；详情页视频 `1280×720`、4 行规格、4 张证据帧均正常；桌面与 `390×844` 手机端无横向溢出，图片加载正常 |
+| 验证结果 | 本地浏览器确认首页与详情页均解码 `3840×2160 / 60fps` 横屏视频；4 行规格、4 张 `3840×2160` 无损 PNG 证据帧均正常；桌面与 `390×844` 手机端无横向溢出 |
 
-![DAS Ego × UMI 横屏实操证据](RabbitRobot/images/rabbitrobot/ego_umi_2026_cover.jpg)
+![DAS Ego × UMI 横屏实操证据](RabbitRobot/images/rabbitrobot/ego_umi_2026_cover_4k.png)
 
 官方资料： [DAS Ego 手册](https://docs.genrobot.ai/zh/products/das-ego) · [GenRobot DAS Gripper / UMI 产品页](https://genrobot.com/products/das)
 
