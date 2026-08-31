@@ -4,6 +4,35 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-08-31 - 新增 DAS Ego × UMI 实机数据采集项目
+
+本次在 `Selected Work` 最前面新增当前设备项目 `DAS Ego + UMI`，使用用户本人拍摄的实操视频作为首页动效与详情页证据。源视频为带 `-90°` 旋转元数据的 4K 竖屏素材，已顺时针旋转并输出横屏版本：首页使用轻量 `960×540` MP4，详情页使用 `1280×720` MP4；同时从同一段实操中提取三张横屏帧，补充第一视角采集、双手协同、触觉/状态和 MCAP 数据链路说明。其他项目顺序、原有视觉风格与功能保持不变。
+
+| 内容 | 实际改动与证据 |
+| --- | --- |
+| 首页入口 | `index.html` 在 OmniHand 前新增 `我的设备现在是 DAS Ego × UMI` 卡片，链接到独立详情页 |
+| 视频处理 | `ego_umi_2026_demo_landscape.mp4`（960×540 首页）与 `ego_umi_2026_demo_landscape_1280.mp4`（1280×720 详情页），去除旋转元数据后顺时针旋转为横屏 |
+| 真实画面 | `ego_umi_2026_cover.jpg`、`ego_umi_2026_frame_04.jpg`、`ego_umi_2026_frame_08.jpg`、`ego_umi_2026_frame_14.jpg` 均由用户实操视频提取 |
+| 技术叙事 | 参考 GenRobot DAS Ego 手册与 DAS Gripper 产品资料，写入 6 路 RGB、270° 视场、6 轴 IMU、UMI 触觉/末端状态、MCAP 落盘和 VLA 示教方向 |
+| 详情页面 | 新增 `RabbitRobot/projects/rabbitrobot-ego-umi.html`，包含横屏视频、官方规格表、四张实操帧、研究定位与诚实状态 |
+| 验证结果 | 本地浏览器确认首页卡片、横屏视频 `960×540` 可解码；详情页视频 `1280×720`、4 行规格、4 张证据帧均正常；桌面与 `390×844` 手机端无横向溢出，图片加载正常 |
+
+![DAS Ego × UMI 横屏实操证据](RabbitRobot/images/rabbitrobot/ego_umi_2026_cover.jpg)
+
+官方资料： [DAS Ego 手册](https://docs.genrobot.ai/zh/products/das-ego) · [GenRobot DAS Gripper / UMI 产品页](https://genrobot.com/products/das)
+
+主页 `Selected Work` 实际效果：
+
+![首页 EGO + UMI 卡片](docs/images/updates/2026-08-31-ego-umi/home-selected-work.png)
+
+详情页首屏实际效果：
+
+![EGO + UMI 详情页](docs/images/updates/2026-08-31-ego-umi/detail-hero.png)
+
+390×844 手机端实际效果：
+
+![EGO + UMI 手机端卡片](docs/images/updates/2026-08-31-ego-umi/home-mobile.png)
+
 ### 2026-08-31 - 首页聚焦 ROS 2 Web 控制台
 
 本次只调整首页项目列表中原来的 AMR2 覆盖规划卡片，将其收束为 `ljh_robot_ros2_web` ROS 2 Web 控制台：使用源码仓库 README 中的真实界面截图，补充连接、地图图层、导航、重定位、设备状态与日志能力。其他项目卡片、详情页、页面结构和既有功能均保持不变。

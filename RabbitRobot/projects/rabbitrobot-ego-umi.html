@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DAS Ego × UMI | 实机具身数据采集记录</title>
+  <meta name="description" content="GenRobot.AI DAS Ego 与 UMI 双手采集端的真实实操记录：第一视角多相机、IMU 姿态、触觉操作与面向 VLA 示教的数据链路。">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+  <nav class="detail-nav" aria-label="Project navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
+        <span>Jinghai Li</span>
+      </a>
+      <div class="nav-links">
+        <a href="../../index.html#work-title">Selected Work</a>
+        <a href="#facts">Product facts</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#status">Status</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">Embodied Data / Ego Capture / UMI</p>
+      <h1>GenRobot.AI <span style="white-space: nowrap;">DAS Ego × UMI</span></h1>
+      <p class="subtitle">我的设备现在从“看见机器人”走向“记录人如何操作”</p>
+      <p class="summary">
+        目前我的设备组合是 GenRobot.AI DAS Ego + UMI 采集端：Ego 负责第一视角、多相机视觉和姿态轨迹，UMI 负责双手末端的操作与接触信息。这里展示的是我自己拍摄并实操的视频，不是产品宣传片；我先在真实桌面环境里把佩戴、配对、双手协同和取放动作跑通，再把这些观测整理成后续 VLA 示教和策略评估可以复盘的数据。
+      </p>
+      <div class="meta-row">
+        <span class="meta-pill">Time · 2026.08.31</span>
+        <span class="meta-pill">Device · DAS Ego + UMI</span>
+        <span class="meta-pill">Capture · RGB / IMU / tactile / audio</span>
+        <span class="meta-pill">Status · Active hardware bring-up</span>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="../../index.html#work-title">返回个人主页</a>
+        <a class="button" href="https://docs.genrobot.ai/zh/products/das-ego" target="_blank" rel="noopener noreferrer">官方 DAS Ego 手册</a>
+        <a class="button" href="https://genrobot.com/products/das" target="_blank" rel="noopener noreferrer">UMI / DAS Gripper</a>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <video autoplay muted loop playsinline controls preload="metadata" poster="../images/rabbitrobot/ego_umi_2026_cover.jpg" aria-label="DAS Ego 与 UMI 双手采集设备的横屏实操视频">
+        <source src="../videos/ego_umi_2026_demo_landscape_1280.mp4" type="video/mp4">
+        当前浏览器不支持 HTML5 视频播放，请直接打开横屏 MP4 文件。
+      </video>
+      <figcaption>2026.08.31 实操视频：源文件为 4K 竖屏录像，已去除原旋转元数据并顺时针旋转为 1280×720 横屏 MP4；画面保留真实桌面、设备屏幕、线束和双手动作，便于查看完整操作语境。</figcaption>
+    </figure>
+  </header>
+
+  <main>
+    <section class="section" id="facts">
+      <div class="container">
+        <p class="kicker">Product Facts</p>
+        <h2>把官方产品能力和我的实操证据分开记录</h2>
+        <p class="section-lead">官方资料回答“设备能采什么”，我的视频回答“今天实际做了什么”；两种证据不混写，避免把产品规格误写成已经完成的研究结果。</p>
+        <table class="interface-table verification-table">
+          <thead>
+            <tr>
+              <th>维度</th>
+              <th>官方资料可核对内容</th>
+              <th>对当前研究的意义</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>DAS Ego 视觉</td>
+              <td>6 颗广角 RGB 相机；水平视场约 270°、垂直视场约 150°；录制帧率 30 Hz。</td>
+              <td>覆盖操作者第一视角和桌面周边，为动作前后的场景变化提供同步观测。</td>
+            </tr>
+            <tr>
+              <td>姿态与同步</td>
+              <td>高精度 6 轴 IMU；官方手册将 Ego 定义为第一视角多模态数据采集设备，并支持多设备时空对齐。</td>
+              <td>把头部运动、视线方向和末端动作放到同一时间轴，便于复盘操作意图与执行偏差。</td>
+            </tr>
+            <tr>
+              <td>UMI 末端侧</td>
+              <td>GenRobot DAS 末端采集产品覆盖视觉、触觉、声学、惯性与磁编码等多模态通道；公开产品页给出双指夹爪与 100 Hz 输出。</td>
+              <td>操作记录不只保留 RGB，还能继续接入接触、夹爪开合和末端状态，形成更完整的示教样本。</td>
+            </tr>
+            <tr>
+              <td>数据落盘</td>
+              <td>DAS Ego 手册说明原始采集数据保存为 MCAP，可在电脑端用配套工具进行可视化和后处理。</td>
+              <td>后续可以按时间戳对齐视觉、姿态、音频和操作状态，并把成功与失败片段分开评估。</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="source-note">资料来源：<a href="https://docs.genrobot.ai/zh/products/das-ego" target="_blank" rel="noopener noreferrer">DAS Ego 手册（中文）v2.0</a>、<a href="https://genrobot.com/products/das" target="_blank" rel="noopener noreferrer">GenRobot DAS Gripper 产品页</a>。规格只作为设备背景，不替代我的实机验证。</p>
+      </div>
+    </section>
+
+    <section class="section is-soft" id="evidence">
+      <div class="container">
+        <p class="kicker">Visual Evidence</p>
+        <h2>这段视频记录了什么</h2>
+        <p class="section-lead">视频来自我的实际操作：可以看到两套 UMI 采集端、Ego 设备屏幕、供电与连接线，以及在桌面上进行双手协同和接触操作的过程。</p>
+        <div class="evidence-grid">
+          <figure>
+            <img src="../images/rabbitrobot/ego_umi_2026_cover.jpg" alt="DAS Ego 与 UMI 双手采集设备在桌面上的横屏实拍封面" loading="lazy" decoding="async">
+            <figcaption>横屏封面：两套采集设备、桌面目标物和实际连接环境同时入镜。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ego_umi_2026_frame_04.jpg" alt="Ego 与 UMI 设备在桌面上完成双手接触操作" loading="lazy" decoding="async">
+            <figcaption>动作片段 A：双手靠近目标物，观察末端姿态和接触准备阶段。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ego_umi_2026_frame_08.jpg" alt="双手采集设备与桌面环境的中段实操画面" loading="lazy" decoding="async">
+            <figcaption>动作片段 B：设备屏幕、线束和桌面场景保持可见，方便确认现场语境。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/ego_umi_2026_frame_14.jpg" alt="双手 UMI 设备在桌面上进行后段操作" loading="lazy" decoding="async">
+            <figcaption>动作片段 C：双手继续协同操作；这是实操证据，不把单段视频包装成任务成功率。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">What I Am Building</p>
+        <h2>从“采到数据”走向“数据可用于机器人学习”</h2>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>第一视角观测</h3>
+            <p>用 Ego 记录操作者看到的桌面场景、设备朝向和动作上下文，把“手为什么这样动”留在时间序列里。</p>
+            <ul>
+              <li>6-camera RGB</li>
+              <li>头部姿态与 IMU</li>
+              <li>多设备时空对齐</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>双手操作接口</h3>
+            <p>用 UMI 末端侧记录双手协同、夹爪开合和接触过程，后续再接入更细的触觉与状态字段。</p>
+            <ul>
+              <li>双手末端动作</li>
+              <li>视觉 / 触觉 / 姿态</li>
+              <li>真实桌面目标物</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>MCAP 可复盘</h3>
+            <p>按官方数据链路保留原始采集文件，后续将不同模态按时间戳切片，区分成功动作、犹豫、接触和失败。</p>
+            <ul>
+              <li>原始 MCAP</li>
+              <li>片段化标注</li>
+              <li>失败样例回放</li>
+            </ul>
+          </article>
+          <article class="feature-card">
+            <h3>接到 VLA 研究</h3>
+            <p>机器狗和 AMR 负责导航到目标附近，Ego + UMI 负责把语言目标落实成观察、动作和反馈。</p>
+            <ul>
+              <li>语言目标与示教</li>
+              <li>策略输入与动作输出</li>
+              <li>可验证执行结果</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft" id="status">
+      <div class="container">
+        <p class="kicker">Honest Status</p>
+        <h2>当前状态与下一步</h2>
+        <table class="interface-table">
+          <thead>
+            <tr>
+              <th>阶段</th>
+              <th>当前公开状态</th>
+              <th>下一步判据</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>已完成</td>
+              <td>完成 DAS Ego + UMI 设备的真实桌面实操录像，并将竖屏源视频旋转为横屏页面素材。</td>
+              <td>继续整理原始采集文件、设备配对状态和可复盘片段。</td>
+            </tr>
+            <tr>
+              <td>正在推进</td>
+              <td>围绕第一视角、双手协同和接触操作建立稳定的数据采集习惯。</td>
+              <td>完成多模态时间戳对齐、动作切片和失败样例标注。</td>
+            </tr>
+            <tr>
+              <td>尚未宣称</td>
+              <td>当前页面没有把单段演示写成 VLA 成功率、策略泛化或长期自主操作结果。</td>
+              <td>用可重复任务、动作误差、接触状态和恢复过程给出真实评估。</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="source-actions">
+          <a class="button primary" href="../../index.html#work-title">Back to Selected Work</a>
+          <a class="button" href="rabbitrobot-omnihand-2025.html">OmniHand 操作研究线</a>
+          <a class="button" href="rabbitrobot-robotdog-vln.html">机器狗 VLN 研究线</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Jinghai Li · DAS Ego × UMI · 从第一视角数据采集走向可验证的具身操作。</div>
+  </footer>
+</body>
+</html>
