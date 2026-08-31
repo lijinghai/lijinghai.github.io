@@ -14,7 +14,7 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 | 视频处理 | `ego_umi_2026_demo_4k.mp4`（约 `90MB`），保持 `3840×2160 / 60fps`，去除 `-90°` 显示旋转并以高码率 H.264 输出横屏；桌面原始 `144MB` 文件不改动 |
 | 真实画面 | `ego_umi_2026_cover_4k.png`、`ego_umi_2026_04_4k.png`、`ego_umi_2026_08_4k.png`、`ego_umi_2026_14_4k.png` 均为 `3840×2160` 原始尺寸无损 PNG |
 | 技术叙事 | 依据 GenRobot.AI DAS Ego 与 DAS / UMI 产品资料，归纳 6 路 RGB、约 270° 视场、6 轴 IMU、UMI 触觉/末端状态、MCAP 落盘和 VLA 示教方向；页面不放置外部手册地址 |
-| 详情页面 | 新增 `RabbitRobot/projects/rabbitrobot-ego-umi.html`，包含横屏视频、官方规格表、四张实操帧、研究定位与诚实状态 |
+| 详情页面 | `RabbitRobot/projects/rabbitrobot-ego-umi.html` 新增设备资料图文区，包含结构、佩戴、配对、坐标、回放 5 张截图，并与本人实操证据分层 |
 | 验证结果 | 本地浏览器确认首页与详情页均解码 `3840×2160 / 60fps` 横屏视频；4 行规格、4 张 `3840×2160` 无损 PNG 证据帧均正常；桌面与 `390×844` 手机端无横向溢出；页面官方手册地址检查为 0 |
 
 ![DAS Ego × UMI 横屏实操证据](RabbitRobot/images/rabbitrobot/ego_umi_2026_cover_4k.png)
@@ -28,6 +28,10 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 详情页首屏实际效果：
 
 ![EGO + UMI 详情页](docs/images/updates/2026-08-31-ego-umi/detail-hero.png)
+
+详情页设备资料与实操对照区：
+
+![DAS Ego 设备资料图文区](docs/images/updates/2026-08-31-ego-umi/detail-device-context.png)
 
 390×844 手机端实际效果：
 

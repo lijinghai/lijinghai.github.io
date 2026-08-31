@@ -17,6 +17,7 @@
       </a>
       <div class="nav-links">
         <a href="../../index.html#work-title">Selected Work</a>
+        <a href="#device-reference">Device context</a>
         <a href="#facts">Product facts</a>
         <a href="#evidence">Evidence</a>
         <a href="#status">Status</a>
@@ -54,6 +55,37 @@
   </header>
 
   <main>
+    <section class="section is-soft" id="device-reference">
+      <div class="container">
+        <p class="kicker">Device Context</p>
+        <h2>把官方设备结构，接入我的实机工作流</h2>
+        <p class="section-lead">下面的图像来自 DAS Ego 产品资料，负责说明设备结构、佩戴约束、配对入口、坐标定义和回放界面；旁边的文字只解释它们如何进入我的 EGO + UMI 实操，不把产品截图冒充成实验结果。</p>
+        <div class="gallery ego-reference-grid">
+          <figure>
+            <img src="../images/rabbitrobot/das_ego_official_overview.jpg" alt="DAS Ego 设备结构概览，标注六路摄像头、电池包、音量键与电源键" loading="lazy" decoding="async">
+            <figcaption><strong>01 / Device topology</strong><br>六路摄像头、电池包、音量键与电源键共同定义了采集前的硬件检查边界。对我而言，先确认供电、镜头覆盖和设备状态，才有资格谈后续的动作数据。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/das_ego_official_wearing.png" alt="DAS Ego 设备佩戴规范示意，强调设备平行、贴近眉毛和标志居中" loading="lazy" decoding="async">
+            <figcaption><strong>02 / Egocentric alignment</strong><br>设备平行、贴近眉毛并保持标志居中，是第一视角一致性的前置条件。我已经把佩戴与配对跑通，避免把“能看到”误当成稳定的具身观测入口。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/das_ego_official_pairing.png" alt="DAS Ego 与末端设备的官方配对流程界面" loading="lazy" decoding="async">
+            <figcaption><strong>03 / Pairing handshake</strong><br>官方配对流程把 Ego 与末端设备拉进同一工作链路。我的实操已覆盖设备配对和双手桌面操作，下一步按时间戳核对视觉、姿态、末端动作与接触事件。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/das_ego_official_world_axis.png" alt="DAS Ego 世界坐标系示意图" loading="lazy" decoding="async">
+            <figcaption><strong>04 / Coordinate frame</strong><br>世界坐标与局部坐标是把头部姿态、桌面目标和 UMI 末端轨迹对齐的坐标约束。我会把它用于动作切片、失败回放和策略评估，而不是只写一句“支持 SLAM”。</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/rabbitrobot/das_ego_official_monitor.png" alt="DAS Ego Monitor 本地数据回放与录制详情界面" loading="lazy" decoding="async">
+            <figcaption><strong>05 / Replay and curation</strong><br>Monitor 负责打开本地数据、查看录制详情并进行回放。我的工作重点是把实操记录沉淀成可复盘动作单元，为 VLA 示教和策略评估准备更干净的多模态输入。</figcaption>
+          </figure>
+        </div>
+        <p class="source-note">图片说明：以上设备结构、佩戴、配对、坐标与回放界面截图截取自 GenRobot.AI DAS Ego 产品资料；页面中的横屏视频与四张证据帧来自本人实操。</p>
+      </div>
+    </section>
+
     <section class="section" id="facts">
       <div class="container">
         <p class="kicker">Product Facts</p>
