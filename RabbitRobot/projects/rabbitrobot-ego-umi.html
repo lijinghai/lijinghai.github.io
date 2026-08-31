@@ -26,17 +26,17 @@
 
   <header class="hero">
     <div>
-      <p class="kicker">Embodied Data / Ego Capture / UMI</p>
+      <p class="kicker">Embodied Data / Egocentric Sensing / Dexterous Action</p>
       <h1>GenRobot.AI <span style="white-space: nowrap;">DAS Ego × UMI</span></h1>
-      <p class="subtitle">我的设备现在从“看见机器人”走向“记录人如何操作”</p>
+      <p class="subtitle">从第一视角感知到手级动作，把设备接成可训练的具身数据链</p>
       <p class="summary">
-        我把 GenRobot.AI DAS Ego 与 UMI 当作一套正在搭建的具身数据入口：Ego 采集操作者第一视角、多相机视觉、头部姿态与时间关系，UMI 记录双手末端的运动、夹持和接触变化。页面中的视频来自我本人在真实桌面环境的实操，已经跑通佩戴、配对、双手协同与取放动作；下一步是按时间戳切分、标注并接入 VLA 示教和策略评估，而不是把设备规格包装成实验结论。
+        我正在用 GenRobot.AI DAS Ego 与 UMI 搭建面向机器人学习的具身数据入口：Ego 负责第一视角多相机、头部姿态与时空关系，UMI 负责双手末端的运动、夹持与接触变化。我已经完成设备佩戴、配对和真实桌面双手操作，页面视频即本人实操记录；当前研究重点是把视觉、姿态、动作和接触事件按时间戳整理成可复盘样本，再接入 VLA 示教、动作切片与策略评估。
       </p>
       <div class="meta-row">
-        <span class="meta-pill">Time · 2026.08.31</span>
+        <span class="meta-pill">Time · 2026.09</span>
         <span class="meta-pill">Device · DAS Ego + UMI</span>
         <span class="meta-pill">Capture · RGB / IMU / tactile / audio</span>
-        <span class="meta-pill">Status · Active hardware bring-up</span>
+        <span class="meta-pill">Status · Active dataset pipeline bring-up</span>
       </div>
       <div class="hero-actions">
         <a class="button primary" href="../../index.html#work-title">返回个人主页</a>
@@ -49,7 +49,7 @@
         <source src="../videos/ego_umi_2026_demo_4k.mp4" type="video/mp4">
         当前浏览器不支持 HTML5 视频播放，请直接打开横屏 MP4 文件。
       </video>
-      <figcaption>2026.08.31 实操视频：源文件为 4K 竖屏录像，已去除原旋转元数据并整理为 3840×2160、60fps 横屏 MP4；不做页面级降分辨率，画面保留真实桌面、设备屏幕、线束和双手动作。</figcaption>
+      <figcaption>2026.09 实操视频：源文件为 4K 竖屏录像，已去除原旋转元数据并整理为 3840×2160、60fps 横屏 MP4；不做页面级降分辨率，画面保留真实桌面、设备屏幕、线束和双手动作。</figcaption>
     </figure>
   </header>
 
@@ -57,8 +57,8 @@
     <section class="section" id="facts">
       <div class="container">
         <p class="kicker">Product Facts</p>
-        <h2>把官方产品能力和我的实操证据分开记录</h2>
-        <p class="section-lead">官方资料回答“设备能采什么”，我的视频回答“今天实际做了什么”；两种证据分层记录，才能清楚证明我正在做 EGO + UMI，而不是只引用产品参数。</p>
+        <h2>一套设备组合，三层数据语义</h2>
+        <p class="section-lead">Ego 建立观察上下文，UMI 落地手级动作，MCAP 把多模态记录留在同一条可复盘时间线上。下表说明设备能力边界；视频与证据帧，才是我的实操证据。</p>
         <table class="interface-table verification-table">
           <thead>
             <tr>
@@ -126,7 +126,7 @@
         <h2>从“采到数据”走向“数据可用于机器人学习”</h2>
         <div class="feature-grid">
           <article class="feature-card">
-            <h3>Ego / 第一视角上下文</h3>
+            <h3>Ego / 观察上下文</h3>
             <p>用 Ego 记录操作者看到的桌面场景、设备朝向和动作上下文，把“手为什么这样动”保留在可对齐的时间序列里。</p>
             <ul>
               <li>6-camera RGB</li>
@@ -135,7 +135,7 @@
             </ul>
           </article>
           <article class="feature-card">
-            <h3>UMI / 手级动作接口</h3>
+            <h3>UMI / 动作与接触</h3>
             <p>用 UMI 末端侧记录双手协同、夹爪开合和接触过程，把视觉中的意图落到可分析的动作与状态字段。</p>
             <ul>
               <li>双手末端动作</li>
@@ -144,7 +144,7 @@
             </ul>
           </article>
           <article class="feature-card">
-            <h3>从采集到策略</h3>
+            <h3>MCAP / 可复盘数据</h3>
             <p>按 MCAP 数据链路保留原始采集文件，后续将不同模态按时间戳切片，区分成功动作、犹豫、接触和失败。</p>
             <ul>
               <li>原始 MCAP</li>
@@ -153,7 +153,7 @@
             </ul>
           </article>
           <article class="feature-card">
-            <h3>接入 VLA 研究</h3>
+            <h3>VLA / 策略入口</h3>
             <p>机器狗和 AMR 负责导航到目标附近，Ego + UMI 负责把语言目标落实成观察、动作和反馈，形成跨平台的具身闭环入口。</p>
             <ul>
               <li>语言目标与示教</li>
