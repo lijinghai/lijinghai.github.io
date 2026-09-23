@@ -4,6 +4,27 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-09-23 - 新增 Rabbit-RobotNav 硕士论文研究工作页
+
+新增独立路径 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/)，把两份飞书研究记录中已经稳定的论文主线、当前实验事实、负结果与下一阶段计划整理为可持续更新的公开工作页。页面以“历史感知语义记忆是否能在不读取评测标签的前提下发现长程导航偏航，并从可信历史中选择恢复锚点”为唯一主问题；所有表述严格限定为 MP3D 稀疏参考路线回放，不宣称已完成闭环策略收益或真实机器人导航提升。
+
+| 内容 | 实际改动与证据 |
+| --- | --- |
+| 研究图谱 | `RabbitRobotNav/research-mindmap.mmd` 汇总主问题、三项方法贡献、现有证据、失败案例与下一阶段实验，页面端使用 Mermaid 动态渲染，源文件可继续维护 |
+| 方法链路 | `RabbitRobotNav/system-flow.mmd` 展示 raw / trusted memory、可靠性门控、三路一致性诊断、恢复锚点选择及闭环恢复尚待验证的边界 |
+| 当前数字 | 5 个 MP3D val_unseen 场景、34 个稀疏路点、29/34 历史覆盖、3/4 受控偏航检出、0/34 正常回放误报、112/112 单元测试与 30/30 完整性检查 |
+| 真实证据 | 引入 G1 指令顺序冲突、G2 位姿跳变漏检、G4 置信度下降、G5 空间关系冲突四张真实实验叠图；其中 G2 的 2.44 m 漏检作为负结果原样保留 |
+| 论文边界 | 页面明确区分“现阶段可以负责地说”与“目前不能声称”，并把 11 场景、至少 100 episodes、3 seeds、95% CI、30 例失败画廊和真实底盘 shadow mode 列为后续门槛 |
+| 实际验证 | 本地 HTTP 返回 200；两个 `.mmd` 图在 Chrome 中完成渲染；HTML 校验零错误、JavaScript 语法检查通过；1440 px 桌面端与 Pixel 7 移动端均完成真实截图 |
+
+桌面端完整页面实测：
+
+![Rabbit-RobotNav 硕士论文研究工作页](docs/images/updates/2026-09-23-rabbit-robotnav/desktop.png)
+
+Pixel 7 移动端首屏实测：
+
+![Rabbit-RobotNav 移动端首屏](docs/images/updates/2026-09-23-rabbit-robotnav/mobile-top.png)
+
 ### 2026-09 - 强化 DAS Ego × UMI 实机研究叙事
 
 本次将 `Selected Work` 最前面的当前设备项目 `DAS Ego + UMI` 收束为更克制的研究档案表达：Ego 建立第一视角观测与时空上下文，UMI 记录双手末端轨迹、夹持变化与接触事件，MCAP 负责可复盘的数据组织，最终连接 VLA 示教与策略评估。页面明确区分已完成的真实实操和正在推进的动作单元整理。项目时间统一标为 `2026.09`；页面不直接放置外部手册地址。

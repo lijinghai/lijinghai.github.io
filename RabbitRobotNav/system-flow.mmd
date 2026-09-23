@@ -1,0 +1,35 @@
+flowchart LR
+    I["VLN 指令"] --> P["MiniCPM-V + SpaAct<br/>语义与动态空间感知"]
+    O["RGB / 动作后状态"] --> P
+
+    subgraph memory["历史感知语义地图"]
+        R["原始观测历史"] --> G{"可靠性门禁"}
+        G -->|"可信"| T["可信聚合状态"]
+        G -->|"不可信"| X["隔离错误状态"]
+    end
+
+    P --> R
+    P --> C["当前语义空间状态"]
+    I --> S["语言阶段与剩余地标"]
+    C --> K{"三方一致性检查"}
+    T --> K
+    S --> K
+
+    K -->|"一致"| N["继续 SimpleNav"]
+    K -->|"偏航"| D["错误定位"]
+    D --> A["选择 Last Reliable State"]
+    A --> Q["输出恢复锚点与依据"]
+    Q -.-> E["下游回退 / 重观测 / 重规划"]
+    N --> F["新观测回流"]
+    E --> F
+    F --> O
+
+    classDef input fill:#eef6ff,stroke:#2f6fed,color:#173159,stroke-width:1.5px;
+    classDef core fill:#fff2dc,stroke:#df7b17,color:#5a2d08,stroke-width:1.5px;
+    classDef memoryNode fill:#eefaf4,stroke:#2b8a65,color:#174f3d,stroke-width:1.5px;
+    classDef boundary fill:#fff0ef,stroke:#c84a42,color:#6d2420,stroke-width:1.5px;
+    class I,O,S input;
+    class P,C,K,D,A,Q core;
+    class R,G,T,N,F memoryNode;
+    class X,E boundary;
+    style memory fill:#fbfffd,stroke:#8ecbb4,stroke-width:1px
