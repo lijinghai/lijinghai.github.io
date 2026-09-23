@@ -21,13 +21,13 @@ async function renderDiagrams() {
       theme: "base",
       fontFamily: "Inter, Noto Sans SC, Microsoft YaHei, sans-serif",
       themeVariables: {
-        background: "#fffdf8",
-        primaryColor: "#fff2dc",
-        primaryTextColor: "#17211d",
-        primaryBorderColor: "#df7b17",
-        lineColor: "#6c756f",
-        secondaryColor: "#eefaf4",
-        tertiaryColor: "#eef6ff",
+        background: "#f7f9fc",
+        primaryColor: "#eef4ff",
+        primaryTextColor: "#202124",
+        primaryBorderColor: "#2456a6",
+        lineColor: "#667085",
+        secondaryColor: "#edf9f3",
+        tertiaryColor: "#fff6e8",
       },
     });
 

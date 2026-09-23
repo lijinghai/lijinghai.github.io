@@ -3,233 +3,216 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Rabbit-RobotNav 硕士论文研究工作页：历史感知语义地图、长程偏航诊断、恢复锚点选择，以及 MP3D 五场景阶段性实验。">
-  <meta name="theme-color" content="#15211c">
-  <title>Rabbit-RobotNav | 长程视觉语言导航纠错研究</title>
+  <meta name="description" content="Rabbit-RobotNav 硕士论文项目主页：基于历史感知语义地图与动态空间推理的长程视觉语言导航纠错框架。">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:title" content="Rabbit-RobotNav | 长程视觉语言导航纠错框架">
+  <meta property="og:description" content="历史感知语义地图、无标签偏航诊断与可信恢复锚点选择。">
+  <meta property="og:image" content="assets/framework-overview.png">
+  <title>Rabbit-RobotNav | 长程视觉语言导航纠错框架</title>
   <link rel="icon" href="../images/favicon.ico">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip-link" href="#content">跳到正文</a>
-  <nav class="site-nav" aria-label="页面导航">
-    <a class="brand" href="../index.html" aria-label="返回 Jinghai Li 个人主页">
-      <span class="brand-mark" aria-hidden="true">R</span>
-      <span>Rabbit-RobotNav</span>
-    </a>
-    <div class="nav-links">
-      <a href="#mindmap">研究图谱</a>
-      <a href="#method">方法</a>
-      <a href="#evidence">证据</a>
-      <a href="#roadmap">下一步</a>
-    </div>
-  </nav>
 
-  <header class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">MASTER THESIS · WORKING NOTE 01</p>
+  <header class="paper-hero">
+    <div class="hero-inner">
+      <a class="back-link" href="../index.html" aria-label="返回 Jinghai Li 个人主页">← Jinghai Li</a>
       <h1>Rabbit-RobotNav</h1>
-      <p class="thesis-title">基于历史感知语义地图与动态空间推理的<br>长程视觉语言导航纠错框架研究</p>
-      <p class="hero-summary">
-        我正在研究一个比“机器人下一步往哪走”更长程的问题：当导航经过多个房间、多个语言阶段后，系统能否利用可信历史语义记忆发现自己已经偏航，并从过去的可靠状态中找到可解释的恢复锚点。
-      </p>
-      <div class="hero-actions">
-        <a class="button primary" href="#mindmap">先看研究思维图</a>
-        <a class="button ghost" href="#boundary">查看结论边界</a>
-      </div>
-      <p class="version-note">初稿 · 2026-09-23 · 会随正式实验持续更新</p>
-    </div>
+      <p class="hero-subtitle">基于历史感知语义地图与动态空间推理的长程视觉语言导航纠错框架研究</p>
+      <p class="hero-subtitle-en">History-Aware Semantic Mapping and Dynamic Spatial Reasoning for Long-Horizon Vision-and-Language Navigation Error Correction</p>
 
-    <aside class="claim-card" aria-label="当前论文主张">
-      <p class="card-label">当前可以负责地说</p>
-      <blockquote>历史语义记忆已经显示出改善受控偏航诊断与恢复锚点选择的潜力，但现阶段不等同于端到端导航成功率提升。</blockquote>
-      <div class="claim-boundary">
-        <span>已验证</span>
-        <b>模块级诊断与锚点选择</b>
+      <div class="author-line" role="group" aria-label="作者与项目状态">
+        <a href="../index.html">Jinghai Li · 李京海</a>
       </div>
-      <div class="claim-boundary muted">
-        <span>待验证</span>
-        <b>闭环 SR / SPL / nDTW 与真机收益</b>
-      </div>
-    </aside>
+      <p class="affiliation">Master Thesis Research Project</p>
+      <span class="venue-badge">WORK IN PROGRESS · 2026.09</span>
+
+      <nav class="resource-actions" aria-label="项目资源">
+        <a href="#abstract"><span aria-hidden="true">▤</span> Abstract</a>
+        <a href="#framework"><span aria-hidden="true">◈</span> Framework</a>
+        <a href="#evidence"><span aria-hidden="true">▥</span> Evidence</a>
+        <a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noreferrer"><span aria-hidden="true">↗</span> Feishu</a>
+      </nav>
+    </div>
   </header>
 
   <main id="content">
-    <section class="snapshot" aria-labelledby="snapshot-title">
-      <div class="section-heading compact">
-        <p class="eyebrow">CURRENT SNAPSHOT</p>
-        <h2 id="snapshot-title">最近做到哪里</h2>
+    <section class="paper-section narrow" id="abstract" aria-labelledby="abstract-title">
+      <h2 id="abstract-title">Abstract</h2>
+      <div class="abstract-copy">
+        <p>长程视觉语言导航中的错误往往不是单步动作失误，而是跨房间、跨语言阶段累积形成的状态漂移。本研究提出 <strong>Rabbit-RobotNav</strong>：通过历史感知语义—空间记忆保存“去过哪里、看见什么、完成到哪一步”，再联合指令一致性、历史一致性与转移一致性判断当前状态是否偏离，并从可信历史中选择最近可靠状态作为恢复锚点。</p>
+        <p>当前结果来自 R2R-VLNCE / MP3D 的稀疏参考路径回放，验证对象是偏航诊断与恢复锚点选择，而不是端到端策略成功率。五个 val_unseen 场景中，系统对 4 个可评价受控偏差检出 3 个，正常回放误报为 0/34；位姿跳变漏检被保留为下一阶段连续运动建模的明确问题。</p>
       </div>
-      <div class="metric-grid">
-        <article><strong>5</strong><span>不同 MP3D val_unseen 场景</span></article>
-        <article><strong>34</strong><span>稀疏参考航点</span></article>
-        <article><strong>3 / 4</strong><span>可评价受控偏差检出</span></article>
-        <article><strong>0 / 34</strong><span>正常回放误报</span></article>
-        <article><strong>112 / 112</strong><span>代码回归测试通过</span></article>
-      </div>
-      <p class="metric-footnote">这些数字来自稀疏参考路径回放，只支撑阶段性模块结论，不替代闭环策略 rollout。</p>
+      <aside class="claim-strip">
+        <span>当前主张</span>
+        <p>历史语义记忆已显示出改善受控偏航诊断与恢复锚点选择的潜力；闭环 SR / SPL / nDTW 与真机收益仍待验证。</p>
+      </aside>
     </section>
 
-    <section class="section diagram-section" id="mindmap" aria-labelledby="mindmap-title">
+    <section class="paper-section" id="framework" aria-labelledby="framework-title">
       <div class="section-heading">
-        <p class="eyebrow">RESEARCH MIND MAP</p>
-        <h2 id="mindmap-title">一张图看懂我的论文主线</h2>
-        <p>这张图是后续持续更新的中心索引：主问题、方法、当前证据、负结果和下一阶段都从这里展开。</p>
+        <p class="section-kicker">METHOD</p>
+        <h2 id="framework-title">Framework Overview</h2>
+        <p>历史不是附加日志，而是诊断证据与恢复锚点。下面三张图分别描述完整纠错流程、闭环信息流，以及慢思考—快诊断—可靠执行的分层频率设计。</p>
       </div>
-      <div class="diagram-frame mindmap-frame" role="img" aria-label="Rabbit-RobotNav 研究思维图">
+
+      <figure class="hero-figure">
+        <img src="assets/framework-overview.png" width="1347" height="957" alt="Rabbit-RobotNav 历史感知语义空间记忆、多源一致性检查与错误恢复框架总览">
+        <figcaption><strong>Figure 1. Rabbit-RobotNav 总体框架。</strong> 当前语义—空间状态与历史可信记忆共同进入多源一致性检查；检测到偏差后，系统执行错误定位、最近可信状态检索、恢复与重规划。SimpleNav、ROS2 与机器人执行链路属于计划中的闭环实现边界。</figcaption>
+      </figure>
+
+      <div class="figure-grid">
+        <figure>
+          <img src="assets/closed-loop-framework.png" width="1278" height="684" alt="Rabbit-RobotNav 感知与历史建图、一致性检查纠错及执行闭环">
+          <figcaption><strong>Figure 2. 感知—诊断—执行闭环。</strong> RGB 观测与导航指令形成历史感知语义地图；新观测再反馈到下一轮状态检查。</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/three-layer-architecture.png" width="1254" height="678" alt="Rabbit-RobotNav 慢思考、快诊断、可靠执行三层架构">
+          <figcaption><strong>Figure 3. 三层频率架构。</strong> 低频语义推理、高频一致性诊断与更高频的安全执行解耦，避免让大模型直接承担实时底盘控制。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="paper-section" id="research-map" aria-labelledby="research-map-title">
+      <div class="section-heading">
+        <p class="section-kicker">RESEARCH MAP</p>
+        <h2 id="research-map-title">Thesis Research Map</h2>
+        <p>用于后续迭代的论文主线索引：同一张图持续连接研究问题、方法贡献、已获证据、失败案例和下一阶段实验。</p>
+      </div>
+      <div class="diagram-frame" role="img" aria-label="Rabbit-RobotNav 论文研究思维图">
         <pre class="mermaid" data-mermaid-source="research-mindmap.mmd">正在加载研究思维图……</pre>
       </div>
-      <p class="source-hint">可维护源文件：<a href="research-mindmap.mmd">research-mindmap.mmd</a></p>
+      <p class="source-hint">Axton / Mermaid 可维护源：<a href="research-mindmap.mmd">research-mindmap.mmd</a></p>
     </section>
 
-    <section class="section paper-problem" id="method" aria-labelledby="problem-title">
+    <section class="paper-section" id="method" aria-labelledby="method-title">
       <div class="section-heading">
-        <p class="eyebrow">FROZEN RESEARCH QUESTION</p>
-        <h2 id="problem-title">论文主问题已经冻结</h2>
-        <p class="lead-question">在长程视觉语言导航中，历史语义记忆能否在不读取评价标签的条件下，提高受控偏航的检测能力，并从可信历史状态中选择正确的恢复锚点？</p>
+        <p class="section-kicker">CORE IDEAS</p>
+        <h2 id="method-title">Three Research Contributions</h2>
       </div>
-
-      <div class="contribution-grid">
-        <article class="numbered-card">
-          <span>01</span>
+      <div class="idea-grid">
+        <article>
+          <span class="idea-number">01</span>
           <h3>历史语义记忆</h3>
-          <p>把原始观测历史与可信聚合状态分开，只有通过可靠性门禁的信息才进入诊断和锚点检索，降低错误状态污染长期记忆的风险。</p>
+          <p>分离原始观测历史与可信聚合状态，仅允许通过可靠性门禁的信息进入诊断和锚点检索，抑制错误状态长期污染。</p>
         </article>
-        <article class="numbered-card">
-          <span>02</span>
+        <article>
+          <span class="idea-number">02</span>
           <h3>无标签偏航诊断</h3>
-          <p>联合指令一致性、历史一致性与可用时的转移一致性发现偏航。评价标签只用于离线计分，不进入运行时决策。</p>
+          <p>融合指令、历史与转移一致性发现偏航。评价标签只用于离线计分，不进入系统运行时决策。</p>
         </article>
-        <article class="numbered-card">
-          <span>03</span>
-          <h3>恢复锚点选择</h3>
-          <p>从 trusted recovery trajectory 中检索 Last Reliable State，报告锚点位置、依据与误差；不把“位置选对”提前写成“恢复已经完成”。</p>
+        <article>
+          <span class="idea-number">03</span>
+          <h3>可信恢复锚点</h3>
+          <p>从 trusted recovery trajectory 检索 Last Reliable State，并报告锚点依据与误差，不把“选对位置”提前写成“恢复完成”。</p>
         </article>
       </div>
-
-      <div class="diagram-frame flow-frame" role="img" aria-label="Rabbit-RobotNav 系统数据流">
+      <div class="diagram-frame system-diagram" role="img" aria-label="Rabbit-RobotNav 可维护系统数据流">
         <pre class="mermaid" data-mermaid-source="system-flow.mmd">正在加载系统数据流……</pre>
       </div>
-      <p class="source-hint">架构源文件：<a href="system-flow.mmd">system-flow.mmd</a></p>
+      <p class="source-hint">Axton / Mermaid 可维护源：<a href="system-flow.mmd">system-flow.mmd</a></p>
     </section>
 
-    <section class="section evidence-section" id="evidence" aria-labelledby="evidence-title">
+    <section class="paper-section results-section" id="evidence" aria-labelledby="evidence-title">
       <div class="section-heading">
-        <p class="eyebrow">EVIDENCE, INCLUDING FAILURE</p>
-        <h2 id="evidence-title">五场景阶段性实验：成功与漏检一起保留</h2>
-        <p>样本来自 R2R-VLNCE v1-3 val_unseen。每一组都使用真实 MP3D RGB 帧，并把当前帧、全局参考路线、异常注入位置与系统响应同步到同一张证据图中。</p>
+        <p class="section-kicker">PRELIMINARY RESULTS</p>
+        <h2 id="evidence-title">Controlled-Deviation Evidence</h2>
+        <p>当前证据是模块级稀疏回放结果。所有正结果和负结果使用同一套呈现方式，便于后续扩大样本并转入闭环评测。</p>
+      </div>
+
+      <div class="metric-row" role="group" aria-label="阶段性核心指标">
+        <article><strong>5</strong><span>MP3D val_unseen scenes</span></article>
+        <article><strong>29 / 34</strong><span>历史覆盖 · 85.29%</span></article>
+        <article><strong>3 / 4</strong><span>可评价偏差检出</span></article>
+        <article><strong>0 / 34</strong><span>正常回放误报</span></article>
+        <article><strong>112 / 112</strong><span>回归测试通过</span></article>
       </div>
 
       <div class="evidence-gallery">
-        <figure class="evidence-card wide">
-          <img src="assets/g1-instruction-order.png" alt="G1 指令次序冲突在第三帧被 Rabbit-RobotNav 同帧检出">
-          <figcaption><b>G1 · 指令次序冲突</b><span>注入点与纠错点重合；同帧检出并输出恢复目标。</span></figcaption>
+        <figure>
+          <img src="assets/g1-instruction-order.png" alt="G1 指令次序冲突在第三帧被同帧检出">
+          <figcaption><strong>G1 · 指令次序冲突</strong><span>注入点与纠错点重合，同帧检出并给出恢复目标。</span></figcaption>
         </figure>
-        <figure class="evidence-card negative">
+        <figure class="failure-card">
           <img src="assets/g2-pose-jump.png" alt="G2 位姿跳变 2.44 米但系统未检出">
-          <figcaption><b>G2 · 位姿跳变，负结果</b><span>2.44 m 跳变仍被漏检，暴露连续动作与里程计证据不足。</span></figcaption>
+          <figcaption><strong>G2 · 位姿跳变，负结果</strong><span>2.44 m 跳变仍被漏检，暴露连续动作、时间同步与里程计证据不足。</span></figcaption>
         </figure>
-        <figure class="evidence-card">
-          <img src="assets/g4-confidence-drop.png" alt="G4 置信度下降被正确分类为可靠性下降，没有触发重规划">
-          <figcaption><b>G4 · 置信度下降</b><span>证据退化没有被误判成导航偏航，避免过度重规划。</span></figcaption>
+        <figure>
+          <img src="assets/g4-confidence-drop.png" alt="G4 置信度下降未被误判为导航偏航">
+          <figcaption><strong>G4 · 置信度下降</strong><span>证据质量下降被正确分类，没有触发不必要的重规划。</span></figcaption>
         </figure>
-        <figure class="evidence-card">
+        <figure>
           <img src="assets/g5-spatial-conflict.png" alt="G5 空间关系冲突在第三帧被同帧检出">
-          <figcaption><b>G5 · 空间关系冲突</b><span>当前关系与历史地图矛盾，触发同帧纠错信号。</span></figcaption>
+          <figcaption><strong>G5 · 空间关系冲突</strong><span>当前空间关系与历史记忆矛盾，触发同帧纠错信号。</span></figcaption>
         </figure>
       </div>
-
-      <section class="table-wrap" aria-label="五场景实验结果表" tabindex="0">
-        <table>
-          <thead>
-            <tr><th>组别</th><th>受控事件</th><th>结果</th><th>它说明了什么</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>G1</td><td>指令次序冲突</td><td><span class="status success">同帧检出</span></td><td>语言阶段顺序可以约束长程历史状态。</td></tr>
-            <tr><td>G2</td><td>位姿跳变</td><td><span class="status failure">漏检</span></td><td>需要连续动作、里程计与时间对齐约束。</td></tr>
-            <tr><td>G3</td><td>提前停止</td><td><span class="status success">同帧检出</span></td><td>未完成的任务进度可以否决过早 STOP。</td></tr>
-            <tr><td>G4</td><td>置信度下降</td><td><span class="status neutral">正确拒绝</span></td><td>证据质量下降与真实导航偏差被分开处理。</td></tr>
-            <tr><td>G5</td><td>空间关系冲突</td><td><span class="status success">同帧检出</span></td><td>历史空间关系可以形成可解释的纠错信号。</td></tr>
-          </tbody>
-        </table>
-      </section>
     </section>
 
-    <section class="section progress-section" aria-labelledby="progress-title">
+    <section class="paper-section narrow" id="boundary" aria-labelledby="boundary-title">
       <div class="section-heading">
-        <p class="eyebrow">RECENT WORK</p>
-        <h2 id="progress-title">最近的工作，不只是“跑了几个视频”</h2>
+        <p class="section-kicker">SCOPE &amp; LIMITATIONS</p>
+        <h2 id="boundary-title">What This Draft Does—and Does Not—Show</h2>
       </div>
-      <ol class="timeline">
-        <li><time>v0.8</time><div><h3>多 Episode 受控故障基准</h3><p>建立异常注入、消融、指标和证据资产的闭环，开始把想法转成可重复实验。</p></div></li>
-        <li><time>v0.9</time><div><h3>Benchmark correctness patch</h3><p>修正独立样本、配置透传和 fail-fast 门禁，避免把重复测量伪装成独立样本。</p></div></li>
-        <li><time>v1.0</time><div><h3>可复现性清理</h3><p>冻结共享感知缓存、原始历史与可信聚合的边界，并完成本地/服务器复验入口。</p></div></li>
-        <li><time>v1.1</time><div><h3>五场景 MP3D 跨场景验证</h3><p>覆盖五个不同场景、五条 episode 和四类偏差，同时公开正常回放与漏检结果。</p></div></li>
-        <li><time>v1.2</time><div><h3>全局轨迹增强证据</h3><p>将第一视角、X-Z 全局路径、注入点、纠错点和逐帧时间线合并到 1080P 证据视频。</p></div></li>
+      <div class="boundary-grid">
+        <article class="supported">
+          <h3>✓ 已有证据支持</h3>
+          <ul>
+            <li>raw / trusted memory、可靠性门禁与状态更新机制</li>
+            <li>五场景稀疏回放中的无标签偏航诊断</li>
+            <li>恢复锚点选择与 2.44 m 位姿跳变漏检分析</li>
+            <li>正常回放 0/34 误报与模块级回归测试</li>
+          </ul>
+        </article>
+        <article class="pending">
+          <h3>○ 仍待实验验证</h3>
+          <ul>
+            <li>闭环策略 rollout 和端到端导航成功率提升</li>
+            <li>SR、SPL、NE、nDTW 与 SDTW 的正式改善</li>
+            <li>真实机器人完成自主纠偏与安全恢复</li>
+            <li>大样本、跨场景、跨随机种子的泛化结论</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="paper-section narrow" id="roadmap" aria-labelledby="roadmap-title">
+      <div class="section-heading">
+        <p class="section-kicker">NEXT STEPS</p>
+        <h2 id="roadmap-title">From Prototype Evidence to Thesis Evidence</h2>
+      </div>
+      <ol class="roadmap-list">
+        <li><span>01</span><div><strong>扩大闭环评测</strong><p>覆盖 11 个 MP3D val_unseen 场景、至少 100 episodes、3 个随机种子，并报告 95% CI。</p></div></li>
+        <li><span>02</span><div><strong>配对消融</strong><p>Full、NoHistoryMap 与 B0–B6 共享感知缓存、故障日程和评价协议。</p></div></li>
+        <li><span>03</span><div><strong>修复位姿跳变漏检</strong><p>补充动作、位姿、时间和里程计连续性证据，形成至少 30 例可回读失败画廊。</p></div></li>
+        <li><span>04</span><div><strong>进入真机闭环</strong><p>RabbitRobot 先进行只读与 shadow mode，再在急停、限速和人工监护下执行低速多房间路线。</p></div></li>
       </ol>
     </section>
 
-    <section class="section boundary-section" id="boundary" aria-labelledby="boundary-title">
+    <section class="paper-section narrow" id="resources" aria-labelledby="resources-title">
       <div class="section-heading">
-        <p class="eyebrow">WRITING BOUNDARY</p>
-        <h2 id="boundary-title">现在能写什么，不能写什么</h2>
+        <p class="section-kicker">PROJECT RESOURCES</p>
+        <h2 id="resources-title">Living Research Records</h2>
       </div>
-      <div class="boundary-grid">
-        <article class="boundary-card can-write">
-          <p class="card-label">论文现在可以写</p>
-          <ul>
-            <li>问题定义、信息隔离与受控故障评测协议</li>
-            <li>raw / trusted memory、可靠性门禁与状态更新</li>
-            <li>三方一致性诊断与恢复锚点选择方法</li>
-            <li>五场景稀疏回放中的阶段性结果和位姿跳变漏检</li>
-          </ul>
-        </article>
-        <article class="boundary-card cannot-write">
-          <p class="card-label">论文现在不能宣称</p>
-          <ul>
-            <li>端到端导航成功率已经提升</li>
-            <li>SR、SPL、NE 或 nDTW 已由当前实验改善</li>
-            <li>机器人已完成真实闭环恢复</li>
-            <li>五条 episode 足以支持跨场景泛化结论</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section roadmap-section" id="roadmap" aria-labelledby="roadmap-title">
-      <div class="section-heading">
-        <p class="eyebrow">NEXT EXPERIMENT LOOP</p>
-        <h2 id="roadmap-title">下一阶段：把原型证据推到论文证据</h2>
-      </div>
-      <div class="roadmap-grid">
-        <article><span>01</span><h3>闭环 MP3D</h3><p>val_unseen 全 11 场景、至少 100 episode、3 个随机种子，正式报告 SR、SPL、NE、nDTW 与 SDTW。</p></article>
-        <article><span>02</span><h3>配对消融</h3><p>Full、NoHistoryMap 与 B0–B6 共享感知缓存和故障日程，按 episode 聚类报告差值和 95% CI。</p></article>
-        <article><span>03</span><h3>失败画廊</h3><p>先完成至少 30 例可回读案例；压力测试再扩展到每类 30 个独立事件，保留原始帧、告警和锚点。</p></article>
-        <article><span>04</span><h3>连续运动证据</h3><p>接入里程计、动作日志、时间戳和可达性约束，专门修复当前 pose jump 漏检。</p></article>
-        <article><span>05</span><h3>真机外部有效性</h3><p>RabbitRobot 先做只读与 shadow，再在急停、限速和人工监护下进行低速多房间重复路线。</p></article>
-      </div>
-    </section>
-
-    <section class="section sources-section" aria-labelledby="sources-title">
-      <div class="section-heading compact">
-        <p class="eyebrow">LIVING SOURCES</p>
-        <h2 id="sources-title">这份页面从哪里更新</h2>
-      </div>
-      <div class="source-grid">
+      <div class="link-cards">
         <a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noreferrer">
-          <span>论文写作契约</span>
-          <b>题目、唯一主问题、贡献、统计契约与章节边界</b>
+          <span>论文设计与框架图</span>
+          <strong>题目、唯一主问题、方法边界、统计契约与论文结构 ↗</strong>
         </a>
         <a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noreferrer">
-          <span>实验台账</span>
-          <b>版本记录、五场景结果、视频证据与下一轮实验</b>
+          <span>实验进度与证据台账</span>
+          <strong>版本记录、五场景结果、负结果与后续实验计划 ↗</strong>
         </a>
+      </div>
+      <div class="project-note">
+        <strong>Project note.</strong> 本页是硕士论文持续更新入口。图示表达目标架构；实验数字只对应已完成的稀疏参考路径回放。后续每轮实验将继续补充样本范围、失败案例、消融和闭环结果。
       </div>
     </section>
   </main>
 
   <footer>
-    <p>Rabbit-RobotNav · Jinghai Li · Master Thesis Working Page</p>
-    <p>阶段性研究页面，不把尚未完成的实验写成结论。</p>
+    <p><strong>Rabbit-RobotNav</strong> · Jinghai Li · Master Thesis Working Project</p>
+    <p>Last updated September 2026 · Results are preliminary and scope-limited.</p>
   </footer>
 
   <script type="module" src="app.js"></script>
