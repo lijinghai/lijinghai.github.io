@@ -21,19 +21,25 @@ mindmap
         检索 Last Reliable State
         输出锚点与选择依据
     当前证据
-      五个 MP3D val_unseen 场景
-      三十四个稀疏参考航点
-      四类偏差检出三类
-      正常回放零误报
-      一百一十二项回归测试通过
+      MP3D 导航配对 A B
+        十一个 val_unseen 场景一百一十集
+        SR 持平 SPL 与 nDTW 未提升
+      受控故障单 episode smoke
+        真实 MP3D 图像与纠错时间线
+        多 episode formal 尚未运行
+      真机只读在线语义地图
+        WheelTec 麦轮 Astra RGB-D
+        一百三十七帧处理十四个对象节点
+        ROS 2 二十项与原仓库一百一十二项测试通过
     关键负结果
       位姿跳变漏检
       稀疏回放缺少连续动作证据
-      尚不能证明 SR SPL nDTW 提升
-      尚未完成真机闭环验证
+      旧消融重复单 episode 不可作泛化证据
+      真机检测误检与多视角 ID 未验证
+      尚未完成真机闭环导航
     下一阶段
-      闭环 MP3D 正式实验
-      关键消融与置信区间
+      多唯一 episode 与 scene 正式实验
+      配对消融与 cluster 置信区间
       三十例失败画廊
-      里程计与动作时间对齐
-      RabbitRobot shadow 到低速实机
+      action-aligned 转移一致性
+      真机多视角到 shadow 再低速实机

@@ -4,6 +4,25 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-09-23 - Rabbit-RobotNav 最新源码证据与真机图片 v4
+
+对照 `history-aware-mp3d-vln` 的 `real-robot-integration` 分支提交 `77ddcfe072b096f547c38c1e52e230705ff9e2dd`，将 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 从旧版五场景回放概览更新为分层的论文证据页面。目标架构图继续作为概念图；MP3D 导航 A/B、单 episode 受控故障与 WheelTec 麦轮只读实机采样分别陈列，避免将静止语义地图 smoke 写成自主纠偏闭环。
+
+| 范围 | 本次改动和边界 |
+| --- | --- |
+| 真实图片 | 从源码仓库复制未加工的在线 RGB 检测框、RGB 原图、Depth 伪彩色及注册边缘叠加图；图注标明椅子附近 `plant` 误检、多视角 ID 未验证 |
+| 仿真图片 | 增加 11 场景、110 episode 配对 A/B 指标图和 MP3D 稀疏参考路线纠错时间线；明确 SR 持平、SPL/nDTW 未改善，以及时间线不是连续里程计 |
+| 统计纠偏 | 旧版 `80/90` 消融来自单个 6 帧 episode 重复，不再作为跨样本结论或主页主图；formal 仍需独立多 episode、多 scene 与 action-aligned 数据 |
+| 真机代码进度 | 新 ROS 2 只读链路经同步、YOLO-World、有效深度、Color CameraInfo、图像时间戳 TF 写入 `odom_combined` 地图；152 帧接收、137 帧处理、14 个对象节点，综合状态 `UNCERTAIN`，未启用 Nav2/`cmd_vel` |
+| Axton 可维护图 | 用 `mermaid-visualizer` 更新论文思维图与系统数据流 `.mmd`，静态 SVG 经本机 Chrome 渲染发布；橙 `#EE8234` 与深蓝 `#0E3B5D` 品牌配色沿用 |
+| 实际验证 | 本地 HTTP 200；Chrome 桌面 1440px 与手机 390px 均加载 16/16 张图片、无页面脚本错误、无横向溢出；本次仅验证网页展示，不重新执行源码 ROS 2/论文测试 |
+
+实机检测画面与页面实测：
+
+![WheelTec 真机 RGB 在线检测的网页实测](docs/images/updates/2026-09-23-rabbit-robotnav-v4/real-robot-detail.png)
+
+完整桌面和手机长图分别见 [desktop.png](docs/images/updates/2026-09-23-rabbit-robotnav-v4/desktop.png) 与 [mobile.png](docs/images/updates/2026-09-23-rabbit-robotnav-v4/mobile.png)。真机原始证据、指标解释及后续验证门槛见[源码麦轮档案](https://github.com/lijinghai/history-aware-mp3d-vln/blob/77ddcfe/docs/chassis/wheeltec-mecanum.md)。
+
 ### 2026-09-23 - Rabbit-RobotNav 静态研究图与橙蓝品牌主题 v3
 
 修复 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 中 Mermaid 在线模块加载缓慢或失败时直接暴露 `.mmd` 源文本的问题。研究思维图与系统数据流现在由 Axton `mermaid-visualizer` 工作流预渲染为仓库内静态 SVG，页面不再依赖 jsDelivr 才能显示图；同时接入 RabbitRobot 品牌标识，并依据原图实测主色 `#EE8234` 与 `#0E3B5D`，统一标题、按钮、章节标识、图框、标签与页脚。论文主问题、阶段性指标和结论边界均未改变。

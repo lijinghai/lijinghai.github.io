@@ -33,6 +33,7 @@
         <a href="#abstract"><span aria-hidden="true">▤</span> Abstract</a>
         <a href="#framework"><span aria-hidden="true">◈</span> Framework</a>
         <a href="#evidence"><span aria-hidden="true">▥</span> Evidence</a>
+        <a href="#real-robot"><span aria-hidden="true">◉</span> Real Robot</a>
         <a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noreferrer"><span aria-hidden="true">↗</span> Feishu</a>
       </nav>
     </div>
@@ -43,11 +44,11 @@
       <h2 id="abstract-title">Abstract</h2>
       <div class="abstract-copy">
         <p>长程视觉语言导航中的错误往往不是单步动作失误，而是跨房间、跨语言阶段累积形成的状态漂移。本研究提出 <strong>Rabbit-RobotNav</strong>：通过历史感知语义—空间记忆保存“去过哪里、看见什么、完成到哪一步”，再联合指令一致性、历史一致性与转移一致性判断当前状态是否偏离，并从可信历史中选择最近可靠状态作为恢复锚点。</p>
-        <p>当前结果来自 R2R-VLNCE / MP3D 的稀疏参考路径回放，验证对象是偏航诊断与恢复锚点选择，而不是端到端策略成功率。五个 val_unseen 场景中，系统对 4 个可评价受控偏差检出 3 个，正常回放误报为 0/34；位姿跳变漏检被保留为下一阶段连续运动建模的明确问题。</p>
+        <p>证据分成两条不能混算的路线：MP3D 中的跨场景配对导航 A/B 与受控故障 smoke，以及 WheelTec 麦克纳姆轮底盘上的只读 RGB-D 在线语义建图。前者尚未证明导航指标提升；后者已接通相机、检测、深度反投影、时间戳 TF 与地图发布，但未运行自主导航或恢复动作。</p>
       </div>
       <aside class="claim-strip">
         <span>当前主张</span>
-        <p>历史语义记忆已显示出改善受控偏航诊断与恢复锚点选择的潜力；闭环 SR / SPL / nDTW 与真机收益仍待验证。</p>
+        <p>已得到可复盘的模块级诊断和真实传感器数据链路；跨场景的纠错增益、语义地图质量与真机闭环恢复仍待严格验证。</p>
       </aside>
     </section>
 
@@ -55,22 +56,22 @@
       <div class="section-heading">
         <p class="section-kicker">METHOD</p>
         <h2 id="framework-title">Framework Overview</h2>
-        <p>历史不是附加日志，而是诊断证据与恢复锚点。下面三张图分别描述完整纠错流程、闭环信息流，以及慢思考—快诊断—可靠执行的分层频率设计。</p>
+        <p>历史不是附加日志，而是诊断证据与恢复锚点。以下三张是目标系统架构图：其中真实 RGB-D 到只读语义地图已完成静止 smoke；诊断接管底盘、重规划与安全执行仍是后续集成目标。</p>
       </div>
 
       <figure class="hero-figure">
         <img src="assets/framework-overview.png" width="1347" height="957" alt="Rabbit-RobotNav 历史感知语义空间记忆、多源一致性检查与错误恢复框架总览">
-        <figcaption><strong>Figure 1. Rabbit-RobotNav 总体框架。</strong> 当前语义—空间状态与历史可信记忆共同进入多源一致性检查；检测到偏差后，系统执行错误定位、最近可信状态检索、恢复与重规划。SimpleNav、ROS2 与机器人执行链路属于计划中的闭环实现边界。</figcaption>
+        <figcaption><strong>Figure 1. 目标总体框架（概念图）。</strong> 当前状态与可信历史进入一致性检查，偏差后选择可靠恢复锚点。ROS 2 的只读感知建图已有实机 smoke；SimpleNav、Nav2 与机器人自动纠偏尚未贯通。</figcaption>
       </figure>
 
       <div class="figure-grid">
         <figure>
           <img src="assets/closed-loop-framework.png" width="1278" height="684" alt="Rabbit-RobotNav 感知与历史建图、一致性检查纠错及执行闭环">
-          <figcaption><strong>Figure 2. 感知—诊断—执行闭环。</strong> RGB 观测与导航指令形成历史感知语义地图；新观测再反馈到下一轮状态检查。</figcaption>
+          <figcaption><strong>Figure 2. 计划中的感知—诊断—执行闭环。</strong> 图示为研究路线，不代表已在真机完成自动执行。</figcaption>
         </figure>
         <figure>
           <img src="assets/three-layer-architecture.png" width="1254" height="678" alt="Rabbit-RobotNav 慢思考、快诊断、可靠执行三层架构">
-          <figcaption><strong>Figure 3. 三层频率架构。</strong> 低频语义推理、高频一致性诊断与更高频的安全执行解耦，避免让大模型直接承担实时底盘控制。</figcaption>
+          <figcaption><strong>Figure 3. 计划中的三层频率架构。</strong> 低频语义推理、较快诊断与安全执行解耦；图中的频率是设计目标，尚非实机频率实测。</figcaption>
         </figure>
       </div>
     </section>
@@ -110,7 +111,7 @@
         </article>
       </div>
       <figure class="diagram-frame system-diagram">
-        <img src="assets/system-flow.svg" alt="Rabbit-RobotNav 从导航指令与视觉观测到历史语义记忆、一致性检查和恢复锚点的系统数据流">
+        <img src="assets/system-flow.svg" alt="Rabbit-RobotNav 系统数据流，区分已验证的真机只读在线语义地图、受控故障论文模块和尚未接入的机器人执行">
       </figure>
       <p class="source-hint">Axton / Mermaid 可维护源：<a href="system-flow.mmd">system-flow.mmd</a></p>
     </section>
@@ -119,16 +120,28 @@
       <div class="section-heading">
         <p class="section-kicker">PRELIMINARY RESULTS</p>
         <h2 id="evidence-title">Controlled-Deviation Evidence</h2>
-        <p>当前证据是模块级稀疏回放结果。所有正结果和负结果使用同一套呈现方式，便于后续扩大样本并转入闭环评测。</p>
+        <p>把跨场景导航负结果与单 episode 受控故障 smoke 分开呈现。历史图中的数字只描述当时的工程回放，不能替代多 episode 的正式统计。</p>
       </div>
 
-      <div class="metric-row" role="group" aria-label="阶段性核心指标">
-        <article><strong>5</strong><span>MP3D val_unseen scenes</span></article>
-        <article><strong>29 / 34</strong><span>历史覆盖 · 85.29%</span></article>
-        <article><strong>3 / 4</strong><span>可评价偏差检出</span></article>
-        <article><strong>0 / 34</strong><span>正常回放误报</span></article>
-        <article><strong>112 / 112</strong><span>回归测试通过</span></article>
+      <div class="metric-row" role="group" aria-label="跨场景配对导航实验指标">
+        <article><strong>110</strong><span>配对 episodes · 11 个 val_unseen 场景</span></article>
+        <article><strong>0.245</strong><span>SR · OFF 与 ON 相同</span></article>
+        <article><strong>−0.0016</strong><span>SPL · ON − OFF</span></article>
+        <article><strong>−0.0022</strong><span>nDTW · ON − OFF</span></article>
+        <article><strong>负结果</strong><span>尚无成立的导航增益</span></article>
       </div>
+
+      <figure class="hero-figure result-figure">
+        <img src="assets/mp3d-110-episode-ab.png" width="1280" height="720" loading="lazy" alt="110 个 MP3D val_unseen episode 的 CMA OFF 与纠错门控 ON 配对实验柱状图，SR 持平，SPL 与 nDTW 未提升">
+        <figcaption><strong>Figure 4. 11 场景、110 集配对 A/B 的负结果。</strong> 同一 episode 与策略配置下，ON 的 SR 与 OFF 均为 0.245455；SPL 0.218503 vs 0.220071，nDTW 0.470865 vs 0.473047。此图不能证明整个 Rabbit-RobotNav 框架有效，只说明该阶段进度置信度门控未改善导航终局指标。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/77ddcfe/docs/thesis_readiness_audit_v0.3.md" target="_blank" rel="noreferrer">查看审计 ↗</a></figcaption>
+      </figure>
+
+      <figure class="hero-figure result-figure">
+        <img src="assets/mp3d-sparse-trajectory.png" width="1920" height="1080" loading="lazy" alt="真实 MP3D 图像、稀疏参考路线与受控故障时间线，同步显示检测和恢复锚点">
+        <figcaption><strong>Figure 5. 单 episode 稀疏参考路径回放。</strong> 把 RGB 帧、X–Z 参考路线和事件时间线放在同一张图中，便于审计诊断行为；这里不是连续里程计，也不是实机轨迹。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/77ddcfe/docs/images/updates/2026-09-23-server-repo-cleanup/trajectory_correction.png" target="_blank" rel="noreferrer">查看原图 ↗</a></figcaption>
+      </figure>
+
+      <p class="evidence-caveat"><strong>统计更正：</strong>早期“3 个种子 × 50 次、Full 检出 80/90”的消融图在审计后确认只重复了同一个 6 帧 episode，不能用作跨 episode 或跨场景证据；因此本页不展示该图，也不沿用其总体结论。以下四张是更早期的单场景故障案例，仅供理解故障类型。</p>
 
       <div class="evidence-gallery">
         <figure>
@@ -150,6 +163,34 @@
       </div>
     </section>
 
+    <section class="paper-section" id="real-robot" aria-labelledby="real-robot-title">
+      <div class="section-heading">
+        <p class="section-kicker">REAL ROBOT · READ-ONLY</p>
+        <h2 id="real-robot-title">WheelTec RGB-D → Online Semantic Map</h2>
+        <p>2026-09-23 的最新代码新增独立 ROS 2 语义建图层。Astra 的 RGB、注册深度与 Color CameraInfo 同步后，经 YOLO-World、有效深度中值、图像时刻 TF 进入 <code>odom_combined</code> 语义对象地图。该链路只读，不发布 <code>cmd_vel</code>。</p>
+      </div>
+
+      <figure class="hero-figure real-robot-lead">
+        <img src="assets/real-robot-online-detections.png" width="640" height="480" loading="lazy" alt="WheelTec 麦轮 Astra 真机办公室 RGB 画面，YOLO-World 在椅子、灯具和植物候选区域绘制检测框">
+        <figcaption><strong>Figure 6. 真机在线 RGB 目标检测帧。</strong> 画面来自 WheelTec 麦轮搭载的 Orbbec Astra 静止采样，不是 MP3D 仿真。可见椅子附近有 <code>plant</code> 误检；黄色框证明检测输出可视化，不证明物体类别、跨视角 ID 或导航决策正确。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/77ddcfe/docs/chassis/wheeltec-mecanum.md" target="_blank" rel="noreferrer">查看原始证据与限制 ↗</a></figcaption>
+      </figure>
+
+      <div class="sensor-grid" aria-label="真实 RGB-D 注册证据">
+        <figure><img src="assets/real-robot-rgb.png" width="640" height="480" loading="lazy" alt="WheelTec Astra 真实办公室 RGB 原图"><figcaption><strong>RGB 原图</strong> · 640 × 480，相机原始场景。</figcaption></figure>
+        <figure><img src="assets/real-robot-depth.png" width="640" height="480" loading="lazy" alt="同一办公室场景的 Astra 深度伪彩色图"><figcaption><strong>Depth 伪彩色</strong> · 原始 16UC1，毫米换算为米；无效深度需过滤。</figcaption></figure>
+        <figure><img src="assets/real-robot-rgbd-overlay.png" width="640" height="480" loading="lazy" alt="RGB 边缘和注册深度边缘叠加，门框、桌沿及椅背结构大体对应"><figcaption><strong>注册边缘叠加</strong> · 静态场景几何大体对齐，并非运动中零延迟证明。</figcaption></figure>
+      </div>
+
+      <div class="metric-row robot-metrics" role="group" aria-label="实机静止只读测试结果">
+        <article><strong>152 / 137</strong><span>匹配帧接收 / 处理</span></article>
+        <article><strong>29.6 ms</strong><span>RGB–Depth 平均时间差</span></article>
+        <article><strong>14</strong><span>地图对象节点</span></article>
+        <article><strong>0</strong><span>模型推理错误</span></article>
+        <article><strong>UNCERTAIN</strong><span>完整语义地图准入状态</span></article>
+      </div>
+      <p class="evidence-caveat"><strong>验收边界：</strong>20 个 ROS 2 单测、112 个原仓库测试与选择性构建已通过；约 25 秒静止 smoke 的 MarkerArray topic 有发布者，但服务器未安装 RViz，未取得真实渲染画面。多视角同物体关联、同类物体分离、检测精度与真实运动中的时间同步均未验证。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/77ddcfe/docs/evidence/chassis/wheeltec-mecanum/online_semantic_map_2026-09-23.json" target="_blank" rel="noreferrer">查看诊断 JSON ↗</a></p>
+    </section>
+
     <section class="paper-section narrow" id="boundary" aria-labelledby="boundary-title">
       <div class="section-heading">
         <p class="section-kicker">SCOPE &amp; LIMITATIONS</p>
@@ -160,9 +201,9 @@
           <h3>✓ 已有证据支持</h3>
           <ul>
             <li>raw / trusted memory、可靠性门禁与状态更新机制</li>
-            <li>五场景稀疏回放中的无标签偏航诊断</li>
+            <li>11 场景、110 集配对 A/B 的导航负结果与单 episode 受控故障 smoke</li>
             <li>恢复锚点选择与 2.44 m 位姿跳变漏检分析</li>
-            <li>正常回放 0/34 误报与模块级回归测试</li>
+            <li>WheelTec 麦轮真实 RGB-D 注册与只读 ROS 2 语义地图静止测试</li>
           </ul>
         </article>
         <article class="pending">
@@ -171,7 +212,8 @@
             <li>闭环策略 rollout 和端到端导航成功率提升</li>
             <li>SR、SPL、NE、nDTW 与 SDTW 的正式改善</li>
             <li>真实机器人完成自主纠偏与安全恢复</li>
-            <li>大样本、跨场景、跨随机种子的泛化结论</li>
+            <li>受控纠错 formal 多 episode 消融、跨随机种子的泛化结论</li>
+            <li>真实语义地图的多视角 ID 稳定性、同类分离和 RViz 画面</li>
           </ul>
         </article>
       </div>
@@ -183,10 +225,10 @@
         <h2 id="roadmap-title">From Prototype Evidence to Thesis Evidence</h2>
       </div>
       <ol class="roadmap-list">
-        <li><span>01</span><div><strong>扩大闭环评测</strong><p>覆盖 11 个 MP3D val_unseen 场景、至少 100 episodes、3 个随机种子，并报告 95% CI。</p></div></li>
-        <li><span>02</span><div><strong>配对消融</strong><p>Full、NoHistoryMap 与 B0–B6 共享感知缓存、故障日程和评价协议。</p></div></li>
+        <li><span>01</span><div><strong>补齐正式受控纠错样本</strong><p>准备互不重复的多 episode、多指令与至少两个 scene；当前单 episode 清单仅允许 smoke，不得靠重复运行扩大独立样本数。</p></div></li>
+        <li><span>02</span><div><strong>配对消融与正式评测</strong><p>Full、NoHistoryMap 与 B0–B6 共享感知缓存和故障日程；另以 action-aligned 数据评测转移一致性，MP3D 稀疏回放不承担该指标。</p></div></li>
         <li><span>03</span><div><strong>修复位姿跳变漏检</strong><p>补充动作、位姿、时间和里程计连续性证据，形成至少 30 例可回读失败画廊。</p></div></li>
-        <li><span>04</span><div><strong>进入真机闭环</strong><p>RabbitRobot 先进行只读与 shadow mode，再在急停、限速和人工监护下执行低速多房间路线。</p></div></li>
+        <li><span>04</span><div><strong>从真机只读进入 shadow</strong><p>先补多视角、同类物体分离与 RViz 实际渲染证据；再进入无控制权 shadow，最终在急停、限速和人工监护下验证低速路线。</p></div></li>
       </ol>
     </section>
 
@@ -206,14 +248,14 @@
         </a>
       </div>
       <div class="project-note">
-        <strong>Project note.</strong> 本页是硕士论文持续更新入口。图示表达目标架构；实验数字只对应已完成的稀疏参考路径回放。后续每轮实验将继续补充样本范围、失败案例、消融和闭环结果。
+        <strong>Project note.</strong> 本页是硕士论文持续更新入口。概念框架图、MP3D 实验图和真机照片分别标注，不能相互替代。页面依据 <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/77ddcfe">源码提交 77ddcfe</a> 更新；后续每轮实验继续补充独立样本、失败案例、消融和闭环结果。
       </div>
     </section>
   </main>
 
   <footer>
     <p><strong>Rabbit-RobotNav</strong> · Jinghai Li · Master Thesis Working Project</p>
-    <p>Last updated September 2026 · Results are preliminary and scope-limited.</p>
+    <p>Updated 2026-09-23 from source commit 77ddcfe · Simulation, static robot smoke and planned closed loop are separate evidence levels.</p>
   </footer>
 
 </body>

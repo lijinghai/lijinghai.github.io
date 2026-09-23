@@ -1,35 +1,33 @@
 flowchart LR
-    I["VLN 指令"] --> P["MiniCPM-V + SpaAct<br/>语义与动态空间感知"]
-    O["RGB / 动作后状态"] --> P
-
-    subgraph memory["历史感知语义地图"]
-        R["原始观测历史"] --> G{"可靠性门禁"}
-        G -->|"可信"| T["可信聚合状态"]
-        G -->|"不可信"| X["隔离错误状态"]
+    subgraph robot["真机已验证：只读静止 smoke"]
+        RGB["Astra RGB + 注册 Depth"] --> SYNC["时间戳同步与有效深度"]
+        SYNC --> YOLO["YOLO-World 检测"]
+        YOLO --> GEO["Color CameraInfo 反投影 + TF"]
+        GEO --> MAP["odom_combined 语义对象地图"]
+        MAP --> PUB["MarkerArray 发布 + JSON 证据"]
     end
 
-    P --> R
-    P --> C["当前语义空间状态"]
-    I --> S["语言阶段与剩余地标"]
-    C --> K{"三方一致性检查"}
-    T --> K
-    S --> K
+    subgraph thesis["论文模块：受控故障 smoke"]
+        I["VLN 指令 + MP3D 观测"] --> P["语义感知与进度跟踪"]
+        P --> R["原始历史"]
+        R --> G{"可靠性门禁"}
+        G -->|"可信"| T["可信聚合状态"]
+        G -->|"不可信"| X["隔离错误状态"]
+        T --> K["指令 / 历史 / 转移一致性"]
+        I --> K
+        K --> D["诊断与 Last Reliable State 锚点"]
+    end
 
-    K -->|"一致"| N["继续 SimpleNav"]
-    K -->|"偏航"| D["错误定位"]
-    D --> A["选择 Last Reliable State"]
-    A --> Q["输出恢复锚点与依据"]
-    Q -.-> E["下游回退 / 重观测 / 重规划"]
-    N --> F["新观测回流"]
-    E --> F
-    F --> O
+    PUB -.->|"尚未接入真机诊断"| K
+    D -.->|"尚未实机验证"| E["SimpleNav / Nav2 / 底盘恢复执行"]
 
     classDef input fill:#eaf2f6,stroke:#0e3b5d,color:#072d48,stroke-width:1.5px;
     classDef core fill:#fff2e8,stroke:#ee8234,color:#7a3510,stroke-width:1.5px;
     classDef memoryNode fill:#f4f8fa,stroke:#47758f,color:#0e3b5d,stroke-width:1.5px;
     classDef boundary fill:#fff0ef,stroke:#c84a42,color:#6d2420,stroke-width:1.5px;
-    class I,O,S input;
-    class P,C,K,D,A,Q core;
-    class R,G,T,N,F memoryNode;
+    class RGB,SYNC,YOLO,GEO,I input;
+    class P,K,D core;
+    class R,G,T,MAP,PUB memoryNode;
     class X,E boundary;
-    style memory fill:#fbfdfe,stroke:#8ca9ba,stroke-width:1px
+    style robot fill:#eaf2f6,stroke:#0e3b5d,stroke-width:1px
+    style thesis fill:#fff9f4,stroke:#ee8234,stroke-width:1px
