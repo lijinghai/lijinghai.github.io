@@ -4,26 +4,25 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
-### 2026-09-23 - Rabbit-RobotNav 学术项目主页 v2
+### 2026-09-23 - Rabbit-RobotNav 静态研究图与橙蓝品牌主题 v3
 
-重新设计 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/)：参考 VLN-Zero 项目页的学术信息层级，将原来的研究工作台改为白底、居中标题、作者与状态标识、胶囊资源按钮，以及 `Abstract → Framework Overview → Research Map → Results → Scope → Resources` 的论文项目页结构。页面仍以“历史感知语义记忆是否能在不读取评测标签的前提下发现长程导航偏航，并从可信历史中选择恢复锚点”为唯一主问题，没有扩大现有实验结论。
+修复 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 中 Mermaid 在线模块加载缓慢或失败时直接暴露 `.mmd` 源文本的问题。研究思维图与系统数据流现在由 Axton `mermaid-visualizer` 工作流预渲染为仓库内静态 SVG，页面不再依赖 jsDelivr 才能显示图；同时接入 RabbitRobot 品牌标识，并依据原图实测主色 `#EE8234` 与 `#0E3B5D`，统一标题、按钮、章节标识、图框、标签与页脚。论文主问题、阶段性指标和结论边界均未改变。
 
 | 内容 | 实际改动与证据 |
 | --- | --- |
-| 学术首页 | `RabbitRobotNav/index.html` 重排为论文标题、双语副标题、作者、工作状态、摘要、方法图、阶段性证据和研究资源；`style.css` 完成桌面与移动端响应式样式 |
-| 飞书框架图 | 新增 `framework-overview.png`、`closed-loop-framework.png`、`three-layer-architecture.png`，依次呈现总流程、感知—诊断—执行闭环和慢思考—快诊断—可靠执行三层架构 |
-| 可维护研究图 | 保留并重新着色 `research-mindmap.mmd` 与 `system-flow.mmd`，作为后续实验推进时可持续修改的 Axton / Mermaid 图源 |
+| 格式故障修复 | 删除运行时 `app.js` 与外部 Mermaid CDN 请求；`index.html` 直接引用 `research-mindmap.svg`、`system-flow.svg`，网络受限时也不会显示原始源码 |
+| 品牌主题 | 新增用户提供的 `rabbitrobot-brand.jpg`；`style.css` 以品牌橙、深海军蓝和白色重做标题、按钮、状态标签、章节强调、图框和页脚 |
+| 可维护研究图 | 保留 `research-mindmap.mmd` 与 `system-flow.mmd` 作为可编辑图源，新增 `mermaid-config.json` 固化品牌配色；SVG 是与页面一起发布的稳定展示产物 |
 | 阶段性证据 | 保留 5 场景、29/34 历史覆盖、3/4 可评价偏差检出、0/34 正常回放误报和 112/112 回归测试；G2 的 2.44 m 位姿跳变漏检继续作为负结果公开 |
-| 结论边界 | 页面明确区分模块级稀疏回放证据与待验证的闭环 SR / SPL / nDTW、真机自主恢复，不把设计图中的 ROS2 / Robot 执行链路写成已经完成 |
-| 实际验证 | 本地 HTTP 200；HTML 校验零错误；JavaScript 语法检查通过；Chrome 桌面端与 Pixel 7 均加载 7/7 图片和 2/2 Mermaid SVG，控制台与页面错误均为 0，横向溢出为 0 |
+| 实际验证 | 本地 HTTP 200；桌面端与 `412px` 手机端均加载 10/10 图片、2/2 静态研究图；`pre.mermaid=0`、外部 Mermaid 请求为 0、控制台与页面错误为 0、横向溢出为 0 |
 
 1440 px Chrome 完整页面实测：
 
-![Rabbit-RobotNav 学术项目主页 v2](docs/images/updates/2026-09-23-rabbit-robotnav/academic-v2-desktop.png)
+![Rabbit-RobotNav 橙蓝品牌学术项目主页 v3](docs/images/updates/2026-09-23-rabbit-robotnav/academic-v3-desktop.png)
 
 Pixel 7 移动端首屏实测：
 
-![Rabbit-RobotNav 学术项目主页 v2 移动端首屏](docs/images/updates/2026-09-23-rabbit-robotnav/academic-v2-mobile-top.png)
+![Rabbit-RobotNav 橙蓝品牌学术项目主页 v3 移动端首屏](docs/images/updates/2026-09-23-rabbit-robotnav/academic-v3-mobile-top.png)
 
 ### 2026-09 - 强化 DAS Ego × UMI 实机研究叙事
 

@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Rabbit-RobotNav 硕士论文项目主页：基于历史感知语义地图与动态空间推理的长程视觉语言导航纠错框架。">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#0e3b5d">
   <meta property="og:title" content="Rabbit-RobotNav | 长程视觉语言导航纠错框架">
   <meta property="og:description" content="历史感知语义地图、无标签偏航诊断与可信恢复锚点选择。">
-  <meta property="og:image" content="assets/framework-overview.png">
+  <meta property="og:image" content="assets/rabbitrobot-brand.jpg">
   <title>Rabbit-RobotNav | 长程视觉语言导航纠错框架</title>
   <link rel="icon" href="../images/favicon.ico">
   <link rel="stylesheet" href="style.css">
@@ -18,6 +18,7 @@
   <header class="paper-hero">
     <div class="hero-inner">
       <a class="back-link" href="../index.html" aria-label="返回 Jinghai Li 个人主页">← Jinghai Li</a>
+      <img class="brand-lockup" src="assets/rabbitrobot-brand.jpg" width="1524" height="1050" alt="RabbitRobot 橙色兔子与机械臂品牌标识">
       <h1>Rabbit-RobotNav</h1>
       <p class="hero-subtitle">基于历史感知语义地图与动态空间推理的长程视觉语言导航纠错框架研究</p>
       <p class="hero-subtitle-en">History-Aware Semantic Mapping and Dynamic Spatial Reasoning for Long-Horizon Vision-and-Language Navigation Error Correction</p>
@@ -80,9 +81,9 @@
         <h2 id="research-map-title">Thesis Research Map</h2>
         <p>用于后续迭代的论文主线索引：同一张图持续连接研究问题、方法贡献、已获证据、失败案例和下一阶段实验。</p>
       </div>
-      <div class="diagram-frame" role="img" aria-label="Rabbit-RobotNav 论文研究思维图">
-        <pre class="mermaid" data-mermaid-source="research-mindmap.mmd">正在加载研究思维图……</pre>
-      </div>
+      <figure class="diagram-frame">
+        <img src="assets/research-mindmap.svg" alt="Rabbit-RobotNav 论文研究思维图，连接论文主问题、方法主线、当前证据、关键负结果与下一阶段实验">
+      </figure>
       <p class="source-hint">Axton / Mermaid 可维护源：<a href="research-mindmap.mmd">research-mindmap.mmd</a></p>
     </section>
 
@@ -108,9 +109,9 @@
           <p>从 trusted recovery trajectory 检索 Last Reliable State，并报告锚点依据与误差，不把“选对位置”提前写成“恢复完成”。</p>
         </article>
       </div>
-      <div class="diagram-frame system-diagram" role="img" aria-label="Rabbit-RobotNav 可维护系统数据流">
-        <pre class="mermaid" data-mermaid-source="system-flow.mmd">正在加载系统数据流……</pre>
-      </div>
+      <figure class="diagram-frame system-diagram">
+        <img src="assets/system-flow.svg" alt="Rabbit-RobotNav 从导航指令与视觉观测到历史语义记忆、一致性检查和恢复锚点的系统数据流">
+      </figure>
       <p class="source-hint">Axton / Mermaid 可维护源：<a href="system-flow.mmd">system-flow.mmd</a></p>
     </section>
 
@@ -215,6 +216,5 @@
     <p>Last updated September 2026 · Results are preliminary and scope-limited.</p>
   </footer>
 
-  <script type="module" src="app.js"></script>
 </body>
 </html>

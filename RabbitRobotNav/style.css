@@ -1,15 +1,18 @@
 :root {
   --ink: #202124;
-  --muted: #5f6368;
-  --blue: #2456a6;
-  --blue-strong: #173f80;
-  --blue-soft: #eef4ff;
-  --line: #e4e7eb;
+  --muted: #5c6870;
+  --navy: #0e3b5d;
+  --navy-deep: #072d48;
+  --navy-soft: #eaf2f6;
+  --orange: #ee8234;
+  --orange-deep: #c85f18;
+  --orange-soft: #fff2e8;
+  --line: #dfe5e8;
   --paper: #ffffff;
-  --wash: #f7f9fc;
+  --wash: #f7fafb;
   --green: #16794b;
   --red: #b3261e;
-  --shadow: 0 12px 30px rgba(31, 55, 88, 0.08);
+  --shadow: 0 12px 30px rgba(14, 59, 93, 0.1);
   --serif: "Times New Roman", "Noto Serif SC", "Songti SC", serif;
   --sans: Inter, "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
 }
@@ -33,12 +36,12 @@ body {
 }
 
 a {
-  color: var(--blue);
+  color: var(--navy);
   text-decoration: none;
 }
 
 a:hover {
-  color: var(--blue-strong);
+  color: var(--orange-deep);
   text-decoration: underline;
 }
 
@@ -54,7 +57,7 @@ img {
   z-index: 20;
   padding: 8px 14px;
   color: #fff;
-  background: var(--blue-strong);
+  background: var(--navy-deep);
   border-radius: 7px;
   transform: translateY(-160%);
 }
@@ -64,8 +67,11 @@ img {
 }
 
 .paper-hero {
-  padding: 34px 24px 54px;
+  padding: 30px 24px 58px;
   border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255, 242, 232, 0.72) 0, rgba(255, 255, 255, 0) 260px),
+    var(--paper);
 }
 
 .hero-inner {
@@ -76,14 +82,21 @@ img {
 
 .back-link {
   display: inline-block;
-  margin-bottom: 40px;
+  margin-bottom: 12px;
   color: var(--muted);
   font-size: 0.88rem;
 }
 
+.brand-lockup {
+  width: min(230px, 52vw);
+  height: auto;
+  margin: 0 auto -18px;
+  mix-blend-mode: multiply;
+}
+
 .paper-hero h1 {
   margin: 0;
-  color: #143e7b;
+  color: var(--navy);
   font-family: var(--serif);
   font-size: clamp(3.2rem, 8vw, 6rem);
   font-weight: 700;
@@ -94,7 +107,7 @@ img {
 .hero-subtitle {
   max-width: 980px;
   margin: 22px auto 8px;
-  color: #1e293b;
+  color: var(--navy-deep);
   font-size: clamp(1.25rem, 2.8vw, 2rem);
   font-weight: 600;
   line-height: 1.38;
@@ -103,7 +116,7 @@ img {
 .hero-subtitle-en {
   max-width: 900px;
   margin: 0 auto 24px;
-  color: #64748b;
+  color: #667782;
   font-family: var(--serif);
   font-size: clamp(0.95rem, 1.7vw, 1.18rem);
   line-height: 1.45;
@@ -128,10 +141,10 @@ img {
 .venue-badge {
   display: inline-flex;
   padding: 4px 13px;
-  border: 1px solid #aac0e5;
+  border: 1px solid #f0aa76;
   border-radius: 999px;
-  color: var(--blue-strong);
-  background: var(--blue-soft);
+  color: var(--orange-deep);
+  background: var(--orange-soft);
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -153,7 +166,7 @@ img {
   padding: 8px 18px;
   border-radius: 999px;
   color: #fff;
-  background: #363636;
+  background: var(--navy);
   font-size: 0.92rem;
   font-weight: 650;
   transition: transform 160ms ease, background 160ms ease;
@@ -161,7 +174,7 @@ img {
 
 .resource-actions a:hover {
   color: #fff;
-  background: var(--blue-strong);
+  background: var(--orange-deep);
   text-decoration: none;
   transform: translateY(-2px);
 }
@@ -210,7 +223,7 @@ main {
 
 .section-kicker {
   margin: 0 0 8px;
-  color: var(--blue);
+  color: var(--orange-deep);
   font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 0.16em;
@@ -233,12 +246,12 @@ main {
   align-items: center;
   margin-top: 30px;
   padding: 20px 24px;
-  border-left: 4px solid var(--blue);
-  background: var(--blue-soft);
+  border-left: 4px solid var(--orange);
+  background: linear-gradient(90deg, var(--orange-soft), #fffaf6);
 }
 
 .claim-strip span {
-  color: var(--blue-strong);
+  color: var(--orange-deep);
   font-weight: 800;
 }
 
@@ -257,7 +270,7 @@ main {
 .figure-grid img {
   width: 100%;
   height: auto;
-  border: 1px solid #dce2ea;
+  border: 1px solid #d6e0e6;
   border-radius: 12px;
   background: #fff;
   box-shadow: var(--shadow);
@@ -283,28 +296,21 @@ figcaption strong {
 }
 
 .diagram-frame {
-  min-height: 440px;
+  margin: 0;
   padding: 28px;
-  overflow-x: auto;
-  border: 1px solid #dce2ea;
+  overflow: hidden;
+  border: 1px solid #d6e0e6;
+  border-top: 4px solid var(--orange);
   border-radius: 12px;
   background: var(--wash);
+  box-shadow: var(--shadow);
 }
 
-.diagram-frame .mermaid {
-  display: flex;
-  justify-content: center;
-  min-width: 760px;
-  margin: 0;
-  color: var(--muted);
-  font-family: var(--sans);
-  white-space: pre-wrap;
-}
-
-.diagram-frame svg {
+.diagram-frame img {
+  display: block;
   width: 100%;
   height: auto;
-  min-height: 380px;
+  margin: 0 auto;
 }
 
 .system-diagram {
@@ -333,7 +339,7 @@ figcaption strong {
 }
 
 .idea-number {
-  color: #9db2d6;
+  color: var(--orange);
   font-family: var(--serif);
   font-size: 2.1rem;
   font-weight: 700;
@@ -342,7 +348,7 @@ figcaption strong {
 
 .idea-grid h3 {
   margin: 18px 0 10px;
-  color: var(--blue-strong);
+  color: var(--navy);
   font-size: 1.2rem;
 }
 
@@ -379,7 +385,7 @@ figcaption strong {
 
 .metric-row strong {
   display: block;
-  color: var(--blue-strong);
+  color: var(--navy);
   font-family: var(--serif);
   font-size: 2rem;
   line-height: 1.2;
@@ -486,14 +492,14 @@ figcaption strong {
 }
 
 .roadmap-list > li > span {
-  color: #9db2d6;
+  color: var(--orange);
   font-family: var(--serif);
   font-size: 1.8rem;
   font-weight: 700;
 }
 
 .roadmap-list strong {
-  color: var(--blue-strong);
+  color: var(--navy);
 }
 
 .roadmap-list p {
@@ -520,7 +526,7 @@ figcaption strong {
 }
 
 .link-cards a:hover {
-  border-color: #aac0e5;
+  border-color: var(--orange);
   box-shadow: var(--shadow);
   text-decoration: none;
   transform: translateY(-2px);
@@ -532,7 +538,7 @@ figcaption strong {
 }
 
 .link-cards strong {
-  color: var(--blue-strong);
+  color: var(--navy);
   font-size: 0.96rem;
 }
 
@@ -549,21 +555,20 @@ figcaption strong {
 footer {
   padding: 38px 20px 46px;
   color: #73777d;
-  background: #f5f6f8;
+  background: var(--navy-deep);
   border-top: 1px solid var(--line);
   font-size: 0.78rem;
   line-height: 1.5;
   text-align: center;
 }
 
-footer p {
-  margin: 4px 0;
+footer,
+footer strong {
+  color: #dce9f0;
 }
 
-.diagram-fallback {
-  padding: 80px 20px;
-  color: var(--red);
-  text-align: center;
+footer p {
+  margin: 4px 0;
 }
 
 @media (max-width: 900px) {
@@ -576,7 +581,7 @@ footer p {
   }
 
   .back-link {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
 
   .figure-grid,
@@ -640,13 +645,7 @@ footer p {
   }
 
   .diagram-frame {
-    min-height: 340px;
-    padding: 14px;
-  }
-
-  .diagram-frame .mermaid {
-    justify-content: flex-start;
-    min-width: 720px;
+    padding: 8px;
   }
 
   .evidence-gallery {
