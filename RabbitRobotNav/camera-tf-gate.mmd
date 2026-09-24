@@ -1,0 +1,14 @@
+flowchart TB
+    PRE["修复前 · 同一发布 GID<br/>camera_color_frame 有 link 与 depth 双 parent<br/>98 条同一 TFMessage 冲突"]
+    FIX["Astra 驱动定点修补<br/>仅停发冗余 link → color 边"]
+    POST["修复后 · 机器人及服务器逐条审计<br/>camera_color_frame 只归 depth<br/>五个相机 child 单 parent · TF 子树 PASS"]
+    K["剩余风险 · Depth CameraInfo K<br/>重复出现四个 NaN"]
+    HOLD["Phase 1C-3 整体 PRECHECK UNCERTAIN<br/>Trial 0 与语义 mapper 不放行"]
+    PRE --> FIX --> POST --> K --> HOLD
+
+    classDef frame fill:#eaf2f6,stroke:#0e3b5d,color:#072d48,stroke-width:1.5px;
+    classDef conflict fill:#fff0ef,stroke:#b3261e,color:#681d18,stroke-width:2px;
+    classDef caution fill:#fff2e8,stroke:#ee8234,color:#7a3510,stroke-width:1.5px;
+    class PRE conflict;
+    class POST frame;
+    class FIX,K,HOLD caution;

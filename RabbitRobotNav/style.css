@@ -315,6 +315,50 @@ figcaption strong {
   object-fit: contain;
 }
 
+.gate-callout {
+  margin: 0 0 36px;
+  padding: 24px 28px;
+  border: 1px solid #f0c79d;
+  border-left: 5px solid var(--orange);
+  border-radius: 12px;
+  background: #fff9f3;
+}
+
+.gate-callout span {
+  display: block;
+  color: #a84f15;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.gate-callout strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--navy);
+  font-size: 1.25rem;
+}
+
+.gate-callout p {
+  margin: 10px 0 0;
+  color: #524c46;
+  font-size: 0.93rem;
+}
+
+.gate-diagram {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.tf-figure {
+  margin: 44px auto;
+}
+
+.tf-figure img {
+  max-height: 650px;
+  object-fit: contain;
+}
+
 .sensor-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

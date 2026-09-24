@@ -1,10 +1,18 @@
 flowchart LR
-    subgraph robot["真机已验证：只读静止 smoke"]
+    subgraph robot["真机历史证据：2026-09-23 只读静止 smoke"]
         RGB["Astra RGB + 注册 Depth"] --> SYNC["时间戳同步与有效深度"]
         SYNC --> YOLO["YOLO-World 检测"]
         YOLO --> GEO["Color CameraInfo 反投影 + TF"]
         GEO --> MAP["odom_combined 语义对象地图"]
         MAP --> PUB["MarkerArray 发布 + JSON 证据"]
+    end
+
+    subgraph gate["当前门禁：2026-09-24 Phase 1C-3"]
+        CAL["Phase 1C-2 粗外参和移动 TF：局部 PASS"] --> BAD["camera_color_frame 双 parent 被检出"]
+        BAD --> FIX["Astra 驱动定点修补"]
+        FIX --> AUDIT["五个相机 child 单 parent：TF PASS"]
+        AUDIT --> K["Depth CameraInfo K 含四个 NaN"]
+        K --> STOP["整体 PRECHECK UNCERTAIN：Trial 0 不放行"]
     end
 
     subgraph thesis["论文模块：受控故障 smoke"]
@@ -18,6 +26,8 @@ flowchart LR
         K --> D["诊断与 Last Reliable State 锚点"]
     end
 
+    PUB -.->|"历史 smoke，当前整体门禁未放行"| STOP
+    STOP -.->|"澄清 K 与下游契约、准入后才允许"| MAP
     PUB -.->|"尚未接入真机诊断"| K
     D -.->|"尚未实机验证"| E["SimpleNav / Nav2 / 底盘恢复执行"]
 
@@ -29,5 +39,9 @@ flowchart LR
     class P,K,D core;
     class R,G,T,MAP,PUB memoryNode;
     class X,E boundary;
+    class BAD,STOP boundary;
+    class CAL,AUDIT,FIX input;
+    class K memoryNode;
     style robot fill:#eaf2f6,stroke:#0e3b5d,stroke-width:1px
+    style gate fill:#fff0ef,stroke:#c84a42,stroke-width:1px
     style thesis fill:#fff9f4,stroke:#ee8234,stroke-width:1px

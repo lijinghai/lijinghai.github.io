@@ -27,19 +27,27 @@ mindmap
       受控故障单 episode smoke
         真实 MP3D 图像与纠错时间线
         多 episode formal 尚未运行
-      真机只读在线语义地图
+      真机历史静止语义地图 smoke
         WheelTec 麦轮 Astra RGB-D
         一百三十七帧处理十四个对象节点
         ROS 2 二十项与原仓库一百一十二项测试通过
+      九月二十四日相机 TF 修复
+        Phase 1C-2 相机粗外参和移动 TF 局部通过
+        Phase 1C-3 双 parent 被检出后定点修复
+        机器人与服务器单 parent 审计通过
+        Depth CameraInfo K 含四个 NaN
+        整体 PRECHECK UNCERTAIN 不放行 Trial 0
     关键负结果
       位姿跳变漏检
       稀疏回放缺少连续动作证据
       旧消融重复单 episode 不可作泛化证据
       真机检测误检与多视角 ID 未验证
+      Depth 内参与下游投影契约未核实
       尚未完成真机闭环导航
     下一阶段
       多唯一 episode 与 scene 正式实验
       配对消融与 cluster 置信区间
       三十例失败画廊
       action-aligned 转移一致性
+      先核实 Depth K 再复跑只读 mapper
       真机多视角到 shadow 再低速实机

@@ -4,6 +4,30 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-09-24 - Rabbit-RobotNav 五场景图像与相机 TF 准入更新 v5
+
+对照两份飞书[实验台账](https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg)、[论文框架](https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e)，以及 `history-aware-mp3d-vln` 的已推送 `real-robot-integration` 提交 [`14300fa`](https://github.com/lijinghai/history-aware-mp3d-vln/tree/14300fa1f3bd76325f045d64b8b6a1179fc6bfc0)，更新 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 的证据层级和图片。修改前页面缺少 G3 提前停止原图，也没有 9 月 24 日相机 TF 修复后的真实树；修改后展示五场景受控异常、双父节点检出与定点修复、最新真机 TF 截图，并明确剩余 Depth CameraInfo 风险。保持原有白底、RabbitRobot 橙与深蓝学术项目风格，不改网站其他页面。
+
+| 范围 | 实施与证据边界 |
+| --- | --- |
+| MP3D 图片 | 从飞书实验台账补入 G3 提前停止原图，连同 G1/G2/G4/G5 展示；五场景、五条 episode、34 个稀疏参考航点的 3/4 检出是模块级案例，不能换算为闭环 SR/SPL |
+| 统计更正 | 保留论文框架中对旧 `80/90` 消融的审计结论：数据只重复一个六帧 episode，不作跨样本泛化证据 |
+| 真机状态 | 早期完整相机子树审计发现同消息双 parent；最新 `14300fa` 中驱动抑制冗余 TF 边，机器人五个相机 child 单 parent，服务器 `camera_color_frame` 唯一 parent 共 119 条，故 TF 子树 PASS；Depth CameraInfo `K` 仍重复四个 NaN，整体 PRECHECK UNCERTAIN，不放行 Trial 0 或 mapper |
+| 真实图片 | 用研究仓库 `after_frames.png` 替换较早的局部通过 TF 图，注明 `view_frames` 不能单独证明无双 parent，仍需逐条审计；9 月 23 日真实 RGB/Depth/检测图保留但标明是历史静止 smoke |
+| Axton 图 | `mermaid-visualizer` 维护研究思维图、系统流及相机门禁 `.mmd`，本地渲染为三个静态 SVG，网页无需 Mermaid 在线运行时 |
+| 关键文件 | `RabbitRobotNav/index.html`、`style.css`、三份 `.mmd` 和对应 SVG、`assets/g3-premature-stop.png`、`assets/wheeltec-tf-phase1c3.png`；根 README 与本目录实测截图 |
+| 本地验证 | Chrome 直接打开页面文件，1440×900 桌面与 390×844 手机均解码 19/19 张图片；页面脚本错误 0、文档宽度分别为 1440/390（无横向溢出）；三份 Mermaid CLI 渲染成功。只验证网页，不重跑 ROS 2 或 MP3D 实验；公开 Pages 生效需以推送后远端核对为准 |
+
+浏览器实测的当前准入提示：
+
+![Rabbit-RobotNav 相机 TF 子树通过而整体仍待核实的网页实测](docs/images/updates/2026-09-24-rabbit-robotnav-v5/tf-gate.png)
+
+最新真机原始 TF 图：
+
+![WheelTec Astra 相机驱动修复后的真实 TF 树](RabbitRobotNav/assets/wheeltec-tf-phase1c3.png)
+
+完整页面截图见 [桌面](docs/images/updates/2026-09-24-rabbit-robotnav-v5/desktop.png) 与 [手机](docs/images/updates/2026-09-24-rabbit-robotnav-v5/mobile.png)，[可维护门禁图](RabbitRobotNav/camera-tf-gate.mmd) 与[浏览器渲染图](docs/images/updates/2026-09-24-rabbit-robotnav-v5/tf-diagram.png)用于追溯解释，不替代原始审计。
+
 ### 2026-09-23 - Rabbit-RobotNav 最新源码证据与真机图片 v4
 
 对照 `history-aware-mp3d-vln` 的 `real-robot-integration` 分支提交 `77ddcfe072b096f547c38c1e52e230705ff9e2dd`，将 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 从旧版五场景回放概览更新为分层的论文证据页面。目标架构图继续作为概念图；MP3D 导航 A/B、单 episode 受控故障与 WheelTec 麦轮只读实机采样分别陈列，避免将静止语义地图 smoke 写成自主纠偏闭环。
