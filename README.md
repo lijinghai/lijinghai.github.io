@@ -4,6 +4,24 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-09-27 - Rabbit-RobotNav 硕士论文主页精简与品牌配色 v8
+
+依据[论文框架](https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e)、[实验台账](https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg)和研究代码 `real-robot-integration` 的已推送 [`9c0406`](https://github.com/lijinghai/history-aware-mp3d-vln/tree/9c0406add2aec1a26946a22582fe179d2e13e225)，将 `/RabbitRobotNav/` 从九段、21 图的资料型页面收敛为四段、五图的硕士论文项目页。沿用 [TagaVLM 项目页](https://apex-bjut.github.io/Taga-VLM/)的居中题目、摘要、方法、结果和资源层级，采用用户 RabbitRobot 标志中的橙色与深蓝色，不复制参考页的源代码、文字或图片。修改前的长页面把概念图、实验图和真机图连续铺开，且上版红色强调与品牌不符；修改后首屏突出论文题目和一张新的精简方法图，结果区只保留最能说明研究状态的 MP3D 漏检原图与两张 9 月 24 日真机原图。
+
+| 项目 | 本次实施与可复核证据 |
+| --- | --- |
+| 主线 | 历史感知语义地图 → 指令/历史/状态转移一致性 → 偏航诊断 → 可信恢复锚点；完整思维图继续通过链接提供，避免主页面再次堆满节点 |
+| 关键文件 | `RabbitRobotNav/index.html` 缩减正文；`RabbitRobotNav/style.css` 重做橙/深蓝响应式论文版式；`paper-method.mmd`、`paper-method-mobile.mmd` 及对应 SVG 提供可维护的桌面/手机方法图 |
+| 图片来源 | Figure 2 保留 MP3D 2.44 m 跳变漏检原图；Figures 3–4 保留真实 RGB-D 投影叠加和 Trial 0 候选检测帧；新 Figure 1 为方法解释图，不充当实验截图 |
+| 证据边界 | 五场景受控偏差为 3/4 检出；110 episode 配对 A/B 未见导航提升；真机只确认当前 mapper 的投影契约与静止 Trial 0，Trial 1–3、运动建图和自动纠偏仍待验证 |
+| 网页实测 | 本地 Chrome 以 1440×900 和 390×844 视口渲染：两端页面滚动宽度分别等于 1440/390，五张图片均解码、锚点无失效、正文均为四段；这不代表重跑了 MP3D 或 ROS 2 |
+
+Axton `mermaid-visualizer` 生成的[桌面方法图源](RabbitRobotNav/paper-method.mmd)与[手机纵向图源](RabbitRobotNav/paper-method-mobile.mmd)用于说明研究流程，网页使用预渲染 SVG，避免依赖在线脚本。实际浏览器渲染如下：
+
+![Rabbit-RobotNav v8 桌面首屏与橙蓝论文方法图](docs/images/updates/2026-09-27-rabbit-robotnav-paper-v8/desktop.top.png)
+
+完整核验：[桌面长图](docs/images/updates/2026-09-27-rabbit-robotnav-paper-v8/desktop.png) · [手机首屏](docs/images/updates/2026-09-27-rabbit-robotnav-paper-v8/mobile.top.png) · [手机长图](docs/images/updates/2026-09-27-rabbit-robotnav-paper-v8/mobile.png)。仅本项目页及根 README、对应实测截图发生变化；`work/` 是已有未跟踪目录，未纳入本次交付。
+
 ### 2026-09-27 - Rabbit-RobotNav 硕士论文主页视觉改版 v7
 
 以 [TagaVLM 论文项目页](https://apex-bjut.github.io/Taga-VLM/)的学术网页层级作为**视觉参考**，只改 [/RabbitRobotNav/](https://lijinghai.github.io/RabbitRobotNav/) 的呈现，不复制对方的文字、图片或代码。修改前是橙蓝品牌色、带阴影的卡片和图框，首张总体框架图排在 Abstract 之后；修改后采用白底与浅灰分区、居中题目与作者、深灰圆角资源按钮、少量论文红强调、简洁图注和无阴影结果展示，并将原有 Figure 1 上移为标题下的 teaser。为使引导语与新图序相符，仅把“以下三张”改为“本页三张”；研究论述、21 张图片的来源与图注、实验数值及“静止通过／运动未验证”的证据边界均未改变。
