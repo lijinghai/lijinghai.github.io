@@ -4,6 +4,34 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-09-27 - Rabbit-RobotNav 论文字体层级校正 v11
+
+只针对 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 的字体与字距进行校正，不改论文表述、图像、视频、实验数字或橙蓝配色。修改前全站默认 `Google Sans`，导致 Abstract、各节标题和页脚都偏离参考页的排版；BibTeX 外层还设置了 `Castoro` 与 17px 字号，呈现得过大。浏览器实测 [TagaVLM 项目页](https://apex-bjut.github.io/Taga-VLM/) 的字体分工后，修改 `RabbitRobotNav/style.css`：页面正文、章节标题、BibTeX 标题与页脚统一为 `Noto Sans`，项目标题、作者行及首图说明保留 `Google Sans`，BibTeX 代码改为 14px/21px 等宽字体；`RabbitRobotNav/index.html` 移除不再使用的 `Castoro` 字体请求。
+
+| 核验项 | 实际结果 |
+| --- | --- |
+| 字体实测 | Chrome 计算样式与实际字体覆盖均确认：论文标题 `Google Sans` 40px/600，正文 `Noto Sans` 16px/24px，章节标题 `Noto Sans` 32px/600，BibTeX 标题 `Noto Sans` 28px/600，代码 `monospace` 14px/21px，页脚 `Noto Sans` 16px/24px；这些角色与参考页一致，颜色仍为 RabbitRobot 橙蓝主题 |
+| 页面运行 | 本地 Chrome 的 1440×900 与 390×844 视口无横向溢出，4/4 图片完成解码，站内锚点无失效；三段 H.264 视频均可起播并推进约 0.39 秒，未发现解码错误 |
+| 证据边界 | 此次验证的是网站排版与媒体加载，不代表重新执行 MP3D、ROS 2 或真机恢复实验；仓库原有未跟踪的 `work/` 未动、未提交 |
+
+字体角色图采用 Axton `mermaid-visualizer` 的 Mermaid 源格式，准确对应本次实际核对的页面区域和字体：
+
+```mermaid
+flowchart LR
+  A["论文页面区域"] --> B["标题 / 作者 / 首图说明"]
+  A --> C["正文 / 章节标题 / 页脚"]
+  A --> D["BibTeX 代码"]
+  B --> E["Google Sans"]
+  C --> F["Noto Sans"]
+  D --> G["monospace · 14px"]
+```
+
+桌面和手机的实际浏览器页尾截图：
+
+![Rabbit-RobotNav v11 桌面 BibTeX 和页脚字体](docs/images/updates/2026-09-27-rabbit-robotnav-typography-v11/desktop.footer.png)
+
+[手机页尾](docs/images/updates/2026-09-27-rabbit-robotnav-typography-v11/mobile.footer.png) · [桌面首屏](docs/images/updates/2026-09-27-rabbit-robotnav-typography-v11/desktop.top.png) · [手机首屏](docs/images/updates/2026-09-27-rabbit-robotnav-typography-v11/mobile.top.png) · [桌面整页](docs/images/updates/2026-09-27-rabbit-robotnav-typography-v11/desktop.png) · [手机整页](docs/images/updates/2026-09-27-rabbit-robotnav-typography-v11/mobile.png)。
+
 ### 2026-09-27 - Rabbit-RobotNav 品牌配色与论文式页尾 v10
 
 本次只调整 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 的视觉主题和底部结构：把 v9 的红色强调换成用户 RabbitRobot 标志中的橙色与深蓝色，沿用现有的英文论文式正文、实验数值、四张页面图片和三段真实案例视频。底部改为参考论文主页的左对齐 BibTeX 标题、浅灰代码块、浅灰页脚与居中 GitHub 图标。引用条目明确使用 `@unpublished` 并注明“硕士论文项目进行中、非已发表论文”，避免把研究预览误写成正式发表成果。页面只说明版式参考 TagaVLM，没有套用未使用的 Nerfies 模板署名。

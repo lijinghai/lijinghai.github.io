@@ -5,7 +5,7 @@
   --muted: #596a77;
   --rule: #e8e8e8;
   --wash: #f8fafb;
-  font-family: "Google Sans", "Noto Sans", Arial, sans-serif;
+  font-family: "Noto Sans", Arial, sans-serif;
   color: var(--ink);
   background: #fff;
 }
@@ -15,7 +15,7 @@ body { margin: 0; }
 img, video { display: block; max-width: 100%; }
 a { color: #005b87; text-decoration: none; }
 a:hover { color: var(--accent-text); }
-p { line-height: 1.65; }
+p { line-height: 1.5; }
 .skip-link { position: absolute; left: -9999px; top: 0; }
 .skip-link:focus { left: 8px; top: 8px; padding: 8px; background: #fff; z-index: 10; }
 
@@ -24,16 +24,17 @@ p { line-height: 1.65; }
 .top-nav a { font-size: 21px; line-height: 28px; color: var(--ink); font-weight: 700; }
 .publication-header { text-align: center; max-width: 1050px; margin: 0 auto; padding: 30px 20px 0; }
 .publication-header h1 {
+  font-family: "Google Sans", "Noto Sans", Arial, sans-serif;
   color: var(--ink);
   font-size: clamp(30px, 3.05vw, 40px);
   line-height: 1.13;
   letter-spacing: -0.035em;
-  font-weight: 700;
+  font-weight: 600;
   margin: 0 auto;
 }
 .accent, .method-name { color: var(--accent-text); font-weight: 700; }
 .publication-status { color: var(--accent-text); font-size: 17px; font-weight: 600; margin: 20px 0 0; line-height: 1.4; }
-.publication-authors { font-size: 19px; margin: 17px 0 0; line-height: 1.4; }
+.publication-authors { font-family: "Google Sans", "Noto Sans", Arial, sans-serif; font-size: 20px; margin: 17px 0 0; line-height: 1.5; }
 .publication-authors a { color: var(--ink); }
 .publication-affiliation { font-size: 15px; margin: 8px 0 0; color: #666; }
 .publication-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 5px; margin: 29px auto 0; }
@@ -45,7 +46,7 @@ p { line-height: 1.65; }
 .publication-links a:hover { background: #005b87; color: #fff; }
 
 .teaser-section { padding: 55px 18px 63px; }
-.teaser-figure { max-width: 540px; margin: 0 auto; text-align: center; }
+.teaser-figure { max-width: 540px; margin: 0 auto; text-align: center; font-family: "Google Sans", "Noto Sans", Arial, sans-serif; }
 .teaser-figure img { width: 100%; height: auto; border: 2px solid var(--accent); border-radius: 23px; padding: 11px; background: #fff; }
 figcaption, .figure-caption { font-size: 13px; color: #666; line-height: 1.55; text-align: center; }
 figcaption { margin-top: 10px; }
@@ -54,8 +55,8 @@ figcaption { margin-top: 10px; }
 .section-alt { background: var(--wash); }
 .container { max-width: 960px; margin: 0 auto; }
 .prose { max-width: 870px; }
-.section h2 { margin: 0 0 27px; text-align: center; font-size: 31px; line-height: 1.25; letter-spacing: -0.02em; color: var(--ink); }
-.prose > p:not(.resource-links) { font-size: 16px; line-height: 1.85; text-align: justify; margin: 0; }
+.section h2 { margin: 0 0 27px; text-align: center; font-size: 32px; line-height: 1.125; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+.prose > p:not(.resource-links) { font-size: 16px; line-height: 1.5; text-align: justify; margin: 0; }
 .intro { text-align: center; font-size: 16px; line-height: 1.75; max-width: 860px; margin: 0 auto 25px; }
 .method-detail { text-align: center; font-size: 15px; line-height: 1.7; max-width: 830px; margin: -8px auto 25px; color: #666; }
 
@@ -85,14 +86,15 @@ figcaption { margin-top: 10px; }
 .resource-links { margin: 21px 0 0; text-align: center; font-size: 15px; }
 .citation-section { padding: 74px 20px 72px; }
 .citation-container { max-width: 1200px; margin: 0 auto; }
-.citation-section h2 { text-align: left; font-size: 38px; margin: 0 0 29px; font-weight: 600; }
+.citation-section h2 { text-align: left; font-size: 28px; line-height: 1.125; margin: 0 0 29px; font-weight: 600; }
 .citation-note { font-size: 14px; color: var(--muted); margin: -10px 0 21px; }
-.citation-code { margin: 0; padding: 29px 32px; overflow-x: auto; background: #f4f4f4; color: #394956; font: 17px/1.65 "Castoro", Georgia, serif; }
-.footer { padding: 75px 20px 85px; text-align: center; background: #fafafa; color: var(--ink); font-size: 17px; }
+.citation-code { margin: 0; padding: 29px 32px; overflow-x: auto; background: #f4f4f4; color: #4a4a4a; font: 14px/1.5 monospace; }
+.citation-code code { font: inherit; }
+.footer { padding: 75px 20px 85px; text-align: center; background: #fafafa; color: var(--ink); font-size: 16px; }
 .footer-github { display: inline-flex; width: 42px; height: 42px; align-items: center; justify-content: center; color: #111; margin-bottom: 40px; }
 .footer-github:hover { color: var(--accent-text); }
 .footer-github svg { width: 36px; height: 36px; fill: currentColor; }
-.footer p { margin: 0 auto 6px; max-width: 900px; line-height: 1.6; }
+.footer p { margin: 0 auto 6px; max-width: 900px; line-height: 1.5; }
 .footer-meta { font-size: 13px; color: var(--muted); }
 
 @media (max-width: 760px) {
@@ -113,7 +115,7 @@ figcaption { margin-top: 10px; }
   .results-table { min-width: 650px; font-size: 13px; }
   .results-table th, .results-table td { padding: 9px 10px; }
   .citation-section { padding: 52px 18px; }
-  .citation-section h2 { font-size: 31px; margin-bottom: 22px; }
+  .citation-section h2 { font-size: 27px; margin-bottom: 22px; }
   .citation-code { font-size: 13px; padding: 18px; white-space: pre-wrap; overflow-wrap: anywhere; }
   .footer { padding: 54px 20px 60px; font-size: 14px; }
   .footer-github { margin-bottom: 27px; }
