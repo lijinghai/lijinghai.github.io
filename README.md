@@ -4,6 +4,38 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-09-27 - Rabbit-RobotNav 硕士论文主页视觉改版 v7
+
+以 [TagaVLM 论文项目页](https://apex-bjut.github.io/Taga-VLM/)的学术网页层级作为**视觉参考**，只改 [/RabbitRobotNav/](https://lijinghai.github.io/RabbitRobotNav/) 的呈现，不复制对方的文字、图片或代码。修改前是橙蓝品牌色、带阴影的卡片和图框，首张总体框架图排在 Abstract 之后；修改后采用白底与浅灰分区、居中题目与作者、深灰圆角资源按钮、少量论文红强调、简洁图注和无阴影结果展示，并将原有 Figure 1 上移为标题下的 teaser。为使引导语与新图序相符，仅把“以下三张”改为“本页三张”；研究论述、21 张图片的来源与图注、实验数值及“静止通过／运动未验证”的证据边界均未改变。
+
+| 项目 | 本次交付及核验 |
+| --- | --- |
+| 范围 | RabbitRobotNav/index.html 只调整主题色元信息、标题强调标记和 Figure 1 位置；RabbitRobotNav/style.css 重写论文型版式。根首页及其他项目页未修改 |
+| 图片 | 21 张原有图片全部保留且未修改源文件；概念框架图仍明确标注“概念图”，真实机器人图与 MP3D 结果仍在各自证据区 |
+| 桌面实测 | 本地 Chrome 以 1440×1400 视口渲染，文档宽度/滚动宽度均为 1440，21/21 图片可解码，9 个正文章节保留 |
+| 手机实测 | Chrome 设备视口模拟 390×844，文档宽度/滚动宽度均为 390，21/21 图片可解码；标题和资源按钮换行，无横向溢出 |
+| 证据边界 | 这次只验证网页外观、图片载入与响应式排版；未重跑 MP3D、ROS 2、Trial 1–3 或机器人运动，既有科研结论不因换肤而升级 |
+
+用 Axton mermaid-visualizer 记录视觉层级（Mermaid 源，GitHub 与 Obsidian 可渲染）；这张说明图不代表新增实验结果：
+
+~~~mermaid
+flowchart LR
+    ref["TagaVLM 视觉参考"] --> hero["居中题目 · 作者 · 深色按钮"]
+    hero --> teaser["原 Figure 1 首屏展示"]
+    teaser --> sections["摘要 · 方法 · 结果 · 真机"]
+    sections --> boundary["原研究内容与证据边界"]
+    classDef neutral fill:#f8f9fa,stroke:#868e96,color:#303030;
+    classDef focus fill:#fff7f7,stroke:#bf0303,color:#303030;
+    class ref,boundary neutral;
+    class hero,teaser,sections focus;
+~~~
+
+桌面首屏与 Figure 1 的真实浏览器截图：
+
+![Rabbit-RobotNav 参考 TagaVLM 风格的硕士论文主页桌面渲染](docs/images/updates/2026-09-27-rabbit-robotnav-taga-style/desktop-full.top.png)
+
+完整页面实测：[桌面长图](docs/images/updates/2026-09-27-rabbit-robotnav-taga-style/desktop-full.png) · [390 px 手机首屏](docs/images/updates/2026-09-27-rabbit-robotnav-taga-style/mobile-full.top.png) · [手机长图](docs/images/updates/2026-09-27-rabbit-robotnav-taga-style/mobile-full.png)。样式来源只作视觉参照；页面研究内容仍以两份飞书文档和已有源码证据为准。
+
 ### 2026-09-27 - Rabbit-RobotNav 投影契约、静止 Trial 0 与真机图像更新 v6
 
 本次核对[飞书实验台账](https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg) 10.8.6、[论文框架](https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e)及 `real-robot-integration` 已推送源码 [`9c0406`](https://github.com/lijinghai/history-aware-mp3d-vln/tree/9c0406add2aec1a26946a22582fe179d2e13e225)，更新 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/)。修改前网站仍显示“Trial 0 不放行、mapper 未复跑”，且没有 9 月 24 日的投影叠加与新检测帧；修改后按时间标明相机 TF、当前 mapper 的 Color `K`＋注册深度投影契约及静止 Trial 0 已通过，同时把 Trial 1–3、运动建图、闭环恢复保留为待验证。论文框架文档中的早期 PRECHECK UNCERTAIN 与更新的实验台账冲突时，以 10.8.6 和源码原始诊断为准。

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Rabbit-RobotNav 硕士论文项目主页：基于历史感知语义地图与动态空间推理的长程视觉语言导航纠错框架。">
-  <meta name="theme-color" content="#0e3b5d">
+  <meta name="theme-color" content="#ffffff">
   <meta property="og:title" content="Rabbit-RobotNav | 长程视觉语言导航纠错框架">
   <meta property="og:description" content="历史感知语义地图、无标签偏航诊断与可信恢复锚点选择。">
   <meta property="og:image" content="assets/rabbitrobot-brand.jpg">
@@ -19,7 +19,7 @@
     <div class="hero-inner">
       <a class="back-link" href="../index.html" aria-label="返回 Jinghai Li 个人主页">← Jinghai Li</a>
       <img class="brand-lockup" src="assets/rabbitrobot-brand.jpg" width="1524" height="1050" alt="RabbitRobot 橙色兔子与机械臂品牌标识">
-      <h1>Rabbit-RobotNav</h1>
+      <h1>Rabbit-<span class="title-accent">RobotNav</span></h1>
       <p class="hero-subtitle">基于历史感知语义地图与动态空间推理的长程视觉语言导航纠错框架研究</p>
       <p class="hero-subtitle-en">History-Aware Semantic Mapping and Dynamic Spatial Reasoning for Long-Horizon Vision-and-Language Navigation Error Correction</p>
 
@@ -40,6 +40,11 @@
   </header>
 
   <main id="content">
+    <figure class="hero-figure teaser-figure">
+      <img src="assets/framework-overview.png" width="1347" height="957" alt="Rabbit-RobotNav 历史感知语义空间记忆、多源一致性检查与错误恢复框架总览">
+      <figcaption><strong>Figure 1. 目标总体框架（概念图）。</strong> 当前状态与可信历史进入一致性检查，偏差后选择可靠恢复锚点。ROS 2 的只读感知建图已有实机 smoke；SimpleNav、Nav2 与机器人自动纠偏尚未贯通。</figcaption>
+    </figure>
+
     <section class="paper-section narrow" id="abstract" aria-labelledby="abstract-title">
       <h2 id="abstract-title">Abstract</h2>
       <div class="abstract-copy">
@@ -56,13 +61,8 @@
       <div class="section-heading">
         <p class="section-kicker">METHOD</p>
         <h2 id="framework-title">Framework Overview</h2>
-        <p>历史不是附加日志，而是诊断证据与恢复锚点。以下三张是目标系统架构图：真实 RGB-D 到只读语义地图已完成静止 Trial 0；相机 TF 和当前 mapper 的 Color <code>K</code>＋注册深度投影契约已核验。诊断接管底盘、重规划与安全执行仍是后续集成目标。</p>
+        <p>历史不是附加日志，而是诊断证据与恢复锚点。本页三张是目标系统架构图：真实 RGB-D 到只读语义地图已完成静止 Trial 0；相机 TF 和当前 mapper 的 Color <code>K</code>＋注册深度投影契约已核验。诊断接管底盘、重规划与安全执行仍是后续集成目标。</p>
       </div>
-
-      <figure class="hero-figure">
-        <img src="assets/framework-overview.png" width="1347" height="957" alt="Rabbit-RobotNav 历史感知语义空间记忆、多源一致性检查与错误恢复框架总览">
-        <figcaption><strong>Figure 1. 目标总体框架（概念图）。</strong> 当前状态与可信历史进入一致性检查，偏差后选择可靠恢复锚点。ROS 2 的只读感知建图已有实机 smoke；SimpleNav、Nav2 与机器人自动纠偏尚未贯通。</figcaption>
-      </figure>
 
       <div class="figure-grid">
         <figure>
