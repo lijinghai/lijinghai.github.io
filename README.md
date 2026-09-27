@@ -4,6 +4,25 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-09-27 - Rabbit-RobotNav 品牌配色与论文式页尾 v10
+
+本次只调整 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 的视觉主题和底部结构：把 v9 的红色强调换成用户 RabbitRobot 标志中的橙色与深蓝色，沿用现有的英文论文式正文、实验数值、四张页面图片和三段真实案例视频。底部改为参考论文主页的左对齐 BibTeX 标题、浅灰代码块、浅灰页脚与居中 GitHub 图标。引用条目明确使用 `@unpublished` 并注明“硕士论文项目进行中、非已发表论文”，避免把研究预览误写成正式发表成果。页面只说明版式参考 TagaVLM，没有套用未使用的 Nerfies 模板署名。
+
+| 对比与交付 | 实际内容 |
+| --- | --- |
+| 修改前 | 标题、研究状态、贡献序号及首屏方法图仍带参考论文的红色强调；页尾只有两行文字 |
+| 修改后 | `RabbitRobotNav/style.css` 统一橙色／深蓝色，并给较小橙色文字使用更深的同色系以维持对比度；`paper-method-v9.mmd` 由 Axton `mermaid-visualizer` 规则维护并重新渲染 `assets/paper-method-v9.svg`；`index.html` 增加不冒充发表论文的 BibTeX 与 GitHub 页脚 |
+| 真正核验 | 本地 Chrome 在 1440×900 和 390×844 视口分别确认滚动宽度等于视口宽度、4/4 页面图像解码、站内锚点无失效；三段 1920×1080 H.264 视频均 `readyState=4` 且实际起播推进约 0.39–0.40 秒。手机 BibTeX 长行自动换行；桌面和手机页尾截图均人工检查 |
+| 证据边界 | 这只是网站呈现与媒体播放核验；未重跑 MP3D、ROS 2，也未改变真机移动建图或自动恢复的待验证状态；已有未跟踪的 `work/` 目录没有纳入提交 |
+
+品牌首屏与底部的真实浏览器截图：
+
+![Rabbit-RobotNav v10 橙蓝品牌首屏与重新着色的方法图](docs/images/updates/2026-09-27-rabbit-robotnav-brand-footer-v10/desktop.top.png)
+
+![Rabbit-RobotNav v10 BibTeX 区块和 GitHub 页脚](docs/images/updates/2026-09-27-rabbit-robotnav-brand-footer-v10/desktop.footer.png)
+
+[手机首屏](docs/images/updates/2026-09-27-rabbit-robotnav-brand-footer-v10/mobile.top.png) · [手机页尾](docs/images/updates/2026-09-27-rabbit-robotnav-brand-footer-v10/mobile.footer.png) · [桌面整页](docs/images/updates/2026-09-27-rabbit-robotnav-brand-footer-v10/desktop.png) · [手机整页](docs/images/updates/2026-09-27-rabbit-robotnav-brand-footer-v10/mobile.png)。Axton `mermaid-visualizer` 选择 Mermaid 源格式，是因为首屏方法图属于精确的数据流图；页面加载的是其预渲染 SVG，以便 GitHub Pages 无脚本也能显示。
+
 ### 2026-09-27 - Rabbit-RobotNav 英文学术项目页与真实实验视频 v9
 
 对照 [TagaVLM 论文主页](https://apex-bjut.github.io/Taga-VLM/)的实际页面与用户提供的首屏截图，重写 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 的信息层级：顶部居中英文论文式题目、研究状态、作者和深色资源按钮，随后是窄幅动机图、Abstract、Contributions、Method、视频案例、结果表、真机图与资源。只借鉴版式，不复制对方论文内容或素材；没有本项目已发表论文、arXiv 链接或端到端真机演示的证据，因此不伪造这些入口。旧版首屏的大兔子标志、中文标题和横向小流程图与参考页明显不同；新版以论文式首屏和纵向方法图替换，并让视频区真正播放视频、图像区展示实际实验图。
