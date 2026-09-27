@@ -44,11 +44,11 @@
       <h2 id="abstract-title">Abstract</h2>
       <div class="abstract-copy">
         <p>长程视觉语言导航中的错误往往不是单步动作失误，而是跨房间、跨语言阶段累积形成的状态漂移。本研究提出 <strong>Rabbit-RobotNav</strong>：通过历史感知语义—空间记忆保存“去过哪里、看见什么、完成到哪一步”，再联合指令一致性、历史一致性与转移一致性判断当前状态是否偏离，并从可信历史中选择最近可靠状态作为恢复锚点。</p>
-        <p>证据分成两条不能混算的路线：MP3D 中的跨场景配对导航 A/B 与受控故障稀疏回放，以及 WheelTec 麦克纳姆轮底盘上的只读 RGB-D 集成。前者尚未证明导航指标提升；后者曾完成静止在线建图 smoke。2026-09-24 相机 TF 双父节点已经定点修复并通过五帧审计，但 Depth CameraInfo 内参仍含 NaN，Phase 1C-3 整体暂为 UNCERTAIN，不放行 Trial 0、自动导航或恢复动作。</p>
+        <p>证据分成两条不能混算的路线：MP3D 中的跨场景配对导航 A/B 与受控故障稀疏回放，以及 WheelTec 麦克纳姆轮底盘上的只读 RGB-D 集成。前者尚未证明导航指标提升；后者在 2026-09-24 完成注册投影契约核验与静止 Trial 0。Depth CameraInfo 的 <code>K</code> 仍含 NaN，但当前 mapper 实际使用有限值的 Color CameraInfo <code>K</code> 与注册深度，因此本链路投影契约 PASS。Trial 1–3、运动建图、自动导航与恢复动作均未放行。</p>
       </div>
       <aside class="claim-strip">
         <span>当前主张</span>
-        <p>模块级诊断与历史真机静止采样可复盘；最新 Phase 1C-3 相机 TF 子树已 PASS，但整体 PRECHECK UNCERTAIN。跨场景纠错增益、移动语义地图质量与真机闭环恢复仍待验证。</p>
+        <p>模块级诊断可复盘；真机相机 TF、投影契约与静止 Trial 0 已 PASS，但 Phase 1C-3 整体仍 INCOMPLETE。跨场景纠错增益、移动语义地图质量与真机闭环恢复仍待验证。</p>
       </aside>
     </section>
 
@@ -56,7 +56,7 @@
       <div class="section-heading">
         <p class="section-kicker">METHOD</p>
         <h2 id="framework-title">Framework Overview</h2>
-        <p>历史不是附加日志，而是诊断证据与恢复锚点。以下三张是目标系统架构图：真实 RGB-D 到只读语义地图曾完成 9 月 23 日静止 smoke；相机 TF 障碍已修复，但相机内参与下游投影契约仍需核实。诊断接管底盘、重规划与安全执行仍是后续集成目标。</p>
+        <p>历史不是附加日志，而是诊断证据与恢复锚点。以下三张是目标系统架构图：真实 RGB-D 到只读语义地图已完成静止 Trial 0；相机 TF 和当前 mapper 的 Color <code>K</code>＋注册深度投影契约已核验。诊断接管底盘、重规划与安全执行仍是后续集成目标。</p>
       </div>
 
       <figure class="hero-figure">
@@ -80,7 +80,7 @@
       <div class="section-heading">
         <p class="section-kicker">RESEARCH MAP</p>
         <h2 id="research-map-title">Thesis Research Map</h2>
-        <p>用于后续迭代的论文主线索引：同一张图持续连接研究问题、方法贡献、已获证据、真机 TF 修复与剩余准入风险，以及下一阶段实验。</p>
+        <p>用于后续迭代的论文主线索引：同一张图持续连接研究问题、方法贡献、已获证据、真机静止 Trial 0 与剩余运动验证，以及下一阶段实验。</p>
       </div>
       <figure class="diagram-frame">
         <img src="assets/research-mindmap.svg" alt="Rabbit-RobotNav 论文研究思维图，连接论文主问题、方法主线、当前证据、关键负结果与下一阶段实验">
@@ -111,7 +111,7 @@
         </article>
       </div>
       <figure class="diagram-frame system-diagram">
-        <img src="assets/system-flow.svg" alt="Rabbit-RobotNav 系统数据流，区分历史静止真机 smoke、最新 TF 修复、仍未放行的 Depth CameraInfo 门禁、受控故障论文模块与尚未接入的机器人执行">
+        <img src="assets/system-flow.svg" alt="Rabbit-RobotNav 系统数据流，区分真实 RGB-D 静止建图证据、论文受控故障模块与尚未接入的机器人执行">
       </figure>
       <p class="source-hint">Axton / Mermaid 可维护源：<a href="system-flow.mmd">system-flow.mmd</a></p>
     </section>
@@ -171,28 +171,39 @@
       <div class="section-heading">
         <p class="section-kicker">REAL ROBOT · READ-ONLY</p>
         <h2 id="real-robot-title">WheelTec RGB-D → Online Semantic Map</h2>
-        <p>独立 ROS 2 层将 Astra RGB、注册深度、Color CameraInfo、YOLO-World 与图像时刻 TF 接入只读语义对象地图。9 月 23 日静止 smoke 有证据；9 月 24 日相机 TF 双父节点先被检出，随后在 Astra 驱动中定点修复，机器人与服务器逐条复查均为单 parent。但 Depth CameraInfo 内参的 NaN 风险尚未消除，因此当前仍不重启语义建图。以下图片按时间与证据等级区分。</p>
+        <p>独立 ROS 2 层将 Astra RGB、注册深度、Color CameraInfo、YOLO-World 与图像时刻 TF 接入只读语义对象地图。9 月 24 日先修复 Astra 相机 TF 双父节点，再核验 Color <code>K</code>＋注册深度投影契约，并完成约 47 秒的静止 Trial 0。Depth <code>K</code> 的 NaN 仍是元数据异常，不能推论其他消费者也安全；本页按时间与证据等级展示真实图片。</p>
       </div>
 
       <div class="gate-callout" role="status">
         <span>2026-09-24 · PHASE 1C-3</span>
-        <strong>TF 子树 PASS · 整体 PRECHECK UNCERTAIN</strong>
-        <p>修复前 <code>camera_color_frame</code> 在 98 条同一 TFMessage 内有两个 parent，均来自 <code>/camera/camera</code> 同一发布 GID。驱动仅抑制冗余的 <code>camera_link → camera_color_frame</code> 边；修复后机器人五个相机 child 均为单 parent，服务器复查该帧的唯一 parent 为 <code>camera_depth_frame</code>（119 条）。但 Depth CameraInfo 的 <code>K</code> 重复出现四个 NaN，尚需核实标定与消费者契约。本轮未启动 mapper、YOLO、Trial 0–3、Nav2 或 Shadow Mode，也未发送自动 <code>cmd_vel</code>。</p>
+        <strong>投影契约与静止 Trial 0 PASS · 整体 INCOMPLETE</strong>
+        <p>相机 TF 修复后，机器人五个相机 child 均为单 parent。Color CameraInfo <code>K/P</code> 有限，注册 RGB/Depth 同为 <code>camera_color_optical_frame</code>；3 张真实边缘叠加图用于投影核验。Depth CameraInfo <code>K</code> 的四个 NaN 仍在，但当前 mapper 不读取它。静止 Trial 0 接收/处理 413/388 帧，生成 14 个对象与实际接收的 28 个 Marker；未进行机器人移动、Trial 1–3、Nav2、Shadow Mode 或自动 <code>cmd_vel</code>。</p>
       </div>
       <figure class="diagram-frame gate-diagram">
-        <img src="assets/camera-tf-gate.svg" alt="依据 9 月 24 日逐条 TF JSON 绘制的修复前双父节点、驱动最小修补、修复后单 parent 以及尚未解决的 Depth CameraInfo NaN 门禁">
-        <figcaption><strong>Figure 6. 相机 TF 修复与剩余门禁。</strong> Axton/Mermaid 根据修复前后逐条 JSON 绘制，非 RViz 实拍；TF 子树 PASS 不等于 Phase 1C-3 整体放行。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/14300fa1f3bd76325f045d64b8b6a1179fc6bfc0/docs/evidence/chassis/wheeltec-mecanum/phase1c3-camera-tf-subtree-fix-2026-09-24/README.md" target="_blank" rel="noreferrer">查看前后原始审计 ↗</a></figcaption>
+        <img src="assets/camera-tf-gate.svg" alt="相机 TF 修复、Color K 与注册深度投影契约通过、静止 Trial 0 通过，以及运动试验仍未准入的证据门禁图">
+        <figcaption><strong>Figure 6. 相机 TF、投影契约与 Trial 0 准入链。</strong> Axton/Mermaid 依据逐条 TF 审计及静止 Trial 0 诊断绘制，非 RViz 实拍；静止 PASS 不等于 Phase 1C-3 整体完成。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/9c0406add2aec1a26946a22582fe179d2e13e225/docs/evidence/chassis/wheeltec-mecanum/phase1c3-projection-contract-trial0-2026-09-24" target="_blank" rel="noreferrer">查看原始证据 ↗</a></figcaption>
       </figure>
       <p class="source-hint">Axton / Mermaid 可维护源：<a href="camera-tf-gate.mmd">camera-tf-gate.mmd</a></p>
 
       <figure class="hero-figure tf-figure">
         <img src="assets/wheeltec-tf-phase1c3.png" loading="lazy" alt="Phase 1C-3 修复后 ROS 2 view_frames 生成的真实 TF 树，展示五个相机 child 的层级；单 parent 结论另有逐条审计支撑">
-        <figcaption><strong>Figure 7. 最新真机 ROS 2 TF 树截图。</strong> 驱动修复后，<code>camera_link → camera_depth_frame → camera_color_frame</code> 及两条 optical 分支连通；机器人端逐条审计五个相机 child 均为单 parent。<code>view_frames</code> 截图本身不能独立证明没有竞争边，故仍以 Figure 6 所链接的机器人与服务器原始审计为主证据。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/14300fa1f3bd76325f045d64b8b6a1179fc6bfc0/docs/evidence/chassis/wheeltec-mecanum/phase1c3-camera-tf-subtree-fix-2026-09-24/after_frames.png" target="_blank" rel="noreferrer">查看原图 ↗</a></figcaption>
+        <figcaption><strong>Figure 7. 真机 ROS 2 TF 修复后树截图。</strong> 驱动修复后，<code>camera_link → camera_depth_frame → camera_color_frame</code> 及两条 optical 分支连通；机器人端逐条审计五个相机 child 均为单 parent。<code>view_frames</code> 截图本身不能独立证明没有竞争边，故仍以机器人与服务器原始审计为主证据。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/14300fa1f3bd76325f045d64b8b6a1179fc6bfc0/docs/evidence/chassis/wheeltec-mecanum/phase1c3-camera-tf-subtree-fix-2026-09-24/after_frames.png" target="_blank" rel="noreferrer">查看原图 ↗</a></figcaption>
       </figure>
+
+      <div class="figure-grid">
+        <figure>
+          <img src="assets/trial0-rgbd-overlay-2026-09-24.png" width="640" height="480" loading="lazy" alt="9 月 24 日 WheelTec Astra 注册 RGB 与深度边缘叠加实拍，桌沿和门框几何对应">
+          <figcaption><strong>Figure 8. 最新真实 RGB-D 投影叠加。</strong> RGB 边缘与注册深度边缘在静止场景中大体对应，是投影契约的图像证据之一；不代表运动同步或地图精度。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/9c0406add2aec1a26946a22582fe179d2e13e225/docs/evidence/chassis/wheeltec-mecanum/phase1c3-projection-contract-trial0-2026-09-24/registered_overlay_002.png" target="_blank" rel="noreferrer">查看原图 ↗</a></figcaption>
+        </figure>
+        <figure>
+          <img src="assets/trial0-rgb-bbox-2026-09-24.png" width="640" height="480" loading="lazy" alt="9 月 24 日静止 Trial 0 实拍 RGB 图像，办公室椅子和家具上绘有 YOLO-World 候选检测框">
+          <figcaption><strong>Figure 9. 静止 Trial 0 的真实检测帧。</strong> 候选框证明检测链路运行，不证明类别全部正确；椅子误归类和跨视角 ID 仍是待测风险。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/9c0406add2aec1a26946a22582fe179d2e13e225/docs/evidence/chassis/wheeltec-mecanum/phase1c3-projection-contract-trial0-2026-09-24/trial0_rgb_bbox.png" target="_blank" rel="noreferrer">查看原图 ↗</a></figcaption>
+        </figure>
+      </div>
 
       <figure class="hero-figure real-robot-lead">
         <img src="assets/real-robot-online-detections.png" width="640" height="480" loading="lazy" alt="WheelTec 麦轮 Astra 真机办公室 RGB 画面，YOLO-World 在椅子、灯具和植物候选区域绘制检测框">
-        <figcaption><strong>Figure 8. 9 月 23 日真机静止 smoke 的历史 RGB 检测帧。</strong> 画面来自 WheelTec 麦轮搭载的 Orbbec Astra，不是 MP3D 仿真，也不是最新门禁放行后的运行。椅子附近可见 <code>plant</code> 误检；黄色框不证明类别、跨视角 ID 或导航决策正确。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/14300fa1f3bd76325f045d64b8b6a1179fc6bfc0/docs/chassis/wheeltec-mecanum.md" target="_blank" rel="noreferrer">查看原始证据与限制 ↗</a></figcaption>
+        <figcaption><strong>Figure 10. 9 月 23 日历史静止 smoke 的 RGB 检测帧。</strong> 画面来自 WheelTec 麦轮搭载的 Orbbec Astra，不是 MP3D 仿真，也不是最新 Trial 0。椅子附近可见 <code>plant</code> 误检；黄色框不证明类别、跨视角 ID 或导航决策正确。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/14300fa1f3bd76325f045d64b8b6a1179fc6bfc0/docs/chassis/wheeltec-mecanum.md" target="_blank" rel="noreferrer">查看原始证据与限制 ↗</a></figcaption>
       </figure>
 
       <div class="sensor-grid" aria-label="真实 RGB-D 注册证据">
@@ -201,14 +212,14 @@
         <figure><img src="assets/real-robot-rgbd-overlay.png" width="640" height="480" loading="lazy" alt="RGB 边缘和注册深度边缘叠加，门框、桌沿及椅背结构大体对应"><figcaption><strong>注册边缘叠加</strong> · 静态场景几何大体对齐，并非运动中零延迟证明。</figcaption></figure>
       </div>
 
-      <div class="metric-row robot-metrics" role="group" aria-label="九月二十三日实机静止只读历史测试结果">
-        <article><strong>152 / 137</strong><span>匹配帧接收 / 处理</span></article>
-        <article><strong>29.6 ms</strong><span>RGB–Depth 平均时间差</span></article>
+      <div class="metric-row robot-metrics" role="group" aria-label="九月二十四日实机静止 Trial 0 测试结果">
+        <article><strong>413 / 388</strong><span>匹配帧接收 / 处理</span></article>
+        <article><strong>33.972 ms</strong><span>RGB–Depth 平均时间差</span></article>
         <article><strong>14</strong><span>地图对象节点</span></article>
-        <article><strong>0</strong><span>模型推理错误</span></article>
-        <article><strong>UNCERTAIN</strong><span>完整语义地图准入状态</span></article>
+        <article><strong>28</strong><span>实际收到的 Marker</span></article>
+        <article><strong>PASS</strong><span>静止 Trial 0；非运动准入</span></article>
       </div>
-      <p class="evidence-caveat"><strong>历史测试，不代表当前准入：</strong>上方 152/137 帧、14 个节点与 20+112 项测试均属 9 月 23 日静止 smoke。MarkerArray topic 有发布者，但服务器未安装 RViz、未取得真实渲染画面；多视角同物体关联、同类分离与运动时间同步仍未验证。9 月 24 日 TF 修复后没有再次运行语义 mapper；Depth CameraInfo 门禁仍待核实。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/14300fa1f3bd76325f045d64b8b6a1179fc6bfc0/docs/evidence/chassis/wheeltec-mecanum/online_semantic_map_2026-09-23.json" target="_blank" rel="noreferrer">查看历史诊断 JSON ↗</a></p>
+      <p class="evidence-caveat"><strong>最新诊断的边界：</strong>上述 413/388 帧、14 个对象与 28 个 Marker 来自 9 月 24 日约 47 秒静止 Trial 0；平均同步差 33.972 ms、模型错误 0。MarkerArray 确有消息，但未取得 RViz 实际渲染截图；多视角同物体关联、两把椅子分离与运动中世界坐标稳定性尚未验证。启动过程有 10 次 TF drop，集中在前 5 秒；部分对象类别可能误检。正常选择性 <code>colcon build</code> 与 22/22 ROS 2 测试通过，<code>--symlink-install</code> 仍有 <code>IsADirectoryError</code>。<a href="https://github.com/lijinghai/history-aware-mp3d-vln/blob/9c0406add2aec1a26946a22582fe179d2e13e225/docs/evidence/chassis/wheeltec-mecanum/phase1c3-projection-contract-trial0-2026-09-24/trial0_diagnostics.json" target="_blank" rel="noreferrer">查看 Trial 0 诊断 JSON ↗</a></p>
     </section>
 
     <section class="paper-section narrow" id="boundary" aria-labelledby="boundary-title">
@@ -223,7 +234,7 @@
             <li>raw / trusted memory、可靠性门禁与状态更新机制</li>
             <li>11 场景、110 集配对 A/B 的导航负结果与单 episode 受控故障 smoke</li>
             <li>恢复锚点选择与 2.44 m 位姿跳变漏检分析</li>
-            <li>WheelTec 麦轮真实 RGB-D 注册与 9 月 23 日只读 ROS 2 语义地图静止测试；9 月 24 日相机 TF 双父节点定点修复，机器人与服务器五帧/单边审计通过</li>
+            <li>WheelTec 麦轮真实 RGB-D 注册、相机 TF 单 parent 审计、Color <code>K</code>＋注册深度投影契约与 9 月 24 日静止 Trial 0；413/388 帧、14 个对象、28 个 Marker</li>
           </ul>
         </article>
         <article class="pending">
@@ -233,7 +244,7 @@
             <li>SR、SPL、NE、nDTW 与 SDTW 的正式改善</li>
             <li>真实机器人完成自主纠偏与安全恢复</li>
             <li>受控纠错 formal 多 episode 消融、跨随机种子的泛化结论</li>
-            <li>Depth CameraInfo <code>K</code> 中四个 NaN 的标定与下游投影契约；整体 PRECHECK、两椅多视角 ID、同类分离和 RViz 画面</li>
+            <li>Depth CameraInfo <code>K</code> 中四个 NaN 对其他消费者的影响；Trial 1–3、两椅多视角 ID、同类分离和 RViz 实际画面</li>
           </ul>
         </article>
       </div>
@@ -248,7 +259,7 @@
         <li><span>01</span><div><strong>补齐正式受控纠错样本</strong><p>准备互不重复的多 episode、多指令与至少两个 scene；当前单 episode 清单仅允许 smoke，不得靠重复运行扩大独立样本数。</p></div></li>
         <li><span>02</span><div><strong>配对消融与正式评测</strong><p>Full、NoHistoryMap 与 B0–B6 共享感知缓存和故障日程；另以 action-aligned 数据评测转移一致性，MP3D 稀疏回放不承担该指标。</p></div></li>
         <li><span>03</span><div><strong>修复位姿跳变漏检</strong><p>补充动作、位姿、时间和里程计连续性证据，形成至少 30 例可回读失败画廊。</p></div></li>
-        <li><span>04</span><div><strong>先厘清 Depth CameraInfo，再进入 shadow</strong><p>双父节点已修复；下一步独立核实 Depth <code>K</code> 的 NaN 与下游投影是否依赖该内参，整体准入通过后才重启只读 mapper，补多视角、两椅分离与 RViz 实际渲染证据。之后再考虑无控制权 shadow 与人工监护下低速路线。</p></div></li>
+        <li><span>04</span><div><strong>完成 Trial 1–3，再评估 shadow</strong><p>静止 Trial 0 已通过。下一步先验证同椅多视角 ID、两椅分离和运动中世界坐标稳定性，并补 RViz 实际渲染；Depth <code>K</code> 的元数据异常需单独追踪其他消费者。通过后再考虑无控制权 shadow 与人工监护下低速路线。</p></div></li>
       </ol>
     </section>
 
@@ -268,14 +279,14 @@
         </a>
       </div>
       <div class="project-note">
-        <strong>Project note.</strong> 本页是硕士论文持续更新入口。概念框架图、MP3D 实验图、真实 TF 截图及历史真机采样分别标注，不能相互替代。页面依据 <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/14300fa1f3bd76325f045d64b8b6a1179fc6bfc0">源码提交 14300fa</a> 与两份飞书记录更新；不把尚未提交的本地实验写成公开进度。
+        <strong>Project note.</strong> 本页是硕士论文持续更新入口。概念框架图、MP3D 实验图、真实 TF 截图及静止真机采样分别标注，不能相互替代。页面依据 <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/9c0406add2aec1a26946a22582fe179d2e13e225">源码提交 9c0406</a> 与两份飞书记录更新；论文框架文档中更早的 PRECHECK UNCERTAIN 状态以实验台账 10.8.6 及原始证据的后续记录为准，不把尚未提交的本地实验写成公开进度。
       </div>
     </section>
   </main>
 
   <footer>
     <p><strong>Rabbit-RobotNav</strong> · Jinghai Li · Master Thesis Working Project</p>
-    <p>Updated 2026-09-24 from source commit 14300fa · Camera TF subtree passed; overall precheck remains uncertain due to Depth CameraInfo NaNs. Historical static smoke and planned closed loop remain separate evidence levels.</p>
+    <p>Updated 2026-09-27 from source commit 9c0406 · Projection contract and static Trial 0 passed; mobile mapping and closed-loop recovery remain unverified.</p>
   </footer>
 
 </body>

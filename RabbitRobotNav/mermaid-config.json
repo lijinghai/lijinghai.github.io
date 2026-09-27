@@ -1,5 +1,8 @@
 {
   "theme": "base",
+  "flowchart": {
+    "wrappingWidth": 230
+  },
   "themeVariables": {
     "background": "#ffffff",
     "primaryColor": "#fff2e8",

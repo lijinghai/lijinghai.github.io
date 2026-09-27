@@ -345,8 +345,8 @@ figcaption strong {
   font-size: 0.93rem;
 }
 
-.gate-diagram {
-  max-width: 520px;
+figure.gate-diagram {
+  max-width: 720px;
   margin: 0 auto;
 }
 

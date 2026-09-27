@@ -1,18 +1,17 @@
 flowchart LR
-    subgraph robot["真机历史证据：2026-09-23 只读静止 smoke"]
+    subgraph robot["真机已验证：2026-09-24 静止 Trial 0"]
         RGB["Astra RGB + 注册 Depth"] --> SYNC["时间戳同步与有效深度"]
         SYNC --> YOLO["YOLO-World 检测"]
         YOLO --> GEO["Color CameraInfo 反投影 + TF"]
         GEO --> MAP["odom_combined 语义对象地图"]
-        MAP --> PUB["MarkerArray 发布 + JSON 证据"]
+        MAP --> PUB["14 对象 + 实收 28 Marker"]
     end
 
-    subgraph gate["当前门禁：2026-09-24 Phase 1C-3"]
-        CAL["Phase 1C-2 粗外参和移动 TF：局部 PASS"] --> BAD["camera_color_frame 双 parent 被检出"]
-        BAD --> FIX["Astra 驱动定点修补"]
-        FIX --> AUDIT["五个相机 child 单 parent：TF PASS"]
-        AUDIT --> K["Depth CameraInfo K 含四个 NaN"]
-        K --> STOP["整体 PRECHECK UNCERTAIN：Trial 0 不放行"]
+    subgraph gate["真机准入边界"]
+        AUDIT["相机 TF 单 parent：PASS"] --> PROJ["Color K + 注册深度投影：PASS"]
+        PROJ --> STATIC["静止 Trial 0：PASS，413/388 帧"]
+        STATIC --> MOBILE["Trial 1–3 / 运动关联：待验证"]
+        DK["Depth K 含 NaN：其他消费者待核实"] -.-> MOBILE
     end
 
     subgraph thesis["论文模块：受控故障 smoke"]
@@ -21,27 +20,26 @@ flowchart LR
         R --> G{"可靠性门禁"}
         G -->|"可信"| T["可信聚合状态"]
         G -->|"不可信"| X["隔离错误状态"]
-        T --> K["指令 / 历史 / 转移一致性"]
-        I --> K
-        K --> D["诊断与 Last Reliable State 锚点"]
+        T --> CHECK["指令 / 历史 / 转移一致性"]
+        I --> CHECK
+        CHECK --> D["诊断与 Last Reliable State 锚点"]
     end
 
-    PUB -.->|"历史 smoke，当前整体门禁未放行"| STOP
-    STOP -.->|"澄清 K 与下游契约、准入后才允许"| MAP
-    PUB -.->|"尚未接入真机诊断"| K
+    AUDIT --> GEO
+    PROJ --> GEO
+    PUB -.->|"尚未接入真机诊断"| CHECK
     D -.->|"尚未实机验证"| E["SimpleNav / Nav2 / 底盘恢复执行"]
+    MOBILE -.->|"尚未准入"| E
 
     classDef input fill:#eaf2f6,stroke:#0e3b5d,color:#072d48,stroke-width:1.5px;
     classDef core fill:#fff2e8,stroke:#ee8234,color:#7a3510,stroke-width:1.5px;
     classDef memoryNode fill:#f4f8fa,stroke:#47758f,color:#0e3b5d,stroke-width:1.5px;
     classDef boundary fill:#fff0ef,stroke:#c84a42,color:#6d2420,stroke-width:1.5px;
     class RGB,SYNC,YOLO,GEO,I input;
-    class P,K,D core;
+    class P,CHECK,D,PROJ,STATIC core;
     class R,G,T,MAP,PUB memoryNode;
-    class X,E boundary;
-    class BAD,STOP boundary;
-    class CAL,AUDIT,FIX input;
-    class K memoryNode;
+    class X,E,MOBILE,DK boundary;
+    class AUDIT input;
     style robot fill:#eaf2f6,stroke:#0e3b5d,stroke-width:1px
-    style gate fill:#fff0ef,stroke:#c84a42,stroke-width:1px
+    style gate fill:#fff9f4,stroke:#ee8234,stroke-width:1px
     style thesis fill:#fff9f4,stroke:#ee8234,stroke-width:1px

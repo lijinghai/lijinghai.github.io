@@ -4,6 +4,25 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-09-27 - Rabbit-RobotNav 投影契约、静止 Trial 0 与真机图像更新 v6
+
+本次核对[飞书实验台账](https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg) 10.8.6、[论文框架](https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e)及 `real-robot-integration` 已推送源码 [`9c0406`](https://github.com/lijinghai/history-aware-mp3d-vln/tree/9c0406add2aec1a26946a22582fe179d2e13e225)，更新 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/)。修改前网站仍显示“Trial 0 不放行、mapper 未复跑”，且没有 9 月 24 日的投影叠加与新检测帧；修改后按时间标明相机 TF、当前 mapper 的 Color `K`＋注册深度投影契约及静止 Trial 0 已通过，同时把 Trial 1–3、运动建图、闭环恢复保留为待验证。论文框架文档中的早期 PRECHECK UNCERTAIN 与更新的实验台账冲突时，以 10.8.6 和源码原始诊断为准。
+
+| 范围 | 本次实施及证据边界 |
+| --- | --- |
+| 最新真机图 | 原样复制研究仓库 `registered_overlay_002.png` 和 `trial0_rgb_bbox.png`，SHA-256 与原图一致；旧 9 月 23 日检测图保留但标为历史 |
+| 真实指标 | 静止约 47 秒，接收/处理 413/388 帧，RGB–Depth 平均同步差 33.972 ms，14 个对象，实际收到 28 个 Marker；并非移动或导航成功 |
+| 投影边界 | Color CameraInfo `K/P` 有限、注册 RGB/Depth 共用 `camera_color_optical_frame`，当前 mapper 不读取仍含四个 NaN 的 Depth `K`；不推论其他消费者安全 |
+| Axton 图 | 用 `mermaid-visualizer` 更新研究思维图、系统数据流和 TF/投影/Trial 准入图的 `.mmd`，重新预渲染为本地 SVG；配置中扩展流程图文字换行宽度，修正门禁图居中展示 |
+| 关键文件 | `RabbitRobotNav/index.html`、`style.css`、`mermaid-config.json`、三份 `.mmd` 与 SVG、两张新的真机 PNG；网站其他页面未修改 |
+| 实际验证 | 三份 Mermaid CLI 渲染成功；本地 Chrome `file://` 桌面 1440×900、手机 390×844 均解码 21/21 图，无横向溢出或页面脚本错误，门禁图居中；只验证网页呈现，未重跑 ROS 2、MP3D 或机器人运动试验 |
+
+最新真机图与门禁说明的浏览器实测：
+
+![Rabbit-RobotNav 9 月 24 日真实 RGB-D 与静止 Trial 0 的网站渲染](docs/images/updates/2026-09-27-rabbit-robotnav-v6/real-robot.png)
+
+完整页面实测：[桌面](docs/images/updates/2026-09-27-rabbit-robotnav-v6/desktop.png) · [手机](docs/images/updates/2026-09-27-rabbit-robotnav-v6/mobile.png) · [准入图细节](docs/images/updates/2026-09-27-rabbit-robotnav-v6/gate.png)。静止 Trial 0 [原始诊断和两张原图](https://github.com/lijinghai/history-aware-mp3d-vln/tree/9c0406add2aec1a26946a22582fe179d2e13e225/docs/evidence/chassis/wheeltec-mecanum/phase1c3-projection-contract-trial0-2026-09-24)可回溯；没有 RViz 实际渲染截图、多视角 ID 或运动建图通过证据。
+
 ### 2026-09-24 - Rabbit-RobotNav 五场景图像与相机 TF 准入更新 v5
 
 对照两份飞书[实验台账](https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg)、[论文框架](https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e)，以及 `history-aware-mp3d-vln` 的已推送 `real-robot-integration` 提交 [`14300fa`](https://github.com/lijinghai/history-aware-mp3d-vln/tree/14300fa1f3bd76325f045d64b8b6a1179fc6bfc0)，更新 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 的证据层级和图片。修改前页面缺少 G3 提前停止原图，也没有 9 月 24 日相机 TF 修复后的真实树；修改后展示五场景受控异常、双父节点检出与定点修复、最新真机 TF 截图，并明确剩余 Depth CameraInfo 风险。保持原有白底、RabbitRobot 橙与深蓝学术项目风格，不改网站其他页面。
