@@ -4,6 +4,24 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-09-27 - Rabbit-RobotNav 英文学术项目页与真实实验视频 v9
+
+对照 [TagaVLM 论文主页](https://apex-bjut.github.io/Taga-VLM/)的实际页面与用户提供的首屏截图，重写 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 的信息层级：顶部居中英文论文式题目、研究状态、作者和深色资源按钮，随后是窄幅动机图、Abstract、Contributions、Method、视频案例、结果表、真机图与资源。只借鉴版式，不复制对方论文内容或素材；没有本项目已发表论文、arXiv 链接或端到端真机演示的证据，因此不伪造这些入口。旧版首屏的大兔子标志、中文标题和横向小流程图与参考页明显不同；新版以论文式首屏和纵向方法图替换，并让视频区真正播放视频、图像区展示实际实验图。
+
+| 范围 | 本次实施和可复核证据 |
+| --- | --- |
+| 研究依据 | 核对[论文框架](https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e)、[实验台账](https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg)与研究代码 `real-robot-integration` 的 [`9c0406`](https://github.com/lijinghai/history-aware-mp3d-vln/tree/9c0406add2aec1a26946a22582fe179d2e13e225)；网站只陈述这些材料支持的结论 |
+| 页面与图片 | `RabbitRobotNav/index.html`、`style.css` 改为白底/浅灰分节、红色强调的英语论文主页；Axton `mermaid-visualizer` 的 `paper-method-v9.mmd` 预渲染为首屏 SVG；正文保留真实 MP3D G1 图和 2026-09-24 WheelTec 静止 Trial 0 两张原图 |
+| 视频 | 从飞书实验记录提取 G1 指令顺序、G2 2.44 m 位姿跳变漏检、G5 空间关系冲突的三段原始案例视频，并转为浏览器可播 H.264 MP4；视频图注标明这是稀疏参考航点回放，不是连续里程计或机器人自动恢复 |
+| 证据边界 | 五场景受控回放中四类偏差检出三类、34 个正常稀疏参考点未触发告警；110 episode 配对 A/B 的 SR 持平且 SPL/nDTW 未提升；真机仅通过当前 mapper 投影契约与静止 Trial 0 的 413/388 帧检查，移动建图和闭环恢复未验证 |
+| 网页核验 | 本地 Chrome 1440×900、390×844 两种视口均无横向溢出；4/4 图像解码、站内锚点无失效；三段 1920×1080 H.264 视频均 `readyState=4`、无解码错误，逐段实际起播且播放时间推进约 0.39 秒。未将网页播放测试当成科研实验复现 |
+
+真实浏览器桌面首屏：
+
+![Rabbit-RobotNav v9 英文学术项目页桌面首屏，包含纵向方法图](docs/images/updates/2026-09-27-rabbit-robotnav-taga-v9/desktop.top.png)
+
+[桌面整页](docs/images/updates/2026-09-27-rabbit-robotnav-taga-v9/desktop.png) · [手机首屏](docs/images/updates/2026-09-27-rabbit-robotnav-taga-v9/mobile.top.png) · [手机整页](docs/images/updates/2026-09-27-rabbit-robotnav-taga-v9/mobile.png)。现有未跟踪的 `work/` 目录属于用户现场，未纳入此次改动。源视频、图像和数值来自上述项目材料；未新跑 MP3D 或 ROS 2 实验。
+
 ### 2026-09-27 - Rabbit-RobotNav 硕士论文主页精简与品牌配色 v8
 
 依据[论文框架](https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e)、[实验台账](https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg)和研究代码 `real-robot-integration` 的已推送 [`9c0406`](https://github.com/lijinghai/history-aware-mp3d-vln/tree/9c0406add2aec1a26946a22582fe179d2e13e225)，将 `/RabbitRobotNav/` 从九段、21 图的资料型页面收敛为四段、五图的硕士论文项目页。沿用 [TagaVLM 项目页](https://apex-bjut.github.io/Taga-VLM/)的居中题目、摘要、方法、结果和资源层级，采用用户 RabbitRobot 标志中的橙色与深蓝色，不复制参考页的源代码、文字或图片。修改前的长页面把概念图、实验图和真机图连续铺开，且上版红色强调与品牌不符；修改后首屏突出论文题目和一张新的精简方法图，结果区只保留最能说明研究状态的 MP3D 漏检原图与两张 9 月 24 日真机原图。

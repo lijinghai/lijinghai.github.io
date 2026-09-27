@@ -1,0 +1,12 @@
+flowchart TB
+    I["Instruction + current RGB"] --> C["Three-source consistency diagnosis"]
+    M["Trust-gated semantic history"] --> C
+    C --> A["Deviation + reliable recovery anchor"]
+    A -.-> E["Autonomous execution not verified"]
+    classDef input fill:#f7f7f7,stroke:#666666,color:#333333,stroke-width:1.5px;
+    classDef core fill:#ffffff,stroke:#bf0303,color:#333333,stroke-width:2px;
+    classDef outcome fill:#fdf5f5,stroke:#bf0303,color:#333333,stroke-width:2px;
+    classDef pending fill:#fafafa,stroke:#aaaaaa,color:#777777,stroke-dasharray:5 4;
+    class I,M input;
+    class C,A core;
+    class E pending;

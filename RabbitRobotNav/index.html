@@ -1,46 +1,106 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
+<!doctype html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Rabbit-RobotNav 硕士论文项目：历史感知语义地图、长程视觉语言导航偏航诊断与可信恢复锚点选择。">
+  <meta name="description" content="Rabbit-RobotNav: history-aware error diagnosis and recovery-anchor selection for long-horizon vision-language navigation. A master's thesis project with traceable preliminary evidence.">
   <meta name="theme-color" content="#ffffff">
-  <meta property="og:title" content="Rabbit-RobotNav | 长程视觉语言导航纠错研究">
-  <meta property="og:description" content="历史感知语义地图与动态空间推理：问题、方法和可追溯的阶段性证据。">
-  <meta property="og:image" content="assets/rabbitrobot-brand.jpg">
-  <title>Rabbit-RobotNav | 长程视觉语言导航纠错研究</title>
+  <meta property="og:title" content="Rabbit-RobotNav | Long-Horizon Vision-Language Navigation">
+  <meta property="og:description" content="History-aware semantic mapping, multi-source consistency diagnosis, and reliable recovery-anchor selection.">
+  <meta property="og:image" content="assets/g1-instruction-order.png">
+  <title>Rabbit-RobotNav | Long-Horizon Vision-Language Navigation</title>
   <link rel="icon" href="../images/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">跳到正文</a>
-  <nav class="site-nav" aria-label="页面导航"><div class="nav-inner"><a class="nav-brand" href="../index.html">Jinghai Li</a><div class="nav-links"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#resources">Resources</a></div></div></nav>
-
-  <header class="hero">
-    <div class="logo-window" aria-label="RabbitRobot 品牌标识"><img src="assets/rabbitrobot-brand.jpg" alt="橙色兔子与深蓝机械臂"></div>
-    <p class="eyebrow">MASTER THESIS PROJECT · WORK IN PROGRESS</p>
-    <h1>Rabbit-<span>RobotNav</span></h1>
-    <p class="hero-title">基于历史感知语义地图与动态空间推理的<br class="desktop-break">长程视觉语言导航纠错框架研究</p>
-    <p class="hero-en">History-Aware Semantic Mapping and Dynamic Spatial Reasoning for Long-Horizon Vision-and-Language Navigation</p>
-    <p class="author"><a href="../index.html">李京海 · Jinghai Li</a></p>
-    <p class="affiliation">硕士论文研究 · 2026</p>
-    <div class="hero-actions" aria-label="研究资源"><a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/real-robot-integration" target="_blank" rel="noopener noreferrer">⌘ <span>Code</span></a><a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noopener noreferrer">▤ <span>Thesis</span></a><a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">◉ <span>Experiments</span></a></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="top-nav" aria-label="Home"><a href="../index.html" title="Jinghai Li home" aria-label="Jinghai Li home">⌂</a></nav>
+  <header class="publication-header">
+    <h1><span class="accent">Rabbit-RobotNav</span>: History-Aware Error Diagnosis<br class="desktop-break"> and Recovery Anchors for Vision-Language Navigation</h1>
+    <p class="publication-status">MASTER'S THESIS PROJECT · WORK IN PROGRESS</p>
+    <p class="publication-authors"><a href="../index.html">Jinghai Li</a></p>
+    <p class="publication-affiliation">Long-horizon ground-robot navigation research · 2026</p>
+    <div class="publication-links" aria-label="Project links">
+      <a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noopener noreferrer">▤ &nbsp;Thesis</a>
+      <a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">◉ &nbsp;Experiments</a>
+      <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/real-robot-integration" target="_blank" rel="noopener noreferrer">◈ &nbsp;Code</a>
+    </div>
   </header>
-
   <main id="main">
-    <figure class="teaser content-width"><picture><source media="(max-width: 760px)" srcset="assets/paper-method-mobile.svg"><img src="assets/paper-method.svg" width="1150" height="310" alt="从指令与观测建立可靠历史，检查指令、历史与状态转移的一致性，再定位偏航并选择恢复锚点；执行闭环仍待验证"></picture><figcaption><strong>Figure 1.</strong> Rabbit-RobotNav 的论文方法主线。图示诊断与锚点选择的研究框架；机器人自动恢复执行仍未验证。</figcaption></figure>
-
-    <section id="abstract" class="section abstract-section" aria-labelledby="abstract-heading"><div class="content-width prose-width"><h2 id="abstract-heading">Abstract</h2><p>长程视觉语言导航中的偏航可能跨多个房间和指令阶段累积，单帧观测难以判断“走错了多久、该回到哪里”。Rabbit-RobotNav 以可信历史语义—空间记忆为诊断证据，结合指令、历史与状态转移的一致性检查定位偏差，并检索最近可靠状态作为恢复锚点。当前工作聚焦<strong>无评估标签的偏航诊断与锚点选择</strong>；闭环恢复执行、导航指标改善和运动中的真机语义地图仍待正式验证。</p></div></section>
-
-    <section id="method" class="section method-section" aria-labelledby="method-heading"><div class="content-width"><h2 id="method-heading">Method Overview</h2><p class="section-lead">从“当前看到了什么”延伸到“此前可信地到过哪里，以及指令本应进行到哪一步”。</p><div class="method-grid"><article><span class="step">01</span><h3>历史感知语义地图</h3><p>区分原始观测与可信聚合状态，用可靠性门禁阻止错误历史污染记忆。</p></article><article><span class="step">02</span><h3>多源一致性诊断</h3><p>联合指令、历史和状态转移证据判断偏航；评估标签只用于离线计分。</p></article><article><span class="step">03</span><h3>可信恢复锚点</h3><p>回溯 Last Reliable State，给出锚点及选择依据，不把“找到锚点”写成“恢复完成”。</p></article></div><p class="subtle-link">论文主线的可维护<a href="research-mindmap.mmd">思维图源文件 ↗</a> · <a href="assets/research-mindmap.svg">查看完整思维图 ↗</a></p></div></section>
-
-    <section id="results" class="section results-section" aria-labelledby="results-heading"><div class="content-width"><h2 id="results-heading">Preliminary Evidence</h2><p class="section-lead">分开呈现仿真中的诊断案例与真实机器人上的静止感知验证；两者不能合并为端到端导航结论。</p>
-      <div class="result-block"><div class="result-copy"><p class="result-label">01 / MP3D CONTROLLED CASE STUDY</p><h3>能发现部分偏差，也保留漏检</h3><p>五个场景、五条 episode 的稀疏参考航点回放中，四类受控偏差检出三类；<strong>2.44 m 位姿跳变未被检出</strong>。另一个 110 episode 配对导航 A/B 中，SR 持平，SPL 与 nDTW 未改善。因此这里展示的是机制与失败案例，不是已获证的导航增益。</p><a class="text-link" href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">查看实验台账 ↗</a></div><figure><img src="assets/g2-pose-jump.png" loading="lazy" alt="MP3D G2 位姿跳变案例：注入 2.44 米跳变，但诊断器未检出"><figcaption><strong>Figure 2.</strong> G2 位姿跳变漏检——明确的失败案例，非导航轨迹指标。</figcaption></figure></div>
-      <div class="result-block robot-block"><div class="result-copy"><p class="result-label">02 / WHEELTEC REAL ROBOT · READ-ONLY</p><h3>RGB-D 投影与静止 Trial 0</h3><p>9 月 24 日，Astra 相机 TF 单父节点审计、当前 mapper 所用的 Color CameraInfo <code>K</code>＋注册深度投影契约，以及约 47 秒的静止 Trial 0 通过。Trial 0 接收/处理 <strong>413/388 帧</strong>，生成 <strong>14 个对象</strong>与实际接收的 <strong>28 个 Marker</strong>。Depth CameraInfo 的 <code>K</code> 仍含 NaN，其他消费者未据此放行。</p><p class="boundary-note">静止 PASS ≠ 运动建图 PASS；Trial 1–3、跨视角 ID、Nav2 与自动纠偏尚未验证。</p><a class="text-link" href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/9c0406add2aec1a26946a22582fe179d2e13e225/docs/evidence/chassis/wheeltec-mecanum/phase1c3-projection-contract-trial0-2026-09-24" target="_blank" rel="noopener noreferrer">查看原始图像与诊断 ↗</a></div><div class="robot-figures"><figure><img src="assets/trial0-rgbd-overlay-2026-09-24.png" width="640" height="480" loading="lazy" alt="9 月 24 日真实 Astra RGB 与注册深度边缘叠加，办公室桌沿和墙面几何对应"><figcaption><strong>Figure 3.</strong> 真实 RGB-D 静止投影叠加。</figcaption></figure><figure><img src="assets/trial0-rgb-bbox-2026-09-24.png" width="640" height="480" loading="lazy" alt="9 月 24 日 WheelTec 静止 Trial 0 实拍 RGB 候选目标检测框"><figcaption><strong>Figure 4.</strong> 静止 Trial 0 检测帧；候选框不保证类别正确。</figcaption></figure></div></div>
+    <section class="teaser-section" aria-label="Research motivation">
+      <figure class="teaser-figure">
+        <img src="assets/paper-method-v9.svg" width="520" height="400" alt="Current instruction and RGB observation are checked against trust-gated semantic history. Consistency diagnosis outputs a deviation and reliable recovery anchor; autonomous execution remains unverified.">
+        <figcaption><strong>Motivation.</strong> Long-horizon navigation needs historical evidence to identify a deviation and a trustworthy point to return to. The diagram describes the research pipeline, not a completed robot recovery run.</figcaption>
+      </figure>
+    </section>
+    <section id="abstract" class="section section-alt"><div class="container prose">
+      <h2>Abstract</h2>
+      <p>Errors in long-horizon vision-language navigation can accumulate beyond a single observation. <span class="method-name">Rabbit-RobotNav</span> studies whether trusted semantic-spatial history can support label-free deviation diagnosis and selection of a reliable recovery anchor. It compares the current observation and post-action state with instruction progress, historical states, and spatial transitions. The present evidence supports controlled-case diagnosis and static RGB-D projection checks; it does <strong>not</strong> establish improved navigation success or autonomous closed-loop recovery.</p>
     </div></section>
-
-    <section id="resources" class="section resources-section" aria-labelledby="resources-heading"><div class="content-width prose-width"><h2 id="resources-heading">Research Status &amp; Resources</h2><p>本页是持续迭代的硕士论文项目摘要，依据两份飞书研究记录和 <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/9c0406add2aec1a26946a22582fe179d2e13e225">real-robot-integration 提交 9c0406</a>。下一步是独立多 episode 的正式配对消融、位姿跳变漏检分析，以及真机 Trial 1–3；尚不宣称完整长程纠错闭环完成。</p><div class="resource-list"><a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noopener noreferrer">论文框架与方法边界 ↗</a><a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">实验记录与证据台账 ↗</a><a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/real-robot-integration" target="_blank" rel="noopener noreferrer">最新研究代码 ↗</a></div></div></section>
+    <section id="contributions" class="section"><div class="container prose">
+      <h2>Contributions</h2>
+      <ol class="contrib-list">
+        <li><strong>Trusted historical memory.</strong> Keep raw observations separate from reliability-gated semantic-spatial states.</li>
+        <li><strong>Multi-source consistency diagnosis.</strong> Check instruction progress, historical evidence, and state transitions without reading evaluation labels.</li>
+        <li><strong>Recovery-anchor selection.</strong> Locate the error boundary and retrieve the last reliable state with supporting evidence; execution remains future work.</li>
+      </ol>
+    </div></section>
+    <section id="method" class="section section-alt"><div class="container">
+      <h2>Method Overview</h2>
+      <p class="intro">The central question is not only <em>where the robot is now</em>, but <em>whether its current state agrees with where the instruction and trusted history say it should be</em>.</p>
+      <p class="method-detail">The proposed stack draws on MiniCPM-RobotTrack for vision-language grounding and SpaAct for dynamic spatial relations. Trusted history and consistency checks support deviation diagnosis and anchor selection; SimpleNav/ROS 2 recovery execution is not yet validated.</p>
+      <figure class="paper-figure wide-figure">
+        <img src="assets/g1-instruction-order.png" width="1920" height="1080" loading="lazy" alt="Actual MP3D RGB observation with sparse reference-route replay, baseline and full-system diagnostic readouts, and an instruction-order violation timeline.">
+        <figcaption><strong>Figure 1.</strong> Controlled MP3D instruction-order violation: real RGB observation, sparse reference-route replay, and synchronized diagnostic outputs. “Correction triggered” is a replay decision, not a measured executed recovery trajectory.</figcaption>
+      </figure>
+    </div></section>
+    <section id="case-video" class="section"><div class="container video-container">
+      <h2>Controlled Deviation Replay</h2>
+      <p class="intro">A frame-synchronized replay of the instruction-order case. The plotted X–Z points are sparse reference waypoints, not continuous robot odometry.</p>
+      <video class="paper-video" controls muted loop playsinline preload="metadata" poster="assets/g1-instruction-order.png" aria-label="Instruction-order violation controlled MP3D replay video"><source src="assets/g1-global-trajectory-h264.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>
+      <p class="figure-caption"><strong>Video 1.</strong> G1 global-trajectory replay from the experimental ledger, encoded as H.264 for browser playback.</p>
+    </div></section>
+    <section id="qualitative" class="section section-alt"><div class="container video-container">
+      <h2>Qualitative Analysis</h2>
+      <p class="intro">The failure case matters: a 2.44 m pose jump was <strong>not detected</strong> in the five-scene controlled replay, despite detection of three other injected deviation types.</p>
+      <video class="paper-video" controls muted playsinline preload="metadata" poster="assets/g2-pose-jump.png" aria-label="MP3D pose-jump miss in the G2 controlled replay"><source src="assets/g2-pose-jump-h264.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>
+      <p class="figure-caption"><strong>Video 2.</strong> G2 pose-jump miss. The redrawn route is a sparse reference replay, not evidence of autonomous recovery.</p>
+    </div></section>
+    <section id="results" class="section"><div class="container">
+      <h2>Quantitative Evidence</h2>
+      <p class="intro">These preliminary checks have different scopes; they cannot be combined into a claimed benchmark improvement.</p>
+      <div class="table-wrap"><table class="results-table">
+        <thead><tr><th>Evaluation</th><th>Observed result</th><th>Interpretation</th></tr></thead>
+        <tbody>
+          <tr><td>Controlled MP3D replay · 5 scenes / 5 episodes</td><td>3 of 4 injected deviation types detected</td><td>Mechanism-level case study; pose jump missed</td></tr>
+          <tr><td>Normal sparse reference points</td><td>0 alerts at 34 points</td><td>No observed false alarm in this small replay</td></tr>
+          <tr><td>Paired CMA navigation A/B · 110 episodes</td><td>SR tied; SPL and nDTW did not improve</td><td>No demonstrated navigation gain</td></tr>
+          <tr><td>WheelTec Astra · static Trial 0</td><td>413 frames received / 388 processed</td><td>Static perception check only; no mobile mapping result</td></tr>
+        </tbody>
+      </table></div>
+      <p class="table-note">Results are traceable in the <a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">experimental ledger</a> and research repository. Formal multi-episode ablation remains pending.</p>
+    </div></section>
+    <section id="real-robot" class="section section-alt"><div class="container">
+      <h2>Real-Robot Setup</h2>
+      <p class="intro">On the WheelTec mecanum base, the current mapper passed its Color CameraInfo plus registered-depth projection contract and a motionless Trial 0. Depth CameraInfo still contains non-finite intrinsic values; moving trials and navigation are not admitted by this result.</p>
+      <div class="image-pair">
+        <figure class="paper-figure"><img src="assets/trial0-rgbd-overlay-2026-09-24.png" width="640" height="480" loading="lazy" alt="Actual static Astra RGB and registered-depth edge overlay from the WheelTec Trial 0."><figcaption><strong>Figure 2.</strong> Static RGB-D projection overlay.</figcaption></figure>
+        <figure class="paper-figure"><img src="assets/trial0-rgb-bbox-2026-09-24.png" width="640" height="480" loading="lazy" alt="Actual RGB image with candidate detection boxes in the motionless WheelTec Trial 0."><figcaption><strong>Figure 3.</strong> Candidate detections during static Trial 0; boxes are not proof of correct semantic classes.</figcaption></figure>
+      </div>
+    </div></section>
+    <section id="demo" class="section"><div class="container video-container">
+      <h2>Demo Video</h2>
+      <p class="intro">Spatial-relation conflict in a controlled MP3D sparse-waypoint replay. This is an evidence video, not an end-to-end ground-robot navigation demo.</p>
+      <video class="paper-video" controls muted playsinline preload="metadata" poster="assets/g5-spatial-conflict.png" aria-label="Spatial-relation conflict MP3D controlled replay video"><source src="assets/g5-spatial-conflict-h264.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>
+      <p class="figure-caption"><strong>Video 3.</strong> G5 spatial-relation conflict, with RGB evidence, reference route, and diagnostic timeline.</p>
+    </div></section>
+    <section id="resources" class="section section-alt"><div class="container prose">
+      <h2>Resources &amp; Status</h2>
+      <p>This page is a research preview, not a published paper. The thesis title is <span lang="zh-CN">《基于历史感知语义地图与动态空间推理的长程视觉语言导航纠错框架研究》</span>. Controlled diagnosis, a missed pose jump, and static camera projection are documented; autonomous recovery execution, mobile semantic mapping, and a positive SR/SPL/nDTW result remain unverified.</p>
+      <p class="resource-links"><a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noopener noreferrer">Thesis framework</a> · <a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">Experimental ledger</a> · <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/real-robot-integration" target="_blank" rel="noopener noreferrer">Research code</a> · <a href="research-mindmap.mmd">Research mind map</a></p>
+    </div></section>
   </main>
-  <footer><p>Rabbit-RobotNav · 李京海 / Jinghai Li</p><p>Updated 2026-09-27 · Research in progress · Evidence before claims</p></footer>
+  <footer class="footer"><p>Rabbit-RobotNav · Jinghai Li · Updated 27 September 2026</p><p>Layout inspired by the <a href="https://apex-bjut.github.io/Taga-VLM/">TagaVLM project page</a>; research figures, videos, text, and results are specific to Rabbit-RobotNav.</p></footer>
 </body>
 </html>
