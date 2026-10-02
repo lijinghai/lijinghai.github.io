@@ -15,7 +15,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <nav class="top-nav" aria-label="Home"><a href="../index.html" title="Jinghai Li home" aria-label="Jinghai Li home">⌂</a></nav>
+  <nav class="top-nav" aria-label="Home"><a href="../index.html" title="Jinghai Li home" aria-label="Jinghai Li home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2 2 10h2v11h6v-7h4v7h6V10h2L12 2zm0 2.6 6 4.8V19h-2v-7H8v7H6V9.4l6-4.8z"/></svg></a></nav>
   <header class="publication-header">
     <h1><span class="accent">Rabbit-RobotNav</span>: History-Aware Error Diagnosis<br class="desktop-break"> and Recovery Anchors for Vision-Language Navigation</h1>
     <p class="publication-status">MASTER'S THESIS PROJECT · WORK IN PROGRESS</p>
@@ -30,7 +30,10 @@
   <main id="main">
     <section class="teaser-section" aria-label="Research motivation">
       <figure class="teaser-figure">
-        <img src="assets/paper-method-v12.svg" width="520" height="400" alt="Proposed research flow: instruction and RGB observations plus semantic-spatial history feed consistency checks, producing a deviation diagnosis and recovery-anchor candidate. Reliability gating and robot recovery remain under validation.">
+        <picture>
+          <source media="(max-width: 760px)" srcset="assets/paper-method-v12-mobile.svg">
+          <img src="assets/paper-method-v12.svg" width="520" height="400" alt="Proposed research flow: instruction and RGB observations plus semantic-spatial history feed consistency checks, producing a deviation diagnosis and recovery-anchor candidate. Reliability gating and robot recovery remain under validation.">
+        </picture>
         <figcaption><strong>Motivation.</strong> Historical evidence may help identify a deviation and choose a recovery anchor. This is a proposed research flow, not a completed robot recovery run.</figcaption>
       </figure>
     </section>

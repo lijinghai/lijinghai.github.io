@@ -4,6 +4,22 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-10-02 - Rabbit-RobotNav 学术项目页版式与配色 v13
+
+参照 [TagaVLM 论文主页](https://apex-bjut.github.io/Taga-VLM/)的实际桌面页面，重新整理 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 的视觉层级：保留居中英文论文标题、作者、资源入口、方法图、真实实验图和三段案例视频，把原有橙蓝正文主题改为深灰文字、论文红强调、深灰胶囊按钮以及白色／浅灰交替章节。此版本只调整表达方式，不改摘要、实验数字、图注的证据边界，也不借用参考论文的研究素材。图框沿用参考页的暖色细边，使主图与黑红正文有所区分。
+
+| 对照项 | 改动和实际验证 |
+| --- | --- |
+| 首屏与章节 | 调整顶部留白、标题下方状态／作者／按钮的节奏和主图宽度；Abstract 为白底，Research Directions 为浅灰底，后续章节交替，避免旧版大面积橙蓝色干扰论文阅读 |
+| 方法图 | Axton `mermaid-visualizer` 维护 `paper-method-v12.mmd` 与新增的 `paper-method-v12-mobile.mmd`，预渲染为平面线条 SVG；桌面保留并列输入，手机改为纵向图，继续明确“历史可靠性门禁待验证、机器人恢复执行未完成” |
+| 字体与页尾 | 保留已核对的 Google Sans 标题和 Noto Sans 正文字体分工，BibTeX 仍为等宽字体；资源区与 BibTeX／GitHub 页脚保持论文项目页结构 |
+| 浏览器实测 | 本地 Chrome 分别以 1440×900 和 390×900 视口检查：页面宽度等于视口宽度、5/5 图片可解码、3 个视频元素存在、站内锚点无失效；桌面加载横向图，手机加载纵向图；Abstract 计算背景为白色，下一节为 `rgb(250,250,250)` |
+| 边界 | 本次未重跑 MP3D、ROS 2 或真机实验，也未将未验证的恢复执行写成完成；原有未跟踪 `work/` 未动、未提交 |
+
+![Rabbit-RobotNav v13 桌面首屏](docs/images/updates/2026-10-02-rabbit-robotnav-academic-v13/desktop.top.png)
+
+[手机首屏](docs/images/updates/2026-10-02-rabbit-robotnav-academic-v13/mobile.top.png) · [桌面 BibTeX 与页尾](docs/images/updates/2026-10-02-rabbit-robotnav-academic-v13/desktop.footer.png)。方法图采用 Axton Mermaid 源格式，是因为这张图表达精确的数据流和待验证边界；网页只加载其静态 SVG，避免读者依赖在线图形脚本。
+
 ### 2026-10-02 - Rabbit-RobotNav 最新实验依据与真机图片 v12
 
 依据[实验台账](https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg)、[论文框架](https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e)和研究仓库 `real-robot-integration` 已推送的 [`b89caa6`](https://github.com/lijinghai/history-aware-mp3d-vln/tree/b89caa6a868852ae62fe0426f35c688242f1bffa)，更新 `/RabbitRobotNav/` 的研究状态与图像。原页侧重静止 Trial 0，容易让读者漏看 9 月 28 日移动实验的身份保持失败；本版将真机图换为 Trial 1R 同一把椅子移动前后的检测帧和选中深度时间曲线。曲线只是定位线索，缺少分裂瞬间的同步帧与三维真值，不能据此断定故障原因。原有 MP3D 案例视频与橙蓝论文式排版保留。
