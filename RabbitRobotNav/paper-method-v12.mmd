@@ -1,0 +1,11 @@
+flowchart TB
+    I["Instruction + RGB observations"] --> D["Instruction / history / transition checks"]
+    H["Semantic-spatial history<br/>reliability gate under validation"] --> D
+    D --> A["Deviation diagnosis + anchor candidate"]
+    A -.-> E["Robot recovery execution pending"]
+    classDef input fill:#f8fafb,stroke:#003b61,color:#003b61,stroke-width:1.5px;
+    classDef core fill:#ffffff,stroke:#ff7900,color:#003b61,stroke-width:2px;
+    classDef pending fill:#fafafa,stroke:#9ba9b2,color:#596a77,stroke-dasharray:5 4;
+    class I,H input;
+    class D,A core;
+    class E pending;

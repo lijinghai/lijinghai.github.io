@@ -4,6 +4,22 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-10-02 - Rabbit-RobotNav 最新实验依据与真机图片 v12
+
+依据[实验台账](https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg)、[论文框架](https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e)和研究仓库 `real-robot-integration` 已推送的 [`b89caa6`](https://github.com/lijinghai/history-aware-mp3d-vln/tree/b89caa6a868852ae62fe0426f35c688242f1bffa)，更新 `/RabbitRobotNav/` 的研究状态与图像。原页侧重静止 Trial 0，容易让读者漏看 9 月 28 日移动实验的身份保持失败；本版将真机图换为 Trial 1R 同一把椅子移动前后的检测帧和选中深度时间曲线。曲线只是定位线索，缺少分裂瞬间的同步帧与三维真值，不能据此断定故障原因。原有 MP3D 案例视频与橙蓝论文式排版保留。
+
+| 项目 | 本次修改与实际依据 |
+| --- | --- |
+| 方法图与文字 | `RabbitRobotNav/paper-method-v12.mmd` 由 Axton `mermaid-visualizer` 生成精确研究流程，并预渲染为 `assets/paper-method-v12.svg`；把历史可靠性门禁标为待验证，把机器人恢复执行标为未完成。摘要、方法、结果和资源区不再暗示已获得导航增益或自动纠错成功 |
+| 真机图片 | `trial1r-chair-before-2026-09-28.png`、`trial1r-chair-after-2026-09-28.png`、`trial1r-selected-depth-2026-09-28.png` 来自研究仓库 Trial 1R 证据目录；同一椅子的轨迹编号 `obj_0000 → obj_0034` 是失败观察，因果解释仍未定 |
+| 最新门禁 | 10 月 2 日静止尝试因 RGB 时间戳间隔 0.843 s 超过原有 0.50 s 连续性门禁，在 1.10 s、两帧后停止，不是新的 `TARGET_LOST` 复现；热身与计时代码通过离线检查，但刷新图像零检测后未再启动正式运行 |
+| 网页验证 | Axton 图成功渲染为 SVG；本地 Chrome/Playwright 分别截取 1440×900 桌面首屏、390×844 手机首屏和桌面真机段，人工检查标题、图片、图注与响应式排列；站内媒体引用另做存在性检查。此验证不等于重跑 MP3D、ROS 2 或真机实验 |
+| 范围与保留 | 只改 `RabbitRobotNav/`、根 README 和本次截图；已有未跟踪 `work/` 不纳入提交。移动语义地图稳定性、可靠历史写入门禁、正式复测和自动恢复仍待验证 |
+
+![Rabbit-RobotNav v12 桌面首屏与研究方法图](docs/images/updates/2026-10-02-rabbit-robotnav-evidence-v12/desktop.wait.png)
+
+[手机首屏](docs/images/updates/2026-10-02-rabbit-robotnav-evidence-v12/mobile.playwright.png) · [真机前后对照与深度曲线](docs/images/updates/2026-10-02-rabbit-robotnav-evidence-v12/desktop.robot.playwright.png)。方法图采用 Axton 的 Mermaid 源格式，因为这里要准确表达证据进入诊断、锚点候选与尚未执行恢复之间的流程；网页使用预渲染 SVG，不要求读者浏览器在线运行 Mermaid。
+
 ### 2026-09-27 - Rabbit-RobotNav 论文字体层级校正 v11
 
 只针对 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 的字体与字距进行校正，不改论文表述、图像、视频、实验数字或橙蓝配色。修改前全站默认 `Google Sans`，导致 Abstract、各节标题和页脚都偏离参考页的排版；BibTeX 外层还设置了 `Castoro` 与 17px 字号，呈现得过大。浏览器实测 [TagaVLM 项目页](https://apex-bjut.github.io/Taga-VLM/) 的字体分工后，修改 `RabbitRobotNav/style.css`：页面正文、章节标题、BibTeX 标题与页脚统一为 `Noto Sans`，项目标题、作者行及首图说明保留 `Google Sans`，BibTeX 代码改为 14px/21px 等宽字体；`RabbitRobotNav/index.html` 移除不再使用的 `Castoro` 字体请求。
