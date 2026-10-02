@@ -4,6 +4,20 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-10-02 - Rabbit-RobotNav 学术页恢复橙蓝品牌配色 v14
+
+用户明确要求不要参考论文页的红色，改用 RabbitRobot 标志的橙色。此次只给 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 换色，不改变 v13 已确立的居中英文论文标题、白色／浅灰分节、真实实验图片、视频、BibTeX 和未验证结论边界。原来的红色标题强调、贡献序号及方法图节点描边，改为橙色系；普通资源链接使用标志中的深蓝色。正文小字和白字序号采用较深的橙色，避免亮橙直接承载细字时对比不足。
+
+| 核验项 | 本次实际结果 |
+| --- | --- |
+| 改动文件 | `RabbitRobotNav/style.css` 的强调色、链接和表格淡色行；Axton `mermaid-visualizer` 源文件 `paper-method-v12.mmd`、`paper-method-v12-mobile.mmd` 的核心节点描边；两张重新渲染的同名 SVG。未改论文表述、数字、照片或视频。 |
+| 浏览器核验 | 本地 Chrome 在 1440×900、390×900 两种视口的页面滚动宽度分别为 1440、390，无横向溢出；两端均有 5/5 张图片解码、3 个视频元素，桌面加载横向方法图，手机加载纵向方法图；计算样式读取的亮橙为 `#ee8234`、深橙文字为 `#b34f09`。 |
+| 对比度与边界 | 深橙文字对白底的计算对比度为 5.20:1，贡献编号的白字改用深橙底；本次验证仅覆盖网页呈现，没有重跑 MP3D、ROS 2 或真机恢复实验，仓库原有未跟踪 `work/` 未动。 |
+
+![Rabbit-RobotNav v14 橙色学术项目页桌面首屏](docs/images/updates/2026-10-02-rabbit-robotnav-orange-v14/desktop.top.png)
+
+[手机首屏](docs/images/updates/2026-10-02-rabbit-robotnav-orange-v14/mobile.top.png) · [桌面 BibTeX 与页脚](docs/images/updates/2026-10-02-rabbit-robotnav-orange-v14/desktop.footer.png)。方法图仍采用 Axton 的 Mermaid 源格式以精确维护研究流程和待验证边界，网页展示预渲染 SVG。
+
 ### 2026-10-02 - Rabbit-RobotNav 学术项目页版式与配色 v13
 
 参照 [TagaVLM 论文主页](https://apex-bjut.github.io/Taga-VLM/)的实际桌面页面，重新整理 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 的视觉层级：保留居中英文论文标题、作者、资源入口、方法图、真实实验图和三段案例视频，把原有橙蓝正文主题改为深灰文字、论文红强调、深灰胶囊按钮以及白色／浅灰交替章节。此版本只调整表达方式，不改摘要、实验数字、图注的证据边界，也不借用参考论文的研究素材。图框沿用参考页的暖色细边，使主图与黑红正文有所区分。
