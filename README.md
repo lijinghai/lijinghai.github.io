@@ -12,11 +12,31 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 | --- | --- |
 | 修改范围 | `index.html` 的首屏文案、页内导航、移动端项目摘要和联系区呈现；未修改项目详情页及原始视频/图片，也未触及原有未跟踪 `work/`。 |
 | 静态检查 | 保留 7 个项目卡片；页内导航锚点 0 个缺失、本地相对链接 0 个缺失、`details` 标签配对正确，页面正文未出现“面向招聘”等直白用语；`git diff --check` 无空白错误。 |
-| 尚待线上核验 | 本记录先标注 Figma 排版稿和静态检查；发布后的桌面/手机真实页面截图、实际链接与溢出检查在上线验证后补充。 |
+| 线上核验 | `fd07134842f54f4a8acf8e1d00e9cacc69f9a1d0` 已推送并由公开主页返回新版内容（HTTP 200）；真实浏览器查看桌面首屏与 390 × 844 手机首屏，手机 `scrollWidth=375 < viewportWidth=390`，无横向溢出。|
+| 交互与运行状态 | 7 个项目仍在原顺序；Contact 锚点到达对应区块；社交二维码默认折叠，点击后显示 3 张卡片，图片均为懒加载；浏览器警告/错误日志为空。桌面与手机真实画面已在浏览器逐项目视检查，但当前截图工具未将浏览器画面导出为仓库文件，因此下图仍明确标为 Figma 参考稿，不能代替运行截图。 |
 
 ![首屏信息层级 Figma 可编辑排版参考，非运行截图](docs/images/updates/2026-10-03-homepage-card-v1/figma-hero-reference.png)
 
 [Figma 可编辑首屏参考](https://www.figma.com/design/uP11nWVMOWbR9uYhx4reNd?node-id=1-2) · [改动前的主页桌面截图](docs/images/updates/2026-08-17-homepage-content/desktop.png)。Figma 图只用于确认信息层级；最终效果以线上真实浏览器核验为准。
+
+访问路径采用 Axton `mermaid-visualizer` 生成的 GitHub / Obsidian 兼容流程图（只用于说明，不嵌入主页）：
+
+```mermaid
+flowchart LR
+  A["首屏：身份与研究定位"] --> B["Research：研究问题"]
+  A --> C["Work：真机项目与图像证据"]
+  B --> D["Rabbit-RobotNav：当前研究记录"]
+  C --> E["ROS 2 Web：开源工程实践"]
+  D --> F["Records：可核查的阶段记录"]
+  E --> F
+  F --> G["Contact：GitHub 与邮箱"]
+  classDef entry fill:#e7f5ff,stroke:#1971c2,color:#1f2933
+  classDef evidence fill:#fff4e6,stroke:#e67700,color:#1f2933
+  classDef contact fill:#d3f9d8,stroke:#2f9e44,color:#1f2933
+  class A,B entry
+  class C,D,E,F evidence
+  class G contact
+```
 
 ### 2026-10-03 - Rabbit-RobotNav 学术版式细节优化 v15
 
