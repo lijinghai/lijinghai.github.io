@@ -4,6 +4,28 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-10-03 - Rabbit-RobotNav 学术版式细节优化 v15
+
+对照 [TagaVLM 学术项目页](https://apex-bjut.github.io/Taga-VLM/)的真实浏览器版式，继续收紧 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 的视觉层级，同时保留 RabbitRobot 的橙色／深蓝品牌配色。原先首屏“进行中”状态字样偏大、三个资源按钮图标风格不一，正文行宽较长，研究方向列表的大号圆形序号也显得更像产品介绍；本次分别缩小状态字、改用一致的线框 SVG 图标、收窄正文并增加行距、用细小橙点标出研究方向。页面的研究表述、实验数字、方法图、五张图片及三段视频均未改动；自动恢复仍明确标为尚未验证。
+
+| 核验项 | 本次实际结果 |
+| --- | --- |
+| 范围 | 仅修改 `RabbitRobotNav/index.html` 和 `RabbitRobotNav/style.css`，并新增本条 README 记录及真实浏览器截图；原有未跟踪的 `work/` 保留、不纳入提交。页尾维护日期更新为 2026-10-03。 |
+| 桌面与手机 | 本地 Chrome 在 1440×900 和 390×844 视口实测：页面滚动宽度分别等于 1440 和 390，无横向溢出；五张图片全部可解码，三个视频元素存在，站内锚点均可找到。 |
+| 字体与可读性 | 浏览器计算样式确认桌面／手机首屏状态字为 15／13px；正文最大宽度 790px，桌面行高约 27.5px。此项只验证页面呈现，未重跑 MP3D、ROS 2 或真机恢复实验。 |
+
+![Rabbit-RobotNav v15 橙蓝学术页桌面首屏](docs/images/updates/2026-10-03-rabbit-robotnav-academic-v15/desktop.top.png)
+
+[手机首屏](docs/images/updates/2026-10-03-rabbit-robotnav-academic-v15/mobile.top.png) · [研究方向与方法段](docs/images/updates/2026-10-03-rabbit-robotnav-academic-v15/desktop.contributions.png) · [真实案例视频段](docs/images/updates/2026-10-03-rabbit-robotnav-academic-v15/desktop.robot.png)。下图使用 Axton `mermaid-visualizer` 的 Mermaid 源格式记录本次页面层级；它只说明页面结构，不表示新的科研结论：
+
+```mermaid
+flowchart TB
+  A["论文标题与研究状态"] --> B["论文资源入口"]
+  B --> C["方法主图与动机"]
+  C --> D["摘要与研究方向"]
+  D --> E["实验图片、视频与证据边界"]
+```
+
 ### 2026-10-02 - Rabbit-RobotNav 学术页恢复橙蓝品牌配色 v14
 
 用户明确要求不要参考论文页的红色，改用 RabbitRobot 标志的橙色。此次只给 [`/RabbitRobotNav/`](https://lijinghai.github.io/RabbitRobotNav/) 换色，不改变 v13 已确立的居中英文论文标题、白色／浅灰分节、真实实验图片、视频、BibTeX 和未验证结论边界。原来的红色标题强调、贡献序号及方法图节点描边，改为橙色系；普通资源链接使用标志中的深蓝色。正文小字和白字序号采用较深的橙色，避免亮橙直接承载细字时对比不足。
