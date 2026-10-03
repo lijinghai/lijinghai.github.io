@@ -515,6 +515,103 @@
       line-height: 1.72;
     }
 
+    .paper-list {
+      margin: 16px 0 24px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .paper-feature {
+      display: grid;
+      grid-template-columns: minmax(0, 43%) minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      padding: 20px;
+      border: 1px solid rgba(31, 41, 51, .12);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      background: linear-gradient(120deg, #fffdf9, #fff 65%);
+      box-shadow: 0 8px 26px rgba(31, 41, 51, .055);
+    }
+
+    .paper-feature > * {
+      min-width: 0;
+    }
+
+    .paper-figure-link {
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      background: #fff;
+    }
+
+    .paper-figure-link img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 13 / 10;
+      object-fit: contain;
+      transition: transform .28s ease;
+    }
+
+    .paper-figure-link:hover img,
+    .paper-figure-link:focus-visible img {
+      transform: scale(1.015);
+    }
+
+    .paper-figure-link:focus-visible,
+    .paper-link:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    .paper-kicker {
+      margin: 0 0 9px;
+      color: #a84f22;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .paper-feature h3 {
+      display: block;
+      margin: 0 0 10px;
+      color: var(--dark);
+      font-size: 22px;
+      line-height: 1.28;
+      text-wrap: balance;
+    }
+
+    .paper-summary {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .paper-status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      margin: 0 0 12px;
+      padding: 3px 10px;
+      border: 1px solid rgba(214, 106, 47, .28);
+      border-radius: 999px;
+      color: #9a4c24;
+      background: var(--warm);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .paper-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
     .section-title h2::after {
       position: absolute;
       left: 0;
@@ -1327,6 +1424,20 @@
         padding: 14px 0 15px;
       }
 
+      .paper-feature {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 14px;
+      }
+
+      .paper-feature h3 {
+        font-size: 18px;
+      }
+
+      .paper-summary {
+        font-size: 13px;
+      }
+
       .thumb {
         width: 100%;
         max-width: none;
@@ -1416,6 +1527,7 @@
       <div class="site-nav-links">
         <a href="#about">About</a>
         <a href="#research">Research</a>
+        <a href="#papers">Papers</a>
         <a href="#work">Work</a>
         <a href="#records">Records</a>
         <a href="#contact">Contact</a>
@@ -1480,6 +1592,27 @@
         </p>
       </div>
       <p class="stack-line"><b>Toolchain:</b> ROS 2, Nav2, SLAM, LiDAR, RGB-D, VLM / VLA, Web tools.</p>
+    </section>
+
+    <section id="papers" aria-labelledby="papers-title">
+      <div class="section-title">
+        <h2 id="papers-title">Research Papers</h2>
+      </div>
+      <p class="section-lead">从真实机器人遇到的问题出发，将方法、实验与尚未解决的边界一起公开。</p>
+      <ol class="paper-list">
+        <li class="paper-feature">
+          <a class="paper-figure-link" href="RabbitRobotNav/" aria-label="查看 Rabbit-RobotNav 研究主页与方法图">
+            <img src="RabbitRobotNav/assets/paper-method-v12.svg" width="520" height="400" loading="lazy" decoding="async" alt="Rabbit-RobotNav 方法概览：指令与视觉观测结合语义空间历史，进行一致性诊断并提出恢复锚点候选；真机恢复仍待验证。">
+          </a>
+          <div>
+            <p class="paper-kicker">2026 · Long-horizon Vision-Language Navigation</p>
+            <h3>Rabbit-RobotNav: History-Aware Error Diagnosis and Recovery Anchors for Vision-Language Navigation</h3>
+            <p class="paper-summary">研究长程导航中如何利用语义空间历史识别偏航、定位可靠的历史状态，并提出恢复锚点。MP3D 受控回放与真机感知检查已有记录；移动机器人闭环恢复仍在验证中。</p>
+            <span class="paper-status">硕士论文项目进行中 · 尚未发表</span><br>
+            <a class="paper-link" href="RabbitRobotNav/">查看论文研究主页与实验记录 <span aria-hidden="true">↗</span></a>
+          </div>
+        </li>
+      </ol>
     </section>
 
     <section id="work" aria-labelledby="work-title">

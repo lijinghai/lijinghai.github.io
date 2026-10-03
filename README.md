@@ -4,6 +4,31 @@ Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、
 
 ## 最近更新
 
+### 2026-10-03 - 首页论文与工程双线入口 v2
+
+首页原来集中展示 7 个机器人工程项目，论文研究没有独立位置，读者难以从真实系统工作继续看到方法与实验。此次在 `Research Focus` 与原有 `Selected Work` 之间加入可扩展的 `Research Papers` 列表：首张卡片使用 Rabbit-RobotNav 自有方法图、完整研究题目、简明问题与证据边界，以及直达[论文研究主页](https://lijinghai.github.io/RabbitRobotNav/)的入口。状态明确为“硕士论文项目进行中 · 尚未发表”；MP3D 受控回放与真机感知检查已有记录，移动机器人闭环恢复仍在验证中。没有声称录用、发表或获得未验证的导航增益。
+
+| 项目 | 修改前 | 修改后与核验 |
+| --- | --- | --- |
+| 首页组织 | Research Focus 后直接进入 7 个工程项目 | 新增 Papers 锚点和独立论文区，再进入 Work；原有 7 张工程卡片的 HTML 内容经逐字比较完全一致 |
+| 学术证据 | 首屏只有当前研究的文字链接 | 方法图、论文题目、研究状态、研究主页与实验记录集中呈现；本地方法图和目标页面均存在 |
+| 浏览器呈现 | 无首页论文卡片 | 本地 Chrome 实际渲染桌面和 390px 手机截图；手机论文卡片单列，图文未见裁切；`git diff --check` 通过 |
+| 修改范围 | — | 仅 `index.html`、本 README 和本次真实截图；不改论文详情页、工程项目文案及用户未跟踪的 `work/` |
+
+![首页论文与工程双线入口的桌面浏览器截图](docs/images/updates/2026-10-03-homepage-research-papers/desktop.png)
+
+[390px 手机端真实浏览器截图](docs/images/updates/2026-10-03-homepage-research-papers/mobile-cdp.png)。截图只验证网页呈现，本次未重跑 MP3D、ROS 2 或真机实验，也未验证任何新的论文发表状态。
+
+下面使用 Axton `mermaid-visualizer` 的 GitHub／Obsidian 兼容格式记录新信息路径；它是导航结构图，不是科研结果图：
+
+```mermaid
+flowchart LR
+  A["Research Focus：研究问题"] --> B["Papers：方法、实验与状态"]
+  B --> C["Rabbit-RobotNav：研究主页与证据"]
+  A --> D["Work：七个真实工程项目"]
+  C --> D
+```
+
 ### 2026-10-03 - 个人主页首屏与证据入口精修 v1
 
 保留横线纸背景、橙蓝配色、肖像、七个项目的大图与原有顺序，只优化 [`/`](https://lijinghai.github.io/) 的信息层级。此前首屏用多段中英文字反复解释研究方向，当前研究主页与 ROS 2 Web 开源实践也不在首屏；手机端多数项目摘要被隐藏，二维码直接占据页面后段。现在用一句定位、简短系统经历和两个可核查入口组织首屏，增加 About / Research / Work / Records / Contact 锚点，手机端显示两行项目摘要，社交二维码改为按需展开与懒加载。没有新增实验成绩或把进行中的恢复研究写成已验证成果。
