@@ -15,6 +15,7 @@ body { margin: 0; }
 img, video { display: block; max-width: 100%; }
 a { color: #0e3b5d; text-decoration: none; }
 a:hover { color: var(--accent-text); }
+:focus-visible { outline: 2px solid var(--accent-text); outline-offset: 4px; }
 p { line-height: 1.5; }
 .skip-link { position: absolute; left: -9999px; top: 0; }
 .skip-link:focus { left: 8px; top: 8px; padding: 8px; background: #fff; z-index: 10; }
@@ -62,7 +63,6 @@ figcaption { margin-top: 10px; }
 .section h2 { margin: 0 0 27px; text-align: center; font-size: 32px; line-height: 1.125; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
 .prose > p:not(.resource-links) { font-size: 16px; line-height: 1.72; text-align: justify; margin: 0; }
 .intro { text-align: center; font-size: 16px; line-height: 1.75; max-width: 860px; margin: 0 auto 25px; }
-.method-detail { text-align: center; font-size: 15px; line-height: 1.7; max-width: 830px; margin: -8px auto 25px; color: #666; }
 
 .contrib-list { list-style: none; margin: 0; padding: 0; }
 .contrib-list li { position: relative; padding-left: 25px; margin: 0 0 20px; font-size: 16px; line-height: 1.72; }
@@ -75,18 +75,28 @@ figcaption { margin-top: 10px; }
 .paper-figure img { width: 100%; height: auto; border-radius: 6px; }
 .wide-figure { max-width: 940px; margin: 0 auto; }
 .video-container { max-width: 780px; }
+.replay-figure { margin: 0 auto 35px; }
 .paper-video { width: 100%; aspect-ratio: 16 / 9; border-radius: 8px; background: #111; box-shadow: 0 2px 16px rgba(0, 0, 0, .08); }
 .figure-caption { margin: 11px auto 0; }
 .table-wrap { overflow-x: auto; }
 .results-table { width: 100%; border-collapse: collapse; font: 15px/1.45 "Noto Sans", Arial, sans-serif; }
+.results-table caption { padding: 0 0 16px; text-align: left; font-size: 14px; color: var(--muted); }
 .results-table th, .results-table td { padding: 11px 15px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
 .results-table th { background: #fafafa; font-weight: 700; border-bottom: 2px solid #ccc; }
-.results-table tr:nth-child(2) { background: #fff6ee; }
+.results-table tbody tr:nth-last-child(-n+2) { background: #fff6ee; }
 .results-table td:first-child { font-weight: 600; width: 34%; }
 .table-note { margin: 14px 0 0; text-align: center; font-size: 13px; color: var(--muted); }
 .image-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; margin-top: 27px; }
-.diagnostic-figure { max-width: 870px; margin: 29px auto 0; }
-.real-robot-status { max-width: 870px; margin: 27px auto 0; font-size: 15px; line-height: 1.7; text-align: left; }
+.evidence-note { max-width: 790px; margin: 28px auto 0; padding-left: 20px; border-left: 3px solid var(--accent); font-size: 16px; line-height: 1.72; }
+.room-evidence { display: grid; grid-template-columns: 1.15fr 1fr; gap: 32px; align-items: center; }
+.room-description p { font-size: 16px; line-height: 1.72; margin: 0 0 16px; }
+.evidence-source { font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+.supplement { margin-top: 30px; padding: 20px 0 0; border-top: 1px solid var(--rule); font-size: 15px; }
+.supplement summary { cursor: pointer; color: #0e3b5d; font-weight: 600; line-height: 1.5; }
+.supplement summary::marker { color: var(--accent-text); }
+.supplement p { line-height: 1.72; }
+.supplement-links { text-align: center; line-height: 1.8; }
+.supplement-limit { font-size: 14px; color: var(--muted); }
 .resource-links { margin: 21px 0 0; text-align: center; font-size: 15px; }
 .citation-section { padding: 74px 20px 72px; }
 .citation-container { max-width: 1200px; margin: 0 auto; }
@@ -114,7 +124,8 @@ figcaption { margin-top: 10px; }
   .teaser-section { padding: 47px 17px 50px; }
   .section { padding: 49px 18px; }
   .section h2 { font-size: 27px; margin-bottom: 19px; }
-  .prose > p:not(.resource-links), .intro, .method-detail, .contrib-list li { text-align: left; font-size: 15px; }
+  .prose > p:not(.resource-links), .intro, .contrib-list li { text-align: left; font-size: 16px; }
+  .room-evidence { grid-template-columns: 1fr; gap: 24px; }
   .image-pair { grid-template-columns: 1fr; gap: 28px; }
   .results-table { min-width: 650px; font-size: 13px; }
   .results-table th, .results-table td { padding: 9px 10px; }

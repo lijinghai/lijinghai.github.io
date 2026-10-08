@@ -1,53 +1,29 @@
 mindmap
   root((Rabbit-RobotNav))
-    论文主问题
-      长程室内 VLN 受控偏航
-      不读取评价标签
-      检测偏航并选择可信恢复锚点
-    方法主线
-      多模态语义感知
-        MiniCPM-V 对齐指令与 RGB
-        SpaAct 提供动态空间关系
-      历史感知语义地图
-        原始观测历史
-        可信聚合状态
-        可靠性门禁防止错误污染
-      三方一致性诊断
-        指令一致性
-        历史一致性
-        转移一致性
-      恢复锚点选择
-        定位错误边界
-        检索 Last Reliable State
-        输出锚点与选择依据
-    当前证据
-      MP3D 导航配对 A B
-        十一个 val_unseen 场景一百一十集
-        SR 持平 SPL 与 nDTW 未提升
-      受控故障单 episode smoke
-        真实 MP3D 图像与纠错时间线
-        多 episode formal 尚未运行
-      九月二十四日真机静止 Trial 0
-        WheelTec 麦轮 Astra RGB-D
-        相机 TF 单 parent 审计通过
-        Color K 与注册深度投影契约通过
-        接收四百一十三帧处理三百八十八帧
-        十四个对象二十八个 Marker
-        ROS 2 二十二项测试通过
-        静止通过但整体 Phase 1C-3 未完成
-    关键负结果
-      位姿跳变漏检
-      稀疏回放缺少连续动作证据
-      旧消融重复单 episode 不可作泛化证据
-      真机检测误检与多视角 ID 未验证
-      Depth K 仍含 NaN 其他消费者未核实
-      Trial 1 至 3 与 RViz 画面尚无证据
-      尚未完成真机闭环导航
-    下一阶段
-      多唯一 episode 与 scene 正式实验
-      配对消融与 cluster 置信区间
-      三十例失败画廊
-      action-aligned 转移一致性
-      同椅多视角与两椅分离验证
-      运动世界坐标稳定性与 Depth K 追踪
-      Trial 1 至 3 通过后再评估 shadow
+    Research question
+      Diagnose long-horizon VLN deviations
+      Select evidence-backed recovery anchors
+      No access to evaluation labels
+    Method
+      Raw observations separate from trusted memory
+      Instruction / history / transition consistency
+      Insufficient evidence is not normal navigation
+    Controlled MP3D evidence
+      Detected three of four deviation types
+      No alerts at thirty-four normal reference points
+      Pose jump missed
+      Paired CMA navigation shows no metric gain
+    Real-history replay
+      Archived sessions kept separate
+      1149 states and 3477 repeated observations
+      Zero trusted states and reliable anchors
+      Same-chair identity persistence failed
+    Room preflight
+      Stationary capture on 8 October 2026
+      179 scans and three saved RGB frames
+      No occupancy grid or verified room coverage
+    Next experiment
+      Human-supervised room survey
+      Independent geometry and instance review
+      Admit trusted memory only with evidence
+      Autonomous recovery remains unverified

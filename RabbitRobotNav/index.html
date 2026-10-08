@@ -6,7 +6,7 @@
   <meta name="description" content="Rabbit-RobotNav: history-aware error diagnosis and recovery-anchor selection for long-horizon vision-language navigation. A master's thesis project with traceable preliminary evidence.">
   <meta name="theme-color" content="#ffffff">
   <meta property="og:title" content="Rabbit-RobotNav | Long-Horizon Vision-Language Navigation">
-  <meta property="og:description" content="History-aware semantic mapping, multi-source consistency diagnosis, and reliable recovery-anchor selection.">
+  <meta property="og:description" content="History-aware navigation research: controlled MP3D diagnosis, real-robot observation history, and evidence-bounded recovery-anchor investigation.">
   <meta property="og:image" content="assets/g1-instruction-order.png">
   <title>Rabbit-RobotNav | Long-Horizon Vision-Language Navigation</title>
   <link rel="icon" href="../images/favicon.ico">
@@ -39,72 +39,79 @@
     </section>
     <section id="abstract" class="section section-alt"><div class="container prose">
       <h2>Abstract</h2>
-      <p>Errors in long-horizon vision-language navigation can accumulate beyond a single observation. <span class="method-name">Rabbit-RobotNav</span> investigates whether semantic-spatial history can support label-free deviation diagnosis and recovery-anchor selection. The proposed framework compares observations with instruction progress, historical states, and spatial transitions. Controlled MP3D cases and static RGB-D checks offer preliminary evidence; a moving-robot trial exposed an object-identity failure. Reliability gating, navigation gain, and autonomous recovery remain <strong>unverified</strong>.</p>
+      <p>Long-horizon vision-language navigation requires knowing not only where a robot is, but whether its progress remains consistent with the instruction. <span class="method-name">Rabbit-RobotNav</span> investigates historical semantic-spatial evidence for deviation diagnosis and recovery-anchor selection without accessing evaluation labels. The framework separates recorded observations from trusted memory and checks instruction, history, and transition consistency. Controlled MP3D cases provide preliminary diagnostic evidence; real-robot replay exposes insufficient evidence and unstable object identity. Reliable mobile mapping, navigation gains, and autonomous recovery remain <strong>unverified</strong>.</p>
     </div></section>
-    <section id="contributions" class="section"><div class="container prose">
-      <h2>Research Directions</h2>
+    <section id="method" class="section"><div class="container prose">
+      <h2>Method Overview</h2>
       <ol class="contrib-list">
-        <li><strong>History with an evidence gate.</strong> Separate raw observations from semantic-spatial states; the reliability gate still needs validation.</li>
-        <li><strong>Multi-source diagnosis.</strong> Test instruction, history, and transition consistency without reading evaluation labels.</li>
-        <li><strong>Recovery-anchor candidates.</strong> Retrieve a supported earlier state after detecting deviation; robot execution remains future work.</li>
+        <li><strong>Record before trusting.</strong> Preserve time-stamped observations, poses, and source records. Repeated detections do not establish physical identity or a reliable landmark.</li>
+        <li><strong>Diagnose with sufficient evidence.</strong> Compare instruction, history, and spatial transitions. The read-only adapter explicitly reports insufficient evidence instead of treating a missing signal as normal navigation.</li>
+        <li><strong>Recover from a supported state.</strong> Investigate an earlier trustworthy state as an anchor. Real-robot anchor validation and recovery execution are still open.</li>
       </ol>
     </div></section>
-    <section id="method" class="section section-alt"><div class="container">
-      <h2>Method Overview</h2>
-      <p class="intro">The central question is not only <em>where the robot is now</em>, but <em>whether its current state agrees with where the instruction and trusted history say it should be</em>.</p>
-      <p class="method-detail">The proposed stack draws on MiniCPM-RobotTrack for vision-language grounding and SpaAct for dynamic spatial relations. Current implementation checks require stronger evidence-sufficiency and history-writing gates; SimpleNav/ROS 2 recovery execution has not been validated.</p>
+    <section id="real-robot" class="section section-alt"><div class="container">
+      <h2>From Observations to Reliable History</h2>
+      <p class="intro">Archived real-robot sessions now replay into <strong>1,149 raw states</strong> and <strong>3,477 semantic observations</strong>. These are repeated observations, not unique objects. None has yet been admitted as a trusted state or landmark.</p>
       <figure class="paper-figure wide-figure">
-        <img src="assets/g1-instruction-order.png" width="1920" height="1080" loading="lazy" alt="Actual MP3D RGB observation with sparse reference-route replay, baseline and full-system diagnostic readouts, and an instruction-order violation timeline.">
-        <figcaption><strong>Figure 1.</strong> Controlled MP3D instruction-order violation: real RGB observation, sparse reference-route replay, and synchronized diagnostic outputs. “Correction triggered” is a replay decision, not a measured executed recovery trajectory.</figcaption>
+        <a href="assets/real-history-2026-10-08.png" target="_blank" rel="noopener" aria-label="Open the full-resolution real-history replay figure"><img src="assets/real-history-2026-10-08.png" width="2400" height="800" loading="lazy" alt="Three separate archived robot sessions: camera-pose traces and unverified chair projections. There are zero confirmed metric landmarks; no walls or free-space map are inferred."></a>
+        <figcaption><strong>Figure 1.</strong> Real-history replay, with sessions kept separate. Blue points are <em>camera poses</em>; object projections are unverified. This is not a room occupancy map. <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/9433e164151164ed1801a174255ef73453149b15/docs/evidence/chassis/wheeltec-mecanum/phase1c3-real-robot-semantic-history-v0-2026-10-08">Source &amp; protocol</a> · Click to enlarge.</figcaption>
       </figure>
+      <p class="evidence-note"><strong>Read-only diagnosis.</strong> All 1,149 replayed states lack sufficient consistency evidence; no reliable recovery anchor is available. Zero supported deviation detections here means <em>not evaluable</em>, not successful navigation. <a href="assets/history-shadow-2026-10-08.png" target="_blank" rel="noopener">View the diagnostic audit</a>.</p>
     </div></section>
-    <section id="case-video" class="section"><div class="container video-container">
-      <h2>Controlled Deviation Replay</h2>
-      <p class="intro">A frame-synchronized replay of the instruction-order case. The plotted X–Z points are sparse reference waypoints, not continuous robot odometry.</p>
-      <video class="paper-video" controls muted loop playsinline preload="metadata" poster="assets/g1-instruction-order.png" aria-label="Instruction-order violation controlled MP3D replay video"><source src="assets/g1-global-trajectory-h264.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>
-      <p class="figure-caption"><strong>Video 1.</strong> G1 global-trajectory replay from the experimental ledger, encoded as H.264 for browser playback.</p>
+    <section id="room-map" class="section"><div class="container">
+      <h2>Toward a Verified Room Map</h2>
+      <div class="room-evidence">
+        <figure class="paper-figure">
+          <a href="assets/room-observation-2026-10-08.png" target="_blank" rel="noopener" aria-label="Open the original room RGB observation"><img src="assets/room-observation-2026-10-08.png" width="640" height="480" loading="lazy" alt="Unmodified RGB frame from the stationary WheelTec room preflight on 8 October 2026, showing desks, chairs, and a doorway; no detections or map overlays are applied."></a>
+          <figcaption><strong>Figure 2.</strong> Actual stationary RGB capture, 8 October 2026. Object detection was not run in this session.</figcaption>
+        </figure>
+        <div class="room-description">
+          <p>A bounded stationary preflight recorded <strong>179 laser scans</strong> over 15 seconds (approximately 12.04 Hz), alongside three saved RGB frames.</p>
+          <p>Only <strong>31.72% of laser beams</strong> were valid. No occupancy grid or map-frame transform was obtained; room coverage and landmark accuracy cannot yet be evaluated.</p>
+          <p><strong>Next:</strong> a human-supervised room survey, followed by independent checks of room geometry, object identity, and landmark position.</p>
+          <a class="evidence-source" href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/9433e164151164ed1801a174255ef73453149b15/docs/evidence/chassis/wheeltec-mecanum/room-map-v1-2026-10-08">Preflight evidence &amp; limitations</a>
+        </div>
+      </div>
+      <p class="table-note">This is a separate stationary session, not part of the 1,149-state historical replay. No autonomous movement or recovery was performed.</p>
     </div></section>
-    <section id="qualitative" class="section section-alt"><div class="container video-container">
-      <h2>Qualitative Analysis</h2>
-      <p class="intro">The failure case matters: a 2.44 m pose jump was <strong>not detected</strong> in the five-scene controlled replay, despite detection of three other injected deviation types.</p>
-      <video class="paper-video" controls muted playsinline preload="metadata" poster="assets/g2-pose-jump.png" aria-label="MP3D pose-jump miss in the G2 controlled replay"><source src="assets/g2-pose-jump-h264.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>
-      <p class="figure-caption"><strong>Video 2.</strong> G2 pose-jump miss. The redrawn route is a sparse reference replay, not evidence of autonomous recovery.</p>
-    </div></section>
-    <section id="results" class="section"><div class="container">
-      <h2>Quantitative Evidence</h2>
-      <p class="intro">These preliminary checks have different scopes; they cannot be combined into a claimed benchmark improvement.</p>
-      <div class="table-wrap"><table class="results-table">
-        <thead><tr><th>Evaluation</th><th>Observed result</th><th>Interpretation</th></tr></thead>
+    <section id="results" class="section section-alt"><div class="container">
+      <h2>Experimental Evidence</h2>
+      <div class="video-container replay-figure" id="case-video">
+        <video class="paper-video" controls muted playsinline preload="metadata" poster="assets/g1-instruction-order.png" aria-label="Instruction-order violation controlled MP3D replay video"><source src="assets/g1-global-trajectory-h264.mp4" type="video/mp4">Your browser does not support HTML5 video. <a href="assets/g1-global-trajectory-h264.mp4">Open the replay</a>.</video>
+        <p class="figure-caption"><strong>Video 1.</strong> Controlled MP3D instruction-order violation. Plotted points are sparse reference waypoints; “correction triggered” is a replay decision, not an executed robot recovery.</p>
+      </div>
+      <div class="table-wrap" tabindex="0" role="region" aria-label="Experimental evidence table; scroll horizontally on small screens"><table class="results-table">
+        <caption>Different evaluation scopes; no combined benchmark-improvement claim.</caption>
+        <thead><tr><th scope="col">Evaluation</th><th scope="col">Observed result</th><th scope="col">Evidence boundary</th></tr></thead>
         <tbody>
-          <tr><td>Controlled MP3D replay · 5 scenes / 5 episodes</td><td>3 of 4 injected deviation types detected</td><td>Mechanism-level case study; pose jump missed</td></tr>
-          <tr><td>Normal sparse reference points</td><td>0 alerts at 34 points</td><td>No observed false alarm in this small replay</td></tr>
+          <tr><td>Controlled MP3D · 5 scenes / 5 episodes</td><td>3/4 deviation types detected; 0/34 normal reference points alerted</td><td>Small mechanism study; a 2.44 m pose jump was missed</td></tr>
           <tr><td>Paired CMA navigation A/B · 110 episodes</td><td>SR tied; SPL and nDTW did not improve</td><td>No demonstrated navigation gain</td></tr>
-          <tr><td>WheelTec Astra · static Trial 0</td><td>413 frames received / 388 processed</td><td>Static perception check only; no mobile mapping result</td></tr>
-          <tr><td>WheelTec · manual-move Trial 1R</td><td>Same chair: obj_0000 → obj_0034</td><td>Identity persistence failed; cause inconclusive</td></tr>
+          <tr><td>WheelTec · manual-move Trial 1R</td><td>Same chair: obj_0000 → obj_0034</td><td>Identity persistence failed; cause remains inconclusive</td></tr>
+          <tr><td>Real-history read-only diagnosis · 8 Oct</td><td>1,149/1,149 states: insufficient evidence; 0 reliable anchors</td><td>Diagnosis not evaluable; not a zero-error result</td></tr>
+          <tr><td>Room preflight · 8 Oct</td><td>179 scans; no occupancy grid</td><td>Stationary capture only; room survey pending</td></tr>
         </tbody>
       </table></div>
-      <p class="table-note">Results are traceable in the <a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">experimental ledger</a> and research repository. Formal multi-episode ablation remains pending.</p>
+      <p class="table-note">SR: success rate · SPL: success weighted by path length · nDTW: normalized dynamic time warping.</p>
+      <details class="supplement" id="qualitative">
+        <summary>Failure cases &amp; additional replays</summary>
+        <p>Human-confirmed views of the same chair before and after manual movement. The ID change remains a failure, not evidence of successful relocalization.</p>
+        <div class="image-pair">
+          <figure class="paper-figure"><img src="assets/trial1r-chair-before-2026-09-28.png" width="640" height="480" loading="lazy" alt="Same chair before manual movement in Trial 1R, with a yellow detection box."><figcaption><strong>Before movement.</strong> obj_0000</figcaption></figure>
+          <figure class="paper-figure"><img src="assets/trial1r-chair-after-2026-09-28.png" width="640" height="480" loading="lazy" alt="Same human-confirmed chair after manual movement in Trial 1R, assigned a new object ID."><figcaption><strong>After movement.</strong> obj_0034</figcaption></figure>
+        </div>
+        <p class="supplement-links" id="demo"><a href="assets/g2-pose-jump-h264.mp4">Pose-jump miss video</a> · <a href="assets/g5-spatial-conflict-h264.mp4">Spatial-conflict replay video</a> · <a href="assets/trial1r-selected-depth-2026-09-28.png">Historical depth trace</a></p>
+        <p class="supplement-limit">These controlled videos and the depth trace do not establish a physical error cause or autonomous recovery. The latest live diagnostic attempt stopped at its initialization memory limit before processing any frames.</p>
+      </details>
     </div></section>
-    <section id="real-robot" class="section section-alt"><div class="container">
-      <h2>Real-Robot Setup</h2>
-      <p class="intro">The WheelTec Astra passed the static projection check, but manual movement split one user-confirmed chair into two object IDs. The image pair shows the target before and after movement; the selected-depth trace is a clue, <em>not</em> proof of the split's cause.</p>
-      <div class="image-pair">
-        <figure class="paper-figure"><img src="assets/trial1r-chair-before-2026-09-28.png" width="640" height="480" loading="lazy" alt="Trial 1R central RGB frame with a yellow detection box around the chair before manual movement."><figcaption><strong>Figure 2.</strong> Chair before manual movement; old track obj_0000.</figcaption></figure>
-        <figure class="paper-figure"><img src="assets/trial1r-chair-after-2026-09-28.png" width="640" height="480" loading="lazy" alt="Trial 1R parking RGB frame after manual movement with a detection box around the same chair."><figcaption><strong>Figure 3.</strong> Same physical chair after movement; new track obj_0034.</figcaption></figure>
-      </div>
-      <figure class="paper-figure diagnostic-figure"><img src="assets/trial1r-selected-depth-2026-09-28.png" width="1260" height="559" loading="lazy" alt="Trial 1R selected-depth time series with the last obj_0000 observation and the obj_0034 creation marked by vertical lines."><figcaption><strong>Figure 4.</strong> Selected-depth timeline near the ID split. No synchronized split frame or 3D ground truth is available, so causation remains open.</figcaption></figure>
-      <p class="real-robot-status"><strong>Latest gate · 2 Oct 2026.</strong> A historical static run lost its target at step 68, but its saved screenshot stops at step 50. A new stationary attempt stopped after two frames (1.10 s) at the unchanged 0.50 s continuity gate—not at TARGET_LOST. Bounded visual auditing and warm-up/timing code passed offline checks; the refreshed target image then had zero detections. No formal retest, mobile navigation, or automatic recovery was completed.</p>
-    </div></section>
-    <section id="demo" class="section"><div class="container video-container">
-      <h2>Demo Video</h2>
-      <p class="intro">Spatial-relation conflict in a controlled MP3D sparse-waypoint replay. This is an evidence video, not an end-to-end ground-robot navigation demo.</p>
-      <video class="paper-video" controls muted playsinline preload="metadata" poster="assets/g5-spatial-conflict.png" aria-label="Spatial-relation conflict MP3D controlled replay video"><source src="assets/g5-spatial-conflict-h264.mp4" type="video/mp4">Your browser does not support HTML5 video.</video>
-      <p class="figure-caption"><strong>Video 3.</strong> G5 spatial-relation conflict, with RGB evidence, reference route, and diagnostic timeline.</p>
-    </div></section>
-    <section id="resources" class="section section-alt"><div class="container prose">
-      <h2>Resources &amp; Status</h2>
-      <p>This page is a research preview, not a published paper. The thesis title is <span lang="zh-CN">《基于历史感知语义地图与动态空间推理的长程视觉语言导航纠错框架研究》</span>. Controlled diagnosis, a missed pose jump, static projection, and a moving-trial identity failure are documented. Robust history gating, successful mobile mapping, autonomous recovery, and navigation-metric gains remain unverified.</p>
-      <p class="resource-links"><a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noopener noreferrer">Thesis framework</a> · <a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">Experimental ledger</a> · <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/real-robot-integration" target="_blank" rel="noopener noreferrer">Research code</a> · <a href="research-mindmap.mmd">Research mind map</a></p>
+    <section id="resources" class="section"><div class="container prose">
+      <h2>Resources</h2>
+      <p class="resource-links"><a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noopener noreferrer">Thesis framework</a> · <a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">Experimental ledger</a> · <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/9433e164151164ed1801a174255ef73453149b15" target="_blank" rel="noopener noreferrer">Code snapshot</a> · <a href="evidence-2026-10-08.md">Image provenance</a></p>
+      <details class="supplement">
+        <summary>Research mind map</summary>
+        <p>The research question, evidence boundaries, and next experiment, updated 8 October 2026. This is a research outline, not an experimental result.</p>
+        <figure class="paper-figure"><a href="assets/research-mindmap-2026-10-08.svg" target="_blank" rel="noopener"><img src="assets/research-mindmap-2026-10-08.svg" loading="lazy" alt="Research mind map connecting history-aware diagnosis, controlled MP3D evidence, insufficient real-history evidence, and the pending human-supervised room survey."></a></figure>
+        <p class="supplement-links"><a href="research-mindmap.mmd">Editable Mermaid source</a> · <a href="assets/research-mindmap-2026-10-08.svg" target="_blank" rel="noopener">Full-size diagram</a></p>
+      </details>
     </div></section>
   </main>
   <section id="bibtex" class="citation-section" aria-labelledby="bibtex-title"><div class="citation-container">
@@ -121,7 +128,7 @@
   <footer class="footer">
     <a class="footer-github" href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/real-robot-integration" target="_blank" rel="noopener noreferrer" aria-label="Rabbit-RobotNav research code on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.02 8.02 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
     <p>Page layout inspired by the <a href="https://apex-bjut.github.io/Taga-VLM/">TagaVLM project page</a>. Research content, figures, and videos © Jinghai Li.</p>
-    <p class="footer-meta">Rabbit-RobotNav · Master's thesis project · Updated 3 October 2026</p>
+    <p class="footer-meta">Rabbit-RobotNav · Master's thesis project · Updated 8 October 2026</p>
   </footer>
 </body>
 </html>
