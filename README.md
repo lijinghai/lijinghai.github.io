@@ -4,6 +4,28 @@ Jinghai Li 的个人主页，按 Lain 主页的灰白／深灰配色、蓝色强
 
 ## 最近更新
 
+### 2026-10-09 - 文章卡片改用用户提供的 RabbitNav 原图
+
+按用户截图中箭头标记的位置，将首页「文章」区 Rabbit-RobotNav 卡片原有的简版方法图替换为用户提供的 1280×720 PNG。仅修改根 `index.html` 中该图片的 `src` 和原始宽高，新增 `images/rabbitnav-history-aware-vln-recovery.png`；网页文字、链接、布局、样式、脚本和项目详情页均保持原样。本节及截图仅记录交付证据。
+
+- 原图直接复制，SHA-256 为 `f5b376c52bba3f26912a914db3e84fa2ccf86dffca4c0b5b56f93579a96db693`，与用户附件逐字节一致。
+- 与提交 `35c9e79` 比较，首页除上述三个图片属性外完全一致；`git diff --check` 通过。
+- 真实浏览器在 1440×900 桌面和 390×844 手机视口均解码为 1280×720；沿用 `object-fit: contain` 完整显示，手机页面无横向溢出，卡片链接仍为 `RabbitRobotNav/`。
+- 本次只验证配图呈现，没有新增或验证机器人实验结论。
+
+![替换后文章卡片的桌面浏览器截图](docs/images/updates/2026-10-09-article-image/desktop.png)
+
+[手机浏览器截图](docs/images/updates/2026-10-09-article-image/mobile.png)
+
+以下用 Axton `mermaid-visualizer` 生成最小替换范围图，采用 Obsidian／GitHub 兼容 Mermaid，说明原图对应的唯一网页位置。
+
+```mermaid
+flowchart TB
+  A["用户提供的 RabbitNav PNG 原图"] --> B["首页文章区：Rabbit-RobotNav 卡片配图"]
+  classDef scope fill:#e7f5ff,stroke:#1971c2,color:#242424;
+  class A,B scope;
+```
+
 ### 2026-10-09 - 首页改用 Lain 模板
 
 用户将参考页面改为 [Lain 主页](https://lain-ego0.github.io/)。本次替换下方历史记录中的窄栏橙色方案，按新参考页面的实际外观和交互重排首页：1024px 内容容器、终端样式标识、固定顶栏、居中圆形头像、灰白底与蓝色下划线、左图右文项目卡片、文章、时间线及技术栈。手机端使用两行导航和单列卡片；提供中英文、明暗模式切换与本地偏好记忆，默认英文浅色。
