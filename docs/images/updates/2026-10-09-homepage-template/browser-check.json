@@ -1,0 +1,164 @@
+{
+  "date": "2026-10-09",
+  "url": "http://127.0.0.1:8765/",
+  "filters": [
+    {
+      "hiddenVideosPaused": true,
+      "selected": "navigation",
+      "visible": [
+        "Go2X × MiniCPM-RobotTrack",
+        "RabbitRobot Platform",
+        "RabbitRobot AMR Foundation"
+      ]
+    },
+    {
+      "hiddenVideosPaused": true,
+      "selected": "manipulation",
+      "visible": [
+        "DAS Ego × UMI · 具身操作采集链",
+        "RabbitRobot × OmniHand 2025",
+        "EDULITE A3 LeRobot VLA Testbed"
+      ]
+    },
+    {
+      "hiddenVideosPaused": true,
+      "selected": "tools",
+      "visible": [
+        "RabbitRobot ROS 2 Web 控制台"
+      ]
+    },
+    {
+      "hiddenVideosPaused": true,
+      "selected": "all",
+      "visible": [
+        "DAS Ego × UMI · 具身操作采集链",
+        "RabbitRobot × OmniHand 2025",
+        "Go2X × MiniCPM-RobotTrack",
+        "RabbitRobot Platform",
+        "EDULITE A3 LeRobot VLA Testbed",
+        "RabbitRobot AMR Foundation",
+        "RabbitRobot ROS 2 Web 控制台"
+      ]
+    }
+  ],
+  "desktop": {
+    "clientWidth": 1425,
+    "contactOpen": true,
+    "height": 900,
+    "images": [
+      {
+        "loaded": true,
+        "src": "images/profile/jinghai-li-portrait-soft.jpg"
+      },
+      {
+        "loaded": true,
+        "src": "RabbitRobotNav/assets/paper-method-v12.svg"
+      },
+      {
+        "loaded": true,
+        "src": "RabbitRobot/images/rabbitrobot/edulite_a3_lerobot_vla_demo.gif"
+      },
+      {
+        "loaded": true,
+        "src": "RabbitRobot/images/rabbitrobot/RabbitRobot_architecture.png"
+      },
+      {
+        "loaded": true,
+        "src": "RabbitRobot/images/rabbitrobot/ros2_web_home.png"
+      },
+      {
+        "loaded": true,
+        "src": "images/contact/xiaohongshu-card.jpg"
+      },
+      {
+        "loaded": true,
+        "src": "images/contact/bilibili-qr.jpg"
+      },
+      {
+        "loaded": true,
+        "src": "images/contact/wechat-qr.png"
+      },
+      {
+        "loaded": true,
+        "src": "RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png"
+      }
+    ],
+    "scrollWidth": 1425,
+    "videos": [
+      {
+        "error": null,
+        "paused": false,
+        "time": 16.032283,
+        "width": 3840
+      },
+      {
+        "error": null,
+        "paused": false,
+        "time": 12.990582,
+        "width": 960
+      },
+      {
+        "error": null,
+        "paused": false,
+        "time": 1.252387,
+        "width": 960
+      },
+      {
+        "error": null,
+        "paused": false,
+        "time": 2.875,
+        "width": 960
+      }
+    ],
+    "viewport": 1440
+  },
+  "mobileFilter": {
+    "scrollWidth": 375,
+    "visible": [
+      "RabbitRobot ROS 2 Web 控制台"
+    ],
+    "width": 390
+  },
+  "mobileContactCollapsed": true,
+  "mobile": {
+    "clientWidth": 375,
+    "contactOpen": true,
+    "height": 844,
+    "scrollWidth": 375,
+    "viewport": 390
+  },
+  "smallMobile": {
+    "clientWidth": 305,
+    "height": 844,
+    "scrollWidth": 305,
+    "viewport": 320
+  },
+  "reducedMotion": {
+    "reduced": true,
+    "videos": [
+      {
+        "autoplay": false,
+        "paused": true
+      },
+      {
+        "autoplay": false,
+        "paused": true
+      },
+      {
+        "autoplay": false,
+        "paused": true
+      },
+      {
+        "autoplay": false,
+        "paused": true
+      }
+    ],
+    "visibleNavigation": 3
+  },
+  "noJavascript": {
+    "contactOpen": true,
+    "filterHidden": true,
+    "visibleProjects": 7
+  },
+  "console": []
+}

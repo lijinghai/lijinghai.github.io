@@ -1,8 +1,34 @@
 # lijinghai.github.io
 
-Jinghai Li 的个人主页，保留原有白色横线纸背景、蓝橙配色、人物照片、研究卡片和大图项目列表，用真实机器人项目说明从 AMR 工程到 VLN / VLA 研究的连续路径。
+Jinghai Li 的个人主页，采用白底窄栏、橙色下划线标题与紧凑图文条目的学术主页排版，用真实机器人项目说明从 AMR 工程到 VLN / VLA 研究的连续路径。
 
 ## 最近更新
+
+### 2026-10-09 - 首页参考学术模板调整排版
+
+按用户指定的 [academic-homepage-template](https://w-r-s.github.io/academic-homepage-template/) 调整个人首页。原来的横线纸背景、大型按钮与卡片布局改为 800px 居中白底页面：简介左文右图、橙色标题下划线、行内个人链接、浅黄色研究条目，以及左图右文的紧凑项目列表。宽屏右侧提供章节导航，手机端改为顶部导航和单列内容。人物与项目资料沿用本站既有内容，不引入模板中的示例论文、履历或奖项。
+
+- **范围与文件：** 仅调整根 `index.html`，新增仅被该首页引用的 `homepage.css`；本记录和截图属于交付证据。`RabbitRobot/`、`RabbitRobotNav/` 及其他项目页面、图片和视频源文件均未修改。照片下的 Research Profile 收为原生展开区；Contact 的三张联系方式仍默认展开。
+- **交互：** Selected Work 加入 All / Navigation / Manipulation / Tools 筛选，对应 7 / 3 / 3 / 1 项。支持键盘操作、选中状态和读屏结果提示；隐藏项目的视频暂停。减少动画偏好下四段视频暂停，但筛选仍可用；禁用 JavaScript 时保留全部项目并隐藏不可用的筛选控件。
+- **内容与资源验证：** 与改版前版本逐项对比，7 个项目条目正文完全一致，原有链接没有删除，页面锚点均存在；30 个本地链接或资源均通过范围请求，返回 HTTP 206。脚本语法检查通过。[静态核验记录](docs/images/updates/2026-10-09-homepage-template/static-check.json)。
+- **真实浏览器验证：** 1440×900、390×844、320×844 的页面滚动宽度与可用客户区宽度一致，分别为 1425、375、305px（均含 15px 纵向滚动条占位），无横向溢出。桌面 9 张图片均解码，4 段视频在交互后均播放推进、无媒体错误；全部分类、键盘筛选、桌面及手机二维码收起再展开通过。减少动画与禁用脚本回退通过，控制台 warning/error 为空。[浏览器核验记录](docs/images/updates/2026-10-09-homepage-template/browser-check.json)。
+- **验证边界：** 本轮只验证网页排版、链接资源和交互；没有重跑机器人实验或修改研究结论。移动闭环恢复仍保留原有待验证表述。
+
+![改版后桌面首页真实浏览器截图](docs/images/updates/2026-10-09-homepage-template/desktop.png)
+
+[手机首页截图](docs/images/updates/2026-10-09-homepage-template/mobile.png) · [项目列表截图](docs/images/updates/2026-10-09-homepage-template/projects-desktop.png) · [联系方式截图](docs/images/updates/2026-10-09-homepage-template/contact-desktop.png) · [改版前截图](docs/images/updates/2026-10-09-homepage-template/before-desktop.png)
+
+以下交付范围图使用 Axton `mermaid-visualizer` 生成 Obsidian / GitHub 兼容 Mermaid，以最小关系图说明首页改版与项目入口之间的关系；它不是运行测量结果。
+
+```mermaid
+flowchart LR
+  A["参考模板：窄栏、橙色标题、图文条目"] --> B["个人首页：简介、研究、项目筛选、联系方式"]
+  B --> C["原有链接：进入既有项目详情页"]
+  classDef home fill:#fff8e8,stroke:#c88322,color:#242424;
+  classDef preserved fill:#f3f6f4,stroke:#6b8273,color:#242424;
+  class A,B home;
+  class C preserved;
+```
 
 ### 2026-10-08 - Rabbit-RobotNav 真实历史与房间预检证据更新
 

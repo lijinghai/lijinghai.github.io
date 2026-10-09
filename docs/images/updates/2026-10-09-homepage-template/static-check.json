@@ -1,0 +1,132 @@
+{
+  "unchangedProjects": true,
+  "projectCount": 7,
+  "localResourceCount": 30,
+  "missing": [],
+  "brokenAnchors": [],
+  "removedLinks": [],
+  "scriptSyntax": "PASS",
+  "contactDefaultOpen": true,
+  "httpResources": [
+    {
+      "path": "RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png",
+      "status": 206
+    },
+    {
+      "path": "homepage.css",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobotNav/",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/projects/rabbitrobot-ros2-web.html",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/",
+      "status": 206
+    },
+    {
+      "path": "images/profile/jinghai-li-portrait-soft.jpg",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobotNav/assets/paper-method-v12.svg",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/projects/rabbitrobot-ego-umi.html",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/images/rabbitrobot/ego_umi_2026_cover_4k.png",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/videos/ego_umi_2026_demo_4k.mp4",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/projects/rabbitrobot-omnihand-2025.html",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/images/rabbitrobot/omnihand_2025_cover.jpg",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/videos/omnihand_2025_home_hd.mp4",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/projects/rabbitrobot-robotdog-vln.html",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/images/rabbitrobot/robotdog_vln_walk.jpg",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/videos/robotdog_vln_demo_hd.mp4",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/projects/rabbitrobot-amr2.html",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/images/rabbitrobot/amr2_field_test_10s.jpg",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/videos/amr2_turning_loop_hd.mp4",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/projects/rabbitrobot-edulite-a3-vla.html",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/images/rabbitrobot/edulite_a3_lerobot_vla_demo.gif",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/projects/rabbitrobot-vln.html",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/images/rabbitrobot/RabbitRobot_architecture.png",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/images/rabbitrobot/ros2_web_home.png",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/projects/rabbitrobot-handlidar.html",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/projects/robot-web-tools.html",
+      "status": 206
+    },
+    {
+      "path": "RabbitRobot/projects/rabbitrobot-coverage.html",
+      "status": 206
+    },
+    {
+      "path": "images/contact/xiaohongshu-card.jpg",
+      "status": 206
+    },
+    {
+      "path": "images/contact/bilibili-qr.jpg",
+      "status": 206
+    },
+    {
+      "path": "images/contact/wechat-qr.png",
+      "status": 206
+    }
+  ]
+}
