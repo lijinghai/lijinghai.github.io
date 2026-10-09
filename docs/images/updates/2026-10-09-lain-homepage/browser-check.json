@@ -130,5 +130,12 @@
       "time": 0.900995,
       "width": 960
     }
-  ]
+  ],
+  "versionedAssets": {
+    "avatar": 140,
+    "bg": "rgb(243, 243, 243)",
+    "css": "homepage.css?v=20261009-lain",
+    "js": "homepage.js?v=20261009-lain",
+    "language": "en"
+  }
 }
