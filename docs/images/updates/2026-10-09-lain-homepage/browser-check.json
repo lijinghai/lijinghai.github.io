@@ -1,0 +1,134 @@
+{
+  "desktop": {
+    "avatar": 140,
+    "bg": "rgb(243, 243, 243)",
+    "contactOpen": true,
+    "container": 1024,
+    "h1": "48px",
+    "lang": "en",
+    "nav": 64.66667175292969,
+    "projects": 7,
+    "scroll": 1432,
+    "theme": "light",
+    "viewport": 1440,
+    "width": 1432
+  },
+  "persistence": {
+    "heading": "你好，我是 Jinghai",
+    "lang": "zh-CN",
+    "theme": "dark"
+  },
+  "projectView": {
+    "active": "Projects",
+    "top": 87.92708587646484,
+    "videos": [
+      {
+        "error": null,
+        "paused": false,
+        "time": 9.045966
+      },
+      {
+        "error": null,
+        "paused": false,
+        "time": 3.7049
+      },
+      {
+        "error": null,
+        "paused": true,
+        "time": 0
+      },
+      {
+        "error": null,
+        "paused": true,
+        "time": 0
+      }
+    ]
+  },
+  "details": true,
+  "timeline": {
+    "active": "Timeline",
+    "items": 7,
+    "top": 87.86458587646484
+  },
+  "contactClosed": true,
+  "contactOpen": {
+    "images": [
+      {
+        "complete": true,
+        "width": 987
+      },
+      {
+        "complete": true,
+        "width": 1185
+      },
+      {
+        "complete": true,
+        "width": 1094
+      }
+    ],
+    "open": true
+  },
+  "mobileEnglish": {
+    "avatar": 120,
+    "clientWidth": 382,
+    "lang": "en",
+    "scrollWidth": 382,
+    "width": 390
+  },
+  "mobileChinese": {
+    "clientWidth": 382,
+    "lang": "zh-CN",
+    "projects": 7,
+    "scrollWidth": 382,
+    "width": 390
+  },
+  "narrowChinese": {
+    "clientWidth": 312,
+    "scrollWidth": 312,
+    "width": 320
+  },
+  "narrowEnglish": {
+    "clientWidth": 312,
+    "scrollWidth": 312,
+    "width": 320
+  },
+  "reducedMotion": {
+    "hiddenReveals": 0,
+    "reduced": true,
+    "videosPaused": true
+  },
+  "noScript": {
+    "contactOpen": true,
+    "controlsHidden": true,
+    "hiddenCards": 0,
+    "lang": "zh-CN",
+    "projects": 7
+  },
+  "console": [],
+  "otherVideos": [
+    {
+      "error": null,
+      "paused": true,
+      "time": 0.166608,
+      "width": 3840
+    },
+    {
+      "error": null,
+      "paused": false,
+      "time": 5.188894,
+      "width": 960
+    },
+    {
+      "error": null,
+      "paused": false,
+      "time": 0.932797,
+      "width": 960
+    },
+    {
+      "error": null,
+      "paused": false,
+      "time": 0.900995,
+      "width": 960
+    }
+  ]
+}

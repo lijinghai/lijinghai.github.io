@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,312 +41,170 @@
       ]
     }
   </script>
+  <script>try { if (localStorage.getItem('homepage-theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (_) {}</script>
   <link rel="stylesheet" href="homepage.css">
+  <script src="homepage.js" defer></script>
+
 </head>
 <body>
-  <a class="skip-link" href="#about">跳到正文</a>
-  <main class="page">
-    <nav class="site-nav" aria-label="页面导航">
-      <a class="site-mark" href="#about">Jinghai Li / Robotics</a>
-      <div class="site-nav-links">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#papers">Papers</a>
-        <a href="#work">Work</a>
-        <a href="#records">Records</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-
-    <section class="intro" id="about" aria-labelledby="page-title">
-      <div>
-        <h1 id="page-title">Jinghai Li</h1>
-        <p class="role-line"><span class="role-chunk">控制工程硕士研究生</span><span class="role-divider">·</span><span class="role-chunk">Robotics / VLN / AMR Systems</span></p>
-        <p class="hero-claim">从亲手搭建的真实机器人出发，研究长程视觉语言导航与可验证执行。</p>
-        <p>
-          我把底盘、电控、传感器、ROS 2 / Nav2、建图与 Web 可视化接成可运行的系统，并以机器狗和 AMR 为平台，研究长程任务中的历史状态、偏航诊断与恢复验证。
-        </p>
-        <p class="research-link-line">
-          <a href="RabbitRobotNav/">当前研究：Rabbit-RobotNav ↗</a>
-          <span class="link-sep">/</span>
-          <a href="RabbitRobot/projects/rabbitrobot-ros2-web.html">开源实践：ROS 2 Web ↗</a>
-        </p>
-        <div class="hero-actions" aria-label="个人与项目链接">
-          <a href="mailto:lijinghailjh@163.com">Email</a>
-          <span aria-hidden="true">/</span>
-          <a href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <span aria-hidden="true">/</span>
-          <a href="RabbitRobot/">RabbitRobot</a>
-          <span aria-hidden="true">/</span>
-          <a href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer">Bilibili</a>
-          <span aria-hidden="true">/</span>
-          <a href="https://blog.csdn.net/Dorian15" target="_blank" rel="noopener noreferrer">CSDN</a>
-        </div>
-      </div>
-      <div class="intro-media">
-        <img class="profile-photo" src="images/profile/jinghai-li-portrait-soft.jpg" alt="Jinghai Li portrait" loading="eager" decoding="async">
-        <details class="side-panel">
-          <summary>Research Profile</summary>
-          <ul class="side-facts">
-            <li><b>Focus</b><span>Long-horizon VLN, deviation detection, recovery</span></li>
-            <li><b>Current</b><span>Robot dog RGB-D chain ready; recovery research in progress</span></li>
-            <li><b>Build</b><span>Self-built AMR / arm, sensors, ROS 2 / Nav2 / Web</span></li>
-          </ul>
-        </details>
-      </div>
-    </section>
-
-    <section id="research" aria-labelledby="focus-title">
-      <div class="section-title">
-        <h2 id="focus-title">Research Focus</h2>
-      </div>
-      <div class="focus-grid">
-        <p class="focus-card">
-          <b>Vision-Language Navigation</b>
-          <span>研究机器人执行长指令时何时开始偏离；结合历史状态、当前观察和语义子目标做偏差判断，并验证恢复是否真的有效。</span>
-        </p>
-        <p class="focus-card">
-          <b>Real-robot AMR Systems</b>
-          <span>从底盘、电控、线束和传感器到 ROS 2 / Nav2 自己搭建。真实系统不是展示背景，而是问题、数据和失败案例的来源。</span>
-        </p>
-        <p class="focus-card">
-          <b>Mapping and Verifiable Execution</b>
-          <span>用 LiDAR、RGB-D、IMU 与地图建立可复盘的执行链；目标点、状态变化、规划路径和实际轨迹都应当能检查。</span>
-        </p>
-      </div>
-      <p class="stack-line"><b>Toolchain:</b> ROS 2, Nav2, SLAM, LiDAR, RGB-D, VLM / VLA, Web tools.</p>
-    </section>
-
-    <section id="papers" aria-labelledby="papers-title">
-      <div class="section-title">
-        <h2 id="papers-title">Research Papers</h2>
-      </div>
-      <p class="section-lead">从真实机器人遇到的问题出发，将方法、实验与尚未解决的边界一起公开。</p>
-      <ol class="paper-list">
-        <li class="paper-feature">
-          <a class="paper-figure-link" href="RabbitRobotNav/" aria-label="查看 Rabbit-RobotNav 研究主页与方法图">
-            <img src="RabbitRobotNav/assets/paper-method-v12.svg" width="520" height="400" loading="lazy" decoding="async" alt="Rabbit-RobotNav 方法概览：指令与视觉观测结合语义空间历史，进行一致性诊断并提出恢复锚点候选；真机恢复仍待验证。">
-          </a>
-          <div>
-            <p class="paper-kicker">2026 · Long-horizon Vision-Language Navigation</p>
-            <h3>Rabbit-RobotNav: History-Aware Error Diagnosis and Recovery Anchors for Vision-Language Navigation</h3>
-            <p class="paper-summary">研究长程导航中如何利用语义空间历史识别偏航、定位可靠的历史状态，并提出恢复锚点。MP3D 受控回放与真机感知检查已有记录；移动机器人闭环恢复仍在验证中。</p>
-            <span class="paper-status">硕士论文项目进行中 · 尚未发表</span><br>
-            <a class="paper-link" href="RabbitRobotNav/">查看论文研究主页与实验记录 <span aria-hidden="true">↗</span></a>
-          </div>
-        </li>
-      </ol>
-    </section>
-
-    <section id="work" aria-labelledby="work-title">
-      <div class="section-title">
-        <h2 id="work-title">Selected Work</h2>
-      </div>
-      <p class="section-lead">
-        这些项目不是并列的标签，而是一条连续路径：先把机器人造出来、跑起来、记录下来，再把 VLN / VLA 问题接进真实系统。
-      </p>
-
-      <div class="work-filters" role="group" aria-label="按研究方向筛选项目" hidden>
-        <button type="button" data-filter="all" aria-pressed="true">All <span>7</span></button>
-        <button type="button" data-filter="navigation" aria-pressed="false">Navigation <span>3</span></button>
-        <button type="button" data-filter="manipulation" aria-pressed="false">Manipulation <span>3</span></button>
-        <button type="button" data-filter="tools" aria-pressed="false">Tools <span>1</span></button>
-      </div>
-      <p class="filter-status" aria-live="polite" aria-atomic="true"></p>
-
-      <article class="entry" data-category="manipulation">
-        <a class="thumb" href="RabbitRobot/projects/rabbitrobot-ego-umi.html">
-          <video data-home-loop autoplay muted loop playsinline preload="metadata" poster="RabbitRobot/images/rabbitrobot/ego_umi_2026_cover_4k.png" width="3840" height="2160" aria-label="DAS Ego 与 UMI 双手采集设备在桌面场景中的真实实操记录">
+<a class="skip-link" href="#intro">跳到正文</a>
+<nav aria-label="页面导航"><div class="container nav-container">
+<a class="logo" href="#intro" aria-label="Jinghai Li homepage"><span class="logo-terminal" aria-hidden="true"><span class="terminal-user">jinghai@db</span><span class="terminal-path">:~</span><span>$</span><span class="terminal-cursor"></span></span></a>
+<div class="nav-actions"><div class="nav-links">
+<a href="#projects" data-en="Projects">项目</a><a href="#documents" data-en="Articles">文章</a><a href="#timeline" data-en="Timeline">时间线</a><a href="#skills" data-en="Tech Stack">技术栈</a>
+</div><div class="nav-controls" hidden><button class="control-btn lang-toggle" type="button" aria-label="Switch to English">English</button><button class="control-btn theme-toggle" type="button" aria-label="切换深色模式" aria-pressed="false"><svg class="sun-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.4 1.4m11.2 11.2L19 19M5 19l1.4-1.4M17.6 6.4L19 5"/></svg><svg class="moon-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"/></svg></button></div></div>
+</div></nav>
+<main>
+<section id="intro" class="intro"><span class="anchor-alias" id="about"></span><div class="container flex-center column">
+<div class="avatar-container"><img class="avatar" src="images/profile/jinghai-li-portrait-soft.jpg" alt="Jinghai Li portrait" width="140" height="140" loading="eager" decoding="async"><div class="avatar-glow" aria-hidden="true"></div></div>
+<h1 data-en="Hello, I'm Jinghai">你好，我是 Jinghai</h1>
+<p class="subtitle"><span data-en="Control Engineering Graduate Student · Robotics / VLN / AMR Systems">控制工程硕士研究生 · Robotics / VLN / AMR Systems</span><br><span data-en="Real robots first: long-horizon vision-language navigation and verifiable execution.">从亲手搭建的真实机器人出发，研究长程视觉语言导航与可验证执行。</span><br><span data-en="I build working systems from chassis, electronics, sensors, ROS 2 / Nav2, mapping and Web visualization. With robot dogs and AMRs, I study history, deviation diagnosis and recovery verification in long-horizon tasks.">我把底盘、电控、传感器、ROS 2 / Nav2、建图与 Web 可视化接成可运行的系统，并以机器狗和 AMR 为平台，研究长程任务中的历史状态、偏航诊断与恢复验证。</span></p>
+<div class="intro-contact-links" aria-label="Social Links"><a class="intro-contact-link" href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">⌘</span> GitHub</a><a class="intro-contact-link" href="mailto:lijinghailjh@163.com"><span aria-hidden="true">✉</span> Email</a><a class="intro-contact-link" href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▣</span> Bilibili</a><a class="intro-contact-link" href="https://blog.csdn.net/Dorian15" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▤</span> CSDN</a><a class="intro-contact-link" href="RabbitRobot/"><span aria-hidden="true">⚙</span> RabbitRobot</a><a class="intro-contact-link" href="#contact"><span aria-hidden="true">↗</span> <span data-en="Contact">联系我</span></a></div>
+</div></section>
+<section id="projects" class="section-padding"><span class="anchor-alias" id="work"></span><div class="container"><h2 data-en="Projects">项目</h2>
+<p class="section-lead" data-en="These projects form a continuous path: build robots, run them, record what happens, then connect VLN / VLA research to real systems.">这些项目不是并列的标签，而是一条连续路径：先把机器人造出来、跑起来、记录下来，再把 VLN / VLA 问题接进真实系统。</p><div class="projects-grid"><article class="card project-card" id="project-1">
+<a class="project-thumbnail-wrapper" href="RabbitRobot/projects/rabbitrobot-ego-umi.html">
+          <video class="project-thumbnail" data-home-loop autoplay muted loop playsinline preload="metadata" poster="RabbitRobot/images/rabbitrobot/ego_umi_2026_cover_4k.png" width="3840" height="2160" aria-label="DAS Ego 与 UMI 双手采集设备在桌面场景中的真实实操记录">
             <source src="RabbitRobot/videos/ego_umi_2026_demo_4k.mp4" type="video/mp4">
           </video>
         </a>
-        <div>
-          <span class="project-kicker">Embodied Capture / Egocentric Sensing / Dexterous Action</span>
-          <h3>DAS Ego &times; UMI &middot; 具身操作采集链</h3>
-          <span class="meta">First-person perception &middot; bimanual end-effector trajectories &middot; synchronized multimodal records</span>
-          <p class="note technical-note">
-            以 DAS Ego 建立第一视角观测与时空上下文，以 UMI 记录双手末端轨迹、夹持变化和接触事件。我已完成设备佩戴、配对及真实桌面双手操作；当前将视觉、姿态与动作片段按时间轴整理为可复盘的数据单元，为后续 VLA 示教与策略评估提供真实输入。
-          </p>
-          <div class="metric-row">
-            <span class="metric">6-camera RGB · ~270° FOV</span>
-            <span class="metric">6-axis IMU · MCAP pipeline</span>
-          </div>
-          <p class="entry-links">
-            <a href="RabbitRobot/projects/rabbitrobot-ego-umi.html">查看 Ego + UMI 详情</a>
-          </p>
-          <span class="project-date"><time datetime="2026-09">2026.09</time> · Current device / real operation record</span>
-        </div>
-      </article>
-
-      <article class="entry" data-category="manipulation">
-        <a class="thumb" href="RabbitRobot/projects/rabbitrobot-omnihand-2025.html">
-          <video data-home-loop autoplay muted loop playsinline preload="metadata" poster="RabbitRobot/images/rabbitrobot/omnihand_2025_cover.jpg" width="960" height="540" aria-label="2026.08.20 OmniHand 2025 dexterous hands performing real tabletop motion on the RabbitRobot bench">
+<div class="project-info">
+<h3 data-en="DAS Ego × UMI · Embodied Data Capture">DAS Ego &times; UMI &middot; 具身操作采集链</h3>
+<p class="project-description" data-en="DAS Ego supplies first-person observations and spatial context; UMI records bimanual end-effector trajectories, gripper changes and contact events. I have completed device setup, pairing and real tabletop operation. Visual, pose and action segments are being aligned into replayable data units for future VLA demonstrations and policy evaluation.">以 DAS Ego 建立第一视角观测与时空上下文，以 UMI 记录双手末端轨迹、夹持变化和接触事件。我已完成设备佩戴、配对及真实桌面双手操作；当前将视觉、姿态与动作片段按时间轴整理为可复盘的数据单元，为后续 VLA 示教与策略评估提供真实输入。</p>
+<div class="project-tags"><span class="tag">6-camera RGB · ~270° FOV</span><span class="tag">6-axis IMU · MCAP pipeline</span></div>
+<div class="project-actions"><a class="project-action" href="RabbitRobot/projects/rabbitrobot-ego-umi.html"><span data-en="View project">查看 Ego + UMI 详情</span> <span aria-hidden="true">↗</span></a></div>
+<details class="project-details"><summary data-en="Technical details">技术细节</summary><p>Embodied Capture / Egocentric Sensing / Dexterous Action</p><p>First-person perception &middot; bimanual end-effector trajectories &middot; synchronized multimodal records</p></details>
+</div></article>
+<article class="card project-card" id="project-2">
+<a class="project-thumbnail-wrapper" href="RabbitRobot/projects/rabbitrobot-omnihand-2025.html">
+          <video class="project-thumbnail" data-home-loop autoplay muted loop playsinline preload="metadata" poster="RabbitRobot/images/rabbitrobot/omnihand_2025_cover.jpg" width="960" height="540" aria-label="2026.08.20 OmniHand 2025 dexterous hands performing real tabletop motion on the RabbitRobot bench">
             <source src="RabbitRobot/videos/omnihand_2025_home_hd.mp4" type="video/mp4">
           </video>
         </a>
-        <div>
-          <span class="project-kicker">Manipulation / Dexterous Hand / VLA</span>
-          <h3>RabbitRobot &times; OmniHand 2025</h3>
-          <span class="meta">双手实机台架 &middot; 10-axis action control &middot; CANFD / USB &middot; tactile interaction</span>
-          <p class="note technical-note">
-            围绕 10 轴主动关节控制建立 USB / CANFD 动作链，记录双手姿态与序列回放；下一步融合视觉观测、关节状态和 400+ 触觉点，形成可复现的 VLA 操作评测。
-          </p>
-          <div class="metric-row">
-            <span class="metric">2026.08.20 real-hand record</span>
-            <span class="metric">Active hardware bring-up</span>
-          </div>
-          <p class="entry-links">
-            <a href="RabbitRobot/projects/rabbitrobot-omnihand-2025.html">查看灵巧手详情</a>
-          </p>
-          <span class="project-date"><time datetime="2026-08-20">2026.08.20</time> · From navigation to dexterous manipulation / active</span>
-        </div>
-      </article>
-
-      <article class="entry" data-category="navigation">
-        <a class="thumb" href="RabbitRobot/projects/rabbitrobot-robotdog-vln.html">
-          <video data-home-loop autoplay muted loop playsinline preload="metadata" poster="RabbitRobot/images/rabbitrobot/robotdog_vln_walk.jpg" width="960" height="540" aria-label="Go2X robot dog walking and turning in the real lab">
+<div class="project-info">
+<h3 data-en="RabbitRobot × OmniHand 2025">RabbitRobot &times; OmniHand 2025</h3>
+<p class="project-description" data-en="A USB / CANFD action chain supports 10 active joints, recording bimanual poses and sequence replay. Next, I plan to combine vision, joint states and 400+ tactile points into a reproducible VLA manipulation evaluation.">围绕 10 轴主动关节控制建立 USB / CANFD 动作链，记录双手姿态与序列回放；下一步融合视觉观测、关节状态和 400+ 触觉点，形成可复现的 VLA 操作评测。</p>
+<div class="project-tags"><span class="tag">2026.08.20 real-hand record</span><span class="tag">Active hardware bring-up</span></div>
+<div class="project-actions"><a class="project-action" href="RabbitRobot/projects/rabbitrobot-omnihand-2025.html"><span data-en="View project">查看灵巧手详情</span> <span aria-hidden="true">↗</span></a></div>
+<details class="project-details"><summary data-en="Technical details">技术细节</summary><p>Manipulation / Dexterous Hand / VLA</p><p>双手实机台架 &middot; 10-axis action control &middot; CANFD / USB &middot; tactile interaction</p></details>
+</div></article>
+<article class="card project-card" id="project-3">
+<a class="project-thumbnail-wrapper" href="RabbitRobot/projects/rabbitrobot-robotdog-vln.html">
+          <video class="project-thumbnail" data-home-loop autoplay muted loop playsinline preload="metadata" poster="RabbitRobot/images/rabbitrobot/robotdog_vln_walk.jpg" width="960" height="540" aria-label="Go2X robot dog walking and turning in the real lab">
             <source src="RabbitRobot/videos/robotdog_vln_demo_hd.mp4" type="video/mp4">
           </video>
         </a>
-        <div>
-          <span class="project-kicker">Embodied AI / Robot Tracking</span>
-          <h3>Go2X &times; MiniCPM-RobotTrack</h3>
-          <span class="meta">RGB-D + Odom &middot; 31-frame temporal context &middot; 8-point trajectory &middot; ROS 2</span>
-          <p class="note">
-            Go2X RGB-D / Odom 接入 MiniCPM-RobotTrack：31 帧历史 &rarr; 8 点轨迹。
-          </p>
-          <div class="metric-row">
-            <span class="metric">31-frame multimodal context</span>
-            <span class="metric">140 inferences / 0 model-sensor faults</span>
-          </div>
-          <p class="entry-links">
-            <a href="RabbitRobot/projects/rabbitrobot-robotdog-vln.html">查看完整工程记录</a>
-          </p>
-          <span class="project-date"><time datetime="2026-08">2026.08</time> · 时序感知与轨迹推理已验证 / live control locked</span>
-        </div>
-      </article>
-
-      <article class="entry" data-category="navigation">
-        <a class="thumb" href="RabbitRobot/projects/rabbitrobot-amr2.html">
-          <video data-home-loop autoplay muted loop playsinline preload="metadata" poster="RabbitRobot/images/rabbitrobot/amr2_field_test_10s.jpg" width="960" height="540" aria-label="RabbitRobot AMR2 real robot turning test">
+<div class="project-info">
+<h3 data-en="Go2X × MiniCPM-RobotTrack">Go2X &times; MiniCPM-RobotTrack</h3>
+<p class="project-description" data-en="Go2X RGB-D / odometry feeds MiniCPM-RobotTrack: 31 historical frames → an 8-point trajectory.">Go2X RGB-D / Odom 接入 MiniCPM-RobotTrack：31 帧历史 &rarr; 8 点轨迹。</p>
+<div class="project-tags"><span class="tag">31-frame multimodal context</span><span class="tag">140 inferences / 0 model-sensor faults</span></div>
+<div class="project-actions"><a class="project-action" href="RabbitRobot/projects/rabbitrobot-robotdog-vln.html"><span data-en="View project">查看完整工程记录</span> <span aria-hidden="true">↗</span></a></div>
+<details class="project-details"><summary data-en="Technical details">技术细节</summary><p>Embodied AI / Robot Tracking</p><p>RGB-D + Odom &middot; 31-frame temporal context &middot; 8-point trajectory &middot; ROS 2</p></details>
+</div></article>
+<article class="card project-card" id="project-4">
+<a class="project-thumbnail-wrapper" href="RabbitRobot/projects/rabbitrobot-amr2.html">
+          <video class="project-thumbnail" data-home-loop autoplay muted loop playsinline preload="metadata" poster="RabbitRobot/images/rabbitrobot/amr2_field_test_10s.jpg" width="960" height="540" aria-label="RabbitRobot AMR2 real robot turning test">
             <source src="RabbitRobot/videos/amr2_turning_loop_hd.mp4" type="video/mp4">
           </video>
         </a>
-        <div>
-          <span class="project-kicker">Main Platform</span>
-          <h3>RabbitRobot Platform</h3>
-          <span class="meta">Real AMR &middot; ROS 2 / Nav2 &middot; SLAM &middot; sensors &middot; Web tools</span>
-          <p class="note">
-            这是我从底盘、电控、线束、传感器安装到 ROS 2、Nav2 和 Web 工具一步步搭起的工程底座。它承担建图、定位、导航、数据记录和真车执行，也是后续 VLN 实验的可靠基线。
-          </p>
-          <div class="metric-row">
-            <span class="metric">Self-built AMR</span>
-            <span class="metric">Nav2 baseline</span>
-          </div>
-          <p class="entry-links">
-            <a href="RabbitRobot/projects/rabbitrobot-amr2.html">AMR2 detail page</a>
-            /
-            <a href="RabbitRobot/">Project page</a>
-          </p>
-          <span class="project-date"><time datetime="2026-07">2026.07</time> · Self-built AMR engineering base</span>
-        </div>
-      </article>
-
-      <article class="entry" data-category="manipulation">
-        <a class="thumb" href="RabbitRobot/projects/rabbitrobot-edulite-a3-vla.html">
-          <img src="RabbitRobot/images/rabbitrobot/edulite_a3_lerobot_vla_demo.gif" alt="EDULITE A3 robotic arm real robot VLA debugging demo" loading="lazy" decoding="async">
+<div class="project-info">
+<h3 data-en="RabbitRobot Platform">RabbitRobot Platform</h3>
+<p class="project-description" data-en="I built this engineering foundation step by step: chassis, electronics, wiring, sensor installation, ROS 2, Nav2 and Web tools. It supports mapping, localization, navigation, data logging and real-robot execution, and serves as the baseline for subsequent VLN experiments.">这是我从底盘、电控、线束、传感器安装到 ROS 2、Nav2 和 Web 工具一步步搭起的工程底座。它承担建图、定位、导航、数据记录和真车执行，也是后续 VLN 实验的可靠基线。</p>
+<div class="project-tags"><span class="tag">Self-built AMR</span><span class="tag">Nav2 baseline</span></div>
+<div class="project-actions"><a class="project-action" href="RabbitRobot/projects/rabbitrobot-amr2.html"><span data-en="View project">AMR2 detail page</span> <span aria-hidden="true">↗</span></a><a class="project-action" href="RabbitRobot/"><span data-en="Project page">Project page</span> <span aria-hidden="true">↗</span></a></div>
+<details class="project-details"><summary data-en="Technical details">技术细节</summary><p>Main Platform</p><p>Real AMR &middot; ROS 2 / Nav2 &middot; SLAM &middot; sensors &middot; Web tools</p></details>
+</div></article>
+<article class="card project-card" id="project-5">
+<a class="project-thumbnail-wrapper" href="RabbitRobot/projects/rabbitrobot-edulite-a3-vla.html">
+          <img class="project-thumbnail" src="RabbitRobot/images/rabbitrobot/edulite_a3_lerobot_vla_demo.gif" alt="EDULITE A3 robotic arm real robot VLA debugging demo" loading="lazy" decoding="async">
         </a>
-        <div>
-          <span class="project-kicker">Manipulation / VLA</span>
-          <h3>EDULITE A3 LeRobot VLA Testbed</h3>
-          <span class="meta">3D 打印装配 &middot; CAN / Python SDK &middot; ROS 2 / MoveIt 2 &middot; LeRobot pi0.5</span>
-          <p class="note">
-            从 3D 打印装配、CAN 电机通信到 ROS 2 / MoveIt 2 与 LeRobot pi0.5，把 VLA 从模型接口接到真实关节反馈。这是我从导航向具身操作延伸的一条支线。
-          </p>
-          <div class="metric-row">
-            <span class="metric">Hardware bring-up</span>
-            <span class="metric">VLA branch</span>
-          </div>
-          <p class="entry-links">
-            <a href="RabbitRobot/projects/rabbitrobot-edulite-a3-vla.html">Arm VLA details</a>
-            /
-            <a href="https://github.com/RobStride/EDULITE_A3" target="_blank" rel="noopener noreferrer">EDULITE_A3</a>
-          </p>
-          <span class="project-date"><time datetime="2026-04">2026.04</time> · Real-arm VLA branch</span>
-        </div>
-      </article>
-
-      <article class="entry" data-category="navigation">
-        <a class="thumb contain" href="RabbitRobot/projects/rabbitrobot-vln.html">
-          <img src="RabbitRobot/images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot architecture diagram" loading="lazy" decoding="async">
+<div class="project-info">
+<h3 data-en="EDULITE A3 LeRobot VLA Testbed">EDULITE A3 LeRobot VLA Testbed</h3>
+<p class="project-description" data-en="From 3D-printed assembly and CAN motor communication to ROS 2 / MoveIt 2 and LeRobot pi0.5, this testbed connects VLA model interfaces to real joint feedback. It extends my navigation work into embodied manipulation.">从 3D 打印装配、CAN 电机通信到 ROS 2 / MoveIt 2 与 LeRobot pi0.5，把 VLA 从模型接口接到真实关节反馈。这是我从导航向具身操作延伸的一条支线。</p>
+<div class="project-tags"><span class="tag">Hardware bring-up</span><span class="tag">VLA branch</span></div>
+<div class="project-actions"><a class="project-action" href="RabbitRobot/projects/rabbitrobot-edulite-a3-vla.html"><span data-en="View project">Arm VLA details</span> <span aria-hidden="true">↗</span></a><a class="project-action" href="https://github.com/RobStride/EDULITE_A3" target="_blank" rel="noopener noreferrer"><span data-en="GitHub">EDULITE_A3</span> <span aria-hidden="true">↗</span></a></div>
+<details class="project-details"><summary data-en="Technical details">技术细节</summary><p>Manipulation / VLA</p><p>3D 打印装配 &middot; CAN / Python SDK &middot; ROS 2 / MoveIt 2 &middot; LeRobot pi0.5</p></details>
+</div></article>
+<article class="card project-card" id="project-6">
+<a class="project-thumbnail-wrapper" href="RabbitRobot/projects/rabbitrobot-vln.html">
+          <img class="project-thumbnail" src="RabbitRobot/images/rabbitrobot/RabbitRobot_architecture.png" alt="RabbitRobot architecture diagram" loading="lazy" decoding="async">
         </a>
-        <div>
-          <span class="project-kicker">2025 Project Archive</span>
-          <h3>RabbitRobot AMR Foundation</h3>
-          <span class="meta">AMR prototypes · SLAM / Nav2 · multi-sensor mapping · Web console · coverage planning</span>
-          <p class="note">
-            这里保留 2025 年真实做过的底盘迭代、SLAM / Nav2、多传感器建图、Web 控制台和覆盖规划。它不是对当前研究的重复包装，而是今天能继续做真机 VLN 的工程来路。
-          </p>
-          <div class="metric-row">
-            <span class="metric">Engineering archive</span>
-            <span class="metric">Reusable foundation</span>
-          </div>
-          <p class="entry-links">
-            <a href="RabbitRobot/projects/rabbitrobot-vln.html">Project details</a>
-            /
-            <a href="RabbitRobot/">RabbitRobot platform</a>
-          </p>
-          <span class="project-date"><time datetime="2025-12">2025.12</time> · AMR engineering foundation</span>
-        </div>
-      </article>
-
-      <article class="entry" data-category="tools">
-        <a class="thumb" href="RabbitRobot/projects/rabbitrobot-ros2-web.html">
-          <img src="RabbitRobot/images/rabbitrobot/ros2_web_home.png" alt="RabbitRobot ROS 2 Web 控制台主界面：地图、机器人状态与任务队列" loading="lazy" decoding="async">
+<div class="project-info">
+<h3 data-en="RabbitRobot AMR Foundation">RabbitRobot AMR Foundation</h3>
+<p class="project-description" data-en="This archive preserves my 2025 chassis iterations, SLAM / Nav2, multi-sensor mapping, Web console and coverage planning. It documents the engineering foundation behind my current real-robot VLN work.">这里保留 2025 年真实做过的底盘迭代、SLAM / Nav2、多传感器建图、Web 控制台和覆盖规划。它不是对当前研究的重复包装，而是今天能继续做真机 VLN 的工程来路。</p>
+<div class="project-tags"><span class="tag">Engineering archive</span><span class="tag">Reusable foundation</span></div>
+<div class="project-actions"><a class="project-action" href="RabbitRobot/projects/rabbitrobot-vln.html"><span data-en="View project">Project details</span> <span aria-hidden="true">↗</span></a><a class="project-action" href="RabbitRobot/"><span data-en="Project page">RabbitRobot platform</span> <span aria-hidden="true">↗</span></a></div>
+<details class="project-details"><summary data-en="Technical details">技术细节</summary><p>2025 Project Archive</p><p>AMR prototypes · SLAM / Nav2 · multi-sensor mapping · Web console · coverage planning</p></details>
+</div></article>
+<article class="card project-card" id="project-7">
+<a class="project-thumbnail-wrapper" href="RabbitRobot/projects/rabbitrobot-ros2-web.html">
+          <img class="project-thumbnail" src="RabbitRobot/images/rabbitrobot/ros2_web_home.png" alt="RabbitRobot ROS 2 Web 控制台主界面：地图、机器人状态与任务队列" loading="lazy" decoding="async">
         </a>
-        <div>
-          <span class="project-kicker">ROS 2 / Web Console</span>
-          <h3>RabbitRobot ROS 2 Web 控制台</h3>
-          <span class="meta">React 19 · Three.js 3D · rosbridge WebSocket · Nav2 / SLAM 可视化</span>
-          <p class="note">
-            我把 ROS 2 真车调试入口搬进浏览器：通过 rosbridge WebSocket 汇聚地图、激光、点云、路径、TF 与设备状态，在同一界面完成图层配置、2D/3D 视图切换、单点/多点导航、重定位、手动控制和日志回看。
-          </p>
-          <div class="metric-row">
-            <span class="metric">Map · TF · PointCloud</span>
-            <span class="metric">Nav2 goals · Relocalize</span>
-          </div>
-          <p class="entry-links">
-            <a href="RabbitRobot/projects/rabbitrobot-ros2-web.html">ROS 2 Web details</a>
-            /
-            <a href="https://github.com/lijinghai/ljh_robot_ros2_web" target="_blank" rel="noreferrer">Source on GitHub</a>
-          </p>
-          <span class="project-date"><time datetime="2026-08">2026.08</time> · Active ROS 2 Web console</span>
-        </div>
-      </article>
-
-      <p class="related-links">
+<div class="project-info">
+<h3 data-en="RabbitRobot ROS 2 Web Console">RabbitRobot ROS 2 Web 控制台</h3>
+<p class="project-description" data-en="I bring ROS 2 robot debugging into the browser: rosbridge WebSocket combines maps, scans, point clouds, paths, TF and device states. One interface supports layer configuration, 2D/3D views, single- and multi-goal navigation, relocalization, manual control and log review.">我把 ROS 2 真车调试入口搬进浏览器：通过 rosbridge WebSocket 汇聚地图、激光、点云、路径、TF 与设备状态，在同一界面完成图层配置、2D/3D 视图切换、单点/多点导航、重定位、手动控制和日志回看。</p>
+<div class="project-tags"><span class="tag">Map · TF · PointCloud</span><span class="tag">Nav2 goals · Relocalize</span></div>
+<div class="project-actions"><a class="project-action" href="RabbitRobot/projects/rabbitrobot-ros2-web.html"><span data-en="View project">ROS 2 Web details</span> <span aria-hidden="true">↗</span></a><a class="project-action" href="https://github.com/lijinghai/ljh_robot_ros2_web" target="_blank" rel="noreferrer"><span data-en="GitHub">Source on GitHub</span> <span aria-hidden="true">↗</span></a></div>
+<details class="project-details"><summary data-en="Technical details">技术细节</summary><p>ROS 2 / Web Console</p><p>React 19 · Three.js 3D · rosbridge WebSocket · Nav2 / SLAM 可视化</p></details>
+</div></article></div><p class="related-links">
         Smaller tools:
         <a href="RabbitRobot/projects/rabbitrobot-handlidar.html">HandLiDAR / mapping</a>
         <span class="link-sep">/</span>
         <a href="RabbitRobot/projects/robot-web-tools.html">Robot Web Tools</a>
         <span class="link-sep">/</span>
         <a href="RabbitRobot/projects/rabbitrobot-ros2-web.html">ROS2 Web console</a>
-      </p>
-    </section>
-
-    <section id="records" aria-labelledby="reports-title">
-      <div class="section-title">
-        <h2 id="reports-title">Recent Verified Work</h2>
-      </div>
-      <ul class="notes-list">
-        <li><a href="RabbitRobot/projects/rabbitrobot-vln.html">RabbitRobot engineering archive</a><span>Chassis iterations, SLAM / Nav2, multi-sensor mapping, Web console, and coverage-planning evidence.</span></li>
-        <li><a href="RabbitRobot/projects/rabbitrobot-amr2.html">AMR2 navigation baseline</a><span>Self-built chassis, mapping/localization, Nav2 execution, Web 3D state, and safety-chain evidence.</span></li>
-        <li><a href="RabbitRobot/projects/rabbitrobot-coverage.html">Coverage planning evidence</a><span>Map clipping, connected-region segmentation, obstacle inflation, path checks, and follower trajectory.</span></li>
-        <li><a href="RabbitRobot/projects/robot-web-tools.html">Robot development tools</a><span>ROS 2 console, R550 dictionary, remote sync, and reusable interfaces for inspecting real systems.</span></li>
-      </ul>
-    </section>
-
-    <section id="contact" aria-labelledby="contact-title">
+      </p></div></section>
+<section id="documents" class="section-padding"><span class="anchor-alias" id="records"></span><div class="container"><h2 data-en="Articles">文章</h2>
+<p class="section-lead" data-en="Starting from real-robot problems, I share methods, experiments and unresolved limitations together.">从真实机器人遇到的问题出发，将方法、实验与尚未解决的边界一起公开。</p><div class="documents-grid"><article class="card project-card" id="papers">
+          <a class="project-thumbnail-wrapper" href="RabbitRobotNav/" aria-label="查看 Rabbit-RobotNav 研究主页与方法图">
+            <img class="project-thumbnail" src="RabbitRobotNav/assets/paper-method-v12.svg" width="520" height="400" loading="lazy" decoding="async" alt="Rabbit-RobotNav 方法概览：指令与视觉观测结合语义空间历史，进行一致性诊断并提出恢复锚点候选；真机恢复仍待验证。">
+          </a>
+          <div class="project-info">
+            <p class="paper-kicker">2026 · Long-horizon Vision-Language Navigation</p>
+            <h3>Rabbit-RobotNav: History-Aware Error Diagnosis and Recovery Anchors for Vision-Language Navigation</h3>
+            <p class="paper-summary"><span data-en="I study how semantic spatial history can reveal deviations, locate reliable past states and propose recovery anchors for long-horizon navigation. MP3D controlled replays and real-robot perception checks are documented; mobile closed-loop recovery remains under verification.">研究长程导航中如何利用语义空间历史识别偏航、定位可靠的历史状态，并提出恢复锚点。MP3D 受控回放与真机感知检查已有记录；移动机器人闭环恢复仍在验证中。</span></p>
+            <span class="paper-status"><span data-en="Master’s thesis in progress · Unpublished">硕士论文项目进行中 · 尚未发表</span></span><br>
+            <a class="paper-link" href="RabbitRobotNav/"><span data-en="Research page and experiment records">查看论文研究主页与实验记录</span> <span aria-hidden="true">↗</span></a>
+          </div>
+        </article><article class="card project-card project-card--text-only"><div class="project-info"><h3>RabbitRobot engineering archive</h3><p>Chassis iterations, SLAM / Nav2, multi-sensor mapping, Web console, and coverage-planning evidence.</p><div class="project-actions"><a class="project-action" href="RabbitRobot/projects/rabbitrobot-vln.html"><span data-en="Read article">查看记录</span> ↗</a></div></div></article>
+<article class="card project-card project-card--text-only"><div class="project-info"><h3>AMR2 navigation baseline</h3><p>Self-built chassis, mapping/localization, Nav2 execution, Web 3D state, and safety-chain evidence.</p><div class="project-actions"><a class="project-action" href="RabbitRobot/projects/rabbitrobot-amr2.html"><span data-en="Read article">查看记录</span> ↗</a></div></div></article>
+<article class="card project-card project-card--text-only"><div class="project-info"><h3>Coverage planning evidence</h3><p>Map clipping, connected-region segmentation, obstacle inflation, path checks, and follower trajectory.</p><div class="project-actions"><a class="project-action" href="RabbitRobot/projects/rabbitrobot-coverage.html"><span data-en="Read article">查看记录</span> ↗</a></div></div></article>
+<article class="card project-card project-card--text-only"><div class="project-info"><h3>Robot development tools</h3><p>ROS 2 console, R550 dictionary, remote sync, and reusable interfaces for inspecting real systems.</p><div class="project-actions"><a class="project-action" href="RabbitRobot/projects/robot-web-tools.html"><span data-en="Read article">查看记录</span> ↗</a></div></div></article>
+<article class="card project-card project-card--text-only" id="research"><div class="project-info"><h3 data-en="Research Focus">研究方向</h3><div class="focus-grid">
+        <p class="focus-card">
+          <b>Vision-Language Navigation</b>
+          <span><span data-en="I study when robots deviate while following long instructions, combining history, current observations and semantic subgoals to diagnose deviations and verify whether recovery works.">研究机器人执行长指令时何时开始偏离；结合历史状态、当前观察和语义子目标做偏差判断，并验证恢复是否真的有效。</span></span>
+        </p>
+        <p class="focus-card">
+          <b>Real-robot AMR Systems</b>
+          <span><span data-en="I build systems from chassis, electronics, wiring and sensors to ROS 2 / Nav2. Real systems provide the research problems, data and failure cases.">从底盘、电控、线束和传感器到 ROS 2 / Nav2 自己搭建。真实系统不是展示背景，而是问题、数据和失败案例的来源。</span></span>
+        </p>
+        <p class="focus-card">
+          <b>Mapping and Verifiable Execution</b>
+          <span><span data-en="LiDAR, RGB-D, IMU and maps form a replayable execution chain. Goals, state changes, planned paths and actual trajectories should all be inspectable.">用 LiDAR、RGB-D、IMU 与地图建立可复盘的执行链；目标点、状态变化、规划路径和实际轨迹都应当能检查。</span></span>
+        </p>
+      </div><p class="stack-line"><b>Toolchain:</b> ROS 2, Nav2, SLAM, LiDAR, RGB-D, VLM / VLA, Web tools.</p><details class="profile-details">
+          <summary>Research Profile</summary>
+          <ul class="side-facts">
+            <li><b>Focus</b><span>Long-horizon VLN, deviation detection, recovery</span></li>
+            <li><b>Current</b><span>Robot dog RGB-D chain ready; recovery research in progress</span></li>
+            <li><b>Build</b><span>Self-built AMR / arm, sensors, ROS 2 / Nav2 / Web</span></li>
+          </ul>
+        </details><p class="research-link-line"><a href="RabbitRobotNav/" data-en="Current research: Rabbit-RobotNav ↗">当前研究：Rabbit-RobotNav ↗</a> / <a href="RabbitRobot/projects/rabbitrobot-ros2-web.html" data-en="Open-source practice: ROS 2 Web ↗">开源实践：ROS 2 Web ↗</a></p></div></article>
+</div></div></section>
+<section id="timeline" class="section-padding"><div class="container"><h2 data-en="Timeline">时间线</h2><div class="timeline-container"><article class="timeline-item"><span class="timeline-dot" aria-hidden="true"></span><div class="timeline-date"><time datetime="2026-09">2026.09</time></div><h3><a href="RabbitRobot/projects/rabbitrobot-ego-umi.html"><span data-en="DAS Ego × UMI · Embodied Data Capture">DAS Ego &times; UMI &middot; 具身操作采集链</span></a></h3><p>Current device / real operation record</p></article>
+<article class="timeline-item"><span class="timeline-dot" aria-hidden="true"></span><div class="timeline-date"><time datetime="2026-08-20">2026.08.20</time></div><h3><a href="RabbitRobot/projects/rabbitrobot-omnihand-2025.html"><span data-en="RabbitRobot × OmniHand 2025">RabbitRobot &times; OmniHand 2025</span></a></h3><p>From navigation to dexterous manipulation / active</p></article>
+<article class="timeline-item"><span class="timeline-dot" aria-hidden="true"></span><div class="timeline-date"><time datetime="2026-08">2026.08</time></div><h3><a href="RabbitRobot/projects/rabbitrobot-robotdog-vln.html"><span data-en="Go2X × MiniCPM-RobotTrack">Go2X &times; MiniCPM-RobotTrack</span></a></h3><p data-en="Temporal perception and trajectory inference verified / live control locked">时序感知与轨迹推理已验证 / live control locked</p></article>
+<article class="timeline-item"><span class="timeline-dot" aria-hidden="true"></span><div class="timeline-date"><time datetime="2026-08">2026.08</time></div><h3><a href="RabbitRobot/projects/rabbitrobot-ros2-web.html"><span data-en="RabbitRobot ROS 2 Web Console">RabbitRobot ROS 2 Web 控制台</span></a></h3><p>Active ROS 2 Web console</p></article>
+<article class="timeline-item"><span class="timeline-dot" aria-hidden="true"></span><div class="timeline-date"><time datetime="2026-07">2026.07</time></div><h3><a href="RabbitRobot/projects/rabbitrobot-amr2.html"><span data-en="RabbitRobot Platform">RabbitRobot Platform</span></a></h3><p>Self-built AMR engineering base</p></article>
+<article class="timeline-item"><span class="timeline-dot" aria-hidden="true"></span><div class="timeline-date"><time datetime="2026-04">2026.04</time></div><h3><a href="RabbitRobot/projects/rabbitrobot-edulite-a3-vla.html"><span data-en="EDULITE A3 LeRobot VLA Testbed">EDULITE A3 LeRobot VLA Testbed</span></a></h3><p>Real-arm VLA branch</p></article>
+<article class="timeline-item"><span class="timeline-dot" aria-hidden="true"></span><div class="timeline-date"><time datetime="2025-12">2025.12</time></div><h3><a href="RabbitRobot/projects/rabbitrobot-vln.html"><span data-en="RabbitRobot AMR Foundation">RabbitRobot AMR Foundation</span></a></h3><p>AMR engineering foundation</p></article></div></div></section>
+<section id="skills" class="section-padding"><div class="container"><h2 data-en="Tech Stack">技术栈</h2><div class="skills-wrapper"><div class="skill-column"><h3 data-en="Robotics">机器人系统</h3><div class="skill-tags"><span>ROS 2</span><span>Nav2</span><span>SLAM</span><span>MoveIt 2</span></div></div>
+<div class="skill-column"><h3 data-en="Perception">感知与建图</h3><div class="skill-tags"><span>LiDAR</span><span>RGB-D</span><span>IMU</span><span>Multi-sensor Mapping</span></div></div>
+<div class="skill-column"><h3 data-en="Hardware">硬件与控制</h3><div class="skill-tags"><span>AMR</span><span>CAN / CANFD</span><span>USB</span><span>Python SDK</span></div></div>
+<div class="skill-column"><h3 data-en="Embodied AI">具身智能</h3><div class="skill-tags"><span>VLN</span><span>VLM / VLA</span><span>LeRobot</span><span>pi0.5</span></div></div>
+<div class="skill-column"><h3 data-en="Web Tools">Web 工具</h3><div class="skill-tags"><span>React 19</span><span>Three.js</span><span>rosbridge</span><span>WebSocket</span></div></div></div></div></section>
+<section class="section-padding" id="contact" aria-labelledby="contact-title"><div class="container">
       <div class="section-title">
         <h2 id="contact-title">Contact</h2>
       </div>
@@ -360,40 +218,37 @@
         <a href="https://blog.csdn.net/Dorian15" target="_blank" rel="noopener noreferrer">CSDN</a>
       </p>
       <details class="contact-more" open>
-        <summary>社交平台与二维码</summary>
+        <summary><span data-en="Social profiles and QR codes">社交平台与二维码</span></summary>
         <div class="contact-grid" aria-label="小红书、B站、微信联系方式">
           <article class="contact-card">
             <a class="contact-image" href="images/contact/xiaohongshu-card.jpg" target="_blank" rel="noopener noreferrer" aria-label="打开小红书联系方式大图">
               <img src="images/contact/xiaohongshu-card.jpg" alt="小红书：理想主义的焊工日记，账号 RabbitRobot2025" loading="lazy" decoding="async">
             </a>
-            <h3>小红书</h3>
+            <h3><span data-en="Xiaohongshu">小红书</span></h3>
             <p>理想主义的焊工日记 · 小红书号：RabbitRobot2025</p>
           </article>
           <article class="contact-card">
             <a class="contact-image" href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer" aria-label="打开 B站主页">
               <img src="images/contact/bilibili-qr.jpg" alt="B站：理想主义的焊工日记，UID 1339027047" loading="lazy" decoding="async">
             </a>
-            <h3>B站</h3>
+            <h3><span data-en="Bilibili">B站</span></h3>
             <p><a href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer">UID：1339027047</a></p>
           </article>
           <article class="contact-card">
             <a class="contact-image" href="images/contact/wechat-qr.png" target="_blank" rel="noopener noreferrer" aria-label="打开微信二维码大图">
               <img src="images/contact/wechat-qr.png" alt="微信：理想主义的焊工日记二维码" loading="lazy" decoding="async">
             </a>
-            <h3>微信</h3>
-            <p>扫码添加我为朋友</p>
+            <h3><span data-en="WeChat">微信</span></h3>
+            <p><span data-en="Scan to add me on WeChat">扫码添加我为朋友</span></p>
           </article>
         </div>
       </details>
-    </section>
-
-    <section aria-labelledby="friends-title">
+    </div></section>
+<section class="section-padding" aria-labelledby="friends-title"><div class="container">
       <div class="section-title">
-        <h2 id="friends-title">项目入口 / 友情链接</h2>
+        <h2 id="friends-title"><span data-en="Projects &amp; Friends">项目入口 / 友情链接</span></h2>
       </div>
-      <p class="section-lead">
-        两个长期维护的公开入口，分别记录真实机器人平台和 AI 校园文化产品原型。
-      </p>
+      <p class="section-lead"><span data-en="Two maintained public projects documenting a real-robot platform and an AI campus-culture product prototype.">两个长期维护的公开入口，分别记录真实机器人平台和 AI 校园文化产品原型。</span></p>
       <div class="friend-link-grid">
         <a class="friend-link-card" href="https://lijinghai.github.io/RabbitRobot/" aria-label="打开 RabbitRobot 全系列机器人主页">
           <span class="friend-link-mark" aria-hidden="true">
@@ -405,7 +260,7 @@
               <strong>RabbitRobot</strong>
               <span class="friend-link-status">LIVE</span>
             </span>
-            <span class="friend-link-note">真实 AMR、ROS 2、SLAM、多传感器建图与 VLN 正在推进的研究线。</span>
+            <span class="friend-link-note"><span data-en="Real AMRs, ROS 2, SLAM, multi-sensor mapping and ongoing VLN research.">真实 AMR、ROS 2、SLAM、多传感器建图与 VLN 正在推进的研究线。</span></span>
             <span class="friend-link-url">https://lijinghai.github.io/RabbitRobot/</span>
           </span>
           <span class="friend-link-arrow" aria-hidden="true">&rarr;</span>
@@ -418,53 +273,14 @@
               <strong>YAVIS 扬维斯</strong>
               <span class="friend-link-status">LIVE</span>
             </span>
-            <span class="friend-link-note">AI 语音交互与扬州大学历史文化结合的校园陪伴玩偶项目。</span>
+            <span class="friend-link-note"><span data-en="A campus companion toy combining AI voice interaction with the history and culture of Yangzhou University.">AI 语音交互与扬州大学历史文化结合的校园陪伴玩偶项目。</span></span>
             <span class="friend-link-url">https://lijinghai.github.io/YAVIS</span>
           </span>
           <span class="friend-link-arrow" aria-hidden="true">&rarr;</span>
         </a>
       </div>
-    </section>
-
-    <footer>
-      © 2026 Jinghai Li · 算个文科生吧 · RabbitRobot
-    </footer>
-  </main>
-  <script>
-    (() => {
-      const homeVideos = document.querySelectorAll("video[data-home-loop]");
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reducedMotion) {
-        homeVideos.forEach((video) => {
-          video.removeAttribute("autoplay");
-          video.pause();
-        });
-      }
-
-      const filters = document.querySelector(".work-filters");
-      const entries = [...document.querySelectorAll(".entry[data-category]")];
-      const status = document.querySelector(".filter-status");
-      filters.hidden = false;
-      filters.addEventListener("click", (event) => {
-        const button = event.target.closest("button[data-filter]");
-        if (!button) return;
-        const category = button.dataset.filter;
-        filters.querySelectorAll("button").forEach((item) => {
-          item.setAttribute("aria-pressed", String(item === button));
-        });
-        let visibleCount = 0;
-        entries.forEach((entry) => {
-          entry.hidden = category !== "all" && entry.dataset.category !== category;
-          if (!entry.hidden) visibleCount += 1;
-          // Hidden project videos should not keep playing in the background.
-          entry.querySelectorAll("video").forEach((video) => {
-            if (entry.hidden || reducedMotion) video.pause();
-            else video.play().catch(() => {});
-          });
-        });
-        status.textContent = "显示 " + visibleCount + " 个项目";
-      });
-    })();
-  </script>
+    </div></section>
+</main>
+<footer>© 2026 Jinghai Li · 算个文科生吧 · RabbitRobot</footer>
 </body>
 </html>

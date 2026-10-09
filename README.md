@@ -1,8 +1,35 @@
 # lijinghai.github.io
 
-Jinghai Li 的个人主页，采用白底窄栏、橙色下划线标题与紧凑图文条目的学术主页排版，用真实机器人项目说明从 AMR 工程到 VLN / VLA 研究的连续路径。
+Jinghai Li 的个人主页，按 Lain 主页的灰白／深灰配色、蓝色强调色、居中圆形头像和项目卡片排版，用真实机器人项目说明从 AMR 工程到 VLN / VLA 研究的连续路径。
 
 ## 最近更新
+
+### 2026-10-09 - 首页改用 Lain 模板
+
+用户将参考页面改为 [Lain 主页](https://lain-ego0.github.io/)。本次替换下方历史记录中的窄栏橙色方案，按新参考页面的实际外观和交互重排首页：1024px 内容容器、终端样式标识、固定顶栏、居中圆形头像、灰白底与蓝色下划线、左图右文项目卡片、文章、时间线及技术栈。手机端使用两行导航和单列卡片；提供中英文、明暗模式切换与本地偏好记忆，默认英文浅色。
+
+- **改动范围：** 根 `index.html`、`homepage.css`、新增 `homepage.js`，以及本 README 和本次交付证据。原有 7 个项目的中文正文逐项一致，照片、图片、视频和所有原链接保留；原项目时间与阶段状态整理为时间线，技术补充收在原生展开区。`RabbitRobot/`、`RabbitRobotNav/`、`YAVIS` 和其他项目子页没有改动。
+- **内容边界：** 所有履历、项目与研究信息均来自本站原内容；没有使用参考作者的履历。Rabbit-RobotNav 仍标注尚未发表、移动闭环恢复仍在验证中。Contact 的三张二维码仍默认展开。
+- **静态核验：** 7 个项目正文全部保留，原链接删除数、失效锚点和缺失本地资源均为 0；31 个本地资源／页面范围请求全部返回 HTTP 206，原图片与视频集合保持一致。`node --check homepage.js`、`git diff --check` 通过。[静态检查记录](docs/images/updates/2026-10-09-lain-homepage/static-check.json)。
+- **真实浏览器核验：** 1440×900 桌面及 390×844、320×844 手机视口无横向溢出；手机中英文均通过。语言和深色选择刷新后保留，项目详情可展开，时间线导航定位正常，联系方式可收起再展开，三张二维码均解码。可见项目视频实际播放；减少动画偏好下视频暂停且内容可见；禁用脚本时全部 7 个项目可见、不可用切换控件隐藏。控制台 warning/error 为空。[浏览器检查记录](docs/images/updates/2026-10-09-lain-homepage/browser-check.json)。
+- **未验证项：** 本轮验收针对网页呈现与交互，没有重跑机器人实验，也没有验证新的研究结果。
+
+![按 Lain 模板改版后的桌面首页真实截图](docs/images/updates/2026-10-09-lain-homepage/desktop.png)
+
+[项目卡片](docs/images/updates/2026-10-09-lain-homepage/projects.png) · [深色模式](docs/images/updates/2026-10-09-lain-homepage/desktop-dark.png) · [手机英文](docs/images/updates/2026-10-09-lain-homepage/mobile.png) · [手机中文](docs/images/updates/2026-10-09-lain-homepage/mobile-zh.png) · [时间线](docs/images/updates/2026-10-09-lain-homepage/timeline.png) · [改版前](docs/images/updates/2026-10-09-lain-homepage/before.png)
+
+以下使用 Axton `mermaid-visualizer` 生成 Obsidian／GitHub 兼容 Mermaid，以最小流程图说明模板与本站原内容的组合范围；此图不是运行截图或实验结果。
+
+```mermaid
+flowchart TB
+  A["Lain 模板：布局、配色、语言与主题切换"] --> C["Jinghai 首页：项目、文章、时间线、技术栈"]
+  B["本站原内容：个人资料、七个项目、研究状态、媒体"] --> C
+  C --> D["原有链接：既有项目详情页与联系方式"]
+  classDef homepage fill:#e7f3ff,stroke:#007acc,color:#242424;
+  classDef existing fill:#f3f3f3,stroke:#858585,color:#242424;
+  class A,C homepage;
+  class B,D existing;
+```
 
 ### 2026-10-09 - 首页参考学术模板调整排版
 
