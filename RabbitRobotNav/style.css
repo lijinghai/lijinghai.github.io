@@ -49,8 +49,9 @@ p { line-height: 1.5; }
 .publication-links svg { width: 14px; height: 14px; margin-right: 7px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
 .teaser-section { padding: 69px 18px 63px; }
-.teaser-figure { max-width: 590px; margin: 0 auto; text-align: center; font-family: "Google Sans", "Noto Sans", Arial, sans-serif; }
-.teaser-figure img { width: 100%; height: auto; border: 3px solid #c85b14; border-radius: 30px; padding: 11px; background: #fff; }
+.teaser-figure { max-width: 960px; margin: 0 auto; text-align: center; font-family: "Google Sans", "Noto Sans", Arial, sans-serif; }
+.teaser-figure img { width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; background: #fff; }
+.teaser-figure figcaption { max-width: 790px; margin: 14px auto 0; }
 figcaption, .figure-caption { font-size: 13px; color: #666; line-height: 1.55; text-align: center; }
 figcaption { margin-top: 10px; }
 
@@ -88,9 +89,8 @@ figcaption { margin-top: 10px; }
 .table-note { margin: 14px 0 0; text-align: center; font-size: 13px; color: var(--muted); }
 .image-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; margin-top: 27px; }
 .evidence-note { max-width: 790px; margin: 28px auto 0; padding-left: 20px; border-left: 3px solid var(--accent); font-size: 16px; line-height: 1.72; }
-.room-evidence { display: grid; grid-template-columns: 1.15fr 1fr; gap: 32px; align-items: center; }
-.room-description p { font-size: 16px; line-height: 1.72; margin: 0 0 16px; }
-.evidence-source { font-size: 14px; text-decoration: underline; text-underline-offset: 3px; }
+.evidence-followup { margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--rule); }
+.evidence-followup h3 { text-align: center; font-size: 24px; font-weight: 600; margin: 0 0 22px; }
 .supplement { margin-top: 30px; padding: 20px 0 0; border-top: 1px solid var(--rule); font-size: 15px; }
 .supplement summary { cursor: pointer; color: #0e3b5d; font-weight: 600; line-height: 1.5; }
 .supplement summary::marker { color: var(--accent-text); }
@@ -125,7 +125,6 @@ figcaption { margin-top: 10px; }
   .section { padding: 49px 18px; }
   .section h2 { font-size: 27px; margin-bottom: 19px; }
   .prose > p:not(.resource-links), .intro, .contrib-list li { text-align: left; font-size: 16px; }
-  .room-evidence { grid-template-columns: 1fr; gap: 24px; }
   .image-pair { grid-template-columns: 1fr; gap: 28px; }
   .results-table { min-width: 650px; font-size: 13px; }
   .results-table th, .results-table td { padding: 9px 10px; }

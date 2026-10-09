@@ -11,7 +11,7 @@
   <title>Rabbit-RobotNav | Long-Horizon Vision-Language Navigation</title>
   <link rel="icon" href="../images/favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261009-survey">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -30,16 +30,13 @@
   <main id="main">
     <section class="teaser-section" aria-label="Research motivation">
       <figure class="teaser-figure">
-        <picture>
-          <source media="(max-width: 760px)" srcset="assets/paper-method-v12-mobile.svg">
-          <img src="assets/paper-method-v12.svg" width="520" height="400" alt="Proposed research flow: instruction and RGB observations plus semantic-spatial history feed consistency checks, producing a deviation diagnosis and recovery-anchor candidate. Reliability gating and robot recovery remain under validation.">
-        </picture>
-        <figcaption><strong>Motivation.</strong> Historical evidence may help identify a deviation and choose a recovery anchor. This is a proposed research flow, not a completed robot recovery run.</figcaption>
+        <a href="assets/research-framework-2026-10-09.png" target="_blank" rel="noopener" aria-label="Open the full-resolution proposed research framework"><img src="assets/research-framework-2026-10-09.png" width="1280" height="720" alt="Author-supplied proposed framework: RGB, depth, language and pose feed semantic-spatial memory; instruction, history and transition consistency support diagnosis, anchor selection and a planned recovery loop. Depicted components are not all validated."></a>
+        <figcaption><strong>Research framework.</strong> History as diagnostic evidence and a recovery anchor. The author-supplied diagram shows the intended system; trusted memory, integrated module performance, and autonomous recovery remain under validation. <a href="assets/research-framework-2026-10-09.png" target="_blank" rel="noopener">View full-size diagram</a>.</figcaption>
       </figure>
     </section>
     <section id="abstract" class="section section-alt"><div class="container prose">
       <h2>Abstract</h2>
-      <p>Long-horizon vision-language navigation requires knowing not only where a robot is, but whether its progress remains consistent with the instruction. <span class="method-name">Rabbit-RobotNav</span> investigates historical semantic-spatial evidence for deviation diagnosis and recovery-anchor selection without accessing evaluation labels. The framework separates recorded observations from trusted memory and checks instruction, history, and transition consistency. Controlled MP3D cases provide preliminary diagnostic evidence; real-robot replay exposes insufficient evidence and unstable object identity. Reliable mobile mapping, navigation gains, and autonomous recovery remain <strong>unverified</strong>.</p>
+      <p>Long-horizon vision-language navigation requires knowing not only where a robot is, but whether its progress remains consistent with the instruction. <span class="method-name">Rabbit-RobotNav</span> investigates historical semantic-spatial evidence for deviation diagnosis and recovery-anchor selection without accessing evaluation labels. The framework separates recorded observations from trusted memory and checks instruction, history, and transition consistency. Controlled MP3D cases provide preliminary diagnostic evidence; real-robot experiments expose unstable object identity and insufficient heading fusion during room mapping. Reliable mobile mapping, navigation gains, and autonomous recovery remain <strong>unverified</strong>.</p>
     </div></section>
     <section id="method" class="section"><div class="container prose">
       <h2>Method Overview</h2>
@@ -59,20 +56,23 @@
       <p class="evidence-note"><strong>Read-only diagnosis.</strong> All 1,149 replayed states lack sufficient consistency evidence; no reliable recovery anchor is available. Zero supported deviation detections here means <em>not evaluable</em>, not successful navigation. <a href="assets/history-shadow-2026-10-08.png" target="_blank" rel="noopener">View the diagnostic audit</a>.</p>
     </div></section>
     <section id="room-map" class="section"><div class="container">
-      <h2>Toward a Verified Room Map</h2>
-      <div class="room-evidence">
-        <figure class="paper-figure">
-          <a href="assets/room-observation-2026-10-08.png" target="_blank" rel="noopener" aria-label="Open the original room RGB observation"><img src="assets/room-observation-2026-10-08.png" width="640" height="480" loading="lazy" alt="Unmodified RGB frame from the stationary WheelTec room preflight on 8 October 2026, showing desks, chairs, and a doorway; no detections or map overlays are applied."></a>
-          <figcaption><strong>Figure 2.</strong> Actual stationary RGB capture, 8 October 2026. Object detection was not run in this session.</figcaption>
+      <h2>Real-Robot Room Survey</h2>
+      <p class="intro">A human-controlled survey now provides an actual occupancy grid and synchronized sensor records: approximately <strong>229 seconds</strong>, <strong>2,747 laser scans</strong>, and <strong>225 RGB keyframes</strong>. Collection is complete; room-map acceptance is not.</p>
+      <figure class="paper-figure wide-figure">
+        <a href="assets/room-survey-2026-10-09.png" target="_blank" rel="noopener" aria-label="Open the full-resolution room survey evidence"><img src="assets/room-survey-2026-10-09.png" width="1960" height="1260" loading="lazy" alt="Actual room survey output: an occupancy grid with radial streaks, an estimated trajectory, and two original RGB views of chairs and desks. Room review is pending and object detection was not run."></a>
+        <figcaption><strong>Figure 2.</strong> Recorded occupancy grid and original camera views, 9 October 2026. The plotted trajectory and path length are estimates, not ground truth. This is not a validated semantic map. <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/18957ee8ec62470ac2d57dbe72c6c7ab0d437dc9/docs/evidence/chassis/wheeltec-mecanum/room-map-v1-live-survey-2026-10-09">Capture protocol &amp; source</a> · Click to enlarge.</figcaption>
+      </figure>
+      <p class="evidence-note"><strong>Map review pending.</strong> Radial streaks and inconsistent return estimates prevent a reliable geometry claim. Object detection was not run, and no metric landmark has been verified. This separate survey does not extend the 1,149-state historical replay; all robot movement was human-controlled.</p>
+      <div id="heading-audit" class="evidence-followup">
+        <h3>Why heading evidence matters</h3>
+        <p class="intro">The recorded fused heading stayed at zero despite turns in raw odometry. An isolated A/B test of the actual extended Kalman filter (EKF) enabled only odometry angular-velocity fusion. The candidate still failed: heading changed by <strong>−0.077 rad</strong>, versus <strong>−7.122 rad</strong> in the recorded input.</p>
+        <figure class="paper-figure wide-figure">
+          <a href="assets/ekf-heading-ab-2026-10-09.png" target="_blank" rel="noopener" aria-label="Open the full-resolution isolated EKF heading comparison"><img src="assets/ekf-heading-ab-2026-10-09.png" width="1920" height="1120" loading="lazy" alt="Two measured time-series plots compare recorded raw odometry, historical fused output, and isolated actual EKF baseline and candidate runs. The candidate heading response remains near zero rather than following the recorded turns."></a>
+          <figcaption><strong>Figure 3.</strong> Actual EKF runs on identical recorded odometry, changing only the angular-velocity input flag. Raw odometry is a reference, not orientation ground truth; the candidate was not deployed. <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/18957ee8ec62470ac2d57dbe72c6c7ab0d437dc9/docs/evidence/chassis/wheeltec-mecanum/ekf-isolated-heading-ab-v1-2026-10-09">A/B protocol &amp; source</a> · Click to enlarge.</figcaption>
         </figure>
-        <div class="room-description">
-          <p>A bounded stationary preflight recorded <strong>179 laser scans</strong> over 15 seconds (approximately 12.04 Hz), alongside three saved RGB frames.</p>
-          <p>Only <strong>31.72% of laser beams</strong> were valid. No occupancy grid or map-frame transform was obtained; room coverage and landmark accuracy cannot yet be evaluated.</p>
-          <p><strong>Next:</strong> a human-supervised room survey, followed by independent checks of room geometry, object identity, and landmark position.</p>
-          <a class="evidence-source" href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/9433e164151164ed1801a174255ef73453149b15/docs/evidence/chassis/wheeltec-mecanum/room-map-v1-2026-10-08">Preflight evidence &amp; limitations</a>
-        </div>
+        <p class="evidence-note"><strong>Supported finding, not a completed fix.</strong> The driver reports angular-velocity variance of 1,000 whenever any velocity component is nonzero; the source, executable constants, and recorded messages agree. This explains strong down-weighting in the tested candidate, not the sole cause of every map artifact. <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/18957ee8ec62470ac2d57dbe72c6c7ab0d437dc9/docs/evidence/chassis/wheeltec-mecanum/wheeltec-angular-covariance-audit-2026-10-09">Source audit</a>.</p>
+        <p class="table-note">Next: verify the real IMU input chain and independently assess uncertainty before another fusion candidate or room-map acceptance test.</p>
       </div>
-      <p class="table-note">This is a separate stationary session, not part of the 1,149-state historical replay. No autonomous movement or recovery was performed.</p>
     </div></section>
     <section id="results" class="section section-alt"><div class="container">
       <h2>Experimental Evidence</h2>
@@ -88,7 +88,8 @@
           <tr><td>Paired CMA navigation A/B · 110 episodes</td><td>SR tied; SPL and nDTW did not improve</td><td>No demonstrated navigation gain</td></tr>
           <tr><td>WheelTec · manual-move Trial 1R</td><td>Same chair: obj_0000 → obj_0034</td><td>Identity persistence failed; cause remains inconclusive</td></tr>
           <tr><td>Real-history read-only diagnosis · 8 Oct</td><td>1,149/1,149 states: insufficient evidence; 0 reliable anchors</td><td>Diagnosis not evaluable; not a zero-error result</td></tr>
-          <tr><td>Room preflight · 8 Oct</td><td>179 scans; no occupancy grid</td><td>Stationary capture only; room survey pending</td></tr>
+          <tr><td>Manual room survey · 9 Oct</td><td>2,747 scans; 225 RGB keyframes; occupancy grid captured</td><td>Geometry review pending; no verified metric landmarks</td></tr>
+          <tr><td>Isolated actual EKF A/B · 9 Oct</td><td>Candidate heading: −0.077 rad; recorded input: −7.122 rad</td><td>Candidate failed; no deployment or ground-truth accuracy claim</td></tr>
         </tbody>
       </table></div>
       <p class="table-note">SR: success rate · SPL: success weighted by path length · nDTW: normalized dynamic time warping.</p>
@@ -100,17 +101,17 @@
           <figure class="paper-figure"><img src="assets/trial1r-chair-after-2026-09-28.png" width="640" height="480" loading="lazy" alt="Same human-confirmed chair after manual movement in Trial 1R, assigned a new object ID."><figcaption><strong>After movement.</strong> obj_0034</figcaption></figure>
         </div>
         <p class="supplement-links" id="demo"><a href="assets/g2-pose-jump-h264.mp4">Pose-jump miss video</a> · <a href="assets/g5-spatial-conflict-h264.mp4">Spatial-conflict replay video</a> · <a href="assets/trial1r-selected-depth-2026-09-28.png">Historical depth trace</a></p>
-        <p class="supplement-limit">These controlled videos and the depth trace do not establish a physical error cause or autonomous recovery. The latest live diagnostic attempt stopped at its initialization memory limit before processing any frames.</p>
+        <p class="supplement-limit">These controlled videos and the depth trace do not establish a physical error cause or autonomous recovery. The 8 October live diagnostic attempt stopped at its initialization memory limit before processing any frames.</p>
       </details>
     </div></section>
     <section id="resources" class="section"><div class="container prose">
       <h2>Resources</h2>
-      <p class="resource-links"><a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noopener noreferrer">Thesis framework</a> · <a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">Experimental ledger</a> · <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/9433e164151164ed1801a174255ef73453149b15" target="_blank" rel="noopener noreferrer">Code snapshot</a> · <a href="evidence-2026-10-08.md">Image provenance</a></p>
+      <p class="resource-links"><a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noopener noreferrer">Thesis framework</a> · <a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">Experimental ledger</a> · <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/18957ee8ec62470ac2d57dbe72c6c7ab0d437dc9" target="_blank" rel="noopener noreferrer">Code snapshot</a> · <a href="evidence-2026-10-09.md">Image provenance</a></p>
       <details class="supplement">
         <summary>Research mind map</summary>
-        <p>The research question, evidence boundaries, and next experiment, updated 8 October 2026. This is a research outline, not an experimental result.</p>
-        <figure class="paper-figure"><a href="assets/research-mindmap-2026-10-08.svg" target="_blank" rel="noopener"><img src="assets/research-mindmap-2026-10-08.svg" loading="lazy" alt="Research mind map connecting history-aware diagnosis, controlled MP3D evidence, insufficient real-history evidence, and the pending human-supervised room survey."></a></figure>
-        <p class="supplement-links"><a href="research-mindmap.mmd">Editable Mermaid source</a> · <a href="assets/research-mindmap-2026-10-08.svg" target="_blank" rel="noopener">Full-size diagram</a></p>
+        <p>The research question, evidence boundaries, and next experiment, updated 9 October 2026. This is a research outline, not an experimental result.</p>
+        <figure class="paper-figure"><a href="assets/research-mindmap-2026-10-09.svg" target="_blank" rel="noopener"><img src="assets/research-mindmap-2026-10-09.svg" loading="lazy" alt="Research mind map connecting history-aware diagnosis, earlier MP3D and real-history limits, the completed manual room capture, a failed isolated EKF candidate, and the remaining IMU and geometry validation."></a></figure>
+        <p class="supplement-links"><a href="research-mindmap.mmd">Editable Mermaid source</a> · <a href="assets/research-mindmap-2026-10-09.svg" target="_blank" rel="noopener">Full-size diagram</a></p>
       </details>
     </div></section>
   </main>
@@ -128,7 +129,7 @@
   <footer class="footer">
     <a class="footer-github" href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/real-robot-integration" target="_blank" rel="noopener noreferrer" aria-label="Rabbit-RobotNav research code on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.65 7.65 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.02 8.02 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
     <p>Page layout inspired by the <a href="https://apex-bjut.github.io/Taga-VLM/">TagaVLM project page</a>. Research content, figures, and videos © Jinghai Li.</p>
-    <p class="footer-meta">Rabbit-RobotNav · Master's thesis project · Updated 8 October 2026</p>
+    <p class="footer-meta">Rabbit-RobotNav · Master's thesis project · Updated 9 October 2026</p>
   </footer>
 </body>
 </html>

@@ -18,12 +18,18 @@ mindmap
       1149 states and 3477 repeated observations
       Zero trusted states and reliable anchors
       Same-chair identity persistence failed
-    Room preflight
-      Stationary capture on 8 October 2026
-      179 scans and three saved RGB frames
-      No occupancy grid or verified room coverage
+    Manual room survey
+      Captured on 9 October 2026
+      2747 scans and 225 RGB keyframes
+      Actual occupancy grid needs geometry review
+      Detector not run and no verified metric landmarks
+    Heading investigation
+      Recorded fused heading stays at zero
+      Actual isolated EKF candidate failed
+      Moving angular variance traced to driver source
+      Recorded raw odometry is not ground truth
     Next experiment
-      Human-supervised room survey
-      Independent geometry and instance review
+      Verify real IMU input and uncertainty
+      Reassess heading before room-map acceptance
       Admit trusted memory only with evidence
       Autonomous recovery remains unverified

@@ -1,0 +1,258 @@
+{
+  "url": "http://127.0.0.1:61219/RabbitRobotNav/",
+  "viewports": [
+    {
+      "width": 1440,
+      "scrollWidth": 1440,
+      "details": [
+        false,
+        false
+      ],
+      "images": [
+        {
+          "file": "assets/research-framework-2026-10-09.png",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "file": "assets/real-history-2026-10-08.png",
+          "width": 2400,
+          "height": 800
+        },
+        {
+          "file": "assets/room-survey-2026-10-09.png",
+          "width": 1960,
+          "height": 1260
+        },
+        {
+          "file": "assets/ekf-heading-ab-2026-10-09.png",
+          "width": 1920,
+          "height": 1120
+        },
+        {
+          "file": "assets/trial1r-chair-before-2026-09-28.png",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "assets/trial1r-chair-after-2026-09-28.png",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "assets/research-mindmap-2026-10-09.svg",
+          "width": 300,
+          "height": 134
+        }
+      ],
+      "videos": 1,
+      "footerFont": "\"Noto Sans\", Arial, sans-serif",
+      "bodyFont": "\"Noto Sans\", Arial, sans-serif",
+      "h1Font": "\"Google Sans\", \"Noto Sans\", Arial, sans-serif",
+      "loadedFonts": [
+        "Google Sans",
+        "Noto Sans"
+      ],
+      "detailsToggle": "PASS",
+      "table": {
+        "client": 960,
+        "scroll": 960
+      }
+    },
+    {
+      "width": 390,
+      "scrollWidth": 390,
+      "details": [
+        false,
+        false
+      ],
+      "images": [
+        {
+          "file": "assets/research-framework-2026-10-09.png",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "file": "assets/real-history-2026-10-08.png",
+          "width": 2400,
+          "height": 800
+        },
+        {
+          "file": "assets/room-survey-2026-10-09.png",
+          "width": 1960,
+          "height": 1260
+        },
+        {
+          "file": "assets/ekf-heading-ab-2026-10-09.png",
+          "width": 1920,
+          "height": 1120
+        },
+        {
+          "file": "assets/trial1r-chair-before-2026-09-28.png",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "assets/trial1r-chair-after-2026-09-28.png",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "assets/research-mindmap-2026-10-09.svg",
+          "width": 300,
+          "height": 134
+        }
+      ],
+      "videos": 1,
+      "footerFont": "\"Noto Sans\", Arial, sans-serif",
+      "bodyFont": "\"Noto Sans\", Arial, sans-serif",
+      "h1Font": "\"Google Sans\", \"Noto Sans\", Arial, sans-serif",
+      "loadedFonts": [
+        "Google Sans",
+        "Noto Sans"
+      ],
+      "detailsToggle": "PASS",
+      "table": {
+        "client": 354,
+        "scroll": 650
+      }
+    },
+    {
+      "width": 320,
+      "scrollWidth": 320,
+      "details": [
+        false,
+        false
+      ],
+      "images": [
+        {
+          "file": "assets/research-framework-2026-10-09.png",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "file": "assets/real-history-2026-10-08.png",
+          "width": 2400,
+          "height": 800
+        },
+        {
+          "file": "assets/room-survey-2026-10-09.png",
+          "width": 1960,
+          "height": 1260
+        },
+        {
+          "file": "assets/ekf-heading-ab-2026-10-09.png",
+          "width": 1920,
+          "height": 1120
+        },
+        {
+          "file": "assets/trial1r-chair-before-2026-09-28.png",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "assets/trial1r-chair-after-2026-09-28.png",
+          "width": 640,
+          "height": 480
+        },
+        {
+          "file": "assets/research-mindmap-2026-10-09.svg",
+          "width": 300,
+          "height": 134
+        }
+      ],
+      "videos": 1,
+      "footerFont": "\"Noto Sans\", Arial, sans-serif",
+      "bodyFont": "\"Noto Sans\", Arial, sans-serif",
+      "h1Font": "\"Google Sans\", \"Noto Sans\", Arial, sans-serif",
+      "loadedFonts": [
+        "Google Sans",
+        "Noto Sans"
+      ],
+      "detailsToggle": "PASS",
+      "table": {
+        "client": 284,
+        "scroll": 650
+      }
+    }
+  ],
+  "localResources": [
+    {
+      "ref": "../images/favicon.ico",
+      "status": 200
+    },
+    {
+      "ref": "style.css?v=20261009-survey",
+      "status": 200
+    },
+    {
+      "ref": "../index.html",
+      "status": 200
+    },
+    {
+      "ref": "assets/research-framework-2026-10-09.png",
+      "status": 200
+    },
+    {
+      "ref": "assets/real-history-2026-10-08.png",
+      "status": 200
+    },
+    {
+      "ref": "assets/history-shadow-2026-10-08.png",
+      "status": 200
+    },
+    {
+      "ref": "assets/room-survey-2026-10-09.png",
+      "status": 200
+    },
+    {
+      "ref": "assets/ekf-heading-ab-2026-10-09.png",
+      "status": 200
+    },
+    {
+      "ref": "assets/g1-global-trajectory-h264.mp4",
+      "status": 200
+    },
+    {
+      "ref": "assets/trial1r-chair-before-2026-09-28.png",
+      "status": 200
+    },
+    {
+      "ref": "assets/trial1r-chair-after-2026-09-28.png",
+      "status": 200
+    },
+    {
+      "ref": "assets/g2-pose-jump-h264.mp4",
+      "status": 200
+    },
+    {
+      "ref": "assets/g5-spatial-conflict-h264.mp4",
+      "status": 200
+    },
+    {
+      "ref": "assets/trial1r-selected-depth-2026-09-28.png",
+      "status": 200
+    },
+    {
+      "ref": "evidence-2026-10-09.md",
+      "status": 200
+    },
+    {
+      "ref": "assets/research-mindmap-2026-10-09.svg",
+      "status": 200
+    },
+    {
+      "ref": "research-mindmap.mmd",
+      "status": 200
+    }
+  ],
+  "errors": [],
+  "playback": {
+    "duration": 5.6,
+    "advancedTo": 0.202587,
+    "videoWidth": 1920,
+    "readyState": 4,
+    "error": null
+  },
+  "status": "PASS"
+}
