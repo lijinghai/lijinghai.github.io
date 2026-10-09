@@ -71,7 +71,8 @@
           <figcaption><strong>Figure 3.</strong> Actual EKF runs on identical recorded odometry, changing only the angular-velocity input flag. Raw odometry is a reference, not orientation ground truth; the candidate was not deployed. <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/18957ee8ec62470ac2d57dbe72c6c7ab0d437dc9/docs/evidence/chassis/wheeltec-mecanum/ekf-isolated-heading-ab-v1-2026-10-09">A/B protocol &amp; source</a> · Click to enlarge.</figcaption>
         </figure>
         <p class="evidence-note"><strong>Supported finding, not a completed fix.</strong> The driver reports angular-velocity variance of 1,000 whenever any velocity component is nonzero; the source, executable constants, and recorded messages agree. This explains strong down-weighting in the tested candidate, not the sole cause of every map artifact. <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/18957ee8ec62470ac2d57dbe72c6c7ab0d437dc9/docs/evidence/chassis/wheeltec-mecanum/wheeltec-angular-covariance-audit-2026-10-09">Source audit</a>.</p>
-        <p class="table-note">Next: verify the real IMU input chain and independently assess uncertainty before another fusion candidate or room-map acceptance test.</p>
+        <p class="evidence-note"><strong>Latest IMU check.</strong> A separate stationary recording received 500 raw inertial measurement unit (IMU) messages at approximately 20 Hz. The filtered IMU topic selected by the EKF had no publisher. Static screening is complete, but turning response and measurement reliability remain unverified; no fusion candidate has been selected. <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/96d146e0d9822cdd71e601b2b376057cedd8f147/docs/evidence/chassis/wheeltec-mecanum/wheeltec-real-imu-chain-v1-2026-10-09">Stationary evidence &amp; original plots</a>.</p>
+        <p class="table-note">Next: record synchronized IMU and odometry during a separately authorized, controlled turn with an independent angle reference, before selecting another fusion candidate or accepting the room map.</p>
       </div>
     </div></section>
     <section id="results" class="section section-alt"><div class="container">
@@ -90,6 +91,7 @@
           <tr><td>Real-history read-only diagnosis · 8 Oct</td><td>1,149/1,149 states: insufficient evidence; 0 reliable anchors</td><td>Diagnosis not evaluable; not a zero-error result</td></tr>
           <tr><td>Manual room survey · 9 Oct</td><td>2,747 scans; 225 RGB keyframes; occupancy grid captured</td><td>Geometry review pending; no verified metric landmarks</td></tr>
           <tr><td>Isolated actual EKF A/B · 9 Oct</td><td>Candidate heading: −0.077 rad; recorded input: −7.122 rad</td><td>Candidate failed; no deployment or ground-truth accuracy claim</td></tr>
+          <tr><td>Stationary IMU input audit · 9 Oct</td><td>500 raw messages at ≈20 Hz; filtered topic has no publisher</td><td>Turning response and reliability unverified; no fusion candidate</td></tr>
         </tbody>
       </table></div>
       <p class="table-note">SR: success rate · SPL: success weighted by path length · nDTW: normalized dynamic time warping.</p>
@@ -106,7 +108,7 @@
     </div></section>
     <section id="resources" class="section"><div class="container prose">
       <h2>Resources</h2>
-      <p class="resource-links"><a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noopener noreferrer">Thesis framework</a> · <a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">Experimental ledger</a> · <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/18957ee8ec62470ac2d57dbe72c6c7ab0d437dc9" target="_blank" rel="noopener noreferrer">Code snapshot</a> · <a href="evidence-2026-10-09.md">Image provenance</a></p>
+      <p class="resource-links"><a href="https://fcn2t7zlog3v.feishu.cn/wiki/OuK8w5wBGiOkwhkkAQxcRO1Un5e" target="_blank" rel="noopener noreferrer">Thesis framework</a> · <a href="https://fcn2t7zlog3v.feishu.cn/wiki/QkqMw3ElIi5VzUkA0FqcQfuEnHg" target="_blank" rel="noopener noreferrer">Experimental ledger</a> · <a href="https://github.com/lijinghai/history-aware-mp3d-vln/tree/96d146e0d9822cdd71e601b2b376057cedd8f147" target="_blank" rel="noopener noreferrer">Code snapshot</a> · <a href="evidence-2026-10-09.md">Image provenance</a></p>
       <details class="supplement">
         <summary>Research mind map</summary>
         <p>The research question, evidence boundaries, and next experiment, updated 9 October 2026. This is a research outline, not an experimental result.</p>
