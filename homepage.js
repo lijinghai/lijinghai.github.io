@@ -2,9 +2,14 @@
   const root = document.documentElement;
   const languageButton = document.querySelector('.lang-toggle');
   const themeButton = document.querySelector('.theme-toggle');
-  const translations = [...document.querySelectorAll('[data-en]')].map(element => ({
-    element, zh: element.textContent, en: element.dataset.en
-  }));
+  // Only translate text leaves; a container may also hold links, icons or controls.
+  const translations = [...document.querySelectorAll('[data-en]')]
+    .filter(element => element.childElementCount === 0)
+    .map(element => ({ element, zh: element.textContent, en: element.dataset.en }));
+  const attributeTranslations = ['aria-label', 'alt'].flatMap(attribute =>
+    [...document.querySelectorAll(`[data-en-${attribute}]`)].map(element => ({
+      element, attribute, zh: element.getAttribute(attribute), en: element.getAttribute(`data-en-${attribute}`)
+    })));
   const readPreference = (key, fallback) => {
     try { return localStorage.getItem(key) || fallback; } catch (_) { return fallback; }
   };
@@ -13,6 +18,7 @@
   };
   let language = readPreference('homepage-language', 'en') === 'zh' ? 'zh' : 'en';
   function updateThemeButton() {
+    if (!themeButton) return;
     const dark = root.dataset.theme === 'dark';
     themeButton.setAttribute('aria-pressed', String(dark));
     themeButton.setAttribute('aria-label', language === 'zh'
@@ -22,22 +28,29 @@
   function applyLanguage() {
     root.lang = language === 'zh' ? 'zh-CN' : 'en';
     translations.forEach(({element, zh, en}) => { element.textContent = language === 'zh' ? zh : en; });
-    languageButton.textContent = language === 'zh' ? 'English' : '中文';
-    languageButton.setAttribute('aria-label', language === 'zh' ? 'Switch to English' : '切换中文');
+    attributeTranslations.forEach(({element, attribute, zh, en}) => {
+      element.setAttribute(attribute, language === 'zh' ? zh : en);
+    });
+    if (languageButton) {
+      languageButton.textContent = language === 'zh' ? 'English' : '中文';
+      languageButton.setAttribute('aria-label', language === 'zh' ? 'Switch to English' : '切换中文');
+    }
     updateThemeButton();
   }
-  languageButton.addEventListener('click', () => {
+  languageButton?.addEventListener('click', () => {
     language = language === 'zh' ? 'en' : 'zh';
     applyLanguage();
     savePreference('homepage-language', language);
+    updateNavigation();
   });
-  themeButton.addEventListener('click', () => {
+  themeButton?.addEventListener('click', () => {
     root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
     savePreference('homepage-theme', root.dataset.theme);
     updateThemeButton();
   });
   applyLanguage();
-  document.querySelector('.nav-controls').hidden = false;
+  const controls = document.querySelector('.nav-controls');
+  if (controls) controls.hidden = false;
 
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const videos = [...document.querySelectorAll('video[data-home-loop]')];
@@ -79,14 +92,17 @@
   document.addEventListener('pointerdown', syncVideos);
   syncVideos();
 
-  const navigation = [...document.querySelectorAll('.nav-links a')];
+  const nav = document.querySelector('nav');
+  const navigation = [...document.querySelectorAll('.nav-links a[href^="#"]')].map(link => ({
+    link, target: document.getElementById(link.hash.slice(1))
+  })).filter(({target}) => target);
   function updateNavigation() {
-    const threshold = document.querySelector('nav').getBoundingClientRect().bottom + 48;
+    const threshold = (nav?.getBoundingClientRect().bottom || 0) + 48;
     let current = null;
-    navigation.forEach(link => {
-      if (document.querySelector(link.getAttribute('href')).getBoundingClientRect().top <= threshold) current = link;
+    navigation.forEach(({link, target}) => {
+      if (target.getBoundingClientRect().top <= threshold) current = link;
     });
-    navigation.forEach(link => {
+    navigation.forEach(({link}) => {
       if (link === current) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });

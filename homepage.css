@@ -444,6 +444,7 @@ h2::after {
 
 .project-info h3 {
   font-size:20px;
+  line-height:1.4;
   margin-bottom:8px;
   overflow-wrap:anywhere
 }
@@ -510,7 +511,8 @@ h2::after {
 }
 
 summary {
-  cursor:pointer
+  cursor:pointer;
+  padding-block:4px
 }
 
 .project-details p {
@@ -549,6 +551,11 @@ summary {
   display:block
 }
 
+.focus-card b {
+  color:var(--text);
+  margin-bottom:4px
+}
+
 .profile-details {
   font-size:.9rem;
   margin-bottom:12px;
@@ -556,11 +563,14 @@ summary {
 }
 
 .side-facts li {
-  margin-top:10px
+  margin-top:10px;
+  display:grid;
+  grid-template-columns:4.5em minmax(0,1fr);
+  gap:12px
 }
 
 .side-facts b {
-  margin-right:12px
+  color:var(--text)
 }
 
 .timeline-container {
@@ -752,7 +762,7 @@ footer {
   transition:opacity .6s var(--ease),transform .6s var(--ease),filter .6s var(--ease)
 }
 
-.reveal.is-visible {
+.reveal.is-visible,.reveal:focus-within {
   opacity:1;
   transform:none;
   filter:none
