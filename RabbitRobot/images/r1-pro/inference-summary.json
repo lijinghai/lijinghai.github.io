@@ -1,0 +1,96 @@
+{
+  "record_type": "public_summary_of_existing_experiment_not_a_new_test",
+  "date": "2026-10-15",
+  "platform": "R1 Pro / RPP two-wheel differential mobile dual-arm robot",
+  "model": "OpenBMB MiniCPM-RobotTrack",
+  "test_type": "real_official_model_offline_cuda_inference",
+  "status": "PASS",
+  "input": {
+    "topic": "/head/camera/color/image_raw",
+    "frames": 32,
+    "width": 1280,
+    "height": 720,
+    "mode": "saved real robot RGB frames replayed offline on onboard GPU"
+  },
+  "runtime": {
+    "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+    "torch": "2.14.0+cu130",
+    "transformers": "4.56.2",
+    "gpu": "NVIDIA GeForce RTX 4090 Laptop GPU",
+    "cuda": "13.0"
+  },
+  "summary": {
+    "successful_inferences": 34,
+    "trajectory_shape": [
+      8,
+      3
+    ],
+    "first_inference_ms": 477.01708400018106,
+    "steady_median_ms": 85.67597399996885,
+    "steady_min_ms": 80.69603200056008,
+    "steady_max_ms": 96.0151980016235,
+    "steady_p95_ms": 90.66866649936856,
+    "cuda_peak_allocated_mib": 3041.8173828125,
+    "cuda_peak_reserved_mib": 3356,
+    "load_s": 2.442512726000132
+  },
+  "history_window_pass": true,
+  "reset_max_abs_errors": [
+    0,
+    0
+  ],
+  "ros_imported": false,
+  "motion_publishers_created": 0,
+  "capture": {
+    "odom_samples": 36,
+    "max_odom_displacement_m": 0,
+    "cmd_vel_message_count": 0
+  },
+  "run_latency_ms": [
+    477.01708400018106,
+    87.98178399956669,
+    91.5228109988675,
+    89.81452199986961,
+    96.0151980016235,
+    84.28026299952762,
+    88.2268320001458,
+    85.5547729988757,
+    87.65966300052241,
+    87.21440399858693,
+    87.31352900031197,
+    80.69603200056008,
+    84.60575999924913,
+    84.65153399993142,
+    80.88469199901738,
+    85.40410099885776,
+    84.57678400009172,
+    88.392041001498,
+    85.30636099931144,
+    84.84636499997578,
+    87.79487799984054,
+    81.5892390000954,
+    87.19270799883816,
+    85.67597399996885,
+    84.95592500003113,
+    87.40607899926545,
+    87.99650599939923,
+    86.45545100080199,
+    84.5018859999982,
+    87.54781300012837,
+    82.46310499998799,
+    85.2347700001701,
+    85.50117400045565,
+    85.77834099924075
+  ],
+  "original_evidence_sha256": {
+    "inference_results.json": "5f2127f1c11db0e07233d312a4583347990ea188fa4d7c00aa745ec5ecad7105",
+    "capture.json": "cde6392e104a2162c5db7bb690d42148fdd6bb8e76cd998f4e06f2ecb58d7756",
+    "inference_evidence.png": "f7c0ecd690eedc021e53d949cd831350fbac5f521190b53b751d64bb8493c005"
+  },
+  "boundary": [
+    "No motion command was published by this test.",
+    "Predicted trajectories were saved to files only.",
+    "No live sensor-to-controller loop, target-following accuracy, long-horizon VLN success or autonomous recovery was evaluated.",
+    "Platform demonstration videos are separate from the stationary inference test."
+  ]
+}

@@ -4,6 +4,35 @@ Jinghai Li 的个人主页，按 Lain 主页的灰白／深灰配色、蓝色强
 
 ## 最近更新
 
+### 2026-10-15 - 新增 R1 Pro 轮式双臂 VLN 项目
+
+在首页项目列表顶部新增 R1 Pro 卡片，沿用现有左图右文、蓝色标签、详情链接与原生折叠区。原七个项目的相对顺序、正文、媒体和链接全部保留；移除本次卡片后，`index.html` 与修改前逐字节一致。首页公共 CSS、JavaScript、个人介绍及其他独立页面没有修改。
+
+- **实现范围：** `index.html` 新卡片、[R1 Pro VLN 详情页](RabbitRobot/projects/rabbitrobot-r1-pro-vln.html)、`RabbitRobot/images/r1-pro/` 与两段新增 MP4。详情页复用 Ego × UMI 页的 `project-detail.css`，只在新页内修正英文断词、视频比例与减少动画偏好，不影响旧页。
+- **素材：** 首页 GIF 取自用户竖屏素材 1–9 秒，216×384、6 fps、约 1.5 MB；减少动画时显示静态海报。两段原视频完整复制，保留声音、原始画面与分辨率，分别为 31.07 秒 1280×720 和 13.20 秒 720×1280，SHA-256 与用户源文件一致。视频使用原生控制、内联播放和按需加载。
+- **内容依据：** 依据用户指定的 2026.10.15 R1 Pro / RPP 工作记录及本体复测文件，说明 MiniCPM-RobotTrack 独立环境部署、179 文件哈希核验、RGB-D / 里程计 / 差速底盘接口梳理、31 帧历史窗口与会话重置检查。32 帧实采图像在本体 GPU 回放产生 34 次有效输出；模型来自 OpenBMB，个人工作不冒充模型算法贡献。
+- **实验边界：** 34 / 34 指本次推理及输出检查通过，不是导航成功率；轨迹只保存到文件，测试创建 0 个运动发布器。两段平台视频与静止回放测试分开说明。在线跟随、相机到机身 TF、失效停车、长程 VLN 和自主恢复均保留待验证状态，未重跑机器人实验或改写原始数据。公开 JSON 是既有记录的摘要，保留原证据哈希。
+- **实际验证：** Chrome 下 1440×900、768×1024、390×844、320×844 首页中英文 × 深浅主题共 16 组通过；新详情页四档尺寸通过，无横向溢出或越界元素，两段视频均实际解码并播放。语言与主题点击及刷新记忆、键盘展开、新旧页往返、减少动画静态海报和禁用脚本回退通过。浏览器控制台无 error，91 个本地资源或锚点无缺失。详见[验证记录](docs/images/updates/2026-10-15-r1-pro/checks.json)。
+
+![新增卡片与原有 Ego × UMI 卡片的桌面实测截图](docs/images/updates/2026-10-15-r1-pro/desktop.png)
+
+[手机实测截图](docs/images/updates/2026-10-15-r1-pro/mobile.png) · [详情页实测截图](docs/images/updates/2026-10-15-r1-pro/detail.png)
+
+以下使用 Axton `mermaid-visualizer`，采用 Obsidian / GitHub 兼容 Mermaid 说明本次新增入口与内容边界；它是交付范围图，不是机器人闭环实验结果。
+
+```mermaid
+flowchart TB
+  card["首页新增 R1 Pro 卡片与 GIF"] --> detail["R1 Pro VLN 详情页"]
+  detail --> evidence["两段原视频与本体回放推理证据"]
+  detail -.-> pending["待验证：在线跟随与长程 VLN 恢复"]
+  classDef page fill:#e7f5ff,stroke:#1971c2,color:#242424;
+  classDef evidence fill:#c5f6fa,stroke:#0c8599,color:#242424;
+  classDef pending fill:#f8f9fa,stroke:#868e96,color:#242424;
+  class card,detail page;
+  class evidence evidence;
+  class pending pending;
+```
+
 ### 2026-10-09 - 文章卡片改用用户提供的 RabbitNav 原图
 
 按用户截图中箭头标记的位置，将首页「文章」区 Rabbit-RobotNav 卡片原有的简版方法图替换为用户提供的 1280×720 PNG。仅修改根 `index.html` 中该图片的 `src` 和原始宽高，新增 `images/rabbitnav-history-aware-vln-recovery.png`；网页文字、链接、布局、样式、脚本和项目详情页均保持原样。本节及截图仅记录交付证据。

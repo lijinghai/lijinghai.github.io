@@ -62,7 +62,22 @@
 <div class="intro-contact-links" aria-label="Social Links"><a class="intro-contact-link" href="https://github.com/lijinghai" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">⌘</span> GitHub</a><a class="intro-contact-link" href="mailto:lijinghailjh@163.com"><span aria-hidden="true">✉</span> Email</a><a class="intro-contact-link" href="https://space.bilibili.com/1339027047" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▣</span> Bilibili</a><a class="intro-contact-link" href="https://blog.csdn.net/Dorian15" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">▤</span> CSDN</a><a class="intro-contact-link" href="RabbitRobot/"><span aria-hidden="true">⚙</span> RabbitRobot</a><a class="intro-contact-link" href="#contact"><span aria-hidden="true">↗</span> <span data-en="Contact">联系我</span></a></div>
 </div></section>
 <section id="projects" class="section-padding"><span class="anchor-alias" id="work"></span><div class="container"><h2 data-en="Projects">项目</h2>
-<p class="section-lead" data-en="From chassis and sensor integration to navigation, manipulation and experiment tools: implementation, evidence and next steps for each project.">从底盘与传感器集成，到导航、具身操作和实验工具：以下记录各项目的实现工作、验证范围与下一步。</p><div class="projects-grid"><article class="card project-card" id="project-1">
+<p class="section-lead" data-en="From chassis and sensor integration to navigation, manipulation and experiment tools: implementation, evidence and next steps for each project.">从底盘与传感器集成，到导航、具身操作和实验工具：以下记录各项目的实现工作、验证范围与下一步。</p><div class="projects-grid"><article class="card project-card" id="project-r1-pro">
+<a class="project-thumbnail-wrapper" href="RabbitRobot/projects/rabbitrobot-r1-pro-vln.html">
+  <picture>
+    <source media="(prefers-reduced-motion: reduce)" srcset="RabbitRobot/images/r1-pro/posture-poster.jpg">
+    <img class="project-thumbnail" src="RabbitRobot/images/r1-pro/platform-preview.gif" alt="R1 Pro 轮式双臂机器人机身姿态实拍 GIF" data-en-alt="Real footage of the R1 Pro wheeled dual-arm robot" width="216" height="384" loading="lazy" decoding="async">
+  </picture>
+</a>
+<div class="project-info"><h3 data-en="R1 Pro · Wheeled Dual-Arm VLN Platform">R1 Pro · 轮式双臂 VLN 实验平台</h3>
+<p class="project-description" data-en="I deployed MiniCPM-RobotTrack onboard this wheeled dual-arm platform and reviewed its RGB-D, odometry and differential-drive interfaces. Replay of 32 captured camera frames passed 34 GPU inference checks, covering the history window and eight-point trajectory output. Live target following, chassis control and long-horizon VLN recovery remain to be validated.">我在轮式双臂平台上完成 MiniCPM-RobotTrack 本体部署，梳理 RGB-D、里程计与差速控制接口。以 32 帧实采图像完成 34 次 GPU 回放推理，验证历史窗口与八点轨迹输出；在线跟随、底盘闭环及长程 VLN 恢复仍待验证。</p>
+<div class="project-tags"><span class="tag">ROS 2 · RGB-D · 2WD</span><span class="tag">MiniCPM-RobotTrack</span></div>
+<div class="project-actions"><a class="project-action" href="RabbitRobot/projects/rabbitrobot-r1-pro-vln.html"><span data-en="View R1 Pro VLN project">查看 R1 Pro VLN 详情</span> <span aria-hidden="true">↗</span></a></div>
+<details class="project-details"><summary data-en="Technical details">技术细节</summary>
+<p data-en="Deployment: isolated onboard environment, complete model and visual encoders, and matching SHA-256 hashes for 179 source/model files. Replayed 1280×720 head-camera images on the onboard RTX 4090 Laptop GPU; the 31-frame history window and two session resets passed.">部署与复测：独立本体环境、完整模型与视觉编码器，179 个源码及模型文件哈希一致。使用头部相机 1280×720 图像，在本体 RTX 4090 Laptop GPU 上回放，核对 31 帧历史窗口和两次会话重置。</p>
+<p data-en="Validation boundary: trajectories were saved to files only; the inference test imported no ROS control code and created no motion publisher. Camera-to-base TF, command ownership, depth-based following distance and failure-stop behavior still require integration tests. The GIF shows platform posture, not autonomous navigation.">验证边界：预测轨迹只写入文件，推理测试未接入 ROS 控制，也未创建运动发布器。相机到机身 TF、底盘控制权、深度距离约束和失效停车仍需联调；GIF 仅展示平台姿态，不代表自主导航。</p>
+</details></div></article>
+<article class="card project-card" id="project-1">
 <a class="project-thumbnail-wrapper" href="RabbitRobot/projects/rabbitrobot-ego-umi.html">
           <video class="project-thumbnail" data-home-loop muted loop playsinline preload="none" poster="RabbitRobot/images/rabbitrobot/ego_umi_2026_cover_4k.png" width="3840" height="2160" aria-label="DAS Ego 与 UMI 双手采集设备在桌面场景中的真实实操记录" data-en-aria-label="Real tabletop operation with DAS Ego and UMI bimanual capture devices">
             <source src="RabbitRobot/videos/ego_umi_2026_demo_4k.mp4" type="video/mp4">

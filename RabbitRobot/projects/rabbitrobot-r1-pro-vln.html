@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>R1 Pro | 轮式双臂 VLN 实验平台</title>
+  <meta name="description" content="Jinghai Li 的 R1 Pro 轮式双臂机器人实验记录：MiniCPM-RobotTrack 本体部署、真实相机图像回放推理、ROS 2 传感器与差速底盘接口梳理，面向视觉语言导航的持续验证。">
+  <meta name="author" content="Jinghai Li">
+  <link rel="canonical" href="https://lijinghai.github.io/RabbitRobot/projects/rabbitrobot-r1-pro-vln.html">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="R1 Pro · 轮式双臂 VLN 实验平台">
+  <meta property="og:description" content="从真实观测到本体轨迹推理：部署、接口、复测证据，以及在线导航仍待验证的边界。">
+  <meta property="og:url" content="https://lijinghai.github.io/RabbitRobot/projects/rabbitrobot-r1-pro-vln.html">
+  <meta property="og:image" content="https://lijinghai.github.io/RabbitRobot/images/r1-pro/mobility-poster.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+  <style>
+    .hero h1, .hero .summary { word-break: normal; overflow-wrap: break-word; }
+    .hero-media video { height: auto; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <nav class="detail-nav" aria-label="项目导航">
+    <div class="nav-inner">
+      <a class="brand" href="../../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo" width="28" height="28">
+        <span>Jinghai Li</span>
+      </a>
+      <div class="nav-links">
+        <a href="../../index.html#projects">Selected Work</a>
+        <a href="#work">VLN Work</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#interfaces">ROS 2 Interfaces</a>
+        <a href="#status">Status</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1>R1 Pro · Wheeled Dual-Arm Robot</h1>
+      <p class="subtitle">轮式双臂平台上的视觉语言导航实践</p>
+      <p class="summary">我以 R1 Pro / RPP 两轮差速平台为载体，将语言目标跟随后端从服务器部署到机器人本体，核对真实相机输入、历史状态与轨迹输出。当前已完成 MiniCPM-RobotTrack 的本体 GPU 回放推理验证，继续推进观测坐标、轨迹与底盘控制的衔接，为长程 VLN 的实机实验建立基础。</p>
+      <div class="meta-row">
+        <span class="meta-pill">Updated · 2026.10.15</span>
+        <span class="meta-pill">ROS 2 Humble · 2WD</span>
+        <span class="meta-pill">Status · Onboard inference verified / WIP</span>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="#evidence">查看本体推理证据</a>
+        <a class="button" href="#status">查看验证范围</a>
+        <a class="button" href="../../index.html#project-r1-pro">返回主页项目卡片</a>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <video controls playsinline preload="metadata" poster="../images/r1-pro/mobility-poster.jpg" width="1280" height="720" aria-label="R1 Pro 轮式双臂机器人在室内移动和转向的原始实拍视频">
+        <source src="../videos/r1_pro_2026_mobility.mp4" type="video/mp4">
+        <a href="../videos/r1_pro_2026_mobility.mp4">打开平台移动视频</a>
+      </video>
+      <figcaption>平台移动记录 · 31 秒原始实拍，保留声音和完整画面。视频展示轮式底盘移动及转向；拍摄片段本身不提供控制来源与任务判据，不能据此认定为 VLN 自主导航或模型闭环跟随。</figcaption>
+    </figure>
+  </header>
+
+  <main>
+    <section class="section is-soft" id="work">
+      <div class="container">
+        <h2>从语言目标，到可核对的机器人接口</h2>
+        <p class="section-lead">我的主线是长程视觉语言导航（VLN）。在这台轮式平台上，先以自然语言目标跟随作为模型落地入口，逐步核对观测、历史和动作接口；本阶段尚未验证长程指令执行、语义地图或偏航恢复。</p>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>本体部署与环境隔离</h3>
+            <p>将 MiniCPM-RobotTrack 服务源码、主模型与视觉编码器完整迁入独立目录，建立虚拟环境并复用本体 CUDA。逐文件核验 179 个源码与模型文件的 SHA-256，迁移后重新测试；系统 Python 包清单保持一致。</p>
+          </article>
+          <article class="feature-card">
+            <h3>真实观测与历史状态</h3>
+            <p>从头部相机采集 32 帧 1280×720 RGB 图像，保存后在本体连续推理，检查 31 帧历史窗口的填充与滑动。另做两次独立会话重置，核对相同首帧的输出一致性。</p>
+          </article>
+          <article class="feature-card">
+            <h3>轨迹输出与差速接口</h3>
+            <p>验证每次输出均为 8 个有限数值轨迹点（x、y、θ），梳理其与两轮差速底盘线速度、角速度接口的关系。相机光学坐标到 base_link 的 TF、轨迹坐标约定及控制权归属仍需在运动接入前核实。</p>
+          </article>
+          <article class="feature-card">
+            <h3>面向 VLN 的下一步</h3>
+            <p>计划将语言指定目标、连续视觉观测、深度距离和局部轨迹接入同一实验链，验证目标丢失、观测超时与障碍停车。在线跟随通过后，再研究长程任务中的偏航诊断与恢复；这些目前均为待验证工作。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="evidence">
+      <div class="container">
+        <h2>已验证：本体上的实采图像回放推理</h2>
+        <p class="section-lead">2026.10.15，在 RTX 4090 Laptop GPU 上完成 32 帧连续推理及两次重置复测。输入来自机器人头部相机，推理读取已保存的图像，未连接实时 ROS 控制链。</p>
+        <figure class="wide-media">
+          <a href="../images/r1-pro/inference-evidence.png" aria-label="打开完整本体推理证据图">
+            <img src="../images/r1-pro/inference-evidence.png" alt="真实相机输入、34 次 GPU 推理耗时和八点预测轨迹；图中注明未创建运动发布器，轨迹只保存到 JSON" width="2100" height="1200" loading="lazy" decoding="async">
+          </a>
+          <figcaption>原始复测证据图：左上为实采输入，左下为推理耗时，中下为模型预测轨迹。轨迹未发送到底盘，不代表机器人实际行走路径；点击可查看原图。</figcaption>
+        </figure>
+        <div class="metric-grid">
+          <div class="metric-card"><b>34 / 34</b><span>模型计算与输出检查通过</span></div>
+          <div class="metric-card"><b>8 × 3</b><span>每次输出的轨迹形状</span></div>
+          <div class="metric-card"><b>85.68 ms</b><span>首帧后推理耗时中位数</span></div>
+          <div class="metric-card"><b>0</b><span>此次测试创建的运动发布器</span></div>
+        </div>
+        <p class="source-note">两次重置与首帧预测的最大绝对误差均为 0；采图窗口 36 条里程计样本的最大位移为 0 米。耗时为该 GPU、这组保存图像和本次测试入口下的模型推理统计，不含实时采图、ROS 通信及底盘执行，不是导航成功率或端到端控制延迟。</p>
+        <div class="source-actions">
+          <a class="button" href="../images/r1-pro/inference-summary.json">查看公开验证摘要 JSON</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft" id="interfaces">
+      <div class="container">
+        <h2>把传感器、坐标与控制边界逐项对齐</h2>
+        <p class="section-lead">已在指定工作记录中检查传感器消息与驱动接口。可读取数据、模型可输出轨迹，与机器人可可靠执行任务是不同的验证层次。</p>
+        <table class="interface-table verification-table">
+          <thead><tr><th scope="col">验证对象</th><th scope="col">结果</th><th scope="col">说明</th></tr></thead>
+          <tbody>
+            <tr><td>头部 RGB</td><td>已实采 32 帧</td><td><code>/head/camera/color/image_raw</code>，1280×720；本次模型测试使用保存图像回放。</td></tr>
+            <tr><td>深度与标定</td><td>已读取消息</td><td>已检查对齐深度与 CameraInfo；基于目标深度的跟随距离控制尚未接入验证。</td></tr>
+            <tr><td>里程计与激光</td><td>已检查输入</td><td>读取 <code>/odom</code> 与 <code>/scan</code>；本次里程计仅用于确认采图期间静止，不构成导航定位精度评估。</td></tr>
+            <tr><td>差速底盘指令</td><td>驱动接口已梳理</td><td>驱动消费 <code>/cmd_vel</code> 的 <code>linear.x</code> 与 <code>angular.z</code>；模型测试未发布指令。接入前仍需排查重复驱动订阅和工作区覆盖关系。</td></tr>
+            <tr><td>相机与机身坐标</td><td>待核实</td><td>检查窗口内未找到相机光学坐标到 <code>base_link</code> 的完整变换，不能据此假定轨迹可直接驱动底盘。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="platform">
+      <div class="container">
+        <h2>轮式底盘与双臂机身的真实形态</h2>
+        <p class="section-lead">两轮差速底盘提供地面移动载体，头部视觉与双臂机身提供具身实验的硬件基础。当前公开工作集中在导航模型部署及接口验证，尚未完成双臂操作策略或移动抓取实验。</p>
+        <figure class="hero-media">
+          <video controls playsinline preload="none" poster="../images/r1-pro/posture-poster.jpg" width="720" height="1280" aria-label="R1 Pro 轮式双臂机器人机身、头部和双臂的竖屏实拍视频">
+            <source src="../videos/r1_pro_2026_posture.mp4" type="video/mp4">
+            <a href="../videos/r1_pro_2026_posture.mp4">打开机身姿态视频</a>
+          </video>
+          <figcaption>机身姿态记录 · 13 秒原始竖屏视频。首页 GIF 取自该视频的 1–9 秒，完整保留平台轮廓；这里保留原始视频与声音供回看。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section is-soft" id="status">
+      <div class="container">
+        <h2>研究进度与实验边界</h2>
+        <table class="interface-table verification-table">
+          <thead><tr><th scope="col">验证对象</th><th scope="col">结果</th><th scope="col">说明</th></tr></thead>
+          <tbody>
+            <tr><td>模型本体部署</td><td>已完成</td><td>完整模型、独立环境、文件哈希核验和迁移后 GPU 复测已完成。</td></tr>
+            <tr><td>历史窗口与输出</td><td>已通过本次测试</td><td>34 次推理、有限轨迹输出、历史窗口与会话重置一致性通过；未评价轨迹语义正确性或任务成功率。</td></tr>
+            <tr><td>在线目标跟随</td><td>方案阶段</td><td>已梳理 RGB-D、目标跟踪与底盘接口；实时模型循环、目标距离控制及失效停车尚未组合验证。</td></tr>
+            <tr><td>长程 VLN 与恢复</td><td>研究目标</td><td>后续连接历史感知语义地图、偏航诊断和恢复锚点研究。本平台上尚无完整长程任务或自主恢复的实验结论。</td></tr>
+          </tbody>
+        </table>
+        <p class="source-note">本页依据本人平台视频、2026.10.15 本体部署与接口检查记录编写。MiniCPM-RobotTrack 为 OpenBMB 提供的模型；我的工作是平台部署、环境与接口梳理及实采输入复测，不将模型本身作为个人算法贡献。公开摘要保留验证条件与原始证据文件哈希，不公开机器登录信息，也不声称本体集成代码已完全开源。</p>
+        <div class="source-actions">
+          <a class="button primary" href="../../index.html#project-r1-pro">返回主页</a>
+          <a class="button" href="https://github.com/OpenBMB/MiniCPM-Robot/tree/main/MiniCPM-RobotTrack" target="_blank" rel="noopener noreferrer">MiniCPM-RobotTrack 官方源码 ↗</a>
+          <a class="button" href="../../RabbitRobotNav/">长程 VLN 研究记录 ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">Jinghai Li · R1 Pro / RPP · 本体推理已验证，导航闭环持续研究中。</footer>
+</body>
+</html>

@@ -1,0 +1,513 @@
+{
+  "date": "2026-10-15",
+  "environment": "Local Chrome via Playwright; tests concern website only, not a new robot experiment",
+  "homepage": [
+    {
+      "width": 1440,
+      "lang": "zh-CN",
+      "theme": "light",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "lang": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "lang": "en",
+      "theme": "light",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 1440,
+      "lang": "en",
+      "theme": "dark",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 768,
+      "lang": "zh-CN",
+      "theme": "light",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 768,
+      "lang": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 768,
+      "lang": "en",
+      "theme": "light",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 768,
+      "lang": "en",
+      "theme": "dark",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "lang": "zh-CN",
+      "theme": "light",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "lang": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "lang": "en",
+      "theme": "light",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "lang": "en",
+      "theme": "dark",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 320,
+      "lang": "zh-CN",
+      "theme": "light",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 320,
+      "lang": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 320,
+      "lang": "en",
+      "theme": "light",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 320,
+      "lang": "en",
+      "theme": "dark",
+      "overflow": false,
+      "order": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "gif": 216,
+      "icon": "↗",
+      "ids": [],
+      "errors": [],
+      "pass": true
+    }
+  ],
+  "detail": [
+    {
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "outside": [],
+      "ids": [],
+      "brokenAnchors": [],
+      "media": [
+        {
+          "duration": 31.066667,
+          "width": 1280,
+          "height": 720,
+          "renderedWidth": 980,
+          "renderedHeight": 551,
+          "currentTime": 0.078023,
+          "error": null
+        },
+        {
+          "duration": 13.2,
+          "width": 720,
+          "height": 1280,
+          "renderedWidth": 980,
+          "renderedHeight": 620,
+          "currentTime": 0.209036,
+          "error": null
+        }
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "outside": [],
+      "ids": [],
+      "brokenAnchors": [],
+      "media": [
+        {
+          "duration": 31.066667,
+          "width": 1280,
+          "height": 720,
+          "renderedWidth": 724,
+          "renderedHeight": 407,
+          "currentTime": 0.206692,
+          "error": null
+        },
+        {
+          "duration": 13.2,
+          "width": 720,
+          "height": 1280,
+          "renderedWidth": 724,
+          "renderedHeight": 1287,
+          "currentTime": 0.213218,
+          "error": null
+        }
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "outside": [],
+      "ids": [],
+      "brokenAnchors": [],
+      "media": [
+        {
+          "duration": 31.066667,
+          "width": 1280,
+          "height": 720,
+          "renderedWidth": 358,
+          "renderedHeight": 201,
+          "currentTime": 0.21056,
+          "error": null
+        },
+        {
+          "duration": 13.2,
+          "width": 720,
+          "height": 1280,
+          "renderedWidth": 358,
+          "renderedHeight": 636,
+          "currentTime": 0.213267,
+          "error": null
+        }
+      ],
+      "errors": [],
+      "pass": true
+    },
+    {
+      "width": 320,
+      "height": 844,
+      "overflow": false,
+      "outside": [],
+      "ids": [],
+      "brokenAnchors": [],
+      "media": [
+        {
+          "duration": 31.066667,
+          "width": 1280,
+          "height": 720,
+          "renderedWidth": 288,
+          "renderedHeight": 162,
+          "currentTime": 0.214322,
+          "error": null
+        },
+        {
+          "duration": 13.2,
+          "width": 720,
+          "height": 1280,
+          "renderedWidth": 288,
+          "renderedHeight": 512,
+          "currentTime": 0.211297,
+          "error": null
+        }
+      ],
+      "errors": [],
+      "pass": true
+    }
+  ],
+  "interactions": {
+    "reducedMotionPoster": true,
+    "languageTheme": {
+      "initial": {
+        "lang": "en",
+        "theme": "light"
+      },
+      "changed": {
+        "lang": "zh-CN",
+        "theme": "dark",
+        "icon": "↗",
+        "alt": "R1 Pro 轮式双臂机器人机身姿态实拍 GIF"
+      },
+      "persisted": {
+        "lang": "zh-CN",
+        "theme": "dark"
+      },
+      "pass": true
+    },
+    "keyboardDetails": true,
+    "cardDestination": true,
+    "evidenceNavigation": true,
+    "returnDestination": true,
+    "errors": [],
+    "noJS": {
+      "projects": 8,
+      "controlsHidden": true,
+      "overflow": false
+    }
+  },
+  "preservation": {
+    "videos": [
+      {
+        "file": "r1_pro_2026_mobility.mp4",
+        "sha256": "6637f17fe29860121a88bfe34ecb8f43e20d5043ea1964db30d75036e5edc1f1",
+        "sameBytes": true
+      },
+      {
+        "file": "r1_pro_2026_posture.mp4",
+        "sha256": "c1759e911503097be032e49dbb65b8e69a71f1df723595e4ae251c2a2088f9d8",
+        "sameBytes": true
+      }
+    ],
+    "originalHomepagePreserved": true,
+    "evidenceImageSameBytes": true,
+    "publicSummaryMatchesSource": true,
+    "localReferencesChecked": 91,
+    "missing": []
+  }
+}
