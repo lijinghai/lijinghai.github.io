@@ -1,0 +1,862 @@
+{
+  "verifiedAt": "2026-10-16T06:28:45.630Z",
+  "browser": "Google Chrome 155.0.8059.79",
+  "base": "http://127.0.0.1:59650/",
+  "scope": "Homepage content, October–December VLN timeline plan, and contact image sizing. No robot experiments were rerun.",
+  "matrix": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "en",
+      "theme": "light",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 314.65625,
+          "imageWidth": 296.65625,
+          "imageHeight": 444.984375,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 314.671875,
+          "imageWidth": 296.671875,
+          "imageHeight": 445,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 314.65625,
+          "imageWidth": 296.65625,
+          "imageHeight": 444.984375,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · Long-Horizon VLN Validation Plan\n\nOctober–December plan: integrate live perception and differential-drive control on R1 Pro, then evaluate long-horizon navigation, deviation diagnosis and recovery. Current evidence covers onboard inference from saved real-camera frames; online control and autonomous recovery remain unverified.",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "en",
+      "theme": "dark",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 314.65625,
+          "imageWidth": 296.65625,
+          "imageHeight": 444.984375,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 314.671875,
+          "imageWidth": 296.671875,
+          "imageHeight": 445,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 314.65625,
+          "imageWidth": 296.65625,
+          "imageHeight": 444.984375,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · Long-Horizon VLN Validation Plan\n\nOctober–December plan: integrate live perception and differential-drive control on R1 Pro, then evaluate long-horizon navigation, deviation diagnosis and recovery. Current evidence covers onboard inference from saved real-camera frames; online control and autonomous recovery remain unverified.",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "zh-CN",
+      "theme": "dark",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 314.65625,
+          "imageWidth": 296.65625,
+          "imageHeight": 444.984375,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 314.671875,
+          "imageWidth": 296.671875,
+          "imageHeight": 445,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 314.65625,
+          "imageWidth": 296.65625,
+          "imageHeight": 444.984375,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · 长程 VLN 验证计划\n\n10—12 月计划：基于 R1 Pro 联调实时感知与差速控制，逐步验证长程导航、偏航诊断与恢复。目前已完成保存实采图像的本体回放推理；在线控制与自主恢复仍待验证。",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "lang": "zh-CN",
+      "theme": "light",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 314.65625,
+          "imageWidth": 296.65625,
+          "imageHeight": 444.984375,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 314.671875,
+          "imageWidth": 296.671875,
+          "imageHeight": 445,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 314.65625,
+          "imageWidth": 296.65625,
+          "imageHeight": 444.984375,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · 长程 VLN 验证计划\n\n10—12 月计划：基于 R1 Pro 联调实时感知与差速控制，逐步验证长程导航、偏航诊断与恢复。目前已完成保存实采图像的本体回放推理；在线控制与自主恢复仍待验证。",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "lang": "zh-CN",
+      "theme": "light",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 736,
+          "imageWidth": 718,
+          "imageHeight": 1077,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 736,
+          "imageWidth": 718,
+          "imageHeight": 1077,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 736,
+          "imageWidth": 718,
+          "imageHeight": 1077,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · 长程 VLN 验证计划\n\n10—12 月计划：基于 R1 Pro 联调实时感知与差速控制，逐步验证长程导航、偏航诊断与恢复。目前已完成保存实采图像的本体回放推理；在线控制与自主恢复仍待验证。",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "lang": "zh-CN",
+      "theme": "dark",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 736,
+          "imageWidth": 718,
+          "imageHeight": 1077,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 736,
+          "imageWidth": 718,
+          "imageHeight": 1077,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 736,
+          "imageWidth": 718,
+          "imageHeight": 1077,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · 长程 VLN 验证计划\n\n10—12 月计划：基于 R1 Pro 联调实时感知与差速控制，逐步验证长程导航、偏航诊断与恢复。目前已完成保存实采图像的本体回放推理；在线控制与自主恢复仍待验证。",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "lang": "en",
+      "theme": "dark",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 736,
+          "imageWidth": 718,
+          "imageHeight": 1077,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 736,
+          "imageWidth": 718,
+          "imageHeight": 1077,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 736,
+          "imageWidth": 718,
+          "imageHeight": 1077,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · Long-Horizon VLN Validation Plan\n\nOctober–December plan: integrate live perception and differential-drive control on R1 Pro, then evaluate long-horizon navigation, deviation diagnosis and recovery. Current evidence covers onboard inference from saved real-camera frames; online control and autonomous recovery remain unverified.",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "lang": "en",
+      "theme": "light",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 736,
+          "imageWidth": 718,
+          "imageHeight": 1077,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 736,
+          "imageWidth": 718,
+          "imageHeight": 1077,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 736,
+          "imageWidth": 718,
+          "imageHeight": 1077,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · Long-Horizon VLN Validation Plan\n\nOctober–December plan: integrate live perception and differential-drive control on R1 Pro, then evaluate long-horizon navigation, deviation diagnosis and recovery. Current evidence covers onboard inference from saved real-camera frames; online control and autonomous recovery remain unverified.",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "en",
+      "theme": "light",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 358,
+          "imageWidth": 340,
+          "imageHeight": 510,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 358,
+          "imageWidth": 340,
+          "imageHeight": 510,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 358,
+          "imageWidth": 340,
+          "imageHeight": 510,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · Long-Horizon VLN Validation Plan\n\nOctober–December plan: integrate live perception and differential-drive control on R1 Pro, then evaluate long-horizon navigation, deviation diagnosis and recovery. Current evidence covers onboard inference from saved real-camera frames; online control and autonomous recovery remain unverified.",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "en",
+      "theme": "dark",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 358,
+          "imageWidth": 340,
+          "imageHeight": 510,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 358,
+          "imageWidth": 340,
+          "imageHeight": 510,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 358,
+          "imageWidth": 340,
+          "imageHeight": 510,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · Long-Horizon VLN Validation Plan\n\nOctober–December plan: integrate live perception and differential-drive control on R1 Pro, then evaluate long-horizon navigation, deviation diagnosis and recovery. Current evidence covers onboard inference from saved real-camera frames; online control and autonomous recovery remain unverified.",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "zh-CN",
+      "theme": "dark",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 358,
+          "imageWidth": 340,
+          "imageHeight": 510,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 358,
+          "imageWidth": 340,
+          "imageHeight": 510,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 358,
+          "imageWidth": 340,
+          "imageHeight": 510,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · 长程 VLN 验证计划\n\n10—12 月计划：基于 R1 Pro 联调实时感知与差速控制，逐步验证长程导航、偏航诊断与恢复。目前已完成保存实采图像的本体回放推理；在线控制与自主恢复仍待验证。",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "lang": "zh-CN",
+      "theme": "light",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 358,
+          "imageWidth": 340,
+          "imageHeight": 510,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 358,
+          "imageWidth": 340,
+          "imageHeight": 510,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 358,
+          "imageWidth": 340,
+          "imageHeight": 510,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · 长程 VLN 验证计划\n\n10—12 月计划：基于 R1 Pro 联调实时感知与差速控制，逐步验证长程导航、偏航诊断与恢复。目前已完成保存实采图像的本体回放推理；在线控制与自主恢复仍待验证。",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "lang": "zh-CN",
+      "theme": "light",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 288,
+          "imageWidth": 270,
+          "imageHeight": 405,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 288,
+          "imageWidth": 270,
+          "imageHeight": 405,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 288,
+          "imageWidth": 270,
+          "imageHeight": 405,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · 长程 VLN 验证计划\n\n10—12 月计划：基于 R1 Pro 联调实时感知与差速控制，逐步验证长程导航、偏航诊断与恢复。目前已完成保存实采图像的本体回放推理；在线控制与自主恢复仍待验证。",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "lang": "zh-CN",
+      "theme": "dark",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 288,
+          "imageWidth": 270,
+          "imageHeight": 405,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 288,
+          "imageWidth": 270,
+          "imageHeight": 405,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 288,
+          "imageWidth": 270,
+          "imageHeight": 405,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · 长程 VLN 验证计划\n\n10—12 月计划：基于 R1 Pro 联调实时感知与差速控制，逐步验证长程导航、偏航诊断与恢复。目前已完成保存实采图像的本体回放推理；在线控制与自主恢复仍待验证。",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "lang": "en",
+      "theme": "dark",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 288,
+          "imageWidth": 270,
+          "imageHeight": 405,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 288,
+          "imageWidth": 270,
+          "imageHeight": 405,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 288,
+          "imageWidth": 270,
+          "imageHeight": 405,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · Long-Horizon VLN Validation Plan\n\nOctober–December plan: integrate live perception and differential-drive control on R1 Pro, then evaluate long-horizon navigation, deviation diagnosis and recovery. Current evidence covers onboard inference from saved real-camera frames; online control and autonomous recovery remain unverified.",
+      "pass": true
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 844
+      },
+      "lang": "en",
+      "theme": "light",
+      "overflow": 0,
+      "projectOrder": [
+        "project-r1-pro",
+        "project-1",
+        "project-2",
+        "project-3",
+        "project-4",
+        "project-5",
+        "project-6",
+        "project-7"
+      ],
+      "contacts": [
+        {
+          "cardWidth": 288,
+          "imageWidth": 270,
+          "imageHeight": 405,
+          "naturalWidth": 987,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 288,
+          "imageWidth": 270,
+          "imageHeight": 405,
+          "naturalWidth": 1185,
+          "fit": "contain"
+        },
+        {
+          "cardWidth": 288,
+          "imageWidth": 270,
+          "imageHeight": 405,
+          "naturalWidth": 1094,
+          "fit": "contain"
+        }
+      ],
+      "timeline": "2026.10–12\nR1 Pro · Long-Horizon VLN Validation Plan\n\nOctober–December plan: integrate live perception and differential-drive control on R1 Pro, then evaluate long-horizon navigation, deviation diagnosis and recovery. Current evidence covers onboard inference from saved real-camera frames; online control and autonomous recovery remain unverified.",
+      "pass": true
+    }
+  ],
+  "matrixPass": true,
+  "preservation": {
+    "projectOrderUnchanged": true,
+    "mediaUnchanged": true,
+    "oldLinks": 60,
+    "currentLinks": 61,
+    "missingOldLinks": [],
+    "duplicateIds": [],
+    "missingAnchors": [],
+    "nonLeafTranslations": 0,
+    "nav": [
+      "#intro",
+      "#projects",
+      "#documents",
+      "#timeline",
+      "#skills"
+    ],
+    "localResourceCount": 33,
+    "missingLocal": []
+  },
+  "images": [
+    {
+      "src": "images/profile/jinghai-li-portrait-soft.jpg",
+      "width": 591,
+      "height": 827
+    },
+    {
+      "src": "RabbitRobot/images/r1-pro/platform-preview.gif",
+      "width": 720,
+      "height": 1280
+    },
+    {
+      "src": "RabbitRobot/images/rabbitrobot/edulite_a3_lerobot_vla_demo.gif",
+      "width": 640,
+      "height": 360
+    },
+    {
+      "src": "RabbitRobot/images/rabbitrobot/RabbitRobot_architecture.png",
+      "width": 2340,
+      "height": 1525
+    },
+    {
+      "src": "RabbitRobot/images/rabbitrobot/ros2_web_home.png",
+      "width": 2556,
+      "height": 1188
+    },
+    {
+      "src": "images/rabbitnav-history-aware-vln-recovery.png",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "src": "images/contact/xiaohongshu-card.jpg",
+      "width": 987,
+      "height": 1347
+    },
+    {
+      "src": "images/contact/bilibili-qr.jpg",
+      "width": 1185,
+      "height": 1684
+    },
+    {
+      "src": "images/contact/wechat-qr.png",
+      "width": 1094,
+      "height": 1625
+    },
+    {
+      "src": "RabbitRobot/images/rabbitrobot/RabbitRobot_logo_icon.png",
+      "width": 512,
+      "height": 512
+    }
+  ],
+  "beforeContactImageFrames": [
+    {
+      "width": 272.65625,
+      "height": 220,
+      "src": "images/contact/xiaohongshu-card.jpg",
+      "containedImageWidth": 161.20267260579064
+    },
+    {
+      "width": 272.671875,
+      "height": 220,
+      "src": "images/contact/bilibili-qr.jpg",
+      "containedImageWidth": 154.80997624703087
+    },
+    {
+      "width": 272.65625,
+      "height": 220,
+      "src": "images/contact/wechat-qr.png",
+      "containedImageWidth": 148.11076923076922
+    }
+  ],
+  "navigation": {
+    "hash": "#timeline",
+    "timelineTop": 87.84375
+  },
+  "keyboard": {
+    "projectDetails": true,
+    "contactClosed": true,
+    "contactOpened": true
+  },
+  "persistence": {
+    "lang": "zh-CN",
+    "theme": "dark",
+    "storedLanguage": "zh",
+    "storedTheme": "dark"
+  },
+  "mediaPlayback": [
+    {
+      "src": "http://127.0.0.1:59650/RabbitRobot/videos/ego_umi_2026_demo_4k.mp4",
+      "error": null,
+      "state": 0,
+      "width": 3840,
+      "height": 2160,
+      "time": 0.437625,
+      "index": 0
+    },
+    {
+      "src": "RabbitRobot/videos/omnihand_2025_home_hd.mp4",
+      "width": 960,
+      "height": 540,
+      "time": 0.356248,
+      "error": null
+    },
+    {
+      "src": "http://127.0.0.1:59650/RabbitRobot/videos/robotdog_vln_demo_hd.mp4",
+      "error": null,
+      "state": 0,
+      "width": 960,
+      "height": 540,
+      "time": 0.478908,
+      "index": 2
+    },
+    {
+      "src": "RabbitRobot/videos/amr2_turning_loop_hd.mp4",
+      "width": 960,
+      "height": 540,
+      "time": 0.352994,
+      "error": null
+    }
+  ],
+  "mediaTestNote": "Two initial play requests coincided with the existing visibility observer pausing media; both passed after scrolling settled (400 ms). No video or script changes.",
+  "reducedMotion": {
+    "requested": true,
+    "videosPausedAfterReload": true
+  },
+  "consoleErrors": [],
+  "consoleWarnings": [],
+  "externalLinks": "Original 60 href targets retained; external service availability was not re-audited.",
+  "unverified": "Live robot control and autonomous VLN recovery remain unverified; this update records plans, not completed experiments."
+}

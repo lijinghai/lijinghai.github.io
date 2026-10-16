@@ -4,6 +4,36 @@ Jinghai Li 的个人主页，按 Lain 主页的灰白／深灰配色、蓝色强
 
 ## 最近更新
 
+### 2026-10-16 - 补充 10—12 月 VLN 计划并放大联系二维码
+
+时间线原先从 9 月开始，联系原图受 220px 高度限制而显得偏小。本次在时间线顶部补充 **2026.10–12 R1 Pro · 长程 VLN 验证计划**，并让三张联系原图随卡片宽度放大。首页保留 Lain 灰白／深灰、蓝色强调、终端标识、头像、导航与卡片形态；一并提交前序已完成但尚未提交的首页中英文内容精修。
+
+- **内容与边界：** `index.html` 将个人介绍、项目与研究记录区分为个人实现、上游模型／设备规格和待验证工作。Rabbit-RobotNav 保留硕士课题、Work in Progress 与未发表状态，保留漏检、CMA 无增益、地图及恢复参考不足等限制。新增时间线将实时感知、差速控制、长程导航、偏航诊断与恢复标为 10—12 月计划；已验证范围仍为保存实采图像的本体回放推理，不暗示在线自主控制或恢复已经完成。
+- **二维码与缓存：** `homepage.css` 仅调整联系图片容器和图片尺寸，取消固定高度，保持 `object-fit: contain`，完整显示原图；图片框距卡片边缘约 8px，文字内边距不变。1440px 桌面原图由约 148–161px 的可见宽度放大到约 297px，接近 315px 卡片宽度；390px 和 320px 视口分别显示为 340px、270px。`index.html` 更新样式版本参数，避免继续使用旧缓存。
+- **保留核对：** 8 个主要项目的顺序与全部图片、视频、poster 属性保持一致，原 60 个链接目标全部保留；只新增时间线中的既有 R1 Pro 详情入口。未改动 `homepage.js`、项目详情页、二维码源文件或实验数据。没有引入框架或依赖。
+- **实际验证：** Google Chrome 下 1440×900、768×1024、390×844、320×844，中英文 × 明暗主题共 16 组通过，无横向溢出；10 张图片均解码，4 段既有视频实际播放推进。导航定位、键盘展开／收起、语言与主题刷新记忆、减少动画下视频暂停通过，控制台 error / warning 均为 0；33 个本地引用无缺失，无重复 ID 或失效内部锚点。`node --check homepage.js` 与 `git diff --check` 通过。详见[验证记录](docs/images/updates/2026-10-16-vln-qr/checks.json)。
+- **验证边界：** 本轮验证网页呈现与交互，没有重跑机器人实验；原外部链接目标保留，未重新审计全部外部服务的可达性。
+
+![放大后的三张联系原图：桌面 Chrome 实测](docs/images/updates/2026-10-16-vln-qr/qr-desktop.png)
+
+![新增 2026.10–12 VLN 验证计划：桌面 Chrome 实测](docs/images/updates/2026-10-16-vln-qr/timeline-desktop.png)
+
+[手机二维码](docs/images/updates/2026-10-16-vln-qr/qr-mobile.png) · [手机时间线](docs/images/updates/2026-10-16-vln-qr/timeline-mobile.png) · [深色模式](docs/images/updates/2026-10-16-vln-qr/qr-dark.png)
+
+以下使用 Axton `mermaid-visualizer`，选用 Obsidian / GitHub 兼容 Mermaid 说明本轮修改与验证范围；页面效果以实测截图为准，计划不等于实验结果。
+
+```mermaid
+flowchart TB
+  content["首页文案：个人工作与验证边界"] --> verify["四档尺寸、双语主题与原有交互验证"]
+  timeline["新增 2026.10–12 长程 VLN 验证计划"] --> verify
+  qr["联系原图完整放大与样式缓存更新"] --> verify
+  timeline -.-> pending["在线控制与自主恢复仍待验证"]
+  classDef changed fill:#e7f5ff,stroke:#1971c2,color:#242424;
+  classDef pending fill:#f8f9fa,stroke:#868e96,color:#242424;
+  class content,timeline,qr,verify changed;
+  class pending pending;
+```
+
 ### 2026-10-15 - 新增 R1 Pro 轮式双臂 VLN 项目
 
 在首页项目列表顶部新增 R1 Pro 卡片，沿用现有左图右文、蓝色标签、详情链接与原生折叠区。原七个项目的相对顺序、正文、媒体和链接全部保留；移除本次卡片后，`index.html` 与修改前逐字节一致。首页公共 CSS、JavaScript、个人介绍及其他独立页面没有修改。
