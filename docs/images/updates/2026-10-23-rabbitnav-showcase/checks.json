@@ -1,0 +1,343 @@
+{
+  "date": "2026-10-23",
+  "browser": "156.0.8078.47",
+  "scope": "RabbitRobotNav media addition; no new robot experiment",
+  "preservation": {
+    "sections": {
+      "abstract": true,
+      "method": true,
+      "real-robot": true,
+      "room-map": true,
+      "results": true,
+      "resources": true,
+      "bibtex": true
+    },
+    "oldReferences": 42,
+    "missingOldReferences": [
+      "style.css?v=20261009-survey"
+    ],
+    "originalFrameworkPreserved": true,
+    "allowedReferenceChange": "style.css cache version only",
+    "allExistingTargetsPreserved": true
+  },
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 900,
+      "pageWidth": 1440,
+      "viewportWidth": 1440,
+      "overflow": false,
+      "videoWidth": 960,
+      "videoHeight": 540,
+      "anchorTop": 466.875,
+      "preload": "metadata",
+      "autoplay": false,
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "playback": {
+        "duration": 76.25,
+        "currentTime": 0.206762,
+        "width": 1920,
+        "height": 1080,
+        "error": null,
+        "muted": false
+      },
+      "readyStateAfterMetadataPreload": 1
+    },
+    {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024,
+      "pageWidth": 768,
+      "viewportWidth": 768,
+      "overflow": false,
+      "videoWidth": 732,
+      "videoHeight": 411.75,
+      "anchorTop": 444.28125,
+      "preload": "metadata",
+      "autoplay": false,
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "playback": {
+        "duration": 76.25,
+        "currentTime": 0.213932,
+        "width": 1920,
+        "height": 1080,
+        "error": null,
+        "muted": false
+      },
+      "readyStateAfterMetadataPreload": 1
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "pageWidth": 390,
+      "viewportWidth": 390,
+      "overflow": false,
+      "videoWidth": 356,
+      "videoHeight": 200.25,
+      "anchorTop": 459.875,
+      "preload": "metadata",
+      "autoplay": false,
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "playback": {
+        "duration": 76.25,
+        "currentTime": 0.206099,
+        "width": 1920,
+        "height": 1080,
+        "error": null,
+        "muted": false
+      },
+      "readyStateAfterMetadataPreload": 4
+    },
+    {
+      "name": "small-mobile",
+      "width": 320,
+      "height": 844,
+      "pageWidth": 320,
+      "viewportWidth": 320,
+      "overflow": false,
+      "videoWidth": 286,
+      "videoHeight": 160.875,
+      "anchorTop": 528.234375,
+      "preload": "metadata",
+      "autoplay": false,
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "playback": {
+        "duration": 76.25,
+        "currentTime": 0.208808,
+        "width": 1920,
+        "height": 1080,
+        "error": null,
+        "muted": false
+      },
+      "readyStateAfterMetadataPreload": 4
+    }
+  ],
+  "anchorChecks": [
+    {
+      "viewport": "desktop",
+      "passed": true,
+      "top": 20.875
+    },
+    {
+      "viewport": "tablet",
+      "passed": true,
+      "top": 20.28125
+    },
+    {
+      "viewport": "mobile",
+      "passed": true,
+      "top": 20.875
+    },
+    {
+      "viewport": "small-mobile",
+      "passed": true,
+      "top": 20.234375
+    }
+  ],
+  "media": {
+    "duration": 76.25,
+    "width": 1920,
+    "height": 1080,
+    "fps": 24,
+    "videoFrames": 1830,
+    "bytes": 74296096,
+    "codecs": [
+      "h264",
+      "aac"
+    ],
+    "sourceAndWebStreamsIdentical": true,
+    "streamHashes": {
+      "video": "b690a56b45c34de9d0ff9bb9d0b8d183d03edac4bbb229dff508707acae3d890",
+      "audio": "b275f52aebc2a90e01ac2af97802a6d7bec28b1fba99898d8adf0554c1cd7720"
+    },
+    "sourceFileSha256": "d70da0edaf2eddd1e746f7aefb904f2d1517ac60a06978a5a6cb75454deaef6c",
+    "webFileSha256": "2931f22fb7a1a4fa4614f0102d922ebdabb04a3054b6e21ad5326659b0306df8",
+    "fastStart": true,
+    "atoms": [
+      {
+        "type": "ftyp",
+        "offset": 0,
+        "size": 32
+      },
+      {
+        "type": "moov",
+        "offset": 32,
+        "size": 54371
+      },
+      {
+        "type": "free",
+        "offset": 54403,
+        "size": 8
+      },
+      {
+        "type": "mdat",
+        "offset": 54411,
+        "size": 74241685
+      }
+    ],
+    "posterTimestampSeconds": 11
+  },
+  "seekTo11Seconds": {
+    "time": 11,
+    "width": 1920,
+    "height": 1080,
+    "error": null
+  },
+  "seekToEnd": {
+    "ended": true,
+    "time": 76.25,
+    "error": null
+  },
+  "keyboardAnchor": {
+    "passed": true,
+    "top": 20.875
+  },
+  "originalReplay": {
+    "time": 0.2106,
+    "width": 1920,
+    "height": 1080,
+    "error": null
+  },
+  "decodedImages": [
+    {
+      "src": "assets/research-framework-2026-10-09.png",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "src": "assets/real-history-2026-10-08.png",
+      "width": 2400,
+      "height": 800
+    },
+    {
+      "src": "assets/room-survey-2026-10-09.png",
+      "width": 1960,
+      "height": 1260
+    },
+    {
+      "src": "assets/ekf-heading-ab-2026-10-09.png",
+      "width": 1920,
+      "height": 1120
+    },
+    {
+      "src": "assets/trial1r-chair-before-2026-09-28.png",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "src": "assets/trial1r-chair-after-2026-09-28.png",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "src": "assets/research-mindmap-2026-10-09.svg",
+      "width": 300,
+      "height": 134
+    }
+  ],
+  "resources": [
+    {
+      "url": "../images/favicon.ico",
+      "status": 200
+    },
+    {
+      "url": "style.css?v=20261023-demo",
+      "status": 200
+    },
+    {
+      "url": "../index.html",
+      "status": 200
+    },
+    {
+      "url": "assets/rabbitnav-platform-2026-10-23.jpg",
+      "status": 200
+    },
+    {
+      "url": "assets/rabbitnav-method-demo-2026-10-23.mp4",
+      "status": 200
+    },
+    {
+      "url": "assets/research-framework-2026-10-09.png",
+      "status": 200
+    },
+    {
+      "url": "assets/real-history-2026-10-08.png",
+      "status": 200
+    },
+    {
+      "url": "assets/history-shadow-2026-10-08.png",
+      "status": 200
+    },
+    {
+      "url": "assets/room-survey-2026-10-09.png",
+      "status": 200
+    },
+    {
+      "url": "assets/ekf-heading-ab-2026-10-09.png",
+      "status": 200
+    },
+    {
+      "url": "assets/g1-instruction-order.png",
+      "status": 200
+    },
+    {
+      "url": "assets/g1-global-trajectory-h264.mp4",
+      "status": 200
+    },
+    {
+      "url": "assets/trial1r-chair-before-2026-09-28.png",
+      "status": 200
+    },
+    {
+      "url": "assets/trial1r-chair-after-2026-09-28.png",
+      "status": 200
+    },
+    {
+      "url": "assets/g2-pose-jump-h264.mp4",
+      "status": 200
+    },
+    {
+      "url": "assets/g5-spatial-conflict-h264.mp4",
+      "status": 200
+    },
+    {
+      "url": "assets/trial1r-selected-depth-2026-09-28.png",
+      "status": 200
+    },
+    {
+      "url": "evidence-2026-10-09.md",
+      "status": 200
+    },
+    {
+      "url": "assets/research-mindmap-2026-10-09.svg",
+      "status": 200
+    },
+    {
+      "url": "research-mindmap.mmd",
+      "status": 200
+    }
+  ],
+  "consoleErrors": [],
+  "limitations": [
+    "No robot experiment rerun",
+    "No new benchmark result",
+    "Existing external services not re-audited",
+    "Audio stream retained; audible speaker output not independently assessed"
+  ],
+  "preloadAdjustment": {
+    "value": "metadata",
+    "reason": "Loads duration and keeps the poster stable without autoplay; full playback remains user initiated.",
+    "recheck": {
+      "browser": "Google Chrome",
+      "posterVisible": true,
+      "duration": 76.25,
+      "errors": []
+    }
+  }
+}

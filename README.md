@@ -4,6 +4,35 @@ Jinghai Li 的个人主页，按 Lain 主页的灰白／深灰配色、蓝色强
 
 ## 最近更新
 
+### 2026-10-23 - RabbitRobotNav 增加受控三维方法演示
+
+在 [RabbitRobotNav 研究页](RabbitRobotNav/) 的页首加入用户提供的完整视频，并从 00:11 提取平台画面作为视频封面和 Open Graph 分享图。新增页内 Demo 导航、可访问的原生视频控件与说明，沿用原有深色学术页面排版；`preload="metadata"` 读取时长并稳定显示封面，不自动播放。视频为 76.25 秒、1920×1080、24 fps、H.264/AAC；重封装后音视频编码流与原素材哈希一致。封面为 1920×1080 JPEG。
+
+- **研究边界：** 文案将其标为受控三维方法演示，说明历史证据、偏航诊断与恢复锚点的研究动机；明确该素材不是真机试验或基准结果。原页面的研究章节、框架图、实验数据、已有视频和硕士论文进行中状态均保留，没有改动研究结论或原始数据。
+- **修改范围：** `RabbitRobotNav/index.html`、该页 `style.css`、新增演示视频与封面，以及本 README 和验证记录。其余首页代码、项目页、外部链接目标和研究资源没有改动；CSS 查询参数仅作缓存更新。
+- **实际验证：** Chrome 在 1440×900、768×1024、390×844、320×844 下均无横向溢出、重复 ID 或坏内部锚点；视频比例正确，元数据可读且未自动播放。播放、跳转到 00:11、播放至片尾和原有回放视频均已实际验证，控制台无错误；页面原有 7 张图片均解码，20 个本地引用返回 HTTP 200。`git diff --check` 通过。浏览器截图和逐项记录见[验证材料](docs/images/updates/2026-10-23-rabbitnav-showcase/)。
+- **限制：** 本轮只验收网页与媒体，不代表新增机器人实验、导航性能提升或真机自主恢复；全部外部服务未重新审计。
+
+![Chrome 桌面端实测：页首视频封面、控件与方法说明](docs/images/updates/2026-10-23-rabbitnav-showcase/desktop.png)
+
+[平板截图](docs/images/updates/2026-10-23-rabbitnav-showcase/tablet.png) · [手机截图](docs/images/updates/2026-10-23-rabbitnav-showcase/mobile.png) · [小屏截图](docs/images/updates/2026-10-23-rabbitnav-showcase/small-mobile.png) · [00:11 播放帧](docs/images/updates/2026-10-23-rabbitnav-showcase/player.png) · [机器可读验证记录](docs/images/updates/2026-10-23-rabbitnav-showcase/checks.json)
+
+以下使用 Axton `mermaid-visualizer`，以 Obsidian／GitHub 兼容 Mermaid 记录素材处理、网页展示与证据边界；图示表示交付流程，不代表机器人闭环结果。
+
+```mermaid
+flowchart LR
+  source["用户原始演示视频"] --> copy["保留音视频流并网页化"]
+  source --> frame["提取 00:11 平台画面"]
+  copy --> page["页首原生播放器与 Demo 入口"]
+  frame --> page
+  page --> checks["四档视口、播放与链接验证"]
+  page -.-> boundary["受控三维方法展示；非真机试验或基准结果"]
+  classDef media fill:#e7f5ff,stroke:#1971c2,color:#242424;
+  classDef boundary fill:#f8f9fa,stroke:#868e96,color:#242424;
+  class source,copy,frame,page,checks media;
+  class boundary boundary;
+```
+
 ### 2026-10-16 - 补充 10—12 月 VLN 计划并放大联系二维码
 
 时间线原先从 9 月开始，联系原图受 220px 高度限制而显得偏小。本次在时间线顶部补充 **2026.10–12 R1 Pro · 长程 VLN 验证计划**，并让三张联系原图随卡片宽度放大。首页保留 Lain 灰白／深灰、蓝色强调、终端标识、头像、导航与卡片形态；一并提交前序已完成但尚未提交的首页中英文内容精修。

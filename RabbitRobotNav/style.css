@@ -52,6 +52,8 @@ p { line-height: 1.5; }
 .teaser-figure { max-width: 960px; margin: 0 auto; text-align: center; font-family: "Google Sans", "Noto Sans", Arial, sans-serif; }
 .teaser-figure img { width: 100%; height: auto; border: 1px solid var(--rule); border-radius: 6px; background: #fff; }
 .teaser-figure figcaption { max-width: 790px; margin: 14px auto 0; }
+.showcase-figure { margin-bottom: 40px; scroll-margin-top: 20px; }
+.showcase-figure .paper-video { height: auto; }
 figcaption, .figure-caption { font-size: 13px; color: #666; line-height: 1.55; text-align: center; }
 figcaption { margin-top: 10px; }
 
