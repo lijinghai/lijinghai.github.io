@@ -1514,7 +1514,7 @@
     <section id="hardware" class="section" aria-labelledby="hardware-title">
       <div class="container">
         <p class="section-kicker">Hardware Prototypes</p>
-        <h2 id="hardware-title" class="section-title">实物原型：AMR2、扫地机 V1.0、手持雷达与全向轮小车</h2>
+        <h2 id="hardware-title" class="section-title">实物原型：AMR2、扫地机 V2.0 / V1.0、手持雷达与全向轮小车</h2>
         <p class="hardware-intro">这些平台更像是在桌面、地面和测试场里一版版收拢出来的工程样本：轮子、型材、外壳、屏幕、线束和传感器安装位置，都留下了能继续复盘的实验痕迹。</p>
         <div class="hardware-grid">
           <article class="hardware-card is-wide">
@@ -1534,6 +1534,27 @@
                 <a class="hardware-detail-link" href="projects/rabbitrobot-amr2.html">查看项目介绍</a>
                 <a class="hardware-detail-link" href="projects/rabbitrobot-coverage.html">覆盖算法</a>
                 <a class="hardware-video-link" href="https://www.bilibili.com/video/BV1543K6uEVM/" target="_blank" rel="noreferrer">观看项目视频</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="hardware-card is-wide" id="sweeper-v2">
+            <div class="hardware-gallery">
+              <img src="../projects/sweeper/assets/build-front-view.jpg" alt="扫地机 V2.0 整车实拍，展示雷达、双边刷和打开的电气舱" loading="lazy">
+              <img src="../projects/sweeper/assets/build-side-drive.jpg" alt="扫地机 V2.0 侧面实拍，展示轮毂驱动、底盘与清扫机构" loading="lazy">
+              <img src="images/rabbitrobot/sweeper_v2_console_20261105.png" alt="扫地机 V2.0 真实 Web 控制台，显示固定地图、激光点与台阶禁行区" loading="lazy">
+            </div>
+            <div class="hardware-body">
+              <div class="tag-list" aria-label="扫地机 V2.0 关键词">
+                <span class="tag">Sweeper V2.0</span><span class="tag">ROS2 / Nav2</span><span class="tag">2D LiDAR + IMU</span><span class="tag">Coverage Path</span>
+              </div>
+              <h3>扫地机 V2.0 · 实车覆盖清扫平台</h3>
+              <p class="hardware-time"><time datetime="2026-11">2026.11</time> · 实车工程基线</p>
+              <p>从电路改造、独立布线和清扫底盘集成，到二维雷达、轮速与 IMU 定位，再接入固定地图、区域覆盖规划、Nav2 执行和 Web 控制台。围绕转弯时激光错位、重定位、扫描断流和任务启动逐步排查，保留整车实拍、现场视频与完成和失败的测试记录，让硬件、软件和实车验证连成一条可复盘的工程链路。</p>
+              <div class="hardware-actions">
+                <a class="hardware-detail-link" href="projects/rabbitrobot-sweeper-v2.html">查看项目介绍</a>
+                <a class="hardware-detail-link" href="projects/rabbitrobot-coverage.html">覆盖算法</a>
+                <a class="hardware-video-link" href="projects/rabbitrobot-sweeper-v2.html#field-video">观看实车视频</a>
               </div>
             </div>
           </article>
@@ -1769,6 +1790,13 @@
                 <td>VLA 机械臂验证载体</td>
                 <td>自己 3D 打印和装配灵足 A3 机械臂，打通 CAN、Python SDK、ROS2/MoveIt2 与 LeRobot pi0.5，把真实硬件操作接到 VLA 调试链路里。</td>
                 <td><span class="tag-list"><span class="tag">3D Printed Arm</span><span class="tag">Python SDK</span><span class="tag">ROS2 Control</span><span class="tag">LeRobot pi0.5</span></span></td>
+              </tr>
+              <tr>
+                <td><a class="project-link" href="projects/rabbitrobot-sweeper-v2.html"><b>RabbitRobot_Sweeper V2.0</b>实车覆盖清扫平台</a></td>
+                <td class="project-time"><time datetime="2026-11">2026.11</time><span>实车工程基线</span></td>
+                <td>固定地图区域清扫</td>
+                <td>整车与电气集成、二维雷达及轮速 IMU 定位、覆盖规划、Nav2 执行与 Web 控制台，配备真实现场视频和测试记录。</td>
+                <td><span class="tag-list"><span class="tag">ROS2 / Nav2</span><span class="tag">2D LiDAR</span><span class="tag">Coverage Path</span></span></td>
               </tr>
               <tr>
                 <td><a class="project-link" href="projects/rabbitrobot-sweeper-v1.html"><b>RabbitRobot_Sweeper V1.0</b>扫地机第一代原型</a></td>

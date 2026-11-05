@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RabbitRobot_Sweeper V2.0 | RabbitRobot</title>
+  <meta name="description" content="扫地机 V2.0 实车覆盖清扫平台：整车与电气改造、二维雷达及轮速 IMU 定位、覆盖路径规划、Nav2 执行与 Web 控制台，附真实照片、现场视频和测试记录。">
+  <link rel="icon" type="image/png" href="../images/rabbitrobot/RabbitRobot_logo_icon.png">
+  <link rel="stylesheet" href="project-detail.css">
+</head>
+<body>
+  <nav class="detail-nav" aria-label="Project navigation">
+    <div class="nav-inner">
+      <a class="brand" href="../index.html">
+        <img src="../images/rabbitrobot/RabbitRobot_logo_icon.png" alt="RabbitRobot logo">
+        <span>RabbitRobot</span>
+      </a>
+      <div class="nav-links">
+        <a href="../index.html#projects">Project Matrix</a>
+        <a href="../index.html#research">VLN Focus</a>
+        <a href="../index.html#repositories">Snapshots</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <p class="kicker">清扫场景实车平台</p>
+      <h1>RabbitRobot_Sweeper <span style="white-space: nowrap">V2.0</span></h1>
+      <p class="subtitle">实车覆盖清扫平台</p>
+      <p class="summary">从第一代原型继续走向固定地图下的区域清扫：完成整车、电气与传感器集成，把定位、覆盖规划、导航执行和 Web 操作接在同一台真实扫地机上，留下能回看、能追溯的现场记录。</p>
+      <div class="meta-row">
+        <span class="meta-pill">Time · 2026.11</span>
+        <span class="meta-pill">Source · 实车工程与现场记录</span>
+        <span class="meta-pill">Baseline · Sweeper Real V1</span>
+      </div>
+    </div>
+    <figure class="hero-media">
+      <img src="../../projects/sweeper/assets/build-front-view.jpg" alt="扫地机 V2.0 整车正面实拍：二维雷达、清扫边刷与打开的电气舱">
+      <figcaption>整车实拍：底盘驱动、清扫机构、雷达与电气舱在同一台实物上集成。V2.0 是展示版本，源码沿用 sweeper-real-v1 工程基线分支。</figcaption>
+    </figure>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">What It Does</p>
+          <h2>项目做的是什么</h2>
+          <ul class="highlight-list">
+            <li><strong>硬件真正接起来：</strong>独立完成电路改造、供电和线束整理，集成轮毂驱动、清扫机构、LTME-02A 二维雷达及 IMU，并接入 ROS 2。</li>
+            <li><strong>在地图上安排清扫：</strong>网页查看固定地图和机器人位置，设置实际初始位姿，绘制清扫区域及台阶禁行区，生成作业段和安全转场路径。</li>
+            <li><strong>把路径交给实车执行：</strong>通过 Nav2、速度平滑、碰撞监测和底盘状态门禁执行任务，支持启动、取消、停止及日志导出。</li>
+          </ul>
+        </div>
+        <aside>
+          <p class="kicker">Stack</p>
+          <h2>技术关键词</h2>
+          <div class="stack"><span class="tag">ROS2 Humble</span><span class="tag">Nav2</span><span class="tag">AMCL / TF2</span><span class="tag">2D LiDAR</span><span class="tag">Wheel Odometry + IMU</span><span class="tag">DS20270C CAN</span><span class="tag">React / TypeScript</span><span class="tag">rosbridge</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">VLN Relation</p>
+          <h2>和当前 VLN 主线的关系</h2>
+          <div class="note-panel">这台车提供清扫场景中的地图、定位和任务执行基础，未来可承接“清扫这一块区域”等语言任务。目前本页展示的是人工框选区域后的覆盖清扫流程，语言理解与自主任务分解仍是后续方向。</div>
+        </div>
+        <div>
+          <p class="kicker">Craft Record</p>
+          <h2>从布线到代码，再到现场排查</h2>
+          <p>V1.0 主要验证部件布局和底盘原型，V2.0 将供电、驱动、传感器和清扫机构收拢到整车上，并基于 ROS 2 / Nav2 实现项目应用。近期工作集中在转弯时扫描与位姿的时间对应、重定位、Costmap 扫描供给，以及网页到执行器的任务状态一致性。硬件照片、控制台截图和失败记录共同保留了这段迭代过程。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">Media</p>
+        <h2>关键画面</h2>
+        <div class="gallery">
+          <figure>
+            <img src="../../projects/sweeper/assets/build-open-prototype.jpg" alt="扫地机打开机舱后的原型与内部安装结构实拍" loading="lazy">
+            <figcaption>原型与安装：结构、供电、主控和清扫部件逐步集成。</figcaption>
+          </figure>
+          <figure>
+            <img src="../../projects/sweeper/assets/build-electronics-overview.jpg" alt="扫地机电气舱内部控制器、接口与线束实拍" loading="lazy">
+            <figcaption>电气与走线：独立布线、接口连接及控制器安装的真实现场。</figcaption>
+          </figure>
+          <figure>
+            <img src="../../projects/sweeper/assets/build-side-drive.jpg" alt="扫地机轮毂驱动、边刷和二维雷达安装实拍" loading="lazy">
+            <figcaption>底盘与传感器：轮毂驱动、边刷、雷达与整车空间布局。</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container">
+        <p class="kicker">Web Console</p>
+        <h2>在同一张地图上完成清扫操作</h2>
+        <p>进入控制台后，先确认实际位置，再绘制区域、生成覆盖路径并启动任务。网页还提供地图画笔、台阶区域编辑和重新定位入口；进入页面或生成路径本身不会让车辆开始运动。</p>
+        <figure class="hero-media">
+          <img src="../images/rabbitrobot/sweeper_v2_console_20261105.png" alt="2026 年 11 月 5 日真实 Web 控制台截图：地图、机器人、激光点、台阶禁行区和操作按钮" loading="lazy">
+          <figcaption>2026-11-05 项目原始截图：固定地图、激光预览与台阶禁行区。截图记录界面状态，不单独作为定位精度或任务完成的证明。</figcaption>
+        </figure>
+        <ul class="highlight-list">
+          <li><strong>定位链路：</strong>轮速与 IMU 提供运动估计，AMCL 与地图匹配，TF 连接地图、里程计、车体和雷达坐标系。</li>
+          <li><strong>路径链路：</strong>区域与禁行约束进入覆盖规划，输出作业段和转场连接，再交给 Nav2 执行。</li>
+          <li><strong>运动链路：</strong>导航速度经过速度平滑、碰撞监测和底盘允许状态检查，最后到达 CAN 驱动；停止与取消仍保留原有安全链路。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="field-video">
+      <div class="container">
+        <p class="kicker">Field Test</p>
+        <h2>实车现场与覆盖控制台</h2>
+        <figure class="hero-media">
+          <video controls playsinline preload="metadata" poster="../../projects/sweeper/assets/field-turning-20261105.jpg" aria-label="2026 年 11 月 5 日扫地机现场转弯测试视频">
+            <source src="../../projects/sweeper/assets/field-turning-20261105.mp4" type="video/mp4">
+            <a href="../../projects/sweeper/assets/field-turning-20261105.mp4">打开现场测试视频</a>
+          </video>
+          <figcaption>现场转弯片段：保留车辆运动画面与同步查看控制台的真实录屏，视频约 22 秒。</figcaption>
+        </figure>
+        <figure class="hero-media">
+          <video controls playsinline preload="metadata" poster="../../projects/sweeper/assets/coverage-console.jpg" aria-label="扫地机覆盖路径与 Web 控制台演示视频">
+            <source src="../../projects/sweeper/assets/coverage-console.mp4" type="video/mp4">
+            <a href="../../projects/sweeper/assets/coverage-console.mp4">打开覆盖控制台视频</a>
+          </video>
+          <figcaption>覆盖控制台片段：观察地图、规划路径和任务界面，视频约 24 秒。片段和下列统计分别记录演示画面与历史轮次结果。</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section is-soft">
+      <div class="container grid-2">
+        <div>
+          <p class="kicker">Engineering Notes</p>
+          <h2>最近重点解决了哪些问题</h2>
+          <ul class="highlight-list">
+            <li><strong>转弯时墙上的激光点错位：</strong>排查扫描内各束激光的采样时间与转动角速度，修正旋转补偿方向；限制转速，并拒绝缺少有效位姿依据的显示帧。网页过滤与物理定位效果分开判断。</li>
+            <li><strong>重定位后状态不一致：</strong>围绕实际初始位姿、AMCL、动态 TF 和地图身份检查链路，避免仅凭网页图标变化就认定车辆定位已经恢复。</li>
+            <li><strong>有地图却无法继续走：</strong>追查 Costmap 扫描缓冲、DDS 回调与节点运行状态，并检查底盘使能反馈和任务绑定；将失败原因留在验证记录中。</li>
+          </ul>
+        </div>
+        <div>
+          <p class="kicker">Validation Record</p>
+          <h2>记录完成，也保留失败</h2>
+          <p>2026-11-05 的实车记录覆盖 R101–R146，共 <strong>46 次尝试、39 次完成、7 次失败</strong>，最长连续完成 22 次。完成轮次的行驶距离约为 3.35–5.01 米；这些结果对应当时地图、路线和配置。</p>
+          <div class="note-panel">失败记录包括 6 次路径无进展或扫描供给相关异常、1 次底盘就绪检查失败。显示链路会过滤部分不可信激光点，因此画面中的越界点为零不能等同于物理定位误差为零，也不能据此保证任意场地或任意路线都能完成。</div>
+          <div class="source-actions">
+            <a class="button" href="../../projects/sweeper/assets/validation-runs-20261105.csv" download>下载 46 轮测试记录</a>
+            <a class="button" href="../../projects/sweeper/#validation">查看完整工程记录</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="kicker">README Snapshot</p>
+        <h2>README / 项目说明片段</h2>
+        <div class="readme-box">
+          <h2>RabbitRobot_Sweeper V2.0</h2>
+          <p><strong>时间：</strong>2026.11 · <strong>定位：</strong>固定地图下的实车覆盖清扫平台。</p>
+          <h3>从原型到工程基线</h3>
+          <p>保留 V1.0 硬件原型档案，V2.0 展示整车改造、二维雷达定位、区域覆盖、Web 操作和现场验证。ROS 与 Web 分别管理，源码分支名沿用 baseline/sweeper-real-v1-ros 和 baseline/sweeper-real-v1-web。</p>
+          <h3>关键入口</h3>
+          <ul>
+            <li><code>ljh_robot_coverage</code>：区域输入、覆盖路径与执行链路。</li>
+            <li><code>start_clean_console.sh</code>：车端统一控制台启动入口，默认驻车、不启动清扫刷。</li>
+            <li>Web 控制台：地图、实际位姿、区域编辑、任务操作及日志导出。</li>
+          </ul>
+          <p>工程说明和现场证据按各自范围解读；本展示页更新没有新增实车测试。</p>
+        </div>
+        <div class="source-actions">
+          <a class="button primary" href="md-preview.html?src=readmes/rabbitrobot-sweeper-v2.md">Open Local README Snapshot</a>
+          <a class="button" href="https://github.com/lijinghai/ljh_amr2_hubwheel_drive/tree/baseline/sweeper-real-v1-ros" target="_blank" rel="noreferrer">ROS Source</a>
+          <a class="button" href="https://github.com/lijinghai/ljh_amr2_hubwheel_drive_web/tree/baseline/sweeper-real-v1-web" target="_blank" rel="noreferrer">Web Source</a>
+          <a class="button" href="../index.html#projects">Back to Project Matrix</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">RabbitRobot · RabbitRobot_Sweeper V2.0 · 本页是 GitHub Pages 内部项目详情页。</div>
+  </footer>
+</body>
+</html>

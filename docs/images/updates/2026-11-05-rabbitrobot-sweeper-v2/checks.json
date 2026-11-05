@@ -1,0 +1,365 @@
+{
+  "scope": "RabbitRobot Sweeper V2.0 website only; no robot commands",
+  "testedAt": "2026-11-05T07:47:29.615Z",
+  "layouts": [
+    {
+      "width": 1440,
+      "home": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "card": {
+          "x": 180,
+          "right": 1260,
+          "width": 1080
+        },
+        "images": [
+          {
+            "src": "../projects/sweeper/assets/build-front-view.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../projects/sweeper/assets/build-side-drive.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "images/rabbitrobot/sweeper_v2_console_20261105.png",
+            "width": 1600,
+            "height": 1000
+          }
+        ],
+        "links": [
+          "projects/rabbitrobot-sweeper-v2.html",
+          "projects/rabbitrobot-coverage.html",
+          "projects/rabbitrobot-sweeper-v2.html#field-video"
+        ]
+      },
+      "detail": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "images": [
+          {
+            "src": "../images/rabbitrobot/RabbitRobot_logo_icon.png",
+            "width": 512,
+            "height": 512
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-front-view.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-open-prototype.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-electronics-overview.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-side-drive.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../images/rabbitrobot/sweeper_v2_console_20261105.png",
+            "width": 1600,
+            "height": 1000
+          }
+        ],
+        "duplicateIds": [],
+        "stylesheet": [
+          "project-detail.css"
+        ],
+        "h1": "48px",
+        "sections": 7
+      }
+    },
+    {
+      "width": 768,
+      "home": {
+        "width": 768,
+        "scrollWidth": 768,
+        "card": {
+          "x": 18,
+          "right": 750,
+          "width": 732
+        },
+        "images": [
+          {
+            "src": "../projects/sweeper/assets/build-front-view.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../projects/sweeper/assets/build-side-drive.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "images/rabbitrobot/sweeper_v2_console_20261105.png",
+            "width": 1600,
+            "height": 1000
+          }
+        ],
+        "links": [
+          "projects/rabbitrobot-sweeper-v2.html",
+          "projects/rabbitrobot-coverage.html",
+          "projects/rabbitrobot-sweeper-v2.html#field-video"
+        ]
+      },
+      "detail": {
+        "width": 768,
+        "scrollWidth": 768,
+        "images": [
+          {
+            "src": "../images/rabbitrobot/RabbitRobot_logo_icon.png",
+            "width": 512,
+            "height": 512
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-front-view.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-open-prototype.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-electronics-overview.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-side-drive.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../images/rabbitrobot/sweeper_v2_console_20261105.png",
+            "width": 1600,
+            "height": 1000
+          }
+        ],
+        "duplicateIds": [],
+        "stylesheet": [
+          "project-detail.css"
+        ],
+        "h1": "48px",
+        "sections": 7
+      }
+    },
+    {
+      "width": 390,
+      "home": {
+        "width": 390,
+        "scrollWidth": 390,
+        "card": {
+          "x": 55,
+          "right": 335,
+          "width": 280
+        },
+        "images": [
+          {
+            "src": "../projects/sweeper/assets/build-front-view.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../projects/sweeper/assets/build-side-drive.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "images/rabbitrobot/sweeper_v2_console_20261105.png",
+            "width": 1600,
+            "height": 1000
+          }
+        ],
+        "links": [
+          "projects/rabbitrobot-sweeper-v2.html",
+          "projects/rabbitrobot-coverage.html",
+          "projects/rabbitrobot-sweeper-v2.html#field-video"
+        ]
+      },
+      "detail": {
+        "width": 390,
+        "scrollWidth": 390,
+        "images": [
+          {
+            "src": "../images/rabbitrobot/RabbitRobot_logo_icon.png",
+            "width": 512,
+            "height": 512
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-front-view.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-open-prototype.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-electronics-overview.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-side-drive.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../images/rabbitrobot/sweeper_v2_console_20261105.png",
+            "width": 1600,
+            "height": 1000
+          }
+        ],
+        "duplicateIds": [],
+        "stylesheet": [
+          "project-detail.css"
+        ],
+        "h1": "31.2px",
+        "sections": 7
+      }
+    },
+    {
+      "width": 320,
+      "home": {
+        "width": 320,
+        "scrollWidth": 320,
+        "card": {
+          "x": 20,
+          "right": 300,
+          "width": 280
+        },
+        "images": [
+          {
+            "src": "../projects/sweeper/assets/build-front-view.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../projects/sweeper/assets/build-side-drive.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "images/rabbitrobot/sweeper_v2_console_20261105.png",
+            "width": 1600,
+            "height": 1000
+          }
+        ],
+        "links": [
+          "projects/rabbitrobot-sweeper-v2.html",
+          "projects/rabbitrobot-coverage.html",
+          "projects/rabbitrobot-sweeper-v2.html#field-video"
+        ]
+      },
+      "detail": {
+        "width": 320,
+        "scrollWidth": 320,
+        "images": [
+          {
+            "src": "../images/rabbitrobot/RabbitRobot_logo_icon.png",
+            "width": 512,
+            "height": 512
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-front-view.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-open-prototype.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-electronics-overview.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../../projects/sweeper/assets/build-side-drive.jpg",
+            "width": 1920,
+            "height": 1080
+          },
+          {
+            "src": "../images/rabbitrobot/sweeper_v2_console_20261105.png",
+            "width": 1600,
+            "height": 1000
+          }
+        ],
+        "duplicateIds": [],
+        "stylesheet": [
+          "project-detail.css"
+        ],
+        "h1": "28px",
+        "sections": 7
+      }
+    }
+  ],
+  "videos": [
+    {
+      "time": 0.5127,
+      "duration": 22.166633,
+      "width": 2536,
+      "height": 1488,
+      "controls": true,
+      "playsInline": true,
+      "error": null,
+      "endTime": 1.7281,
+      "advanced": 1.2153999999999998
+    },
+    {
+      "time": 0.5092,
+      "duration": 23.633333,
+      "width": 1280,
+      "height": 752,
+      "controls": true,
+      "playsInline": true,
+      "error": null,
+      "endTime": 1.7436,
+      "advanced": 1.2344
+    }
+  ],
+  "links": [
+    "../images/rabbitrobot/RabbitRobot_logo_icon.png",
+    "project-detail.css",
+    "../index.html",
+    "../index.html#projects",
+    "../index.html#research",
+    "../index.html#repositories",
+    "../../projects/sweeper/assets/build-front-view.jpg",
+    "../../projects/sweeper/assets/build-open-prototype.jpg",
+    "../../projects/sweeper/assets/build-electronics-overview.jpg",
+    "../../projects/sweeper/assets/build-side-drive.jpg",
+    "../images/rabbitrobot/sweeper_v2_console_20261105.png",
+    "../../projects/sweeper/assets/field-turning-20261105.mp4",
+    "../../projects/sweeper/assets/coverage-console.mp4",
+    "../../projects/sweeper/assets/validation-runs-20261105.csv",
+    "../../projects/sweeper/#validation",
+    "md-preview.html?src=readmes/rabbitrobot-sweeper-v2.md"
+  ],
+  "errors": [],
+  "readmePreview": "¶\nRabbitRobot_Sweeper V2.0\n\n时间： 2026.11 定位： 固定地图下的实车覆盖清扫平台。\n\n¶\n项目说明\n\n从 V1.0 硬件原型继续迭代，完成电路改造、独立布线、底盘驱动、清扫机构和传感器集成；基于 ROS 2 / Nav2 实现定位、覆盖规划、任务执行与 Web 操作流程。V2.0 是展示版本名称，代码继续使用已有实车基线分支。\n\n¶\n已有功能\nLTME-02A 二维雷达、轮速与 IMU 运动估计、AMCL 固定地图定位和 TF 坐标变换。\n网页查看地图、激光预览和位姿，设置实际初始位置与朝向。\n绘制清扫区域，编辑地图与台阶禁行区，生成覆盖作业段和转场路径。\n通过 Nav2 执行任务，保留速度平滑、碰撞监测、底盘就绪检查和停止链路。\n任务启动、取消、停止、重新定位及日志导出。\n¶\n代码入口\nROS 工程：ljh_amr2_hubwheel_drive，分支 baseline/sweeper-real-v1-ros。\nWeb 工程：ljh_amr2_hubwheel_drive_web，分支 baseline/sweeper-real-v1-web。\nljh_robot_coverage 负责覆盖区域、路径和执行相关接口。\nstart_clean_console.sh 是车端统一控制台启动入口，默认驻车、不启动清扫刷。进入页面与生成路径本身不下发运动任务。\n¶\n近期排查\n\n转弯激光错位需要核对扫描时间、旋转补偿方向、角速度与对应位姿。重定位需要检查实际位姿、AMCL、动态 TF 与地图身份。任务停滞则继续检查 Costmap 扫描供给、DDS 回调、节点状态、底盘允许状态及任务绑定。网页显示过滤不能替代物理定位精度验证。\n\n¶\n真实验证与边界\n\n2026-11-05 的 R101–R146 共 46 次实车尝试，39 次完成、7 次失败，最长连续完成 22 次。完成轮次行驶距离约 3.35–5.01 米。6 次失败涉及路径无进展或扫描供给异常，另有 1 次底盘就绪检查失败。\n\n统计对应当时地图、路线与配置；不代表所有场地和路径的保证。显示链路过滤不可信激光点，越界点为零不等于真实定位误差为零。本次展示网站更新没有新增实车测试。\n\n整车照片、电气照片、真实 Web 截图、两段现场视频及逐轮 CSV 均可在 V2.0 详情页查看。\n\n¶\n后续方向\n\n在稳定的地图与执行链路上继续积累不同路线的完成与失败记录，并为未来语言任务到清扫区域的转换准备接口。当前展示的是人工框选区域后的覆盖流程。",
+  "homepageUnrelatedContentIdentical": true,
+  "consoleScreenshotSha256": "33b646bb208ddc9be9dc7cea65e71681dcfacc711a388f6d7d6af9d25384ac8f",
+  "historicalCsv": {
+    "rows": 46,
+    "pass": 39,
+    "fail": 7,
+    "longestStreak": 22,
+    "minTravel": 3.35,
+    "maxTravel": 5.01
+  },
+  "success": true
+}

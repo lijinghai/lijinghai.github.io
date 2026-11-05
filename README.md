@@ -4,6 +4,34 @@ Jinghai Li 的个人主页，按 Lain 主页的灰白／深灰配色、蓝色强
 
 ## 最近更新
 
+### 2026-11-05 - RabbitRobot 增加扫地机 V2.0 图文档案
+
+在 [RabbitRobot 首页](RabbitRobot/#sweeper-v2)的 AMR2 实物卡片之后、V1.0 之前新增扫地机 V2.0，并在项目矩阵补充对应入口。[V2.0 详情页](RabbitRobot/projects/rabbitrobot-sweeper-v2.html)沿用原有项目详情模板和公共样式，按平台功能、硬件改造、真实控制台、现场视频、工程排障和验证记录展开。V2.0 是展示版本，ROS／Web 源码仍链接到已确定的 `baseline/sweeper-real-v1-ros` 与 `baseline/sweeper-real-v1-web` 分支。
+
+- **素材与说明：** 复用站内整车、底盘、电气与原型照片，以及约 22 秒的现场转弯视频和约 24 秒的覆盖控制台视频；新增原始 Web 控制台截图，复制后 SHA-256 与来源一致。说明独立布线、二维雷达及轮速 IMU 定位、覆盖规划、Nav2 执行，以及转弯激光错位、重定位和扫描供给排查。
+- **修改范围：** `RabbitRobot/index.html` 只增加卡片、矩阵行并补充实物区标题；新增详情 HTML、README 预览文本和控制台截图。本 README 与本节截图／检查记录保存交付证据。根首页、V1.0 页面、原扫地机独立详情页、共享 CSS／JavaScript 和其他项目未修改；剔除新增项后，RabbitRobot 首页与改动前内容一致。
+- **实际验证：** Chrome 在 1440、768、390、320 像素宽度检查通过，首页卡片与详情无横向溢出，图片正常解码，详情无重复 ID；首页实际点击进入详情，16 个本地引用及对应锚点存在，README 预览可读。两段视频实际播放且时间持续推进，原生控件与移动端行内播放属性正确，未捕获页面脚本异常。保留[机器可读检查记录](docs/images/updates/2026-11-05-rabbitrobot-sweeper-v2/checks.json)。
+- **证据边界：** 历史 CSV 重新统计为 46 次尝试、39 次完成、7 次失败、最长连续完成 22 次；页面同时保留失败和适用范围。网页截图与显示过滤不作为物理定位精度证明，本轮仅验证网页与媒体，没有新增实车试验。
+
+![RabbitRobot 首页新增 V2.0 卡片，沿用现有三图与标签按钮排版](docs/images/updates/2026-11-05-rabbitrobot-sweeper-v2/homepage-desktop.png)
+
+![V2.0 详情沿用现有导航、标题、标签和实物照片模板](docs/images/updates/2026-11-05-rabbitrobot-sweeper-v2/detail-desktop.png)
+
+[首页手机排版](docs/images/updates/2026-11-05-rabbitrobot-sweeper-v2/homepage-mobile.png) · [详情手机排版](docs/images/updates/2026-11-05-rabbitrobot-sweeper-v2/detail-mobile.png) · [控制台图文说明](docs/images/updates/2026-11-05-rabbitrobot-sweeper-v2/detail-console.png)
+
+以下使用 Axton `mermaid-visualizer`，选择 GitHub／Obsidian 兼容 Mermaid，简要说明新增内容的阅读关系；网站本身继续使用原有版式。
+
+```mermaid
+flowchart TB
+  home["首页 V2.0 卡片"] --> detail["同版式项目详情"]
+  detail --> media["真实照片、控制台与现场视频"]
+  detail --> record["工程说明与历史完成、失败记录"]
+  classDef page fill:#e7f5ff,stroke:#1971c2,color:#242424;
+  classDef evidence fill:#f8f9fa,stroke:#868e96,color:#242424;
+  class home,detail page;
+  class media,record evidence;
+```
+
 ### 2026-11-05 - 扫地机详情补充独立改造实拍
 
 在[扫地机详情页](projects/sweeper/#build)的三段演示视频之前，新增六张用户提供的原始照片和独立开发说明。按“原型搭建 → 整车集成 → 电路与走线 → 电气集成 → 底盘驱动 → 自动清扫”组织图片与图注，说明从电路改造、自己走线、传感器与底盘接入，到基于 ROS 2 / Nav2 编写项目应用代码、完成覆盖执行和 Web 操作流程的个人工作。
