@@ -4,6 +4,26 @@ Jinghai Li 的个人主页，按 Lain 主页的灰白／深灰配色、蓝色强
 
 ## 最近更新
 
+### 2026-11-05 - 扫地机首页卡片改为动态视频
+
+原扫地机项目卡片只显示静态封面，现在复用其他项目的 `data-home-loop` 视频预览：进入视野后静音循环播放，移出视野后暂停，再次进入后恢复；点击预览仍进入原详情页。复用已发布的 `projects/sweeper/assets/coverage-console.mp4`，没有增加视频副本。系统选择减少动画时保留封面并暂停播放，与其他卡片一致。
+
+- **修改位置：** `index.html` 仅替换 `project-sweeper` 的缩略图元素；公共 CSS／JavaScript、卡片文字、详情页及其他项目均未修改。README 和下列截图／检查记录用于交付验证。
+- **实际验证：** Chrome 桌面 1440px、手机 390px／320px，组合覆盖中英文及明暗主题，四组均在没有手动调用播放或点击的情况下开始播放且时间持续推进；片尾循环、离屏暂停、回到视野恢复、详情入口与减少动画行为通过。无横向溢出或浏览器错误。与前一版本比较，排除该缩略图后首页文本完全一致。
+
+![扫地机卡片视频实际播放帧，沿用首页原卡片布局](docs/images/updates/2026-11-05-sweeper/homepage-video-preview.png)
+
+[视频预览浏览器验证记录](docs/images/updates/2026-11-05-sweeper/homepage-video-checks.json)。截图仅记录播放时的画面，播放推进与循环验证见记录。以下由 Axton `mermaid-visualizer` 按 GitHub／Obsidian 兼容 Mermaid 表达本次交互：
+
+```mermaid
+flowchart LR
+  visible["卡片进入视野"] --> playing["静音循环播放真实视频"]
+  playing --> outside["移出视野后暂停"]
+  outside --> visible
+  playing --> click["点击进入原详情页"]
+  reduced["系统选择减少动画"] --> poster["保留封面并暂停"]
+```
+
 ### 2026-11-05 - 新增扫地机覆盖规划与实车执行项目
 
 在首页 EDULITE A3 与 RabbitRobot AMR Foundation 之间加入扫地机项目卡片，链接到[扫地机详情页](projects/sweeper/)。详情页沿用首页灰白／深灰、蓝色强调和终端标识，以三段真实演示、平台功能、三个排障案例和验证记录介绍个人在整机集成、覆盖执行、定位时序及 Web 控制台上的工作。

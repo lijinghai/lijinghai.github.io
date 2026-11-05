@@ -1,0 +1,104 @@
+{
+  "scope": "Homepage sweeper video preview only",
+  "checked_at": "2026-11-05T04:22:35.615Z",
+  "layouts": [
+    {
+      "width": 1440,
+      "language": "zh-CN",
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "language": "zh-CN",
+      "theme": "light",
+      "overflow": false
+    },
+    {
+      "width": 320,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false
+    }
+  ],
+  "videos": [
+    {
+      "width": 1280,
+      "language": "zh",
+      "theme": "light",
+      "start": 0.3297,
+      "time": 1.0453,
+      "duration": 23.633333,
+      "muted": true,
+      "loop": true,
+      "playsInline": true,
+      "controls": false,
+      "src": "projects/sweeper/assets/coverage-console.mp4",
+      "height": 752,
+      "aria": "扫地机覆盖控制台实车视频预览"
+    },
+    {
+      "width": 1280,
+      "language": "en",
+      "theme": "dark",
+      "start": 0.3083,
+      "time": 1.0185,
+      "duration": 23.633333,
+      "muted": true,
+      "loop": true,
+      "playsInline": true,
+      "controls": false,
+      "src": "projects/sweeper/assets/coverage-console.mp4",
+      "height": 752,
+      "aria": "Sweeper coverage console real-robot video preview"
+    },
+    {
+      "width": 1280,
+      "language": "zh",
+      "theme": "light",
+      "start": 0.314,
+      "time": 1.0222,
+      "duration": 23.633333,
+      "muted": true,
+      "loop": true,
+      "playsInline": true,
+      "controls": false,
+      "src": "projects/sweeper/assets/coverage-console.mp4",
+      "height": 752,
+      "aria": "扫地机覆盖控制台实车视频预览"
+    },
+    {
+      "width": 1280,
+      "language": "en",
+      "theme": "dark",
+      "start": 0.3092,
+      "time": 1.0273,
+      "duration": 23.633333,
+      "muted": true,
+      "loop": true,
+      "playsInline": true,
+      "controls": false,
+      "src": "projects/sweeper/assets/coverage-console.mp4",
+      "height": 752,
+      "aria": "Sweeper coverage console real-robot video preview"
+    }
+  ],
+  "errors": [],
+  "base": "local static server",
+  "other_homepage_content_unchanged": true,
+  "loop_restart": true,
+  "offscreen_pause": true,
+  "return_resume": true,
+  "detail_link": true,
+  "reduced_motion": {
+    "paused": true,
+    "time": 0,
+    "posterWidth": 1440
+  }
+}
