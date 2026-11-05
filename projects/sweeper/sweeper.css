@@ -76,3 +76,24 @@
 @media (prefers-reduced-motion:reduce) {
   .sweeper-page, .sweeper-page * { scroll-behavior:auto; transition:none; }
 }
+
+/* Keep original hardware photos complete, including the portrait wiring view. */
+.sweeper-page .build-view-note { font-size:12px; margin:0 0 24px; }
+.sweeper-page .build-photo-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; }
+.sweeper-page .build-photo { margin:0; min-width:0; background:var(--card); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+.sweeper-page .build-photo > a { display:block; background:var(--panel); }
+.sweeper-page .build-photo img { display:block; width:100%; height:auto; }
+.sweeper-page .build-photo figcaption { padding:20px 22px 8px; }
+.sweeper-page .build-photo p, .sweeper-page .build-code-note p { font-size:14px; }
+.sweeper-page .build-detail-grid { display:grid; grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr); gap:22px; margin:22px 0; align-items:start; }
+.sweeper-page .build-portrait img { height:520px; object-fit:contain; }
+.sweeper-page .build-detail-column { min-width:0; display:grid; gap:22px; }
+.sweeper-page .build-code-note { padding:4px 4px 0 18px; border-left:2px solid var(--blue); }
+.sweeper-page .build-code-note p { margin-bottom:0; }
+@media (max-width:700px) {
+  .sweeper-page .build-photo-grid, .sweeper-page .build-detail-grid { grid-template-columns:minmax(0,1fr); gap:18px; }
+  .sweeper-page .build-detail-grid { margin:18px 0; }
+  .sweeper-page .build-portrait img { height:auto; max-height:560px; object-fit:contain; }
+  .sweeper-page .build-photo figcaption { padding:20px 20px 8px; }
+  .sweeper-page .build-detail-column { gap:18px; }
+}

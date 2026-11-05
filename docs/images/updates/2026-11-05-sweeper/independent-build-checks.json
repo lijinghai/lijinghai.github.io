@@ -1,0 +1,1125 @@
+{
+  "checked_at": "2026-11-05T05:14:47.853Z",
+  "scope": "Six original build photos and independent engineering narrative before the existing demos",
+  "layouts": [
+    {
+      "viewport": 1440,
+      "language": "zh-CN",
+      "theme": "light",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 428.859375,
+          "height": 520,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 569.140625,
+          "height": 320.140625,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 2,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 1440,
+      "language": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 428.859375,
+          "height": 520,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 569.140625,
+          "height": 320.140625,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 2,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 1440,
+      "language": "en",
+      "theme": "light",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 428.859375,
+          "height": 520,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 569.140625,
+          "height": 320.140625,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 2,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 1440,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 428.859375,
+          "height": 520,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 569.140625,
+          "height": 320.140625,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 499,
+          "height": 280.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 2,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 768,
+      "language": "zh-CN",
+      "theme": "light",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 305.015625,
+          "height": 520,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 404.984375,
+          "height": 227.796875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 2,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 768,
+      "language": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 305.015625,
+          "height": 520,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 404.984375,
+          "height": 227.796875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 2,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 768,
+      "language": "en",
+      "theme": "light",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 305.015625,
+          "height": 520,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 404.984375,
+          "height": 227.796875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 2,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 768,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 305.015625,
+          "height": 520,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 404.984375,
+          "height": 227.796875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 355,
+          "height": 199.6875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 2,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 390,
+      "language": "zh-CN",
+      "theme": "light",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 356,
+          "height": 560,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 1,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 390,
+      "language": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 356,
+          "height": 560,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 1,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 390,
+      "language": "en",
+      "theme": "light",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 356,
+          "height": 560,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 1,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 390,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 356,
+          "height": 560,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 356,
+          "height": 200.25,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 1,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 320,
+      "language": "zh-CN",
+      "theme": "light",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 286,
+          "height": 508.4375,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 1,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 320,
+      "language": "zh-CN",
+      "theme": "dark",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 286,
+          "height": 508.4375,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 1,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 320,
+      "language": "en",
+      "theme": "light",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 286,
+          "height": 508.4375,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 1,
+      "buildBeforeDemos": true
+    },
+    {
+      "viewport": 320,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false,
+      "images": [
+        {
+          "name": "build-open-prototype.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-front-view.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-wiring-portrait.jpg",
+          "width": 286,
+          "height": 508.4375,
+          "naturalWidth": 1080,
+          "naturalHeight": 1920,
+          "objectFit": "contain",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-electronics-overview.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-drive.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        },
+        {
+          "name": "build-side-brush.jpg",
+          "width": 286,
+          "height": 160.875,
+          "naturalWidth": 1920,
+          "naturalHeight": 1080,
+          "objectFit": "fill",
+          "ratioPreserved": true
+        }
+      ],
+      "duplicateIds": [],
+      "brokenAnchors": [],
+      "gridColumns": 1,
+      "buildBeforeDemos": true
+    }
+  ],
+  "photos": [
+    {
+      "file": "build-open-prototype.jpg",
+      "original_bytes_preserved": true,
+      "sha256": "9e6a5508ef0bbe92fcab3986d1462a03934b896e1e076bd0e5ab8b43f6d2da63"
+    },
+    {
+      "file": "build-front-view.jpg",
+      "original_bytes_preserved": true,
+      "sha256": "a5bf2621f993f0faf901244b64e87ad14de0661b518852f9673c825d519ba60a"
+    },
+    {
+      "file": "build-wiring-portrait.jpg",
+      "original_bytes_preserved": true,
+      "sha256": "f7deeda1783652b37c7c8a93ce1fac4c67e6f29839e66fde0dbb4f91dd6643a4"
+    },
+    {
+      "file": "build-side-drive.jpg",
+      "original_bytes_preserved": true,
+      "sha256": "9916b7eab3a0e26ccc940e8d18caed13092c7ba8310eced916f675153452a07e"
+    },
+    {
+      "file": "build-electronics-overview.jpg",
+      "original_bytes_preserved": true,
+      "sha256": "37f3bb6c2315b1e536dc364e435c0442a318b5b7146c7774b46b21bc109384ff"
+    },
+    {
+      "file": "build-side-brush.jpg",
+      "original_bytes_preserved": true,
+      "sha256": "96d571d5e1cd8da4701bed754a374ddcfd19af6101bc6708fcef0a9588893ad8"
+    }
+  ],
+  "videos": [
+    {
+      "source": "coverage-console.mp4",
+      "duration": 23.633333,
+      "currentTime": 0.3079,
+      "controls": true,
+      "error": null,
+      "mutual_pause": "PASS"
+    },
+    {
+      "source": "second-prototype-20261015.mp4",
+      "duration": 101.9333,
+      "currentTime": 0.31,
+      "controls": true,
+      "error": null,
+      "mutual_pause": "PASS"
+    },
+    {
+      "source": "field-turning-20261105.mp4",
+      "duration": 22.166633,
+      "currentTime": 0.3092,
+      "controls": true,
+      "error": null,
+      "mutual_pause": "PASS"
+    }
+  ],
+  "errors": [],
+  "physical_robot_test": false,
+  "original_homepage_scripts_and_demos": "unchanged",
+  "language_theme_click_and_reload": "PASS",
+  "result": "PASS"
+}

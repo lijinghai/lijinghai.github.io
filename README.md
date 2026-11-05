@@ -4,6 +4,28 @@ Jinghai Li 的个人主页，按 Lain 主页的灰白／深灰配色、蓝色强
 
 ## 最近更新
 
+### 2026-11-05 - 扫地机详情补充独立改造实拍
+
+在[扫地机详情页](projects/sweeper/#build)的三段演示视频之前，新增六张用户提供的原始照片和独立开发说明。按“原型搭建 → 整车集成 → 电路与走线 → 电气集成 → 底盘驱动 → 自动清扫”组织图片与图注，说明从电路改造、自己走线、传感器与底盘接入，到基于 ROS 2 / Nav2 编写项目应用代码、完成覆盖执行和 Web 操作流程的个人工作。
+
+- **排版：** 桌面采用双列图片，纵向机舱照片完整显示，旁边放电气俯视照片与软件工作说明；手机自动切换为单列。照片保持原始比例，点击可打开原图，兼容中英文和明暗主题。
+- **修改范围：** 仅修改 `projects/sweeper/index.html` 的开场介绍并新增实拍章节，在 `projects/sweeper/sweeper.css` 增加局部样式，新增六张照片及本 README 的验证材料。首页、公共样式与脚本、其他项目均保持不变；原有演示视频之后的页面内容与前一版本完全一致。
+- **实际验证：** Chrome 在 1440、768、390、320 像素宽度，中英文与明暗主题共 16 组检查通过；六图解码、原图链接、比例与单／双列切换正确，无横向溢出、重复 ID、失效内部锚点或浏览器错误。六张发布照片与提供的原始文件 SHA-256 一致。三段原有视频实际播放时间均推进，原生控件及互斥播放正常，语言和主题切换后刷新保持。
+- **验证边界：** 本次验证网页展示和媒体，不新增实车测试或导航性能结论；原有工程记录与测试范围保留。
+
+![详情页前部六张原始实拍及独立开发说明，Chrome 桌面实测](docs/images/updates/2026-11-05-sweeper/independent-build-desktop.png)
+
+[手机单列实测](docs/images/updates/2026-11-05-sweeper/independent-build-mobile.png) · [深色主题实测](docs/images/updates/2026-11-05-sweeper/independent-build-dark.png) · [16 组浏览器检查记录](docs/images/updates/2026-11-05-sweeper/independent-build-checks.json)
+
+以下使用 Axton `mermaid-visualizer`，以 GitHub／Obsidian 兼容 Mermaid 说明页面阅读顺序；照片与视频为用户提供的真实素材。
+
+```mermaid
+flowchart LR
+  photos["六张实拍：原型、布线与整车"] --> story["独立改造与代码实现"]
+  story --> demos["原有三段视频"]
+  demos --> evidence["原有工程细节与验证记录"]
+```
+
 ### 2026-11-05 - 扫地机首页卡片改为动态视频
 
 原扫地机项目卡片只显示静态封面，现在复用其他项目的 `data-home-loop` 视频预览：进入视野后静音循环播放，移出视野后暂停，再次进入后恢复；点击预览仍进入原详情页。复用已发布的 `projects/sweeper/assets/coverage-console.mp4`，没有增加视频副本。系统选择减少动画时保留封面并暂停播放，与其他卡片一致。
