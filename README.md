@@ -11,6 +11,10 @@ Jinghai Li 的个人主页，按 Lain 主页的灰白／深灰配色、蓝色强
 - **修改位置：** `index.html` 仅替换 `project-sweeper` 的缩略图元素；公共 CSS／JavaScript、卡片文字、详情页及其他项目均未修改。README 和下列截图／检查记录用于交付验证。
 - **实际验证：** Chrome 桌面 1440px、手机 390px／320px，组合覆盖中英文及明暗主题，四组均在没有手动调用播放或点击的情况下开始播放且时间持续推进；片尾循环、离屏暂停、回到视野恢复、详情入口与减少动画行为通过。无横向溢出或浏览器错误。与前一版本比较，排除该缩略图后首页文本完全一致。
 
+同日按展示要求移除该卡片的“ROS 工程／ROS source”按钮，操作区仅保留“扫地机详情与演示”。`index.html` 与上一版本相比仅删除该链接元素；视频、卡片文字及详情页保持不变。Chrome 1440px 中文和 390px 英文实测确认按钮移除、视频播放与详情跳转正常，无横向溢出或页面脚本错误。
+
+![移除 ROS 工程按钮后的首页扫地机卡片](docs/images/updates/2026-11-05-sweeper/homepage-without-ros-button.png)
+
 ![扫地机卡片视频实际播放帧，沿用首页原卡片布局](docs/images/updates/2026-11-05-sweeper/homepage-video-preview.png)
 
 [视频预览浏览器验证记录](docs/images/updates/2026-11-05-sweeper/homepage-video-checks.json)。截图仅记录播放时的画面，播放推进与循环验证见记录。以下由 Axton `mermaid-visualizer` 按 GitHub／Obsidian 兼容 Mermaid 表达本次交互：
