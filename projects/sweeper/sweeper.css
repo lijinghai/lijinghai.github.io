@@ -1,0 +1,78 @@
+.sweeper-page .project-story { max-width:1064px; }
+.sweeper-page .story-hero { padding:52px 0 36px; }
+.sweeper-page .back-link { display:inline-block; color:var(--muted); font-size:13px; margin-bottom:36px; }
+.sweeper-page .eyebrow { color:var(--blue); letter-spacing:.08em; font-size:12px; font-weight:600; margin-bottom:12px; }
+.sweeper-page h1 { font-size:clamp(29px,4.2vw,44px); line-height:1.25; letter-spacing:-.035em; max-width:920px; margin:0 0 20px; }
+.sweeper-page .story-deck { font-size:20px; color:var(--text); max-width:850px; line-height:1.7; }
+.sweeper-page p { margin-bottom:16px; color:var(--muted); line-height:1.85; }
+.sweeper-page .story-hero > p:not(.eyebrow) { max-width:880px; }
+.sweeper-page .story-hero .project-tags { margin:23px 0 18px; }
+.sweeper-page .story-hero .project-actions { margin:0; }
+.sweeper-page .primary-link { background:var(--blue); border-color:var(--blue); color:var(--card); }
+[data-theme="dark"] .sweeper-page .primary-link { color:#101820; }
+.sweeper-page .story-section { padding:38px 0 44px; border-top:1px solid var(--border); }
+.sweeper-page h2 { font-size:26px; line-height:1.4; margin:0 0 18px; text-align:left; }
+.sweeper-page h2::after { display:none; }
+.sweeper-page h3 { font-size:18px; line-height:1.5; margin:0 0 12px; }
+.sweeper-page .demo-feature, .sweeper-page .demo-grid figure { background:var(--card); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+.sweeper-page .demo-feature { margin:26px 0 22px; }
+.sweeper-page figure video { width:100%; height:auto; background:#111518; }
+.sweeper-page figcaption { padding:22px 26px 10px; }
+.sweeper-page .clip-meta { display:block; color:var(--blue); font-size:12px; font-weight:600; letter-spacing:.04em; margin-bottom:8px; }
+.sweeper-page .demo-grid { display:grid; grid-template-columns:1fr 1fr; gap:22px; align-items:start; }
+.sweeper-page .demo-grid video { aspect-ratio:1.65; object-fit:contain; }
+.sweeper-page .demo-grid figcaption { padding:20px 22px 8px; }
+.sweeper-page .demo-grid p { font-size:14px; }
+.sweeper-page .workflow-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:26px; }
+.sweeper-page .workflow-step { padding:25px 26px 10px; border:1px solid var(--border); border-radius:6px; background:var(--card); }
+.sweeper-page .step-number { display:block; font:13px ui-monospace,SFMono-Regular,Consolas,monospace; color:var(--blue); margin-bottom:16px; }
+.sweeper-page .workflow-step p { font-size:14px; }
+.sweeper-page .case-study { margin-top:26px; background:var(--card); border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+.sweeper-page .case-title { display:flex; align-items:baseline; gap:14px; padding:20px 26px; border-bottom:1px solid var(--border); background:var(--panel); }
+.sweeper-page .case-letter { color:var(--blue); font:14px ui-monospace,Consolas,monospace; }
+.sweeper-page .case-title h3 { margin:0; }
+.sweeper-page .case-body { padding:24px 26px 10px; }
+.sweeper-page .case-row { display:grid; grid-template-columns:80px minmax(0,1fr); gap:20px; }
+.sweeper-page h4 { font-size:13px; color:var(--text); line-height:1.9; }
+.sweeper-page .case-row p { font-size:14px; }
+.sweeper-page .code-entry { font-size:11px; overflow-wrap:anywhere; padding-top:10px; border-top:1px solid var(--border); }
+.sweeper-page .code-entry code { font:inherit; font-family:ui-monospace,SFMono-Regular,Consolas,monospace; }
+.sweeper-page .metrics { display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--border); border-radius:6px; background:var(--card); margin:26px 0; }
+.sweeper-page .metrics > div { padding:25px 22px; }
+.sweeper-page .metrics > div + div { border-left:1px solid var(--border); }
+.sweeper-page .metrics strong { display:block; font-size:29px; font-weight:600; letter-spacing:-.025em; white-space:nowrap; }
+.sweeper-page .metrics span { display:block; margin-top:6px; color:var(--muted); font-size:12px; }
+.sweeper-page .table-scroll { overflow:auto; margin-bottom:22px; }
+.sweeper-page table { width:100%; border-collapse:collapse; font-size:14px; }
+.sweeper-page caption { text-align:left; color:var(--muted); font-size:12px; padding-bottom:12px; }
+.sweeper-page th { text-align:left; background:var(--panel); font-weight:600; }
+.sweeper-page td, .sweeper-page th { padding:13px 15px; border-bottom:1px solid var(--border); vertical-align:top; }
+.sweeper-page td:first-child, .sweeper-page td:nth-child(2) { white-space:nowrap; }
+.sweeper-page .contribution-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin:28px 0 14px; }
+.sweeper-page .contribution-grid h3 { border-left:2px solid var(--blue); padding-left:12px; }
+.sweeper-page .contribution-grid p { font-size:14px; }
+.sweeper-page .story-footer { border-top:1px solid var(--border); padding:26px 0 40px; }
+.sweeper-page .story-footer p { font-size:12px; }
+@media (max-width:700px) {
+  .sweeper-page .story-hero { padding-top:32px; }
+  .sweeper-page .back-link { margin-bottom:28px; }
+  .sweeper-page .story-deck { font-size:18px; }
+  .sweeper-page h2 { font-size:23px; }
+  .sweeper-page .demo-grid, .sweeper-page .workflow-grid, .sweeper-page .contribution-grid { grid-template-columns:1fr; gap:18px; }
+  .sweeper-page .metrics { grid-template-columns:1fr; }
+  .sweeper-page .metrics > div { padding:20px; }
+  .sweeper-page .metrics > div + div { border-left:0; border-top:1px solid var(--border); }
+  .sweeper-page .case-title, .sweeper-page .case-body, .sweeper-page figcaption { padding-left:20px; padding-right:20px; }
+  .sweeper-page .case-row { grid-template-columns:1fr; gap:4px; }
+  .sweeper-page .story-section { padding:32px 0; }
+  .sweeper-page .nav-links { gap:12px; }
+  .sweeper-page .nav-links a { font-size:12px; }
+}
+@media (max-width:440px) {
+  .sweeper-page .nav-container { flex-wrap:wrap; gap:8px; padding-top:10px; padding-bottom:10px; }
+  .sweeper-page .nav-actions { width:100%; justify-content:space-between; }
+  .sweeper-page td, .sweeper-page th { padding:10px 8px; font-size:12px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .sweeper-page, .sweeper-page * { scroll-behavior:auto; transition:none; }
+}

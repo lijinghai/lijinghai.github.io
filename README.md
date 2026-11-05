@@ -4,6 +4,37 @@ Jinghai Li 的个人主页，按 Lain 主页的灰白／深灰配色、蓝色强
 
 ## 最近更新
 
+### 2026-11-05 - 新增扫地机覆盖规划与实车执行项目
+
+在首页 EDULITE A3 与 RabbitRobot AMR Foundation 之间加入扫地机项目卡片，链接到[扫地机详情页](projects/sweeper/)。详情页沿用首页灰白／深灰、蓝色强调和终端标识，以三段真实演示、平台功能、三个排障案例和验证记录介绍个人在整机集成、覆盖执行、定位时序及 Web 控制台上的工作。
+
+- **修改范围：** 根 `index.html` 只新增一张卡片；新增 `projects/sweeper/` 的独立 HTML、局部 CSS、语言／主题／播放器脚本、视频、封面和验证摘要 CSV。原首页内容去除新卡片并统一换行后与基线完全一致，原公共 CSS、JavaScript、其他详情页和 ROS／控制台源代码均未改动。本 README 和截图目录记录交付证据。
+- **真实素材：** 完整嵌入覆盖控制台、第二版首次演示与现场转弯三段视频，时长分别约 23.63、101.93、22.17 秒。只做 MP4 faststart 重封装，逐段核对后编码视频流 SHA-256 均与用户原素材一致；封面均提取自对应视频。三个播放器默认暂停，支持全屏、拖动，播放一段时暂停其他段。
+- **内容依据：** 对照近期源代码和既有实车记录，解释扫描时刻 TF 查询、转弯投影补偿、启动状态服务超时与执行状态检查；区分显示投影修正和实际定位，区分状态查询延迟和整车启动时间。公开摘要保留 R101–R146 共 46 次尝试中的 39 次通过、7 次失败及最长连续 22 次通过，不把历史结果写成所有场景的保证；没有重跑机器人实验，也不将画面展示等同于清扫效果验收。
+- **实际验证：** Chrome 在 1440、768、390、320 像素宽度下检查首页与详情页、中英文、明暗主题，共 32 组无横向溢出、重复 ID 或失效内部锚点。三段视频均完成元数据读取、真实播放推进、拖动至片尾及结束验证；语言与主题跨页面／刷新保持、单视频播放行为通过。详情页 13 个本地引用正常，浏览器无控制台错误。`node --check projects/sweeper/sweeper.js` 与 `git diff --check` 通过。
+- **验证边界：** 本轮交付网页及媒体，历史测试指标来自已有记录；没有新增导航性能、长期无人值守或全场景可靠性结论。
+
+![首页新增扫地机卡片，位置在机械臂项目与 AMR 工程档案之间](docs/images/updates/2026-11-05-sweeper/homepage-card.png)
+
+![详情页三段真实视频与对应说明，Chrome 解码后截图](docs/images/updates/2026-11-05-sweeper/three-demos.png)
+
+[桌面浅色](docs/images/updates/2026-11-05-sweeper/desktop-light.png) · [桌面深色](docs/images/updates/2026-11-05-sweeper/desktop-dark.png) · [手机](docs/images/updates/2026-11-05-sweeper/mobile.png) · [历史验证呈现](docs/images/updates/2026-11-05-sweeper/validation-records.png) · [网页检查记录](docs/images/updates/2026-11-05-sweeper/checks.json) · [46 次历史验证摘要](projects/sweeper/assets/validation-runs-20261105.csv)
+
+以下使用 Axton `mermaid-visualizer`，以 GitHub／Obsidian 兼容 Mermaid 说明新增页面的素材与验证关系；真实效果以以上浏览器截图为准。
+
+```mermaid
+flowchart TB
+  videos["三段用户提供的完整视频"] --> detail["扫地机详情：演示、功能与排障实践"]
+  records["既有源码与 46 次历史测试记录"] --> detail
+  card["首页指定位置的新项目卡片"] --> detail
+  detail --> checks["双语主题、四档视口与三个播放器验证"]
+  records -.-> boundary["保留失败及验证范围；不新增实车验收结论"]
+  classDef page fill:#e7f5ff,stroke:#1971c2,color:#242424;
+  classDef evidence fill:#f8f9fa,stroke:#868e96,color:#242424;
+  class card,detail,checks page;
+  class videos,records,boundary evidence;
+```
+
 ### 2026-10-23 - RabbitRobotNav 增加受控三维方法演示
 
 在 [RabbitRobotNav 研究页](RabbitRobotNav/) 的页首加入用户提供的完整视频，并从 00:11 提取平台画面作为视频封面和 Open Graph 分享图。新增页内 Demo 导航、可访问的原生视频控件与说明，沿用原有深色学术页面排版；`preload="metadata"` 读取时长并稳定显示封面，不自动播放。视频为 76.25 秒、1920×1080、24 fps、H.264/AAC；重封装后音视频编码流与原素材哈希一致。封面为 1920×1080 JPEG。

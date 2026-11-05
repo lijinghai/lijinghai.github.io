@@ -1,0 +1,344 @@
+{
+  "scope": "Sweeper project card, detail page and supplied videos only",
+  "checked_at": "2026-11-05T03:42:41.329Z",
+  "layouts": [
+    {
+      "page": "/",
+      "width": 1440,
+      "language": "zh",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 1440,
+      "language": "zh",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 1440,
+      "language": "zh",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 1440,
+      "language": "zh",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 1440,
+      "language": "en",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 1440,
+      "language": "en",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 1440,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 1440,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 768,
+      "language": "zh",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 768,
+      "language": "zh",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 768,
+      "language": "zh",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 768,
+      "language": "zh",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 768,
+      "language": "en",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 768,
+      "language": "en",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 768,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 768,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 390,
+      "language": "zh",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 390,
+      "language": "zh",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 390,
+      "language": "zh",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 390,
+      "language": "zh",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 390,
+      "language": "en",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 390,
+      "language": "en",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 390,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 390,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 320,
+      "language": "zh",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 320,
+      "language": "zh",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 320,
+      "language": "zh",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 320,
+      "language": "zh",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 320,
+      "language": "en",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 320,
+      "language": "en",
+      "theme": "light",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/",
+      "width": 320,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    },
+    {
+      "page": "/projects/sweeper/",
+      "width": 320,
+      "language": "en",
+      "theme": "dark",
+      "overflow": false,
+      "anchors": "PASS"
+    }
+  ],
+  "videos": [
+    {
+      "source": "coverage-console.mp4",
+      "duration": 23.633333,
+      "width": 1280,
+      "height": 752,
+      "paused": true,
+      "error": null,
+      "playback_advanced": true,
+      "seek_to_end": true,
+      "ended": true
+    },
+    {
+      "source": "second-prototype-20261015.mp4",
+      "duration": 101.9333,
+      "width": 3176,
+      "height": 1992,
+      "paused": true,
+      "error": null,
+      "playback_advanced": true,
+      "seek_to_end": true,
+      "ended": true
+    },
+    {
+      "source": "field-turning-20261105.mp4",
+      "duration": 22.166633,
+      "width": 2536,
+      "height": 1488,
+      "paused": true,
+      "error": null,
+      "playback_advanced": true,
+      "seek_to_end": true,
+      "ended": true
+    }
+  ],
+  "errors": [],
+  "existing_homepage_unchanged": true,
+  "card_position": [
+    "project-5",
+    "project-6"
+  ],
+  "posters": [
+    {
+      "src": "coverage-console.jpg",
+      "width": 1440,
+      "height": 846
+    },
+    {
+      "src": "second-prototype-20261015.jpg",
+      "width": 1440,
+      "height": 904
+    },
+    {
+      "src": "field-turning-20261105.jpg",
+      "width": 1440,
+      "height": 844
+    }
+  ],
+  "single_video_playback": "PASS",
+  "preference_navigation_persistence": "PASS",
+  "local_references_checked": 13,
+  "result": "PASS",
+  "source_media_integrity": [
+    {
+      "video": "coverage-console.mp4",
+      "encoded_video_stream_unchanged": true,
+      "stream_sha256": "8bb449e3c189173a72f3aee4ffea7554f81e0a231514474e8e88f3c9c185e090",
+      "published_bytes": 631751
+    },
+    {
+      "video": "second-prototype-20261015.mp4",
+      "encoded_video_stream_unchanged": true,
+      "stream_sha256": "615d7af3eadf3de5b58fdc4a92e5b10c829dbf8e2cc8274425fc72f71e307e41",
+      "published_bytes": 8134272
+    },
+    {
+      "video": "field-turning-20261105.mp4",
+      "encoded_video_stream_unchanged": true,
+      "stream_sha256": "a8308797ee56e58ac69408f8b5da0afbbe08e0456a70e7381390f2c3b857f35a",
+      "published_bytes": 3179326
+    }
+  ]
+}
